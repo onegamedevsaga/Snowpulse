@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\application">
+      <UniqueIdentifier>{ec45afdd-c8c6-46bc-acf4-3bfc4cfa0710}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\game">
+      <UniqueIdentifier>{09bef9a9-87e2-4551-92b6-fd1945bd9490}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\application\windows">
+      <UniqueIdentifier>{a8823dad-838f-4703-a3fa-4e12ebdc48a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\common">
+      <UniqueIdentifier>{62353607-0dc6-4f72-b881-97fb669f9283}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\game\components">
+      <UniqueIdentifier>{f5cf8de6-60f0-449b-bf7f-daa6b435ad88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\application\opengl">
+      <UniqueIdentifier>{1d95b14f-ab13-4178-b181-05b28c1a6e60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\game\actions">
+      <UniqueIdentifier>{ea88b508-59ff-461b-a10c-0a4daea54f76}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\snowpulse\defines.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\snowpulse.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\application\application.h">
+      <Filter>Source Files\application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\application\camera.h">
+      <Filter>Source Files\application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\application\platform.h">
+      <Filter>Source Files\application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\application\timer.h">
+      <Filter>Source Files\application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\common\matrix4x4.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\common\singleton.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\common\texture_filtering.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\common\vector2.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\common\vector2int.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\common\vector3.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\game\component.h">
+      <Filter>Source Files\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\game\drawable.h">
+      <Filter>Source Files\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\game\game.h">
+      <Filter>Source Files\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\game\game_object.h">
+      <Filter>Source Files\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\game\graphics.h">
+      <Filter>Source Files\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\game\scene.h">
+      <Filter>Source Files\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\game\self_aware_ptr.h">
+      <Filter>Source Files\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\game\updatable.h">
+      <Filter>Source Files\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\game\components\sprite_renderer.h">
+      <Filter>Source Files\game\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\game\components\transform.h">
+      <Filter>Source Files\game\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\application\opengl\application_opengl.h">
+      <Filter>Source Files\application\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\application\opengl\graphics_opengl.h">
+      <Filter>Source Files\application\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\application\opengl\input_opengl.h">
+      <Filter>Source Files\application\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\application\opengl\render_batch_opengl.h">
+      <Filter>Source Files\application\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\application\opengl\render_queue_opengl.h">
+      <Filter>Source Files\application\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\application\input.h">
+      <Filter>Source Files\application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\common\color.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\common\easing.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\common\math_utils.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\common\space.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\game\action.h">
+      <Filter>Source Files\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\game\action_manager.h">
+      <Filter>Source Files\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\game\node.h">
+      <Filter>Source Files\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\game\node_starter.h">
+      <Filter>Source Files\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\game\actions\action_move.h">
+      <Filter>Source Files\game\actions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\game\actions\action_rotate.h">
+      <Filter>Source Files\game\actions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\game\actions\action_wait.h">
+      <Filter>Source Files\game\actions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\application\windows\application_windows.h">
+      <Filter>Source Files\application\windows</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\snowpulse\application\application.cc">
+      <Filter>Source Files\application</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\application\camera.cc">
+      <Filter>Source Files\application</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\application\timer.cc">
+      <Filter>Source Files\application</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\game\component.cc">
+      <Filter>Source Files\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\game\game.cc">
+      <Filter>Source Files\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\game\game_object.cc">
+      <Filter>Source Files\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\game\scene.cc">
+      <Filter>Source Files\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\game\components\sprite_renderer.cc">
+      <Filter>Source Files\game\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\game\components\transform.cc">
+      <Filter>Source Files\game\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\application\opengl\application_opengl.cc">
+      <Filter>Source Files\application\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\application\opengl\graphics_opengl.cc">
+      <Filter>Source Files\application\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\application\opengl\input_opengl.cc">
+      <Filter>Source Files\application\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\application\opengl\render_queue_opengl.cc">
+      <Filter>Source Files\application\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\application\input.cc">
+      <Filter>Source Files\application</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\game\action.cc">
+      <Filter>Source Files\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\game\action_manager.cc">
+      <Filter>Source Files\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\game\node.cc">
+      <Filter>Source Files\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\game\node_starter.cc">
+      <Filter>Source Files\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\game\actions\action_move.cc">
+      <Filter>Source Files\game\actions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\game\actions\action_rotate.cc">
+      <Filter>Source Files\game\actions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\game\actions\action_wait.cc">
+      <Filter>Source Files\game\actions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\thirdparty\glad\src\glad.c">
+      <Filter>Source Files\application\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\application\windows\application_windows.cc">
+      <Filter>Source Files\application\windows</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,10 @@
+{
+    "data": {
+        "buildNumber": 1001,
+        "name": "Suspended Souls",
+        "platform": "dekstop",
+        "version": "0.0.1"
+    },
+    "extraValue": 1234.0,
+    "type": "settings"
+}
