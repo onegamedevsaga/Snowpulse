@@ -111,7 +111,7 @@ void SceneLevel::Update(float deltaTime) {
     //go1_->GetTransform()->SetLocalScale(go1_->GetTransform()->GetLocalScale() + scl);
 
     rot = 180.0f * deltaTime;
-    go2_->GetTransform()->SetLocalRotation(go2_->GetTransform()->GetLocalRotation() + rot);
+    //go2_->GetTransform()->SetLocalRotation(go2_->GetTransform()->GetLocalRotation() + rot);
     
     auto camPos = GetCamera()->GetPosition();
     auto camMovement = 100.0f * deltaTime;

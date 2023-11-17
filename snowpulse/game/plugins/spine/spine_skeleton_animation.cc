@@ -37,6 +37,10 @@ std::shared_ptr<SpineSkeletonAnimation> SpineSkeletonAnimation::Create(std::stri
     //spineSkeletonAnimation->animationStateData_->setDefaultMix(0.5f);
     //spineSkeletonAnimation->animationStateData_->setMix("walk", "run", 0.2f);
     //spineSkeletonAnimation->animationStateData_->setMix("walk", "shot", 0.1f);
+    
+    spineSkeletonAnimation->skeleton_ = std::make_shared<spine::Skeleton>(spineSkeletonAnimation->skeletonData_.get());
+    spineSkeletonAnimation->animationState_ = std::make_shared<spine::AnimationState>(spineSkeletonAnimation->animationStateData_.get());
+    spineSkeletonAnimation->animationState_->setAnimation(0, "idle", true);
     return spineSkeletonAnimation;
 }
 
@@ -48,9 +52,13 @@ SpineSkeletonAnimation::~SpineSkeletonAnimation() {
 
 // From Updatable
 void SpineSkeletonAnimation::Update(float deltaTime) {
+    animationState_->update(deltaTime);
+    animationState_->apply(*skeleton_);
+    skeleton_->updateWorldTransform();
 }
 
 // From Drawable
 void SpineSkeletonAnimation::Draw(Graphics* graphics, Matrix4x4 worldMatrix) {
+    //graphics->DrawSpineSkeleton(skeleton_.get(), worldMatrix, color_, sortOrder_);
 }
 }   // namespace snowpulse
