@@ -34,7 +34,7 @@ class SNOWPULSEAPI SpriteRenderer : public Component, public Drawable {
         SpriteRenderer();
         SpriteRenderer(std::string componentName);
 
-        void LoadGraphics(Graphics* graphics);
+        virtual void LoadGraphics(Graphics* graphics);
 
         int sortOrder_;
         Vector2 size_;

@@ -3,12 +3,14 @@
 
 #include "sprite_renderer.h"
 
+#include <memory>
+
 #include "../plugins/spine/spine_skeleton_animation.h"
 
 namespace snowpulse {
 class SNOWPULSEAPI SpineRenderer : public SpriteRenderer {
     public:
-        static std::shared_ptr<SpineRenderer> Create(std::string jsonFilename);
+        static std::shared_ptr<SpineRenderer> Create(std::string jsonFilename, std::string atlasFilename);
 
         virtual ~SpineRenderer();
         // From Updatable
@@ -29,10 +31,7 @@ class SNOWPULSEAPI SpineRenderer : public SpriteRenderer {
 
         void LoadGraphics(Graphics* graphics);
 
-        int sortOrder_;
-        Vector2 size_;
-        Color color_;
-        std::string filename_;
+        std::shared_ptr<SpineSkeletonAnimation> skeletonAnimation_;
 };
 }   // namespace snowpulse
 

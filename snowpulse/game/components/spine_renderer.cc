@@ -4,22 +4,22 @@
 #include "../../application/application.h"
 
 namespace snowpulse {
-std::shared_ptr<SpineRenderer> SpineRenderer::Create(std::string jsonFilename) {
+std::shared_ptr<SpineRenderer> SpineRenderer::Create(std::string jsonFilename, std::string atlasFilename) {
     auto spineRenderer = std::shared_ptr<SpineRenderer>(new SpineRenderer());
+    spineRenderer->skeletonAnimation_ = SpineSkeletonAnimation::Create(jsonFilename, atlasFilename);
     spineRenderer->filename_ = jsonFilename;
     spineRenderer->LoadGraphics(Application::GetInstance()->GetGraphics());
     return spineRenderer;
 }
 
-SpineRenderer::SpineRenderer() : SpriteRenderer("spine_renderer"), sortOrder_(0) {
+SpineRenderer::SpineRenderer() : SpriteRenderer("spine_renderer") {
 }
 
 SpineRenderer::~SpineRenderer() {
 }
 
 void SpineRenderer::LoadGraphics(Graphics* graphics) {
-    graphics->LoadTexture(filename_, TextureFiltering::kBilinear);
-    SetSize(graphics->GetTextureSize(filename_));
+    
 }
 
 // From Updatable

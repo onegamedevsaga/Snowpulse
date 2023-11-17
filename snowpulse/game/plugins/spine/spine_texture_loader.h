@@ -4,6 +4,7 @@
 #include "../../../defines.h"
 #include <spine/TextureLoader.h>
 
+#include <memory>
 #include <string>
 
 #include "../../graphics.h"
@@ -11,6 +12,8 @@
 namespace snowpulse {
 class SNOWPULSEAPI SpineTextureLoader : public spine::TextureLoader {
     public:
+        static std::shared_ptr<SpineTextureLoader> Create();
+
         virtual ~SpineTextureLoader();
 
         // From TextureLoader

@@ -6,13 +6,18 @@
 #include <memory>
 #include <string>
 
+#include <spine/Atlas.h>
+#include <spine/SkeletonData.h>
+#include <spine/AnimationStateData.h>
+
+#include "spine_texture_loader.h"
 #include "../../updatable.h"
 #include "../../drawable.h"
 
 namespace snowpulse {
 class SNOWPULSEAPI SpineSkeletonAnimation : public Updatable, public Drawable {
     public:
-        static std::shared_ptr<SpineSkeletonAnimation> Create(std::string jsonFilename);
+        static std::shared_ptr<SpineSkeletonAnimation> Create(std::string jsonFilename, std::string atlasFilename);
 
         virtual ~SpineSkeletonAnimation();
         // From Updatable
@@ -23,7 +28,10 @@ class SNOWPULSEAPI SpineSkeletonAnimation : public Updatable, public Drawable {
     protected:
         SpineSkeletonAnimation();
 
-        std::string filename_;
+        std::shared_ptr<SpineTextureLoader> textureLoader_;
+        std::shared_ptr<spine::Atlas> atlas_;
+        std::shared_ptr<spine::SkeletonData> skeletonData_;
+        std::shared_ptr<spine::AnimationStateData> animationStateData_;
 };
 }   // namespace snowpulse
 #endif
