@@ -7,12 +7,14 @@ namespace snowpulse {
 std::shared_ptr<SpriteRenderer> SpriteRenderer::Create(std::string filename) {
     auto spriteRenderer = std::shared_ptr<SpriteRenderer>(new SpriteRenderer());
     spriteRenderer->filename_ = filename;
-    auto x = Application::GetInstance();
-    spriteRenderer->LoadGraphics(x->GetGraphics());
+    spriteRenderer->LoadGraphics(Application::GetInstance()->GetGraphics());
     return spriteRenderer;
 }
 
 SpriteRenderer::SpriteRenderer() : Component("sprite_renderer"), sortOrder_(0) {
+}
+
+SpriteRenderer::SpriteRenderer(std::string componentName) : Component(componentName), sortOrder_(0)  {
 }
 
 SpriteRenderer::~SpriteRenderer() {

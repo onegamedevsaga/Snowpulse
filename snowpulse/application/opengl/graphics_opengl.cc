@@ -193,6 +193,32 @@ void GraphicsOpenGL::LoadTexture(std::string filename, TextureFiltering filterin
     }
 }
 
+void GraphicsOpenGL::UnloadTexture(std::string filename) {
+    if (!textures_.count(filename.c_str())) {
+        return;
+    }
+    for (auto i = textures_.begin(); i != textures_.end(); i++) {
+        if (i->first == filename) {
+            for (auto i2 = textureSizes_.begin(); i2 != textureSizes_.end(); i2++) {
+                if (i2->first == i->second) {
+                    textureSizes_.erase(i2);
+                    break;
+                }
+            }
+            glDeleteTextures(1, &(i->second));
+            textures_.erase(i);
+            break;
+        }
+    }
+#ifdef SPDEBUG
+    std::cout << "Texture (" << filename.c_str() << ") unloaded." << std::endl;
+#endif
+}
+
+void GraphicsOpenGL::UnloadTexture(void* texture) {
+    
+}
+
 Vector2 GraphicsOpenGL::GetTextureSize(std::string filename) {
     if (!textures_.count(filename.c_str())) {
         return Vector2(100.0f, 100.0f);

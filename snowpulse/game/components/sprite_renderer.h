@@ -32,6 +32,7 @@ class SNOWPULSEAPI SpriteRenderer : public Component, public Drawable {
 
     protected:
         SpriteRenderer();
+        SpriteRenderer(std::string componentName);
 
         void LoadGraphics(Graphics* graphics);
 

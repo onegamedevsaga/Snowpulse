@@ -29,6 +29,7 @@
 
 #include "game/components/transform.h"
 #include "game/components/sprite_renderer.h"
+#include "game/components/spine_renderer.h"
 
 #include "game/actions/action_interpolate.h"
 #include "game/actions/action_wait.h"
