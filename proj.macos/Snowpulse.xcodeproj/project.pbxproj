@@ -240,6 +240,7 @@
 		2AA9A9DC2B07B0B1009AACBF /* spine_skeleton_animation.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A9D82B07B0B1009AACBF /* spine_skeleton_animation.cc */; };
 		2AA9A9DD2B07B0B1009AACBF /* spine_skeleton_animation.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9D92B07B0B1009AACBF /* spine_skeleton_animation.h */; };
 		2AA9A9DE2B07B0B1009AACBF /* spine_texture_loader.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9DA2B07B0B1009AACBF /* spine_texture_loader.h */; };
+		2AA9A9E02B087CE3009AACBF /* blend_mode.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9DF2B087CE3009AACBF /* blend_mode.h */; };
 		2AF938E82ABDDB8600CC8BA2 /* libSnowpulse.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AF938D92ABDC41900CC8BA2 /* libSnowpulse.dylib */; };
 /* End PBXBuildFile section */
 
@@ -542,6 +543,7 @@
 		2AA9A9D82B07B0B1009AACBF /* spine_skeleton_animation.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = spine_skeleton_animation.cc; path = plugins/spine/spine_skeleton_animation.cc; sourceTree = "<group>"; };
 		2AA9A9D92B07B0B1009AACBF /* spine_skeleton_animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = spine_skeleton_animation.h; path = plugins/spine/spine_skeleton_animation.h; sourceTree = "<group>"; };
 		2AA9A9DA2B07B0B1009AACBF /* spine_texture_loader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = spine_texture_loader.h; path = plugins/spine/spine_texture_loader.h; sourceTree = "<group>"; };
+		2AA9A9DF2B087CE3009AACBF /* blend_mode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = blend_mode.h; sourceTree = "<group>"; };
 		2AF938CE2ABDC3A000CC8BA2 /* Launcher */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Launcher; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AF938D92ABDC41900CC8BA2 /* libSnowpulse.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libSnowpulse.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -650,6 +652,7 @@
 		2A4FBE0B2B00BF430060E35C /* common */ = {
 			isa = PBXGroup;
 			children = (
+				2AA9A9DF2B087CE3009AACBF /* blend_mode.h */,
 				2A4FBE102B00BF430060E35C /* color.h */,
 				2A4FBE8F2B0108380060E35C /* easing.h */,
 				2A4FBEB52B03E81D0060E35C /* json_utils.h */,
@@ -1049,6 +1052,7 @@
 				2AA9A99E2B0781A0009AACBF /* SkeletonJson.h in Headers */,
 				2A4FBE4E2B00BF430060E35C /* color.h in Headers */,
 				2AA9A9B12B0781A0009AACBF /* Property.h in Headers */,
+				2AA9A9E02B087CE3009AACBF /* blend_mode.h in Headers */,
 				2AA9A99C2B0781A0009AACBF /* AttachmentLoader.h in Headers */,
 				2A4FBE472B00BF430060E35C /* action_manager.h in Headers */,
 				2AA9A99D2B0781A0009AACBF /* LinkedMesh.h in Headers */,

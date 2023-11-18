@@ -9,6 +9,8 @@
 #include <GLFW/glfw3.h>
 #include <glm.hpp>
 
+#include "../../common/blend_mode.h"
+
 namespace snowpulse {
     class SNOWPULSEAPI RenderBatchOpenGL {
         public:
@@ -20,6 +22,7 @@ namespace snowpulse {
 
             GLenum drawMode;
             GLuint shaderProgram;
+            BlendMode blendMode;
             GLsizei vertexCount;
             GLsizei indexCount;
 

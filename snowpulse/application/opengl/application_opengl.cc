@@ -75,6 +75,29 @@ void ApplicationOpenGL::Run() {
         auto batches = renderQueue_->PopAll();
         for (int i = 0; i < 1; i++) {
             for(auto b : batches) {
+
+                switch (b.blendMode) {
+                    case BlendMode::kDisabled:
+                        glDisable(GL_BLEND);
+                        break;
+                    case BlendMode::kNormal:
+                        glEnable(GL_BLEND);
+                        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+                        break;
+                    case BlendMode::kAdditive:
+                        glEnable(GL_BLEND);
+                        glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+                        break;
+                    case BlendMode::kMultiply:
+                        glEnable(GL_BLEND);
+                        glBlendFunc(GL_DST_COLOR, GL_ZERO);
+                        break;
+                    case BlendMode::kScreen:
+                        glEnable(GL_BLEND);
+                        glBlendFunc(GL_ONE_MINUS_DST_COLOR, GL_ONE);
+                        break;
+                }
+
                 GLuint VBO, VAO, EBO, matrixVBO;
                 float vertices[b.vertices.size()];
                 int indices[b.indices.size()];

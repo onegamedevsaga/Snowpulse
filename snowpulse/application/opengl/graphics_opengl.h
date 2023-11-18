@@ -37,7 +37,7 @@ class SNOWPULSEAPI GraphicsOpenGL : public Graphics {
         void UnloadTexture(std::string filename);
         void UnloadTexture(void* texture);
         Vector2 GetTextureSize(std::string filename);
-        void DrawSprite(Vector2 size, std::string filename, Matrix4x4 mat, Color color, int sortOrder, Vector2 uvLowerLeft, Vector2 uvUpperRight);
+        void DrawSprite(Vector2 size, std::string filename, Matrix4x4 mat, Color color, int sortOrder, BlendMode blendMode, Vector2 uvLowerLeft, Vector2 uvUpperRight);
 
     private:
         GraphicsOpenGL();

@@ -67,6 +67,7 @@ void SceneLevel::Start() {
     go2_ = snowpulse::GameObject::Create("go2_");
     sprRenderer = snowpulse::SpriteRenderer::Create("logo.png");
     sprRenderer->SetSortOrder(2);
+    sprRenderer->SetBlendMode(snowpulse::BlendMode::kAdditive);
     go2_->AddComponent(sprRenderer);
     go1_->AddChild(go2_);
 

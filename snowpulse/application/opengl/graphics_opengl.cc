@@ -114,10 +114,6 @@ void GraphicsOpenGL::Initialize(Vector2Int resolution, Camera* camera, RenderQue
         glEnable(GL_DEPTH_TEST);
     }
 
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    
-
 #ifdef SPDEBUG
     std::cout << "GraphicsOpenGL initialized." << std::endl;
 #endif
@@ -226,7 +222,7 @@ Vector2 GraphicsOpenGL::GetTextureSize(std::string filename) {
     return textureSizes_[textures_[filename]];
 }
 
-void GraphicsOpenGL::DrawSprite(Vector2 size, std::string filename, Matrix4x4 mat, Color color, int sortOrder, Vector2 uvLowerLeft, Vector2 uvUpperRight) {
+void GraphicsOpenGL::DrawSprite(Vector2 size, std::string filename, Matrix4x4 mat, Color color, int sortOrder, BlendMode blendMode, Vector2 uvLowerLeft, Vector2 uvUpperRight) {
     float halfWidth = size.x * 0.5f;
     float halfHeight = size.y * 0.5f;
     float vertices[] = {
@@ -251,6 +247,7 @@ void GraphicsOpenGL::DrawSprite(Vector2 size, std::string filename, Matrix4x4 ma
     RenderBatchOpenGL batch;
     batch.drawMode = GL_TRIANGLES;
     batch.shaderProgram = shaderProgram_;
+    batch.blendMode = blendMode;
     batch.vertexCount = 4;
     batch.indexCount = 6;
     batch.sortOrder = sortOrder;
