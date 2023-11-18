@@ -12,6 +12,7 @@
 #include <glm.hpp>
 #include <gtc/matrix_transform.hpp>
 
+#include "../../common/vertex.h"
 #include "../../common/vector2.h"
 #include "../../common/vector2int.h"
 #include "../../common/color.h"
@@ -37,6 +38,7 @@ class SNOWPULSEAPI GraphicsOpenGL : public Graphics {
         void UnloadTexture(std::string filename);
         void UnloadTexture(void* texture);
         Vector2 GetTextureSize(std::string filename);
+        void DrawMesh(Vertex* vertices, unsigned int vertexCount, unsigned short* indices, unsigned int indexCount, std::string textureId, BlendMode blendmode);
         void DrawSprite(Vector2 size, std::string filename, Matrix4x4 mat, Color color, int sortOrder, BlendMode blendMode, Vector2 uvLowerLeft, Vector2 uvUpperRight);
 
     private:

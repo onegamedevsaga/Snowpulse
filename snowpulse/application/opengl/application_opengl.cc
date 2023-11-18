@@ -100,7 +100,7 @@ void ApplicationOpenGL::Run() {
 
                 GLuint VBO, VAO, EBO, matrixVBO;
                 float vertices[b.vertices.size()];
-                int indices[b.indices.size()];
+                unsigned short indices[b.indices.size()];
                 int i = 0;
                 for (const auto ver : b.vertices) {
                     vertices[i++] = ver;
@@ -145,7 +145,7 @@ void ApplicationOpenGL::Run() {
                 glActiveTexture(GL_TEXTURE0);
                 glBindTexture(GL_TEXTURE_2D, b.texture);
                 glBindVertexArray(VAO);
-                glDrawElements(b.drawMode, 18, GL_UNSIGNED_INT, 0);
+                glDrawElements(b.drawMode, 18, GL_UNSIGNED_SHORT, 0);
                 glBindVertexArray(0);
 
 #ifdef SPDEBUG

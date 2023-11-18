@@ -222,6 +222,10 @@ Vector2 GraphicsOpenGL::GetTextureSize(std::string filename) {
     return textureSizes_[textures_[filename]];
 }
 
+void GraphicsOpenGL::DrawMesh(Vertex* vertices, unsigned int vertexCount, unsigned short* indices, unsigned int indexCount, std::string textureId, BlendMode blendmode) {
+    
+}
+
 void GraphicsOpenGL::DrawSprite(Vector2 size, std::string filename, Matrix4x4 mat, Color color, int sortOrder, BlendMode blendMode, Vector2 uvLowerLeft, Vector2 uvUpperRight) {
     float halfWidth = size.x * 0.5f;
     float halfHeight = size.y * 0.5f;
@@ -232,7 +236,7 @@ void GraphicsOpenGL::DrawSprite(Vector2 size, std::string filename, Matrix4x4 ma
         -halfWidth,  halfHeight, 0.0f, 0.0f, 0.0f, color.r, color.g, color.b, color.a//uvLowerLeft.x,  uvUpperRight.y
     };
 
-    unsigned int indices[] = {
+    unsigned short indices[] = {
         0, 1, 2,
         2, 3, 0
     };

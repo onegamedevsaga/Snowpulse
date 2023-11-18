@@ -6,6 +6,7 @@
 #include <memory>
 #include <string>
 
+#include "../common/vertex.h"
 #include "../common/vector2.h"
 #include "../common/blend_mode.h"
 #include "../common/color.h"
@@ -25,7 +26,8 @@ class SNOWPULSEAPI Graphics {
         virtual void UnloadTexture(std::string filename) = 0;
         virtual void UnloadTexture(void* texture) = 0;
         virtual Vector2 GetTextureSize(std::string filename) = 0;
-    virtual void DrawSprite(Vector2 size, std::string filename, Matrix4x4 mat, Color color = Color::White(), int sortOrder = 0, BlendMode blendMode = BlendMode::kNormal, Vector2 uvLowerLeft = Vector2(0.0f, 1.0f), Vector2 uvUpperRight = Vector2(1.0f, 0.0f)) = 0;
+        virtual void DrawMesh(Vertex* vertices, unsigned int vertexCount, unsigned short* indices, unsigned int indexCount, std::string textureId, BlendMode blendmode) = 0;
+        virtual void DrawSprite(Vector2 size, std::string filename, Matrix4x4 mat, Color color = Color::White(), int sortOrder = 0, BlendMode blendMode = BlendMode::kNormal, Vector2 uvLowerLeft = Vector2(0.0f, 1.0f), Vector2 uvUpperRight = Vector2(1.0f, 0.0f)) = 0;
 
         Camera* GetCamera() const { return camera_; }
         bool IsDepthTesting() const { return isDepthTesting_; }

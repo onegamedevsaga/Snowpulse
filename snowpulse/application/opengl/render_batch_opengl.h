@@ -14,10 +14,10 @@
 namespace snowpulse {
     class SNOWPULSEAPI RenderBatchOpenGL {
         public:
-            int vertexPlusUVPlusColorCount = 9;
-            int vertexSectionCount = 3;
-            int uVSectionCount = 2;
-            int colorSectionCount = 4;
+            unsigned int vertexPlusUVPlusColorCount = 9;
+            unsigned int vertexSectionCount = 3;
+            unsigned int uVSectionCount = 2;
+            unsigned int colorSectionCount = 4;
             int sortOrder = 0;
 
             GLenum drawMode;
@@ -27,7 +27,7 @@ namespace snowpulse {
             GLsizei indexCount;
 
             std::vector<float> vertices;
-            std::vector<int> indices;
+            std::vector<unsigned short> indices;
             std::vector<glm::mat4> matrices;
 
             GLuint vertexShaderLocation;

@@ -17,6 +17,7 @@
 #include "common/matrix4x4.h"
 #include "common/color.h"
 #include "common/texture_filtering.h"
+#include "common/vertex.h"
 
 #include "game/graphics.h"
 #include "game/updatable.h"
