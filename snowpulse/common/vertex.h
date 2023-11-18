@@ -10,6 +10,9 @@
 namespace snowpulse {
 class SNOWPULSEAPI Vertex {
     public:
+        Vertex() : position(), uv(), color(){
+        }
+
         Vertex(Vector3 position, Vector2 uv, Color color) : position(position), uv(uv), color(color) {
         }
 

@@ -222,29 +222,11 @@ Vector2 GraphicsOpenGL::GetTextureSize(std::string filename) {
     return textureSizes_[textures_[filename]];
 }
 
-void GraphicsOpenGL::DrawMesh(Vertex* vertices, unsigned int vertexCount, unsigned short* indices, unsigned int indexCount, std::string textureId, BlendMode blendmode) {
-    
-}
-
-void GraphicsOpenGL::DrawSprite(Vector2 size, std::string filename, Matrix4x4 mat, Color color, int sortOrder, BlendMode blendMode, Vector2 uvLowerLeft, Vector2 uvUpperRight) {
-    float halfWidth = size.x * 0.5f;
-    float halfHeight = size.y * 0.5f;
-    float vertices[] = {
-         halfWidth,  halfHeight, 0.0f, 1.0f, 0.0f, color.r, color.g, color.b, color.a,//uvUpperRight.x, uvUpperRight.y,
-         halfWidth, -halfHeight, 0.0f, 1.0f, 1.0f, color.r, color.g, color.b, color.a,//uvUpperRight.x, uvLowerLeft.y,
-        -halfWidth, -halfHeight, 0.0f, 0.0f, 1.0f, color.r, color.g, color.b, color.a,//uvLowerLeft.x,  uvLowerLeft.y,
-        -halfWidth,  halfHeight, 0.0f, 0.0f, 0.0f, color.r, color.g, color.b, color.a//uvLowerLeft.x,  uvUpperRight.y
-    };
-
-    unsigned short indices[] = {
-        0, 1, 2,
-        2, 3, 0
-    };
-
-    glm::mat4 transforms[1];
+void GraphicsOpenGL::DrawMesh(Vertex* vertices, unsigned int vertexCount, unsigned short* indices, unsigned int indexCount, std::string textureFilename, int sortOrder, BlendMode blendMode, Matrix4x4 transformMatrix) {
+    glm::mat4 transform;
     for (int i = 0; i < 4; ++i) {
         for (int j = 0; j < 4; ++j) {
-            transforms[0][i][j] = mat.data[i][j];
+            transform[i][j] = transformMatrix.data[i][j];
         }
     }
 
@@ -255,20 +237,26 @@ void GraphicsOpenGL::DrawSprite(Vector2 size, std::string filename, Matrix4x4 ma
     batch.vertexCount = 4;
     batch.indexCount = 6;
     batch.sortOrder = sortOrder;
-    batch.texture = textures_[filename];
+    batch.texture = textures_[textureFilename];
 
-    auto vertexCount = sizeof(vertices) / sizeof(vertices[0]);
     for (int i = 0; i < vertexCount; i++) {
-        batch.vertices.push_back(vertices[i]);
+        batch.vertices.push_back(vertices[i].position.x);
+        batch.vertices.push_back(vertices[i].position.y);
+        batch.vertices.push_back(vertices[i].position.z);
+        batch.vertices.push_back(vertices[i].uv.x);
+        batch.vertices.push_back(vertices[i].uv.y);
+        batch.vertices.push_back(vertices[i].color.r);
+        batch.vertices.push_back(vertices[i].color.g);
+        batch.vertices.push_back(vertices[i].color.b);
+        batch.vertices.push_back(vertices[i].color.a);
     }
 
-    auto indexCount = sizeof(indices) / sizeof(indices[0]);
     for (int i = 0; i < indexCount; i++) {
         batch.indices.push_back(indices[i]);
     }
     
     for (int i = 0; i < batch.vertexCount; i++) {
-        batch.matrices.push_back(transforms[0]);
+        batch.matrices.push_back(transform);
     }
 
     auto camMat = camera_->GetMatrix();
@@ -290,9 +278,31 @@ void GraphicsOpenGL::DrawSprite(Vector2 size, std::string filename, Matrix4x4 ma
     batch.projectionMatrixShaderLocation = projectionMatrixShaderLocation_;
 
     renderQueue_->Push(batch);
+}
 
-#ifdef SPDEBUG
-    std::cout << "Drawing rectangle.." << std::endl;
-#endif
+void GraphicsOpenGL::DrawSprite(Vector2 size, std::string filename, Matrix4x4 transformMatrix, Color color, int sortOrder, BlendMode blendMode, Vector2 uvLowerLeft, Vector2 uvUpperRight) {
+    float halfWidth = size.x * 0.5f;
+    float halfHeight = size.y * 0.5f;
+
+    Vertex vertices[4];
+    vertices[0].position = Vector3( halfWidth,  halfHeight, 0.0f);
+    vertices[1].position = Vector3( halfWidth, -halfHeight, 0.0f);
+    vertices[2].position = Vector3(-halfWidth, -halfHeight, 0.0f);
+    vertices[3].position = Vector3(-halfWidth,  halfHeight, 0.0f);
+    vertices[0].uv = Vector2(uvUpperRight.x, uvUpperRight.y);
+    vertices[1].uv = Vector2(uvUpperRight.x, uvLowerLeft.y);
+    vertices[2].uv = Vector2(uvLowerLeft.x,  uvLowerLeft.y);
+    vertices[3].uv = Vector2(uvLowerLeft.x,  uvUpperRight.y);
+    vertices[0].color = color;
+    vertices[1].color = color;
+    vertices[2].color = color;
+    vertices[3].color = color;
+
+    unsigned short indices[] = {
+        0, 1, 2,
+        2, 3, 0
+    };
+
+    DrawMesh(vertices, 4, indices, 6, filename, sortOrder, blendMode, transformMatrix);
 }
 }   // namespace snowpulse
