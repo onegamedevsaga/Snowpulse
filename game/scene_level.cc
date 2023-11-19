@@ -76,12 +76,12 @@ void SceneLevel::Start() {
     go2_->GetTransform()->SetLocalRotation(0.0f);
 
     go3_ = snowpulse::GameObject::Create("go3_");
-    auto spineRenderer = snowpulse::SpineRenderer::Create("hero/hero.json", "hero/hero.atlas");
+    auto spineRenderer = snowpulse::SpineRenderer::Create("spine-test/spine-test.json", "spine-test/spine-test.atlas");
     spineRenderer->SetSortOrder(3);
     go3_->AddComponent(spineRenderer);
-    go2_->AddChild(go3_);
+    AddChild(go3_);
 
-    go3_->GetTransform()->SetLocalPosition(snowpulse::Vector2(0.0f, 200.0f));
+    go3_->GetTransform()->SetLocalPosition(snowpulse::Vector2(960.0f, 540.0f));
     //go3_->GetTransform()->SetRotation(90.0f);
 
     snowpulse::ActionWait::Create(4.0f)->OnComplete([this](snowpulse::Action* a) {
@@ -97,7 +97,7 @@ void SceneLevel::Start() {
                 GetApplication()->Close();
             })->Run();
         });
-    })->Run();
+    });//->Run();
 }
 
 void SceneLevel::Update(float deltaTime) {

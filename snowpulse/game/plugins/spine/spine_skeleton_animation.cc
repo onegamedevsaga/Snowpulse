@@ -4,6 +4,10 @@
 
 #include <spine/Extension.h>
 #include <spine/SkeletonJson.h>
+#include <spine/SlotData.h>
+#include <spine/Attachment.h>
+#include <spine/RegionAttachment.h>
+#include <spine/VertexAttachment.h>
 
 #include "spine_texture_loader.h"
 
@@ -41,6 +45,9 @@ std::shared_ptr<SpineSkeletonAnimation> SpineSkeletonAnimation::Create(std::stri
     spineSkeletonAnimation->skeleton_ = std::make_shared<spine::Skeleton>(spineSkeletonAnimation->skeletonData_.get());
     spineSkeletonAnimation->animationState_ = std::make_shared<spine::AnimationState>(spineSkeletonAnimation->animationStateData_.get());
     spineSkeletonAnimation->animationState_->setAnimation(0, "idle", true);
+
+    size_t pos = atlasFilename.find_last_of("/\\");
+    spineSkeletonAnimation->atlasPath_ = (pos != std::string::npos) ? atlasFilename.substr(0, pos + 1) : "";
     return spineSkeletonAnimation;
 }
 
@@ -58,7 +65,141 @@ void SpineSkeletonAnimation::Update(float deltaTime) {
 }
 
 // From Drawable
-void SpineSkeletonAnimation::Draw(Graphics* graphics, Matrix4x4 worldMatrix) {
-    //graphics->DrawSpineSkeleton(skeleton_.get(), worldMatrix, color_, sortOrder_);
+void SpineSkeletonAnimation::Draw(Graphics* graphics, Matrix4x4 worldMatrix, int sortOrder) {
+    float halfWidth = 250.0f * 0.5f;
+    float halfHeight = 250.0f * 0.5f;
+
+    /*Vertex vertices[4];
+    vertices[0].position = Vector3( halfWidth,  halfHeight, 0.0f);
+    vertices[1].position = Vector3( halfWidth, -halfHeight, 0.0f);
+    vertices[2].position = Vector3(-halfWidth, -halfHeight, 0.0f);
+    vertices[3].position = Vector3(-halfWidth,  halfHeight, 0.0f);
+    vertices[0].uv = Vector2(1, 0);
+    vertices[1].uv = Vector2(1, 1);
+    vertices[2].uv = Vector2(0, 1);
+    vertices[3].uv = Vector2(0, 0);
+    vertices[0].color = Color::White();
+    vertices[1].color = Color::White();
+    vertices[2].color = Color::White();
+    vertices[3].color = Color::White();
+
+    unsigned short indices[] = {
+        0, 1, 2,
+        2, 3, 0
+    };
+
+    auto filename = atlasPath_ + atlas_->getPages()[0]->name.buffer();
+    graphics->DrawMesh(vertices, 4, indices, 6, filename, sortOrder, BlendMode::kNormal, worldMatrix);*/
+    //return;
+
+    spine::Vector<float> vertexList;
+    unsigned short quadIndices[] = { 0, 1, 2, 2, 3, 0 };
+
+    for (int i = 0, n = (int)skeleton_->getSlots().size(); i < n; i++) {
+        Vertex vertices[4];
+        spine::Slot* slot = skeleton_->getDrawOrder()[i];
+        
+        spine::Attachment* attachment = slot->getAttachment();
+        if (!attachment) continue;
+
+        BlendMode blendMode;
+        switch (slot->getData().getBlendMode()) {
+            case spine::BlendMode_Normal:
+                blendMode = BlendMode::kNormal;
+                break;
+            case spine::BlendMode_Additive:
+                blendMode = BlendMode::kAdditive;
+                break;
+            case spine::BlendMode_Multiply:
+                blendMode = BlendMode::kMultiply;
+                break;
+            case spine::BlendMode_Screen:
+                blendMode = BlendMode::kScreen;
+                break;
+            default:
+                blendMode = BlendMode::kNormal;
+        }
+
+        spine::Color skeletonColor = skeleton_->getColor();
+        spine::Color slotColor = slot->getColor();
+        spine::Color tint(skeletonColor.r * slotColor.r, skeletonColor.g * slotColor.g, skeletonColor.b * slotColor.b, skeletonColor.a * slotColor.a);
+
+        // Fill the vertices array, indices, and texture depending on the type of attachment
+        std::string textureFilename = "";
+        unsigned short* indices = SPNULL;
+
+        if (attachment->getRTTI().isExactly(spine::RegionAttachment::rtti)) {
+            // Cast to an spRegionAttachment so we can get the rendererObject
+            // and compute the world vertices
+            spine::RegionAttachment* regionAttachment = (spine::RegionAttachment*)attachment;
+
+            // Ensure there is enough room for vertices
+            vertexList.setSize(4 * 3, 0.0f);
+
+            // Computed the world vertices positions for the 4 vertices that make up
+            // the rectangular region attachment. This assumes the world transform of the
+            // bone to which the slot (and hence attachment) is attached has been calculated
+            // before rendering via Skeleton::updateWorldTransform(). The vertex positions
+            // will be written directoy into the vertices array, with a stride of sizeof(Vertex)
+            regionAttachment->computeWorldVertices(*slot, vertexList, 0);
+
+            // Our engine specific Texture is stored in the AtlasRegion which was
+            // assigned to the attachment on load. It represents the texture atlas
+            // page that contains the image the region attachment is mapped to.
+            textureFilename = *(std::string*)((spine::AtlasRegion*)regionAttachment->getRendererObject())->page->getRendererObject();
+
+            // copy color and UVs to the vertices
+            for (size_t j = 0, l = 0; j < 4; j++, l+=2) {
+                Vertex& vertex = vertices[j];
+                vertex.position.x = vertexList[j * 3 + 0];
+                vertex.position.y = vertexList[j * 3 + 1];
+                vertex.position.z = vertexList[j * 3 + 2];
+                vertex.color.r = tint.r;
+                vertex.color.g = tint.g;
+                vertex.color.b = tint.b;
+                vertex.color.a = tint.a;
+                vertex.uv.x = regionAttachment->getUVs()[l];
+                vertex.uv.y = regionAttachment->getUVs()[l + 1];
+            }
+
+            // set the indices, 2 triangles forming a quad
+            indices = quadIndices;
+        }
+        /*else if (attachment->getRTTI().isExactly(MeshAttachment::rtti)) {
+            // Cast to an MeshAttachment so we can get the rendererObject
+            // and compute the world vertices
+            MeshAttachment* mesh = (MeshAttachment*)attachment;
+
+            // Ensure there is enough room for vertices
+            vertices.setSize(mesh->getWorldVerticesLength() / 2, Vertex());
+
+            // Computed the world vertices positions for the vertices that make up
+            // the mesh attachment. This assumes the world transform of the
+            // bone to which the slot (and hence attachment) is attached has been calculated
+            // before rendering via Skeleton::updateWorldTransform(). The vertex positions will
+            // be written directly into the vertices array, with a stride of sizeof(Vertex)
+            size_t numVertices = mesh->getWorldVerticesLength() / 2;
+            mesh->computeWorldVertices(slot, 0, numVertices, vertices.buffer(), 0, sizeof(Vertex));
+
+            // Our engine specific Texture is stored in the AtlasRegion which was
+            // assigned to the attachment on load. It represents the texture atlas
+            // page that contains the image the region attachment is mapped to.
+            texture = (Texture*)((AtlasRegion*)mesh->getRendererObject())->page->getRendererObject();
+
+            // Copy color and UVs to the vertices
+            for (size_t j = 0, l = 0; j < numVertices; j++, l+=2) {
+                Vertex& vertex = vertices[j];
+                vertex.color.set(tint);
+                vertex.u = mesh->getUVs()[l];
+                vertex.v = mesh->getUVs()[l + 1];
+            }
+
+            // set the indices, 2 triangles forming a quad
+            indices = quadIndices;
+        }*/
+
+        auto filename = atlasPath_ + atlas_->getPages()[0]->name.buffer();
+        graphics->DrawMesh(vertices, 4, indices, 6, filename, sortOrder, BlendMode::kNormal, worldMatrix);
+    }
 }
 }   // namespace snowpulse

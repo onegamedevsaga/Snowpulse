@@ -13,11 +13,10 @@
 #include <spine/AnimationStateData.h>
 
 #include "spine_texture_loader.h"
-#include "../../updatable.h"
 #include "../../drawable.h"
 
 namespace snowpulse {
-class SNOWPULSEAPI SpineSkeletonAnimation : public Updatable, public Drawable {
+class SNOWPULSEAPI SpineSkeletonAnimation : public Updatable{
     public:
         static std::shared_ptr<SpineSkeletonAnimation> Create(std::string jsonFilename, std::string atlasFilename);
 
@@ -25,7 +24,7 @@ class SNOWPULSEAPI SpineSkeletonAnimation : public Updatable, public Drawable {
         // From Updatable
         void Update(float deltaTime);
         // From Drawable
-        void Draw(Graphics* graphics, Matrix4x4 worldMatrix);
+        void Draw(Graphics* graphics, Matrix4x4 worldMatrix, int sortOrder);
 
     protected:
         SpineSkeletonAnimation();
@@ -36,6 +35,8 @@ class SNOWPULSEAPI SpineSkeletonAnimation : public Updatable, public Drawable {
         std::shared_ptr<spine::SkeletonData> skeletonData_;
         std::shared_ptr<spine::AnimationState> animationState_;
         std::shared_ptr<spine::AnimationStateData> animationStateData_;
+
+        std::string atlasPath_;
 };
 }   // namespace snowpulse
 #endif

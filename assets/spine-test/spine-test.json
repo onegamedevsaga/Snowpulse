@@ -1,0 +1,47 @@
+{
+"skeleton": {
+	"hash": "q7Q6evHpn9Y",
+	"spine": "4.1.11",
+	"x": -88.5,
+	"y": -88.5,
+	"width": 177,
+	"height": 177,
+	"images": "",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "images/boardgem_blue", "bone": "root", "attachment": "images/boardgem_blue" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"images/boardgem_blue": {
+				"images/boardgem_blue": { "width": 177, "height": 177 }
+			}
+		}
+	}
+],
+"animations": {
+	"idle": {
+		"bones": {
+			"root": {
+				"translate": [
+					{
+						"curve": [ 0.222, 0, 0.444, 0, 0.172, 43.68, 0.444, 62 ]
+					},
+					{
+						"time": 0.6667,
+						"y": 62,
+						"curve": [ 0.889, 0, 1.111, 0, 0.889, 62, 1.122, 41 ]
+					},
+					{ "time": 1.3333 }
+				]
+			}
+		}
+	}
+}
+}

@@ -254,7 +254,7 @@ void GraphicsOpenGL::DrawMesh(Vertex* vertices, unsigned int vertexCount, unsign
     for (int i = 0; i < indexCount; i++) {
         batch.indices.push_back(indices[i]);
     }
-    
+
     for (int i = 0; i < batch.vertexCount; i++) {
         batch.matrices.push_back(transform);
     }
@@ -303,6 +303,6 @@ void GraphicsOpenGL::DrawSprite(Vector2 size, std::string filename, Matrix4x4 tr
         2, 3, 0
     };
 
-    DrawMesh(vertices, 4, indices, 6, filename, sortOrder, blendMode, transformMatrix);
+    //DrawMesh(vertices, 4, indices, 6, filename, sortOrder, blendMode, transformMatrix);
 }
 }   // namespace snowpulse
