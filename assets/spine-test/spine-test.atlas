@@ -1,6 +1,12 @@
 spine-test.png
-size:177,177
+size:497,177
 filter:Linear,Linear
 images/boardgem_blue
 bounds:2,2,173,173
 offsets:2,3,177,177
+images/boardgem_green
+bounds:348,5,147,170
+offsets:15,3,177,177
+images/boardgem_red
+bounds:177,6,169,169
+offsets:4,4,177,177

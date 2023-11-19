@@ -9,8 +9,10 @@
 
 namespace snowpulse {
 
+const char* kSpriteDefault = "../defaults/sprites/sprite_default.png";
+
 // Vertex shader source
-const char* vertexShaderSource2 = R"(
+const char* kVertexShaderSource = R"(
     #version 330 core
     layout(location = 0) in vec3 position;
     layout(location = 1) in vec2 texCoord;
@@ -31,7 +33,7 @@ const char* vertexShaderSource2 = R"(
 )";
 
 // Fragment shader source
-const char* fragmentShaderSource2 = R"(
+const char* kFragmentShaderSource = R"(
     #version 330 core
     in vec2 TexCoord;
     in vec4 Color;
@@ -86,11 +88,11 @@ void GraphicsOpenGL::Initialize(Vector2Int resolution, Camera* camera, RenderQue
 
     // Compile and link shaders
     GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
-    glShaderSource(vertexShader, 1, &vertexShaderSource2, NULL);
+    glShaderSource(vertexShader, 1, &kVertexShaderSource, NULL);
     glCompileShader(vertexShader);
 
     GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-    glShaderSource(fragmentShader, 1, &fragmentShaderSource2, NULL);
+    glShaderSource(fragmentShader, 1, &kFragmentShaderSource, NULL);
     glCompileShader(fragmentShader);
 
     shaderProgram_ = glCreateProgram();
@@ -113,6 +115,8 @@ void GraphicsOpenGL::Initialize(Vector2Int resolution, Camera* camera, RenderQue
     if (isDepthTesting_) {
         glEnable(GL_DEPTH_TEST);
     }
+
+    LoadTexture(kSpriteDefault, TextureFiltering::kPoint);
 
 #ifdef SPDEBUG
     std::cout << "GraphicsOpenGL initialized." << std::endl;
@@ -182,10 +186,10 @@ void GraphicsOpenGL::LoadTexture(std::string filename, TextureFiltering filterin
         if (data) {
             glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
             glGenerateMipmap(GL_TEXTURE_2D);
+            textures_[filename.c_str()] = texture;
+            textureSizes_[texture] = Vector2(width, height);
         }
         stbi_image_free(data);
-        textures_[filename.c_str()] = texture;
-        textureSizes_[texture] = Vector2(width, height);
     }
 }
 
@@ -238,6 +242,9 @@ void GraphicsOpenGL::DrawMesh(Vertex* vertices, unsigned int vertexCount, unsign
     batch.indexCount = 6;
     batch.sortOrder = sortOrder;
     batch.texture = textures_[textureFilename];
+    if (!batch.texture) {
+        batch.texture = textures_[kSpriteDefault];
+    }
 
     for (int i = 0; i < vertexCount; i++) {
         batch.vertices.push_back(vertices[i].position.x);
@@ -303,6 +310,6 @@ void GraphicsOpenGL::DrawSprite(Vector2 size, std::string filename, Matrix4x4 tr
         2, 3, 0
     };
 
-    //DrawMesh(vertices, 4, indices, 6, filename, sortOrder, blendMode, transformMatrix);
+    DrawMesh(vertices, 4, indices, 6, filename, sortOrder, blendMode, transformMatrix);
 }
 }   // namespace snowpulse

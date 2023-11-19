@@ -76,7 +76,9 @@ void SceneLevel::Start() {
     go2_->GetTransform()->SetLocalRotation(0.0f);
 
     go3_ = snowpulse::GameObject::Create("go3_");
-    auto spineRenderer = snowpulse::SpineRenderer::Create("spine-test/spine-test.json", "spine-test/spine-test.atlas");
+    //auto spineRenderer = snowpulse::SpineRenderer::Create("spine-test/spine-test.json", "spine-test/spine-test.atlas");
+    auto spineRenderer = snowpulse::SpineRenderer::Create("hero/hero.json", "hero/hero.atlas");
+    //auto spineRenderer = snowpulse::SpineRenderer::Create("level_complete/level_complete.json", "level_complete/level_complete.atlas");
     spineRenderer->SetSortOrder(3);
     go3_->AddComponent(spineRenderer);
     AddChild(go3_);

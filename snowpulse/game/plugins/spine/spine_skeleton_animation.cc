@@ -7,6 +7,7 @@
 #include <spine/SlotData.h>
 #include <spine/Attachment.h>
 #include <spine/RegionAttachment.h>
+#include <spine/MeshAttachment.h>
 #include <spine/VertexAttachment.h>
 
 #include "spine_texture_loader.h"
@@ -91,12 +92,10 @@ void SpineSkeletonAnimation::Draw(Graphics* graphics, Matrix4x4 worldMatrix, int
     auto filename = atlasPath_ + atlas_->getPages()[0]->name.buffer();
     graphics->DrawMesh(vertices, 4, indices, 6, filename, sortOrder, BlendMode::kNormal, worldMatrix);*/
     //return;
-
-    spine::Vector<float> vertexList;
+    
     unsigned short quadIndices[] = { 0, 1, 2, 2, 3, 0 };
 
     for (int i = 0, n = (int)skeleton_->getSlots().size(); i < n; i++) {
-        Vertex vertices[4];
         spine::Slot* slot = skeleton_->getDrawOrder()[i];
         
         spine::Attachment* attachment = slot->getAttachment();
@@ -134,7 +133,9 @@ void SpineSkeletonAnimation::Draw(Graphics* graphics, Matrix4x4 worldMatrix, int
             spine::RegionAttachment* regionAttachment = (spine::RegionAttachment*)attachment;
 
             // Ensure there is enough room for vertices
-            vertexList.setSize(4 * 3, 0.0f);
+            Vertex vertices[4];
+            spine::Vector<float> vertexList;
+            vertexList.setSize(4 * 2, 0.0f);
 
             // Computed the world vertices positions for the 4 vertices that make up
             // the rectangular region attachment. This assumes the world transform of the
@@ -151,9 +152,9 @@ void SpineSkeletonAnimation::Draw(Graphics* graphics, Matrix4x4 worldMatrix, int
             // copy color and UVs to the vertices
             for (size_t j = 0, l = 0; j < 4; j++, l+=2) {
                 Vertex& vertex = vertices[j];
-                vertex.position.x = vertexList[j * 3 + 0];
-                vertex.position.y = vertexList[j * 3 + 1];
-                vertex.position.z = vertexList[j * 3 + 2];
+                vertex.position.x = vertexList[j * 2 + 0];
+                vertex.position.y = vertexList[j * 2 + 1];
+                vertex.position.z = 0.0f;
                 vertex.color.r = tint.r;
                 vertex.color.g = tint.g;
                 vertex.color.b = tint.b;
@@ -164,11 +165,16 @@ void SpineSkeletonAnimation::Draw(Graphics* graphics, Matrix4x4 worldMatrix, int
 
             // set the indices, 2 triangles forming a quad
             indices = quadIndices;
+            
+            auto filename = atlasPath_ + atlas_->getPages()[0]->name.buffer();
+            graphics->DrawMesh(vertices, 4, indices, 6, filename, sortOrder, BlendMode::kNormal, worldMatrix);
         }
-        /*else if (attachment->getRTTI().isExactly(MeshAttachment::rtti)) {
+        else if (attachment->getRTTI().isExactly(spine::MeshAttachment::rtti)) {
+            int xx = 0;
+            xx++;
             // Cast to an MeshAttachment so we can get the rendererObject
             // and compute the world vertices
-            MeshAttachment* mesh = (MeshAttachment*)attachment;
+            /*MeshAttachment* mesh = (MeshAttachment*)attachment;
 
             // Ensure there is enough room for vertices
             vertices.setSize(mesh->getWorldVerticesLength() / 2, Vertex());
@@ -195,11 +201,14 @@ void SpineSkeletonAnimation::Draw(Graphics* graphics, Matrix4x4 worldMatrix, int
             }
 
             // set the indices, 2 triangles forming a quad
-            indices = quadIndices;
-        }*/
+            indices = quadIndices;*/
+        }
+        else {
+            int xx= 0;
+            xx++;
+        }
 
-        auto filename = atlasPath_ + atlas_->getPages()[0]->name.buffer();
-        graphics->DrawMesh(vertices, 4, indices, 6, filename, sortOrder, BlendMode::kNormal, worldMatrix);
+        
     }
 }
 }   // namespace snowpulse
