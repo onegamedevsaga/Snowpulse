@@ -48,7 +48,7 @@ void RenderQueueOpenGL::GroupBatches() {
                 prevBatch.projectionMatrix == batch.projectionMatrix &&
                 prevBatch.shaderProgram == batch.shaderProgram &&
                 prevBatch.texture == batch.texture) {
-     
+
                 for (const auto& v : batch.vertices) {
                     prevBatch.vertices.push_back(v);
                 }

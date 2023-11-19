@@ -238,15 +238,15 @@ void GraphicsOpenGL::DrawMesh(Vertex* vertices, unsigned int vertexCount, unsign
     batch.drawMode = GL_TRIANGLES;
     batch.shaderProgram = shaderProgram_;
     batch.blendMode = blendMode;
-    batch.vertexCount = 4;
-    batch.indexCount = 6;
+    batch.vertexCount = vertexCount;
+    batch.indexCount = indexCount;
     batch.sortOrder = sortOrder;
     batch.texture = textures_[textureFilename];
     if (!batch.texture) {
         batch.texture = textures_[kSpriteDefault];
     }
 
-    for (int i = 0; i < vertexCount; i++) {
+    for (int i = 0; i < batch.vertexCount; i++) {
         batch.vertices.push_back(vertices[i].position.x);
         batch.vertices.push_back(vertices[i].position.y);
         batch.vertices.push_back(vertices[i].position.z);
@@ -258,7 +258,7 @@ void GraphicsOpenGL::DrawMesh(Vertex* vertices, unsigned int vertexCount, unsign
         batch.vertices.push_back(vertices[i].color.a);
     }
 
-    for (int i = 0; i < indexCount; i++) {
+    for (int i = 0; i < batch.indexCount; i++) {
         batch.indices.push_back(indices[i]);
     }
 

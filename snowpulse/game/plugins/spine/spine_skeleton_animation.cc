@@ -45,7 +45,7 @@ std::shared_ptr<SpineSkeletonAnimation> SpineSkeletonAnimation::Create(std::stri
     
     spineSkeletonAnimation->skeleton_ = std::make_shared<spine::Skeleton>(spineSkeletonAnimation->skeletonData_.get());
     spineSkeletonAnimation->animationState_ = std::make_shared<spine::AnimationState>(spineSkeletonAnimation->animationStateData_.get());
-    spineSkeletonAnimation->animationState_->setAnimation(0, "idle", true);
+    spineSkeletonAnimation->animationState_->setAnimation(0, "run", true);
 
     size_t pos = atlasFilename.find_last_of("/\\");
     spineSkeletonAnimation->atlasPath_ = (pos != std::string::npos) ? atlasFilename.substr(0, pos + 1) : "";

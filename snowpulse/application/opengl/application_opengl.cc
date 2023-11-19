@@ -145,7 +145,7 @@ void ApplicationOpenGL::Run() {
                 glActiveTexture(GL_TEXTURE0);
                 glBindTexture(GL_TEXTURE_2D, b.texture);
                 glBindVertexArray(VAO);
-                glDrawElements(b.drawMode, 18, GL_UNSIGNED_SHORT, 0);
+                glDrawElements(b.drawMode, b.indexCount, GL_UNSIGNED_SHORT, 0);
                 glBindVertexArray(0);
 
 #ifdef SPDEBUG
