@@ -77,13 +77,15 @@ void SceneLevel::Start() {
 
     go3_ = snowpulse::GameObject::Create("go3_");
     //auto spineRenderer = snowpulse::SpineRenderer::Create("spine-test/spine-test.json", "spine-test/spine-test.atlas");
-    auto spineRenderer = snowpulse::SpineRenderer::Create("hero/hero.json", "hero/hero.atlas");
+    auto spineRenderer = snowpulse::SpineRenderer::Create("hero/hero-pro.json", "hero/hero-pro.atlas");
     //auto spineRenderer = snowpulse::SpineRenderer::Create("level_complete/level_complete.json", "level_complete/level_complete.atlas");
+    //auto spineRenderer = snowpulse::SpineRenderer::Create("mix-and-match/mix-and-match-pro.json", "mix-and-match/mix-and-match-pro.atlas");
+    
     spineRenderer->SetSortOrder(3);
     go3_->AddComponent(spineRenderer);
     AddChild(go3_);
 
-    go3_->GetTransform()->SetLocalPosition(snowpulse::Vector2(960.0f, 540.0f));
+    go3_->GetTransform()->SetLocalPosition(snowpulse::Vector2(960.0f, 200.0f));
     //go3_->GetTransform()->SetRotation(90.0f);
 
     snowpulse::ActionWait::Create(4.0f)->OnComplete([this](snowpulse::Action* a) {
@@ -96,10 +98,10 @@ void SceneLevel::Start() {
                 std::cout << "Tick: " << value << std::endl;
 #endif
             })->OnComplete([this](snowpulse::Action* a) {
-                GetApplication()->Close();
+                //GetApplication()->Close();
             })->Run();
         });
-    });//->Run();
+    })->Run();
 }
 
 void SceneLevel::Update(float deltaTime) {

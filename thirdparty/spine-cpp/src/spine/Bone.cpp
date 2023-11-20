@@ -1,16 +1,16 @@
 /******************************************************************************
  * Spine Runtimes License Agreement
- * Last updated September 24, 2021. Replaces all prior versions.
+ * Last updated July 28, 2023. Replaces all prior versions.
  *
- * Copyright (c) 2013-2021, Esoteric Software LLC
+ * Copyright (c) 2013-2023, Esoteric Software LLC
  *
  * Integration of the Spine Runtimes into software or otherwise creating
  * derivative works of the Spine Runtimes is permitted under the terms and
  * conditions of Section 2 of the Spine Editor License Agreement:
  * http://esotericsoftware.com/spine-editor-license
  *
- * Otherwise, it is permitted to integrate the Spine Runtimes into software
- * or otherwise create derivative works of the Spine Runtimes (collectively,
+ * Otherwise, it is permitted to integrate the Spine Runtimes into software or
+ * otherwise create derivative works of the Spine Runtimes (collectively,
  * "Products"), provided that each user of the Products must obtain their own
  * Spine Editor license and redistribution of the Products in any form must
  * include this license and copyright notice.
@@ -23,8 +23,8 @@
  * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES,
  * BUSINESS INTERRUPTION, OR LOSS OF USE, DATA, OR PROFITS) HOWEVER CAUSED AND
  * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
- * THE SPINE RUNTIMES, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THE
+ * SPINE RUNTIMES, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *****************************************************************************/
 
 #include <spine/Bone.h>
@@ -192,7 +192,6 @@ void Bone::updateWorldTransform(float x, float y, float rotation, float scaleX, 
 			_b = za * lb + zb * ld;
 			_c = zc * la + zd * lc;
 			_d = zc * lb + zd * ld;
-			break;
 		}
 	}
 	_a *= _skeleton.getScaleX();
@@ -496,33 +495,75 @@ void Bone::updateAppliedTransform() {
 		_ascaleY = MathUtil::sqrt(_b * _b + _d * _d);
 		_ashearX = 0;
 		_ashearY = MathUtil::atan2(_a * _b + _c * _d, _a * _d - _b * _c) * MathUtil::Rad_Deg;
+	}
+	float pa = parent->_a, pb = parent->_b, pc = parent->_c, pd = parent->_d;
+	float pid = 1 / (pa * pd - pb * pc);
+	float ia = pd * pid, ib = pb * pid, ic = pc * pid, id = pa * pid;
+	float dx = _worldX - parent->_worldX, dy = _worldY - parent->_worldY;
+	_ax = (dx * ia - dy * ib);
+	_ay = (dy * id - dx * ic);
+
+	float ra, rb, rc, rd;
+	if (_data.getTransformMode() == TransformMode_OnlyTranslation) {
+		ra = _a;
+		rb = _b;
+		rc = _c;
+		rd = _d;
 	} else {
-		float pa = parent->_a, pb = parent->_b, pc = parent->_c, pd = parent->_d;
-		float pid = 1 / (pa * pd - pb * pc);
-		float dx = _worldX - parent->_worldX, dy = _worldY - parent->_worldY;
-		float ia = pid * pd;
-		float id = pid * pa;
-		float ib = pid * pb;
-		float ic = pid * pc;
-		float ra = ia * _a - ib * _c;
-		float rb = ia * _b - ib * _d;
-		float rc = id * _c - ic * _a;
-		float rd = id * _d - ic * _b;
-		_ax = (dx * pd * pid - dy * pb * pid);
-		_ay = (dy * pa * pid - dx * pc * pid);
-		_ashearX = 0;
-		_ascaleX = MathUtil::sqrt(ra * ra + rc * rc);
-		if (_ascaleX > 0.0001f) {
-			float det = ra * rd - rb * rc;
-			_ascaleY = det / _ascaleX;
-			_ashearY = MathUtil::atan2(ra * rb + rc * rd, det) * MathUtil::Rad_Deg;
-			_arotation = MathUtil::atan2(rc, ra) * MathUtil::Rad_Deg;
-		} else {
-			_ascaleX = 0;
-			_ascaleY = MathUtil::sqrt(rb * rb + rd * rd);
-			_ashearY = 0;
-			_arotation = 90 - MathUtil::atan2(rd, rb) * MathUtil::Rad_Deg;
+		switch (_data.getTransformMode()) {
+			case TransformMode_NoRotationOrReflection: {
+				float s = MathUtil::abs(pa * pd - pb * pc) / (pa * pa + pc * pc);
+				float sa = pa / _skeleton.getScaleX();
+				float sc = pc / _skeleton.getScaleY();
+				pb = -sc * s * _skeleton.getScaleX();
+				pd = sa * s * _skeleton.getScaleY();
+				pid = 1 / (pa * pd - pb * pc);
+				ia = pd * pid;
+				ib = pb * pid;
+				break;
+			}
+			case TransformMode_NoScale:
+			case TransformMode_NoScaleOrReflection: {
+				float cos = MathUtil::cosDeg(_rotation), sin = MathUtil::sinDeg(_rotation);
+				pa = (pa * cos + pb * sin) / _skeleton.getScaleX();
+				pc = (pc * cos + pd * sin) / _skeleton.getScaleY();
+				float s = MathUtil::sqrt(pa * pa + pc * pc);
+				if (s > 0.00001f) s = 1 / s;
+				pa *= s;
+				pc *= s;
+				s = MathUtil::sqrt(pa * pa + pc * pc);
+				if (_data.getTransformMode() == TransformMode_NoScale && pid < 0 != (_skeleton.getScaleX() < 0 != _skeleton.getScaleY() < 0)) s = -s;
+				float r = MathUtil::Pi / 2 + MathUtil::atan2(pc, pa);
+				pb = MathUtil::cos(r) * s;
+				pd = MathUtil::sin(r) * s;
+				pid = 1 / (pa * pd - pb * pc);
+				ia = pd * pid;
+				ib = pb * pid;
+				ic = pc * pid;
+				id = pa * pid;
+				break;
+			}
+			default:
+				break;
 		}
+		ra = ia * _a - ib * _c;
+		rb = ia * _b - ib * _d;
+		rc = id * _c - ic * _a;
+		rd = id * _d - ic * _b;
+	}
+
+	_ashearX = 0;
+	_ascaleX = MathUtil::sqrt(ra * ra + rc * rc);
+	if (_ascaleX > 0.0001f) {
+		float det = ra * rd - rb * rc;
+		_ascaleY = det / _ascaleX;
+		_ashearY = -MathUtil::atan2(ra * rb + rc * rd, det) * MathUtil::Rad_Deg;
+		_arotation = MathUtil::atan2(rc, ra) * MathUtil::Rad_Deg;
+	} else {
+		_ascaleX = 0;
+		_ascaleY = MathUtil::sqrt(rb * rb + rd * rd);
+		_ashearY = 0;
+		_arotation = 90 - MathUtil::atan2(rd, rb) * MathUtil::Rad_Deg;
 	}
 }
 

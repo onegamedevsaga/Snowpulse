@@ -1,16 +1,16 @@
 /******************************************************************************
  * Spine Runtimes License Agreement
- * Last updated September 24, 2021. Replaces all prior versions.
+ * Last updated July 28, 2023. Replaces all prior versions.
  *
- * Copyright (c) 2013-2021, Esoteric Software LLC
+ * Copyright (c) 2013-2023, Esoteric Software LLC
  *
  * Integration of the Spine Runtimes into software or otherwise creating
  * derivative works of the Spine Runtimes is permitted under the terms and
  * conditions of Section 2 of the Spine Editor License Agreement:
  * http://esotericsoftware.com/spine-editor-license
  *
- * Otherwise, it is permitted to integrate the Spine Runtimes into software
- * or otherwise create derivative works of the Spine Runtimes (collectively,
+ * Otherwise, it is permitted to integrate the Spine Runtimes into software or
+ * otherwise create derivative works of the Spine Runtimes (collectively,
  * "Products"), provided that each user of the Products must obtain their own
  * Spine Editor license and redistribution of the Products in any form must
  * include this license and copyright notice.
@@ -23,18 +23,17 @@
  * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES,
  * BUSINESS INTERRUPTION, OR LOSS OF USE, DATA, OR PROFITS) HOWEVER CAUSED AND
  * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
- * THE SPINE RUNTIMES, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THE
+ * SPINE RUNTIMES, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *****************************************************************************/
 
 #include <spine/MeshAttachment.h>
-#include <spine/HasRendererObject.h>
 
 using namespace spine;
 
 RTTI_IMPL(MeshAttachment, VertexAttachment)
 
-MeshAttachment::MeshAttachment(const String &name) : VertexAttachment(name), HasRendererObject(),
+MeshAttachment::MeshAttachment(const String &name) : VertexAttachment(name),
 													 _parentMesh(NULL),
 													 _path(),
 													 _color(1, 1, 1, 1),
@@ -53,10 +52,13 @@ void MeshAttachment::updateRegion() {
 		_uvs.setSize(_regionUVs.size(), 0);
 	}
 
+	if (_region == nullptr) {
+		return;
+	}
+
 	int i = 0, n = (int) _regionUVs.size();
 	float u = _region->u, v = _region->v;
 	float width = 0, height = 0;
-
 	switch (_region->degrees) {
 		case 90: {
 			float textureWidth = _region->height / (_region->u2 - _region->u);
@@ -203,7 +205,6 @@ Attachment *MeshAttachment::copy() {
 	if (_parentMesh) return newLinkedMesh();
 
 	MeshAttachment *copy = new (__FILE__, __LINE__) MeshAttachment(getName());
-	copy->setRendererObject(getRendererObject());
 	copy->setRegion(_region);
 	copy->setSequence(_sequence != NULL ? _sequence->copy() : NULL);
 	copy->_path = _path;
@@ -224,7 +225,6 @@ Attachment *MeshAttachment::copy() {
 
 MeshAttachment *MeshAttachment::newLinkedMesh() {
 	MeshAttachment *copy = new (__FILE__, __LINE__) MeshAttachment(getName());
-	copy->setRendererObject(getRendererObject());
 	copy->setRegion(_region);
 	copy->_path = _path;
 	copy->_color.set(_color);

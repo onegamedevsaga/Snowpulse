@@ -7,15 +7,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "4C2A1096-88BA-4A85-A32B-18CC52CDAD6D"
-            shouldBeEnabled = "Yes"
+            uuid = "F17F6F7D-0A61-4FDA-A575-B2A592824DF1"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../snowpulse/game/plugins/spine/spine_skeleton_animation.cc"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
             landmarkName = "SpineSkeletonAnimation::Draw(graphics, worldMatrix, sortOrder)"
             landmarkType = "7">
          </BreakpointContent>
@@ -23,16 +23,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F17F6F7D-0A61-4FDA-A575-B2A592824DF1"
-            shouldBeEnabled = "Yes"
+            uuid = "44834D3B-42AD-4D12-9009-CD328815CF76"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../snowpulse/game/plugins/spine/spine_skeleton_animation.cc"
+            filePath = "../snowpulse/game/actions/action_rotate.cc"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "208"
-            endingLineNumber = "208"
-            landmarkName = "SpineSkeletonAnimation::Draw(graphics, worldMatrix, sortOrder)"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "ActionRotate::~ActionRotate()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

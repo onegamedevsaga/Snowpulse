@@ -75,7 +75,6 @@ void ApplicationOpenGL::Run() {
         auto batches = renderQueue_->PopAll();
         for (int i = 0; i < 1; i++) {
             for(auto b : batches) {
-
                 switch (b.blendMode) {
                     case BlendMode::kDisabled:
                         glDisable(GL_BLEND);
@@ -147,6 +146,11 @@ void ApplicationOpenGL::Run() {
                 glBindVertexArray(VAO);
                 glDrawElements(b.drawMode, b.indexCount, GL_UNSIGNED_SHORT, 0);
                 glBindVertexArray(0);
+
+                glDeleteBuffers(1, &VBO);
+                glDeleteBuffers(1, &EBO);
+                glDeleteBuffers(1, &matrixVBO);
+                glDeleteVertexArrays(1, &VAO);
 
 #ifdef SPDEBUG
                 auto error = glGetError();

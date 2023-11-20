@@ -1,16 +1,16 @@
 /******************************************************************************
  * Spine Runtimes License Agreement
- * Last updated September 24, 2021. Replaces all prior versions.
+ * Last updated July 28, 2023. Replaces all prior versions.
  *
- * Copyright (c) 2013-2021, Esoteric Software LLC
+ * Copyright (c) 2013-2023, Esoteric Software LLC
  *
  * Integration of the Spine Runtimes into software or otherwise creating
  * derivative works of the Spine Runtimes is permitted under the terms and
  * conditions of Section 2 of the Spine Editor License Agreement:
  * http://esotericsoftware.com/spine-editor-license
  *
- * Otherwise, it is permitted to integrate the Spine Runtimes into software
- * or otherwise create derivative works of the Spine Runtimes (collectively,
+ * Otherwise, it is permitted to integrate the Spine Runtimes into software or
+ * otherwise create derivative works of the Spine Runtimes (collectively,
  * "Products"), provided that each user of the Products must obtain their own
  * Spine Editor license and redistribution of the Products in any form must
  * include this license and copyright notice.
@@ -23,8 +23,8 @@
  * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES,
  * BUSINESS INTERRUPTION, OR LOSS OF USE, DATA, OR PROFITS) HOWEVER CAUSED AND
  * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
- * THE SPINE RUNTIMES, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THE
+ * SPINE RUNTIMES, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *****************************************************************************/
 
 #include <spine/Atlas.h>
@@ -69,7 +69,7 @@ Atlas::Atlas(const char *data, int length, const char *dir, TextureLoader *textu
 Atlas::~Atlas() {
 	if (_textureLoader) {
 		for (size_t i = 0, n = _pages.size(); i < n; ++i) {
-			_textureLoader->unload(_pages[i]->getRendererObject());
+			_textureLoader->unload(_pages[i]->texture);
 		}
 	}
 	ContainerUtil::cleanUpVectorOfPointers(_pages);
@@ -108,21 +108,21 @@ struct SimpleString {
 		while (isspace((unsigned char) *start) && start < end)
 			start++;
 		if (start == end) {
-			length = end - start;
+			length = (int) (end - start);
 			return *this;
 		}
 		end--;
 		while (((unsigned char) *end == '\r') && end >= start)
 			end--;
 		end++;
-		length = end - start;
+		length = (int) (end - start);
 		return *this;
 	}
 
 	int indexOf(char needle) {
 		char *c = start;
 		while (c < end) {
-			if (*c == needle) return c - start;
+			if (*c == needle) return (int) (c - start);
 			c++;
 		}
 		return -1;
@@ -131,7 +131,7 @@ struct SimpleString {
 	int indexOf(char needle, int at) {
 		char *c = start + at;
 		while (c < end) {
-			if (*c == needle) return c - start;
+			if (*c == needle) return (int) (c - start);
 			c++;
 		}
 		return -1;
@@ -150,7 +150,7 @@ struct SimpleString {
 		SimpleString result;
 		result.start = start + s;
 		result.end = end;
-		result.length = result.end - result.start;
+		result.length = (int) (result.end - result.start);
 		return result;
 	}
 
@@ -286,10 +286,12 @@ void Atlas::load(const char *begin, int length, const char *dir, bool createText
 			} else {
 				page->texturePath = String(path, true);
 			}
+			page->index = (int) _pages.size();
 			_pages.add(page);
 		} else {
 			AtlasRegion *region = new (__FILE__, __LINE__) AtlasRegion();
 			region->page = page;
+			region->rendererObject = page->texture;
 			region->name = String(line->copy(), true);
 			while (true) {
 				line = reader.readLine();

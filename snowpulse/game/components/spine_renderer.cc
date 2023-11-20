@@ -25,11 +25,15 @@ void SpineRenderer::LoadGraphics(Graphics* graphics) {
 // From Updatable
 void SpineRenderer::Update(float deltaTime) {
     Component::Update(deltaTime);
-    skeletonAnimation_->Update(deltaTime);
+    if (skeletonAnimation_) {
+        skeletonAnimation_->Update(deltaTime);
+    }
 }
 
 // From Drawable
 void SpineRenderer::Draw(Graphics* graphics, Matrix4x4 worldMatrix) {
-    skeletonAnimation_->Draw(graphics, worldMatrix, sortOrder_);
+    if (skeletonAnimation_) {
+        skeletonAnimation_->Draw(graphics, worldMatrix, sortOrder_);
+    }
 }
 }   // namespace snowpulse

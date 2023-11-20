@@ -1,16 +1,16 @@
 /******************************************************************************
  * Spine Runtimes License Agreement
- * Last updated September 24, 2021. Replaces all prior versions.
+ * Last updated July 28, 2023. Replaces all prior versions.
  *
- * Copyright (c) 2013-2021, Esoteric Software LLC
+ * Copyright (c) 2013-2023, Esoteric Software LLC
  *
  * Integration of the Spine Runtimes into software or otherwise creating
  * derivative works of the Spine Runtimes is permitted under the terms and
  * conditions of Section 2 of the Spine Editor License Agreement:
  * http://esotericsoftware.com/spine-editor-license
  *
- * Otherwise, it is permitted to integrate the Spine Runtimes into software
- * or otherwise create derivative works of the Spine Runtimes (collectively,
+ * Otherwise, it is permitted to integrate the Spine Runtimes into software or
+ * otherwise create derivative works of the Spine Runtimes (collectively,
  * "Products"), provided that each user of the Products must obtain their own
  * Spine Editor license and redistribution of the Products in any form must
  * include this license and copyright notice.
@@ -23,8 +23,8 @@
  * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES,
  * BUSINESS INTERRUPTION, OR LOSS OF USE, DATA, OR PROFITS) HOWEVER CAUSED AND
  * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
- * THE SPINE RUNTIMES, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THE
+ * SPINE RUNTIMES, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *****************************************************************************/
 
 #include <spine/AnimationState.h>
@@ -211,17 +211,16 @@ EventQueueEntry::EventQueueEntry(EventType eventType, TrackEntry *trackEntry, Ev
 																							  _event(event) {
 }
 
-EventQueue *EventQueue::newEventQueue(AnimationState &state, Pool<TrackEntry> &trackEntryPool) {
-	return new (__FILE__, __LINE__) EventQueue(state, trackEntryPool);
+EventQueue *EventQueue::newEventQueue(AnimationState &state) {
+	return new (__FILE__, __LINE__) EventQueue(state);
 }
 
 EventQueueEntry EventQueue::newEventQueueEntry(EventType eventType, TrackEntry *entry, Event *event) {
 	return EventQueueEntry(eventType, entry, event);
 }
 
-EventQueue::EventQueue(AnimationState &state, Pool<TrackEntry> &trackEntryPool) : _state(state),
-																				  _trackEntryPool(trackEntryPool),
-																				  _drainDisabled(false) {
+EventQueue::EventQueue(AnimationState &state) : _state(state),
+												_drainDisabled(false) {
 }
 
 EventQueue::~EventQueue() {
@@ -295,8 +294,7 @@ void EventQueue::drain() {
 				else
 					state._listenerObject->callback(&state, EventType_Dispose, trackEntry, NULL);
 
-				trackEntry->reset();
-				_trackEntryPool.free(trackEntry);
+				if (!_state.getManualTrackEntryDisposal()) _state.disposeTrackEntry(trackEntry);
 				break;
 			case EventType_Event:
 				if (!trackEntry->_listenerObject)
@@ -315,12 +313,13 @@ void EventQueue::drain() {
 }
 
 AnimationState::AnimationState(AnimationStateData *data) : _data(data),
-														   _queue(EventQueue::newEventQueue(*this, _trackEntryPool)),
+														   _queue(EventQueue::newEventQueue(*this)),
 														   _animationsChanged(false),
 														   _listener(dummyOnAnimationEventFunc),
 														   _listenerObject(NULL),
 														   _unkeyedState(0),
-														   _timeScale(1) {
+														   _timeScale(1),
+														   _manualTrackEntryDisposal(false) {
 }
 
 AnimationState::~AnimationState() {
@@ -664,6 +663,19 @@ void AnimationState::disableQueue() {
 
 void AnimationState::enableQueue() {
 	_queue->_drainDisabled = false;
+}
+
+void AnimationState::setManualTrackEntryDisposal(bool inValue) {
+	_manualTrackEntryDisposal = inValue;
+}
+
+bool AnimationState::getManualTrackEntryDisposal() {
+	return _manualTrackEntryDisposal;
+}
+
+void AnimationState::disposeTrackEntry(TrackEntry *entry) {
+	entry->reset();
+	_trackEntryPool.free(entry);
 }
 
 Animation *AnimationState::getEmptyAnimation() {

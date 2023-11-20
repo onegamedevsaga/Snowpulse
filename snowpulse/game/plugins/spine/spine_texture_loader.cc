@@ -25,7 +25,7 @@ void SpineTextureLoader::load(spine::AtlasPage &page, const spine::String &path)
     graphics_->LoadTexture(path.buffer());
     auto size = graphics_->GetTextureSize(path.buffer());
     auto ptr = new std::string(path.buffer());
-    page.setRendererObject((void*)ptr);
+    page.texture = (void*)ptr;
     page.width = size.x;
     page.height = size.y;
 }
