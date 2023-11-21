@@ -17,11 +17,12 @@
 
 #include "spine_texture_loader.h"
 #include "../../drawable.h"
+#include "../../../common/texture_filtering.h"
 
 namespace snowpulse {
 class SNOWPULSEAPI SpineSkeletonAnimation : public Updatable{
     public:
-        static std::shared_ptr<SpineSkeletonAnimation> Create(std::string jsonFilename, std::string atlasFilename);
+        static std::shared_ptr<SpineSkeletonAnimation> Create(std::string jsonFilename, std::string atlasFilename, TextureFiltering filtering);
 
         virtual ~SpineSkeletonAnimation();
         // From Updatable

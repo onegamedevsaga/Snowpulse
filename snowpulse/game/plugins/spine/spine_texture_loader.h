@@ -8,11 +8,12 @@
 #include <string>
 
 #include "../../graphics.h"
+#include "../../../common/texture_filtering.h"
 
 namespace snowpulse {
 class SNOWPULSEAPI SpineTextureLoader : public spine::TextureLoader {
     public:
-        static std::shared_ptr<SpineTextureLoader> Create();
+        static std::shared_ptr<SpineTextureLoader> Create(TextureFiltering filtering);
 
         virtual ~SpineTextureLoader();
 
@@ -24,6 +25,7 @@ class SNOWPULSEAPI SpineTextureLoader : public spine::TextureLoader {
         SpineTextureLoader();
 
         Graphics* graphics_;
+        TextureFiltering textureFiltering_;
 };
 }   // namespace snowpulse
 #endif

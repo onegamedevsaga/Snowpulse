@@ -7,8 +7,9 @@
 #include "../../../application/application.h"
 
 namespace snowpulse {
-std::shared_ptr<SpineTextureLoader> SpineTextureLoader::Create() {
+std::shared_ptr<SpineTextureLoader> SpineTextureLoader::Create(TextureFiltering filtering) {
     auto spineTextureLoader = std::shared_ptr<SpineTextureLoader>(new SpineTextureLoader());
+    spineTextureLoader->textureFiltering_ = filtering;
     return spineTextureLoader;
 }
 
@@ -22,7 +23,7 @@ void SpineTextureLoader::load(spine::AtlasPage &page, const spine::String &path)
     if (!graphics_) {
         graphics_ = Application::GetInstance()->GetGraphics();
     }
-    graphics_->LoadTexture(path.buffer());
+    graphics_->LoadTexture(path.buffer(), textureFiltering_);
     auto size = graphics_->GetTextureSize(path.buffer());
     auto ptr = new std::string(path.buffer());
     page.texture = (void*)ptr;

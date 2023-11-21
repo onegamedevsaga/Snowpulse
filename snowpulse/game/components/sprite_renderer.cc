@@ -4,9 +4,10 @@
 #include "../../application/application.h"
 
 namespace snowpulse {
-std::shared_ptr<SpriteRenderer> SpriteRenderer::Create(std::string filename) {
+std::shared_ptr<SpriteRenderer> SpriteRenderer::Create(std::string filename, TextureFiltering filtering) {
     auto spriteRenderer = std::shared_ptr<SpriteRenderer>(new SpriteRenderer());
     spriteRenderer->filename_ = filename;
+    spriteRenderer->textureFiltering_ = filtering;
     spriteRenderer->LoadGraphics(Application::GetInstance()->GetGraphics());
     return spriteRenderer;
 }
@@ -21,7 +22,7 @@ SpriteRenderer::~SpriteRenderer() {
 }
 
 void SpriteRenderer::LoadGraphics(Graphics* graphics) {
-    graphics->LoadTexture(filename_, TextureFiltering::kBilinear);
+    graphics->LoadTexture(filename_, textureFiltering_);
     SetSize(graphics->GetTextureSize(filename_));
 }
 

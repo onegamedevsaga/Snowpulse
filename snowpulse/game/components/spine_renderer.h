@@ -11,7 +11,7 @@
 namespace snowpulse {
 class SNOWPULSEAPI SpineRenderer : public SpriteRenderer {
     public:
-        static std::shared_ptr<SpineRenderer> Create(std::string jsonFilename, std::string atlasFilename);
+        static std::shared_ptr<SpineRenderer> Create(std::string jsonFilename, std::string atlasFilename, TextureFiltering filtering = TextureFiltering::kBilinear);
 
         virtual ~SpineRenderer();
         // From Updatable

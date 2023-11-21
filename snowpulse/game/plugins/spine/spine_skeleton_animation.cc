@@ -21,9 +21,9 @@ spine::SpineExtension *spine::getDefaultExtension() {
 }
 
 namespace snowpulse {
-std::shared_ptr<SpineSkeletonAnimation> SpineSkeletonAnimation::Create(std::string jsonFilename, std::string atlasFilename) {
+std::shared_ptr<SpineSkeletonAnimation> SpineSkeletonAnimation::Create(std::string jsonFilename, std::string atlasFilename, TextureFiltering filtering) {
     auto spineSkeletonAnimation = std::shared_ptr<SpineSkeletonAnimation>(new SpineSkeletonAnimation());
-    spineSkeletonAnimation->textureLoader_ = SpineTextureLoader::Create();
+    spineSkeletonAnimation->textureLoader_ = SpineTextureLoader::Create(filtering);
     spineSkeletonAnimation->atlas_ = std::make_shared<spine::Atlas>(atlasFilename.c_str(), spineSkeletonAnimation->textureLoader_.get());
     if (spineSkeletonAnimation->atlas_->getPages().size() == 0) {
 #ifdef SPDEBUG
