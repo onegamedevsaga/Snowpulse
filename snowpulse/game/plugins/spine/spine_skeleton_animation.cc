@@ -23,7 +23,8 @@ spine::SpineExtension *spine::getDefaultExtension() {
 namespace snowpulse {
 std::shared_ptr<SpineSkeletonAnimation> SpineSkeletonAnimation::Create(std::string jsonFilename, std::string atlasFilename, TextureFiltering filtering) {
     auto spineSkeletonAnimation = std::shared_ptr<SpineSkeletonAnimation>(new SpineSkeletonAnimation());
-    spineSkeletonAnimation->textureLoader_ = SpineTextureLoader::Create(filtering);
+    spineSkeletonAnimation->textureFiltering_ = filtering;
+    spineSkeletonAnimation->textureLoader_ = SpineTextureLoader::Create(spineSkeletonAnimation->textureFiltering_);
     spineSkeletonAnimation->atlas_ = std::make_shared<spine::Atlas>(atlasFilename.c_str(), spineSkeletonAnimation->textureLoader_.get());
     if (spineSkeletonAnimation->atlas_->getPages().size() == 0) {
 #ifdef SPDEBUG
@@ -109,9 +110,6 @@ void SpineSkeletonAnimation::Draw(Graphics* graphics, Matrix4x4 worldMatrix, int
         spine::Color slotColor = slot->getColor();
         spine::Color tint(skeletonColor.r * slotColor.r, skeletonColor.g * slotColor.g, skeletonColor.b * slotColor.b, skeletonColor.a * slotColor.a);
 
-        // Fill the vertices array, indices, and texture depending on the type of attachment
-        std::string textureFilename = "";
-
         if (attachment->getRTTI().isExactly(spine::RegionAttachment::rtti)) {
             // Cast to an spRegionAttachment so we can get the rendererObject
             // and compute the world vertices
@@ -134,7 +132,7 @@ void SpineSkeletonAnimation::Draw(Graphics* graphics, Matrix4x4 worldMatrix, int
             // Our engine specific Texture is stored in the AtlasRegion which was
             // assigned to the attachment on load. It represents the texture atlas
             // page that contains the image the region attachment is mapped to.
-            textureFilename = *(std::string*)regionAttachment->getRegion()->rendererObject;
+            auto textureFilename = *(std::string*)regionAttachment->getRegion()->rendererObject;
 
             // copy color and UVs to the vertices
             for (size_t j = 0, l = 0; j < 4; j++, l+=2) {
@@ -150,7 +148,7 @@ void SpineSkeletonAnimation::Draw(Graphics* graphics, Matrix4x4 worldMatrix, int
                 vertex.uv.y = regionAttachment->getUVs()[l + 1];
             }
 
-            graphics->DrawMesh(vertices, 4, indices, 6, textureFilename, sortOrder, blendMode, isPremultiplied, worldMatrix);
+            graphics->DrawMesh(vertices, 4, indices, 6, graphics->GetTextureFullFilename(textureFilename, textureFiltering_), sortOrder, blendMode, isPremultiplied, worldMatrix);
         }
         else if (attachment->getRTTI().isExactly(spine::MeshAttachment::rtti)) {
             // Cast to an MeshAttachment so we can get the rendererObject
@@ -175,7 +173,7 @@ void SpineSkeletonAnimation::Draw(Graphics* graphics, Matrix4x4 worldMatrix, int
             // Our engine specific Texture is stored in the AtlasRegion which was
             // assigned to the attachment on load. It represents the texture atlas
             // page that contains the image the region attachment is mapped to.
-            textureFilename = *(std::string*)mesh->getRegion()->rendererObject;
+            auto textureFilename = *(std::string*)mesh->getRegion()->rendererObject;
 
             // Copy color and UVs to the vertices
             for (size_t j = 0, l = 0; j < numVertices; j++, l+=2) {
@@ -191,7 +189,7 @@ void SpineSkeletonAnimation::Draw(Graphics* graphics, Matrix4x4 worldMatrix, int
                 vertex.uv.y = mesh->getUVs()[l + 1];
             }
 
-            graphics->DrawMesh(vertices, (int)numVertices, indices.buffer(), (int)indices.size(), textureFilename, sortOrder, blendMode, isPremultiplied, worldMatrix);
+            graphics->DrawMesh(vertices, (int)numVertices, indices.buffer(), (int)indices.size(), graphics->GetTextureFullFilename(textureFilename, textureFiltering_), sortOrder, blendMode, isPremultiplied, worldMatrix);
         }
         else {
             int xx= 0;

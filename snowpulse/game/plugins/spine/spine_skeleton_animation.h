@@ -48,6 +48,7 @@ class SNOWPULSEAPI SpineSkeletonAnimation : public Updatable{
 
         std::string jsonFilename_;
         std::string atlasPath_;
+        TextureFiltering textureFiltering_;
         std::map<spine::Slot*, bool> slotsToDraw_;
 };
 }   // namespace snowpulse

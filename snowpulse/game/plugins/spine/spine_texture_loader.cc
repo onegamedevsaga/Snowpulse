@@ -24,7 +24,7 @@ void SpineTextureLoader::load(spine::AtlasPage &page, const spine::String &path)
         graphics_ = Application::GetInstance()->GetGraphics();
     }
     graphics_->LoadTexture(path.buffer(), textureFiltering_);
-    auto size = graphics_->GetTextureSize(path.buffer());
+    auto size = graphics_->GetTextureSize(path.buffer(), textureFiltering_);
     auto ptr = new std::string(path.buffer());
     page.texture = (void*)ptr;
     page.width = size.x;
@@ -33,7 +33,7 @@ void SpineTextureLoader::load(spine::AtlasPage &page, const spine::String &path)
 
 void SpineTextureLoader::unload(void *texture) {
     auto path = (std::string*)texture;
-    graphics_->UnloadTexture(path->c_str());
+    graphics_->UnloadTexture(path->c_str(), textureFiltering_);
     SPSAFE_DELETE(path);
 }
 }   // namespace snowpulse

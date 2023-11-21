@@ -157,7 +157,8 @@ Matrix4x4 GraphicsOpenGL::InvertMatrixNatively(Matrix4x4 matrix) {
 }
 
 void GraphicsOpenGL::LoadTexture(std::string filename, TextureFiltering filtering) {
-    if (!textures_.count(filename.c_str())) {
+    auto fullFilename = GetTextureFullFilename(filename.c_str(), filtering);
+    if (!textures_.count(fullFilename)) {
         unsigned int texture;
         glGenTextures(1, &texture);
         glBindTexture(GL_TEXTURE_2D, texture);
@@ -190,15 +191,16 @@ void GraphicsOpenGL::LoadTexture(std::string filename, TextureFiltering filterin
         if (data) {
             glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
             glGenerateMipmap(GL_TEXTURE_2D);
-            textures_[filename.c_str()] = texture;
+            textures_[fullFilename] = texture;
             textureSizes_[texture] = Vector2(width, height);
         }
         stbi_image_free(data);
     }
 }
 
-void GraphicsOpenGL::UnloadTexture(std::string filename) {
-    if (!textures_.count(filename.c_str())) {
+void GraphicsOpenGL::UnloadTexture(std::string filename, TextureFiltering filtering) {
+    auto fullFilename = GetTextureFullFilename(filename.c_str(), filtering);
+    if (!textures_.count(fullFilename)) {
         return;
     }
     for (auto i = textures_.begin(); i != textures_.end(); i++) {
@@ -215,22 +217,19 @@ void GraphicsOpenGL::UnloadTexture(std::string filename) {
         }
     }
 #ifdef SPDEBUG
-    std::cout << "Texture (" << filename.c_str() << ") unloaded." << std::endl;
+    std::cout << "Texture (" << fullFilename.c_str() << ") unloaded." << std::endl;
 #endif
 }
 
-void GraphicsOpenGL::UnloadTexture(void* texture) {
-    
-}
-
-Vector2 GraphicsOpenGL::GetTextureSize(std::string filename) {
-    if (!textures_.count(filename.c_str())) {
+Vector2 GraphicsOpenGL::GetTextureSize(std::string filename, TextureFiltering filtering) {
+    auto fullFilename = GetTextureFullFilename(filename.c_str(), filtering);
+    if (!textures_.count(fullFilename)) {
         return Vector2(100.0f, 100.0f);
     }
-    return textureSizes_[textures_[filename]];
+    return textureSizes_[textures_[fullFilename]];
 }
 
-void GraphicsOpenGL::DrawMesh(Vertex* vertices, unsigned int vertexCount, unsigned short* indices, unsigned int indexCount, std::string textureFilename, int sortOrder, BlendMode blendMode, bool isPremultiplied, Matrix4x4 transformMatrix) {
+void GraphicsOpenGL::DrawMesh(Vertex* vertices, unsigned int vertexCount, unsigned short* indices, unsigned int indexCount, std::string textureFullFilename, int sortOrder, BlendMode blendMode, bool isPremultiplied, Matrix4x4 transformMatrix) {
     glm::mat4 transform;
     for (int i = 0; i < 4; ++i) {
         for (int j = 0; j < 4; ++j) {
@@ -246,11 +245,11 @@ void GraphicsOpenGL::DrawMesh(Vertex* vertices, unsigned int vertexCount, unsign
     batch.indexCount = indexCount;
     batch.sortOrder = sortOrder;
     batch.isPremultiplied = isPremultiplied;
-    batch.texture = textures_[textureFilename];
+    batch.texture = textures_[textureFullFilename];
     if (!batch.texture) {
-        batch.texture = textures_[kSpriteDefault];
+        batch.texture = textures_[GetTextureFullFilename(kSpriteDefault, TextureFiltering::kPoint)];
 #ifdef SPDEBUG
-    std::cerr << "Can't find texture \"" << textureFilename << "\"." << std::endl;
+        std::cerr << "Can't find texture \"" << textureFullFilename << "\"." << std::endl;
 #endif
     }
 
@@ -295,7 +294,7 @@ void GraphicsOpenGL::DrawMesh(Vertex* vertices, unsigned int vertexCount, unsign
     renderQueue_->Push(batch);
 }
 
-void GraphicsOpenGL::DrawSprite(Vector2 size, std::string filename, Matrix4x4 transformMatrix, Color color, int sortOrder, BlendMode blendMode, bool isPremultiplied, Vector2 uvLowerLeft, Vector2 uvUpperRight) {
+void GraphicsOpenGL::DrawSprite(Vector2 size, std::string textureFullFilename, Matrix4x4 transformMatrix, Color color, int sortOrder, BlendMode blendMode, bool isPremultiplied, Vector2 uvLowerLeft, Vector2 uvUpperRight) {
     float halfWidth = size.x * 0.5f;
     float halfHeight = size.y * 0.5f;
 
@@ -318,6 +317,6 @@ void GraphicsOpenGL::DrawSprite(Vector2 size, std::string filename, Matrix4x4 tr
         2, 3, 0
     };
 
-    DrawMesh(vertices, 4, indices, 6, filename, sortOrder, blendMode, isPremultiplied, transformMatrix);
+    DrawMesh(vertices, 4, indices, 6, textureFullFilename, sortOrder, blendMode, isPremultiplied, transformMatrix);
 }
 }   // namespace snowpulse

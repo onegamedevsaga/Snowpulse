@@ -35,11 +35,10 @@ class SNOWPULSEAPI GraphicsOpenGL : public Graphics {
         // Graphics
         Matrix4x4 InvertMatrixNatively(Matrix4x4 matrix);
         void LoadTexture(std::string filename, TextureFiltering filtering);
-        void UnloadTexture(std::string filename);
-        void UnloadTexture(void* texture);
-        Vector2 GetTextureSize(std::string filename);
-        void DrawMesh(Vertex* vertices, unsigned int vertexCount, unsigned short* indices, unsigned int indexCount, std::string textureFilename, int sortOrder, BlendMode blendMode, bool isPremultiplied, Matrix4x4 transformMatrix);
-        void DrawSprite(Vector2 size, std::string filename, Matrix4x4 transformMatrix, Color color, int sortOrder, BlendMode blendMode, bool isPremultiplied, Vector2 uvLowerLeft, Vector2 uvUpperRight);
+        void UnloadTexture(std::string filename, TextureFiltering filtering);
+        Vector2 GetTextureSize(std::string filename, TextureFiltering filtering);
+        void DrawMesh(Vertex* vertices, unsigned int vertexCount, unsigned short* indices, unsigned int indexCount, std::string textureFullFilename, int sortOrder, BlendMode blendMode, bool isPremultiplied, Matrix4x4 transformMatrix);
+        void DrawSprite(Vector2 size, std::string textureFullFilename, Matrix4x4 transformMatrix, Color color, int sortOrder, BlendMode blendMode, bool isPremultiplied, Vector2 uvLowerLeft, Vector2 uvUpperRight);
 
     private:
         GraphicsOpenGL();

@@ -87,7 +87,7 @@ void SceneLevel::Start() {
     AddChild(go3_);
 
     go3_->GetTransform()->SetLocalPosition(snowpulse::Vector2(960.0f, 100.0f));
-    go3_->GetTransform()->SetLocalScale(snowpulse::Vector2(2.0f, 2.0f));
+    go3_->GetTransform()->SetLocalScale(snowpulse::Vector2(4.0f, 4.0f));
     
     auto tempGo = snowpulse::GameObject::Create("tempGo");
     spineRenderer = snowpulse::SpineRenderer::Create("mix-and-match/mix-and-match-pro.json", "mix-and-match/mix-and-match-pro.atlas", snowpulse::TextureFiltering::kPoint);
@@ -99,7 +99,7 @@ void SceneLevel::Start() {
     AddChild(tempGo);
 
     tempGo->GetTransform()->SetLocalPosition(snowpulse::Vector2(160.0f, 100.0f));
-    tempGo->GetTransform()->SetLocalScale(snowpulse::Vector2(2.0f, 2.0f));
+    tempGo->GetTransform()->SetLocalScale(snowpulse::Vector2(4.0f, 4.0f));
 
     snowpulse::ActionWait::Create(4.0f)->OnComplete([this](snowpulse::Action* a) {
         go2_->GetTransform()->DoMoveX(0.0f, 1.0f, snowpulse::Easing::kBounceOut, false, [this]() {
