@@ -23,14 +23,16 @@ class SNOWPULSEAPI SpriteRenderer : public Component, public Drawable {
         // From Drawable
         void Draw(Graphics* graphics, Matrix4x4 worldMatrix);
 
-        int GetSortOrder() { return sortOrder_; }
-        Vector2 GetSize() { return size_; }
-        BlendMode GetBlendMode() { return blendMode_; }
-        Color GetColor() { return color_; }
+        int GetSortOrder() const { return sortOrder_; }
+        Vector2 GetSize() const { return size_; }
+        BlendMode GetBlendMode() const { return blendMode_; }
+        bool IsPremultiplied() const { return isPremultiplied_; }
+        Color GetColor() const { return color_; }
 
         void SetSortOrder(int sortOrder) { sortOrder_ = sortOrder; }
         void SetSize(Vector2 size) { size_ = size; }
         void SetBlendMode(BlendMode blendMode) { blendMode_ = blendMode; }
+        void SetIsPremultiplied(bool value) { isPremultiplied_ = value; }
         void SetColor(Color color) { color_ = color; }
 
     protected:
@@ -43,6 +45,7 @@ class SNOWPULSEAPI SpriteRenderer : public Component, public Drawable {
         Vector2 size_;
         Color color_;
         BlendMode blendMode_;
+        bool isPremultiplied_;
         std::string filename_;
 };
 }   // namespace snowpulse

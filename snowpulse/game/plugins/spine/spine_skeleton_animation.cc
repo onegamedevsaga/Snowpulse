@@ -1,9 +1,13 @@
 #include "spine_skeleton_animation.h"
 
 #include <iostream>
+#include <map>
 
 #include <spine/Extension.h>
 #include <spine/SkeletonJson.h>
+#include <spine/Skin.h>
+#include <spine/Bone.h>
+#include <spine/BoneData.h>
 #include <spine/SlotData.h>
 #include <spine/Attachment.h>
 #include <spine/RegionAttachment.h>
@@ -45,17 +49,14 @@ std::shared_ptr<SpineSkeletonAnimation> SpineSkeletonAnimation::Create(std::stri
     
     spineSkeletonAnimation->skeleton_ = std::make_shared<spine::Skeleton>(spineSkeletonAnimation->skeletonData_.get());
     //std::string skinName = "full-skins/girl-blue-cape";
-    std::string skinName = "default";
-    if (spineSkeletonAnimation->skeletonData_->findSkin(skinName.c_str()) != SPNULL) {
-        spineSkeletonAnimation->skeleton_->setSkin(skinName.c_str());
-        spineSkeletonAnimation->skeleton_->setSlotsToSetupPose();
-    } else {
-        std::cerr << "Skin not found: " << skinName << std::endl;
-    }
+    spineSkeletonAnimation->SetSkin("default");
+    //spineSkeletonAnimation->SetSkin("full-skins/girl-blue-cape");
+    
     spineSkeletonAnimation->animationState_ = std::make_shared<spine::AnimationState>(spineSkeletonAnimation->animationStateData_.get());
-    spineSkeletonAnimation->animationState_->setAnimation(0, "walk", true);
+    //spineSkeletonAnimation->animationState_->setAnimation(0, "walk", true);
 
     size_t pos = atlasFilename.find_last_of("/\\");
+    spineSkeletonAnimation->jsonFilename_ = jsonFilename;
     spineSkeletonAnimation->atlasPath_ = (pos != std::string::npos) ? atlasFilename.substr(0, pos + 1) : "";
     return spineSkeletonAnimation;
 }
@@ -74,16 +75,17 @@ void SpineSkeletonAnimation::Update(float deltaTime) {
 }
 
 // From Drawable
-void SpineSkeletonAnimation::Draw(Graphics* graphics, Matrix4x4 worldMatrix, int sortOrder) {
-    
-    
-    
-
+void SpineSkeletonAnimation::Draw(Graphics* graphics, Matrix4x4 worldMatrix, int sortOrder, bool isPremultiplied) {
     for (int i = 0, n = (int)skeleton_->getSlots().size(); i < n; i++) {
-        spine::Slot* slot = skeleton_->getDrawOrder()[i];
-        
+        auto slot = skeleton_->getDrawOrder()[i];
+        if (!slotsToDraw_.count(slot)) {
+            continue;
+        }
+
         spine::Attachment* attachment = slot->getAttachment();
-        if (!attachment) continue;
+        if (!attachment) {
+            continue;
+        }
 
         BlendMode blendMode;
         switch (slot->getData().getBlendMode()) {
@@ -148,7 +150,7 @@ void SpineSkeletonAnimation::Draw(Graphics* graphics, Matrix4x4 worldMatrix, int
                 vertex.uv.y = regionAttachment->getUVs()[l + 1];
             }
 
-            graphics->DrawMesh(vertices, 4, indices, 6, textureFilename, sortOrder, BlendMode::kNormal, worldMatrix);
+            graphics->DrawMesh(vertices, 4, indices, 6, textureFilename, sortOrder, blendMode, isPremultiplied, worldMatrix);
         }
         else if (attachment->getRTTI().isExactly(spine::MeshAttachment::rtti)) {
             // Cast to an MeshAttachment so we can get the rendererObject
@@ -189,15 +191,123 @@ void SpineSkeletonAnimation::Draw(Graphics* graphics, Matrix4x4 worldMatrix, int
                 vertex.uv.y = mesh->getUVs()[l + 1];
             }
 
-            // set the indices, 2 triangles forming a quad
-            graphics->DrawMesh(vertices, (int)numVertices, indices.buffer(), (int)indices.size(), textureFilename, sortOrder, BlendMode::kNormal, worldMatrix);
+            graphics->DrawMesh(vertices, (int)numVertices, indices.buffer(), (int)indices.size(), textureFilename, sortOrder, blendMode, isPremultiplied, worldMatrix);
         }
         else {
             int xx= 0;
             xx++;
         }
-
-        
     }
+}
+
+void SpineSkeletonAnimation::SetSkin(std::string name) {
+    if (skeletonData_->findSkin(name.c_str()) != SPNULL) {
+        skeleton_->setSkin(name.c_str());
+        skeleton_->setSlotsToSetupPose();
+        skeleton_->updateWorldTransform();
+    }
+    else {
+        std::cerr << "Skin (" << name << ") not found on " << jsonFilename_ << "." << std::endl;
+        return;
+    }
+    
+    slotsToDraw_.clear();
+    std::map<spine::Slot*, bool> nonDefaultSkinSlots;
+    auto allSlots = skeleton_->getSlots();
+    auto allSkins = skeletonData_->getSkins();
+    auto defaultSkin = skeletonData_->getDefaultSkin();
+    for (int i = 0, n = (int)allSkins.size(); i < n; i++) {
+        auto skin = allSkins[i];
+        if (skin != defaultSkin) {
+            auto entries = skin->getAttachments();
+            while(entries.hasNext()) {
+                auto attachment = entries.next();
+                auto slot = allSlots[attachment._slotIndex];
+                nonDefaultSkinSlots[slot] = true;
+            }
+            auto bones = skin->getBones();
+            auto slots = GetSlotsWithBoneDatas(bones);
+            for (auto& slot : slots) {
+                nonDefaultSkinSlots[slot] = true;
+            }
+        }
+    }
+    auto defaultEntries = defaultSkin->getAttachments();
+    while(defaultEntries.hasNext()) {
+        auto attachment = defaultEntries.next();
+        auto slot = allSlots[attachment._slotIndex];
+        if (!nonDefaultSkinSlots.count(slot)) {
+            slotsToDraw_[slot] = true;
+        }
+    }
+
+    
+
+    auto activeSkin = skeleton_->getSkin();
+    if (activeSkin != defaultSkin) {
+        auto entries = activeSkin->getAttachments();
+        while(entries.hasNext()) {
+            auto attachment = entries.next();
+            auto slot = allSlots[attachment._slotIndex];
+            slotsToDraw_[slot] = true;
+        }
+        auto bones = activeSkin->getBones();
+        auto slots = GetSlotsWithBoneDatas(bones);
+        for (auto& slot : slots) {
+            auto slotParents = GetSlotParents(slot);
+            slotsToDraw_[slot] = true;
+            for (auto& p : slotParents) {
+                slotsToDraw_[p] = true;
+            }
+        }
+    }
+}
+
+void SpineSkeletonAnimation::PlayAnimation(std::string name, bool looping) {
+    if (!skeletonData_->findAnimation(name.c_str())) {
+#ifdef SPDEBUG
+    std::cerr << "Error: there's no animation called \"" << name << "\" in " << jsonFilename_ << std::endl;
+#endif
+        return;
+    }
+    animationState_->setAnimation(0, name.c_str(), looping);
+}
+
+std::vector<spine::Slot*> SpineSkeletonAnimation::GetSlotParents(spine::Slot* slot) {
+    std::vector<spine::Slot*> parents;
+    auto bone = &slot->getBone();
+    while (bone) {
+        auto allSlots = skeleton_->getSlots();
+        for (int i = 0, n = (int)allSlots.size(); i < n; i++) {
+            auto slot = allSlots[i];
+            if (slot->getBone().getData().getName() == bone->getData().getName()) {
+                parents.push_back(slot);
+            }
+        }
+        bone = bone->getParent();
+    }
+    return parents;
+}
+
+std::vector<spine::Slot*> SpineSkeletonAnimation::GetSlotsWithBoneDatas(spine::Vector<spine::BoneData*> bones) {
+    std::vector<spine::Slot*> ret;
+    auto allSlots = skeleton_->getSlots();
+    for (int i = 0, n = (int)allSlots.size(); i < n; i++) {
+        auto slot = allSlots[i];
+        if (IsSlotOnBones(slot, bones)) {
+            ret.push_back(slot);
+        }
+    }
+    return ret;
+}
+
+bool SpineSkeletonAnimation::IsSlotOnBones(spine::Slot* slot, spine::Vector<spine::BoneData*>& bones) {
+    for (int i = 0, n = (int)bones.size(); i < n; i++) {
+        auto bone = bones[i];
+        if (slot->getBone().getData().getName() == bone->getName()) {
+            return true;
+        }
+    }
+    return false;
 }
 }   // namespace snowpulse

@@ -4,6 +4,7 @@
 #include "sprite_renderer.h"
 
 #include <memory>
+#include <string>
 
 #include "../plugins/spine/spine_skeleton_animation.h"
 
@@ -18,13 +19,8 @@ class SNOWPULSEAPI SpineRenderer : public SpriteRenderer {
         // From Drawable
         void Draw(Graphics* graphics, Matrix4x4 worldMatrix);
 
-        int GetSortOrder() { return sortOrder_; }
-        Vector2 GetSize() { return size_; }
-        Color GetColor() { return color_; }
-
-        void SetSortOrder(int sortOrder) { sortOrder_ = sortOrder; }
-        void SetSize(Vector2 size) { size_ = size; }
-        void SetColor(Color color) { color_ = color; }
+        void SetSkin(std::string name);
+        void PlayAnimation(std::string name, bool looping = false);
 
     protected:
         SpineRenderer();

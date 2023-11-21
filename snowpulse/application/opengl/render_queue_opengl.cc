@@ -44,6 +44,7 @@ void RenderQueueOpenGL::GroupBatches() {
             auto& prevBatch = batches_[batches_.size() - 1];
             if (prevBatch.drawMode == batch.drawMode &&
                 prevBatch.blendMode == batch.blendMode &&
+                prevBatch.isPremultiplied == batch.isPremultiplied &&
                 prevBatch.viewMatrix == batch.viewMatrix &&
                 prevBatch.projectionMatrix == batch.projectionMatrix &&
                 prevBatch.shaderProgram == batch.shaderProgram &&

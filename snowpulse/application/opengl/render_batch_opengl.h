@@ -40,6 +40,7 @@ namespace snowpulse {
             glm::mat4 viewMatrix;
             glm::mat4 projectionMatrix;
 
+            bool isPremultiplied;
             GLuint texture;
     };
 }   // namespace snowpulse

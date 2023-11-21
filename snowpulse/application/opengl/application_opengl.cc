@@ -81,19 +81,19 @@ void ApplicationOpenGL::Run() {
                         break;
                     case BlendMode::kNormal:
                         glEnable(GL_BLEND);
-                        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+                        b.isPremultiplied ? glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA) : glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
                         break;
                     case BlendMode::kAdditive:
                         glEnable(GL_BLEND);
-                        glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+                        b.isPremultiplied ? glBlendFunc(GL_ONE, GL_ONE) : glBlendFunc(GL_SRC_ALPHA, GL_ONE);
                         break;
                     case BlendMode::kMultiply:
                         glEnable(GL_BLEND);
-                        glBlendFunc(GL_DST_COLOR, GL_ZERO);
+                        b.isPremultiplied ? glBlendFunc(GL_DST_COLOR, GL_ZERO) : glBlendFunc(GL_DST_COLOR, GL_ZERO);
                         break;
                     case BlendMode::kScreen:
                         glEnable(GL_BLEND);
-                        glBlendFunc(GL_ONE_MINUS_DST_COLOR, GL_ONE);
+                        b.isPremultiplied ? glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_COLOR) : glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_COLOR);
                         break;
                 }
 

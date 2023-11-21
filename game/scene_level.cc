@@ -77,16 +77,17 @@ void SceneLevel::Start() {
 
     go3_ = snowpulse::GameObject::Create("go3_");
     //auto spineRenderer = snowpulse::SpineRenderer::Create("spine-test/spine-test.json", "spine-test/spine-test.atlas");
-    auto spineRenderer = snowpulse::SpineRenderer::Create("hero/hero-pro.json", "hero/hero-pro.atlas");
-    //auto spineRenderer = snowpulse::SpineRenderer::Create("level_complete/level_complete.json", "level_complete/level_complete.atlas");
-    //auto spineRenderer = snowpulse::SpineRenderer::Create("mix-and-match/mix-and-match-pro.json", "mix-and-match/mix-and-match-pro.atlas");
-    
+    //auto spineRenderer = snowpulse::SpineRenderer::Create("hero/hero-pro.json", "hero/hero-pro.atlas");
+    auto spineRenderer = snowpulse::SpineRenderer::Create("mix-and-match/mix-and-match-pro.json", "mix-and-match/mix-and-match-pro.atlas");
+    spineRenderer->SetSkin("full-skins/girl-blue-cape");
+    spineRenderer->PlayAnimation("walk", true);
     spineRenderer->SetSortOrder(3);
+    spineRenderer->SetIsPremultiplied(false);
     go3_->AddComponent(spineRenderer);
     AddChild(go3_);
 
-    go3_->GetTransform()->SetLocalPosition(snowpulse::Vector2(960.0f, 200.0f));
-    //go3_->GetTransform()->SetRotation(90.0f);
+    go3_->GetTransform()->SetLocalPosition(snowpulse::Vector2(960.0f, 350.0f));
+    go3_->GetTransform()->SetLocalScale(snowpulse::Vector2(0.5f, 0.5f));
 
     snowpulse::ActionWait::Create(4.0f)->OnComplete([this](snowpulse::Action* a) {
         go2_->GetTransform()->DoMoveX(0.0f, 1.0f, snowpulse::Easing::kBounceOut, false, [this]() {

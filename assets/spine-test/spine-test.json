@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "zs2HG4eXXH8",
+	"hash": "E+tc/UV6c1o",
 	"spine": "4.1.11",
 	"x": -88.5,
 	"y": -88.5,
@@ -13,7 +13,7 @@
 	{ "name": "root" },
 	{ "name": "bone", "parent": "root", "length": 104.02, "rotation": 52.03, "x": 5 },
 	{ "name": "bone2", "parent": "bone", "length": 134.01, "rotation": -52.88, "x": 100.87, "y": -2.46 },
-	{ "name": "bone3", "parent": "bone2", "x": 138.01, "y": 0.06 }
+	{ "name": "bone3", "parent": "bone2", "x": 138.01, "y": 0.06, "skin": true }
 ],
 "slots": [
 	{ "name": "images/boardgem_blue", "bone": "bone", "attachment": "images/boardgem_blue" },
@@ -34,6 +34,11 @@
 				"images/boardgem_red": { "x": -4.34, "y": 5.69, "rotation": 52.88, "width": 177, "height": 177 }
 			}
 		}
+	},
+	{ "name": "skin00" },
+	{
+		"name": "skin01",
+		"bones": [ "bone3" ]
 	}
 ],
 "animations": {

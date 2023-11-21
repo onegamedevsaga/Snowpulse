@@ -11,7 +11,7 @@ std::shared_ptr<SpriteRenderer> SpriteRenderer::Create(std::string filename) {
     return spriteRenderer;
 }
 
-SpriteRenderer::SpriteRenderer() : Component("sprite_renderer"), sortOrder_(0), blendMode_(BlendMode::kNormal) {
+SpriteRenderer::SpriteRenderer() : Component("sprite_renderer"), sortOrder_(0), blendMode_(BlendMode::kNormal), isPremultiplied_(false) {
 }
 
 SpriteRenderer::SpriteRenderer(std::string componentName) : Component(componentName), sortOrder_(0)  {
@@ -32,6 +32,6 @@ void SpriteRenderer::Update(float deltaTime) {
 
 // From Drawable
 void SpriteRenderer::Draw(Graphics* graphics, Matrix4x4 worldMatrix) {
-    graphics->DrawSprite(size_, filename_, worldMatrix, color_, sortOrder_, blendMode_);
+    graphics->DrawSprite(size_, filename_, worldMatrix, color_, sortOrder_, blendMode_, isPremultiplied_);
 }
 }   // namespace snowpulse

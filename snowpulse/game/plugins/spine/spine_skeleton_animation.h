@@ -5,10 +5,13 @@
 
 #include <memory>
 #include <string>
+#include <map>
 
 #include <spine/Atlas.h>
 #include <spine/Skeleton.h>
 #include <spine/SkeletonData.h>
+#include <spine/Slot.h>
+#include <spine/BoneData.h>
 #include <spine/AnimationState.h>
 #include <spine/AnimationStateData.h>
 
@@ -24,10 +27,16 @@ class SNOWPULSEAPI SpineSkeletonAnimation : public Updatable{
         // From Updatable
         void Update(float deltaTime);
         // From Drawable
-        void Draw(Graphics* graphics, Matrix4x4 worldMatrix, int sortOrder);
+        void Draw(Graphics* graphics, Matrix4x4 worldMatrix, int sortOrder, bool isPremultiplied);
+
+        void SetSkin(std::string name);
+        void PlayAnimation(std::string name, bool looping = false);
 
     protected:
         SpineSkeletonAnimation();
+        std::vector<spine::Slot*> GetSlotParents(spine::Slot* slot);
+        std::vector<spine::Slot*> GetSlotsWithBoneDatas(spine::Vector<spine::BoneData*> bones);
+        bool IsSlotOnBones(spine::Slot* slot, spine::Vector<spine::BoneData*>& bones);
 
         std::shared_ptr<SpineTextureLoader> textureLoader_;
         std::shared_ptr<spine::Atlas> atlas_;
@@ -36,7 +45,9 @@ class SNOWPULSEAPI SpineSkeletonAnimation : public Updatable{
         std::shared_ptr<spine::AnimationState> animationState_;
         std::shared_ptr<spine::AnimationStateData> animationStateData_;
 
+        std::string jsonFilename_;
         std::string atlasPath_;
+        std::map<spine::Slot*, bool> slotsToDraw_;
 };
 }   // namespace snowpulse
 #endif

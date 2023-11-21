@@ -19,7 +19,7 @@ SpineRenderer::~SpineRenderer() {
 }
 
 void SpineRenderer::LoadGraphics(Graphics* graphics) {
-    
+    // TODO: Cache and load the texture from atlas
 }
 
 // From Updatable
@@ -33,7 +33,19 @@ void SpineRenderer::Update(float deltaTime) {
 // From Drawable
 void SpineRenderer::Draw(Graphics* graphics, Matrix4x4 worldMatrix) {
     if (skeletonAnimation_) {
-        skeletonAnimation_->Draw(graphics, worldMatrix, sortOrder_);
+        skeletonAnimation_->Draw(graphics, worldMatrix, sortOrder_, isPremultiplied_);
+    }
+}
+
+void SpineRenderer::SetSkin(std::string name) {
+    if (skeletonAnimation_) {
+        skeletonAnimation_->SetSkin(name);
+    }
+}
+
+void SpineRenderer::PlayAnimation(std::string name, bool looping) {
+    if (skeletonAnimation_) {
+        skeletonAnimation_->PlayAnimation(name, looping);
     }
 }
 }   // namespace snowpulse

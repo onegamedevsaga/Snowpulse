@@ -226,7 +226,7 @@ Vector2 GraphicsOpenGL::GetTextureSize(std::string filename) {
     return textureSizes_[textures_[filename]];
 }
 
-void GraphicsOpenGL::DrawMesh(Vertex* vertices, unsigned int vertexCount, unsigned short* indices, unsigned int indexCount, std::string textureFilename, int sortOrder, BlendMode blendMode, Matrix4x4 transformMatrix) {
+void GraphicsOpenGL::DrawMesh(Vertex* vertices, unsigned int vertexCount, unsigned short* indices, unsigned int indexCount, std::string textureFilename, int sortOrder, BlendMode blendMode, bool isPremultiplied, Matrix4x4 transformMatrix) {
     glm::mat4 transform;
     for (int i = 0; i < 4; ++i) {
         for (int j = 0; j < 4; ++j) {
@@ -241,9 +241,13 @@ void GraphicsOpenGL::DrawMesh(Vertex* vertices, unsigned int vertexCount, unsign
     batch.vertexCount = vertexCount;
     batch.indexCount = indexCount;
     batch.sortOrder = sortOrder;
+    batch.isPremultiplied = isPremultiplied;
     batch.texture = textures_[textureFilename];
     if (!batch.texture) {
         batch.texture = textures_[kSpriteDefault];
+#ifdef SPDEBUG
+    std::cerr << "Can't find texture \"" << textureFilename << "\"." << std::endl;
+#endif
     }
 
     for (int i = 0; i < batch.vertexCount; i++) {
@@ -287,7 +291,7 @@ void GraphicsOpenGL::DrawMesh(Vertex* vertices, unsigned int vertexCount, unsign
     renderQueue_->Push(batch);
 }
 
-void GraphicsOpenGL::DrawSprite(Vector2 size, std::string filename, Matrix4x4 transformMatrix, Color color, int sortOrder, BlendMode blendMode, Vector2 uvLowerLeft, Vector2 uvUpperRight) {
+void GraphicsOpenGL::DrawSprite(Vector2 size, std::string filename, Matrix4x4 transformMatrix, Color color, int sortOrder, BlendMode blendMode, bool isPremultiplied, Vector2 uvLowerLeft, Vector2 uvUpperRight) {
     float halfWidth = size.x * 0.5f;
     float halfHeight = size.y * 0.5f;
 
@@ -310,6 +314,6 @@ void GraphicsOpenGL::DrawSprite(Vector2 size, std::string filename, Matrix4x4 tr
         2, 3, 0
     };
 
-    DrawMesh(vertices, 4, indices, 6, filename, sortOrder, blendMode, transformMatrix);
+    DrawMesh(vertices, 4, indices, 6, filename, sortOrder, blendMode, isPremultiplied, transformMatrix);
 }
 }   // namespace snowpulse
