@@ -72,40 +72,40 @@ void ApplicationOpenGL::Run() {
         game_->UpdateScene(deltaTime);
         game_->DrawScene(graphics_.get());
 
-        auto batches = renderQueue_->PopAll();
+        auto batches = renderQueue_->PopAllData();
         for (int i = 0; i < 1; i++) {
             for(auto b : batches) {
-                switch (b.blendMode) {
+                switch (b->blendMode) {
                     case BlendMode::kDisabled:
                         glDisable(GL_BLEND);
                         break;
                     case BlendMode::kNormal:
                         glEnable(GL_BLEND);
-                        b.isPremultiplied ? glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA) : glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+                        b->isPremultiplied ? glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA) : glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
                         break;
                     case BlendMode::kAdditive:
                         glEnable(GL_BLEND);
-                        b.isPremultiplied ? glBlendFunc(GL_ONE, GL_ONE) : glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+                        b->isPremultiplied ? glBlendFunc(GL_ONE, GL_ONE) : glBlendFunc(GL_SRC_ALPHA, GL_ONE);
                         break;
                     case BlendMode::kMultiply:
                         glEnable(GL_BLEND);
-                        b.isPremultiplied ? glBlendFunc(GL_DST_COLOR, GL_ZERO) : glBlendFunc(GL_DST_COLOR, GL_ZERO);
+                        b->isPremultiplied ? glBlendFunc(GL_DST_COLOR, GL_ZERO) : glBlendFunc(GL_DST_COLOR, GL_ZERO);
                         break;
                     case BlendMode::kScreen:
                         glEnable(GL_BLEND);
-                        b.isPremultiplied ? glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_COLOR) : glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_COLOR);
+                        b->isPremultiplied ? glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_COLOR) : glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_COLOR);
                         break;
                 }
 
                 GLuint VBO, VAO, EBO, matrixVBO;
-                float vertices[b.vertices.size()];
-                unsigned short indices[b.indices.size()];
+                float vertices[b->vertices.size()];
+                unsigned short indices[b->indices.size()];
                 int i = 0;
-                for (const auto ver : b.vertices) {
+                for (const auto ver : b->vertices) {
                     vertices[i++] = ver;
                 }
                 i = 0;
-                for (const auto ind : b.indices) {
+                for (const auto ind : b->indices) {
                     indices[i++] = ind;
                 }
 
@@ -121,30 +121,30 @@ void ApplicationOpenGL::Run() {
                 glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
                 glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
-                glVertexAttribPointer(b.vertexShaderLocation, b.vertexSectionCount, GL_FLOAT, GL_FALSE, b.vertexPlusUVPlusColorCount * sizeof(float), (void*)0);
-                glEnableVertexAttribArray(b.vertexShaderLocation);
+                glVertexAttribPointer(b->vertexShaderLocation, b->vertexSectionCount, GL_FLOAT, GL_FALSE, b->vertexPlusUVPlusColorCount * sizeof(float), (void*)0);
+                glEnableVertexAttribArray(b->vertexShaderLocation);
 
-                glVertexAttribPointer(b.uVShaderLocation, b.uVSectionCount, GL_FLOAT, GL_FALSE, b.vertexPlusUVPlusColorCount * sizeof(float), (void*)(b.vertexSectionCount * sizeof(float)));
-                glEnableVertexAttribArray(b.uVShaderLocation);
+                glVertexAttribPointer(b->uVShaderLocation, b->uVSectionCount, GL_FLOAT, GL_FALSE, b->vertexPlusUVPlusColorCount * sizeof(float), (void*)(b->vertexSectionCount * sizeof(float)));
+                glEnableVertexAttribArray(b->uVShaderLocation);
 
-                glVertexAttribPointer(b.colorShaderLocation, b.colorSectionCount, GL_FLOAT, GL_FALSE, b.vertexPlusUVPlusColorCount * sizeof(float), (void*)((b.vertexSectionCount + b.uVSectionCount) * sizeof(float)));
-                glEnableVertexAttribArray(b.colorShaderLocation);
+                glVertexAttribPointer(b->colorShaderLocation, b->colorSectionCount, GL_FLOAT, GL_FALSE, b->vertexPlusUVPlusColorCount * sizeof(float), (void*)((b->vertexSectionCount + b->uVSectionCount) * sizeof(float)));
+                glEnableVertexAttribArray(b->colorShaderLocation);
 
                 glBindBuffer(GL_ARRAY_BUFFER, matrixVBO);
-                glBufferData(GL_ARRAY_BUFFER, b.vertexCount * sizeof(glm::mat4), b.matrices.data(), GL_STATIC_DRAW);
+                glBufferData(GL_ARRAY_BUFFER, b->vertexCount * sizeof(glm::mat4), b->matrices.data(), GL_STATIC_DRAW);
 
                 for (int i = 0; i < 4; i++) {
-                    glVertexAttribPointer(b.transformMatrixShaderLocation + i, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), (void*)(sizeof(glm::vec4) * i));
-                    glEnableVertexAttribArray(b.transformMatrixShaderLocation + i);
+                    glVertexAttribPointer(b->transformMatrixShaderLocation + i, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), (void*)(sizeof(glm::vec4) * i));
+                    glEnableVertexAttribArray(b->transformMatrixShaderLocation + i);
                 }
 
-                glUseProgram(b.shaderProgram);
-                glUniformMatrix4fv(b.viewMatrixShaderLocation, 1, GL_FALSE, &(b.viewMatrix[0].x));
-                glUniformMatrix4fv(b.projectionMatrixShaderLocation, 1, GL_FALSE, &(b.projectionMatrix[0].x));
+                glUseProgram(b->shaderProgram);
+                glUniformMatrix4fv(b->viewMatrixShaderLocation, 1, GL_FALSE, &(b->viewMatrix[0].x));
+                glUniformMatrix4fv(b->projectionMatrixShaderLocation, 1, GL_FALSE, &(b->projectionMatrix[0].x));
                 glActiveTexture(GL_TEXTURE0);
-                glBindTexture(GL_TEXTURE_2D, b.texture);
+                glBindTexture(GL_TEXTURE_2D, b->texture);
                 glBindVertexArray(VAO);
-                glDrawElements(b.drawMode, b.indexCount, GL_UNSIGNED_SHORT, 0);
+                glDrawElements(b->drawMode, b->indexCount, GL_UNSIGNED_SHORT, 0);
                 glBindVertexArray(0);
 
                 glDeleteBuffers(1, &VBO);
@@ -161,11 +161,12 @@ void ApplicationOpenGL::Run() {
             }
         }
 
+        glfwSwapBuffers(graphics_->GetWindow());
+
+        graphics_->ClearRenderBatchGroups();
 #ifdef SPDEBUG
     std::cout << "Rendered " << batches.size() << " batch/es." << std::endl;
 #endif
-
-        glfwSwapBuffers(graphics_->GetWindow());
     }
 
     glfwTerminate();

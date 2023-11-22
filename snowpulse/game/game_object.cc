@@ -26,6 +26,10 @@ void GameObject::Start() {
 bool GameObject::AddChild(std::shared_ptr<Node> node) {
     auto gameObject = dynamic_cast<GameObject*>(node.get());
     if (gameObject) {
+        auto parent = node->GetParent();
+        if (parent) {
+            parent->RemoveChild(node);
+        }
         if (Node::AddChild(node)) {
             auto updatable = dynamic_cast<Updatable*>(node.get());
             auto drawable = dynamic_cast<Drawable*>(node.get());

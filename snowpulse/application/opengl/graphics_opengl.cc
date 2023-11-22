@@ -5,7 +5,8 @@
 #include <iostream>
 #include <stb_image.h>
 
-#include "render_batch_opengl.h"
+#include "render_batch_data_opengl.h"
+#include "render_batch_group_opengl.h"
 
 namespace snowpulse {
 
@@ -229,7 +230,25 @@ Vector2 GraphicsOpenGL::GetTextureSize(std::string filename, TextureFiltering fi
     return textureSizes_[textures_[fullFilename]];
 }
 
-void GraphicsOpenGL::DrawMesh(Vertex* vertices, unsigned int vertexCount, unsigned short* indices, unsigned int indexCount, std::string textureFullFilename, int sortOrder, BlendMode blendMode, bool isPremultiplied, Matrix4x4 transformMatrix) {
+int GraphicsOpenGL::CreateRenderBatchGroup(int sortOrder) {
+    int id = (int)renderBatchGroups_.size();
+    auto group = std::make_shared<RenderBatchGroupOpenGL>();
+    group->sortOrder = sortOrder;
+    renderBatchGroups_.push_back(group);
+    return id;
+}
+
+void GraphicsOpenGL::ClearRenderBatchGroups() {
+    renderBatchGroups_.clear();
+}
+
+void GraphicsOpenGL::SubmitRenderBatchGroup(int batchGroup) {
+    if (batchGroup >= 0 && batchGroup < (int)renderBatchGroups_.size()) {
+        renderQueue_->Push(renderBatchGroups_[batchGroup]);
+    }
+}
+
+void GraphicsOpenGL::DrawMesh(Vertex* vertices, unsigned int vertexCount, unsigned short* indices, unsigned int indexCount, std::string textureFullFilename, int sortOrder, BlendMode blendMode, bool isPremultiplied, Matrix4x4 transformMatrix, int batchGroup) {
     glm::mat4 transform;
     for (int i = 0; i < 4; ++i) {
         for (int j = 0; j < 4; ++j) {
@@ -237,40 +256,40 @@ void GraphicsOpenGL::DrawMesh(Vertex* vertices, unsigned int vertexCount, unsign
         }
     }
 
-    RenderBatchOpenGL batch;
-    batch.drawMode = GL_TRIANGLES;
-    batch.shaderProgram = shaderProgram_;
-    batch.blendMode = blendMode;
-    batch.vertexCount = vertexCount;
-    batch.indexCount = indexCount;
-    batch.sortOrder = sortOrder;
-    batch.isPremultiplied = isPremultiplied;
-    batch.texture = textures_[textureFullFilename];
-    if (!batch.texture) {
-        batch.texture = textures_[GetTextureFullFilename(kSpriteDefault, TextureFiltering::kPoint)];
+    auto batch = std::make_shared<RenderBatchDataOpenGL>();
+    batch->drawMode = GL_TRIANGLES;
+    batch->shaderProgram = shaderProgram_;
+    batch->blendMode = blendMode;
+    batch->vertexCount = vertexCount;
+    batch->indexCount = indexCount;
+    batch->sortOrder = sortOrder;
+    batch->isPremultiplied = isPremultiplied;
+    batch->texture = textures_[textureFullFilename];
+    if (!batch->texture) {
+        batch->texture = textures_[GetTextureFullFilename(kSpriteDefault, TextureFiltering::kPoint)];
 #ifdef SPDEBUG
         std::cerr << "Can't find texture \"" << textureFullFilename << "\"." << std::endl;
 #endif
     }
 
-    for (int i = 0; i < batch.vertexCount; i++) {
-        batch.vertices.push_back(vertices[i].position.x);
-        batch.vertices.push_back(vertices[i].position.y);
-        batch.vertices.push_back(vertices[i].position.z);
-        batch.vertices.push_back(vertices[i].uv.x);
-        batch.vertices.push_back(vertices[i].uv.y);
-        batch.vertices.push_back(vertices[i].color.r);
-        batch.vertices.push_back(vertices[i].color.g);
-        batch.vertices.push_back(vertices[i].color.b);
-        batch.vertices.push_back(vertices[i].color.a);
+    for (int i = 0; i < batch->vertexCount; i++) {
+        batch->vertices.push_back(vertices[i].position.x);
+        batch->vertices.push_back(vertices[i].position.y);
+        batch->vertices.push_back(vertices[i].position.z);
+        batch->vertices.push_back(vertices[i].uv.x);
+        batch->vertices.push_back(vertices[i].uv.y);
+        batch->vertices.push_back(vertices[i].color.r);
+        batch->vertices.push_back(vertices[i].color.g);
+        batch->vertices.push_back(vertices[i].color.b);
+        batch->vertices.push_back(vertices[i].color.a);
     }
 
-    for (int i = 0; i < batch.indexCount; i++) {
-        batch.indices.push_back(indices[i]);
+    for (int i = 0; i < batch->indexCount; i++) {
+        batch->indices.push_back(indices[i]);
     }
 
-    for (int i = 0; i < batch.vertexCount; i++) {
-        batch.matrices.push_back(transform);
+    for (int i = 0; i < batch->vertexCount; i++) {
+        batch->matrices.push_back(transform);
     }
 
     auto camMat = camera_->GetMatrix();
@@ -281,20 +300,26 @@ void GraphicsOpenGL::DrawMesh(Vertex* vertices, unsigned int vertexCount, unsign
         }
     }
 
-    batch.viewMatrix = camMatGLM;
-    batch.projectionMatrix = projectionMatrix_;
+    batch->viewMatrix = camMatGLM;
+    batch->projectionMatrix = projectionMatrix_;
 
-    batch.vertexShaderLocation = vertexShaderLocation_;
-    batch.uVShaderLocation = uVShaderLocation_;
-    batch.colorShaderLocation = colorShaderLocation_;
-    batch.transformMatrixShaderLocation = transformMatrixShaderLocation_;
-    batch.viewMatrixShaderLocation = viewMatrixShaderLocation_;
-    batch.projectionMatrixShaderLocation = projectionMatrixShaderLocation_;
+    batch->vertexShaderLocation = vertexShaderLocation_;
+    batch->uVShaderLocation = uVShaderLocation_;
+    batch->colorShaderLocation = colorShaderLocation_;
+    batch->transformMatrixShaderLocation = transformMatrixShaderLocation_;
+    batch->viewMatrixShaderLocation = viewMatrixShaderLocation_;
+    batch->projectionMatrixShaderLocation = projectionMatrixShaderLocation_;
 
-    renderQueue_->Push(batch);
+    if (batchGroup >= 0 && batchGroup < (int)renderBatchGroups_.size()) {
+        auto group = renderBatchGroups_[batchGroup];
+        group->AddBatch(batch);
+    }
+    else {
+        renderQueue_->Push(batch);
+    }
 }
 
-void GraphicsOpenGL::DrawSprite(Vector2 size, std::string textureFullFilename, Matrix4x4 transformMatrix, Color color, int sortOrder, BlendMode blendMode, bool isPremultiplied, Vector2 uvLowerLeft, Vector2 uvUpperRight) {
+void GraphicsOpenGL::DrawSprite(Vector2 size, std::string textureFullFilename, Matrix4x4 transformMatrix, Color color, int sortOrder, BlendMode blendMode, bool isPremultiplied, Vector2 uvLowerLeft, Vector2 uvUpperRight, int batchGroup) {
     float halfWidth = size.x * 0.5f;
     float halfHeight = size.y * 0.5f;
 
@@ -317,6 +342,6 @@ void GraphicsOpenGL::DrawSprite(Vector2 size, std::string textureFullFilename, M
         2, 3, 0
     };
 
-    DrawMesh(vertices, 4, indices, 6, textureFullFilename, sortOrder, blendMode, isPremultiplied, transformMatrix);
+    DrawMesh(vertices, 4, indices, 6, textureFullFilename, sortOrder, blendMode, isPremultiplied, transformMatrix, batchGroup);
 }
 }   // namespace snowpulse

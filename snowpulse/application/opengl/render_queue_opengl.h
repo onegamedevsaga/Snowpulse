@@ -9,7 +9,8 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#include "render_batch_opengl.h"
+#include "../render_batch.h"
+#include "render_batch_data_opengl.h"
 
 namespace snowpulse {
 class SNOWPULSEAPI RenderQueueOpenGL {
@@ -18,15 +19,15 @@ class SNOWPULSEAPI RenderQueueOpenGL {
 
         virtual ~RenderQueueOpenGL();
 
-        void Push(RenderBatchOpenGL batch);
-        std::vector<RenderBatchOpenGL> PopAll();
+        void Push(std::shared_ptr<RenderBatch> batch);
+        std::vector<std::shared_ptr<RenderBatchDataOpenGL>> PopAllData();
 
     private:
         RenderQueueOpenGL();
         void SortBatches();
-        void GroupBatches();
+        void GroupBatches(std::vector<std::shared_ptr<RenderBatch>>& batches);
 
-        std::vector<RenderBatchOpenGL> batches_;
+        std::vector<std::shared_ptr<RenderBatch>> batches_;
 
 };
 }   // namespace snowpulse

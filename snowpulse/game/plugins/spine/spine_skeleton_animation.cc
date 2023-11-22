@@ -43,18 +43,9 @@ std::shared_ptr<SpineSkeletonAnimation> SpineSkeletonAnimation::Create(std::stri
     }
 
     spineSkeletonAnimation->animationStateData_ = std::make_shared<spine::AnimationStateData>(spineSkeletonAnimation->skeletonData_.get());
-    //spineSkeletonAnimation->animationStateData_->
-    //spineSkeletonAnimation->animationStateData_->setDefaultMix(0.5f);
-    //spineSkeletonAnimation->animationStateData_->setMix("walk", "run", 0.2f);
-    //spineSkeletonAnimation->animationStateData_->setMix("walk", "shot", 0.1f);
-    
     spineSkeletonAnimation->skeleton_ = std::make_shared<spine::Skeleton>(spineSkeletonAnimation->skeletonData_.get());
-    //std::string skinName = "full-skins/girl-blue-cape";
     spineSkeletonAnimation->SetSkin("default");
-    //spineSkeletonAnimation->SetSkin("full-skins/girl-blue-cape");
-    
     spineSkeletonAnimation->animationState_ = std::make_shared<spine::AnimationState>(spineSkeletonAnimation->animationStateData_.get());
-    //spineSkeletonAnimation->animationState_->setAnimation(0, "walk", true);
 
     size_t pos = atlasFilename.find_last_of("/\\");
     spineSkeletonAnimation->jsonFilename_ = jsonFilename;
@@ -77,6 +68,7 @@ void SpineSkeletonAnimation::Update(float deltaTime) {
 
 // From Drawable
 void SpineSkeletonAnimation::Draw(Graphics* graphics, Matrix4x4 worldMatrix, int sortOrder, bool isPremultiplied) {
+    auto batchGroup = graphics->CreateRenderBatchGroup(sortOrder);
     for (int i = 0, n = (int)skeleton_->getSlots().size(); i < n; i++) {
         auto slot = skeleton_->getDrawOrder()[i];
         if (!slotsToDraw_.count(slot)) {
@@ -148,7 +140,7 @@ void SpineSkeletonAnimation::Draw(Graphics* graphics, Matrix4x4 worldMatrix, int
                 vertex.uv.y = regionAttachment->getUVs()[l + 1];
             }
 
-            graphics->DrawMesh(vertices, 4, indices, 6, graphics->GetTextureFullFilename(textureFilename, textureFiltering_), sortOrder, blendMode, isPremultiplied, worldMatrix);
+            graphics->DrawMesh(vertices, 4, indices, 6, graphics->GetTextureFullFilename(textureFilename, textureFiltering_), sortOrder, blendMode, isPremultiplied, worldMatrix, batchGroup);
         }
         else if (attachment->getRTTI().isExactly(spine::MeshAttachment::rtti)) {
             // Cast to an MeshAttachment so we can get the rendererObject
@@ -189,13 +181,15 @@ void SpineSkeletonAnimation::Draw(Graphics* graphics, Matrix4x4 worldMatrix, int
                 vertex.uv.y = mesh->getUVs()[l + 1];
             }
 
-            graphics->DrawMesh(vertices, (int)numVertices, indices.buffer(), (int)indices.size(), graphics->GetTextureFullFilename(textureFilename, textureFiltering_), sortOrder, blendMode, isPremultiplied, worldMatrix);
+            graphics->DrawMesh(vertices, (int)numVertices, indices.buffer(), (int)indices.size(), graphics->GetTextureFullFilename(textureFilename, textureFiltering_), sortOrder, blendMode, isPremultiplied, worldMatrix, batchGroup);
         }
         else {
             int xx= 0;
             xx++;
         }
     }
+
+    graphics->SubmitRenderBatchGroup(batchGroup);
 }
 
 void SpineSkeletonAnimation::SetSkin(std::string name) {
@@ -205,7 +199,7 @@ void SpineSkeletonAnimation::SetSkin(std::string name) {
         skeleton_->updateWorldTransform();
     }
     else {
-        std::cerr << "Skin (" << name << ") not found on " << jsonFilename_ << "." << std::endl;
+        std::cerr << "Error: Skin (" << name << ") not found on " << jsonFilename_ << "." << std::endl;
         return;
     }
     

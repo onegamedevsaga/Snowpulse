@@ -17,6 +17,7 @@
 #include "../../common/vector2int.h"
 #include "../../common/color.h"
 #include "render_queue_opengl.h"
+#include "render_batch_group_opengl.h"
 
 namespace snowpulse {
 
@@ -37,8 +38,11 @@ class SNOWPULSEAPI GraphicsOpenGL : public Graphics {
         void LoadTexture(std::string filename, TextureFiltering filtering);
         void UnloadTexture(std::string filename, TextureFiltering filtering);
         Vector2 GetTextureSize(std::string filename, TextureFiltering filtering);
-        void DrawMesh(Vertex* vertices, unsigned int vertexCount, unsigned short* indices, unsigned int indexCount, std::string textureFullFilename, int sortOrder, BlendMode blendMode, bool isPremultiplied, Matrix4x4 transformMatrix);
-        void DrawSprite(Vector2 size, std::string textureFullFilename, Matrix4x4 transformMatrix, Color color, int sortOrder, BlendMode blendMode, bool isPremultiplied, Vector2 uvLowerLeft, Vector2 uvUpperRight);
+        int CreateRenderBatchGroup(int sortOrder);
+        void ClearRenderBatchGroups();
+        void SubmitRenderBatchGroup(int batchGroup);
+        void DrawMesh(Vertex* vertices, unsigned int vertexCount, unsigned short* indices, unsigned int indexCount, std::string textureFullFilename, int sortOrder, BlendMode blendMode, bool isPremultiplied, Matrix4x4 transformMatrix, int batchGroup);
+        void DrawSprite(Vector2 size, std::string textureFullFilename, Matrix4x4 transformMatrix, Color color, int sortOrder, BlendMode blendMode, bool isPremultiplied, Vector2 uvLowerLeft, Vector2 uvUpperRight, int batchGroup);
 
     private:
         GraphicsOpenGL();
@@ -55,6 +59,7 @@ class SNOWPULSEAPI GraphicsOpenGL : public Graphics {
         GLuint projectionMatrixShaderLocation_;
         GLuint viewMatrixShaderLocation_;
         RenderQueueOpenGL* renderQueue_;
+        std::vector<std::shared_ptr<RenderBatchGroupOpenGL>> renderBatchGroups_;
         std::map<std::string, unsigned int> textures_;
         std::map<unsigned int, Vector2> textureSizes_;
 };
