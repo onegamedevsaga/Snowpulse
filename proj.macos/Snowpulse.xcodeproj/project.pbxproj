@@ -7,6 +7,223 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A07BC3D2B0FC9DF0008B3A4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A07BC3C2B0FC9DF0008B3A4 /* AppDelegate.m */; };
+		2A07BC402B0FC9DF0008B3A4 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A07BC3F2B0FC9DF0008B3A4 /* SceneDelegate.m */; };
+		2A07BC432B0FC9DF0008B3A4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A07BC422B0FC9DF0008B3A4 /* ViewController.m */; };
+		2A07BC462B0FC9DF0008B3A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A07BC442B0FC9DF0008B3A4 /* Main.storyboard */; };
+		2A07BC482B0FC9E00008B3A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A07BC472B0FC9E00008B3A4 /* Assets.xcassets */; };
+		2A07BC4B2B0FC9E00008B3A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A07BC492B0FC9E00008B3A4 /* LaunchScreen.storyboard */; };
+		2A07BC4E2B0FC9E00008B3A4 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A07BC4D2B0FC9E00008B3A4 /* main.mm */; };
+		2A07BC5D2B0FCF590008B3A4 /* PathConstraintMixTimeline.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9752B0781A0009AACBF /* PathConstraintMixTimeline.h */; };
+		2A07BC5E2B0FCF590008B3A4 /* Extension.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9572B0781A0009AACBF /* Extension.h */; };
+		2A07BC5F2B0FCF590008B3A4 /* MeshAttachment.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A92D2B07819F009AACBF /* MeshAttachment.h */; };
+		2A07BC612B0FCF590008B3A4 /* IkConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9762B0781A0009AACBF /* IkConstraint.h */; };
+		2A07BC622B0FCF590008B3A4 /* SkeletonData.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9262B07819F009AACBF /* SkeletonData.h */; };
+		2A07BC632B0FCF590008B3A4 /* SpineObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9332B07819F009AACBF /* SpineObject.h */; };
+		2A07BC642B0FCF590008B3A4 /* RegionAttachment.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A95F2B0781A0009AACBF /* RegionAttachment.h */; };
+		2A07BC652B0FCF590008B3A4 /* node_starter.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBDF42B00BF430060E35C /* node_starter.h */; };
+		2A07BC662B0FCF590008B3A4 /* action_wait.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBE022B00BF430060E35C /* action_wait.h */; };
+		2A07BC682B0FCF590008B3A4 /* TextureRegion.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9732B0781A0009AACBF /* TextureRegion.h */; };
+		2A07BC692B0FCF590008B3A4 /* Skeleton.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9422B07819F009AACBF /* Skeleton.h */; };
+		2A07BC6A2B0FCF590008B3A4 /* transform.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBDFC2B00BF430060E35C /* transform.h */; };
+		2A07BC6B2B0FCF590008B3A4 /* render_batch_type.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AEA1C522B0DF36700AAD982 /* render_batch_type.h */; };
+		2A07BC6C2B0FCF590008B3A4 /* updatable.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBE002B00BF430060E35C /* updatable.h */; };
+		2A07BC6D2B0FCF590008B3A4 /* easing.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBE8F2B0108380060E35C /* easing.h */; };
+		2A07BC6E2B0FCF590008B3A4 /* vertex.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9E12B0896C7009AACBF /* vertex.h */; };
+		2A07BC6F2B0FCF590008B3A4 /* Pool.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A94D2B0781A0009AACBF /* Pool.h */; };
+		2A07BC702B0FCF590008B3A4 /* BoundingBoxAttachment.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9652B0781A0009AACBF /* BoundingBoxAttachment.h */; };
+		2A07BC712B0FCF590008B3A4 /* EventData.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9302B07819F009AACBF /* EventData.h */; };
+		2A07BC722B0FCF590008B3A4 /* ShearTimeline.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9672B0781A0009AACBF /* ShearTimeline.h */; };
+		2A07BC732B0FCF590008B3A4 /* TransformMode.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9612B0781A0009AACBF /* TransformMode.h */; };
+		2A07BC742B0FCF590008B3A4 /* Vertices.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9742B0781A0009AACBF /* Vertices.h */; };
+		2A07BC752B0FCF590008B3A4 /* IkConstraintTimeline.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A92F2B07819F009AACBF /* IkConstraintTimeline.h */; };
+		2A07BC762B0FCF590008B3A4 /* action_interpolate.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBEAC2B03DE680060E35C /* action_interpolate.h */; };
+		2A07BC772B0FCF590008B3A4 /* ColorTimeline.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9522B0781A0009AACBF /* ColorTimeline.h */; };
+		2A07BC782B0FCF590008B3A4 /* space.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBE912B0357CF0060E35C /* space.h */; };
+		2A07BC7A2B0FCF590008B3A4 /* SpacingMode.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9312B07819F009AACBF /* SpacingMode.h */; };
+		2A07BC7B2B0FCF590008B3A4 /* MixBlend.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A95C2B0781A0009AACBF /* MixBlend.h */; };
+		2A07BC7C2B0FCF590008B3A4 /* DeformTimeline.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9272B07819F009AACBF /* DeformTimeline.h */; };
+		2A07BC7D2B0FCF590008B3A4 /* vector2int.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBE112B00BF430060E35C /* vector2int.h */; };
+		2A07BC7E2B0FCF590008B3A4 /* camera.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBE212B00BF430060E35C /* camera.h */; };
+		2A07BC7F2B0FCF590008B3A4 /* MixDirection.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9772B0781A0009AACBF /* MixDirection.h */; };
+		2A07BC802B0FCF590008B3A4 /* SkeletonJson.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A94A2B0781A0009AACBF /* SkeletonJson.h */; };
+		2A07BC812B0FCF590008B3A4 /* color.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBE102B00BF430060E35C /* color.h */; };
+		2A07BC822B0FCF590008B3A4 /* Property.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A95D2B0781A0009AACBF /* Property.h */; };
+		2A07BC832B0FCF590008B3A4 /* blend_mode.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9DF2B087CE3009AACBF /* blend_mode.h */; };
+		2A07BC842B0FCF590008B3A4 /* AttachmentLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9482B0781A0009AACBF /* AttachmentLoader.h */; };
+		2A07BC852B0FCF590008B3A4 /* action_manager.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBE082B00BF430060E35C /* action_manager.h */; };
+		2A07BC862B0FCF590008B3A4 /* LinkedMesh.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9492B0781A0009AACBF /* LinkedMesh.h */; };
+		2A07BC872B0FCF590008B3A4 /* Event.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9472B0781A0009AACBF /* Event.h */; };
+		2A07BC882B0FCF590008B3A4 /* timer.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBE242B00BF430060E35C /* timer.h */; };
+		2A07BC892B0FCF590008B3A4 /* vector3.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBE122B00BF430060E35C /* vector3.h */; };
+		2A07BC8A2B0FCF590008B3A4 /* ContainerUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A94F2B0781A0009AACBF /* ContainerUtil.h */; };
+		2A07BC8B2B0FCF590008B3A4 /* BoneData.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9702B0781A0009AACBF /* BoneData.h */; };
+		2A07BC8C2B0FCF590008B3A4 /* SkeletonBounds.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9392B07819F009AACBF /* SkeletonBounds.h */; };
+		2A07BC8D2B0FCF590008B3A4 /* action.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBDF72B00BF430060E35C /* action.h */; };
+		2A07BC8E2B0FCF590008B3A4 /* TransformConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9562B0781A0009AACBF /* TransformConstraint.h */; };
+		2A07BC8F2B0FCF590008B3A4 /* matrix4x4.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBE0C2B00BF430060E35C /* matrix4x4.h */; };
+		2A07BC902B0FCF590008B3A4 /* PointAttachment.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9642B0781A0009AACBF /* PointAttachment.h */; };
+		2A07BC912B0FCF590008B3A4 /* graphics.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBE072B00BF430060E35C /* graphics.h */; };
+		2A07BC922B0FCF590008B3A4 /* Debug.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9592B0781A0009AACBF /* Debug.h */; };
+		2A07BC932B0FCF590008B3A4 /* spine_skeleton_animation.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9D92B07B0B1009AACBF /* spine_skeleton_animation.h */; };
+		2A07BC942B0FCF590008B3A4 /* SpineString.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9342B07819F009AACBF /* SpineString.h */; };
+		2A07BC952B0FCF590008B3A4 /* Bone.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9382B07819F009AACBF /* Bone.h */; };
+		2A07BC962B0FCF590008B3A4 /* PathConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A96E2B0781A0009AACBF /* PathConstraint.h */; };
+		2A07BC982B0FCF590008B3A4 /* SkeletonClipping.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9722B0781A0009AACBF /* SkeletonClipping.h */; };
+		2A07BC992B0FCF590008B3A4 /* defines.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBE0A2B00BF430060E35C /* defines.h */; };
+		2A07BC9A2B0FCF590008B3A4 /* MathUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A93B2B07819F009AACBF /* MathUtil.h */; };
+		2A07BC9B2B0FCF590008B3A4 /* RTTI.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9322B07819F009AACBF /* RTTI.h */; };
+		2A07BC9C2B0FCF590008B3A4 /* input.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBE142B00BF430060E35C /* input.h */; };
+		2A07BC9D2B0FCF590008B3A4 /* Animation.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9552B0781A0009AACBF /* Animation.h */; };
+		2A07BC9E2B0FCF590008B3A4 /* AttachmentTimeline.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A96B2B0781A0009AACBF /* AttachmentTimeline.h */; };
+		2A07BC9F2B0FCF590008B3A4 /* HashMap.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9412B07819F009AACBF /* HashMap.h */; };
+		2A07BCA02B0FCF590008B3A4 /* AnimationState.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A92A2B07819F009AACBF /* AnimationState.h */; };
+		2A07BCA12B0FCF590008B3A4 /* Skin.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A95B2B0781A0009AACBF /* Skin.h */; };
+		2A07BCA32B0FCF590008B3A4 /* Sequence.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9462B0781A0009AACBF /* Sequence.h */; };
+		2A07BCA42B0FCF590008B3A4 /* vector2.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBE0D2B00BF430060E35C /* vector2.h */; };
+		2A07BCA52B0FCF590008B3A4 /* HasRendererObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9252B07819F009AACBF /* HasRendererObject.h */; };
+		2A07BCA62B0FCF590008B3A4 /* action_move.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBE842B00F4A30060E35C /* action_move.h */; };
+		2A07BCA82B0FCF590008B3A4 /* TextureLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9692B0781A0009AACBF /* TextureLoader.h */; };
+		2A07BCA92B0FCF590008B3A4 /* snowpulse.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBE2F2B00BF430060E35C /* snowpulse.h */; };
+		2A07BCAA2B0FCF590008B3A4 /* ScaleTimeline.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9662B0781A0009AACBF /* ScaleTimeline.h */; };
+		2A07BCAB2B0FCF590008B3A4 /* PositionMode.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A96F2B0781A0009AACBF /* PositionMode.h */; };
+		2A07BCAC2B0FCF590008B3A4 /* Json.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A92B2B07819F009AACBF /* Json.h */; };
+		2A07BCAD2B0FCF590008B3A4 /* TransformConstraintData.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9402B07819F009AACBF /* TransformConstraintData.h */; };
+		2A07BCAE2B0FCF590008B3A4 /* CurveTimeline.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9502B0781A0009AACBF /* CurveTimeline.h */; };
+		2A07BCAF2B0FCF590008B3A4 /* AnimationStateData.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A94E2B0781A0009AACBF /* AnimationStateData.h */; };
+		2A07BCB02B0FCF590008B3A4 /* PathAttachment.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A94C2B0781A0009AACBF /* PathAttachment.h */; };
+		2A07BCB12B0FCF590008B3A4 /* Color.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9432B0781A0009AACBF /* Color.h */; };
+		2A07BCB22B0FCF590008B3A4 /* drawable.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBDF32B00BF430060E35C /* drawable.h */; };
+		2A07BCB32B0FCF590008B3A4 /* action_rotate.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBE862B00F4A30060E35C /* action_rotate.h */; };
+		2A07BCB42B0FCF590008B3A4 /* spine.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A95A2B0781A0009AACBF /* spine.h */; };
+		2A07BCB52B0FCF590008B3A4 /* node.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBDF62B00BF430060E35C /* node.h */; };
+		2A07BCB62B0FCF590008B3A4 /* json.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBEB22B03E59A0060E35C /* json.hpp */; };
+		2A07BCB72B0FCF590008B3A4 /* application.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBE1F2B00BF430060E35C /* application.h */; };
+		2A07BCB82B0FCF590008B3A4 /* Vector.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9372B07819F009AACBF /* Vector.h */; };
+		2A07BCB92B0FCF590008B3A4 /* singleton.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBE0E2B00BF430060E35C /* singleton.h */; };
+		2A07BCBA2B0FCF590008B3A4 /* math_utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBE8D2B00F8DA0060E35C /* math_utils.h */; };
+		2A07BCBB2B0FCF590008B3A4 /* texture_filtering.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBE0F2B00BF430060E35C /* texture_filtering.h */; };
+		2A07BCBC2B0FCF590008B3A4 /* scene.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBE092B00BF430060E35C /* scene.h */; };
+		2A07BCBD2B0FCF590008B3A4 /* component.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBE062B00BF430060E35C /* component.h */; };
+		2A07BCBE2B0FCF590008B3A4 /* SequenceTimeline.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9452B0781A0009AACBF /* SequenceTimeline.h */; };
+		2A07BCBF2B0FCF590008B3A4 /* dll.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A93A2B07819F009AACBF /* dll.h */; };
+		2A07BCC02B0FCF590008B3A4 /* SkeletonBinary.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9712B0781A0009AACBF /* SkeletonBinary.h */; };
+		2A07BCC12B0FCF590008B3A4 /* VertexAttachment.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A94B2B0781A0009AACBF /* VertexAttachment.h */; };
+		2A07BCC22B0FCF590008B3A4 /* TranslateTimeline.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9362B07819F009AACBF /* TranslateTimeline.h */; };
+		2A07BCC32B0FCF590008B3A4 /* RotateTimeline.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A92C2B07819F009AACBF /* RotateTimeline.h */; };
+		2A07BCC42B0FCF590008B3A4 /* render_batch.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AEA1C502B0DC7A700AAD982 /* render_batch.h */; };
+		2A07BCC52B0FCF590008B3A4 /* sprite_renderer.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBDFB2B00BF430060E35C /* sprite_renderer.h */; };
+		2A07BCC72B0FCF590008B3A4 /* RotateMode.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9532B0781A0009AACBF /* RotateMode.h */; };
+		2A07BCC82B0FCF590008B3A4 /* Slot.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9682B0781A0009AACBF /* Slot.h */; };
+		2A07BCC92B0FCF590008B3A4 /* Updatable.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9242B07819F009AACBF /* Updatable.h */; };
+		2A07BCCA2B0FCF590008B3A4 /* json_utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBEB52B03E81D0060E35C /* json_utils.h */; };
+		2A07BCCB2B0FCF590008B3A4 /* PathConstraintPositionTimeline.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A93E2B07819F009AACBF /* PathConstraintPositionTimeline.h */; };
+		2A07BCCC2B0FCF590008B3A4 /* platform.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBE2E2B00BF430060E35C /* platform.h */; };
+		2A07BCCD2B0FCF590008B3A4 /* Timeline.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9542B0781A0009AACBF /* Timeline.h */; };
+		2A07BCCE2B0FCF590008B3A4 /* spine_texture_loader.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9DA2B07B0B1009AACBF /* spine_texture_loader.h */; };
+		2A07BCCF2B0FCF590008B3A4 /* Log.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9512B0781A0009AACBF /* Log.h */; };
+		2A07BCD02B0FCF590008B3A4 /* AttachmentType.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9602B0781A0009AACBF /* AttachmentType.h */; };
+		2A07BCD12B0FCF590008B3A4 /* PathConstraintSpacingTimeline.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A96D2B0781A0009AACBF /* PathConstraintSpacingTimeline.h */; };
+		2A07BCD22B0FCF590008B3A4 /* ClippingAttachment.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A93F2B07819F009AACBF /* ClippingAttachment.h */; };
+		2A07BCD32B0FCF590008B3A4 /* Atlas.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9622B0781A0009AACBF /* Atlas.h */; };
+		2A07BCD42B0FCF590008B3A4 /* IkConstraintData.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9582B0781A0009AACBF /* IkConstraintData.h */; };
+		2A07BCD52B0FCF590008B3A4 /* SlotData.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9292B07819F009AACBF /* SlotData.h */; };
+		2A07BCD62B0FCF590008B3A4 /* DrawOrderTimeline.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9442B0781A0009AACBF /* DrawOrderTimeline.h */; };
+		2A07BCD72B0FCF590008B3A4 /* game.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBDFD2B00BF430060E35C /* game.h */; };
+		2A07BCD82B0FCF590008B3A4 /* BlendMode.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9282B07819F009AACBF /* BlendMode.h */; };
+		2A07BCD92B0FCF590008B3A4 /* Version.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A93C2B07819F009AACBF /* Version.h */; };
+		2A07BCDA2B0FCF590008B3A4 /* game_object.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBDF52B00BF430060E35C /* game_object.h */; };
+		2A07BCDB2B0FCF590008B3A4 /* ConstraintData.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A93D2B07819F009AACBF /* ConstraintData.h */; };
+		2A07BCDC2B0FCF590008B3A4 /* AtlasAttachmentLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A92E2B07819F009AACBF /* AtlasAttachmentLoader.h */; };
+		2A07BCDD2B0FCF590008B3A4 /* EventTimeline.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A96C2B0781A0009AACBF /* EventTimeline.h */; };
+		2A07BCDE2B0FCF590008B3A4 /* spine_renderer.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9D42B078F77009AACBF /* spine_renderer.h */; };
+		2A07BCDF2B0FCF590008B3A4 /* TransformConstraintTimeline.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9352B07819F009AACBF /* TransformConstraintTimeline.h */; };
+		2A07BCE02B0FCF590008B3A4 /* Triangulator.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A95E2B0781A0009AACBF /* Triangulator.h */; };
+		2A07BCE12B0FCF590008B3A4 /* PathConstraintData.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A96A2B0781A0009AACBF /* PathConstraintData.h */; };
+		2A07BCE22B0FCF590008B3A4 /* Attachment.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9632B0781A0009AACBF /* Attachment.h */; };
+		2A07BCE42B0FCF590008B3A4 /* spine_texture_loader.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A9D72B07B0B1009AACBF /* spine_texture_loader.cc */; };
+		2A07BCE62B0FCF590008B3A4 /* SkeletonBinary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8CA2B078173009AACBF /* SkeletonBinary.cpp */; };
+		2A07BCE72B0FCF590008B3A4 /* ShearTimeline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8DF2B078173009AACBF /* ShearTimeline.cpp */; };
+		2A07BCE82B0FCF590008B3A4 /* AttachmentLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8BA2B078173009AACBF /* AttachmentLoader.cpp */; };
+		2A07BCE92B0FCF590008B3A4 /* Extension.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8D52B078173009AACBF /* Extension.cpp */; };
+		2A07BCEA2B0FCF590008B3A4 /* BoneData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8D12B078173009AACBF /* BoneData.cpp */; };
+		2A07BCEB2B0FCF590008B3A4 /* transform.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBDFA2B00BF430060E35C /* transform.cc */; };
+		2A07BCEC2B0FCF590008B3A4 /* LinkedMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8C32B078173009AACBF /* LinkedMesh.cpp */; };
+		2A07BCED2B0FCF590008B3A4 /* EventTimeline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8BB2B078173009AACBF /* EventTimeline.cpp */; };
+		2A07BCEE2B0FCF590008B3A4 /* Timeline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8CE2B078173009AACBF /* Timeline.cpp */; };
+		2A07BCEF2B0FCF590008B3A4 /* AnimationStateData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8D22B078173009AACBF /* AnimationStateData.cpp */; };
+		2A07BCF02B0FCF590008B3A4 /* PathConstraintSpacingTimeline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8B22B078173009AACBF /* PathConstraintSpacingTimeline.cpp */; };
+		2A07BCF12B0FCF590008B3A4 /* SequenceTimeline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8E22B078173009AACBF /* SequenceTimeline.cpp */; };
+		2A07BCF22B0FCF590008B3A4 /* IkConstraint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8B82B078173009AACBF /* IkConstraint.cpp */; };
+		2A07BCF32B0FCF590008B3A4 /* Event.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8D92B078173009AACBF /* Event.cpp */; };
+		2A07BCF42B0FCF590008B3A4 /* sprite_renderer.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBDF92B00BF430060E35C /* sprite_renderer.cc */; };
+		2A07BCF52B0FCF590008B3A4 /* PathConstraintMixTimeline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8BE2B078173009AACBF /* PathConstraintMixTimeline.cpp */; };
+		2A07BCF62B0FCF590008B3A4 /* application.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBE222B00BF430060E35C /* application.cc */; };
+		2A07BCF72B0FCF590008B3A4 /* Skeleton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8B92B078173009AACBF /* Skeleton.cpp */; };
+		2A07BCF82B0FCF590008B3A4 /* Atlas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8DB2B078173009AACBF /* Atlas.cpp */; };
+		2A07BCF92B0FCF590008B3A4 /* SkeletonClipping.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8C42B078173009AACBF /* SkeletonClipping.cpp */; };
+		2A07BCFA2B0FCF590008B3A4 /* Attachment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8DE2B078173009AACBF /* Attachment.cpp */; };
+		2A07BCFB2B0FCF590008B3A4 /* Sequence.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8C22B078173009AACBF /* Sequence.cpp */; };
+		2A07BCFC2B0FCF590008B3A4 /* MeshAttachment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8D42B078173009AACBF /* MeshAttachment.cpp */; };
+		2A07BCFD2B0FCF590008B3A4 /* SlotData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8BD2B078173009AACBF /* SlotData.cpp */; };
+		2A07BCFE2B0FCF590008B3A4 /* Updatable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8CF2B078173009AACBF /* Updatable.cpp */; };
+		2A07BCFF2B0FCF590008B3A4 /* Log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8E02B078173009AACBF /* Log.cpp */; };
+		2A07BD002B0FCF590008B3A4 /* IkConstraintTimeline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8A82B078173009AACBF /* IkConstraintTimeline.cpp */; };
+		2A07BD012B0FCF590008B3A4 /* Slot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8B42B078173009AACBF /* Slot.cpp */; };
+		2A07BD022B0FCF590008B3A4 /* node_starter.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBDF12B00BF430060E35C /* node_starter.cc */; };
+		2A07BD032B0FCF590008B3A4 /* RTTI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8BF2B078173009AACBF /* RTTI.cpp */; };
+		2A07BD042B0FCF590008B3A4 /* action.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBDFF2B00BF430060E35C /* action.cc */; };
+		2A07BD052B0FCF590008B3A4 /* ColorTimeline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8BC2B078173009AACBF /* ColorTimeline.cpp */; };
+		2A07BD062B0FCF590008B3A4 /* AttachmentTimeline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8CC2B078173009AACBF /* AttachmentTimeline.cpp */; };
+		2A07BD072B0FCF590008B3A4 /* ClippingAttachment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8A72B078173009AACBF /* ClippingAttachment.cpp */; };
+		2A07BD082B0FCF590008B3A4 /* VertexAttachment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8C02B078173009AACBF /* VertexAttachment.cpp */; };
+		2A07BD092B0FCF590008B3A4 /* AnimationState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8C72B078173009AACBF /* AnimationState.cpp */; };
+		2A07BD0A2B0FCF590008B3A4 /* PathAttachment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8CD2B078173009AACBF /* PathAttachment.cpp */; };
+		2A07BD0B2B0FCF590008B3A4 /* BoundingBoxAttachment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8C82B078173009AACBF /* BoundingBoxAttachment.cpp */; };
+		2A07BD0D2B0FCF590008B3A4 /* TransformConstraintData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8C52B078173009AACBF /* TransformConstraintData.cpp */; };
+		2A07BD0E2B0FCF590008B3A4 /* Bone.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8D72B078173009AACBF /* Bone.cpp */; };
+		2A07BD0F2B0FCF590008B3A4 /* camera.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBE202B00BF430060E35C /* camera.cc */; };
+		2A07BD102B0FCF590008B3A4 /* MathUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8C12B078173009AACBF /* MathUtil.cpp */; };
+		2A07BD112B0FCF590008B3A4 /* RotateTimeline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8D82B078173009AACBF /* RotateTimeline.cpp */; };
+		2A07BD122B0FCF590008B3A4 /* spine_skeleton_animation.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A9D82B07B0B1009AACBF /* spine_skeleton_animation.cc */; };
+		2A07BD132B0FCF590008B3A4 /* TextureLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8AD2B078173009AACBF /* TextureLoader.cpp */; };
+		2A07BD142B0FCF590008B3A4 /* AtlasAttachmentLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8B12B078173009AACBF /* AtlasAttachmentLoader.cpp */; };
+		2A07BD152B0FCF590008B3A4 /* Skin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8B52B078173009AACBF /* Skin.cpp */; };
+		2A07BD162B0FCF590008B3A4 /* timer.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBE252B00BF430060E35C /* timer.cc */; };
+		2A07BD172B0FCF590008B3A4 /* input.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBE232B00BF430060E35C /* input.cc */; };
+		2A07BD182B0FCF590008B3A4 /* spine_renderer.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A9D32B078F77009AACBF /* spine_renderer.cc */; };
+		2A07BD192B0FCF590008B3A4 /* PathConstraint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8E12B078173009AACBF /* PathConstraint.cpp */; };
+		2A07BD1A2B0FCF590008B3A4 /* SkeletonBounds.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8B32B078173009AACBF /* SkeletonBounds.cpp */; };
+		2A07BD1B2B0FCF590008B3A4 /* game.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBDFE2B00BF430060E35C /* game.cc */; };
+		2A07BD1D2B0FCF590008B3A4 /* TransformConstraint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8AF2B078173009AACBF /* TransformConstraint.cpp */; };
+		2A07BD1E2B0FCF590008B3A4 /* TranslateTimeline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8DC2B078173009AACBF /* TranslateTimeline.cpp */; };
+		2A07BD1F2B0FCF590008B3A4 /* Animation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8AB2B078173009AACBF /* Animation.cpp */; };
+		2A07BD202B0FCF590008B3A4 /* PathConstraintData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8D32B078173009AACBF /* PathConstraintData.cpp */; };
+		2A07BD212B0FCF590008B3A4 /* PathConstraintPositionTimeline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8DD2B078173009AACBF /* PathConstraintPositionTimeline.cpp */; };
+		2A07BD222B0FCF590008B3A4 /* DeformTimeline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8E32B078173009AACBF /* DeformTimeline.cpp */; };
+		2A07BD232B0FCF590008B3A4 /* ConstraintData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8DA2B078173009AACBF /* ConstraintData.cpp */; };
+		2A07BD242B0FCF590008B3A4 /* DrawOrderTimeline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8AE2B078173009AACBF /* DrawOrderTimeline.cpp */; };
+		2A07BD252B0FCF590008B3A4 /* Json.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8C92B078173009AACBF /* Json.cpp */; };
+		2A07BD262B0FCF590008B3A4 /* RegionAttachment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8B02B078173009AACBF /* RegionAttachment.cpp */; };
+		2A07BD272B0FCF590008B3A4 /* action_wait.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBE032B00BF430060E35C /* action_wait.cc */; };
+		2A07BD282B0FCF590008B3A4 /* node.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBDF22B00BF430060E35C /* node.cc */; };
+		2A07BD2A2B0FCF590008B3A4 /* game_object.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBDEF2B00BF430060E35C /* game_object.cc */; };
+		2A07BD2B2B0FCF590008B3A4 /* SkeletonData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8A62B078173009AACBF /* SkeletonData.cpp */; };
+		2A07BD2C2B0FCF590008B3A4 /* CurveTimeline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8B62B078173009AACBF /* CurveTimeline.cpp */; };
+		2A07BD2D2B0FCF590008B3A4 /* SkeletonJson.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8D02B078173009AACBF /* SkeletonJson.cpp */; };
+		2A07BD2E2B0FCF590008B3A4 /* Triangulator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8AA2B078173009AACBF /* Triangulator.cpp */; };
+		2A07BD2F2B0FCF590008B3A4 /* component.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBDF02B00BF430060E35C /* component.cc */; };
+		2A07BD302B0FCF590008B3A4 /* TransformConstraintTimeline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8D62B078173009AACBF /* TransformConstraintTimeline.cpp */; };
+		2A07BD312B0FCF590008B3A4 /* IkConstraintData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8AC2B078173009AACBF /* IkConstraintData.cpp */; };
+		2A07BD322B0FCF590008B3A4 /* action_manager.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBE042B00BF430060E35C /* action_manager.cc */; };
+		2A07BD332B0FCF590008B3A4 /* ScaleTimeline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8A92B078173009AACBF /* ScaleTimeline.cpp */; };
+		2A07BD342B0FCF590008B3A4 /* action_move.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBE852B00F4A30060E35C /* action_move.cc */; };
+		2A07BD352B0FCF590008B3A4 /* SpineObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8CB2B078173009AACBF /* SpineObject.cpp */; };
+		2A07BD372B0FCF590008B3A4 /* EventData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8C62B078173009AACBF /* EventData.cpp */; };
+		2A07BD382B0FCF590008B3A4 /* action_rotate.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBE832B00F4A30060E35C /* action_rotate.cc */; };
+		2A07BD392B0FCF590008B3A4 /* action_interpolate.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBEAD2B03DE680060E35C /* action_interpolate.cc */; };
+		2A07BD3A2B0FCF590008B3A4 /* PointAttachment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8B72B078173009AACBF /* PointAttachment.cpp */; };
+		2A07BD3B2B0FCF590008B3A4 /* scene.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBE052B00BF430060E35C /* scene.cc */; };
 		2A4FBE302B00BF430060E35C /* game_object.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBDEF2B00BF430060E35C /* game_object.cc */; };
 		2A4FBE312B00BF430060E35C /* component.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBDF02B00BF430060E35C /* component.cc */; };
 		2A4FBE322B00BF430060E35C /* node_starter.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBDF12B00BF430060E35C /* node_starter.cc */; };
@@ -79,15 +296,27 @@
 		2A4FBEB32B03E59A0060E35C /* json.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBEB22B03E59A0060E35C /* json.hpp */; };
 		2A4FBEB72B03E81D0060E35C /* json_utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBEB52B03E81D0060E35C /* json_utils.h */; };
 		2A66AAE32AFD541A003B4045 /* main.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A66AAE22AFD541A003B4045 /* main.cc */; };
+		2A8E087D2B0FCFCF0059112F /* libsnowpulse_macos.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AF938D92ABDC41900CC8BA2 /* libsnowpulse_macos.dylib */; };
+		2A8E087E2B0FCFCF0059112F /* libsnowpulse_macos.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 2AF938D92ABDC41900CC8BA2 /* libsnowpulse_macos.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		2A8E08812B0FCFDA0059112F /* libsnowpulse_ios.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A07BD462B0FCF590008B3A4 /* libsnowpulse_ios.dylib */; };
+		2A8E08822B0FCFDA0059112F /* libsnowpulse_ios.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 2A07BD462B0FCF590008B3A4 /* libsnowpulse_ios.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		2A8E08892B0FD1680059112F /* game.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBE782B00BF890060E35C /* game.h */; };
+		2A8E088A2B0FD1680059112F /* scene_level.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBE7A2B00BF890060E35C /* scene_level.h */; };
+		2A8E088B2B0FD1680059112F /* defines.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBE772B00BF890060E35C /* defines.h */; };
+		2A8E088D2B0FD1680059112F /* game.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBE792B00BF890060E35C /* game.cc */; };
+		2A8E088E2B0FD1680059112F /* scene_level.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBE7B2B00BF890060E35C /* scene_level.cc */; };
+		2A8E08972B0FD1790059112F /* libsnowpulse_ios.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A07BD462B0FCF590008B3A4 /* libsnowpulse_ios.dylib */; };
+		2A8E08982B0FD1790059112F /* libsnowpulse_ios.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 2A07BD462B0FCF590008B3A4 /* libsnowpulse_ios.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		2A8E089C2B0FD1890059112F /* libgame_ios.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A8E08962B0FD1680059112F /* libgame_ios.dylib */; };
+		2A8E089D2B0FD1890059112F /* libgame_ios.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 2A8E08962B0FD1680059112F /* libgame_ios.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		2A8E08A02B0FD2290059112F /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A07BD472B0FCF8A0008B3A4 /* OpenGLES.framework */; platformFilters = (ios, tvos, ); };
 		2AA2CA662ADD028000927E1B /* libglfw.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AA2CA652ADD027400927E1B /* libglfw.3.dylib */; };
-		2AA2CAA52ADD424F00927E1B /* libGame.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AA2CA842ADD3D8B00927E1B /* libGame.dylib */; };
-		2AA2CAAD2ADD491800927E1B /* libSnowpulse.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AF938D92ABDC41900CC8BA2 /* libSnowpulse.dylib */; };
+		2AA2CAA52ADD424F00927E1B /* libgame_macos.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AA2CA842ADD3D8B00927E1B /* libgame_macos.dylib */; };
+		2AA2CAAD2ADD491800927E1B /* libsnowpulse_macos.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AF938D92ABDC41900CC8BA2 /* libsnowpulse_macos.dylib */; };
 		2AA2CAB62ADD546B00927E1B /* libglfw.3.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 2AA2CA652ADD027400927E1B /* libglfw.3.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		2AA2CAB82ADD547800927E1B /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AA2CAB22ADD516200927E1B /* OpenGL.framework */; };
-		2AA2CAB92ADD547800927E1B /* OpenGL.framework in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 2AA2CAB22ADD516200927E1B /* OpenGL.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		2AA2CABA2ADD549000927E1B /* libGame.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 2AA2CA842ADD3D8B00927E1B /* libGame.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		2AA2CABC2ADD549100927E1B /* libSnowpulse.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 2AF938D92ABDC41900CC8BA2 /* libSnowpulse.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		2AA2CABD2ADD549600927E1B /* libSnowpulse.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 2AF938D92ABDC41900CC8BA2 /* libSnowpulse.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		2AA2CABA2ADD549000927E1B /* libgame_macos.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 2AA2CA842ADD3D8B00927E1B /* libgame_macos.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		2AA2CABD2ADD549600927E1B /* libsnowpulse_macos.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 2AF938D92ABDC41900CC8BA2 /* libsnowpulse_macos.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		2AA9A8E42B078173009AACBF /* SkeletonData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8A62B078173009AACBF /* SkeletonData.cpp */; };
 		2AA9A8E52B078173009AACBF /* ClippingAttachment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8A72B078173009AACBF /* ClippingAttachment.cpp */; };
 		2AA9A8E62B078173009AACBF /* IkConstraintTimeline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8A82B078173009AACBF /* IkConstraintTimeline.cpp */; };
@@ -245,7 +474,6 @@
 		2AEA1C512B0DC7A700AAD982 /* render_batch.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AEA1C502B0DC7A700AAD982 /* render_batch.h */; };
 		2AEA1C532B0DF36700AAD982 /* render_batch_type.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AEA1C522B0DF36700AAD982 /* render_batch_type.h */; };
 		2AEA1C552B0E004B00AAD982 /* render_batch_group_opengl.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AEA1C542B0E004B00AAD982 /* render_batch_group_opengl.h */; };
-		2AF938E82ABDDB8600CC8BA2 /* libSnowpulse.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AF938D92ABDC41900CC8BA2 /* libSnowpulse.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -263,9 +491,60 @@
 			remoteGlobalIDString = 2AF938D82ABDC41900CC8BA2;
 			remoteInfo = Snowpulse;
 		};
+		2A8E087F2B0FCFCF0059112F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2AF938AE2ABDC14D00CC8BA2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2AF938D82ABDC41900CC8BA2;
+			remoteInfo = snowpulse;
+		};
+		2A8E08832B0FCFDA0059112F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2AF938AE2ABDC14D00CC8BA2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2A07BC5B2B0FCF590008B3A4;
+			remoteInfo = snowpulse_ios;
+		};
+		2A8E08992B0FD1790059112F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2AF938AE2ABDC14D00CC8BA2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2A07BC5B2B0FCF590008B3A4;
+			remoteInfo = snowpulse_ios;
+		};
+		2A8E089E2B0FD1890059112F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2AF938AE2ABDC14D00CC8BA2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2A8E08852B0FD1680059112F;
+			remoteInfo = game_ios;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		2A07BC562B0FCB470008B3A4 /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				2A8E089D2B0FD1890059112F /* libgame_ios.dylib in Embed Libraries */,
+				2A8E08822B0FCFDA0059112F /* libsnowpulse_ios.dylib in Embed Libraries */,
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A8E089B2B0FD1790059112F /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				2A8E08982B0FD1790059112F /* libsnowpulse_ios.dylib in Embed Libraries */,
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2AA2CAB72ADD546B00927E1B /* Embed Libraries */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -273,7 +552,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				2AA2CAB62ADD546B00927E1B /* libglfw.3.dylib in Embed Libraries */,
-				2AA2CAB92ADD547800927E1B /* OpenGL.framework in Embed Libraries */,
 			);
 			name = "Embed Libraries";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,8 +562,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				2AA2CABA2ADD549000927E1B /* libGame.dylib in Embed Libraries */,
-				2AA2CABC2ADD549100927E1B /* libSnowpulse.dylib in Embed Libraries */,
+				2AA2CABA2ADD549000927E1B /* libgame_macos.dylib in Embed Libraries */,
+				2A8E087E2B0FCFCF0059112F /* libsnowpulse_macos.dylib in Embed Libraries */,
 			);
 			name = "Embed Libraries";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -296,7 +574,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				2AA2CABD2ADD549600927E1B /* libSnowpulse.dylib in Embed Libraries */,
+				2AA2CABD2ADD549600927E1B /* libsnowpulse_macos.dylib in Embed Libraries */,
 			);
 			name = "Embed Libraries";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -313,6 +591,20 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2A07BC392B0FC9DF0008B3A4 /* launcher_ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = launcher_ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A07BC3B2B0FC9DF0008B3A4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		2A07BC3C2B0FC9DF0008B3A4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		2A07BC3E2B0FC9DF0008B3A4 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		2A07BC3F2B0FC9DF0008B3A4 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
+		2A07BC412B0FC9DF0008B3A4 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		2A07BC422B0FC9DF0008B3A4 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		2A07BC452B0FC9DF0008B3A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2A07BC472B0FC9E00008B3A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2A07BC4A2B0FC9E00008B3A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2A07BC4C2B0FC9E00008B3A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2A07BC4D2B0FC9E00008B3A4 /* main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
+		2A07BD462B0FCF590008B3A4 /* libsnowpulse_ios.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libsnowpulse_ios.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A07BD472B0FCF8A0008B3A4 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS16.4.sdk/System/Library/Frameworks/OpenGLES.framework; sourceTree = DEVELOPER_DIR; };
 		2A4FBDEF2B00BF430060E35C /* game_object.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_object.cc; sourceTree = "<group>"; };
 		2A4FBDF02B00BF430060E35C /* component.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = component.cc; sourceTree = "<group>"; };
 		2A4FBDF12B00BF430060E35C /* node_starter.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = node_starter.cc; sourceTree = "<group>"; };
@@ -385,6 +677,7 @@
 		2A4FBEB22B03E59A0060E35C /* json.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = json.hpp; path = "../thirdparty/nlohmann-json/json.hpp"; sourceTree = "<group>"; };
 		2A4FBEB52B03E81D0060E35C /* json_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json_utils.h; sourceTree = "<group>"; };
 		2A66AAE22AFD541A003B4045 /* main.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cc; sourceTree = "<group>"; };
+		2A8E08962B0FD1680059112F /* libgame_ios.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libgame_ios.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AA2CA492ADCFED700927E1B /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.a; path = "../thirdparty/glfw-3.3.8/lib-mingw-w64/libglfw3.a"; sourceTree = "<group>"; };
 		2AA2CA4B2ADCFF2700927E1B /* libglfw3dll.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3dll.a; path = "../thirdparty/glfw-3.3.8/lib-mingw-w64/libglfw3dll.a"; sourceTree = "<group>"; };
 		2AA2CA502ADD006E00927E1B /* libglfw.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.dylib; path = "../thirdparty/glfw-3.3.8/lib-universal/libglfw.3.dylib"; sourceTree = "<group>"; };
@@ -393,7 +686,7 @@
 		2AA2CA5E2ADD01A300927E1B /* libglfw.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.dylib; path = "../thirdparty/glfw-3.3.8/lib-x86_64/libglfw.3.dylib"; sourceTree = "<group>"; };
 		2AA2CA642ADD027400927E1B /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libglfw3.a; sourceTree = "<group>"; };
 		2AA2CA652ADD027400927E1B /* libglfw.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libglfw.3.dylib; sourceTree = "<group>"; };
-		2AA2CA842ADD3D8B00927E1B /* libGame.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libGame.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		2AA2CA842ADD3D8B00927E1B /* libgame_macos.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libgame_macos.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AA2CAB22ADD516200927E1B /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		2AA9A8A62B078173009AACBF /* SkeletonData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SkeletonData.cpp; path = "../thirdparty/spine-cpp/src/spine/SkeletonData.cpp"; sourceTree = "<group>"; };
 		2AA9A8A72B078173009AACBF /* ClippingAttachment.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ClippingAttachment.cpp; path = "../thirdparty/spine-cpp/src/spine/ClippingAttachment.cpp"; sourceTree = "<group>"; };
@@ -552,16 +845,41 @@
 		2AEA1C502B0DC7A700AAD982 /* render_batch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = render_batch.h; sourceTree = "<group>"; };
 		2AEA1C522B0DF36700AAD982 /* render_batch_type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = render_batch_type.h; sourceTree = "<group>"; };
 		2AEA1C542B0E004B00AAD982 /* render_batch_group_opengl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = render_batch_group_opengl.h; path = opengl/render_batch_group_opengl.h; sourceTree = "<group>"; };
-		2AF938CE2ABDC3A000CC8BA2 /* Launcher */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Launcher; sourceTree = BUILT_PRODUCTS_DIR; };
-		2AF938D92ABDC41900CC8BA2 /* libSnowpulse.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libSnowpulse.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		2AF938CE2ABDC3A000CC8BA2 /* launcher_macos */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = launcher_macos; sourceTree = BUILT_PRODUCTS_DIR; };
+		2AF938D92ABDC41900CC8BA2 /* libsnowpulse_macos.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libsnowpulse_macos.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2A07BC362B0FC9DF0008B3A4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A8E089C2B0FD1890059112F /* libgame_ios.dylib in Frameworks */,
+				2A8E08812B0FCFDA0059112F /* libsnowpulse_ios.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A07BD3D2B0FCF590008B3A4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A8E08A02B0FD2290059112F /* OpenGLES.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A8E088F2B0FD1680059112F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A8E08972B0FD1790059112F /* libsnowpulse_ios.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2AA2CA822ADD3D8B00927E1B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2AA2CAAD2ADD491800927E1B /* libSnowpulse.dylib in Frameworks */,
+				2AA2CAAD2ADD491800927E1B /* libsnowpulse_macos.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -569,8 +887,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2AF938E82ABDDB8600CC8BA2 /* libSnowpulse.dylib in Frameworks */,
-				2AA2CAA52ADD424F00927E1B /* libGame.dylib in Frameworks */,
+				2AA2CAA52ADD424F00927E1B /* libgame_macos.dylib in Frameworks */,
+				2A8E087D2B0FCFCF0059112F /* libsnowpulse_macos.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -586,6 +904,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A07BC3A2B0FC9DF0008B3A4 /* launcher_ios */ = {
+			isa = PBXGroup;
+			children = (
+				2A07BC3B2B0FC9DF0008B3A4 /* AppDelegate.h */,
+				2A07BC3C2B0FC9DF0008B3A4 /* AppDelegate.m */,
+				2A07BC3E2B0FC9DF0008B3A4 /* SceneDelegate.h */,
+				2A07BC3F2B0FC9DF0008B3A4 /* SceneDelegate.m */,
+				2A07BC412B0FC9DF0008B3A4 /* ViewController.h */,
+				2A07BC422B0FC9DF0008B3A4 /* ViewController.m */,
+				2A07BC442B0FC9DF0008B3A4 /* Main.storyboard */,
+				2A07BC472B0FC9E00008B3A4 /* Assets.xcassets */,
+				2A07BC492B0FC9E00008B3A4 /* LaunchScreen.storyboard */,
+				2A07BC4C2B0FC9E00008B3A4 /* Info.plist */,
+				2A07BC4D2B0FC9E00008B3A4 /* main.mm */,
+			);
+			path = launcher_ios;
+			sourceTree = "<group>";
+		};
 		2A4FBDED2B00BF430060E35C /* snowpulse */ = {
 			isa = PBXGroup;
 			children = (
@@ -754,12 +1090,12 @@
 			name = "nlohmann-json";
 			sourceTree = "<group>";
 		};
-		2A66AAE12AFD541A003B4045 /* launcher */ = {
+		2A66AAE12AFD541A003B4045 /* launcher_macos */ = {
 			isa = PBXGroup;
 			children = (
 				2A66AAE22AFD541A003B4045 /* main.cc */,
 			);
-			path = launcher;
+			path = launcher_macos;
 			sourceTree = "<group>";
 		};
 		2AA2CA632ADD027400927E1B /* lib-universal */ = {
@@ -981,7 +1317,8 @@
 			children = (
 				2A4FBDED2B00BF430060E35C /* snowpulse */,
 				2A4FBE762B00BF890060E35C /* game */,
-				2A66AAE12AFD541A003B4045 /* launcher */,
+				2A66AAE12AFD541A003B4045 /* launcher_macos */,
+				2A07BC3A2B0FC9DF0008B3A4 /* launcher_ios */,
 				2AF938E62ABDDB5F00CC8BA2 /* Frameworks */,
 				2AF938B72ABDC14D00CC8BA2 /* Products */,
 			);
@@ -990,9 +1327,12 @@
 		2AF938B72ABDC14D00CC8BA2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2AF938CE2ABDC3A000CC8BA2 /* Launcher */,
-				2AF938D92ABDC41900CC8BA2 /* libSnowpulse.dylib */,
-				2AA2CA842ADD3D8B00927E1B /* libGame.dylib */,
+				2AF938CE2ABDC3A000CC8BA2 /* launcher_macos */,
+				2AF938D92ABDC41900CC8BA2 /* libsnowpulse_macos.dylib */,
+				2AA2CA842ADD3D8B00927E1B /* libgame_macos.dylib */,
+				2A07BC392B0FC9DF0008B3A4 /* launcher_ios.app */,
+				2A07BD462B0FCF590008B3A4 /* libsnowpulse_ios.dylib */,
+				2A8E08962B0FD1680059112F /* libgame_ios.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1000,6 +1340,7 @@
 		2AF938E62ABDDB5F00CC8BA2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2A07BD472B0FCF8A0008B3A4 /* OpenGLES.framework */,
 				2AA2CAB22ADD516200927E1B /* OpenGL.framework */,
 				2AA2CA632ADD027400927E1B /* lib-universal */,
 				2AA2CA5E2ADD01A300927E1B /* libglfw.3.dylib */,
@@ -1015,6 +1356,150 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		2A07BC5C2B0FCF590008B3A4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A07BC5D2B0FCF590008B3A4 /* PathConstraintMixTimeline.h in Headers */,
+				2A07BC5E2B0FCF590008B3A4 /* Extension.h in Headers */,
+				2A07BC5F2B0FCF590008B3A4 /* MeshAttachment.h in Headers */,
+				2A07BC612B0FCF590008B3A4 /* IkConstraint.h in Headers */,
+				2A07BC622B0FCF590008B3A4 /* SkeletonData.h in Headers */,
+				2A07BC632B0FCF590008B3A4 /* SpineObject.h in Headers */,
+				2A07BC642B0FCF590008B3A4 /* RegionAttachment.h in Headers */,
+				2A07BC652B0FCF590008B3A4 /* node_starter.h in Headers */,
+				2A07BC662B0FCF590008B3A4 /* action_wait.h in Headers */,
+				2A07BC682B0FCF590008B3A4 /* TextureRegion.h in Headers */,
+				2A07BC692B0FCF590008B3A4 /* Skeleton.h in Headers */,
+				2A07BC6A2B0FCF590008B3A4 /* transform.h in Headers */,
+				2A07BC6B2B0FCF590008B3A4 /* render_batch_type.h in Headers */,
+				2A07BC6C2B0FCF590008B3A4 /* updatable.h in Headers */,
+				2A07BC6D2B0FCF590008B3A4 /* easing.h in Headers */,
+				2A07BC6E2B0FCF590008B3A4 /* vertex.h in Headers */,
+				2A07BC6F2B0FCF590008B3A4 /* Pool.h in Headers */,
+				2A07BC702B0FCF590008B3A4 /* BoundingBoxAttachment.h in Headers */,
+				2A07BC712B0FCF590008B3A4 /* EventData.h in Headers */,
+				2A07BC722B0FCF590008B3A4 /* ShearTimeline.h in Headers */,
+				2A07BC732B0FCF590008B3A4 /* TransformMode.h in Headers */,
+				2A07BC742B0FCF590008B3A4 /* Vertices.h in Headers */,
+				2A07BC752B0FCF590008B3A4 /* IkConstraintTimeline.h in Headers */,
+				2A07BC762B0FCF590008B3A4 /* action_interpolate.h in Headers */,
+				2A07BC772B0FCF590008B3A4 /* ColorTimeline.h in Headers */,
+				2A07BC782B0FCF590008B3A4 /* space.h in Headers */,
+				2A07BC7A2B0FCF590008B3A4 /* SpacingMode.h in Headers */,
+				2A07BC7B2B0FCF590008B3A4 /* MixBlend.h in Headers */,
+				2A07BC7C2B0FCF590008B3A4 /* DeformTimeline.h in Headers */,
+				2A07BC7D2B0FCF590008B3A4 /* vector2int.h in Headers */,
+				2A07BC7E2B0FCF590008B3A4 /* camera.h in Headers */,
+				2A07BC7F2B0FCF590008B3A4 /* MixDirection.h in Headers */,
+				2A07BC802B0FCF590008B3A4 /* SkeletonJson.h in Headers */,
+				2A07BC812B0FCF590008B3A4 /* color.h in Headers */,
+				2A07BC822B0FCF590008B3A4 /* Property.h in Headers */,
+				2A07BC832B0FCF590008B3A4 /* blend_mode.h in Headers */,
+				2A07BC842B0FCF590008B3A4 /* AttachmentLoader.h in Headers */,
+				2A07BC852B0FCF590008B3A4 /* action_manager.h in Headers */,
+				2A07BC862B0FCF590008B3A4 /* LinkedMesh.h in Headers */,
+				2A07BC872B0FCF590008B3A4 /* Event.h in Headers */,
+				2A07BC882B0FCF590008B3A4 /* timer.h in Headers */,
+				2A07BC892B0FCF590008B3A4 /* vector3.h in Headers */,
+				2A07BC8A2B0FCF590008B3A4 /* ContainerUtil.h in Headers */,
+				2A07BC8B2B0FCF590008B3A4 /* BoneData.h in Headers */,
+				2A07BC8C2B0FCF590008B3A4 /* SkeletonBounds.h in Headers */,
+				2A07BC8D2B0FCF590008B3A4 /* action.h in Headers */,
+				2A07BC8E2B0FCF590008B3A4 /* TransformConstraint.h in Headers */,
+				2A07BC8F2B0FCF590008B3A4 /* matrix4x4.h in Headers */,
+				2A07BC902B0FCF590008B3A4 /* PointAttachment.h in Headers */,
+				2A07BC912B0FCF590008B3A4 /* graphics.h in Headers */,
+				2A07BC922B0FCF590008B3A4 /* Debug.h in Headers */,
+				2A07BC932B0FCF590008B3A4 /* spine_skeleton_animation.h in Headers */,
+				2A07BC942B0FCF590008B3A4 /* SpineString.h in Headers */,
+				2A07BC952B0FCF590008B3A4 /* Bone.h in Headers */,
+				2A07BC962B0FCF590008B3A4 /* PathConstraint.h in Headers */,
+				2A07BC982B0FCF590008B3A4 /* SkeletonClipping.h in Headers */,
+				2A07BC992B0FCF590008B3A4 /* defines.h in Headers */,
+				2A07BC9A2B0FCF590008B3A4 /* MathUtil.h in Headers */,
+				2A07BC9B2B0FCF590008B3A4 /* RTTI.h in Headers */,
+				2A07BC9C2B0FCF590008B3A4 /* input.h in Headers */,
+				2A07BC9D2B0FCF590008B3A4 /* Animation.h in Headers */,
+				2A07BC9E2B0FCF590008B3A4 /* AttachmentTimeline.h in Headers */,
+				2A07BC9F2B0FCF590008B3A4 /* HashMap.h in Headers */,
+				2A07BCA02B0FCF590008B3A4 /* AnimationState.h in Headers */,
+				2A07BCA12B0FCF590008B3A4 /* Skin.h in Headers */,
+				2A07BCA32B0FCF590008B3A4 /* Sequence.h in Headers */,
+				2A07BCA42B0FCF590008B3A4 /* vector2.h in Headers */,
+				2A07BCA52B0FCF590008B3A4 /* HasRendererObject.h in Headers */,
+				2A07BCA62B0FCF590008B3A4 /* action_move.h in Headers */,
+				2A07BCA82B0FCF590008B3A4 /* TextureLoader.h in Headers */,
+				2A07BCA92B0FCF590008B3A4 /* snowpulse.h in Headers */,
+				2A07BCAA2B0FCF590008B3A4 /* ScaleTimeline.h in Headers */,
+				2A07BCAB2B0FCF590008B3A4 /* PositionMode.h in Headers */,
+				2A07BCAC2B0FCF590008B3A4 /* Json.h in Headers */,
+				2A07BCAD2B0FCF590008B3A4 /* TransformConstraintData.h in Headers */,
+				2A07BCAE2B0FCF590008B3A4 /* CurveTimeline.h in Headers */,
+				2A07BCAF2B0FCF590008B3A4 /* AnimationStateData.h in Headers */,
+				2A07BCB02B0FCF590008B3A4 /* PathAttachment.h in Headers */,
+				2A07BCB12B0FCF590008B3A4 /* Color.h in Headers */,
+				2A07BCB22B0FCF590008B3A4 /* drawable.h in Headers */,
+				2A07BCB32B0FCF590008B3A4 /* action_rotate.h in Headers */,
+				2A07BCB42B0FCF590008B3A4 /* spine.h in Headers */,
+				2A07BCB52B0FCF590008B3A4 /* node.h in Headers */,
+				2A07BCB62B0FCF590008B3A4 /* json.hpp in Headers */,
+				2A07BCB72B0FCF590008B3A4 /* application.h in Headers */,
+				2A07BCB82B0FCF590008B3A4 /* Vector.h in Headers */,
+				2A07BCB92B0FCF590008B3A4 /* singleton.h in Headers */,
+				2A07BCBA2B0FCF590008B3A4 /* math_utils.h in Headers */,
+				2A07BCBB2B0FCF590008B3A4 /* texture_filtering.h in Headers */,
+				2A07BCBC2B0FCF590008B3A4 /* scene.h in Headers */,
+				2A07BCBD2B0FCF590008B3A4 /* component.h in Headers */,
+				2A07BCBE2B0FCF590008B3A4 /* SequenceTimeline.h in Headers */,
+				2A07BCBF2B0FCF590008B3A4 /* dll.h in Headers */,
+				2A07BCC02B0FCF590008B3A4 /* SkeletonBinary.h in Headers */,
+				2A07BCC12B0FCF590008B3A4 /* VertexAttachment.h in Headers */,
+				2A07BCC22B0FCF590008B3A4 /* TranslateTimeline.h in Headers */,
+				2A07BCC32B0FCF590008B3A4 /* RotateTimeline.h in Headers */,
+				2A07BCC42B0FCF590008B3A4 /* render_batch.h in Headers */,
+				2A07BCC52B0FCF590008B3A4 /* sprite_renderer.h in Headers */,
+				2A07BCC72B0FCF590008B3A4 /* RotateMode.h in Headers */,
+				2A07BCC82B0FCF590008B3A4 /* Slot.h in Headers */,
+				2A07BCC92B0FCF590008B3A4 /* Updatable.h in Headers */,
+				2A07BCCA2B0FCF590008B3A4 /* json_utils.h in Headers */,
+				2A07BCCB2B0FCF590008B3A4 /* PathConstraintPositionTimeline.h in Headers */,
+				2A07BCCC2B0FCF590008B3A4 /* platform.h in Headers */,
+				2A07BCCD2B0FCF590008B3A4 /* Timeline.h in Headers */,
+				2A07BCCE2B0FCF590008B3A4 /* spine_texture_loader.h in Headers */,
+				2A07BCCF2B0FCF590008B3A4 /* Log.h in Headers */,
+				2A07BCD02B0FCF590008B3A4 /* AttachmentType.h in Headers */,
+				2A07BCD12B0FCF590008B3A4 /* PathConstraintSpacingTimeline.h in Headers */,
+				2A07BCD22B0FCF590008B3A4 /* ClippingAttachment.h in Headers */,
+				2A07BCD32B0FCF590008B3A4 /* Atlas.h in Headers */,
+				2A07BCD42B0FCF590008B3A4 /* IkConstraintData.h in Headers */,
+				2A07BCD52B0FCF590008B3A4 /* SlotData.h in Headers */,
+				2A07BCD62B0FCF590008B3A4 /* DrawOrderTimeline.h in Headers */,
+				2A07BCD72B0FCF590008B3A4 /* game.h in Headers */,
+				2A07BCD82B0FCF590008B3A4 /* BlendMode.h in Headers */,
+				2A07BCD92B0FCF590008B3A4 /* Version.h in Headers */,
+				2A07BCDA2B0FCF590008B3A4 /* game_object.h in Headers */,
+				2A07BCDB2B0FCF590008B3A4 /* ConstraintData.h in Headers */,
+				2A07BCDC2B0FCF590008B3A4 /* AtlasAttachmentLoader.h in Headers */,
+				2A07BCDD2B0FCF590008B3A4 /* EventTimeline.h in Headers */,
+				2A07BCDE2B0FCF590008B3A4 /* spine_renderer.h in Headers */,
+				2A07BCDF2B0FCF590008B3A4 /* TransformConstraintTimeline.h in Headers */,
+				2A07BCE02B0FCF590008B3A4 /* Triangulator.h in Headers */,
+				2A07BCE12B0FCF590008B3A4 /* PathConstraintData.h in Headers */,
+				2A07BCE22B0FCF590008B3A4 /* Attachment.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A8E08882B0FD1680059112F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A8E08892B0FD1680059112F /* game.h in Headers */,
+				2A8E088A2B0FD1680059112F /* scene_level.h in Headers */,
+				2A8E088B2B0FD1680059112F /* defines.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2AA2CA802ADD3D8B00927E1B /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -1169,9 +1654,65 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		2AA2CA832ADD3D8B00927E1B /* Game */ = {
+		2A07BC382B0FC9DF0008B3A4 /* launcher_ios */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2AA2CA8C2ADD3D8B00927E1B /* Build configuration list for PBXNativeTarget "Game" */;
+			buildConfigurationList = 2A07BC512B0FC9E00008B3A4 /* Build configuration list for PBXNativeTarget "launcher_ios" */;
+			buildPhases = (
+				2A07BC352B0FC9DF0008B3A4 /* Sources */,
+				2A07BC362B0FC9DF0008B3A4 /* Frameworks */,
+				2A07BC372B0FC9DF0008B3A4 /* Resources */,
+				2A07BC562B0FCB470008B3A4 /* Embed Libraries */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2A8E08842B0FCFDA0059112F /* PBXTargetDependency */,
+				2A8E089F2B0FD1890059112F /* PBXTargetDependency */,
+			);
+			name = launcher_ios;
+			productName = launcher_ios;
+			productReference = 2A07BC392B0FC9DF0008B3A4 /* launcher_ios.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2A07BC5B2B0FCF590008B3A4 /* snowpulse_ios */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2A07BD432B0FCF590008B3A4 /* Build configuration list for PBXNativeTarget "snowpulse_ios" */;
+			buildPhases = (
+				2A07BC5C2B0FCF590008B3A4 /* Headers */,
+				2A07BCE32B0FCF590008B3A4 /* Sources */,
+				2A07BD3D2B0FCF590008B3A4 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = snowpulse_ios;
+			productName = Snowpulse;
+			productReference = 2A07BD462B0FCF590008B3A4 /* libsnowpulse_ios.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+		2A8E08852B0FD1680059112F /* game_ios */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2A8E08932B0FD1680059112F /* Build configuration list for PBXNativeTarget "game_ios" */;
+			buildPhases = (
+				2A8E08882B0FD1680059112F /* Headers */,
+				2A8E088C2B0FD1680059112F /* Sources */,
+				2A8E088F2B0FD1680059112F /* Frameworks */,
+				2A8E089B2B0FD1790059112F /* Embed Libraries */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2A8E089A2B0FD1790059112F /* PBXTargetDependency */,
+			);
+			name = game_ios;
+			productName = Game;
+			productReference = 2A8E08962B0FD1680059112F /* libgame_ios.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+		2AA2CA832ADD3D8B00927E1B /* game_macos */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2AA2CA8C2ADD3D8B00927E1B /* Build configuration list for PBXNativeTarget "game_macos" */;
 			buildPhases = (
 				2AA2CA802ADD3D8B00927E1B /* Headers */,
 				2AA2CA812ADD3D8B00927E1B /* Sources */,
@@ -1183,14 +1724,14 @@
 			dependencies = (
 				2A8A81812ADED1E900F60C05 /* PBXTargetDependency */,
 			);
-			name = Game;
+			name = game_macos;
 			productName = Game;
-			productReference = 2AA2CA842ADD3D8B00927E1B /* libGame.dylib */;
+			productReference = 2AA2CA842ADD3D8B00927E1B /* libgame_macos.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
-		2AF938CD2ABDC3A000CC8BA2 /* Launcher */ = {
+		2AF938CD2ABDC3A000CC8BA2 /* launcher_macos */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2AF938D22ABDC3A000CC8BA2 /* Build configuration list for PBXNativeTarget "Launcher" */;
+			buildConfigurationList = 2AF938D22ABDC3A000CC8BA2 /* Build configuration list for PBXNativeTarget "launcher_macos" */;
 			buildPhases = (
 				2AF938CA2ABDC3A000CC8BA2 /* Sources */,
 				2AF938CB2ABDC3A000CC8BA2 /* Frameworks */,
@@ -1201,15 +1742,16 @@
 			);
 			dependencies = (
 				2A8A817D2ADED1D900F60C05 /* PBXTargetDependency */,
+				2A8E08802B0FCFCF0059112F /* PBXTargetDependency */,
 			);
-			name = Launcher;
+			name = launcher_macos;
 			productName = Launcher;
-			productReference = 2AF938CE2ABDC3A000CC8BA2 /* Launcher */;
+			productReference = 2AF938CE2ABDC3A000CC8BA2 /* launcher_macos */;
 			productType = "com.apple.product-type.tool";
 		};
-		2AF938D82ABDC41900CC8BA2 /* Snowpulse */ = {
+		2AF938D82ABDC41900CC8BA2 /* snowpulse_macos */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2AF938E12ABDC41900CC8BA2 /* Build configuration list for PBXNativeTarget "Snowpulse" */;
+			buildConfigurationList = 2AF938E12ABDC41900CC8BA2 /* Build configuration list for PBXNativeTarget "snowpulse_macos" */;
 			buildPhases = (
 				2AF938D52ABDC41900CC8BA2 /* Headers */,
 				2AF938D62ABDC41900CC8BA2 /* Sources */,
@@ -1220,9 +1762,9 @@
 			);
 			dependencies = (
 			);
-			name = Snowpulse;
+			name = snowpulse_macos;
 			productName = Snowpulse;
-			productReference = 2AF938D92ABDC41900CC8BA2 /* libSnowpulse.dylib */;
+			productReference = 2AF938D92ABDC41900CC8BA2 /* libsnowpulse_macos.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 /* End PBXNativeTarget section */
@@ -1234,6 +1776,9 @@
 				BuildIndependentTargetsInParallel = 1;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					2A07BC382B0FC9DF0008B3A4 = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
 					2AA2CA832ADD3D8B00927E1B = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
@@ -1258,14 +1803,140 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2AF938CD2ABDC3A000CC8BA2 /* Launcher */,
-				2AF938D82ABDC41900CC8BA2 /* Snowpulse */,
-				2AA2CA832ADD3D8B00927E1B /* Game */,
+				2AF938CD2ABDC3A000CC8BA2 /* launcher_macos */,
+				2A07BC382B0FC9DF0008B3A4 /* launcher_ios */,
+				2AF938D82ABDC41900CC8BA2 /* snowpulse_macos */,
+				2A07BC5B2B0FCF590008B3A4 /* snowpulse_ios */,
+				2AA2CA832ADD3D8B00927E1B /* game_macos */,
+				2A8E08852B0FD1680059112F /* game_ios */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		2A07BC372B0FC9DF0008B3A4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A07BC4B2B0FC9E00008B3A4 /* LaunchScreen.storyboard in Resources */,
+				2A07BC482B0FC9E00008B3A4 /* Assets.xcassets in Resources */,
+				2A07BC462B0FC9DF0008B3A4 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		2A07BC352B0FC9DF0008B3A4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A07BC432B0FC9DF0008B3A4 /* ViewController.m in Sources */,
+				2A07BC3D2B0FC9DF0008B3A4 /* AppDelegate.m in Sources */,
+				2A07BC4E2B0FC9E00008B3A4 /* main.mm in Sources */,
+				2A07BC402B0FC9DF0008B3A4 /* SceneDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A07BCE32B0FCF590008B3A4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A07BCE42B0FCF590008B3A4 /* spine_texture_loader.cc in Sources */,
+				2A07BCE62B0FCF590008B3A4 /* SkeletonBinary.cpp in Sources */,
+				2A07BCE72B0FCF590008B3A4 /* ShearTimeline.cpp in Sources */,
+				2A07BCE82B0FCF590008B3A4 /* AttachmentLoader.cpp in Sources */,
+				2A07BCE92B0FCF590008B3A4 /* Extension.cpp in Sources */,
+				2A07BCEA2B0FCF590008B3A4 /* BoneData.cpp in Sources */,
+				2A07BCEB2B0FCF590008B3A4 /* transform.cc in Sources */,
+				2A07BCEC2B0FCF590008B3A4 /* LinkedMesh.cpp in Sources */,
+				2A07BCED2B0FCF590008B3A4 /* EventTimeline.cpp in Sources */,
+				2A07BCEE2B0FCF590008B3A4 /* Timeline.cpp in Sources */,
+				2A07BCEF2B0FCF590008B3A4 /* AnimationStateData.cpp in Sources */,
+				2A07BCF02B0FCF590008B3A4 /* PathConstraintSpacingTimeline.cpp in Sources */,
+				2A07BCF12B0FCF590008B3A4 /* SequenceTimeline.cpp in Sources */,
+				2A07BCF22B0FCF590008B3A4 /* IkConstraint.cpp in Sources */,
+				2A07BCF32B0FCF590008B3A4 /* Event.cpp in Sources */,
+				2A07BCF42B0FCF590008B3A4 /* sprite_renderer.cc in Sources */,
+				2A07BCF52B0FCF590008B3A4 /* PathConstraintMixTimeline.cpp in Sources */,
+				2A07BCF62B0FCF590008B3A4 /* application.cc in Sources */,
+				2A07BCF72B0FCF590008B3A4 /* Skeleton.cpp in Sources */,
+				2A07BCF82B0FCF590008B3A4 /* Atlas.cpp in Sources */,
+				2A07BCF92B0FCF590008B3A4 /* SkeletonClipping.cpp in Sources */,
+				2A07BCFA2B0FCF590008B3A4 /* Attachment.cpp in Sources */,
+				2A07BCFB2B0FCF590008B3A4 /* Sequence.cpp in Sources */,
+				2A07BCFC2B0FCF590008B3A4 /* MeshAttachment.cpp in Sources */,
+				2A07BCFD2B0FCF590008B3A4 /* SlotData.cpp in Sources */,
+				2A07BCFE2B0FCF590008B3A4 /* Updatable.cpp in Sources */,
+				2A07BCFF2B0FCF590008B3A4 /* Log.cpp in Sources */,
+				2A07BD002B0FCF590008B3A4 /* IkConstraintTimeline.cpp in Sources */,
+				2A07BD012B0FCF590008B3A4 /* Slot.cpp in Sources */,
+				2A07BD022B0FCF590008B3A4 /* node_starter.cc in Sources */,
+				2A07BD032B0FCF590008B3A4 /* RTTI.cpp in Sources */,
+				2A07BD042B0FCF590008B3A4 /* action.cc in Sources */,
+				2A07BD052B0FCF590008B3A4 /* ColorTimeline.cpp in Sources */,
+				2A07BD062B0FCF590008B3A4 /* AttachmentTimeline.cpp in Sources */,
+				2A07BD072B0FCF590008B3A4 /* ClippingAttachment.cpp in Sources */,
+				2A07BD082B0FCF590008B3A4 /* VertexAttachment.cpp in Sources */,
+				2A07BD092B0FCF590008B3A4 /* AnimationState.cpp in Sources */,
+				2A07BD0A2B0FCF590008B3A4 /* PathAttachment.cpp in Sources */,
+				2A07BD0B2B0FCF590008B3A4 /* BoundingBoxAttachment.cpp in Sources */,
+				2A07BD0D2B0FCF590008B3A4 /* TransformConstraintData.cpp in Sources */,
+				2A07BD0E2B0FCF590008B3A4 /* Bone.cpp in Sources */,
+				2A07BD0F2B0FCF590008B3A4 /* camera.cc in Sources */,
+				2A07BD102B0FCF590008B3A4 /* MathUtil.cpp in Sources */,
+				2A07BD112B0FCF590008B3A4 /* RotateTimeline.cpp in Sources */,
+				2A07BD122B0FCF590008B3A4 /* spine_skeleton_animation.cc in Sources */,
+				2A07BD132B0FCF590008B3A4 /* TextureLoader.cpp in Sources */,
+				2A07BD142B0FCF590008B3A4 /* AtlasAttachmentLoader.cpp in Sources */,
+				2A07BD152B0FCF590008B3A4 /* Skin.cpp in Sources */,
+				2A07BD162B0FCF590008B3A4 /* timer.cc in Sources */,
+				2A07BD172B0FCF590008B3A4 /* input.cc in Sources */,
+				2A07BD182B0FCF590008B3A4 /* spine_renderer.cc in Sources */,
+				2A07BD192B0FCF590008B3A4 /* PathConstraint.cpp in Sources */,
+				2A07BD1A2B0FCF590008B3A4 /* SkeletonBounds.cpp in Sources */,
+				2A07BD1B2B0FCF590008B3A4 /* game.cc in Sources */,
+				2A07BD1D2B0FCF590008B3A4 /* TransformConstraint.cpp in Sources */,
+				2A07BD1E2B0FCF590008B3A4 /* TranslateTimeline.cpp in Sources */,
+				2A07BD1F2B0FCF590008B3A4 /* Animation.cpp in Sources */,
+				2A07BD202B0FCF590008B3A4 /* PathConstraintData.cpp in Sources */,
+				2A07BD212B0FCF590008B3A4 /* PathConstraintPositionTimeline.cpp in Sources */,
+				2A07BD222B0FCF590008B3A4 /* DeformTimeline.cpp in Sources */,
+				2A07BD232B0FCF590008B3A4 /* ConstraintData.cpp in Sources */,
+				2A07BD242B0FCF590008B3A4 /* DrawOrderTimeline.cpp in Sources */,
+				2A07BD252B0FCF590008B3A4 /* Json.cpp in Sources */,
+				2A07BD262B0FCF590008B3A4 /* RegionAttachment.cpp in Sources */,
+				2A07BD272B0FCF590008B3A4 /* action_wait.cc in Sources */,
+				2A07BD282B0FCF590008B3A4 /* node.cc in Sources */,
+				2A07BD2A2B0FCF590008B3A4 /* game_object.cc in Sources */,
+				2A07BD2B2B0FCF590008B3A4 /* SkeletonData.cpp in Sources */,
+				2A07BD2C2B0FCF590008B3A4 /* CurveTimeline.cpp in Sources */,
+				2A07BD2D2B0FCF590008B3A4 /* SkeletonJson.cpp in Sources */,
+				2A07BD2E2B0FCF590008B3A4 /* Triangulator.cpp in Sources */,
+				2A07BD2F2B0FCF590008B3A4 /* component.cc in Sources */,
+				2A07BD302B0FCF590008B3A4 /* TransformConstraintTimeline.cpp in Sources */,
+				2A07BD312B0FCF590008B3A4 /* IkConstraintData.cpp in Sources */,
+				2A07BD322B0FCF590008B3A4 /* action_manager.cc in Sources */,
+				2A07BD332B0FCF590008B3A4 /* ScaleTimeline.cpp in Sources */,
+				2A07BD342B0FCF590008B3A4 /* action_move.cc in Sources */,
+				2A07BD352B0FCF590008B3A4 /* SpineObject.cpp in Sources */,
+				2A07BD372B0FCF590008B3A4 /* EventData.cpp in Sources */,
+				2A07BD382B0FCF590008B3A4 /* action_rotate.cc in Sources */,
+				2A07BD392B0FCF590008B3A4 /* action_interpolate.cc in Sources */,
+				2A07BD3A2B0FCF590008B3A4 /* PointAttachment.cpp in Sources */,
+				2A07BD3B2B0FCF590008B3A4 /* scene.cc in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A8E088C2B0FD1680059112F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A8E088D2B0FD1680059112F /* game.cc in Sources */,
+				2A8E088E2B0FD1680059112F /* scene_level.cc in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2AA2CA812ADD3D8B00927E1B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1384,20 +2055,203 @@
 /* Begin PBXTargetDependency section */
 		2A8A817D2ADED1D900F60C05 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2AA2CA832ADD3D8B00927E1B /* Game */;
+			target = 2AA2CA832ADD3D8B00927E1B /* game_macos */;
 			targetProxy = 2A8A817C2ADED1D900F60C05 /* PBXContainerItemProxy */;
 		};
 		2A8A81812ADED1E900F60C05 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2AF938D82ABDC41900CC8BA2 /* Snowpulse */;
+			target = 2AF938D82ABDC41900CC8BA2 /* snowpulse_macos */;
 			targetProxy = 2A8A81802ADED1E900F60C05 /* PBXContainerItemProxy */;
+		};
+		2A8E08802B0FCFCF0059112F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2AF938D82ABDC41900CC8BA2 /* snowpulse_macos */;
+			targetProxy = 2A8E087F2B0FCFCF0059112F /* PBXContainerItemProxy */;
+		};
+		2A8E08842B0FCFDA0059112F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2A07BC5B2B0FCF590008B3A4 /* snowpulse_ios */;
+			targetProxy = 2A8E08832B0FCFDA0059112F /* PBXContainerItemProxy */;
+		};
+		2A8E089A2B0FD1790059112F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2A07BC5B2B0FCF590008B3A4 /* snowpulse_ios */;
+			targetProxy = 2A8E08992B0FD1790059112F /* PBXContainerItemProxy */;
+		};
+		2A8E089F2B0FD1890059112F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2A8E08852B0FD1680059112F /* game_ios */;
+			targetProxy = 2A8E089E2B0FD1890059112F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		2A07BC442B0FC9DF0008B3A4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2A07BC452B0FC9DF0008B3A4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2A07BC492B0FC9E00008B3A4 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2A07BC4A2B0FC9E00008B3A4 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
-		2AA2CA8D2ADD3D8B00927E1B /* Debug */ = {
+		2A07BC4F2B0FC9E00008B3A4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					SNOWPULSE_PLATFORM_IOS,
+				);
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					../snowpulse/,
+					../game/,
+					"../thirdparty/nlohmann-json/",
+					"../thirdparty/spine-cpp/**",
+					../thirdparty/glm/,
+					../thirdparty/stb/,
+				);
+				INFOPLIST_FILE = launcher_ios/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.snowblink.SnowpulseLauncher.launcher-ios";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2A07BC502B0FC9E00008B3A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GCC_PREPROCESSOR_DEFINITIONS = SNOWPULSE_PLATFORM_IOS;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					../snowpulse/,
+					../game/,
+					"../thirdparty/nlohmann-json/",
+					"../thirdparty/spine-cpp/**",
+					../thirdparty/glm/,
+					../thirdparty/stb/,
+				);
+				INFOPLIST_FILE = launcher_ios/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.snowblink.SnowpulseLauncher.launcher-ios";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2A07BD442B0FCF590008B3A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				GCC_ENABLE_CPP_EXCEPTIONS = YES;
+				GCC_ENABLE_CPP_RTTI = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					SNOWPULSEAPI_EXPORT,
+					SNOWPULSE_PLATFORM_MACOS,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				HEADER_SEARCH_PATHS = (
+					../thirdparty/glad/include/,
+					"../thirdparty/glfw-3.3.8/include/",
+					../thirdparty/glm/,
+					../thirdparty/stb/,
+					"../thirdparty/nlohmann-json/",
+					"../thirdparty/spine-cpp/**",
+				);
+				LIBRARY_SEARCH_PATHS = "../thirdparty/glfw-3.3.8/lib-universal/";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos macosx iphonesimulator iphoneos driverkit appletvsimulator appletvos";
+				SUPPORTS_MACCATALYST = YES;
+			};
+			name = Debug;
+		};
+		2A07BD452B0FCF590008B3A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				GCC_ENABLE_CPP_EXCEPTIONS = YES;
+				GCC_ENABLE_CPP_RTTI = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					SNOWPULSEAPI_EXPORT,
+					SNOWPULSE_PLATFORM_MACOS,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				HEADER_SEARCH_PATHS = (
+					../thirdparty/glad/include/,
+					"../thirdparty/glfw-3.3.8/include/",
+					../thirdparty/glm/,
+					../thirdparty/stb/,
+					"../thirdparty/nlohmann-json/",
+					"../thirdparty/spine-cpp/**",
+				);
+				LIBRARY_SEARCH_PATHS = "../thirdparty/glfw-3.3.8/lib-universal/";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos macosx iphonesimulator iphoneos driverkit appletvsimulator appletvos";
+				SUPPORTS_MACCATALYST = YES;
+			};
+			name = Release;
+		};
+		2A8E08942B0FD1680059112F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -1422,12 +2276,15 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos macosx iphonesimulator iphoneos driverkit appletvsimulator appletvos";
+				SUPPORTS_MACCATALYST = YES;
 			};
 			name = Debug;
 		};
-		2AA2CA8E2ADD3D8B00927E1B /* Release */ = {
+		2A8E08952B0FD1680059112F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -1450,6 +2307,72 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos macosx iphonesimulator iphoneos driverkit appletvsimulator appletvos";
+				SUPPORTS_MACCATALYST = YES;
+			};
+			name = Release;
+		};
+		2AA2CA8D2ADD3D8B00927E1B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				GCC_ENABLE_CPP_EXCEPTIONS = YES;
+				GCC_ENABLE_CPP_RTTI = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					GAMEAPI_EXPORT,
+					SNOWPULSE_PLATFORM_MACOS,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				HEADER_SEARCH_PATHS = (
+					../snowpulse/,
+					../thirdparty/glad/include/,
+					"../thirdparty/glfw-3.3.8/include/",
+					../thirdparty/glm/,
+					../thirdparty/stb/,
+					"../thirdparty/nlohmann-json/",
+					"../thirdparty/spine-cpp/**",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos macosx iphonesimulator iphoneos driverkit appletvsimulator appletvos";
+				SUPPORTS_MACCATALYST = YES;
+			};
+			name = Debug;
+		};
+		2AA2CA8E2ADD3D8B00927E1B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				GCC_ENABLE_CPP_EXCEPTIONS = YES;
+				GCC_ENABLE_CPP_RTTI = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					GAMEAPI_EXPORT,
+					SNOWPULSE_PLATFORM_MACOS,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				HEADER_SEARCH_PATHS = (
+					../snowpulse/,
+					../thirdparty/glad/include/,
+					"../thirdparty/glfw-3.3.8/include/",
+					../thirdparty/glm/,
+					../thirdparty/stb/,
+					"../thirdparty/nlohmann-json/",
+					"../thirdparty/spine-cpp/**",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos macosx iphonesimulator iphoneos driverkit appletvsimulator appletvos";
+				SUPPORTS_MACCATALYST = YES;
 			};
 			name = Release;
 		};
@@ -1609,6 +2532,7 @@
 		2AF938E22ABDC41900CC8BA2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -1633,12 +2557,15 @@
 				LIBRARY_SEARCH_PATHS = "../thirdparty/glfw-3.3.8/lib-universal/";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos macosx iphonesimulator iphoneos driverkit appletvsimulator appletvos";
+				SUPPORTS_MACCATALYST = YES;
 			};
 			name = Debug;
 		};
 		2AF938E32ABDC41900CC8BA2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -1661,13 +2588,42 @@
 				LIBRARY_SEARCH_PATHS = "../thirdparty/glfw-3.3.8/lib-universal/";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos macosx iphonesimulator iphoneos driverkit appletvsimulator appletvos";
+				SUPPORTS_MACCATALYST = YES;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2AA2CA8C2ADD3D8B00927E1B /* Build configuration list for PBXNativeTarget "Game" */ = {
+		2A07BC512B0FC9E00008B3A4 /* Build configuration list for PBXNativeTarget "launcher_ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A07BC4F2B0FC9E00008B3A4 /* Debug */,
+				2A07BC502B0FC9E00008B3A4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2A07BD432B0FCF590008B3A4 /* Build configuration list for PBXNativeTarget "snowpulse_ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A07BD442B0FCF590008B3A4 /* Debug */,
+				2A07BD452B0FCF590008B3A4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2A8E08932B0FD1680059112F /* Build configuration list for PBXNativeTarget "game_ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A8E08942B0FD1680059112F /* Debug */,
+				2A8E08952B0FD1680059112F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2AA2CA8C2ADD3D8B00927E1B /* Build configuration list for PBXNativeTarget "game_macos" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2AA2CA8D2ADD3D8B00927E1B /* Debug */,
@@ -1685,7 +2641,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2AF938D22ABDC3A000CC8BA2 /* Build configuration list for PBXNativeTarget "Launcher" */ = {
+		2AF938D22ABDC3A000CC8BA2 /* Build configuration list for PBXNativeTarget "launcher_macos" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2AF938D32ABDC3A000CC8BA2 /* Debug */,
@@ -1694,7 +2650,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2AF938E12ABDC41900CC8BA2 /* Build configuration list for PBXNativeTarget "Snowpulse" */ = {
+		2AF938E12ABDC41900CC8BA2 /* Build configuration list for PBXNativeTarget "snowpulse_macos" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2AF938E22ABDC41900CC8BA2 /* Debug */,

@@ -3,13 +3,12 @@
 #include <iostream>
 #include <string>
 
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
-
 #ifdef SNOWPULSE_PLATFORM_WINDOWS
 #include "opengl/graphics_opengl.h"
 #elif SNOWPULSE_PLATFORM_MACOS
 #include "opengl/graphics_opengl.h"
+#elif SNOWPULSE_PLATFORM_IOS
+//#include "opengl/graphics_opengl.h"
 #endif
 
 #include "timer.h"

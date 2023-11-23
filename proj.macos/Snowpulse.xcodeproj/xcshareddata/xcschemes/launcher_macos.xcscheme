@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2AF938CD2ABDC3A000CC8BA2"
-               BuildableName = "Launcher"
-               BlueprintName = "Launcher"
+               BuildableName = "launcher_macos"
+               BlueprintName = "launcher_macos"
                ReferencedContainer = "container:Snowpulse.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -46,8 +46,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2AF938CD2ABDC3A000CC8BA2"
-            BuildableName = "Launcher"
-            BlueprintName = "Launcher"
+            BuildableName = "launcher_macos"
+            BlueprintName = "launcher_macos"
             ReferencedContainer = "container:Snowpulse.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -63,8 +63,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2AF938CD2ABDC3A000CC8BA2"
-            BuildableName = "Launcher"
-            BlueprintName = "Launcher"
+            BuildableName = "launcher_macos"
+            BlueprintName = "launcher_macos"
             ReferencedContainer = "container:Snowpulse.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
