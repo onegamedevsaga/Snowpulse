@@ -37,6 +37,7 @@ void SceneLevel::Shutdown() {
 }
 
 void SceneLevel::Start() {
+    snowpulse::Application::GetInstance()->GetPlatform();
     auto json = snowpulse::JsonUtils::LoadFile("settings.json");
     if (json) {
 #ifdef SPDEBUG

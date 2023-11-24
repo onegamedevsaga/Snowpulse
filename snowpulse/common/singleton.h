@@ -9,13 +9,9 @@ namespace snowpulse {
 template <class T>
 class Singleton {
     public:
-        static T* GetInstance() {
-            if (!instance_) {
-#ifdef SPDEBUG
-                std::cerr << "Singleton's instance_ isn't set.";
-#endif
-            }
-            return instance_;
+        static T* GetInstance2() {
+            static T instance;
+            return &instance;
         }
 
         virtual ~Singleton() { }
@@ -25,13 +21,8 @@ class Singleton {
         Singleton& operator=(Singleton&&) = delete;     // Disable move assignment operator
 
     protected:
-        static T* instance_;
-
         Singleton() { }
 };
-
-template <class T>
-T* Singleton<T>::instance_ = SPNULL;
 
 }   // namespace snowpulse
 #endif

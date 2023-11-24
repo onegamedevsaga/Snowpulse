@@ -4,8 +4,10 @@
 #include <string>
 
 #ifdef SNOWPULSE_PLATFORM_WINDOWS
+#include "windows/application_windows.h"
 #include "opengl/graphics_opengl.h"
 #elif SNOWPULSE_PLATFORM_MACOS
+#include "macos/application_macos.h"
 #include "opengl/graphics_opengl.h"
 #elif SNOWPULSE_PLATFORM_IOS
 //#include "opengl/graphics_opengl.h"
@@ -15,6 +17,20 @@
 #include "../game/action_manager.h"
 
 namespace snowpulse {
+Application* Application::GetInstance() {
+#ifdef SNOWPULSE_PLATFORM_WINDOWS
+    return ApplicationWindows::GetInstance();
+#elif SNOWPULSE_PLATFORM_MACOS
+    return ApplicationMacOS::GetInstance2();
+#elif SNOWPULSE_PLATFORM_ANDROID
+    
+#elif SNOWPULSE_PLATFORM_IOS
+    
+#elif SNOWPULSE_PLATFORM_WEBGL
+    
+#endif
+}
+
 Application::Application() {
 }
 

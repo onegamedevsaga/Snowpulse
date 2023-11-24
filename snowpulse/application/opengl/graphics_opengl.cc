@@ -5,12 +5,14 @@
 #include <iostream>
 #include <stb_image.h>
 
+#include "../application.h"
 #include "render_batch_data_opengl.h"
 #include "render_batch_group_opengl.h"
 
 namespace snowpulse {
 
-const char* kSpriteDefault = "../defaults/sprites/sprite_default.png";
+//const char* kSpriteDefault = "../defaults/sprites/sprite_default.png";
+const char* kSpriteDefault = "defaults/sprites/sprite_default.png";
 
 // Vertex shader source
 const char* kVertexShaderSource = R"(
@@ -117,7 +119,7 @@ void GraphicsOpenGL::Initialize(Vector2Int resolution, Camera* camera, RenderQue
         glEnable(GL_DEPTH_TEST);
     }
 
-    LoadTexture(kSpriteDefault, TextureFiltering::kPoint);
+    //LoadTexture(kSpriteDefault, TextureFiltering::kPoint);
 
 #ifdef SPDEBUG
     std::cout << "GraphicsOpenGL initialized." << std::endl;
@@ -157,8 +159,11 @@ Matrix4x4 GraphicsOpenGL::InvertMatrixNatively(Matrix4x4 matrix) {
     return matrix;
 }
 
-void GraphicsOpenGL::LoadTexture(std::string filename, TextureFiltering filtering) {
+void GraphicsOpenGL::LoadTexture(std::string filename, TextureFiltering filtering, bool rawPath) {
     auto fullFilename = GetTextureFullFilename(filename.c_str(), filtering);
+    if (!rawPath) {
+        filename = Application::GetInstance()->GetPlatformPath("assets/" + filename);
+    }
     if (!textures_.count(fullFilename)) {
         unsigned int texture;
         glGenTextures(1, &texture);

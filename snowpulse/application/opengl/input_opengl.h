@@ -1,6 +1,7 @@
 #ifndef SNOWPULSE_APPLICATION_OPENGL_INPUTOPENGL_H_
 #define SNOWPULSE_APPLICATION_OPENGL_INPUTOPENGL_H_
 
+#include "../../common/singleton.h"
 #include "../input.h"
 
 #include <memory>
@@ -13,7 +14,7 @@
 #include "graphics_opengl.h"
 
 namespace snowpulse {
-class SNOWPULSEAPI InputOpenGL : public Input {
+class SNOWPULSEAPI InputOpenGL : public Input, public Singleton<InputOpenGL> {
     public:
         static std::shared_ptr<InputOpenGL> Create();
 
@@ -25,6 +26,7 @@ class SNOWPULSEAPI InputOpenGL : public Input {
         Vector2 GetInputPosition() { return inputPosition_; }
 
     protected:
+        friend class Singleton<InputOpenGL>;
         InputOpenGL();
 
         Vector2 inputPosition_;

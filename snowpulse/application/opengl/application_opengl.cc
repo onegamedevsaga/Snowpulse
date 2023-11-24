@@ -32,7 +32,7 @@ bool ApplicationOpenGL::Initialize() {
 
         renderQueue_ = RenderQueueOpenGL::Create();
         graphics_->Initialize(Vector2Int(1920, 1080), camera_.get(), renderQueue_.get(), Vector2Int(1067, 600));
-        input_ = InputOpenGL::Create();
+        input_ = static_cast<InputOpenGL*>(Input::GetInstance());
 
 #ifdef SPDEBUG
         std::cout << "ApplicationOpenGL initialized." << std::endl;

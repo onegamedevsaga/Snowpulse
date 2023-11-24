@@ -25,7 +25,7 @@ class SNOWPULSEAPI ApplicationOpenGL : public Application {
         ApplicationOpenGL();
         bool Initialize();
 
-        std::shared_ptr<InputOpenGL> input_;
+        InputOpenGL* input_;
         std::shared_ptr<GraphicsOpenGL> graphics_;
         std::shared_ptr<RenderQueueOpenGL> renderQueue_;
 };

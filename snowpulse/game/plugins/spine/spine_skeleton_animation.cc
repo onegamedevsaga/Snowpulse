@@ -15,6 +15,7 @@
 #include <spine/VertexAttachment.h>
 
 #include "spine_texture_loader.h"
+#include "../../../application/application.h"
 
 spine::SpineExtension *spine::getDefaultExtension() {
     return new spine::DefaultSpineExtension();
@@ -25,6 +26,7 @@ std::shared_ptr<SpineSkeletonAnimation> SpineSkeletonAnimation::Create(std::stri
     auto spineSkeletonAnimation = std::shared_ptr<SpineSkeletonAnimation>(new SpineSkeletonAnimation());
     spineSkeletonAnimation->textureFiltering_ = filtering;
     spineSkeletonAnimation->textureLoader_ = SpineTextureLoader::Create(spineSkeletonAnimation->textureFiltering_);
+    atlasFilename = Application::GetInstance()->GetPlatformPath("assets/" + atlasFilename);
     spineSkeletonAnimation->atlas_ = std::make_shared<spine::Atlas>(atlasFilename.c_str(), spineSkeletonAnimation->textureLoader_.get());
     if (spineSkeletonAnimation->atlas_->getPages().size() == 0) {
 #ifdef SPDEBUG
@@ -34,6 +36,7 @@ std::shared_ptr<SpineSkeletonAnimation> SpineSkeletonAnimation::Create(std::stri
     }
 
     spine::SkeletonJson json(spineSkeletonAnimation->atlas_.get());
+    jsonFilename = Application::GetInstance()->GetPlatformPath("assets/" + jsonFilename);
     spineSkeletonAnimation->skeletonData_ = std::shared_ptr<spine::SkeletonData>(json.readSkeletonDataFile(jsonFilename.c_str()));
     if (!spineSkeletonAnimation->skeletonData_) {
 #ifdef SPDEBUG

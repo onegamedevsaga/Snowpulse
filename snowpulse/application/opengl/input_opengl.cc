@@ -3,11 +3,6 @@
 #include <cctype>
 
 namespace snowpulse {
-std::shared_ptr<InputOpenGL> InputOpenGL::Create() {
-    auto input = std::shared_ptr<InputOpenGL>(new InputOpenGL());
-    input->instance_ = input.get();
-    return input;
-}
 
 InputOpenGL::InputOpenGL() : Input() {
     keyMap_[GLFW_KEY_SPACE] = "space";

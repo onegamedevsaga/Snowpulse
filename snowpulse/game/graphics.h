@@ -22,7 +22,7 @@ class SNOWPULSEAPI Graphics {
         virtual ~Graphics() = default;
         virtual void Shutdown() = 0;
         virtual Matrix4x4 InvertMatrixNatively(Matrix4x4 matrix) = 0;
-        virtual void LoadTexture(std::string filename, TextureFiltering filtering = TextureFiltering::kBilinear) = 0;
+        virtual void LoadTexture(std::string filename, TextureFiltering filtering = TextureFiltering::kBilinear, bool rawPath = false) = 0;
         virtual void UnloadTexture(std::string filename, TextureFiltering filtering) = 0;
         virtual Vector2 GetTextureSize(std::string filename, TextureFiltering filtering) = 0;
         virtual int CreateRenderBatchGroup(int sortOrder) = 0;

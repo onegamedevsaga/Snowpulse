@@ -1,6 +1,28 @@
 #include "input.h"
 
+#ifdef SNOWPULSE_PLATFORM_WINDOWS
+#include "opengl/input_opengl.h"
+#elif SNOWPULSE_PLATFORM_MACOS
+#include "opengl/input_opengl.h"
+#elif SNOWPULSE_PLATFORM_IOS
+//#include "opengl/input_opengl.h"
+#endif
+
 namespace snowpulse {
+Input* Input::GetInstance() {
+#ifdef SNOWPULSE_PLATFORM_WINDOWS
+    return InputOpenGL::GetInstance2();
+#elif SNOWPULSE_PLATFORM_MACOS
+    return InputOpenGL::GetInstance2();
+#elif SNOWPULSE_PLATFORM_ANDROID
+    
+#elif SNOWPULSE_PLATFORM_IOS
+    
+#elif SNOWPULSE_PLATFORM_WEBGL
+    
+#endif
+}
+
 Input::Input() {
 }
 

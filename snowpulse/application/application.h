@@ -1,8 +1,6 @@
 #ifndef SNOWPULSE_APPLICATION_APPLICATION_H_
 #define SNOWPULSE_APPLICATION_APPLICATION_H_
 
-#include "../common/singleton.h"
-
 #include <string>
 #include <memory>
 
@@ -16,13 +14,17 @@
 #include "../game/action_manager.h"
 
 namespace snowpulse {
-class SNOWPULSEAPI Application : public Singleton<Application> {
+class SNOWPULSEAPI Application {
     public:
+        static Application* GetInstance();
+
         virtual ~Application();
+        virtual bool Initialize();
         virtual void Run() = 0;
         virtual void Close() = 0;
         virtual void Shutdown() = 0;
         virtual Graphics* GetGraphics() const = 0;
+        virtual std::string GetPlatformPath(std::string filename) = 0;
 
         void SetGame(Game* game);
 
@@ -35,7 +37,6 @@ class SNOWPULSEAPI Application : public Singleton<Application> {
 
     protected:
         Application();
-        virtual bool Initialize();
 
         Platform platform_;
         NodeStarter nodeStarter_;

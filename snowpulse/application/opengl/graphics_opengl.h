@@ -35,7 +35,7 @@ class SNOWPULSEAPI GraphicsOpenGL : public Graphics {
 
         // Graphics
         Matrix4x4 InvertMatrixNatively(Matrix4x4 matrix);
-        void LoadTexture(std::string filename, TextureFiltering filtering);
+        void LoadTexture(std::string filename, TextureFiltering filtering, bool rawPath);
         void UnloadTexture(std::string filename, TextureFiltering filtering);
         Vector2 GetTextureSize(std::string filename, TextureFiltering filtering);
         int CreateRenderBatchGroup(int sortOrder);

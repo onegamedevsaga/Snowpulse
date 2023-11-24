@@ -1,8 +1,6 @@
 #ifndef SNOWPULSE_APPLICATION_INPUT_H_
 #define SNOWPULSE_APPLICATION_INPUT_H_
 
-#include "../common/singleton.h"
-
 #include <memory>
 #include <string>
 #include <cctype>
@@ -10,8 +8,10 @@
 #include "../common/vector2.h"
 
 namespace snowpulse {
-class SNOWPULSEAPI Input : public Singleton<Input> {
+class SNOWPULSEAPI Input {
     public:
+        static Input* GetInstance();
+
         virtual ~Input();
 
         virtual bool GetPressed(std::string key) = 0;
