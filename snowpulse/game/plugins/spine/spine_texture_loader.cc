@@ -23,7 +23,7 @@ void SpineTextureLoader::load(spine::AtlasPage &page, const spine::String &path)
     if (!graphics_) {
         graphics_ = Application::GetInstance()->GetGraphics();
     }
-    graphics_->LoadTexture(path.buffer(), textureFiltering_, true);
+    graphics_->LoadTexture(path.buffer(), textureFiltering_, PathType::kRaw);
     auto size = graphics_->GetTextureSize(path.buffer(), textureFiltering_);
     auto ptr = new std::string(path.buffer());
     page.texture = (void*)ptr;

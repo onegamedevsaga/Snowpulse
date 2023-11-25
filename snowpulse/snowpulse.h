@@ -7,6 +7,7 @@
 
 #include "common/space.h"
 #include "common/blend_mode.h"
+#include "common/path_type.h"
 #include "common/easing.h"
 #include "common/json_utils.h"
 #include "common/math_utils.h"

@@ -12,8 +12,25 @@ std::shared_ptr<Json> JsonUtils::Create() {
     return std::make_shared<Json>();
 }
 
-std::shared_ptr<Json> JsonUtils::LoadFile(std::string filename) {
-    filename = Directory::GetInstance()->GetAssetsPath("assets/" + filename);
+std::shared_ptr<Json> JsonUtils::LoadFile(std::string filename, PathType pathType) {
+    switch (pathType) {
+        case PathType::kAssets:
+            filename = Directory::GetInstance()->GetAssetsPath(filename);
+            break;
+        case PathType::kDefaults:
+            filename = Directory::GetInstance()->GetDefaultsPath(filename);
+            break;
+        case PathType::kApplicationSupport:
+            filename = Directory::GetInstance()->GetApplicationSupportPath(filename);
+            break;
+        case PathType::kDocuments:
+            filename = Directory::GetInstance()->GetDocumentsPath(filename);
+            break;
+        case PathType::kRaw:
+        default:
+            break;
+    }
+
     std::ifstream f(filename.c_str());
     if (!f.fail()) {
         auto j = std::make_shared<Json>();
@@ -27,8 +44,24 @@ std::shared_ptr<Json> JsonUtils::LoadFile(std::string filename) {
     return SPNULL;
 }
 
-bool JsonUtils::SaveFile(Json* data, std::string filename) {
-    filename = Directory::GetInstance()->GetAssetsPath("assets/" + filename);
+bool JsonUtils::SaveFile(Json* data, std::string filename, PathType pathType) {
+    switch (pathType) {
+        case PathType::kAssets:
+            filename = Directory::GetInstance()->GetAssetsPath(filename);
+            break;
+        case PathType::kDefaults:
+            filename = Directory::GetInstance()->GetDefaultsPath(filename);
+            break;
+        case PathType::kApplicationSupport:
+            filename = Directory::GetInstance()->GetApplicationSupportPath(filename);
+            break;
+        case PathType::kDocuments:
+            filename = Directory::GetInstance()->GetDocumentsPath(filename);
+            break;
+        case PathType::kRaw:
+        default:
+            break;
+    }
     std::ofstream f(filename.c_str());
     if (!f.is_open()) {
 #ifdef SPDEBUG

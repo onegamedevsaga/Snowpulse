@@ -12,6 +12,7 @@
 #include "../common/color.h"
 #include "../common/matrix4x4.h"
 #include "../common/texture_filtering.h"
+#include "../common/path_type.h"
 #include "../application/camera.h"
 #include "components/transform.h"
 
@@ -22,7 +23,7 @@ class SNOWPULSEAPI Graphics {
         virtual ~Graphics() = default;
         virtual void Shutdown() = 0;
         virtual Matrix4x4 InvertMatrixNatively(Matrix4x4 matrix) = 0;
-        virtual void LoadTexture(std::string filename, TextureFiltering filtering = TextureFiltering::kBilinear, bool rawPath = false) = 0;
+        virtual void LoadTexture(std::string filename, TextureFiltering filtering = TextureFiltering::kBilinear, PathType pathType = PathType::kAssets) = 0;
         virtual void UnloadTexture(std::string filename, TextureFiltering filtering) = 0;
         virtual Vector2 GetTextureSize(std::string filename, TextureFiltering filtering) = 0;
         virtual int CreateRenderBatchGroup(int sortOrder) = 0;

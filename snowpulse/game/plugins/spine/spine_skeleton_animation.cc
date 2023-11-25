@@ -27,7 +27,7 @@ std::shared_ptr<SpineSkeletonAnimation> SpineSkeletonAnimation::Create(std::stri
     auto spineSkeletonAnimation = std::shared_ptr<SpineSkeletonAnimation>(new SpineSkeletonAnimation());
     spineSkeletonAnimation->textureFiltering_ = filtering;
     spineSkeletonAnimation->textureLoader_ = SpineTextureLoader::Create(spineSkeletonAnimation->textureFiltering_);
-    atlasFilename = Directory::GetInstance()->GetAssetsPath("assets/" + atlasFilename);
+    atlasFilename = Directory::GetInstance()->GetAssetsPath(atlasFilename);
     spineSkeletonAnimation->atlas_ = std::make_shared<spine::Atlas>(atlasFilename.c_str(), spineSkeletonAnimation->textureLoader_.get());
     if (spineSkeletonAnimation->atlas_->getPages().size() == 0) {
 #ifdef SPDEBUG
@@ -37,7 +37,7 @@ std::shared_ptr<SpineSkeletonAnimation> SpineSkeletonAnimation::Create(std::stri
     }
 
     spine::SkeletonJson json(spineSkeletonAnimation->atlas_.get());
-    jsonFilename = Directory::GetInstance()->GetAssetsPath("assets/" + jsonFilename);
+    jsonFilename = Directory::GetInstance()->GetAssetsPath(jsonFilename);
     spineSkeletonAnimation->skeletonData_ = std::shared_ptr<spine::SkeletonData>(json.readSkeletonDataFile(jsonFilename.c_str()));
     if (!spineSkeletonAnimation->skeletonData_) {
 #ifdef SPDEBUG
@@ -51,8 +51,8 @@ std::shared_ptr<SpineSkeletonAnimation> SpineSkeletonAnimation::Create(std::stri
     spineSkeletonAnimation->SetSkin("default");
     spineSkeletonAnimation->animationState_ = std::make_shared<spine::AnimationState>(spineSkeletonAnimation->animationStateData_.get());
 
-    size_t pos = atlasFilename.find_last_of("/\\");
     spineSkeletonAnimation->jsonFilename_ = jsonFilename;
+    size_t pos = atlasFilename.find_last_of("/\\");
     spineSkeletonAnimation->atlasPath_ = (pos != std::string::npos) ? atlasFilename.substr(0, pos + 1) : "";
     return spineSkeletonAnimation;
 }

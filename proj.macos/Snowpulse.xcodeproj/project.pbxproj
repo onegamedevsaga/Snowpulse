@@ -487,6 +487,7 @@
 		2AE640B52B11CC4700A6B8DA /* directory_macos.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2AE640B42B11CC4700A6B8DA /* directory_macos.mm */; };
 		2AE640B72B11CC5D00A6B8DA /* directory.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AE640B62B11CC5D00A6B8DA /* directory.h */; };
 		2AE640B92B11CF6D00A6B8DA /* directory.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2AE640B82B11CF6D00A6B8DA /* directory.cc */; };
+		2AE640BB2B12363400A6B8DA /* path_type.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AE640BA2B12363400A6B8DA /* path_type.h */; };
 		2AEA1C512B0DC7A700AAD982 /* render_batch.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AEA1C502B0DC7A700AAD982 /* render_batch.h */; };
 		2AEA1C532B0DF36700AAD982 /* render_batch_type.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AEA1C522B0DF36700AAD982 /* render_batch_type.h */; };
 		2AEA1C552B0E004B00AAD982 /* render_batch_group_opengl.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AEA1C542B0E004B00AAD982 /* render_batch_group_opengl.h */; };
@@ -859,6 +860,7 @@
 		2AE640B42B11CC4700A6B8DA /* directory_macos.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = directory_macos.mm; sourceTree = "<group>"; };
 		2AE640B62B11CC5D00A6B8DA /* directory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = directory.h; sourceTree = "<group>"; };
 		2AE640B82B11CF6D00A6B8DA /* directory.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = directory.cc; sourceTree = "<group>"; };
+		2AE640BA2B12363400A6B8DA /* path_type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = path_type.h; sourceTree = "<group>"; };
 		2AEA1C502B0DC7A700AAD982 /* render_batch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = render_batch.h; sourceTree = "<group>"; };
 		2AEA1C522B0DF36700AAD982 /* render_batch_type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = render_batch_type.h; sourceTree = "<group>"; };
 		2AEA1C542B0E004B00AAD982 /* render_batch_group_opengl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = render_batch_group_opengl.h; path = opengl/render_batch_group_opengl.h; sourceTree = "<group>"; };
@@ -1025,6 +1027,7 @@
 		2A4FBE0B2B00BF430060E35C /* common */ = {
 			isa = PBXGroup;
 			children = (
+				2AE640BA2B12363400A6B8DA /* path_type.h */,
 				2AA9A9DF2B087CE3009AACBF /* blend_mode.h */,
 				2A4FBE102B00BF430060E35C /* color.h */,
 				2A4FBE8F2B0108380060E35C /* easing.h */,
@@ -1563,6 +1566,7 @@
 				2AA9A9AB2B0781A0009AACBF /* Extension.h in Headers */,
 				2AA9A9812B0781A0009AACBF /* MeshAttachment.h in Headers */,
 				2A4FBEA82B03D48C0060E35C /* application_macos.h in Headers */,
+				2AE640BB2B12363400A6B8DA /* path_type.h in Headers */,
 				2AA9A9CA2B0781A0009AACBF /* IkConstraint.h in Headers */,
 				2AA9A97A2B0781A0009AACBF /* SkeletonData.h in Headers */,
 				2AA9A9872B0781A0009AACBF /* SpineObject.h in Headers */,

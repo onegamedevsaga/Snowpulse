@@ -23,7 +23,6 @@ class SNOWPULSEAPI ApplicationOpenGL : public Application {
 
     protected:
         ApplicationOpenGL();
-        
 
         InputOpenGL* input_;
         std::shared_ptr<GraphicsOpenGL> graphics_;

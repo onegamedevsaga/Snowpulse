@@ -12,7 +12,7 @@
 
 namespace snowpulse {
 
-const char* kSpriteDefault = "defaults/sprites/sprite_default.png";
+const char* kSpriteDefault = "sprites/sprite_default.png";
 
 // Vertex shader source
 const char* kVertexShaderSource = R"(
@@ -119,7 +119,7 @@ void GraphicsOpenGL::Initialize(Vector2Int resolution, Camera* camera, RenderQue
         glEnable(GL_DEPTH_TEST);
     }
 
-    LoadTexture(kSpriteDefault, TextureFiltering::kPoint, true);
+    LoadTexture(kSpriteDefault, TextureFiltering::kPoint, PathType::kDefaults);
 
 #ifdef SPDEBUG
     std::cout << "GraphicsOpenGL initialized." << std::endl;
@@ -159,10 +159,24 @@ Matrix4x4 GraphicsOpenGL::InvertMatrixNatively(Matrix4x4 matrix) {
     return matrix;
 }
 
-void GraphicsOpenGL::LoadTexture(std::string filename, TextureFiltering filtering, bool rawPath) {
+void GraphicsOpenGL::LoadTexture(std::string filename, TextureFiltering filtering, PathType pathType) {
     auto fullFilename = GetTextureFullFilename(filename.c_str(), filtering);
-    if (!rawPath) {
-        filename = Directory::GetInstance()->GetAssetsPath("assets/" + filename);
+    switch (pathType) {
+        case PathType::kAssets:
+            filename = Directory::GetInstance()->GetAssetsPath(filename);
+            break;
+        case PathType::kDefaults:
+            filename = Directory::GetInstance()->GetDefaultsPath(filename);
+            break;
+        case PathType::kApplicationSupport:
+            filename = Directory::GetInstance()->GetApplicationSupportPath(filename);
+            break;
+        case PathType::kDocuments:
+            filename = Directory::GetInstance()->GetDocumentsPath(filename);
+            break;
+        case PathType::kRaw:
+        default:
+            break;
     }
     if (!textures_.count(fullFilename)) {
         unsigned int texture;

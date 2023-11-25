@@ -38,7 +38,7 @@ void SceneLevel::Shutdown() {
 
 void SceneLevel::Start() {
     snowpulse::Application::GetInstance()->GetPlatform();
-    auto json = snowpulse::JsonUtils::LoadFile("settings.json");
+    auto json = snowpulse::JsonUtils::LoadFile("settings.json", snowpulse::PathType::kAssets);
     if (json) {
 #ifdef SPDEBUG
         std::cout << "JSON: " << (*json)["type"] << std::endl;
@@ -47,7 +47,7 @@ void SceneLevel::Start() {
     }
     
     (*json)["extraValue"] = 1234.0f;
-    snowpulse::JsonUtils::SaveFile(json.get(), "settings.json");
+    snowpulse::JsonUtils::SaveFile(json.get(), "global/settings.json", snowpulse::PathType::kApplicationSupport);
     
     auto json2 = snowpulse::JsonUtils::Create();
     (*json2)["levelNo"] = 1;
@@ -55,7 +55,7 @@ void SceneLevel::Start() {
     snowpulse::JsonUtils::SaveFile(json2.get(), "levelSample.json");
     
     go1_ = snowpulse::GameObject::Create("go1_");
-    auto sprRenderer = snowpulse::SpriteRenderer::Create("logo.png");
+    auto sprRenderer = snowpulse::SpriteRenderer::Create("logo2.png");
     sprRenderer->SetColor(snowpulse::Color(1.0f, 0.0f, 0.0f, 0.5f));
     sprRenderer->SetSortOrder(0);
     go1_->AddComponent(sprRenderer);

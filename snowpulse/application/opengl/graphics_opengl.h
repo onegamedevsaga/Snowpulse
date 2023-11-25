@@ -27,22 +27,22 @@ class SNOWPULSEAPI GraphicsOpenGL : public Graphics {
 
         ~GraphicsOpenGL();
         void Initialize(Vector2Int resolution, Camera* camera, RenderQueueOpenGL* renderQueue, Vector2Int screenSize = Vector2Int());
-        void Shutdown();
+        void Shutdown() override;
 
         GLFWwindow* GetWindow() { return window_; }
         Vector2Int GetResolution() { return resolution_; }
         Vector2Int GetScreenSize() { return screenSize_; }
 
         // Graphics
-        Matrix4x4 InvertMatrixNatively(Matrix4x4 matrix);
-        void LoadTexture(std::string filename, TextureFiltering filtering, bool rawPath);
-        void UnloadTexture(std::string filename, TextureFiltering filtering);
-        Vector2 GetTextureSize(std::string filename, TextureFiltering filtering);
-        int CreateRenderBatchGroup(int sortOrder);
-        void ClearRenderBatchGroups();
-        void SubmitRenderBatchGroup(int batchGroup);
-        void DrawMesh(Vertex* vertices, unsigned int vertexCount, unsigned short* indices, unsigned int indexCount, std::string textureFullFilename, int sortOrder, BlendMode blendMode, bool isPremultiplied, Matrix4x4 transformMatrix, int batchGroup);
-        void DrawSprite(Vector2 size, std::string textureFullFilename, Matrix4x4 transformMatrix, Color color, int sortOrder, BlendMode blendMode, bool isPremultiplied, Vector2 uvLowerLeft, Vector2 uvUpperRight, int batchGroup);
+        Matrix4x4 InvertMatrixNatively(Matrix4x4 matrix) override;
+        void LoadTexture(std::string filename, TextureFiltering filtering, PathType pathType) override;
+        void UnloadTexture(std::string filename, TextureFiltering filtering) override;
+        Vector2 GetTextureSize(std::string filename, TextureFiltering filtering) override;
+        int CreateRenderBatchGroup(int sortOrder) override;
+        void ClearRenderBatchGroups() override;
+        void SubmitRenderBatchGroup(int batchGroup) override;
+        void DrawMesh(Vertex* vertices, unsigned int vertexCount, unsigned short* indices, unsigned int indexCount, std::string textureFullFilename, int sortOrder, BlendMode blendMode, bool isPremultiplied, Matrix4x4 transformMatrix, int batchGroup) override;
+        void DrawSprite(Vector2 size, std::string textureFullFilename, Matrix4x4 transformMatrix, Color color, int sortOrder, BlendMode blendMode, bool isPremultiplied, Vector2 uvLowerLeft, Vector2 uvUpperRight, int batchGroup) override;
 
     private:
         GraphicsOpenGL();
