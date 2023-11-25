@@ -4,14 +4,18 @@
 #include "../../common/singleton.h"
 #include "../opengl/application_opengl.h"
 
+#include "directory_macos.h"
+
 namespace snowpulse {
 class SNOWPULSEAPI ApplicationMacOS : public ApplicationOpenGL, public Singleton<ApplicationMacOS> {
     public:
-        std::string GetPlatformPath(std::string filename);
+        virtual bool Initialize() override;
 
     protected:
         friend class Singleton<ApplicationMacOS>;
         ApplicationMacOS();
+
+        DirectoryMacOS* directory_;
 };
 }   // namespace snowpulse
 

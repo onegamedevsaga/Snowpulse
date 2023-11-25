@@ -56,7 +56,7 @@ void SceneLevel::Start() {
     
     go1_ = snowpulse::GameObject::Create("go1_");
     auto sprRenderer = snowpulse::SpriteRenderer::Create("logo.png");
-    sprRenderer->SetColor(snowpulse::Color::Red());
+    sprRenderer->SetColor(snowpulse::Color(1.0f, 0.0f, 0.0f, 0.5f));
     sprRenderer->SetSortOrder(0);
     go1_->AddComponent(sprRenderer);
     AddChild(go1_);

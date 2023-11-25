@@ -15,15 +15,15 @@ namespace snowpulse {
 class SNOWPULSEAPI ApplicationOpenGL : public Application {
     public:
         virtual ~ApplicationOpenGL();
-
-        void Run();
-        void Close();
-        void Shutdown();
-        Graphics* GetGraphics() const { return graphics_.get(); }
+        virtual bool Initialize()  override;
+        void Run() override;
+        void Close() override;
+        void Shutdown() override;
+        Graphics* GetGraphics() const override { return graphics_.get(); }
 
     protected:
         ApplicationOpenGL();
-        bool Initialize();
+        
 
         InputOpenGL* input_;
         std::shared_ptr<GraphicsOpenGL> graphics_;

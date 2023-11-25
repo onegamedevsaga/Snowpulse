@@ -24,7 +24,6 @@ class SNOWPULSEAPI Application {
         virtual void Close() = 0;
         virtual void Shutdown() = 0;
         virtual Graphics* GetGraphics() const = 0;
-        virtual std::string GetPlatformPath(std::string filename) = 0;
 
         void SetGame(Game* game);
 

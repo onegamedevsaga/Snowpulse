@@ -2,18 +2,19 @@
 
 #import <Foundation/Foundation.h>
 
+#include "../directory.h"
+
 namespace snowpulse {
 ApplicationMacOS::ApplicationMacOS() {
     platform_ = Platform::kMacOS;
     platformString_ = "macOS";
 }
 
-std::string ApplicationMacOS::GetPlatformPath(std::string filename) {
-    NSString* filenameNSString = [NSString stringWithUTF8String:filename.c_str()];
-    NSString* resourcePath = [[NSBundle mainBundle] pathForResource:filenameNSString ofType:nil];
-    if (resourcePath == nil) {
-        return filename;
+bool ApplicationMacOS::Initialize() {
+    if (!ApplicationOpenGL::Initialize()) {
+        return false;
     }
-    return [resourcePath UTF8String];
+    directory_ = static_cast<DirectoryMacOS*>(Directory::GetInstance());
+    return true;
 }
 }   // namespace snowpulse

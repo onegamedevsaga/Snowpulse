@@ -42,6 +42,7 @@
 #include "application/platform.h"
 #include "application/camera.h"
 #include "application/input.h"
+#include "application/directory.h"
 
 #ifdef SNOWPULSE_PLATFORM_WINDOWS
     #include "application/windows/application_windows.h"

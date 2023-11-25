@@ -4,6 +4,7 @@
 #include <fstream>
 
 #include "../application/application.h"
+#include "../application/directory.h"
 
 namespace snowpulse {
 
@@ -12,7 +13,7 @@ std::shared_ptr<Json> JsonUtils::Create() {
 }
 
 std::shared_ptr<Json> JsonUtils::LoadFile(std::string filename) {
-    filename = snowpulse::Application::GetInstance()->GetPlatformPath("assets/" + filename);
+    filename = Directory::GetInstance()->GetAssetsPath("assets/" + filename);
     std::ifstream f(filename.c_str());
     if (!f.fail()) {
         auto j = std::make_shared<Json>();
@@ -27,7 +28,7 @@ std::shared_ptr<Json> JsonUtils::LoadFile(std::string filename) {
 }
 
 bool JsonUtils::SaveFile(Json* data, std::string filename) {
-    filename = snowpulse::Application::GetInstance()->GetPlatformPath("assets/" + filename);
+    filename = Directory::GetInstance()->GetAssetsPath("assets/" + filename);
     std::ofstream f(filename.c_str());
     if (!f.is_open()) {
 #ifdef SPDEBUG
