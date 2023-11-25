@@ -9,7 +9,7 @@ namespace snowpulse {
 template <class T>
 class Singleton {
     public:
-        static T* GetInstance2() {
+        static T* GetSingletonInstance() {
             static T instance;
             return &instance;
         }

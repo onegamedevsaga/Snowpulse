@@ -11,13 +11,13 @@
 namespace snowpulse {
 Directory* Directory::GetInstance() {
 #ifdef SNOWPULSE_PLATFORM_WINDOWS
-    return DirectoryMacOS::GetInstance2();
+    return DirectoryMacOS::GetSingletonInstance();
 #elif SNOWPULSE_PLATFORM_MACOS
-    return DirectoryMacOS::GetInstance2();
+    return DirectoryMacOS::GetSingletonInstance();
 #elif SNOWPULSE_PLATFORM_ANDROID
     
 #elif SNOWPULSE_PLATFORM_IOS
-    
+    return DirectoryIOS::GetSingletonInstance();
 #elif SNOWPULSE_PLATFORM_WEBGL
     
 #endif

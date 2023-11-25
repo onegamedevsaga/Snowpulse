@@ -11,13 +11,13 @@
 namespace snowpulse {
 Input* Input::GetInstance() {
 #ifdef SNOWPULSE_PLATFORM_WINDOWS
-    return InputOpenGL::GetInstance2();
+    return InputOpenGL::GetSingletonInstance();
 #elif SNOWPULSE_PLATFORM_MACOS
-    return InputOpenGL::GetInstance2();
+    return InputOpenGL::GetSingletonInstance();
 #elif SNOWPULSE_PLATFORM_ANDROID
     
 #elif SNOWPULSE_PLATFORM_IOS
-    
+    return InputIOS::GetSingletonInstance();
 #elif SNOWPULSE_PLATFORM_WEBGL
     
 #endif

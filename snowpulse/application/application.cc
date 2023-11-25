@@ -19,13 +19,13 @@
 namespace snowpulse {
 Application* Application::GetInstance() {
 #ifdef SNOWPULSE_PLATFORM_WINDOWS
-    return ApplicationWindows::GetInstance();
+    return ApplicationWindows::GetSingletonInstance();
 #elif SNOWPULSE_PLATFORM_MACOS
-    return ApplicationMacOS::GetInstance2();
+    return ApplicationMacOS::GetSingletonInstance();
 #elif SNOWPULSE_PLATFORM_ANDROID
     
 #elif SNOWPULSE_PLATFORM_IOS
-    
+    return ApplicationIOS::GetSingletonInstance();
 #elif SNOWPULSE_PLATFORM_WEBGL
     
 #endif
