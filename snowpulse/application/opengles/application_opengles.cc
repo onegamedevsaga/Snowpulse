@@ -1,27 +1,27 @@
-#include "application_opengl.h"
+#include "application_opengles.h"
 
 #include <iostream>
 
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
+//#include <glad/glad.h>
+//#include <GLFW/glfw3.h>
 
 #include "../timer.h"
 
 namespace snowpulse {
-ApplicationOpenGL::ApplicationOpenGL() : Application() {
-    platform_ = Platform::kOpenGL;
-    platformString_ = "OpenGL";
+ApplicationOpenGLES::ApplicationOpenGLES() : Application() {
+    platform_ = Platform::kOpenGLES;
+    platformString_ = "OpenGLES";
 }
 
-ApplicationOpenGL::~ApplicationOpenGL() {
+ApplicationOpenGLES::~ApplicationOpenGLES() {
 #ifdef SPDEBUG
-    std::cout << "ApplicationOpenGL destroyed." << std::endl;
+    std::cout << "ApplicationOpenGLES destroyed." << std::endl;
 #endif
 }
 
-bool ApplicationOpenGL::Initialize() {
+bool ApplicationOpenGLES::Initialize() {
     if (Application::Initialize()) {
-        graphics_ = GraphicsOpenGL::Create();
+        graphics_ = GraphicsOpenGLES::Create();
         if (!graphics_) {
 #ifdef SPDEBUG
             std::cout << "ERROR: Application wasn't able to initialize graphics on this platform." << std::endl;
@@ -29,12 +29,12 @@ bool ApplicationOpenGL::Initialize() {
             return false;
         }
 
-        renderQueue_ = RenderQueueOpenGL::Create();
+        renderQueue_ = RenderQueueOpenGLES::Create();
         graphics_->Initialize(Vector2Int(1920, 1080), camera_.get(), renderQueue_.get(), Vector2Int(1067, 600));
-        input_ = static_cast<InputOpenGL*>(Input::GetInstance());
+        input_ = static_cast<InputIOS*>(Input::GetInstance());
 
 #ifdef SPDEBUG
-        std::cout << "ApplicationOpenGL initialized." << std::endl;
+        std::cout << "ApplicationOpenGLES initialized." << std::endl;
 #endif
         return true;
     }
@@ -42,7 +42,7 @@ bool ApplicationOpenGL::Initialize() {
     return false;
 }
 
-void ApplicationOpenGL::Run() {
+void ApplicationOpenGLES::Run() {
     Timer timer;
     timer.Start();
 
@@ -52,10 +52,10 @@ void ApplicationOpenGL::Run() {
     game_->Start();
     actionManager_->Start();
 
-    while (!glfwWindowShouldClose(graphics_->GetWindow())) {
+    /*while (!glfwWindowShouldClose(graphics_->GetWindow())) {
 
         glfwPollEvents();
-        input_->ProcessInputs(graphics_.get());
+        input_->ProcessInputs();
 
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         if (graphics_->IsDepthTesting()) {
@@ -166,9 +166,9 @@ void ApplicationOpenGL::Run() {
 #ifdef SPDEBUG
     std::cout << "Rendered " << batches.size() << " batch/es." << std::endl;
 #endif
-    }
+    }*/
 
-    glfwTerminate();
+    //glfwTerminate();
 
     auto elapsed = timer.GetElapsedInSeconds();
 #ifdef SPDEBUG
@@ -176,11 +176,11 @@ void ApplicationOpenGL::Run() {
 #endif
 }
 
-void ApplicationOpenGL::Close() {
-    glfwSetWindowShouldClose(graphics_->GetWindow(), true);
+void ApplicationOpenGLES::Close() {
+    //glfwSetWindowShouldClose(graphics_->GetWindow(), true);
 }
 
-void ApplicationOpenGL::Shutdown() {
+void ApplicationOpenGLES::Shutdown() {
     if (game_) {
         game_->Shutdown();
     }
@@ -188,7 +188,7 @@ void ApplicationOpenGL::Shutdown() {
         graphics_->Shutdown();
     }
 #ifdef SPDEBUG
-    std::cout << "ApplicationOpenGL shutdown." << std::endl;
+    std::cout << "ApplicationOpenGLES shutdown." << std::endl;
 #endif
 }
 }   // namespace snowpulse

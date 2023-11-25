@@ -5,7 +5,7 @@
 #elif SNOWPULSE_PLATFORM_MACOS
 #include "macos/directory_macos.h"
 #elif SNOWPULSE_PLATFORM_IOS
-//#include "ios/directory_ios.h"
+#include "ios/directory_ios.h"
 #endif
 
 namespace snowpulse {

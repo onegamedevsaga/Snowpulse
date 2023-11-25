@@ -1,28 +1,29 @@
-#ifndef SNOWPULSE_APPLICATION_OPENGL_INPUTOPENGL_H_
-#define SNOWPULSE_APPLICATION_OPENGL_INPUTOPENGL_H_
+#ifndef SNOWPULSE_APPLICATION_IOS_INPUTIOS_H_
+#define SNOWPULSE_APPLICATION_IOS_INPUTIOS_H_
 
 #include "../../common/singleton.h"
 #include "../input.h"
 
 #include <string>
 #include <map>
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
 
 #include "../../common/vector2.h"
-#include "graphics_opengl.h"
 
 namespace snowpulse {
-class SNOWPULSEAPI InputOpenGL : public Input, public Singleton<InputOpenGL> {
+class SNOWPULSEAPI InputIOS : public Input, public Singleton<InputIOS> {
     public:
-        virtual ~InputOpenGL();
+        virtual ~InputIOS();
 
-        void ProcessInputs(GraphicsOpenGL* graphics);
+        void ProcessInputs();
         bool GetPressed(std::string key) override;
         bool GetReleased(std::string key) override;
         Vector2 GetInputPosition() override { return inputPosition_; }
 
     protected:
-        friend class Singleton<InputOpenGL>;
-        InputOpenGL();
+        friend class Singleton<InputIOS>;
+        InputIOS();
 
         Vector2 inputPosition_;
         std::map<unsigned int, std::string> keyMap_;

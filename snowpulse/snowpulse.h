@@ -46,9 +46,9 @@
 #include "application/directory.h"
 
 #ifdef SNOWPULSE_PLATFORM_WINDOWS
-    #include "application/windows/application_windows.h"
+#include "application/windows/application_windows.h"
 #elif SNOWPULSE_PLATFORM_MACOS
-    #include "application/macos/application_macos.h"
+#include "application/macos/application_macos.h"
 #elif SNOWPULSE_PLATFORM_ANDROID
 #include "application/android/application_android.h"
 #elif SNOWPULSE_PLATFORM_IOS

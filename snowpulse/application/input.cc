@@ -5,7 +5,7 @@
 #elif SNOWPULSE_PLATFORM_MACOS
 #include "opengl/input_opengl.h"
 #elif SNOWPULSE_PLATFORM_IOS
-//#include "opengl/input_opengl.h"
+#include "ios/input_ios.h"
 #endif
 
 namespace snowpulse {

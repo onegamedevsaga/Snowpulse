@@ -12,6 +12,7 @@ enum class Platform {
     kIOS,
     kWebGL,
     kOpenGL,
+    kOpenGLES,
 };
 }   // namespace snowpulse
 

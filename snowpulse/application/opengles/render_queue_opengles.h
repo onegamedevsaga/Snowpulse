@@ -1,5 +1,5 @@
-#ifndef SNOWPULSE_APPLICATION_OPENGL_RENDERQUEUEOPENGL_H_
-#define SNOWPULSE_APPLICATION_OPENGL_RENDERQUEUEOPENGL_H_
+#ifndef SNOWPULSE_APPLICATION_OPENGLES_RENDERQUEUEOPENGLES_H_
+#define SNOWPULSE_APPLICATION_OPENGLES_RENDERQUEUEOPENGLES_H_
 
 #include "../../defines.h"
 #include "../../game/drawable.h"
@@ -8,20 +8,20 @@
 #include <vector>
 
 #include "../render_batch.h"
-#include "render_batch_data_opengl.h"
+#include "render_batch_data_opengles.h"
 
 namespace snowpulse {
-class SNOWPULSEAPI RenderQueueOpenGL {
+class SNOWPULSEAPI RenderQueueOpenGLES {
     public:
-        static std::shared_ptr<RenderQueueOpenGL> Create();
+        static std::shared_ptr<RenderQueueOpenGLES> Create();
 
-        virtual ~RenderQueueOpenGL();
+        virtual ~RenderQueueOpenGLES();
 
         void Push(std::shared_ptr<RenderBatch> batch);
-        std::vector<std::shared_ptr<RenderBatchDataOpenGL>> PopAllData();
+        std::vector<std::shared_ptr<RenderBatchDataOpenGLES>> PopAllData();
 
     private:
-        RenderQueueOpenGL();
+        RenderQueueOpenGLES();
         void SortBatches();
         void GroupBatches(std::vector<std::shared_ptr<RenderBatch>>& batches);
 
