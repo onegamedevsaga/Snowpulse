@@ -1,5 +1,5 @@
-#ifndef SNOWPULSE_APPLICATION_OPENGLES_RENDERBATCHGROUPOPENGLES_H_
-#define SNOWPULSE_APPLICATION_OPENGLES_RENDERBATCHGROUPOPENGLES_H_
+#ifndef SNOWPULSE_APPLICATION_METAL_RENDERBATCHGROUPMETAL_H_
+#define SNOWPULSE_APPLICATION_METAL_RENDERBATCHGROUPMETAL_H_
 
 #include "../../defines.h"
 #include "../render_batch.h"
@@ -7,13 +7,13 @@
 #include <memory>
 #include <vector>
 
-#include "render_batch_data_opengles.h"
+#include "render_batch_data_metal.h"
 
 namespace snowpulse {
-class SNOWPULSEAPI RenderBatchGroupOpenGLES : public RenderBatch {
+class SNOWPULSEAPI RenderBatchGroupMetal : public RenderBatch {
     public:
-        RenderBatchGroupOpenGLES() : RenderBatch(RenderBatchType::kGroup) { }
-        ~RenderBatchGroupOpenGLES() { }
+        RenderBatchGroupMetal() : RenderBatch(RenderBatchType::kGroup) { }
+        ~RenderBatchGroupMetal() { }
 
         std::vector<std::shared_ptr<RenderBatch>> GetBatches() const { return batches_; }
 

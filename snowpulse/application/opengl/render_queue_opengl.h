@@ -26,7 +26,6 @@ class SNOWPULSEAPI RenderQueueOpenGL {
         void GroupBatches(std::vector<std::shared_ptr<RenderBatch>>& batches);
 
         std::vector<std::shared_ptr<RenderBatch>> batches_;
-
 };
 }   // namespace snowpulse
 

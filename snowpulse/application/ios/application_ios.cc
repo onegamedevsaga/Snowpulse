@@ -1,7 +1,5 @@
 #include "application_ios.h"
 
-#import <OpenGLES/EAGL.h>
-
 #include "../directory.h"
 
 namespace snowpulse {
@@ -13,10 +11,6 @@ ApplicationIOS::ApplicationIOS() {
 bool ApplicationIOS::Initialize() {
     if (!ApplicationOpenGLES::Initialize()) {
         return false;
-    }
-    EAGLContext *context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES3];
-    if (!context) {
-        // Handle the error here.
     }
     
 

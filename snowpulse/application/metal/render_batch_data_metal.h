@@ -1,5 +1,5 @@
-#ifndef SNOWPULSE_APPLICATION_OPENGLES_RENDERBATCHDATAOPENGLES_H_
-#define SNOWPULSE_APPLICATION_OPENGLES_RENDERBATCHDATAOPENGLES_H_
+#ifndef SNOWPULSE_APPLICATION_METAL_RENDERBATCHDATAMETAL_H_
+#define SNOWPULSE_APPLICATION_METAL_RENDERBATCHDATAMETAL_H_
 
 #include "../../defines.h"
 #include "../render_batch.h"
@@ -13,10 +13,10 @@
 #include "../../common/blend_mode.h"
 
 namespace snowpulse {
-class SNOWPULSEAPI RenderBatchDataOpenGLES : public RenderBatch {
+class SNOWPULSEAPI RenderBatchDataMetal : public RenderBatch {
     public:
-        RenderBatchDataOpenGLES() : RenderBatch(RenderBatchType::kData) { }
-        ~RenderBatchDataOpenGLES() { }
+        RenderBatchDataMetal() : RenderBatch(RenderBatchType::kData) { }
+        ~RenderBatchDataMetal() { }
 
         unsigned int vertexPlusUVPlusColorCount = 9;
         unsigned int vertexSectionCount = 3;

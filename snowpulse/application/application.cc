@@ -8,10 +8,10 @@
 #include "opengl/graphics_opengl.h"
 #elif SNOWPULSE_PLATFORM_MACOS
 #include "macos/application_macos.h"
-#include "opengl/graphics_opengl.h"
+#include "metal/graphics_metal.h"
 #elif SNOWPULSE_PLATFORM_IOS
 #include "ios/application_ios.h"
-#include "opengles/graphics_opengles.h"
+#include "metal/graphics_metal.h"
 #endif
 
 #include "timer.h"

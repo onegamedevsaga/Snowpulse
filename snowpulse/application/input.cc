@@ -1,9 +1,11 @@
 #include "input.h"
 
+#include <cctype>
+
 #ifdef SNOWPULSE_PLATFORM_WINDOWS
 #include "opengl/input_opengl.h"
 #elif SNOWPULSE_PLATFORM_MACOS
-#include "opengl/input_opengl.h"
+#include "macos/input_macos.h"
 #elif SNOWPULSE_PLATFORM_IOS
 #include "ios/input_ios.h"
 #endif
@@ -13,7 +15,7 @@ Input* Input::GetInstance() {
 #ifdef SNOWPULSE_PLATFORM_WINDOWS
     return InputOpenGL::GetSingletonInstance();
 #elif SNOWPULSE_PLATFORM_MACOS
-    return InputOpenGL::GetSingletonInstance();
+    return InputMacOS::GetSingletonInstance();
 #elif SNOWPULSE_PLATFORM_ANDROID
     
 #elif SNOWPULSE_PLATFORM_IOS
