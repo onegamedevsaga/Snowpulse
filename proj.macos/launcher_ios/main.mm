@@ -18,5 +18,16 @@ int main(int argc, char * argv[]) {
         // Setup code that might create autoreleased objects goes here.
         appDelegateClassName = NSStringFromClass([AppDelegate class]);
     }
+    
+    auto game = game::Game::Create();
+    auto app = snowpulse::Application::GetInstance();
+
+    if (app->Initialize()) {
+        app->SetGame(game.get());
+        game->Initialize(app);
+
+        app->Run();
+        app->Shutdown();
+    }
     return UIApplicationMain(argc, argv, nil, appDelegateClassName);
 }

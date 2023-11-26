@@ -9,7 +9,7 @@
 namespace snowpulse {
 class SNOWPULSEAPI ApplicationMacOS : public ApplicationOpenGL, public Singleton<ApplicationMacOS> {
     public:
-        virtual bool Initialize() override;
+        virtual bool Initialize(const Vector2Int& resolutionSize, const Vector2Int& screenSize) override;
 
     protected:
         friend class Singleton<ApplicationMacOS>;

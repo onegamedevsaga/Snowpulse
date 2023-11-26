@@ -63,8 +63,7 @@ InputOpenGL::InputOpenGL() : Input() {
 InputOpenGL::~InputOpenGL() {
 }
 
-void InputOpenGL::ProcessInputs(GraphicsOpenGL* graphics) {
-    auto window = graphics->GetWindow();
+void InputOpenGL::ProcessInputs(const Vector2Int& resolutionSize, const Vector2Int& screenSize, GLFWwindow* window) {
     pressedInputs_.clear();
     releasedInputs_.clear();
 
@@ -99,12 +98,10 @@ void InputOpenGL::ProcessInputs(GraphicsOpenGL* graphics) {
     }
 
     double x, y;
-    auto resolution = graphics->GetResolution();
-    auto screenSize = graphics->GetScreenSize();
     glfwGetCursorPos(window, &x, &y);
     inputPosition_.x = (float)x;
     inputPosition_.y = (float)screenSize.y - (float)y;
-    Vector2 scaleFactor = Vector2((float)resolution.x / (float)screenSize.x, (float)resolution.y / (float)screenSize.y);
+    Vector2 scaleFactor = Vector2((float)resolutionSize.x / (float)screenSize.x, (float)resolutionSize.y / (float)screenSize.y);
     inputPosition_ *= scaleFactor;
 }
 

@@ -1,6 +1,6 @@
 #include "application_ios.h"
 
-#import <Foundation/Foundation.h>
+#import <OpenGLES/EAGL.h>
 
 #include "../directory.h"
 
@@ -14,6 +14,12 @@ bool ApplicationIOS::Initialize() {
     if (!ApplicationOpenGLES::Initialize()) {
         return false;
     }
+    EAGLContext *context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES3];
+    if (!context) {
+        // Handle the error here.
+    }
+    
+
     directory_ = static_cast<DirectoryIOS*>(Directory::GetInstance());
     return true;
 }

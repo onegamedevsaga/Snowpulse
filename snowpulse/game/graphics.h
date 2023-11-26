@@ -6,6 +6,7 @@
 #include <memory>
 #include <string>
 
+#include "../application/camera.h"
 #include "../common/vertex.h"
 #include "../common/vector2.h"
 #include "../common/blend_mode.h"
@@ -32,7 +33,7 @@ class SNOWPULSEAPI Graphics {
         virtual void DrawMesh(Vertex* vertices, unsigned int vertexCount, unsigned short* indices, unsigned int indexCount, std::string textureFilename, int sortOrder, BlendMode blendMode, bool isPremultiplied, Matrix4x4 transformMatrix, int batchGroup = -1) = 0;
         virtual void DrawSprite(Vector2 size, std::string filename, Matrix4x4 transformMatrix, Color color = Color::White(), int sortOrder = 0, BlendMode blendMode = BlendMode::kNormal, bool isPremultiplied = false, Vector2 uvLowerLeft = Vector2(0.0f, 1.0f), Vector2 uvUpperRight = Vector2(1.0f, 0.0f), int batchGroup = -1) = 0;
 
-        Camera* GetCamera() const { return camera_; }
+        Camera* GetCamera() const { return camera_.get(); }
         bool IsDepthTesting() const { return isDepthTesting_; }
 
         void SetDepthTesting(bool value) { isDepthTesting_ = value; }
@@ -42,7 +43,7 @@ class SNOWPULSEAPI Graphics {
         }
 
     protected:
-        Camera* camera_;
+        std::shared_ptr<Camera> camera_;
         bool isDepthTesting_ = false;
 };
 }   // namespace snowpulse

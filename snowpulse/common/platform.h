@@ -1,5 +1,5 @@
-#ifndef SNOWPULSE_APPLICATION_PLATFORM_H_
-#define SNOWPULSE_APPLICATION_PLATFORM_H_
+#ifndef SNOWPULSE_COMMON_PLATFORM_H_
+#define SNOWPULSE_COMMON_PLATFORM_H_
 
 #include "../defines.h"
 
@@ -12,7 +12,7 @@ enum class Platform {
     kIOS,
     kWebGL,
     kOpenGL,
-    kOpenGLES,
+    kMetal,
 };
 }   // namespace snowpulse
 

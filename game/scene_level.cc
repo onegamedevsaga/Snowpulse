@@ -55,7 +55,7 @@ void SceneLevel::Start() {
     snowpulse::JsonUtils::SaveFile(json2.get(), "levelSample.json");
     
     go1_ = snowpulse::GameObject::Create("go1_");
-    auto sprRenderer = snowpulse::SpriteRenderer::Create("logo2.png");
+    auto sprRenderer = snowpulse::SpriteRenderer::Create("logo.png");
     sprRenderer->SetColor(snowpulse::Color(1.0f, 0.0f, 0.0f, 0.5f));
     sprRenderer->SetSortOrder(0);
     go1_->AddComponent(sprRenderer);

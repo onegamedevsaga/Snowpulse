@@ -6,8 +6,8 @@
 
 #include "timer.h"
 #include "platform.h"
-#include "camera.h"
 #include "../defines.h"
+#include "../common/vector2int.h"
 #include "../game/graphics.h"
 #include "../game/game.h"
 #include "../game/node_starter.h"
@@ -19,7 +19,7 @@ class SNOWPULSEAPI Application {
         static Application* GetInstance();
 
         virtual ~Application();
-        virtual bool Initialize();
+        virtual bool Initialize(const Vector2Int& resolution, const Vector2Int& screenSize);
         virtual void Run() = 0;
         virtual void Close() = 0;
         virtual void Shutdown() = 0;
@@ -27,21 +27,23 @@ class SNOWPULSEAPI Application {
 
         void SetGame(Game* game);
 
+        Vector2Int GetResolutionSize() { return resolutionSize_; }
+        Vector2Int GetScreenSize() { return screenSize_; }
         NodeStarter& GetNodeStarter() { return nodeStarter_; }
         Platform GetPlatform() const { return platform_; }
         std::string GetPlatformString() const { return platformString_; }
         Game* GetGame() const { return game_; }
-        Camera* GetCamera() const { return camera_.get(); }
         ActionManager* GetActionManager() const { return actionManager_.get(); }
 
     protected:
         Application();
 
         Platform platform_;
+        Vector2Int screenSize_;
+        Vector2Int resolutionSize_;
         NodeStarter nodeStarter_;
         Game* game_;
         std::string platformString_;
-        std::shared_ptr<Camera> camera_;
         std::shared_ptr<ActionManager> actionManager_;
 
         float GetDeltaTime(Timer& timer);

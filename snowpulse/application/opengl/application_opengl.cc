@@ -19,18 +19,49 @@ ApplicationOpenGL::~ApplicationOpenGL() {
 #endif
 }
 
-bool ApplicationOpenGL::Initialize() {
-    if (Application::Initialize()) {
+bool ApplicationOpenGL::Initialize(const Vector2Int& resolutionSize, const Vector2Int& screenSize) {
+    if (Application::Initialize(resolutionSize, screenSize)) {
+#ifdef SPDEBUG
+        std::cout << "Starting GLFW context, OpenGL 4.1" << std::endl;
+#endif
+        if (!glfwInit()) {
+#ifdef SPDEBUG
+            std::cerr << "Failed to initialize GLFW" << std::endl;
+#endif
+            return false;
+        }
+
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
+        glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+        glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+        glfwWindowHint(GLFW_DEPTH_BITS, 24);
+
+        window_ = glfwCreateWindow(screenSize.x, screenSize.y, "Snowpulse", NULL, NULL);
+        if (!window_) {
+#ifdef SPDEBUG
+            std::cerr << "Failed to create GLFW window" << std::endl;
+#endif
+            glfwTerminate();
+            return false;
+        }
+        glfwMakeContextCurrent(window_);
+
+        if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
+#ifdef SPDEBUG
+            std::cerr << "Failed to initialize GLAD" << std::endl;
+#endif
+            return false;
+        }
+
         graphics_ = GraphicsOpenGL::Create();
-        if (!graphics_) {
+        if (!graphics_ || !graphics_->Initialize(resolutionSize, screenSize)) {
 #ifdef SPDEBUG
             std::cout << "ERROR: Application wasn't able to initialize graphics on this platform." << std::endl;
 #endif
             return false;
         }
 
-        renderQueue_ = RenderQueueOpenGL::Create();
-        graphics_->Initialize(Vector2Int(1920, 1080), camera_.get(), renderQueue_.get(), Vector2Int(1067, 600));
         input_ = static_cast<InputOpenGL*>(Input::GetInstance());
 
 #ifdef SPDEBUG
@@ -52,10 +83,10 @@ void ApplicationOpenGL::Run() {
     game_->Start();
     actionManager_->Start();
 
-    while (!glfwWindowShouldClose(graphics_->GetWindow())) {
+    while (!glfwWindowShouldClose(window_)) {
 
         glfwPollEvents();
-        input_->ProcessInputs(graphics_.get());
+        input_->ProcessInputs(resolutionSize_, screenSize_, window_);
 
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         if (graphics_->IsDepthTesting()) {
@@ -71,7 +102,7 @@ void ApplicationOpenGL::Run() {
         game_->UpdateScene(deltaTime);
         game_->DrawScene(graphics_.get());
 
-        auto batches = renderQueue_->PopAllData();
+        auto batches = graphics_->GetRenderQueue()->PopAllData();
         for (int i = 0; i < 1; i++) {
             for(auto b : batches) {
                 switch (b->blendMode) {
@@ -160,7 +191,7 @@ void ApplicationOpenGL::Run() {
             }
         }
 
-        glfwSwapBuffers(graphics_->GetWindow());
+        glfwSwapBuffers(window_);
 
         graphics_->ClearRenderBatchGroups();
 #ifdef SPDEBUG
@@ -177,7 +208,7 @@ void ApplicationOpenGL::Run() {
 }
 
 void ApplicationOpenGL::Close() {
-    glfwSetWindowShouldClose(graphics_->GetWindow(), true);
+    glfwSetWindowShouldClose(window_, true);
 }
 
 void ApplicationOpenGL::Shutdown() {

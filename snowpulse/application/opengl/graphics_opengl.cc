@@ -58,36 +58,9 @@ std::shared_ptr<GraphicsOpenGL> GraphicsOpenGL::Create() {
 GraphicsOpenGL::GraphicsOpenGL() {
 }
 
-void GraphicsOpenGL::Initialize(Vector2Int resolution, Camera* camera, RenderQueueOpenGL* renderQueue, Vector2Int screenSize) {
-    std::cout << "Starting GLFW context, OpenGL 4.1" << std::endl;
-    if (!glfwInit()) {
-        std::cerr << "Failed to initialize GLFW" << std::endl;
-        return;
-    }
-
-    resolution_ = resolution;
-    screenSize_ = screenSize;
-    camera_ = camera;
-    renderQueue_ = renderQueue;
-
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-    glfwWindowHint(GLFW_DEPTH_BITS, 24);
-
-    window_ = glfwCreateWindow(screenSize_.x, screenSize_.y, "Snowpulse", NULL, NULL);
-    if (!window_) {
-        std::cerr << "Failed to create GLFW window" << std::endl;
-        glfwTerminate();
-        return ;
-    }
-    glfwMakeContextCurrent(window_);
-
-    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-        std::cerr << "Failed to initialize GLAD" << std::endl;
-        return;
-    }
+bool GraphicsOpenGL::Initialize(const Vector2Int& resolution, const Vector2Int& screenSize) {
+    camera_ = Camera::Create();
+    renderQueue_ = RenderQueueOpenGL::Create();
 
     // Compile and link shaders
     GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
@@ -106,7 +79,7 @@ void GraphicsOpenGL::Initialize(Vector2Int resolution, Camera* camera, RenderQue
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);
 
-    projectionMatrix_ = glm::ortho(0.0f, (float)resolution_.x, 0.0f, (float)resolution_.y, -100.0f, 100.0f);
+    projectionMatrix_ = glm::ortho(0.0f, (float)resolution.x, 0.0f, (float)resolution.y, -100.0f, 100.0f);
 
     vertexShaderLocation_ = glGetAttribLocation(shaderProgram_, "position");
     uVShaderLocation_ = glGetAttribLocation(shaderProgram_, "texCoord");
@@ -119,11 +92,15 @@ void GraphicsOpenGL::Initialize(Vector2Int resolution, Camera* camera, RenderQue
         glEnable(GL_DEPTH_TEST);
     }
 
+    renderQueue_ = RenderQueueOpenGL::Create();
+
     LoadTexture(kSpriteDefault, TextureFiltering::kPoint, PathType::kDefaults);
 
 #ifdef SPDEBUG
     std::cout << "GraphicsOpenGL initialized." << std::endl;
 #endif
+
+    return true;
 }
 
 void GraphicsOpenGL::Shutdown() {

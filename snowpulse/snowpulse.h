@@ -5,6 +5,7 @@
 
 #include "defines.h"
 
+#include "common/platform.h"
 #include "common/space.h"
 #include "common/blend_mode.h"
 #include "common/path_type.h"
@@ -40,7 +41,6 @@
 #include "game/actions/action_rotate.h"
 
 #include "application/timer.h"
-#include "application/platform.h"
 #include "application/camera.h"
 #include "application/input.h"
 #include "application/directory.h"

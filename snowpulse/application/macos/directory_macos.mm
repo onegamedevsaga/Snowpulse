@@ -1,6 +1,7 @@
 #include "directory_macos.h"
 
 #include <iostream>
+
 #import <Foundation/Foundation.h>
 
 namespace snowpulse {

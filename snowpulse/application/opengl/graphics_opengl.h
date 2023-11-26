@@ -26,12 +26,10 @@ class SNOWPULSEAPI GraphicsOpenGL : public Graphics {
         static std::shared_ptr<GraphicsOpenGL> Create();
 
         ~GraphicsOpenGL();
-        void Initialize(Vector2Int resolution, Camera* camera, RenderQueueOpenGL* renderQueue, Vector2Int screenSize = Vector2Int());
+        bool Initialize(const Vector2Int& resolution, const Vector2Int& screenSize = Vector2Int());
         void Shutdown() override;
 
-        GLFWwindow* GetWindow() { return window_; }
-        Vector2Int GetResolution() { return resolution_; }
-        Vector2Int GetScreenSize() { return screenSize_; }
+        RenderQueueOpenGL* GetRenderQueue() const { return renderQueue_.get(); }
 
         // Graphics
         Matrix4x4 InvertMatrixNatively(Matrix4x4 matrix) override;
@@ -47,9 +45,6 @@ class SNOWPULSEAPI GraphicsOpenGL : public Graphics {
     private:
         GraphicsOpenGL();
 
-        GLFWwindow* window_;
-        Vector2Int resolution_;
-        Vector2Int screenSize_;
         GLuint shaderProgram_;
         glm::mat4 projectionMatrix_;
         GLuint vertexShaderLocation_;
@@ -58,7 +53,7 @@ class SNOWPULSEAPI GraphicsOpenGL : public Graphics {
         GLuint transformMatrixShaderLocation_;
         GLuint projectionMatrixShaderLocation_;
         GLuint viewMatrixShaderLocation_;
-        RenderQueueOpenGL* renderQueue_;
+        std::shared_ptr<RenderQueueOpenGL> renderQueue_;
         std::vector<std::shared_ptr<RenderBatchGroupOpenGL>> renderBatchGroups_;
         std::map<std::string, unsigned int> textures_;
         std::map<unsigned int, Vector2> textureSizes_;

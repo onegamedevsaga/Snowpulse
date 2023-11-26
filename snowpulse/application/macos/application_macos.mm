@@ -10,8 +10,8 @@ ApplicationMacOS::ApplicationMacOS() {
     platformString_ = "macOS";
 }
 
-bool ApplicationMacOS::Initialize() {
-    if (!ApplicationOpenGL::Initialize()) {
+bool ApplicationMacOS::Initialize(const Vector2Int& resolutionSize, const Vector2Int& screenSize) {
+    if (!ApplicationOpenGL::Initialize(resolutionSize, screenSize)) {
         return false;
     }
     directory_ = static_cast<DirectoryMacOS*>(Directory::GetInstance());

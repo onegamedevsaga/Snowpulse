@@ -118,7 +118,6 @@
 		2A07BCC92B0FCF590008B3A4 /* Updatable.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9242B07819F009AACBF /* Updatable.h */; };
 		2A07BCCA2B0FCF590008B3A4 /* json_utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBEB52B03E81D0060E35C /* json_utils.h */; };
 		2A07BCCB2B0FCF590008B3A4 /* PathConstraintPositionTimeline.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A93E2B07819F009AACBF /* PathConstraintPositionTimeline.h */; };
-		2A07BCCC2B0FCF590008B3A4 /* platform.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBE2E2B00BF430060E35C /* platform.h */; };
 		2A07BCCD2B0FCF590008B3A4 /* Timeline.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9542B0781A0009AACBF /* Timeline.h */; };
 		2A07BCCE2B0FCF590008B3A4 /* spine_texture_loader.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9DA2B07B0B1009AACBF /* spine_texture_loader.h */; };
 		2A07BCCF2B0FCF590008B3A4 /* Log.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9512B0781A0009AACBF /* Log.h */; };
@@ -265,7 +264,6 @@
 		2A4FBE5F2B00BF430060E35C /* input.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBE232B00BF430060E35C /* input.cc */; };
 		2A4FBE602B00BF430060E35C /* timer.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBE242B00BF430060E35C /* timer.h */; };
 		2A4FBE612B00BF430060E35C /* timer.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBE252B00BF430060E35C /* timer.cc */; };
-		2A4FBE692B00BF430060E35C /* platform.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBE2E2B00BF430060E35C /* platform.h */; };
 		2A4FBE6A2B00BF430060E35C /* snowpulse.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBE2F2B00BF430060E35C /* snowpulse.h */; };
 		2A4FBE7C2B00BF890060E35C /* defines.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBE772B00BF890060E35C /* defines.h */; };
 		2A4FBE7D2B00BF890060E35C /* game.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBE782B00BF890060E35C /* game.h */; };
@@ -493,11 +491,7 @@
 		2AE640C52B12927100A6B8DA /* directory_ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2AE640C12B12927100A6B8DA /* directory_ios.mm */; };
 		2AE640D02B12928400A6B8DA /* render_batch_group_opengles.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AE640C62B12928400A6B8DA /* render_batch_group_opengles.h */; };
 		2AE640D12B12928400A6B8DA /* render_queue_opengles.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AE640C72B12928400A6B8DA /* render_queue_opengles.h */; };
-		2AE640D32B12928400A6B8DA /* application_opengles.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AE640C92B12928400A6B8DA /* application_opengles.h */; };
-		2AE640D42B12928400A6B8DA /* graphics_opengles.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AE640CA2B12928400A6B8DA /* graphics_opengles.h */; };
-		2AE640D52B12928400A6B8DA /* graphics_opengles.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2AE640CB2B12928400A6B8DA /* graphics_opengles.cc */; };
 		2AE640D72B12928400A6B8DA /* render_queue_opengles.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2AE640CD2B12928400A6B8DA /* render_queue_opengles.cc */; };
-		2AE640D82B12928400A6B8DA /* application_opengles.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2AE640CE2B12928400A6B8DA /* application_opengles.cc */; };
 		2AE640D92B12928400A6B8DA /* render_batch_data_opengles.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AE640CF2B12928400A6B8DA /* render_batch_data_opengles.h */; };
 		2AE640DC2B1294A900A6B8DA /* input_ios.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AE640DA2B1294A900A6B8DA /* input_ios.h */; };
 		2AE640DD2B1294A900A6B8DA /* input_ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2AE640DB2B1294A900A6B8DA /* input_ios.mm */; };
@@ -505,6 +499,8 @@
 		2AE640E22B129E8400A6B8DA /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 2AE640E02B129E8400A6B8DA /* glad.c */; };
 		2AE640E32B129EA800A6B8DA /* directory.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2AE640B82B11CF6D00A6B8DA /* directory.cc */; };
 		2AE640E42B129EA800A6B8DA /* directory.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AE640B62B11CC5D00A6B8DA /* directory.h */; };
+		2AE640E62B12F1BF00A6B8DA /* platform.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AE640E52B12F1BF00A6B8DA /* platform.h */; };
+		2AE640E72B12F1BF00A6B8DA /* platform.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AE640E52B12F1BF00A6B8DA /* platform.h */; };
 		2AEA1C512B0DC7A700AAD982 /* render_batch.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AEA1C502B0DC7A700AAD982 /* render_batch.h */; };
 		2AEA1C532B0DF36700AAD982 /* render_batch_type.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AEA1C522B0DF36700AAD982 /* render_batch_type.h */; };
 		2AEA1C552B0E004B00AAD982 /* render_batch_group_opengl.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AEA1C542B0E004B00AAD982 /* render_batch_group_opengl.h */; };
@@ -673,7 +669,6 @@
 		2A4FBE232B00BF430060E35C /* input.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = input.cc; sourceTree = "<group>"; };
 		2A4FBE242B00BF430060E35C /* timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = timer.h; sourceTree = "<group>"; };
 		2A4FBE252B00BF430060E35C /* timer.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = timer.cc; sourceTree = "<group>"; };
-		2A4FBE2E2B00BF430060E35C /* platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = platform.h; sourceTree = "<group>"; };
 		2A4FBE2F2B00BF430060E35C /* snowpulse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = snowpulse.h; sourceTree = "<group>"; };
 		2A4FBE772B00BF890060E35C /* defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = defines.h; sourceTree = "<group>"; };
 		2A4FBE782B00BF890060E35C /* game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = game.h; sourceTree = "<group>"; };
@@ -883,15 +878,12 @@
 		2AE640C12B12927100A6B8DA /* directory_ios.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = directory_ios.mm; path = ios/directory_ios.mm; sourceTree = "<group>"; };
 		2AE640C62B12928400A6B8DA /* render_batch_group_opengles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = render_batch_group_opengles.h; path = opengles/render_batch_group_opengles.h; sourceTree = "<group>"; };
 		2AE640C72B12928400A6B8DA /* render_queue_opengles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = render_queue_opengles.h; path = opengles/render_queue_opengles.h; sourceTree = "<group>"; };
-		2AE640C92B12928400A6B8DA /* application_opengles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = application_opengles.h; path = opengles/application_opengles.h; sourceTree = "<group>"; };
-		2AE640CA2B12928400A6B8DA /* graphics_opengles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = graphics_opengles.h; path = opengles/graphics_opengles.h; sourceTree = "<group>"; };
-		2AE640CB2B12928400A6B8DA /* graphics_opengles.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = graphics_opengles.cc; path = opengles/graphics_opengles.cc; sourceTree = "<group>"; };
 		2AE640CD2B12928400A6B8DA /* render_queue_opengles.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = render_queue_opengles.cc; path = opengles/render_queue_opengles.cc; sourceTree = "<group>"; };
-		2AE640CE2B12928400A6B8DA /* application_opengles.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = application_opengles.cc; path = opengles/application_opengles.cc; sourceTree = "<group>"; };
 		2AE640CF2B12928400A6B8DA /* render_batch_data_opengles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = render_batch_data_opengles.h; path = opengles/render_batch_data_opengles.h; sourceTree = "<group>"; };
 		2AE640DA2B1294A900A6B8DA /* input_ios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = input_ios.h; path = ios/input_ios.h; sourceTree = "<group>"; };
 		2AE640DB2B1294A900A6B8DA /* input_ios.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = input_ios.mm; path = ios/input_ios.mm; sourceTree = "<group>"; };
 		2AE640E02B129E8400A6B8DA /* glad.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = glad.c; path = ../thirdparty/glad/src/glad.c; sourceTree = "<group>"; };
+		2AE640E52B12F1BF00A6B8DA /* platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = platform.h; sourceTree = "<group>"; };
 		2AEA1C502B0DC7A700AAD982 /* render_batch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = render_batch.h; sourceTree = "<group>"; };
 		2AEA1C522B0DF36700AAD982 /* render_batch_type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = render_batch_type.h; sourceTree = "<group>"; };
 		2AEA1C542B0E004B00AAD982 /* render_batch_group_opengl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = render_batch_group_opengl.h; path = opengl/render_batch_group_opengl.h; sourceTree = "<group>"; };
@@ -1004,6 +996,7 @@
 				2AA9A9CD2B078541009AACBF /* plugins */,
 				2A4FBDF82B00BF430060E35C /* components */,
 				2A4FBE012B00BF430060E35C /* actions */,
+				2A4FBE072B00BF430060E35C /* graphics.h */,
 				2A4FBE042B00BF430060E35C /* action_manager.cc */,
 				2A4FBE082B00BF430060E35C /* action_manager.h */,
 				2A4FBDFF2B00BF430060E35C /* action.cc */,
@@ -1015,7 +1008,6 @@
 				2A4FBDF52B00BF430060E35C /* game_object.h */,
 				2A4FBDFE2B00BF430060E35C /* game.cc */,
 				2A4FBDFD2B00BF430060E35C /* game.h */,
-				2A4FBE072B00BF430060E35C /* graphics.h */,
 				2A4FBDF12B00BF430060E35C /* node_starter.cc */,
 				2A4FBDF42B00BF430060E35C /* node_starter.h */,
 				2A4FBDF22B00BF430060E35C /* node.cc */,
@@ -1058,6 +1050,7 @@
 		2A4FBE0B2B00BF430060E35C /* common */ = {
 			isa = PBXGroup;
 			children = (
+				2AE640E52B12F1BF00A6B8DA /* platform.h */,
 				2AE640BA2B12363400A6B8DA /* path_type.h */,
 				2AA9A9DF2B087CE3009AACBF /* blend_mode.h */,
 				2A4FBE102B00BF430060E35C /* color.h */,
@@ -1081,7 +1074,7 @@
 			isa = PBXGroup;
 			children = (
 				2A4FBE932B03D42A0060E35C /* opengl */,
-				2AE640BC2B12921100A6B8DA /* opengles */,
+				2AE640BC2B12921100A6B8DA /* metal */,
 				2A4FBE152B00BF430060E35C /* macos */,
 				2AE640BD2B12921F00A6B8DA /* ios */,
 				2A4FBE222B00BF430060E35C /* application.cc */,
@@ -1094,7 +1087,6 @@
 				2AE640B82B11CF6D00A6B8DA /* directory.cc */,
 				2AEA1C522B0DF36700AAD982 /* render_batch_type.h */,
 				2AEA1C502B0DC7A700AAD982 /* render_batch.h */,
-				2A4FBE2E2B00BF430060E35C /* platform.h */,
 				2A4FBE252B00BF430060E35C /* timer.cc */,
 				2A4FBE242B00BF430060E35C /* timer.h */,
 			);
@@ -1392,19 +1384,15 @@
 			name = spine;
 			sourceTree = "<group>";
 		};
-		2AE640BC2B12921100A6B8DA /* opengles */ = {
+		2AE640BC2B12921100A6B8DA /* metal */ = {
 			isa = PBXGroup;
 			children = (
-				2AE640CE2B12928400A6B8DA /* application_opengles.cc */,
-				2AE640C92B12928400A6B8DA /* application_opengles.h */,
-				2AE640CB2B12928400A6B8DA /* graphics_opengles.cc */,
-				2AE640CA2B12928400A6B8DA /* graphics_opengles.h */,
 				2AE640CF2B12928400A6B8DA /* render_batch_data_opengles.h */,
 				2AE640C62B12928400A6B8DA /* render_batch_group_opengles.h */,
 				2AE640CD2B12928400A6B8DA /* render_queue_opengles.cc */,
 				2AE640C72B12928400A6B8DA /* render_queue_opengles.h */,
 			);
-			name = opengles;
+			name = metal;
 			sourceTree = "<group>";
 		};
 		2AE640BD2B12921F00A6B8DA /* ios */ = {
@@ -1488,6 +1476,7 @@
 				2AE640D02B12928400A6B8DA /* render_batch_group_opengles.h in Headers */,
 				2A07BC662B0FCF590008B3A4 /* action_wait.h in Headers */,
 				2A07BC682B0FCF590008B3A4 /* TextureRegion.h in Headers */,
+				2AE640E72B12F1BF00A6B8DA /* platform.h in Headers */,
 				2A07BC692B0FCF590008B3A4 /* Skeleton.h in Headers */,
 				2A07BC6A2B0FCF590008B3A4 /* transform.h in Headers */,
 				2A07BC6B2B0FCF590008B3A4 /* render_batch_type.h in Headers */,
@@ -1509,7 +1498,6 @@
 				2A07BC7C2B0FCF590008B3A4 /* DeformTimeline.h in Headers */,
 				2A07BC7D2B0FCF590008B3A4 /* vector2int.h in Headers */,
 				2A07BC7E2B0FCF590008B3A4 /* camera.h in Headers */,
-				2AE640D32B12928400A6B8DA /* application_opengles.h in Headers */,
 				2A07BC7F2B0FCF590008B3A4 /* MixDirection.h in Headers */,
 				2A07BC802B0FCF590008B3A4 /* SkeletonJson.h in Headers */,
 				2A07BC812B0FCF590008B3A4 /* color.h in Headers */,
@@ -1568,7 +1556,6 @@
 				2A07BCB52B0FCF590008B3A4 /* node.h in Headers */,
 				2A07BCB62B0FCF590008B3A4 /* json.hpp in Headers */,
 				2AE640C42B12927100A6B8DA /* application_ios.h in Headers */,
-				2AE640D42B12928400A6B8DA /* graphics_opengles.h in Headers */,
 				2AE640D92B12928400A6B8DA /* render_batch_data_opengles.h in Headers */,
 				2A07BCB72B0FCF590008B3A4 /* application.h in Headers */,
 				2A07BCB82B0FCF590008B3A4 /* Vector.h in Headers */,
@@ -1590,7 +1577,6 @@
 				2A07BCC92B0FCF590008B3A4 /* Updatable.h in Headers */,
 				2A07BCCA2B0FCF590008B3A4 /* json_utils.h in Headers */,
 				2A07BCCB2B0FCF590008B3A4 /* PathConstraintPositionTimeline.h in Headers */,
-				2A07BCCC2B0FCF590008B3A4 /* platform.h in Headers */,
 				2A07BCCD2B0FCF590008B3A4 /* Timeline.h in Headers */,
 				2A07BCCE2B0FCF590008B3A4 /* spine_texture_loader.h in Headers */,
 				2A07BCCF2B0FCF590008B3A4 /* Log.h in Headers */,
@@ -1740,6 +1726,7 @@
 				2A4FBE4D2B00BF430060E35C /* texture_filtering.h in Headers */,
 				2A4FBE482B00BF430060E35C /* scene.h in Headers */,
 				2A4FBE452B00BF430060E35C /* component.h in Headers */,
+				2AE640E62B12F1BF00A6B8DA /* platform.h in Headers */,
 				2AA9A9992B0781A0009AACBF /* SequenceTimeline.h in Headers */,
 				2AA9A98E2B0781A0009AACBF /* dll.h in Headers */,
 				2AA9A9C52B0781A0009AACBF /* SkeletonBinary.h in Headers */,
@@ -1754,7 +1741,6 @@
 				2AA9A9782B0781A0009AACBF /* Updatable.h in Headers */,
 				2A4FBEB72B03E81D0060E35C /* json_utils.h in Headers */,
 				2AA9A9922B0781A0009AACBF /* PathConstraintPositionTimeline.h in Headers */,
-				2A4FBE692B00BF430060E35C /* platform.h in Headers */,
 				2AA9A9A82B0781A0009AACBF /* Timeline.h in Headers */,
 				2AA9A9DE2B07B0B1009AACBF /* spine_texture_loader.h in Headers */,
 				2AA9A9A52B0781A0009AACBF /* Log.h in Headers */,
@@ -2039,7 +2025,6 @@
 				2A07BD002B0FCF590008B3A4 /* IkConstraintTimeline.cpp in Sources */,
 				2A07BD012B0FCF590008B3A4 /* Slot.cpp in Sources */,
 				2A07BD022B0FCF590008B3A4 /* node_starter.cc in Sources */,
-				2AE640D82B12928400A6B8DA /* application_opengles.cc in Sources */,
 				2A07BD032B0FCF590008B3A4 /* RTTI.cpp in Sources */,
 				2A07BD042B0FCF590008B3A4 /* action.cc in Sources */,
 				2A07BD052B0FCF590008B3A4 /* ColorTimeline.cpp in Sources */,
@@ -2060,7 +2045,6 @@
 				2A07BD152B0FCF590008B3A4 /* Skin.cpp in Sources */,
 				2A07BD162B0FCF590008B3A4 /* timer.cc in Sources */,
 				2A07BD172B0FCF590008B3A4 /* input.cc in Sources */,
-				2AE640D52B12928400A6B8DA /* graphics_opengles.cc in Sources */,
 				2A07BD182B0FCF590008B3A4 /* spine_renderer.cc in Sources */,
 				2A07BD192B0FCF590008B3A4 /* PathConstraint.cpp in Sources */,
 				2A07BD1A2B0FCF590008B3A4 /* SkeletonBounds.cpp in Sources */,
@@ -2326,7 +2310,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2365,7 +2349,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

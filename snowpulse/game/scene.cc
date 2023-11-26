@@ -14,7 +14,7 @@ Scene::~Scene() {
 void Scene::Initialize(Application* application) {
     application_ = application;
     game_ = application_->GetGame();
-    camera_ = application_->GetCamera();
+    camera_ = application_->GetGraphics()->GetCamera();
 }
 
 void Scene::Shutdown() {
