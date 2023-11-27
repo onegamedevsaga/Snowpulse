@@ -2,14 +2,14 @@
 #define SNOWPULSE_APPLICATION_IOS_APPLICATIONIOS_H_
 
 #include "../../common/singleton.h"
-#include "../opengles/application_opengles.h"
+#include "../metal/application_metal.h"
 
 #include "directory_ios.h"
 
 namespace snowpulse {
-class SNOWPULSEAPI ApplicationIOS : public ApplicationOpenGLES, public Singleton<ApplicationIOS> {
+class SNOWPULSEAPI ApplicationIOS : public ApplicationMetal, public Singleton<ApplicationIOS> {
     public:
-        virtual bool Initialize() override;
+        virtual bool Initialize(const Vector2Int& resolutionSize, const Vector2Int& screenSize) override;
 
     protected:
         friend class Singleton<ApplicationIOS>;

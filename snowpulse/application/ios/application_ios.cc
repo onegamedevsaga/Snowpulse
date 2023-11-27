@@ -8,8 +8,8 @@ ApplicationIOS::ApplicationIOS() {
     platformString_ = "iOS";
 }
 
-bool ApplicationIOS::Initialize() {
-    if (!ApplicationOpenGLES::Initialize()) {
+bool ApplicationIOS::Initialize(const Vector2Int& resolutionSize, const Vector2Int& screenSize) {
+    if (!ApplicationMetal::Initialize(resolutionSize, screenSize)) {
         return false;
     }
     
