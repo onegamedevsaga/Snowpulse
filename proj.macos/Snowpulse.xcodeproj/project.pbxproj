@@ -225,6 +225,11 @@
 		2A07BD3B2B0FCF590008B3A4 /* scene.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBE052B00BF430060E35C /* scene.cc */; };
 		2A3C232E2B1342500078DBE1 /* input_macos.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A3C232C2B1342500078DBE1 /* input_macos.cc */; };
 		2A3C232F2B1342500078DBE1 /* input_macos.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A3C232D2B1342500078DBE1 /* input_macos.h */; };
+		2A3C24632B13BD5B0078DBE1 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AA2CAB22ADD516200927E1B /* OpenGL.framework */; platformFilters = (maccatalyst, macos, ); };
+		2A3C24B42B146D870078DBE1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A77E7252B107FA300579051 /* CoreGraphics.framework */; };
+		2A3C24B52B146D8C0078DBE1 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A77E72A2B107FBE00579051 /* IOKit.framework */; };
+		2A3C24B62B146DC60078DBE1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AE640EC2B131F0E00A6B8DA /* Foundation.framework */; };
+		2A3C24B72B146DCE0078DBE1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A77E7272B107FAA00579051 /* Cocoa.framework */; platformFilters = (macos, ); };
 		2A4FBE302B00BF430060E35C /* game_object.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBDEF2B00BF430060E35C /* game_object.cc */; };
 		2A4FBE312B00BF430060E35C /* component.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBDF02B00BF430060E35C /* component.cc */; };
 		2A4FBE322B00BF430060E35C /* node_starter.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBDF12B00BF430060E35C /* node_starter.cc */; };
@@ -287,20 +292,10 @@
 		2A4FBEB72B03E81D0060E35C /* json_utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBEB52B03E81D0060E35C /* json_utils.h */; };
 		2A66AAE32AFD541A003B4045 /* main.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A66AAE22AFD541A003B4045 /* main.cc */; };
 		2A77E7242B107E7A00579051 /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AA2CA642ADD027400927E1B /* libglfw3.a */; };
-		2A77E7262B107FA300579051 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A77E7252B107FA300579051 /* CoreGraphics.framework */; platformFilters = (ios, maccatalyst, macos, tvos, watchos, ); };
-		2A77E7292B107FB700579051 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A77E7272B107FAA00579051 /* Cocoa.framework */; platformFilters = (macos, ); };
-		2A77E72B2B107FBE00579051 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A77E72A2B107FBE00579051 /* IOKit.framework */; platformFilters = (ios, maccatalyst, macos, tvos, ); };
 		2A77E7302B1096A300579051 /* json_utils.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A77E72F2B1096A300579051 /* json_utils.cc */; };
 		2A77E7312B1096A300579051 /* json_utils.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A77E72F2B1096A300579051 /* json_utils.cc */; };
 		2A8D17C02B0FD73E00051A10 /* libsnowpulse_macos.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AF938D92ABDC41900CC8BA2 /* libsnowpulse_macos.dylib */; };
 		2A8D17C12B0FD73E00051A10 /* libsnowpulse_macos.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 2AF938D92ABDC41900CC8BA2 /* libsnowpulse_macos.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		2A8D17C62B0FDA9800051A10 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AA2CAB22ADD516200927E1B /* OpenGL.framework */; };
-		2A8D17D62B0FDDD600051A10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A8D17D52B0FDDD600051A10 /* Assets.xcassets */; };
-		2A8D17DB2B0FDDD600051A10 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A8D17DA2B0FDDD600051A10 /* main.mm */; };
-		2A8D17E02B0FDE7300051A10 /* libgame_macos.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AA2CA842ADD3D8B00927E1B /* libgame_macos.dylib */; };
-		2A8D17E12B0FDE7300051A10 /* libgame_macos.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 2AA2CA842ADD3D8B00927E1B /* libgame_macos.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		2A8D17E52B0FDE7700051A10 /* libsnowpulse_macos.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AF938D92ABDC41900CC8BA2 /* libsnowpulse_macos.dylib */; };
-		2A8D17E62B0FDE7700051A10 /* libsnowpulse_macos.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 2AF938D92ABDC41900CC8BA2 /* libsnowpulse_macos.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		2A8E08812B0FCFDA0059112F /* libsnowpulse_ios.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A07BD462B0FCF590008B3A4 /* libsnowpulse_ios.dylib */; };
 		2A8E08822B0FCFDA0059112F /* libsnowpulse_ios.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 2A07BD462B0FCF590008B3A4 /* libsnowpulse_ios.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		2A8E08892B0FD1680059112F /* game.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBE782B00BF890060E35C /* game.h */; };
@@ -468,9 +463,7 @@
 		2AA9A9DE2B07B0B1009AACBF /* spine_texture_loader.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9DA2B07B0B1009AACBF /* spine_texture_loader.h */; };
 		2AA9A9E02B087CE3009AACBF /* blend_mode.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9DF2B087CE3009AACBF /* blend_mode.h */; };
 		2AA9A9E22B0896C7009AACBF /* vertex.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9E12B0896C7009AACBF /* vertex.h */; };
-		2AE4B78F2B0FE88200252B50 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 2AE4B78E2B0FE88200252B50 /* assets */; };
 		2AE4B7902B0FE88200252B50 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 2AE4B78E2B0FE88200252B50 /* assets */; };
-		2AE4B7922B0FECD800252B50 /* defaults in Resources */ = {isa = PBXBuildFile; fileRef = 2AE4B7912B0FECD800252B50 /* defaults */; };
 		2AE4B7932B0FECD800252B50 /* defaults in Resources */ = {isa = PBXBuildFile; fileRef = 2AE4B7912B0FECD800252B50 /* defaults */; };
 		2AE640B32B11CC1D00A6B8DA /* directory_macos.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AE640B22B11CC1D00A6B8DA /* directory_macos.h */; };
 		2AE640B52B11CC4700A6B8DA /* directory_macos.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2AE640B42B11CC4700A6B8DA /* directory_macos.mm */; };
@@ -535,20 +528,6 @@
 			remoteGlobalIDString = 2AF938D82ABDC41900CC8BA2;
 			remoteInfo = snowpulse_macos;
 		};
-		2A8D17E22B0FDE7300051A10 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2AF938AE2ABDC14D00CC8BA2 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2AA2CA832ADD3D8B00927E1B;
-			remoteInfo = game_macos;
-		};
-		2A8D17E72B0FDE7700051A10 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2AF938AE2ABDC14D00CC8BA2 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2AF938D82ABDC41900CC8BA2;
-			remoteInfo = snowpulse_macos;
-		};
 		2A8E08832B0FCFDA0059112F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2AF938AE2ABDC14D00CC8BA2 /* Project object */;
@@ -581,18 +560,6 @@
 			files = (
 				2A8E089D2B0FD1890059112F /* libgame_ios.dylib in Embed Libraries */,
 				2A8E08822B0FCFDA0059112F /* libsnowpulse_ios.dylib in Embed Libraries */,
-			);
-			name = "Embed Libraries";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2A8D17E42B0FDE7300051A10 /* Embed Libraries */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				2A8D17E12B0FDE7300051A10 /* libgame_macos.dylib in Embed Libraries */,
-				2A8D17E62B0FDE7700051A10 /* libsnowpulse_macos.dylib in Embed Libraries */,
 			);
 			name = "Embed Libraries";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -634,9 +601,11 @@
 		2A07BC4C2B0FC9E00008B3A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A07BC4D2B0FC9E00008B3A4 /* main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
 		2A07BD462B0FCF590008B3A4 /* libsnowpulse_ios.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libsnowpulse_ios.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		2A07BD472B0FCF8A0008B3A4 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS16.4.sdk/System/Library/Frameworks/OpenGLES.framework; sourceTree = DEVELOPER_DIR; };
 		2A3C232C2B1342500078DBE1 /* input_macos.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = input_macos.cc; sourceTree = "<group>"; };
 		2A3C232D2B1342500078DBE1 /* input_macos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = input_macos.h; sourceTree = "<group>"; };
+		2A3C23422B13B3540078DBE1 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/iOSSupport/System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
+		2A3C245F2B13BD2E0078DBE1 /* ExtensionFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExtensionFoundation.framework; path = System/Library/PrivateFrameworks/ExtensionFoundation.framework; sourceTree = SDKROOT; };
+		2A3C24612B13BD3F0078DBE1 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		2A4FBDEF2B00BF430060E35C /* game_object.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_object.cc; sourceTree = "<group>"; };
 		2A4FBDF02B00BF430060E35C /* component.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = component.cc; sourceTree = "<group>"; };
 		2A4FBDF12B00BF430060E35C /* node_starter.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = node_starter.cc; sourceTree = "<group>"; };
@@ -711,10 +680,6 @@
 		2A77E7272B107FAA00579051 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		2A77E72A2B107FBE00579051 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		2A77E72F2B1096A300579051 /* json_utils.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = json_utils.cc; sourceTree = "<group>"; };
-		2A8D17CD2B0FDDD500051A10 /* launcher_macos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = launcher_macos.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		2A8D17D52B0FDDD600051A10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		2A8D17DA2B0FDDD600051A10 /* main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
-		2A8D17DC2B0FDDD600051A10 /* launcher_macos.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = launcher_macos.entitlements; sourceTree = "<group>"; };
 		2A8E08962B0FD1680059112F /* libgame_ios.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libgame_ios.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AA2CA642ADD027400927E1B /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libglfw3.a; sourceTree = "<group>"; };
 		2AA2CA652ADD027400927E1B /* libglfw.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libglfw.3.dylib; sourceTree = "<group>"; };
@@ -928,15 +893,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2A8D17CA2B0FDDD500051A10 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2A8D17E02B0FDE7300051A10 /* libgame_macos.dylib in Frameworks */,
-				2A8D17E52B0FDE7700051A10 /* libsnowpulse_macos.dylib in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		2A8E088F2B0FD1680059112F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -966,11 +922,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2A77E7292B107FB700579051 /* Cocoa.framework in Frameworks */,
-				2A77E7262B107FA300579051 /* CoreGraphics.framework in Frameworks */,
-				2A8D17C62B0FDA9800051A10 /* OpenGL.framework in Frameworks */,
-				2A77E72B2B107FBE00579051 /* IOKit.framework in Frameworks */,
+				2A3C24B62B146DC60078DBE1 /* Foundation.framework in Frameworks */,
+				2A3C24B42B146D870078DBE1 /* CoreGraphics.framework in Frameworks */,
+				2A3C24B72B146DCE0078DBE1 /* Cocoa.framework in Frameworks */,
+				2A3C24632B13BD5B0078DBE1 /* OpenGL.framework in Frameworks */,
 				2A77E7242B107E7A00579051 /* libglfw3.a in Frameworks */,
+				2A3C24B52B146D8C0078DBE1 /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1179,16 +1136,6 @@
 				2A66AAE22AFD541A003B4045 /* main.cc */,
 			);
 			path = launcher_console;
-			sourceTree = "<group>";
-		};
-		2A8D17CE2B0FDDD500051A10 /* launcher_macos */ = {
-			isa = PBXGroup;
-			children = (
-				2A8D17D52B0FDDD600051A10 /* Assets.xcassets */,
-				2A8D17DA2B0FDDD600051A10 /* main.mm */,
-				2A8D17DC2B0FDDD600051A10 /* launcher_macos.entitlements */,
-			);
-			path = launcher_macos;
 			sourceTree = "<group>";
 		};
 		2AA2CA632ADD027400927E1B /* lib-universal */ = {
@@ -1450,7 +1397,6 @@
 				2A4FBE762B00BF890060E35C /* game */,
 				2A66AAE12AFD541A003B4045 /* launcher_console */,
 				2A07BC3A2B0FC9DF0008B3A4 /* launcher_ios */,
-				2A8D17CE2B0FDDD500051A10 /* launcher_macos */,
 				2AF938E62ABDDB5F00CC8BA2 /* Frameworks */,
 				2AF938B72ABDC14D00CC8BA2 /* Products */,
 			);
@@ -1465,7 +1411,6 @@
 				2A07BC392B0FC9DF0008B3A4 /* launcher_ios.app */,
 				2A07BD462B0FCF590008B3A4 /* libsnowpulse_ios.dylib */,
 				2A8E08962B0FD1680059112F /* libgame_ios.dylib */,
-				2A8D17CD2B0FDDD500051A10 /* launcher_macos.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1473,13 +1418,15 @@
 		2AF938E62ABDDB5F00CC8BA2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2A3C24612B13BD3F0078DBE1 /* CoreFoundation.framework */,
+				2A3C245F2B13BD2E0078DBE1 /* ExtensionFoundation.framework */,
+				2A3C23422B13B3540078DBE1 /* MetalKit.framework */,
 				2AE640EC2B131F0E00A6B8DA /* Foundation.framework */,
 				2AE640EA2B131F0700A6B8DA /* QuartzCore.framework */,
 				2AE640E82B131EFE00A6B8DA /* Metal.framework */,
 				2A77E72A2B107FBE00579051 /* IOKit.framework */,
 				2A77E7272B107FAA00579051 /* Cocoa.framework */,
 				2A77E7252B107FA300579051 /* CoreGraphics.framework */,
-				2A07BD472B0FCF8A0008B3A4 /* OpenGLES.framework */,
 				2AA2CAB22ADD516200927E1B /* OpenGL.framework */,
 				2AA2CA632ADD027400927E1B /* lib-universal */,
 			);
@@ -1836,26 +1783,6 @@
 			productReference = 2A07BD462B0FCF590008B3A4 /* libsnowpulse_ios.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
-		2A8D17CC2B0FDDD500051A10 /* launcher_macos */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2A8D17DD2B0FDDD600051A10 /* Build configuration list for PBXNativeTarget "launcher_macos" */;
-			buildPhases = (
-				2A8D17C92B0FDDD500051A10 /* Sources */,
-				2A8D17CA2B0FDDD500051A10 /* Frameworks */,
-				2A8D17CB2B0FDDD500051A10 /* Resources */,
-				2A8D17E42B0FDE7300051A10 /* Embed Libraries */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				2A8D17E32B0FDE7300051A10 /* PBXTargetDependency */,
-				2A8D17E82B0FDE7700051A10 /* PBXTargetDependency */,
-			);
-			name = launcher_macos;
-			productName = launcher_macos;
-			productReference = 2A8D17CD2B0FDDD500051A10 /* launcher_macos.app */;
-			productType = "com.apple.product-type.application";
-		};
 		2A8E08852B0FD1680059112F /* game_ios */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2A8E08932B0FD1680059112F /* Build configuration list for PBXNativeTarget "game_ios" */;
@@ -1941,9 +1868,6 @@
 					2A07BC382B0FC9DF0008B3A4 = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
-					2A8D17CC2B0FDDD500051A10 = {
-						CreatedOnToolsVersion = 14.3.1;
-					};
 					2AA2CA832ADD3D8B00927E1B = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
@@ -1969,7 +1893,6 @@
 			projectRoot = "";
 			targets = (
 				2AF938CD2ABDC3A000CC8BA2 /* launcher_console */,
-				2A8D17CC2B0FDDD500051A10 /* launcher_macos */,
 				2A07BC382B0FC9DF0008B3A4 /* launcher_ios */,
 				2AF938D82ABDC41900CC8BA2 /* snowpulse_macos */,
 				2A07BC5B2B0FCF590008B3A4 /* snowpulse_ios */,
@@ -1989,16 +1912,6 @@
 				2A07BC482B0FC9E00008B3A4 /* Assets.xcassets in Resources */,
 				2AE4B7932B0FECD800252B50 /* defaults in Resources */,
 				2A07BC462B0FC9DF0008B3A4 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2A8D17CB2B0FDDD500051A10 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2AE4B7922B0FECD800252B50 /* defaults in Resources */,
-				2AE4B78F2B0FE88200252B50 /* assets in Resources */,
-				2A8D17D62B0FDDD600051A10 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2112,14 +2025,6 @@
 				2A07BD392B0FCF590008B3A4 /* action_interpolate.cc in Sources */,
 				2A07BD3A2B0FCF590008B3A4 /* PointAttachment.cpp in Sources */,
 				2A07BD3B2B0FCF590008B3A4 /* scene.cc in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2A8D17C92B0FDDD500051A10 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2A8D17DB2B0FDDD600051A10 /* main.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2265,16 +2170,6 @@
 			isa = PBXTargetDependency;
 			target = 2AF938D82ABDC41900CC8BA2 /* snowpulse_macos */;
 			targetProxy = 2A8D17C22B0FD73E00051A10 /* PBXContainerItemProxy */;
-		};
-		2A8D17E32B0FDE7300051A10 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2AA2CA832ADD3D8B00927E1B /* game_macos */;
-			targetProxy = 2A8D17E22B0FDE7300051A10 /* PBXContainerItemProxy */;
-		};
-		2A8D17E82B0FDE7700051A10 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2AF938D82ABDC41900CC8BA2 /* snowpulse_macos */;
-			targetProxy = 2A8D17E72B0FDE7700051A10 /* PBXContainerItemProxy */;
 		};
 		2A8E08842B0FCFDA0059112F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2425,7 +2320,7 @@
 				LIBRARY_SEARCH_PATHS = "../thirdparty/glfw-3.3.8/lib-universal/";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "watchsimulator watchos macosx iphonesimulator iphoneos driverkit appletvsimulator appletvos";
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SUPPORTS_MACCATALYST = YES;
 			};
 			name = Debug;
@@ -2457,86 +2352,8 @@
 				LIBRARY_SEARCH_PATHS = "../thirdparty/glfw-3.3.8/lib-universal/";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "watchsimulator watchos macosx iphonesimulator iphoneos driverkit appletvsimulator appletvos";
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SUPPORTS_MACCATALYST = YES;
-			};
-			name = Release;
-		};
-		2A8D17DE2B0FDDD600051A10 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = launcher_macos/launcher_macos.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				ENABLE_APP_SANDBOX = NO;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-					SNOWPULSE_PLATFORM_MACOS,
-				);
-				GENERATE_INFOPLIST_FILE = YES;
-				HEADER_SEARCH_PATHS = (
-					../snowpulse/,
-					../game/,
-					../thirdparty/glad/include/,
-					"../thirdparty/glfw-3.3.8/include/",
-					../thirdparty/glm/,
-					../thirdparty/stb/,
-					"../thirdparty/nlohmann-json/",
-					"../thirdparty/spine-cpp/**",
-				);
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSMainStoryboardFile = Main;
-				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "io.snowblink.SnowpulseLauncher.launcher-macos";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
-			};
-			name = Debug;
-		};
-		2A8D17DF2B0FDDD600051A10 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = launcher_macos/launcher_macos.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				ENABLE_APP_SANDBOX = NO;
-				GCC_PREPROCESSOR_DEFINITIONS = SNOWPULSE_PLATFORM_MACOS;
-				GENERATE_INFOPLIST_FILE = YES;
-				HEADER_SEARCH_PATHS = (
-					../snowpulse/,
-					../game/,
-					../thirdparty/glad/include/,
-					"../thirdparty/glfw-3.3.8/include/",
-					../thirdparty/glm/,
-					../thirdparty/stb/,
-					"../thirdparty/nlohmann-json/",
-					"../thirdparty/spine-cpp/**",
-				);
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSMainStoryboardFile = Main;
-				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "io.snowblink.SnowpulseLauncher.launcher-macos";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
 			};
 			name = Release;
 		};
@@ -2569,7 +2386,7 @@
 				INSTALL_PATH = "@rpath";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "watchsimulator watchos macosx iphonesimulator iphoneos driverkit appletvsimulator appletvos";
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SUPPORTS_MACCATALYST = YES;
 			};
 			name = Debug;
@@ -2601,7 +2418,7 @@
 				INSTALL_PATH = "@rpath";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "watchsimulator watchos macosx iphonesimulator iphoneos driverkit appletvsimulator appletvos";
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SUPPORTS_MACCATALYST = YES;
 			};
 			name = Release;
@@ -2635,8 +2452,8 @@
 				INSTALL_PATH = "@rpath";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "watchsimulator watchos macosx iphonesimulator iphoneos driverkit appletvsimulator appletvos";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTS_MACCATALYST = NO;
 			};
 			name = Debug;
 		};
@@ -2667,8 +2484,8 @@
 				INSTALL_PATH = "@rpath";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "watchsimulator watchos macosx iphonesimulator iphoneos driverkit appletvsimulator appletvos";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTS_MACCATALYST = NO;
 			};
 			name = Release;
 		};
@@ -2837,6 +2654,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/System/iOSSupport/System/Library/Frameworks",
+				);
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2856,10 +2677,15 @@
 				);
 				INSTALL_PATH = "@rpath";
 				LIBRARY_SEARCH_PATHS = "../thirdparty/glfw-3.3.8/lib-universal/";
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "watchsimulator watchos macosx iphonesimulator iphoneos driverkit appletvsimulator appletvos";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTS_MACCATALYST = NO;
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+				);
 			};
 			name = Debug;
 		};
@@ -2871,6 +2697,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/System/iOSSupport/System/Library/Frameworks",
+				);
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2893,10 +2723,15 @@
 				);
 				INSTALL_PATH = "@rpath";
 				LIBRARY_SEARCH_PATHS = "../thirdparty/glfw-3.3.8/lib-universal/";
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "watchsimulator watchos macosx iphonesimulator iphoneos driverkit appletvsimulator appletvos";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTS_MACCATALYST = NO;
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+				);
 			};
 			name = Release;
 		};
@@ -2917,15 +2752,6 @@
 			buildConfigurations = (
 				2A07BD442B0FCF590008B3A4 /* Debug */,
 				2A07BD452B0FCF590008B3A4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2A8D17DD2B0FDDD600051A10 /* Build configuration list for PBXNativeTarget "launcher_macos" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2A8D17DE2B0FDDD600051A10 /* Debug */,
-				2A8D17DF2B0FDDD600051A10 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

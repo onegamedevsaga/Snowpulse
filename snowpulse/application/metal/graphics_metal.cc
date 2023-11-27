@@ -1,9 +1,9 @@
-#define STB_IMAGE_IMPLEMENTATION
-
 #include "graphics_metal.h"
 
 #include <iostream>
+#define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>
+#undef STB_IMAGE_IMPLEMENTATION
 
 #include "../application.h"
 #include "../directory.h"
