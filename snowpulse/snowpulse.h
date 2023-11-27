@@ -1,6 +1,8 @@
 #ifndef SNOWPULSE_SNOWPULSE_H_
 #define SNOWPULSE_SNOWPULSE_H_
 
+#define GLM_FORCE_PURE
+
 #include <json.hpp>
 
 #include "defines.h"

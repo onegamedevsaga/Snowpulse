@@ -223,18 +223,6 @@
 		2A07BD392B0FCF590008B3A4 /* action_interpolate.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBEAD2B03DE680060E35C /* action_interpolate.cc */; };
 		2A07BD3A2B0FCF590008B3A4 /* PointAttachment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8B72B078173009AACBF /* PointAttachment.cpp */; };
 		2A07BD3B2B0FCF590008B3A4 /* scene.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBE052B00BF430060E35C /* scene.cc */; };
-		2A27D18D2B149051008B5446 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A27D18C2B149051008B5446 /* AppDelegate.m */; };
-		2A27D1902B149051008B5446 /* Renderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A27D18F2B149051008B5446 /* Renderer.m */; };
-		2A27D1932B149051008B5446 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A27D1922B149051008B5446 /* GameViewController.m */; };
-		2A27D1952B149051008B5446 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 2A27D1942B149051008B5446 /* Shaders.metal */; };
-		2A27D1982B149052008B5446 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A27D1972B149052008B5446 /* Assets.xcassets */; };
-		2A27D19B2B149052008B5446 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A27D1992B149052008B5446 /* Main.storyboard */; };
-		2A27D19D2B149052008B5446 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A27D19C2B149052008B5446 /* main.mm */; };
-		2A27D1A22B14D3FA008B5446 /* libgame_macos.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AA2CA842ADD3D8B00927E1B /* libgame_macos.dylib */; };
-		2A27D1A62B14D3FA008B5446 /* libsnowpulse_macos.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AF938D92ABDC41900CC8BA2 /* libsnowpulse_macos.dylib */; };
-		2A27D1A72B14D3FA008B5446 /* libsnowpulse_macos.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 2AF938D92ABDC41900CC8BA2 /* libsnowpulse_macos.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		2A27D1AB2B14D40A008B5446 /* libgame_macos.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 2AA2CA842ADD3D8B00927E1B /* libgame_macos.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		2A27D1AC2B14D476008B5446 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 2AE4B78E2B0FE88200252B50 /* assets */; };
 		2A27D1AE2B14DDFC008B5446 /* app_delegate_metal.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1AD2B14DDFC008B5446 /* app_delegate_metal.h */; };
 		2A27D1AF2B14DDFC008B5446 /* app_delegate_metal.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1AD2B14DDFC008B5446 /* app_delegate_metal.h */; };
 		2A27D1BA2B14DF31008B5446 /* CAPrivate.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1B62B14DF31008B5446 /* CAPrivate.hpp */; };
@@ -419,6 +407,20 @@
 		2A27D2C42B14DF5F008B5446 /* NSView.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2B52B14DF5F008B5446 /* NSView.hpp */; };
 		2A27D2C52B14DF5F008B5446 /* AppKit.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2B62B14DF5F008B5446 /* AppKit.hpp */; };
 		2A27D2C62B14DF5F008B5446 /* AppKit.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2B62B14DF5F008B5446 /* AppKit.hpp */; };
+		2A27D2C72B14E068008B5446 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AE640E82B131EFE00A6B8DA /* Metal.framework */; };
+		2A27D2C92B14E06B008B5446 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A27D2C82B14E06B008B5446 /* MetalKit.framework */; };
+		2A27D2CA2B14E0BF008B5446 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AE640EA2B131F0700A6B8DA /* QuartzCore.framework */; };
+		2A27D2D32B14E48E008B5446 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A27D2D22B14E48E008B5446 /* AppDelegate.m */; };
+		2A27D2D62B14E48E008B5446 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A27D2D52B14E48E008B5446 /* ViewController.m */; };
+		2A27D2D82B14E48F008B5446 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A27D2D72B14E48F008B5446 /* Assets.xcassets */; };
+		2A27D2DB2B14E48F008B5446 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A27D2D92B14E48F008B5446 /* Main.storyboard */; };
+		2A27D2DD2B14E48F008B5446 /* main.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A27D2DC2B14E48F008B5446 /* main.cc */; };
+		2A27D2E22B14E698008B5446 /* libgame_macos.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AA2CA842ADD3D8B00927E1B /* libgame_macos.dylib */; };
+		2A27D2E32B14E698008B5446 /* libgame_macos.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 2AA2CA842ADD3D8B00927E1B /* libgame_macos.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		2A27D2E62B14E698008B5446 /* libsnowpulse_macos.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AF938D92ABDC41900CC8BA2 /* libsnowpulse_macos.dylib */; };
+		2A27D2E72B14E698008B5446 /* libsnowpulse_macos.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 2AF938D92ABDC41900CC8BA2 /* libsnowpulse_macos.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		2A27D2F82B14EB6E008B5446 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A27D2F52B14EB5A008B5446 /* Accelerate.framework */; };
+		2A27D2F92B14EB6E008B5446 /* Accelerate.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2A27D2F52B14EB5A008B5446 /* Accelerate.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2A3C232E2B1342500078DBE1 /* input_macos.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A3C232C2B1342500078DBE1 /* input_macos.cc */; };
 		2A3C232F2B1342500078DBE1 /* input_macos.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A3C232D2B1342500078DBE1 /* input_macos.h */; };
 		2A3C24632B13BD5B0078DBE1 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AA2CAB22ADD516200927E1B /* OpenGL.framework */; platformFilters = (maccatalyst, macos, ); };
@@ -490,8 +492,6 @@
 		2A77E7242B107E7A00579051 /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AA2CA642ADD027400927E1B /* libglfw3.a */; };
 		2A77E7302B1096A300579051 /* json_utils.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A77E72F2B1096A300579051 /* json_utils.cc */; };
 		2A77E7312B1096A300579051 /* json_utils.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A77E72F2B1096A300579051 /* json_utils.cc */; };
-		2A8D17C02B0FD73E00051A10 /* libsnowpulse_macos.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AF938D92ABDC41900CC8BA2 /* libsnowpulse_macos.dylib */; };
-		2A8D17C12B0FD73E00051A10 /* libsnowpulse_macos.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 2AF938D92ABDC41900CC8BA2 /* libsnowpulse_macos.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		2A8E08812B0FCFDA0059112F /* libsnowpulse_ios.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A07BD462B0FCF590008B3A4 /* libsnowpulse_ios.dylib */; };
 		2A8E08822B0FCFDA0059112F /* libsnowpulse_ios.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 2A07BD462B0FCF590008B3A4 /* libsnowpulse_ios.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		2A8E08892B0FD1680059112F /* game.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBE782B00BF890060E35C /* game.h */; };
@@ -502,9 +502,7 @@
 		2A8E08972B0FD1790059112F /* libsnowpulse_ios.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A07BD462B0FCF590008B3A4 /* libsnowpulse_ios.dylib */; };
 		2A8E089C2B0FD1890059112F /* libgame_ios.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A8E08962B0FD1680059112F /* libgame_ios.dylib */; };
 		2A8E089D2B0FD1890059112F /* libgame_ios.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 2A8E08962B0FD1680059112F /* libgame_ios.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		2AA2CAA52ADD424F00927E1B /* libgame_macos.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AA2CA842ADD3D8B00927E1B /* libgame_macos.dylib */; };
 		2AA2CAAD2ADD491800927E1B /* libsnowpulse_macos.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AF938D92ABDC41900CC8BA2 /* libsnowpulse_macos.dylib */; };
-		2AA2CABA2ADD549000927E1B /* libgame_macos.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 2AA2CA842ADD3D8B00927E1B /* libgame_macos.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		2AA9A8E42B078173009AACBF /* SkeletonData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8A62B078173009AACBF /* SkeletonData.cpp */; };
 		2AA9A8E52B078173009AACBF /* ClippingAttachment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8A72B078173009AACBF /* ClippingAttachment.cpp */; };
 		2AA9A8E62B078173009AACBF /* IkConstraintTimeline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8A82B078173009AACBF /* IkConstraintTimeline.cpp */; };
@@ -703,26 +701,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		2A27D1A42B14D3FA008B5446 /* PBXContainerItemProxy */ = {
+		2A27D2E42B14E698008B5446 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2AF938AE2ABDC14D00CC8BA2 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2AA2CA832ADD3D8B00927E1B;
 			remoteInfo = game_macos;
 		};
-		2A27D1A82B14D3FB008B5446 /* PBXContainerItemProxy */ = {
+		2A27D2E82B14E698008B5446 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2AF938AE2ABDC14D00CC8BA2 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2AF938D82ABDC41900CC8BA2;
 			remoteInfo = snowpulse_macos;
-		};
-		2A8A817C2ADED1D900F60C05 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2AF938AE2ABDC14D00CC8BA2 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2AA2CA832ADD3D8B00927E1B;
-			remoteInfo = Game;
 		};
 		2A8A81802ADED1E900F60C05 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -730,13 +721,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 2AF938D82ABDC41900CC8BA2;
 			remoteInfo = Snowpulse;
-		};
-		2A8D17C22B0FD73E00051A10 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2AF938AE2ABDC14D00CC8BA2 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2AF938D82ABDC41900CC8BA2;
-			remoteInfo = snowpulse_macos;
 		};
 		2A8E08832B0FCFDA0059112F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -774,28 +758,27 @@
 			name = "Embed Libraries";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2A27D1AA2B14D3FB008B5446 /* Embed Libraries */ = {
+		2A27D2EA2B14E698008B5446 /* Embed Libraries */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				2A27D1AB2B14D40A008B5446 /* libgame_macos.dylib in Embed Libraries */,
-				2A27D1A72B14D3FA008B5446 /* libsnowpulse_macos.dylib in Embed Libraries */,
+				2A27D2E32B14E698008B5446 /* libgame_macos.dylib in Embed Libraries */,
+				2A27D2E72B14E698008B5446 /* libsnowpulse_macos.dylib in Embed Libraries */,
 			);
 			name = "Embed Libraries";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2AA2CABB2ADD549000927E1B /* Embed Libraries */ = {
+		2A27D2FA2B14EB6E008B5446 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				2AA2CABA2ADD549000927E1B /* libgame_macos.dylib in Embed Libraries */,
-				2A8D17C12B0FD73E00051A10 /* libsnowpulse_macos.dylib in Embed Libraries */,
+				2A27D2F92B14EB6E008B5446 /* Accelerate.framework in Embed Frameworks */,
 			);
-			name = "Embed Libraries";
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		2AF938CC2ABDC3A000CC8BA2 /* CopyFiles */ = {
@@ -823,19 +806,6 @@
 		2A07BC4C2B0FC9E00008B3A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A07BC4D2B0FC9E00008B3A4 /* main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
 		2A07BD462B0FCF590008B3A4 /* libsnowpulse_ios.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libsnowpulse_ios.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		2A27D1892B149051008B5446 /* launcher_macos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = launcher_macos.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		2A27D18B2B149051008B5446 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		2A27D18C2B149051008B5446 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		2A27D18E2B149051008B5446 /* Renderer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Renderer.h; sourceTree = "<group>"; };
-		2A27D18F2B149051008B5446 /* Renderer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Renderer.m; sourceTree = "<group>"; };
-		2A27D1912B149051008B5446 /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
-		2A27D1922B149051008B5446 /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
-		2A27D1942B149051008B5446 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
-		2A27D1962B149051008B5446 /* ShaderTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShaderTypes.h; sourceTree = "<group>"; };
-		2A27D1972B149052008B5446 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		2A27D19A2B149052008B5446 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		2A27D19C2B149052008B5446 /* main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
-		2A27D19E2B149052008B5446 /* launcher_macos.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = launcher_macos.entitlements; sourceTree = "<group>"; };
 		2A27D1AD2B14DDFC008B5446 /* app_delegate_metal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = app_delegate_metal.h; path = metal/app_delegate_metal.h; sourceTree = "<group>"; };
 		2A27D1B62B14DF31008B5446 /* CAPrivate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CAPrivate.hpp; path = ../thirdparty/metal/QuartzCore/CAPrivate.hpp; sourceTree = "<group>"; };
 		2A27D1B72B14DF31008B5446 /* CADefines.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CADefines.hpp; path = ../thirdparty/metal/QuartzCore/CADefines.hpp; sourceTree = "<group>"; };
@@ -928,6 +898,17 @@
 		2A27D2B42B14DF5F008B5446 /* NSRunningApplication.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = NSRunningApplication.hpp; path = ../thirdparty/metal/AppKit/NSRunningApplication.hpp; sourceTree = "<group>"; };
 		2A27D2B52B14DF5F008B5446 /* NSView.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = NSView.hpp; path = ../thirdparty/metal/AppKit/NSView.hpp; sourceTree = "<group>"; };
 		2A27D2B62B14DF5F008B5446 /* AppKit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = AppKit.hpp; path = ../thirdparty/metal/AppKit/AppKit.hpp; sourceTree = "<group>"; };
+		2A27D2C82B14E06B008B5446 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
+		2A27D2CF2B14E48E008B5446 /* launcher_macos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = launcher_macos.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A27D2D12B14E48E008B5446 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		2A27D2D22B14E48E008B5446 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		2A27D2D42B14E48E008B5446 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		2A27D2D52B14E48E008B5446 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		2A27D2D72B14E48F008B5446 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2A27D2DA2B14E48F008B5446 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2A27D2DC2B14E48F008B5446 /* main.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cc; sourceTree = "<group>"; };
+		2A27D2DE2B14E48F008B5446 /* launcher_macos.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = launcher_macos.entitlements; sourceTree = "<group>"; };
+		2A27D2F52B14EB5A008B5446 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		2A3C232C2B1342500078DBE1 /* input_macos.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = input_macos.cc; sourceTree = "<group>"; };
 		2A3C232D2B1342500078DBE1 /* input_macos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = input_macos.h; sourceTree = "<group>"; };
 		2A3C23422B13B3540078DBE1 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/iOSSupport/System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
@@ -1220,12 +1201,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2A27D1862B149051008B5446 /* Frameworks */ = {
+		2A27D2CC2B14E48E008B5446 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2A27D1A22B14D3FA008B5446 /* libgame_macos.dylib in Frameworks */,
-				2A27D1A62B14D3FA008B5446 /* libsnowpulse_macos.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1249,8 +1228,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2AA2CAA52ADD424F00927E1B /* libgame_macos.dylib in Frameworks */,
-				2A8D17C02B0FD73E00051A10 /* libsnowpulse_macos.dylib in Frameworks */,
+				2A27D2E22B14E698008B5446 /* libgame_macos.dylib in Frameworks */,
+				2A27D2E62B14E698008B5446 /* libsnowpulse_macos.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1259,11 +1238,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A3C24B62B146DC60078DBE1 /* Foundation.framework in Frameworks */,
+				2A27D2C92B14E06B008B5446 /* MetalKit.framework in Frameworks */,
 				2A3C24B42B146D870078DBE1 /* CoreGraphics.framework in Frameworks */,
+				2A27D2C72B14E068008B5446 /* Metal.framework in Frameworks */,
 				2A3C24B72B146DCE0078DBE1 /* Cocoa.framework in Frameworks */,
 				2A3C24632B13BD5B0078DBE1 /* OpenGL.framework in Frameworks */,
 				2A77E7242B107E7A00579051 /* libglfw3.a in Frameworks */,
+				2A27D2F82B14EB6E008B5446 /* Accelerate.framework in Frameworks */,
 				2A3C24B52B146D8C0078DBE1 /* IOKit.framework in Frameworks */,
+				2A27D2CA2B14E0BF008B5446 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1286,25 +1269,6 @@
 				2A07BC4D2B0FC9E00008B3A4 /* main.mm */,
 			);
 			path = launcher_ios;
-			sourceTree = "<group>";
-		};
-		2A27D18A2B149051008B5446 /* launcher_macos */ = {
-			isa = PBXGroup;
-			children = (
-				2A27D18B2B149051008B5446 /* AppDelegate.h */,
-				2A27D18C2B149051008B5446 /* AppDelegate.m */,
-				2A27D18E2B149051008B5446 /* Renderer.h */,
-				2A27D18F2B149051008B5446 /* Renderer.m */,
-				2A27D1912B149051008B5446 /* GameViewController.h */,
-				2A27D1922B149051008B5446 /* GameViewController.m */,
-				2A27D1942B149051008B5446 /* Shaders.metal */,
-				2A27D1962B149051008B5446 /* ShaderTypes.h */,
-				2A27D1972B149052008B5446 /* Assets.xcassets */,
-				2A27D1992B149052008B5446 /* Main.storyboard */,
-				2A27D19C2B149052008B5446 /* main.mm */,
-				2A27D19E2B149052008B5446 /* launcher_macos.entitlements */,
-			);
-			path = launcher_macos;
 			sourceTree = "<group>";
 		};
 		2A27D1B02B14DE86008B5446 /* metal */ = {
@@ -1443,6 +1407,21 @@
 				2A27D1B82B14DF31008B5446 /* QuartzCore.hpp */,
 			);
 			name = quartzcore;
+			sourceTree = "<group>";
+		};
+		2A27D2D02B14E48E008B5446 /* launcher_macos */ = {
+			isa = PBXGroup;
+			children = (
+				2A27D2D12B14E48E008B5446 /* AppDelegate.h */,
+				2A27D2D22B14E48E008B5446 /* AppDelegate.m */,
+				2A27D2D42B14E48E008B5446 /* ViewController.h */,
+				2A27D2D52B14E48E008B5446 /* ViewController.m */,
+				2A27D2D72B14E48F008B5446 /* Assets.xcassets */,
+				2A27D2D92B14E48F008B5446 /* Main.storyboard */,
+				2A27D2DC2B14E48F008B5446 /* main.cc */,
+				2A27D2DE2B14E48F008B5446 /* launcher_macos.entitlements */,
+			);
+			path = launcher_macos;
 			sourceTree = "<group>";
 		};
 		2A4FBDED2B00BF430060E35C /* snowpulse */ = {
@@ -1891,8 +1870,8 @@
 				2A4FBDED2B00BF430060E35C /* snowpulse */,
 				2A4FBE762B00BF890060E35C /* game */,
 				2A66AAE12AFD541A003B4045 /* launcher_console */,
-				2A27D18A2B149051008B5446 /* launcher_macos */,
 				2A07BC3A2B0FC9DF0008B3A4 /* launcher_ios */,
+				2A27D2D02B14E48E008B5446 /* launcher_macos */,
 				2AF938E62ABDDB5F00CC8BA2 /* Frameworks */,
 				2AF938B72ABDC14D00CC8BA2 /* Products */,
 			);
@@ -1907,7 +1886,7 @@
 				2A07BC392B0FC9DF0008B3A4 /* launcher_ios.app */,
 				2A07BD462B0FCF590008B3A4 /* libsnowpulse_ios.dylib */,
 				2A8E08962B0FD1680059112F /* libgame_ios.dylib */,
-				2A27D1892B149051008B5446 /* launcher_macos.app */,
+				2A27D2CF2B14E48E008B5446 /* launcher_macos.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1915,6 +1894,8 @@
 		2AF938E62ABDDB5F00CC8BA2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2A27D2F52B14EB5A008B5446 /* Accelerate.framework */,
+				2A27D2C82B14E06B008B5446 /* MetalKit.framework */,
 				2A3C24612B13BD3F0078DBE1 /* CoreFoundation.framework */,
 				2A3C245F2B13BD2E0078DBE1 /* ExtensionFoundation.framework */,
 				2A3C23422B13B3540078DBE1 /* MetalKit.framework */,
@@ -2464,24 +2445,21 @@
 			productReference = 2A07BD462B0FCF590008B3A4 /* libsnowpulse_ios.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
-		2A27D1882B149051008B5446 /* launcher_macos */ = {
+		2A27D2CE2B14E48E008B5446 /* launcher_macos */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2A27D1A12B149052008B5446 /* Build configuration list for PBXNativeTarget "launcher_macos" */;
+			buildConfigurationList = 2A27D2DF2B14E48F008B5446 /* Build configuration list for PBXNativeTarget "launcher_macos" */;
 			buildPhases = (
-				2A27D1852B149051008B5446 /* Sources */,
-				2A27D1862B149051008B5446 /* Frameworks */,
-				2A27D1872B149051008B5446 /* Resources */,
-				2A27D1AA2B14D3FB008B5446 /* Embed Libraries */,
+				2A27D2CB2B14E48E008B5446 /* Sources */,
+				2A27D2CC2B14E48E008B5446 /* Frameworks */,
+				2A27D2CD2B14E48E008B5446 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				2A27D1A52B14D3FA008B5446 /* PBXTargetDependency */,
-				2A27D1A92B14D3FB008B5446 /* PBXTargetDependency */,
 			);
 			name = launcher_macos;
 			productName = launcher_macos;
-			productReference = 2A27D1892B149051008B5446 /* launcher_macos.app */;
+			productReference = 2A27D2CF2B14E48E008B5446 /* launcher_macos.app */;
 			productType = "com.apple.product-type.application";
 		};
 		2A8E08852B0FD1680059112F /* game_ios */ = {
@@ -2527,13 +2505,13 @@
 				2AF938CA2ABDC3A000CC8BA2 /* Sources */,
 				2AF938CB2ABDC3A000CC8BA2 /* Frameworks */,
 				2AF938CC2ABDC3A000CC8BA2 /* CopyFiles */,
-				2AA2CABB2ADD549000927E1B /* Embed Libraries */,
+				2A27D2EA2B14E698008B5446 /* Embed Libraries */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				2A8A817D2ADED1D900F60C05 /* PBXTargetDependency */,
-				2A8D17C32B0FD73E00051A10 /* PBXTargetDependency */,
+				2A27D2E52B14E698008B5446 /* PBXTargetDependency */,
+				2A27D2E92B14E698008B5446 /* PBXTargetDependency */,
 			);
 			name = launcher_console;
 			productName = Launcher;
@@ -2547,6 +2525,7 @@
 				2AF938D52ABDC41900CC8BA2 /* Headers */,
 				2AF938D62ABDC41900CC8BA2 /* Sources */,
 				2AF938D72ABDC41900CC8BA2 /* Frameworks */,
+				2A27D2FA2B14EB6E008B5446 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2569,7 +2548,7 @@
 					2A07BC382B0FC9DF0008B3A4 = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
-					2A27D1882B149051008B5446 = {
+					2A27D2CE2B14E48E008B5446 = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
 					2AA2CA832ADD3D8B00927E1B = {
@@ -2597,7 +2576,7 @@
 			projectRoot = "";
 			targets = (
 				2AF938CD2ABDC3A000CC8BA2 /* launcher_console */,
-				2A27D1882B149051008B5446 /* launcher_macos */,
+				2A27D2CE2B14E48E008B5446 /* launcher_macos */,
 				2A07BC382B0FC9DF0008B3A4 /* launcher_ios */,
 				2AF938D82ABDC41900CC8BA2 /* snowpulse_macos */,
 				2A07BC5B2B0FCF590008B3A4 /* snowpulse_ios */,
@@ -2620,13 +2599,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2A27D1872B149051008B5446 /* Resources */ = {
+		2A27D2CD2B14E48E008B5446 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2A27D1AC2B14D476008B5446 /* assets in Resources */,
-				2A27D1982B149052008B5446 /* Assets.xcassets in Resources */,
-				2A27D19B2B149052008B5446 /* Main.storyboard in Resources */,
+				2A27D2D82B14E48F008B5446 /* Assets.xcassets in Resources */,
+				2A27D2DB2B14E48F008B5446 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2743,15 +2721,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2A27D1852B149051008B5446 /* Sources */ = {
+		2A27D2CB2B14E48E008B5446 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2A27D19D2B149052008B5446 /* main.mm in Sources */,
-				2A27D1952B149051008B5446 /* Shaders.metal in Sources */,
-				2A27D1902B149051008B5446 /* Renderer.m in Sources */,
-				2A27D1932B149051008B5446 /* GameViewController.m in Sources */,
-				2A27D18D2B149051008B5446 /* AppDelegate.m in Sources */,
+				2A27D2D62B14E48E008B5446 /* ViewController.m in Sources */,
+				2A27D2DD2B14E48F008B5446 /* main.cc in Sources */,
+				2A27D2D32B14E48E008B5446 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2883,30 +2859,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		2A27D1A52B14D3FA008B5446 /* PBXTargetDependency */ = {
+		2A27D2E52B14E698008B5446 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2AA2CA832ADD3D8B00927E1B /* game_macos */;
-			targetProxy = 2A27D1A42B14D3FA008B5446 /* PBXContainerItemProxy */;
+			targetProxy = 2A27D2E42B14E698008B5446 /* PBXContainerItemProxy */;
 		};
-		2A27D1A92B14D3FB008B5446 /* PBXTargetDependency */ = {
+		2A27D2E92B14E698008B5446 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2AF938D82ABDC41900CC8BA2 /* snowpulse_macos */;
-			targetProxy = 2A27D1A82B14D3FB008B5446 /* PBXContainerItemProxy */;
-		};
-		2A8A817D2ADED1D900F60C05 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2AA2CA832ADD3D8B00927E1B /* game_macos */;
-			targetProxy = 2A8A817C2ADED1D900F60C05 /* PBXContainerItemProxy */;
+			targetProxy = 2A27D2E82B14E698008B5446 /* PBXContainerItemProxy */;
 		};
 		2A8A81812ADED1E900F60C05 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2AF938D82ABDC41900CC8BA2 /* snowpulse_macos */;
 			targetProxy = 2A8A81802ADED1E900F60C05 /* PBXContainerItemProxy */;
-		};
-		2A8D17C32B0FD73E00051A10 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2AF938D82ABDC41900CC8BA2 /* snowpulse_macos */;
-			targetProxy = 2A8D17C22B0FD73E00051A10 /* PBXContainerItemProxy */;
 		};
 		2A8E08842B0FCFDA0059112F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2942,10 +2908,10 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		2A27D1992B149052008B5446 /* Main.storyboard */ = {
+		2A27D2D92B14E48F008B5446 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				2A27D19A2B149052008B5446 /* Base */,
+				2A27D2DA2B14E48F008B5446 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -2971,10 +2937,10 @@
 					../game/,
 					"../thirdparty/nlohmann-json/",
 					"../thirdparty/spine-cpp/**",
-					../thirdparty/glm/,
 					../thirdparty/stb/,
 					../thirdparty/glad/include/,
 					"../thirdparty/glfw-3.3.8/include/",
+					../thirdparty/metal/,
 				);
 				INFOPLIST_FILE = launcher_ios/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -3010,10 +2976,10 @@
 					../game/,
 					"../thirdparty/nlohmann-json/",
 					"../thirdparty/spine-cpp/**",
-					../thirdparty/glm/,
 					../thirdparty/stb/,
 					../thirdparty/glad/include/,
 					"../thirdparty/glfw-3.3.8/include/",
+					../thirdparty/metal/,
 				);
 				INFOPLIST_FILE = launcher_ios/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -3056,7 +3022,6 @@
 				HEADER_SEARCH_PATHS = (
 					../thirdparty/glad/include/,
 					"../thirdparty/glfw-3.3.8/include/",
-					../thirdparty/glm/,
 					../thirdparty/stb/,
 					"../thirdparty/nlohmann-json/",
 					"../thirdparty/spine-cpp/**",
@@ -3089,7 +3054,6 @@
 				HEADER_SEARCH_PATHS = (
 					../thirdparty/glad/include/,
 					"../thirdparty/glfw-3.3.8/include/",
-					../thirdparty/glm/,
 					../thirdparty/stb/,
 					"../thirdparty/nlohmann-json/",
 					"../thirdparty/spine-cpp/**",
@@ -3104,7 +3068,7 @@
 			};
 			name = Release;
 		};
-		2A27D19F2B149052008B5446 /* Debug */ = {
+		2A27D2E02B14E48F008B5446 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -3113,11 +3077,18 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_NS_ASSERTIONS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					SNOWPULSE_PLATFORM_MACOS,
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				HEADER_SEARCH_PATHS = (
 					../snowpulse/,
 					../game/,
-					../thirdparty/glm/,
+					../thirdparty/glad/include/,
+					"../thirdparty/glfw-3.3.8/include/",
 					../thirdparty/stb/,
 					"../thirdparty/nlohmann-json/",
 					"../thirdparty/spine-cpp/**",
@@ -3130,6 +3101,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.snowblink.Snowpulse.launcher-macos";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3137,7 +3109,7 @@
 			};
 			name = Debug;
 		};
-		2A27D1A02B149052008B5446 /* Release */ = {
+		2A27D2E12B14E48F008B5446 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -3146,11 +3118,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = SNOWPULSE_PLATFORM_MACOS;
 				GENERATE_INFOPLIST_FILE = YES;
 				HEADER_SEARCH_PATHS = (
 					../snowpulse/,
 					../game/,
-					../thirdparty/glm/,
+					../thirdparty/glad/include/,
+					"../thirdparty/glfw-3.3.8/include/",
 					../thirdparty/stb/,
 					"../thirdparty/nlohmann-json/",
 					"../thirdparty/spine-cpp/**",
@@ -3163,6 +3138,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.snowblink.Snowpulse.launcher-macos";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3180,6 +3156,7 @@
 				EXECUTABLE_PREFIX = lib;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
+				GCC_INPUT_FILETYPE = sourcecode.cpp.cpp;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -3191,7 +3168,6 @@
 					../snowpulse/,
 					../thirdparty/glad/include/,
 					"../thirdparty/glfw-3.3.8/include/",
-					../thirdparty/glm/,
 					../thirdparty/stb/,
 					"../thirdparty/nlohmann-json/",
 					"../thirdparty/spine-cpp/**",
@@ -3214,6 +3190,7 @@
 				EXECUTABLE_PREFIX = lib;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
+				GCC_INPUT_FILETYPE = sourcecode.cpp.cpp;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					GAMEAPI_EXPORT,
 					SNOWPULSE_PLATFORM_IOS,
@@ -3223,7 +3200,6 @@
 					../snowpulse/,
 					../thirdparty/glad/include/,
 					"../thirdparty/glfw-3.3.8/include/",
-					../thirdparty/glm/,
 					../thirdparty/stb/,
 					"../thirdparty/nlohmann-json/",
 					"../thirdparty/spine-cpp/**",
@@ -3246,6 +3222,7 @@
 				EXECUTABLE_PREFIX = lib;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
+				GCC_INPUT_FILETYPE = sourcecode.cpp.cpp;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -3257,7 +3234,6 @@
 					../snowpulse/,
 					../thirdparty/glad/include/,
 					"../thirdparty/glfw-3.3.8/include/",
-					../thirdparty/glm/,
 					../thirdparty/stb/,
 					"../thirdparty/nlohmann-json/",
 					"../thirdparty/spine-cpp/**",
@@ -3280,6 +3256,7 @@
 				EXECUTABLE_PREFIX = lib;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
+				GCC_INPUT_FILETYPE = sourcecode.cpp.cpp;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					GAMEAPI_EXPORT,
 					SNOWPULSE_PLATFORM_MACOS,
@@ -3289,7 +3266,6 @@
 					../snowpulse/,
 					../thirdparty/glad/include/,
 					"../thirdparty/glfw-3.3.8/include/",
-					../thirdparty/glm/,
 					../thirdparty/stb/,
 					"../thirdparty/nlohmann-json/",
 					"../thirdparty/spine-cpp/**",
@@ -3427,13 +3403,14 @@
 					../game/,
 					../thirdparty/glad/include/,
 					"../thirdparty/glfw-3.3.8/include/",
-					../thirdparty/glm/,
 					../thirdparty/stb/,
 					"../thirdparty/nlohmann-json/",
 					"../thirdparty/spine-cpp/**",
+					../thirdparty/metal/,
 				);
+				INFOPLIST_KEY_NSPrincipalClass = "";
 				INSTALL_PATH = /usr/local/bin;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -3448,13 +3425,14 @@
 					../game/,
 					../thirdparty/glad/include/,
 					"../thirdparty/glfw-3.3.8/include/",
-					../thirdparty/glm/,
 					../thirdparty/stb/,
 					"../thirdparty/nlohmann-json/",
 					"../thirdparty/spine-cpp/**",
+					../thirdparty/metal/,
 				);
+				INFOPLIST_KEY_NSPrincipalClass = "";
 				INSTALL_PATH = /usr/local/bin;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -3473,6 +3451,7 @@
 				);
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
+				GCC_INPUT_FILETYPE = automatic;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -3483,7 +3462,6 @@
 				HEADER_SEARCH_PATHS = (
 					../thirdparty/glad/include/,
 					"../thirdparty/glfw-3.3.8/include/",
-					../thirdparty/glm/,
 					../thirdparty/stb/,
 					"../thirdparty/nlohmann-json/",
 					"../thirdparty/spine-cpp/**",
@@ -3517,6 +3495,7 @@
 				);
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
+				GCC_INPUT_FILETYPE = automatic;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					SNOWPULSEAPI_EXPORT,
 					SNOWPULSE_PLATFORM_MACOS,
@@ -3530,7 +3509,6 @@
 				HEADER_SEARCH_PATHS = (
 					../thirdparty/glad/include/,
 					"../thirdparty/glfw-3.3.8/include/",
-					../thirdparty/glm/,
 					../thirdparty/stb/,
 					"../thirdparty/nlohmann-json/",
 					"../thirdparty/spine-cpp/**",
@@ -3571,11 +3549,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2A27D1A12B149052008B5446 /* Build configuration list for PBXNativeTarget "launcher_macos" */ = {
+		2A27D2DF2B14E48F008B5446 /* Build configuration list for PBXNativeTarget "launcher_macos" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2A27D19F2B149052008B5446 /* Debug */,
-				2A27D1A02B149052008B5446 /* Release */,
+				2A27D2E02B14E48F008B5446 /* Debug */,
+				2A27D2E12B14E48F008B5446 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
