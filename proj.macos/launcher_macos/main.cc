@@ -1,9 +1,11 @@
+#include <iostream>
 #include <snowpulse.h>
-#include <application/metal/app_delegate_metal.h>
+#include <game.h>
+//#include <application/metal/app_delegate_metal.h>
 
 int main( int argc, char* argv[] )
 {
-    NS::AutoreleasePool* pAutoreleasePool = NS::AutoreleasePool::alloc()->init();
+    /*NS::AutoreleasePool* pAutoreleasePool = NS::AutoreleasePool::alloc()->init();
 
     MyAppDelegate del;
 
@@ -11,7 +13,18 @@ int main( int argc, char* argv[] )
     pSharedApplication->setDelegate( &del );
     pSharedApplication->run();
 
-    pAutoreleasePool->release();
+    pAutoreleasePool->release();*/
+    
+    auto game = game::Game::Create();
+    auto app = static_cast<snowpulse::ApplicationMacOS*>(snowpulse::Application::GetInstance());
+
+    if (app->Initialize(snowpulse::Vector2Int(1920, 1080), snowpulse::Vector2Int(1067, 600))) {
+        app->SetGame(game.get());
+        game->Initialize(app);
+
+        app->Run();
+        app->Shutdown();
+    }
 
     return 0;
 }

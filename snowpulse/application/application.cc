@@ -14,7 +14,6 @@
 #include "metal/graphics_metal.h"
 #endif
 
-#include "timer.h"
 #include "../game/action_manager.h"
 
 namespace snowpulse {
@@ -45,6 +44,8 @@ bool Application::Initialize(const Vector2Int& resolution, const Vector2Int& scr
     resolutionSize_ = resolution;
     screenSize_ = screenSize;
     actionManager_ = ActionManager::Create();
+    appTimer_.Start();
+    frameTimer_.Start();
     return true;
 }
 

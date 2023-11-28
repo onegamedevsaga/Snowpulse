@@ -8,9 +8,9 @@
 #include <string>
 #include <map>
 #include <glad/glad.h>
-#include <GLFW/glfw3.h>
-#include "../../thirdparty/glm/gtc/matrix_transform.hpp"
-#include "../../thirdparty/glm/glm.hpp"
+//#include <GLFW/glfw3.h>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/glm.hpp>
 
 #include "../../common/vertex.h"
 #include "../../common/vector2.h"

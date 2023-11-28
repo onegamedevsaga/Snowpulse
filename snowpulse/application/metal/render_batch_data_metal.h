@@ -7,8 +7,8 @@
 #include <memory>
 #include <vector>
 #include <glad/glad.h>
-#include <GLFW/glfw3.h>
-#include "../../thirdparty/glm/glm.hpp"
+//#include <GLFW/glfw3.h>
+#include <glm/glm.hpp>
 
 #include "../../common/blend_mode.h"
 

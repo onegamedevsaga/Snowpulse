@@ -5,7 +5,7 @@
 namespace snowpulse {
 
 InputIOS::InputIOS() : Input() {
-    keyMap_[GLFW_KEY_SPACE] = "space";
+    /*keyMap_[GLFW_KEY_SPACE] = "space";
     keyMap_[GLFW_KEY_ESCAPE] = "escape";
     keyMap_[GLFW_KEY_ENTER] = "enter";
     keyMap_[GLFW_KEY_KP_ENTER] = "enter";
@@ -57,7 +57,7 @@ InputIOS::InputIOS() : Input() {
 
     for (const auto& pair : mouseButtonMap_) {
         canBePressedInputs_[pair.second];
-    }
+    }*/
 }
 
 InputIOS::~InputIOS() {

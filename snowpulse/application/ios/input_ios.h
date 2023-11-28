@@ -7,7 +7,7 @@
 #include <string>
 #include <map>
 #include <glad/glad.h>
-#include <GLFW/glfw3.h>
+//#include <GLFW/glfw3.h>
 
 #include "../../common/vector2.h"
 
