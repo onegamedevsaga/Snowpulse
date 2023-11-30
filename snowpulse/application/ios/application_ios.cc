@@ -6,13 +6,17 @@ ApplicationIOS::ApplicationIOS() {
     platformString_ = "iOS";
 }
 
-bool ApplicationIOS::Initialize(const Vector2Int& resolutionSize, const Vector2Int& screenSize) {
-    if (!ApplicationMetal::Initialize(resolutionSize, screenSize)) {
+bool ApplicationIOS::Initialize(const Vector2Int& resolutionSize, void* device) {
+    if (!ApplicationMetal::Initialize(resolutionSize, resolutionSize, device)) {
         return false;
     }
 
     directory_ = static_cast<DirectoryIOS*>(Directory::GetInstance());
     input_ = static_cast<InputIOS*>(Input::GetInstance());
+
+#ifdef SPDEBUG
+    std::cout << "ApplicationIOS initialized." << std::endl;
+#endif
     return true;
 }
 
@@ -29,7 +33,7 @@ void ApplicationIOS::Shutdown() {
 }
 
 void ApplicationIOS::RunFrame() {
-    //glfwPollEvents();
+    /*glfwPollEvents();
 #if SNOWPULSE_PLATFORM_MACOS
     auto input = static_cast<InputMacOS*>(Input::GetInstance());
     input->ProcessInputs(resolutionSize_, screenSize_, window_);
@@ -148,7 +152,7 @@ void ApplicationIOS::RunFrame() {
 
     graphics_->ClearRenderBatchGroups();
 #ifdef SPDEBUG
-std::cout << "Rendered " << batches.size() << " batch/es." << std::endl;
-#endif
+     std::cout << "Rendered " << batches.size() << " batch/es." << std::endl;
+#endif*/
 }
 }   // namespace snowpulse

@@ -8,6 +8,10 @@
 #import "GameViewController.h"
 #import "Renderer.h"
 
+#include <iostream>
+#include <snowpulse.h>
+#include <game.h>
+
 @implementation GameViewController
 {
     MTKView *_view;
@@ -30,7 +34,18 @@
         self.view = [[UIView alloc] initWithFrame:self.view.frame];
         return;
     }
+    
+    auto game = game::Game::Create();
+    auto app = static_cast<snowpulse::ApplicationIOS*>(snowpulse::Application::GetInstance());
 
+    if (app->Initialize(snowpulse::Vector2Int(1920, 1080), (__bridge void*)_view)) {
+        app->SetGame(game.get());
+        //game->Initialize(app);
+
+        //app->Run();
+        app->Shutdown();
+    }
+    //_view.device
     _renderer = [[Renderer alloc] initWithMetalKitView:_view];
 
     [_renderer mtkView:_view drawableSizeWillChange:_view.bounds.size];

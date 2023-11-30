@@ -420,7 +420,7 @@
 		2A27D30D2B152119008B5446 /* libsnowpulse_macos.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 2AF938D92ABDC41900CC8BA2 /* libsnowpulse_macos.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		2A27D3192B1522F3008B5446 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A27D3182B1522F3008B5446 /* AppDelegate.m */; };
 		2A27D31C2B1522F3008B5446 /* Renderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A27D31B2B1522F3008B5446 /* Renderer.m */; };
-		2A27D31F2B1522F3008B5446 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A27D31E2B1522F3008B5446 /* GameViewController.m */; };
+		2A27D31F2B1522F3008B5446 /* GameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A27D31E2B1522F3008B5446 /* GameViewController.mm */; };
 		2A27D3212B1522F3008B5446 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 2A27D3202B1522F3008B5446 /* Shaders.metal */; };
 		2A27D3252B1522F3008B5446 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A27D3232B1522F3008B5446 /* Main.storyboard */; };
 		2A27D3272B1522F4008B5446 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A27D3262B1522F4008B5446 /* Assets.xcassets */; };
@@ -441,6 +441,7 @@
 		2A3C24B52B146D8C0078DBE1 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A77E72A2B107FBE00579051 /* IOKit.framework */; };
 		2A3C24B62B146DC60078DBE1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AE640EC2B131F0E00A6B8DA /* Foundation.framework */; };
 		2A3C24B72B146DCE0078DBE1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A77E7272B107FAA00579051 /* Cocoa.framework */; platformFilters = (macos, ); };
+		2A41F0922B18750C00CC5EF4 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A3C23422B13B3540078DBE1 /* MetalKit.framework */; };
 		2A4FBE302B00BF430060E35C /* game_object.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBDEF2B00BF430060E35C /* game_object.cc */; };
 		2A4FBE312B00BF430060E35C /* component.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBDF02B00BF430060E35C /* component.cc */; };
 		2A4FBE322B00BF430060E35C /* node_starter.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBDF12B00BF430060E35C /* node_starter.cc */; };
@@ -505,6 +506,188 @@
 		2A77E7242B107E7A00579051 /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AA2CA642ADD027400927E1B /* libglfw3.a */; };
 		2A77E7302B1096A300579051 /* json_utils.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A77E72F2B1096A300579051 /* json_utils.cc */; };
 		2A77E7312B1096A300579051 /* json_utils.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A77E72F2B1096A300579051 /* json_utils.cc */; };
+		2A89DEEC2B1833580095853F /* CADefines.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1B72B14DF31008B5446 /* CADefines.hpp */; };
+		2A89DEED2B1833580095853F /* QuartzCore.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1B82B14DF31008B5446 /* QuartzCore.hpp */; };
+		2A89DEEE2B1833580095853F /* CAMetalDrawable.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1B92B14DF31008B5446 /* CAMetalDrawable.hpp */; };
+		2A89DEEF2B1833580095853F /* CAPrivate.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1B62B14DF31008B5446 /* CAPrivate.hpp */; };
+		2A89DEF02B1833590095853F /* CADefines.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1B72B14DF31008B5446 /* CADefines.hpp */; };
+		2A89DEF12B1833590095853F /* QuartzCore.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1B82B14DF31008B5446 /* QuartzCore.hpp */; };
+		2A89DEF22B1833590095853F /* CAMetalDrawable.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1B92B14DF31008B5446 /* CAMetalDrawable.hpp */; };
+		2A89DEF32B1833590095853F /* CAPrivate.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1B62B14DF31008B5446 /* CAPrivate.hpp */; };
+		2A89DEF42B18335E0095853F /* NSEnumerator.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1CA2B14DF3C008B5446 /* NSEnumerator.hpp */; };
+		2A89DEF52B18335E0095853F /* NSAutoreleasePool.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1C82B14DF3C008B5446 /* NSAutoreleasePool.hpp */; };
+		2A89DEF62B18335E0095853F /* NSDefines.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1D02B14DF3C008B5446 /* NSDefines.hpp */; };
+		2A89DEF72B18335E0095853F /* NSString.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1C92B14DF3C008B5446 /* NSString.hpp */; };
+		2A89DEF82B18335E0095853F /* NSNotification.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1D12B14DF3C008B5446 /* NSNotification.hpp */; };
+		2A89DEF92B18335E0095853F /* NSProcessInfo.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1D42B14DF3C008B5446 /* NSProcessInfo.hpp */; };
+		2A89DEFA2B18335E0095853F /* NSLock.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1CF2B14DF3C008B5446 /* NSLock.hpp */; };
+		2A89DEFB2B18335E0095853F /* NSTypes.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1CB2B14DF3C008B5446 /* NSTypes.hpp */; };
+		2A89DEFC2B18335E0095853F /* NSData.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1D32B14DF3C008B5446 /* NSData.hpp */; };
+		2A89DEFD2B18335E0095853F /* NSBundle.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1C22B14DF3C008B5446 /* NSBundle.hpp */; };
+		2A89DEFE2B18335E0095853F /* NSError.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1C52B14DF3C008B5446 /* NSError.hpp */; };
+		2A89DEFF2B18335E0095853F /* NSNumber.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1CC2B14DF3C008B5446 /* NSNumber.hpp */; };
+		2A89DF002B18335E0095853F /* NSObjCRuntime.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1CE2B14DF3C008B5446 /* NSObjCRuntime.hpp */; };
+		2A89DF012B18335E0095853F /* NSPrivate.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1C72B14DF3C008B5446 /* NSPrivate.hpp */; };
+		2A89DF022B18335E0095853F /* NSDictionary.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1D52B14DF3C008B5446 /* NSDictionary.hpp */; };
+		2A89DF032B18335E0095853F /* NSArray.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1C62B14DF3C008B5446 /* NSArray.hpp */; };
+		2A89DF042B18335E0095853F /* NSObject.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1CD2B14DF3C008B5446 /* NSObject.hpp */; };
+		2A89DF052B18335E0095853F /* NSURL.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1C42B14DF3C008B5446 /* NSURL.hpp */; };
+		2A89DF062B18335E0095853F /* NSRange.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1D22B14DF3C008B5446 /* NSRange.hpp */; };
+		2A89DF072B18335E0095853F /* NSDate.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1C32B14DF3C008B5446 /* NSDate.hpp */; };
+		2A89DF082B18335E0095853F /* Foundation.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1D62B14DF3C008B5446 /* Foundation.hpp */; };
+		2A89DF092B18335F0095853F /* NSEnumerator.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1CA2B14DF3C008B5446 /* NSEnumerator.hpp */; };
+		2A89DF0A2B18335F0095853F /* NSAutoreleasePool.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1C82B14DF3C008B5446 /* NSAutoreleasePool.hpp */; };
+		2A89DF0B2B18335F0095853F /* NSDefines.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1D02B14DF3C008B5446 /* NSDefines.hpp */; };
+		2A89DF0C2B18335F0095853F /* NSString.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1C92B14DF3C008B5446 /* NSString.hpp */; };
+		2A89DF0D2B18335F0095853F /* NSNotification.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1D12B14DF3C008B5446 /* NSNotification.hpp */; };
+		2A89DF0E2B18335F0095853F /* NSProcessInfo.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1D42B14DF3C008B5446 /* NSProcessInfo.hpp */; };
+		2A89DF0F2B18335F0095853F /* NSLock.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1CF2B14DF3C008B5446 /* NSLock.hpp */; };
+		2A89DF102B18335F0095853F /* NSTypes.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1CB2B14DF3C008B5446 /* NSTypes.hpp */; };
+		2A89DF112B18335F0095853F /* NSData.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1D32B14DF3C008B5446 /* NSData.hpp */; };
+		2A89DF122B18335F0095853F /* NSBundle.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1C22B14DF3C008B5446 /* NSBundle.hpp */; };
+		2A89DF132B18335F0095853F /* NSError.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1C52B14DF3C008B5446 /* NSError.hpp */; };
+		2A89DF142B18335F0095853F /* NSNumber.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1CC2B14DF3C008B5446 /* NSNumber.hpp */; };
+		2A89DF152B18335F0095853F /* NSObjCRuntime.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1CE2B14DF3C008B5446 /* NSObjCRuntime.hpp */; };
+		2A89DF162B18335F0095853F /* NSPrivate.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1C72B14DF3C008B5446 /* NSPrivate.hpp */; };
+		2A89DF172B18335F0095853F /* NSDictionary.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1D52B14DF3C008B5446 /* NSDictionary.hpp */; };
+		2A89DF182B18335F0095853F /* NSArray.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1C62B14DF3C008B5446 /* NSArray.hpp */; };
+		2A89DF192B18335F0095853F /* NSObject.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1CD2B14DF3C008B5446 /* NSObject.hpp */; };
+		2A89DF1A2B18335F0095853F /* NSURL.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1C42B14DF3C008B5446 /* NSURL.hpp */; };
+		2A89DF1B2B18335F0095853F /* NSRange.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1D22B14DF3C008B5446 /* NSRange.hpp */; };
+		2A89DF1C2B18335F0095853F /* NSDate.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1C32B14DF3C008B5446 /* NSDate.hpp */; };
+		2A89DF1D2B18335F0095853F /* Foundation.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1D62B14DF3C008B5446 /* Foundation.hpp */; };
+		2A89DF1E2B1833650095853F /* MetalKit.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2032B14DF48008B5446 /* MetalKit.hpp */; };
+		2A89DF1F2B1833650095853F /* MetalKitPrivate.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2012B14DF48008B5446 /* MetalKitPrivate.hpp */; };
+		2A89DF202B1833650095853F /* MTKView.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2022B14DF48008B5446 /* MTKView.hpp */; };
+		2A89DF212B1833660095853F /* MetalKit.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2032B14DF48008B5446 /* MetalKit.hpp */; };
+		2A89DF222B1833660095853F /* MetalKitPrivate.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2012B14DF48008B5446 /* MetalKitPrivate.hpp */; };
+		2A89DF232B1833660095853F /* MTKView.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2022B14DF48008B5446 /* MTKView.hpp */; };
+		2A89DF242B18336F0095853F /* MTLAccelerationStructureTypes.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2372B14DF54008B5446 /* MTLAccelerationStructureTypes.hpp */; };
+		2A89DF252B18336F0095853F /* MTLFence.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2322B14DF53008B5446 /* MTLFence.hpp */; };
+		2A89DF262B18336F0095853F /* MTLArgumentEncoder.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2122B14DF53008B5446 /* MTLArgumentEncoder.hpp */; };
+		2A89DF272B18336F0095853F /* MTLResourceStateCommandEncoder.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2342B14DF53008B5446 /* MTLResourceStateCommandEncoder.hpp */; };
+		2A89DF282B18336F0095853F /* MTLComputePipeline.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2302B14DF53008B5446 /* MTLComputePipeline.hpp */; };
+		2A89DF292B18336F0095853F /* MTLCommandQueue.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D23B2B14DF54008B5446 /* MTLCommandQueue.hpp */; };
+		2A89DF2A2B18336F0095853F /* MTLLibrary.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2272B14DF53008B5446 /* MTLLibrary.hpp */; };
+		2A89DF2B2B18336F0095853F /* MTLFunctionConstantValues.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D20E2B14DF52008B5446 /* MTLFunctionConstantValues.hpp */; };
+		2A89DF2C2B18336F0095853F /* MTLCaptureScope.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2282B14DF53008B5446 /* MTLCaptureScope.hpp */; };
+		2A89DF2D2B18336F0095853F /* MTLDepthStencil.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2132B14DF53008B5446 /* MTLDepthStencil.hpp */; };
+		2A89DF2E2B18336F0095853F /* MTLLinkedFunctions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D22F2B14DF53008B5446 /* MTLLinkedFunctions.hpp */; };
+		2A89DF2F2B18336F0095853F /* MTLPipeline.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D22A2B14DF53008B5446 /* MTLPipeline.hpp */; };
+		2A89DF302B18336F0095853F /* MTLRenderCommandEncoder.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2192B14DF53008B5446 /* MTLRenderCommandEncoder.hpp */; };
+		2A89DF312B18336F0095853F /* MTLResourceStatePass.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D22D2B14DF53008B5446 /* MTLResourceStatePass.hpp */; };
+		2A89DF322B18336F0095853F /* Metal.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D21C2B14DF53008B5446 /* Metal.hpp */; };
+		2A89DF332B18336F0095853F /* MTLEvent.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2112B14DF53008B5446 /* MTLEvent.hpp */; };
+		2A89DF342B18336F0095853F /* MTLStageInputOutputDescriptor.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2212B14DF53008B5446 /* MTLStageInputOutputDescriptor.hpp */; };
+		2A89DF352B18336F0095853F /* MTLFunctionDescriptor.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D22C2B14DF53008B5446 /* MTLFunctionDescriptor.hpp */; };
+		2A89DF362B18336F0095853F /* MTLBlitPass.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2182B14DF53008B5446 /* MTLBlitPass.hpp */; };
+		2A89DF372B18336F0095853F /* MTLCommandEncoder.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2242B14DF53008B5446 /* MTLCommandEncoder.hpp */; };
+		2A89DF382B18336F0095853F /* MTLHeap.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D21A2B14DF53008B5446 /* MTLHeap.hpp */; };
+		2A89DF392B18336F0095853F /* MTLCommandBuffer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D23C2B14DF54008B5446 /* MTLCommandBuffer.hpp */; };
+		2A89DF3A2B18336F0095853F /* MTLDynamicLibrary.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D20A2B14DF52008B5446 /* MTLDynamicLibrary.hpp */; };
+		2A89DF3B2B18336F0095853F /* MTLPrivate.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2222B14DF53008B5446 /* MTLPrivate.hpp */; };
+		2A89DF3C2B18336F0095853F /* MTLComputeCommandEncoder.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D20D2B14DF52008B5446 /* MTLComputeCommandEncoder.hpp */; };
+		2A89DF3D2B18336F0095853F /* MTLVertexDescriptor.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2202B14DF53008B5446 /* MTLVertexDescriptor.hpp */; };
+		2A89DF3E2B18336F0095853F /* MTLFunctionStitching.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2292B14DF53008B5446 /* MTLFunctionStitching.hpp */; };
+		2A89DF3F2B18336F0095853F /* MTLDefines.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2102B14DF53008B5446 /* MTLDefines.hpp */; };
+		2A89DF402B18336F0095853F /* MTLDrawable.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2142B14DF53008B5446 /* MTLDrawable.hpp */; };
+		2A89DF412B18336F0095853F /* MTLRasterizationRate.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D21B2B14DF53008B5446 /* MTLRasterizationRate.hpp */; };
+		2A89DF422B18336F0095853F /* MTLTexture.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D21D2B14DF53008B5446 /* MTLTexture.hpp */; };
+		2A89DF432B18336F0095853F /* MTLHeaderBridge.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2392B14DF54008B5446 /* MTLHeaderBridge.hpp */; };
+		2A89DF442B18336F0095853F /* MTLBinaryArchive.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2362B14DF54008B5446 /* MTLBinaryArchive.hpp */; };
+		2A89DF452B18336F0095853F /* MTLBuffer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D22E2B14DF53008B5446 /* MTLBuffer.hpp */; };
+		2A89DF462B18336F0095853F /* MTLRenderPass.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2172B14DF53008B5446 /* MTLRenderPass.hpp */; };
+		2A89DF472B18336F0095853F /* MTLPixelFormat.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2402B14DF54008B5446 /* MTLPixelFormat.hpp */; };
+		2A89DF482B18336F0095853F /* MTLComputePass.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2152B14DF53008B5446 /* MTLComputePass.hpp */; };
+		2A89DF492B18336F0095853F /* MTLBlitCommandEncoder.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D23D2B14DF54008B5446 /* MTLBlitCommandEncoder.hpp */; };
+		2A89DF4A2B18336F0095853F /* MTLIndirectCommandEncoder.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2262B14DF53008B5446 /* MTLIndirectCommandEncoder.hpp */; };
+		2A89DF4B2B18336F0095853F /* MTLFunctionHandle.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D20B2B14DF52008B5446 /* MTLFunctionHandle.hpp */; };
+		2A89DF4C2B18336F0095853F /* MTLFunctionLog.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2382B14DF54008B5446 /* MTLFunctionLog.hpp */; };
+		2A89DF4D2B18336F0095853F /* MTLDevice.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D20F2B14DF53008B5446 /* MTLDevice.hpp */; };
+		2A89DF4E2B18336F0095853F /* MTLArgument.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D23F2B14DF54008B5446 /* MTLArgument.hpp */; };
+		2A89DF4F2B18336F0095853F /* MTLResource.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2232B14DF53008B5446 /* MTLResource.hpp */; };
+		2A89DF502B18336F0095853F /* MTLCounters.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D23E2B14DF54008B5446 /* MTLCounters.hpp */; };
+		2A89DF512B18336F0095853F /* MTLIntersectionFunctionTable.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2162B14DF53008B5446 /* MTLIntersectionFunctionTable.hpp */; };
+		2A89DF522B18336F0095853F /* MTLAccelerationStructure.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D21F2B14DF53008B5446 /* MTLAccelerationStructure.hpp */; };
+		2A89DF532B18336F0095853F /* MTLTypes.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2252B14DF53008B5446 /* MTLTypes.hpp */; };
+		2A89DF542B18336F0095853F /* MTLCaptureManager.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D22B2B14DF53008B5446 /* MTLCaptureManager.hpp */; };
+		2A89DF552B18336F0095853F /* MTLAccelerationStructureCommandEncoder.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2332B14DF53008B5446 /* MTLAccelerationStructureCommandEncoder.hpp */; };
+		2A89DF562B18336F0095853F /* MTLSampler.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D20C2B14DF52008B5446 /* MTLSampler.hpp */; };
+		2A89DF572B18336F0095853F /* MTLRenderPipeline.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D21E2B14DF53008B5446 /* MTLRenderPipeline.hpp */; };
+		2A89DF582B18336F0095853F /* MTLParallelRenderCommandEncoder.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2312B14DF53008B5446 /* MTLParallelRenderCommandEncoder.hpp */; };
+		2A89DF592B18336F0095853F /* MTLVisibleFunctionTable.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D23A2B14DF54008B5446 /* MTLVisibleFunctionTable.hpp */; };
+		2A89DF5A2B18336F0095853F /* MTLIndirectCommandBuffer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2352B14DF54008B5446 /* MTLIndirectCommandBuffer.hpp */; };
+		2A89DF5B2B18336F0095853F /* MTLAccelerationStructureTypes.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2372B14DF54008B5446 /* MTLAccelerationStructureTypes.hpp */; };
+		2A89DF5C2B18336F0095853F /* MTLFence.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2322B14DF53008B5446 /* MTLFence.hpp */; };
+		2A89DF5D2B18336F0095853F /* MTLArgumentEncoder.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2122B14DF53008B5446 /* MTLArgumentEncoder.hpp */; };
+		2A89DF5E2B18336F0095853F /* MTLResourceStateCommandEncoder.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2342B14DF53008B5446 /* MTLResourceStateCommandEncoder.hpp */; };
+		2A89DF5F2B18336F0095853F /* MTLComputePipeline.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2302B14DF53008B5446 /* MTLComputePipeline.hpp */; };
+		2A89DF602B18336F0095853F /* MTLCommandQueue.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D23B2B14DF54008B5446 /* MTLCommandQueue.hpp */; };
+		2A89DF612B18336F0095853F /* MTLLibrary.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2272B14DF53008B5446 /* MTLLibrary.hpp */; };
+		2A89DF622B18336F0095853F /* MTLFunctionConstantValues.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D20E2B14DF52008B5446 /* MTLFunctionConstantValues.hpp */; };
+		2A89DF632B18336F0095853F /* MTLCaptureScope.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2282B14DF53008B5446 /* MTLCaptureScope.hpp */; };
+		2A89DF642B18336F0095853F /* MTLDepthStencil.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2132B14DF53008B5446 /* MTLDepthStencil.hpp */; };
+		2A89DF652B18336F0095853F /* MTLLinkedFunctions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D22F2B14DF53008B5446 /* MTLLinkedFunctions.hpp */; };
+		2A89DF662B18336F0095853F /* MTLPipeline.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D22A2B14DF53008B5446 /* MTLPipeline.hpp */; };
+		2A89DF672B18336F0095853F /* MTLRenderCommandEncoder.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2192B14DF53008B5446 /* MTLRenderCommandEncoder.hpp */; };
+		2A89DF682B18336F0095853F /* MTLResourceStatePass.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D22D2B14DF53008B5446 /* MTLResourceStatePass.hpp */; };
+		2A89DF692B18336F0095853F /* Metal.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D21C2B14DF53008B5446 /* Metal.hpp */; };
+		2A89DF6A2B18336F0095853F /* MTLEvent.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2112B14DF53008B5446 /* MTLEvent.hpp */; };
+		2A89DF6B2B18336F0095853F /* MTLStageInputOutputDescriptor.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2212B14DF53008B5446 /* MTLStageInputOutputDescriptor.hpp */; };
+		2A89DF6C2B18336F0095853F /* MTLFunctionDescriptor.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D22C2B14DF53008B5446 /* MTLFunctionDescriptor.hpp */; };
+		2A89DF6D2B18336F0095853F /* MTLBlitPass.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2182B14DF53008B5446 /* MTLBlitPass.hpp */; };
+		2A89DF6E2B18336F0095853F /* MTLCommandEncoder.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2242B14DF53008B5446 /* MTLCommandEncoder.hpp */; };
+		2A89DF6F2B18336F0095853F /* MTLHeap.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D21A2B14DF53008B5446 /* MTLHeap.hpp */; };
+		2A89DF702B18336F0095853F /* MTLCommandBuffer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D23C2B14DF54008B5446 /* MTLCommandBuffer.hpp */; };
+		2A89DF712B18336F0095853F /* MTLDynamicLibrary.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D20A2B14DF52008B5446 /* MTLDynamicLibrary.hpp */; };
+		2A89DF722B18336F0095853F /* MTLPrivate.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2222B14DF53008B5446 /* MTLPrivate.hpp */; };
+		2A89DF732B18336F0095853F /* MTLComputeCommandEncoder.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D20D2B14DF52008B5446 /* MTLComputeCommandEncoder.hpp */; };
+		2A89DF742B18336F0095853F /* MTLVertexDescriptor.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2202B14DF53008B5446 /* MTLVertexDescriptor.hpp */; };
+		2A89DF752B18336F0095853F /* MTLFunctionStitching.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2292B14DF53008B5446 /* MTLFunctionStitching.hpp */; };
+		2A89DF762B18336F0095853F /* MTLDefines.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2102B14DF53008B5446 /* MTLDefines.hpp */; };
+		2A89DF772B18336F0095853F /* MTLDrawable.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2142B14DF53008B5446 /* MTLDrawable.hpp */; };
+		2A89DF782B18336F0095853F /* MTLRasterizationRate.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D21B2B14DF53008B5446 /* MTLRasterizationRate.hpp */; };
+		2A89DF792B18336F0095853F /* MTLTexture.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D21D2B14DF53008B5446 /* MTLTexture.hpp */; };
+		2A89DF7A2B18336F0095853F /* MTLHeaderBridge.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2392B14DF54008B5446 /* MTLHeaderBridge.hpp */; };
+		2A89DF7B2B18336F0095853F /* MTLBinaryArchive.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2362B14DF54008B5446 /* MTLBinaryArchive.hpp */; };
+		2A89DF7C2B18336F0095853F /* MTLBuffer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D22E2B14DF53008B5446 /* MTLBuffer.hpp */; };
+		2A89DF7D2B18336F0095853F /* MTLRenderPass.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2172B14DF53008B5446 /* MTLRenderPass.hpp */; };
+		2A89DF7E2B18336F0095853F /* MTLPixelFormat.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2402B14DF54008B5446 /* MTLPixelFormat.hpp */; };
+		2A89DF7F2B18336F0095853F /* MTLComputePass.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2152B14DF53008B5446 /* MTLComputePass.hpp */; };
+		2A89DF802B18336F0095853F /* MTLBlitCommandEncoder.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D23D2B14DF54008B5446 /* MTLBlitCommandEncoder.hpp */; };
+		2A89DF812B18336F0095853F /* MTLIndirectCommandEncoder.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2262B14DF53008B5446 /* MTLIndirectCommandEncoder.hpp */; };
+		2A89DF822B18336F0095853F /* MTLFunctionHandle.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D20B2B14DF52008B5446 /* MTLFunctionHandle.hpp */; };
+		2A89DF832B18336F0095853F /* MTLFunctionLog.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2382B14DF54008B5446 /* MTLFunctionLog.hpp */; };
+		2A89DF842B18336F0095853F /* MTLDevice.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D20F2B14DF53008B5446 /* MTLDevice.hpp */; };
+		2A89DF852B18336F0095853F /* MTLArgument.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D23F2B14DF54008B5446 /* MTLArgument.hpp */; };
+		2A89DF862B18336F0095853F /* MTLResource.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2232B14DF53008B5446 /* MTLResource.hpp */; };
+		2A89DF872B18336F0095853F /* MTLCounters.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D23E2B14DF54008B5446 /* MTLCounters.hpp */; };
+		2A89DF882B18336F0095853F /* MTLIntersectionFunctionTable.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2162B14DF53008B5446 /* MTLIntersectionFunctionTable.hpp */; };
+		2A89DF892B18336F0095853F /* MTLAccelerationStructure.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D21F2B14DF53008B5446 /* MTLAccelerationStructure.hpp */; };
+		2A89DF8A2B18336F0095853F /* MTLTypes.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2252B14DF53008B5446 /* MTLTypes.hpp */; };
+		2A89DF8B2B18336F0095853F /* MTLCaptureManager.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D22B2B14DF53008B5446 /* MTLCaptureManager.hpp */; };
+		2A89DF8C2B18336F0095853F /* MTLAccelerationStructureCommandEncoder.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2332B14DF53008B5446 /* MTLAccelerationStructureCommandEncoder.hpp */; };
+		2A89DF8D2B18336F0095853F /* MTLSampler.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D20C2B14DF52008B5446 /* MTLSampler.hpp */; };
+		2A89DF8E2B18336F0095853F /* MTLRenderPipeline.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D21E2B14DF53008B5446 /* MTLRenderPipeline.hpp */; };
+		2A89DF8F2B18336F0095853F /* MTLParallelRenderCommandEncoder.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2312B14DF53008B5446 /* MTLParallelRenderCommandEncoder.hpp */; };
+		2A89DF902B18336F0095853F /* MTLVisibleFunctionTable.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D23A2B14DF54008B5446 /* MTLVisibleFunctionTable.hpp */; };
+		2A89DF912B18336F0095853F /* MTLIndirectCommandBuffer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2352B14DF54008B5446 /* MTLIndirectCommandBuffer.hpp */; };
+		2A89DF922B1833740095853F /* AppKitPrivate.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2AF2B14DF5F008B5446 /* AppKitPrivate.hpp */; };
+		2A89DF932B1833740095853F /* NSView.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2B52B14DF5F008B5446 /* NSView.hpp */; };
+		2A89DF942B1833740095853F /* NSMenu.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2B02B14DF5F008B5446 /* NSMenu.hpp */; };
+		2A89DF952B1833740095853F /* NSApplication.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2B12B14DF5F008B5446 /* NSApplication.hpp */; };
+		2A89DF962B1833740095853F /* AppKit.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2B62B14DF5F008B5446 /* AppKit.hpp */; };
+		2A89DF972B1833740095853F /* NSMenuItem.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2B22B14DF5F008B5446 /* NSMenuItem.hpp */; };
+		2A89DF982B1833740095853F /* NSRunningApplication.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2B42B14DF5F008B5446 /* NSRunningApplication.hpp */; };
+		2A89DF992B1833740095853F /* NSWindow.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2B32B14DF5F008B5446 /* NSWindow.hpp */; };
+		2A89DF9A2B1833740095853F /* AppKitPrivate.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2AF2B14DF5F008B5446 /* AppKitPrivate.hpp */; };
+		2A89DF9B2B1833740095853F /* NSView.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2B52B14DF5F008B5446 /* NSView.hpp */; };
+		2A89DF9C2B1833740095853F /* NSMenu.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2B02B14DF5F008B5446 /* NSMenu.hpp */; };
+		2A89DF9D2B1833740095853F /* NSApplication.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2B12B14DF5F008B5446 /* NSApplication.hpp */; };
+		2A89DF9E2B1833740095853F /* AppKit.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2B62B14DF5F008B5446 /* AppKit.hpp */; };
+		2A89DF9F2B1833740095853F /* NSMenuItem.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2B22B14DF5F008B5446 /* NSMenuItem.hpp */; };
+		2A89DFA02B1833740095853F /* NSRunningApplication.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2B42B14DF5F008B5446 /* NSRunningApplication.hpp */; };
+		2A89DFA12B1833740095853F /* NSWindow.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D2B32B14DF5F008B5446 /* NSWindow.hpp */; };
 		2A8E08892B0FD1680059112F /* game.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBE782B00BF890060E35C /* game.h */; };
 		2A8E088A2B0FD1680059112F /* scene_level.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBE7A2B00BF890060E35C /* scene_level.h */; };
 		2A8E088B2B0FD1680059112F /* defines.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBE772B00BF890060E35C /* defines.h */; };
@@ -936,7 +1119,7 @@
 		2A27D31A2B1522F3008B5446 /* Renderer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Renderer.h; sourceTree = "<group>"; };
 		2A27D31B2B1522F3008B5446 /* Renderer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Renderer.m; sourceTree = "<group>"; };
 		2A27D31D2B1522F3008B5446 /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
-		2A27D31E2B1522F3008B5446 /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		2A27D31E2B1522F3008B5446 /* GameViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = GameViewController.mm; sourceTree = "<group>"; };
 		2A27D3202B1522F3008B5446 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 		2A27D3222B1522F3008B5446 /* ShaderTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShaderTypes.h; sourceTree = "<group>"; };
 		2A27D3242B1522F3008B5446 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -1223,6 +1406,7 @@
 				2AE640EE2B131F3400A6B8DA /* IOKit.framework in Frameworks */,
 				2AE640EB2B131F0700A6B8DA /* QuartzCore.framework in Frameworks */,
 				2AE640ED2B131F0E00A6B8DA /* Foundation.framework in Frameworks */,
+				2A41F0922B18750C00CC5EF4 /* MetalKit.framework in Frameworks */,
 				2AE640E92B131EFE00A6B8DA /* Metal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1446,19 +1630,19 @@
 		2A27D3162B1522F3008B5446 /* launcher_ios */ = {
 			isa = PBXGroup;
 			children = (
+				2A27D31A2B1522F3008B5446 /* Renderer.h */,
+				2A27D31B2B1522F3008B5446 /* Renderer.m */,
+				2A27D32B2B1522F4008B5446 /* main.m */,
 				2A27D3302B1522FE008B5446 /* launcher-ios-Info.plist */,
 				2A27D3172B1522F3008B5446 /* AppDelegate.h */,
 				2A27D3182B1522F3008B5446 /* AppDelegate.m */,
-				2A27D31A2B1522F3008B5446 /* Renderer.h */,
-				2A27D31B2B1522F3008B5446 /* Renderer.m */,
 				2A27D31D2B1522F3008B5446 /* GameViewController.h */,
-				2A27D31E2B1522F3008B5446 /* GameViewController.m */,
+				2A27D31E2B1522F3008B5446 /* GameViewController.mm */,
 				2A27D3202B1522F3008B5446 /* Shaders.metal */,
 				2A27D3222B1522F3008B5446 /* ShaderTypes.h */,
 				2A27D3232B1522F3008B5446 /* Main.storyboard */,
 				2A27D3262B1522F4008B5446 /* Assets.xcassets */,
 				2A27D3282B1522F4008B5446 /* LaunchScreen.storyboard */,
-				2A27D32B2B1522F4008B5446 /* main.m */,
 			);
 			path = launcher_ios;
 			sourceTree = "<group>";
@@ -1870,8 +2054,8 @@
 				2A27D1AD2B14DDFC008B5446 /* app_delegate_metal.h */,
 				2AE640F52B1320F700A6B8DA /* application_metal.h */,
 				2AE640F22B1320F700A6B8DA /* application_metal.cc */,
-				2AE640F02B1320F700A6B8DA /* graphics_metal.cc */,
 				2AE640F62B1320F700A6B8DA /* graphics_metal.h */,
+				2AE640F02B1320F700A6B8DA /* graphics_metal.cc */,
 				2AE640F42B1320F700A6B8DA /* render_batch_data_metal.h */,
 				2AE640F32B1320F700A6B8DA /* render_batch_group_metal.h */,
 				2AE640F12B1320F700A6B8DA /* render_queue_metal.cc */,
@@ -1908,9 +2092,9 @@
 				2AE4B78E2B0FE88200252B50 /* assets */,
 				2A4FBDED2B00BF430060E35C /* snowpulse */,
 				2A4FBE762B00BF890060E35C /* game */,
+				2A27D3162B1522F3008B5446 /* launcher_ios */,
 				2A66AAE12AFD541A003B4045 /* launcher_console */,
 				2A27D2D02B14E48E008B5446 /* launcher_macos */,
-				2A27D3162B1522F3008B5446 /* launcher_ios */,
 				2AF938E62ABDDB5F00CC8BA2 /* Frameworks */,
 				2AF938B72ABDC14D00CC8BA2 /* Products */,
 			);
@@ -2192,9 +2376,100 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A89DF102B18335F0095853F /* NSTypes.hpp in Headers */,
+				2A89DF0E2B18335F0095853F /* NSProcessInfo.hpp in Headers */,
+				2A89DF782B18336F0095853F /* MTLRasterizationRate.hpp in Headers */,
+				2A89DF152B18335F0095853F /* NSObjCRuntime.hpp in Headers */,
+				2A89DF732B18336F0095853F /* MTLComputeCommandEncoder.hpp in Headers */,
+				2A89DF9F2B1833740095853F /* NSMenuItem.hpp in Headers */,
+				2A89DF772B18336F0095853F /* MTLDrawable.hpp in Headers */,
+				2A89DF5C2B18336F0095853F /* MTLFence.hpp in Headers */,
+				2A89DF5D2B18336F0095853F /* MTLArgumentEncoder.hpp in Headers */,
+				2A89DF762B18336F0095853F /* MTLDefines.hpp in Headers */,
+				2A89DF652B18336F0095853F /* MTLLinkedFunctions.hpp in Headers */,
+				2A89DF8C2B18336F0095853F /* MTLAccelerationStructureCommandEncoder.hpp in Headers */,
+				2A89DF662B18336F0095853F /* MTLPipeline.hpp in Headers */,
 				2A8E08892B0FD1680059112F /* game.h in Headers */,
+				2A89DF842B18336F0095853F /* MTLDevice.hpp in Headers */,
+				2A89DF9C2B1833740095853F /* NSMenu.hpp in Headers */,
+				2A89DF872B18336F0095853F /* MTLCounters.hpp in Headers */,
+				2A89DF162B18335F0095853F /* NSPrivate.hpp in Headers */,
+				2A89DF882B18336F0095853F /* MTLIntersectionFunctionTable.hpp in Headers */,
+				2A89DF7F2B18336F0095853F /* MTLComputePass.hpp in Headers */,
+				2A89DF092B18335F0095853F /* NSEnumerator.hpp in Headers */,
+				2A89DEF02B1833590095853F /* CADefines.hpp in Headers */,
+				2A89DF9B2B1833740095853F /* NSView.hpp in Headers */,
+				2A89DFA12B1833740095853F /* NSWindow.hpp in Headers */,
+				2A89DF222B1833660095853F /* MetalKitPrivate.hpp in Headers */,
+				2A89DF8A2B18336F0095853F /* MTLTypes.hpp in Headers */,
+				2A89DEF22B1833590095853F /* CAMetalDrawable.hpp in Headers */,
+				2A89DF122B18335F0095853F /* NSBundle.hpp in Headers */,
+				2A89DF9D2B1833740095853F /* NSApplication.hpp in Headers */,
+				2A89DF8B2B18336F0095853F /* MTLCaptureManager.hpp in Headers */,
+				2A89DF802B18336F0095853F /* MTLBlitCommandEncoder.hpp in Headers */,
+				2A89DF642B18336F0095853F /* MTLDepthStencil.hpp in Headers */,
+				2A89DF7A2B18336F0095853F /* MTLHeaderBridge.hpp in Headers */,
+				2A89DF172B18335F0095853F /* NSDictionary.hpp in Headers */,
+				2A89DF9E2B1833740095853F /* AppKit.hpp in Headers */,
+				2A89DF8D2B18336F0095853F /* MTLSampler.hpp in Headers */,
+				2A89DF712B18336F0095853F /* MTLDynamicLibrary.hpp in Headers */,
 				2A8E088A2B0FD1680059112F /* scene_level.h in Headers */,
+				2A89DF912B18336F0095853F /* MTLIndirectCommandBuffer.hpp in Headers */,
+				2A89DF602B18336F0095853F /* MTLCommandQueue.hpp in Headers */,
+				2A89DEF32B1833590095853F /* CAPrivate.hpp in Headers */,
+				2A89DF0A2B18335F0095853F /* NSAutoreleasePool.hpp in Headers */,
+				2A89DF142B18335F0095853F /* NSNumber.hpp in Headers */,
+				2A89DF612B18336F0095853F /* MTLLibrary.hpp in Headers */,
+				2A89DF742B18336F0095853F /* MTLVertexDescriptor.hpp in Headers */,
+				2A89DF8F2B18336F0095853F /* MTLParallelRenderCommandEncoder.hpp in Headers */,
+				2A89DF792B18336F0095853F /* MTLTexture.hpp in Headers */,
+				2A89DF7B2B18336F0095853F /* MTLBinaryArchive.hpp in Headers */,
+				2A89DF9A2B1833740095853F /* AppKitPrivate.hpp in Headers */,
 				2A8E088B2B0FD1680059112F /* defines.h in Headers */,
+				2A89DF622B18336F0095853F /* MTLFunctionConstantValues.hpp in Headers */,
+				2A89DF6F2B18336F0095853F /* MTLHeap.hpp in Headers */,
+				2A89DF6B2B18336F0095853F /* MTLStageInputOutputDescriptor.hpp in Headers */,
+				2A89DF0D2B18335F0095853F /* NSNotification.hpp in Headers */,
+				2A89DF702B18336F0095853F /* MTLCommandBuffer.hpp in Headers */,
+				2A89DF6E2B18336F0095853F /* MTLCommandEncoder.hpp in Headers */,
+				2A89DF112B18335F0095853F /* NSData.hpp in Headers */,
+				2A89DF232B1833660095853F /* MTKView.hpp in Headers */,
+				2A89DF8E2B18336F0095853F /* MTLRenderPipeline.hpp in Headers */,
+				2A89DF862B18336F0095853F /* MTLResource.hpp in Headers */,
+				2A89DF752B18336F0095853F /* MTLFunctionStitching.hpp in Headers */,
+				2A89DF0C2B18335F0095853F /* NSString.hpp in Headers */,
+				2A89DF682B18336F0095853F /* MTLResourceStatePass.hpp in Headers */,
+				2A89DF832B18336F0095853F /* MTLFunctionLog.hpp in Headers */,
+				2A89DF7E2B18336F0095853F /* MTLPixelFormat.hpp in Headers */,
+				2A89DF192B18335F0095853F /* NSObject.hpp in Headers */,
+				2A89DF692B18336F0095853F /* Metal.hpp in Headers */,
+				2A89DF672B18336F0095853F /* MTLRenderCommandEncoder.hpp in Headers */,
+				2A89DF1D2B18335F0095853F /* Foundation.hpp in Headers */,
+				2A89DF6D2B18336F0095853F /* MTLBlitPass.hpp in Headers */,
+				2A89DF5F2B18336F0095853F /* MTLComputePipeline.hpp in Headers */,
+				2A89DF1A2B18335F0095853F /* NSURL.hpp in Headers */,
+				2A89DF902B18336F0095853F /* MTLVisibleFunctionTable.hpp in Headers */,
+				2A89DF132B18335F0095853F /* NSError.hpp in Headers */,
+				2A89DF5E2B18336F0095853F /* MTLResourceStateCommandEncoder.hpp in Headers */,
+				2A89DF1C2B18335F0095853F /* NSDate.hpp in Headers */,
+				2A89DF722B18336F0095853F /* MTLPrivate.hpp in Headers */,
+				2A89DF6A2B18336F0095853F /* MTLEvent.hpp in Headers */,
+				2A89DF6C2B18336F0095853F /* MTLFunctionDescriptor.hpp in Headers */,
+				2A89DF1B2B18335F0095853F /* NSRange.hpp in Headers */,
+				2A89DF182B18335F0095853F /* NSArray.hpp in Headers */,
+				2A89DF812B18336F0095853F /* MTLIndirectCommandEncoder.hpp in Headers */,
+				2A89DF0B2B18335F0095853F /* NSDefines.hpp in Headers */,
+				2A89DF892B18336F0095853F /* MTLAccelerationStructure.hpp in Headers */,
+				2A89DF5B2B18336F0095853F /* MTLAccelerationStructureTypes.hpp in Headers */,
+				2A89DF632B18336F0095853F /* MTLCaptureScope.hpp in Headers */,
+				2A89DF852B18336F0095853F /* MTLArgument.hpp in Headers */,
+				2A89DFA02B1833740095853F /* NSRunningApplication.hpp in Headers */,
+				2A89DF7C2B18336F0095853F /* MTLBuffer.hpp in Headers */,
+				2A89DF212B1833660095853F /* MetalKit.hpp in Headers */,
+				2A89DF0F2B18335F0095853F /* NSLock.hpp in Headers */,
+				2A89DF822B18336F0095853F /* MTLFunctionHandle.hpp in Headers */,
+				2A89DEF12B1833590095853F /* QuartzCore.hpp in Headers */,
+				2A89DF7D2B18336F0095853F /* MTLRenderPass.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2202,9 +2477,100 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A89DEFB2B18335E0095853F /* NSTypes.hpp in Headers */,
+				2A89DEF92B18335E0095853F /* NSProcessInfo.hpp in Headers */,
+				2A89DF412B18336F0095853F /* MTLRasterizationRate.hpp in Headers */,
+				2A89DF002B18335E0095853F /* NSObjCRuntime.hpp in Headers */,
+				2A89DF3C2B18336F0095853F /* MTLComputeCommandEncoder.hpp in Headers */,
+				2A89DF972B1833740095853F /* NSMenuItem.hpp in Headers */,
+				2A89DF402B18336F0095853F /* MTLDrawable.hpp in Headers */,
+				2A89DF252B18336F0095853F /* MTLFence.hpp in Headers */,
+				2A89DF262B18336F0095853F /* MTLArgumentEncoder.hpp in Headers */,
+				2A89DF3F2B18336F0095853F /* MTLDefines.hpp in Headers */,
+				2A89DF2E2B18336F0095853F /* MTLLinkedFunctions.hpp in Headers */,
+				2A89DF552B18336F0095853F /* MTLAccelerationStructureCommandEncoder.hpp in Headers */,
+				2A89DF2F2B18336F0095853F /* MTLPipeline.hpp in Headers */,
 				2A4FBE7D2B00BF890060E35C /* game.h in Headers */,
+				2A89DF4D2B18336F0095853F /* MTLDevice.hpp in Headers */,
+				2A89DF942B1833740095853F /* NSMenu.hpp in Headers */,
+				2A89DF502B18336F0095853F /* MTLCounters.hpp in Headers */,
+				2A89DF012B18335E0095853F /* NSPrivate.hpp in Headers */,
+				2A89DF512B18336F0095853F /* MTLIntersectionFunctionTable.hpp in Headers */,
+				2A89DF482B18336F0095853F /* MTLComputePass.hpp in Headers */,
+				2A89DEF42B18335E0095853F /* NSEnumerator.hpp in Headers */,
+				2A89DEEC2B1833580095853F /* CADefines.hpp in Headers */,
+				2A89DF932B1833740095853F /* NSView.hpp in Headers */,
+				2A89DF992B1833740095853F /* NSWindow.hpp in Headers */,
+				2A89DF1F2B1833650095853F /* MetalKitPrivate.hpp in Headers */,
+				2A89DF532B18336F0095853F /* MTLTypes.hpp in Headers */,
+				2A89DEEE2B1833580095853F /* CAMetalDrawable.hpp in Headers */,
+				2A89DEFD2B18335E0095853F /* NSBundle.hpp in Headers */,
+				2A89DF952B1833740095853F /* NSApplication.hpp in Headers */,
+				2A89DF542B18336F0095853F /* MTLCaptureManager.hpp in Headers */,
+				2A89DF492B18336F0095853F /* MTLBlitCommandEncoder.hpp in Headers */,
+				2A89DF2D2B18336F0095853F /* MTLDepthStencil.hpp in Headers */,
+				2A89DF432B18336F0095853F /* MTLHeaderBridge.hpp in Headers */,
+				2A89DF022B18335E0095853F /* NSDictionary.hpp in Headers */,
+				2A89DF962B1833740095853F /* AppKit.hpp in Headers */,
+				2A89DF562B18336F0095853F /* MTLSampler.hpp in Headers */,
+				2A89DF3A2B18336F0095853F /* MTLDynamicLibrary.hpp in Headers */,
 				2A4FBE7F2B00BF890060E35C /* scene_level.h in Headers */,
+				2A89DF5A2B18336F0095853F /* MTLIndirectCommandBuffer.hpp in Headers */,
+				2A89DF292B18336F0095853F /* MTLCommandQueue.hpp in Headers */,
+				2A89DEEF2B1833580095853F /* CAPrivate.hpp in Headers */,
+				2A89DEF52B18335E0095853F /* NSAutoreleasePool.hpp in Headers */,
+				2A89DEFF2B18335E0095853F /* NSNumber.hpp in Headers */,
+				2A89DF2A2B18336F0095853F /* MTLLibrary.hpp in Headers */,
+				2A89DF3D2B18336F0095853F /* MTLVertexDescriptor.hpp in Headers */,
+				2A89DF582B18336F0095853F /* MTLParallelRenderCommandEncoder.hpp in Headers */,
+				2A89DF422B18336F0095853F /* MTLTexture.hpp in Headers */,
+				2A89DF442B18336F0095853F /* MTLBinaryArchive.hpp in Headers */,
+				2A89DF922B1833740095853F /* AppKitPrivate.hpp in Headers */,
 				2A4FBE7C2B00BF890060E35C /* defines.h in Headers */,
+				2A89DF2B2B18336F0095853F /* MTLFunctionConstantValues.hpp in Headers */,
+				2A89DF382B18336F0095853F /* MTLHeap.hpp in Headers */,
+				2A89DF342B18336F0095853F /* MTLStageInputOutputDescriptor.hpp in Headers */,
+				2A89DEF82B18335E0095853F /* NSNotification.hpp in Headers */,
+				2A89DF392B18336F0095853F /* MTLCommandBuffer.hpp in Headers */,
+				2A89DF372B18336F0095853F /* MTLCommandEncoder.hpp in Headers */,
+				2A89DEFC2B18335E0095853F /* NSData.hpp in Headers */,
+				2A89DF202B1833650095853F /* MTKView.hpp in Headers */,
+				2A89DF572B18336F0095853F /* MTLRenderPipeline.hpp in Headers */,
+				2A89DF4F2B18336F0095853F /* MTLResource.hpp in Headers */,
+				2A89DF3E2B18336F0095853F /* MTLFunctionStitching.hpp in Headers */,
+				2A89DEF72B18335E0095853F /* NSString.hpp in Headers */,
+				2A89DF312B18336F0095853F /* MTLResourceStatePass.hpp in Headers */,
+				2A89DF4C2B18336F0095853F /* MTLFunctionLog.hpp in Headers */,
+				2A89DF472B18336F0095853F /* MTLPixelFormat.hpp in Headers */,
+				2A89DF042B18335E0095853F /* NSObject.hpp in Headers */,
+				2A89DF322B18336F0095853F /* Metal.hpp in Headers */,
+				2A89DF302B18336F0095853F /* MTLRenderCommandEncoder.hpp in Headers */,
+				2A89DF082B18335E0095853F /* Foundation.hpp in Headers */,
+				2A89DF362B18336F0095853F /* MTLBlitPass.hpp in Headers */,
+				2A89DF282B18336F0095853F /* MTLComputePipeline.hpp in Headers */,
+				2A89DF052B18335E0095853F /* NSURL.hpp in Headers */,
+				2A89DF592B18336F0095853F /* MTLVisibleFunctionTable.hpp in Headers */,
+				2A89DEFE2B18335E0095853F /* NSError.hpp in Headers */,
+				2A89DF272B18336F0095853F /* MTLResourceStateCommandEncoder.hpp in Headers */,
+				2A89DF072B18335E0095853F /* NSDate.hpp in Headers */,
+				2A89DF3B2B18336F0095853F /* MTLPrivate.hpp in Headers */,
+				2A89DF332B18336F0095853F /* MTLEvent.hpp in Headers */,
+				2A89DF352B18336F0095853F /* MTLFunctionDescriptor.hpp in Headers */,
+				2A89DF062B18335E0095853F /* NSRange.hpp in Headers */,
+				2A89DF032B18335E0095853F /* NSArray.hpp in Headers */,
+				2A89DF4A2B18336F0095853F /* MTLIndirectCommandEncoder.hpp in Headers */,
+				2A89DEF62B18335E0095853F /* NSDefines.hpp in Headers */,
+				2A89DF522B18336F0095853F /* MTLAccelerationStructure.hpp in Headers */,
+				2A89DF242B18336F0095853F /* MTLAccelerationStructureTypes.hpp in Headers */,
+				2A89DF2C2B18336F0095853F /* MTLCaptureScope.hpp in Headers */,
+				2A89DF4E2B18336F0095853F /* MTLArgument.hpp in Headers */,
+				2A89DF982B1833740095853F /* NSRunningApplication.hpp in Headers */,
+				2A89DF452B18336F0095853F /* MTLBuffer.hpp in Headers */,
+				2A89DF1E2B1833650095853F /* MetalKit.hpp in Headers */,
+				2A89DEFA2B18335E0095853F /* NSLock.hpp in Headers */,
+				2A89DF4B2B18336F0095853F /* MTLFunctionHandle.hpp in Headers */,
+				2A89DEED2B1833580095853F /* QuartzCore.hpp in Headers */,
+				2A89DF462B18336F0095853F /* MTLRenderPass.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2771,7 +3137,7 @@
 				2A27D32C2B1522F4008B5446 /* main.m in Sources */,
 				2A27D3212B1522F3008B5446 /* Shaders.metal in Sources */,
 				2A27D31C2B1522F3008B5446 /* Renderer.m in Sources */,
-				2A27D31F2B1522F3008B5446 /* GameViewController.m in Sources */,
+				2A27D31F2B1522F3008B5446 /* GameViewController.mm in Sources */,
 				2A27D3192B1522F3008B5446 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2982,6 +3348,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/System/iOSSupport/System/Library/Frameworks",
+				);
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -3016,6 +3386,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/System/iOSSupport/System/Library/Frameworks",
+				);
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -3127,7 +3501,21 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					SNOWPULSE_PLATFORM_IOS,
+				);
 				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					../snowpulse/,
+					../game/,
+					../thirdparty/glm/,
+					../thirdparty/stb/,
+					"../thirdparty/nlohmann-json/",
+					"../thirdparty/spine-cpp/**",
+					../thirdparty/metal/,
+				);
 				INFOPLIST_FILE = "launcher-ios-Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -3157,7 +3545,17 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				GCC_PREPROCESSOR_DEFINITIONS = SNOWPULSE_PLATFORM_IOS;
 				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					../snowpulse/,
+					../game/,
+					../thirdparty/glm/,
+					../thirdparty/stb/,
+					"../thirdparty/nlohmann-json/",
+					"../thirdparty/spine-cpp/**",
+					../thirdparty/metal/,
+				);
 				INFOPLIST_FILE = "launcher-ios-Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -3207,6 +3605,7 @@
 					../thirdparty/stb/,
 					"../thirdparty/nlohmann-json/",
 					"../thirdparty/spine-cpp/**",
+					../thirdparty/metal/,
 				);
 				INSTALL_PATH = "@rpath";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3240,6 +3639,7 @@
 					../thirdparty/stb/,
 					"../thirdparty/nlohmann-json/",
 					"../thirdparty/spine-cpp/**",
+					../thirdparty/metal/,
 				);
 				INSTALL_PATH = "@rpath";
 				PRODUCT_NAME = "$(TARGET_NAME)";

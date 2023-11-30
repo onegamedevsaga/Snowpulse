@@ -40,9 +40,8 @@ Application::~Application() {
 #endif
 }
 
-bool Application::Initialize(const Vector2Int& resolution, const Vector2Int& screenSize) {
+bool Application::Initialize(const Vector2Int& resolution) {
     resolutionSize_ = resolution;
-    screenSize_ = screenSize;
     actionManager_ = ActionManager::Create();
     appTimer_.Start();
     frameTimer_.Start();

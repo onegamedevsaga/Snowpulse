@@ -10,12 +10,11 @@
 namespace snowpulse {
 class SNOWPULSEAPI ApplicationIOS : public ApplicationMetal, public Singleton<ApplicationIOS> {
     public:
-        virtual bool Initialize(const Vector2Int& resolutionSize, const Vector2Int& screenSize) override;
+        virtual bool Initialize(const Vector2Int& resolutionSize, void* device);
         void Close() override;
         void Shutdown() override;
 
         void RunFrame();
-    
 
     protected:
         friend class Singleton<ApplicationIOS>;

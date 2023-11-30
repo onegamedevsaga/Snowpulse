@@ -13,18 +13,20 @@
 namespace snowpulse {
 class SNOWPULSEAPI ApplicationMacOS : public ApplicationMetal, public Singleton<ApplicationMacOS> {
     public:
-        virtual bool Initialize(const Vector2Int& resolutionSize, const Vector2Int& screenSize) override;
+        virtual bool Initialize(const Vector2Int& resolutionSize, const Vector2Int& screenSize, void* device);
         void Close() override;
         void Shutdown() override;
 
         void Run();
 
+        Vector2Int GetScreenSize() { return screenSize_; }
         GLFWwindow* GetWindow() { return window_; }
 
     protected:
         friend class Singleton<ApplicationMacOS>;
         ApplicationMacOS();
 
+        Vector2Int screenSize_;
         GLFWwindow* window_;
         DirectoryMacOS* directory_;
 };

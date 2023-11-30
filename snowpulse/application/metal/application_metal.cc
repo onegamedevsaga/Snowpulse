@@ -26,9 +26,16 @@ ApplicationMetal::~ApplicationMetal() {
 #endif
 }
 
-bool ApplicationMetal::Initialize(const Vector2Int& resolutionSize, const Vector2Int& screenSize) {
-    if (!Application::Initialize(resolutionSize, screenSize)) {
-        
+bool ApplicationMetal::Initialize(const Vector2Int& resolutionSize, const Vector2Int& screenSize, void* view) {
+    if (!Application::Initialize(resolutionSize)) {
+        return false;
+    }
+    
+    graphics_ = GraphicsMetal::Create();
+    if (!graphics_ || !graphics_->Initialize(resolutionSize, screenSize, view)) {
+#ifdef SPDEBUG
+        std::cout << "ERROR: Application wasn't able to initialize graphics on this platform." << std::endl;
+#endif
         return false;
     }
     return true;

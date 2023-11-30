@@ -6,7 +6,7 @@
 
 #include <memory>
 #include <vector>
-#include <glad/glad.h>
+//#include <glad/glad.h>
 //#include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 
@@ -23,7 +23,7 @@ class SNOWPULSEAPI RenderBatchDataMetal : public RenderBatch {
         unsigned int uVSectionCount = 2;
         unsigned int colorSectionCount = 4;
 
-        GLenum drawMode;
+        /*GLenum drawMode;
         GLuint shaderProgram;
         BlendMode blendMode;
         GLsizei vertexCount;
@@ -44,7 +44,7 @@ class SNOWPULSEAPI RenderBatchDataMetal : public RenderBatch {
         glm::mat4 projectionMatrix;
 
         bool isPremultiplied;
-        GLuint texture;
+        GLuint texture;*/
 };
 }   // namespace snowpulse
 #endif

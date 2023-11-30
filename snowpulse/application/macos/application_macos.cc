@@ -8,13 +8,13 @@ ApplicationMacOS::ApplicationMacOS() {
     platformString_ = "macOS";
 }
 
-bool ApplicationMacOS::Initialize(const Vector2Int& resolutionSize, const Vector2Int& screenSize) {
-    if (!ApplicationMetal::Initialize(resolutionSize, screenSize)) {
+bool ApplicationMacOS::Initialize(const Vector2Int& resolutionSize, const Vector2Int& screenSize, void* device) {
+    if (!ApplicationMetal::Initialize(resolutionSize, device)) {
         return false;
     }
+    screenSize_ = screenSize;
     directory_ = static_cast<DirectoryMacOS*>(Directory::GetInstance());
-    
-    
+
 #ifdef SPDEBUG
     std::cout << "Starting GLFW context, OpenGLOpenGL 4.1" << std::endl;
 #endif
@@ -47,15 +47,6 @@ bool ApplicationMacOS::Initialize(const Vector2Int& resolutionSize, const Vector
 #endif
         return false;
     }
-
-    graphics_ = GraphicsMetal::Create();
-    if (!graphics_ || !graphics_->Initialize(resolutionSize, screenSize)) {
-#ifdef SPDEBUG
-        std::cout << "ERROR: Application wasn't able to initialize graphics on this platform." << std::endl;
-#endif
-        return false;
-    }
-
 
 #ifdef SPDEBUG
     std::cout << "ApplicationMetal initialized." << std::endl;

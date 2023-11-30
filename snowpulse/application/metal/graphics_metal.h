@@ -7,7 +7,7 @@
 #include <memory>
 #include <string>
 #include <map>
-#include <glad/glad.h>
+//#include <glad/glad.h>
 //#include <GLFW/glfw3.h>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/glm.hpp>
@@ -19,6 +19,17 @@
 #include "render_queue_metal.h"
 #include "render_batch_group_metal.h"
 
+namespace MTK {
+class View;
+}
+
+namespace MTL {
+class Device;
+class CommandQueue;
+class RenderPipelineState;
+class Buffer;
+}
+
 namespace snowpulse {
 
 class SNOWPULSEAPI GraphicsMetal : public Graphics {
@@ -26,7 +37,7 @@ class SNOWPULSEAPI GraphicsMetal : public Graphics {
         static std::shared_ptr<GraphicsMetal> Create();
 
         ~GraphicsMetal();
-        bool Initialize(const Vector2Int& resolution, const Vector2Int& screenSize = Vector2Int());
+        bool Initialize(const Vector2Int& resolution, const Vector2Int& screenSize, void* view);
         void Shutdown() override;
 
         RenderQueueMetal* GetRenderQueue() const { return renderQueue_.get(); }
@@ -45,18 +56,25 @@ class SNOWPULSEAPI GraphicsMetal : public Graphics {
     private:
         GraphicsMetal();
 
-        GLuint shaderProgram_;
+        /*GLuint shaderProgram_;
         glm::mat4 projectionMatrix_;
         GLuint vertexShaderLocation_;
         GLuint uVShaderLocation_;
         GLuint colorShaderLocation_;
         GLuint transformMatrixShaderLocation_;
         GLuint projectionMatrixShaderLocation_;
-        GLuint viewMatrixShaderLocation_;
+        GLuint viewMatrixShaderLocation_;*/
         std::shared_ptr<RenderQueueMetal> renderQueue_;
         std::vector<std::shared_ptr<RenderBatchGroupMetal>> renderBatchGroups_;
         std::map<std::string, unsigned int> textures_;
         std::map<unsigned int, Vector2> textureSizes_;
+    
+        MTK::View* view_;
+        MTL::Device* device_;
+        MTL::CommandQueue* commandQueue_;
+        MTL::RenderPipelineState* renderPipelineState_;
+        MTL::Buffer* vertexPositionsBuffer_;
+        MTL::Buffer* vertexColorsBuffer_;
 };
 }   // namespace snowpulse
 #endif

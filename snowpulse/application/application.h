@@ -19,7 +19,7 @@ class SNOWPULSEAPI Application {
         static Application* GetInstance();
 
         virtual ~Application();
-        virtual bool Initialize(const Vector2Int& resolution, const Vector2Int& screenSize);
+        virtual bool Initialize(const Vector2Int& resolution);
         virtual void Close() = 0;
         virtual void Shutdown() = 0;
         virtual Graphics* GetGraphics() const = 0;
@@ -27,7 +27,6 @@ class SNOWPULSEAPI Application {
         void SetGame(Game* game);
 
         Vector2Int GetResolutionSize() { return resolutionSize_; }
-        Vector2Int GetScreenSize() { return screenSize_; }
         NodeStarter& GetNodeStarter() { return nodeStarter_; }
         Platform GetPlatform() const { return platform_; }
         std::string GetPlatformString() const { return platformString_; }
@@ -38,7 +37,6 @@ class SNOWPULSEAPI Application {
         Application();
 
         Platform platform_;
-        Vector2Int screenSize_;
         Vector2Int resolutionSize_;
         NodeStarter nodeStarter_;
         Timer appTimer_;

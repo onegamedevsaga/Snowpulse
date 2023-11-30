@@ -5,7 +5,7 @@
 
 #include <string>
 #include <memory>
-#include <glad/glad.h>
+//#include <glad/glad.h>
 //#include <GLFW/glfw3.h>
 
 #include "../../defines.h"
@@ -16,11 +16,10 @@ namespace snowpulse {
 class SNOWPULSEAPI ApplicationMetal : public Application {
     public:
         virtual ~ApplicationMetal();
-        virtual bool Initialize(const Vector2Int& resolutionSize, const Vector2Int& screenSize) override;
+        virtual bool Initialize(const Vector2Int& resolutionSize, const Vector2Int& screenSize, void* device);
         virtual void Shutdown() override;
-        Graphics* GetGraphics() const override { return graphics_.get(); }
 
-        
+        Graphics* GetGraphics() const override { return graphics_.get(); }
 
     protected:
         ApplicationMetal();

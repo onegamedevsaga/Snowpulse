@@ -5,6 +5,19 @@
 #include <stb_image.h>
 #undef STB_IMAGE_IMPLEMENTATION
 
+#define NS_PRIVATE_IMPLEMENTATION
+#define MTL_PRIVATE_IMPLEMENTATION
+#define MTK_PRIVATE_IMPLEMENTATION
+#define CA_PRIVATE_IMPLEMENTATION
+#include <Metal/Metal.hpp>
+#include <AppKit/AppKit.hpp>
+#include <MetalKit/MetalKit.hpp>
+#include <simd/simd.h>
+#undef NS_PRIVATE_IMPLEMENTATION
+#undef MTL_PRIVATE_IMPLEMENTATION
+#undef MTK_PRIVATE_IMPLEMENTATION
+#undef CA_PRIVATE_IMPLEMENTATION
+
 #include "../application.h"
 #include "../directory.h"
 #include "render_batch_data_metal.h"
@@ -58,12 +71,16 @@ std::shared_ptr<GraphicsMetal> GraphicsMetal::Create() {
 GraphicsMetal::GraphicsMetal() {
 }
 
-bool GraphicsMetal::Initialize(const Vector2Int& resolution, const Vector2Int& screenSize) {
+bool GraphicsMetal::Initialize(const Vector2Int& resolution, const Vector2Int& screenSize, void* view) {
     camera_ = Camera::Create();
     renderQueue_ = RenderQueueMetal::Create();
+    view_ = static_cast<MTK::View*>(view);
+    device_ = view_->device();
+    int x =  0;
+    x++;
 
     // Compile and link shaders
-    GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
+    /*GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
     glShaderSource(vertexShader, 1, &kVertexShaderSource, NULL);
     glCompileShader(vertexShader);
 
@@ -99,13 +116,13 @@ bool GraphicsMetal::Initialize(const Vector2Int& resolution, const Vector2Int& s
 #ifdef SPDEBUG
     std::cout << "GraphicsMetal initialized." << std::endl;
 #endif
-
+*/
     return true;
 }
 
 void GraphicsMetal::Shutdown() {
     for (auto const& t : textures_) {
-        glDeleteTextures(1, &(t.second));
+        //glDeleteTextures(1, &(t.second));
     }
     textures_.clear();
     textureSizes_.clear();
@@ -137,7 +154,7 @@ Matrix4x4 GraphicsMetal::InvertMatrixNatively(Matrix4x4 matrix) {
 }
 
 void GraphicsMetal::LoadTexture(std::string filename, TextureFiltering filtering, PathType pathType) {
-    auto fullFilename = GetTextureFullFilename(filename.c_str(), filtering);
+    /*auto fullFilename = GetTextureFullFilename(filename.c_str(), filtering);
     switch (pathType) {
         case PathType::kAssets:
             filename = Directory::GetInstance()->GetAssetsPath(filename);
@@ -192,7 +209,7 @@ void GraphicsMetal::LoadTexture(std::string filename, TextureFiltering filtering
             textureSizes_[texture] = Vector2(width, height);
         }
         stbi_image_free(data);
-    }
+    }*/
 }
 
 void GraphicsMetal::UnloadTexture(std::string filename, TextureFiltering filtering) {
@@ -208,7 +225,7 @@ void GraphicsMetal::UnloadTexture(std::string filename, TextureFiltering filteri
                     break;
                 }
             }
-            glDeleteTextures(1, &(i->second));
+            //glDeleteTextures(1, &(i->second));
             textures_.erase(i);
             break;
         }
@@ -245,7 +262,7 @@ void GraphicsMetal::SubmitRenderBatchGroup(int batchGroup) {
 }
 
 void GraphicsMetal::DrawMesh(Vertex* vertices, unsigned int vertexCount, unsigned short* indices, unsigned int indexCount, std::string textureFullFilename, int sortOrder, BlendMode blendMode, bool isPremultiplied, Matrix4x4 transformMatrix, int batchGroup) {
-    glm::mat4 transform;
+    /*glm::mat4 transform;
     for (int i = 0; i < 4; ++i) {
         for (int j = 0; j < 4; ++j) {
             transform[i][j] = transformMatrix.data[i][j];
@@ -312,7 +329,7 @@ void GraphicsMetal::DrawMesh(Vertex* vertices, unsigned int vertexCount, unsigne
     }
     else {
         renderQueue_->Push(batch);
-    }
+    }*/
 }
 
 void GraphicsMetal::DrawSprite(Vector2 size, std::string textureFullFilename, Matrix4x4 transformMatrix, Color color, int sortOrder, BlendMode blendMode, bool isPremultiplied, Vector2 uvLowerLeft, Vector2 uvUpperRight, int batchGroup) {
