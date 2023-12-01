@@ -26,7 +26,7 @@
     _view = (MTKView *)self.view;
 
     _view.device = MTLCreateSystemDefaultDevice();
-    _view.backgroundColor = UIColor.blackColor;
+    _view.backgroundColor = UIColor.greenColor;
 
     if(!_view.device)
     {
@@ -40,17 +40,16 @@
 
     if (app->Initialize(snowpulse::Vector2Int(1920, 1080), (__bridge void*)_view)) {
         app->SetGame(game.get());
-        //game->Initialize(app);
-
-        //app->Run();
-        app->Shutdown();
+        game->Initialize(app);
     }
+    
+    
     //_view.device
-    _renderer = [[Renderer alloc] initWithMetalKitView:_view];
+    //_renderer = [[Renderer alloc] initWithMetalKitView:_view];
 
-    [_renderer mtkView:_view drawableSizeWillChange:_view.bounds.size];
+    //[_renderer mtkView:_view drawableSizeWillChange:_view.bounds.size];
 
-    _view.delegate = _renderer;
+    //_view.delegate = _renderer;
 }
 
 @end

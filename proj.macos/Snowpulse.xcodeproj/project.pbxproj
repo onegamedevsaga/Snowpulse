@@ -216,8 +216,8 @@
 		2A07BD392B0FCF590008B3A4 /* action_interpolate.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBEAD2B03DE680060E35C /* action_interpolate.cc */; };
 		2A07BD3A2B0FCF590008B3A4 /* PointAttachment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8B72B078173009AACBF /* PointAttachment.cpp */; };
 		2A07BD3B2B0FCF590008B3A4 /* scene.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBE052B00BF430060E35C /* scene.cc */; };
-		2A27D1AE2B14DDFC008B5446 /* app_delegate_metal.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1AD2B14DDFC008B5446 /* app_delegate_metal.h */; };
-		2A27D1AF2B14DDFC008B5446 /* app_delegate_metal.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1AD2B14DDFC008B5446 /* app_delegate_metal.h */; };
+		2A27D1AE2B14DDFC008B5446 /* app_delegate_metal2.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1AD2B14DDFC008B5446 /* app_delegate_metal2.h */; };
+		2A27D1AF2B14DDFC008B5446 /* app_delegate_metal2.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1AD2B14DDFC008B5446 /* app_delegate_metal2.h */; };
 		2A27D1BA2B14DF31008B5446 /* CAPrivate.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1B62B14DF31008B5446 /* CAPrivate.hpp */; };
 		2A27D1BB2B14DF31008B5446 /* CAPrivate.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1B62B14DF31008B5446 /* CAPrivate.hpp */; };
 		2A27D1BC2B14DF31008B5446 /* CADefines.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1B72B14DF31008B5446 /* CADefines.hpp */; };
@@ -442,6 +442,10 @@
 		2A3C24B62B146DC60078DBE1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AE640EC2B131F0E00A6B8DA /* Foundation.framework */; };
 		2A3C24B72B146DCE0078DBE1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A77E7272B107FAA00579051 /* Cocoa.framework */; platformFilters = (macos, ); };
 		2A41F0922B18750C00CC5EF4 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A3C23422B13B3540078DBE1 /* MetalKit.framework */; };
+		2A41F0942B18AAED00CC5EF4 /* view_delegate_metal.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A41F0932B18AAED00CC5EF4 /* view_delegate_metal.h */; };
+		2A41F0952B18AAED00CC5EF4 /* view_delegate_metal.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A41F0932B18AAED00CC5EF4 /* view_delegate_metal.h */; };
+		2A41F0972B18AD3D00CC5EF4 /* view_delegate_metal.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A41F0962B18AD3D00CC5EF4 /* view_delegate_metal.cc */; };
+		2A41F0982B18AD3D00CC5EF4 /* view_delegate_metal.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A41F0962B18AD3D00CC5EF4 /* view_delegate_metal.cc */; };
 		2A4FBE302B00BF430060E35C /* game_object.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBDEF2B00BF430060E35C /* game_object.cc */; };
 		2A4FBE312B00BF430060E35C /* component.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBDF02B00BF430060E35C /* component.cc */; };
 		2A4FBE322B00BF430060E35C /* node_starter.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBDF12B00BF430060E35C /* node_starter.cc */; };
@@ -1010,7 +1014,7 @@
 
 /* Begin PBXFileReference section */
 		2A07BD462B0FCF590008B3A4 /* libsnowpulse_ios.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libsnowpulse_ios.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		2A27D1AD2B14DDFC008B5446 /* app_delegate_metal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = app_delegate_metal.h; path = metal/app_delegate_metal.h; sourceTree = "<group>"; };
+		2A27D1AD2B14DDFC008B5446 /* app_delegate_metal2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = app_delegate_metal2.h; path = metal/app_delegate_metal2.h; sourceTree = "<group>"; };
 		2A27D1B62B14DF31008B5446 /* CAPrivate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CAPrivate.hpp; path = ../thirdparty/metal/QuartzCore/CAPrivate.hpp; sourceTree = "<group>"; };
 		2A27D1B72B14DF31008B5446 /* CADefines.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CADefines.hpp; path = ../thirdparty/metal/QuartzCore/CADefines.hpp; sourceTree = "<group>"; };
 		2A27D1B82B14DF31008B5446 /* QuartzCore.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = QuartzCore.hpp; path = ../thirdparty/metal/QuartzCore/QuartzCore.hpp; sourceTree = "<group>"; };
@@ -1132,6 +1136,8 @@
 		2A3C23422B13B3540078DBE1 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/iOSSupport/System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
 		2A3C245F2B13BD2E0078DBE1 /* ExtensionFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExtensionFoundation.framework; path = System/Library/PrivateFrameworks/ExtensionFoundation.framework; sourceTree = SDKROOT; };
 		2A3C24612B13BD3F0078DBE1 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		2A41F0932B18AAED00CC5EF4 /* view_delegate_metal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = view_delegate_metal.h; path = metal/view_delegate_metal.h; sourceTree = "<group>"; };
+		2A41F0962B18AD3D00CC5EF4 /* view_delegate_metal.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = view_delegate_metal.cc; path = metal/view_delegate_metal.cc; sourceTree = "<group>"; };
 		2A4FBDEF2B00BF430060E35C /* game_object.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_object.cc; sourceTree = "<group>"; };
 		2A4FBDF02B00BF430060E35C /* component.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = component.cc; sourceTree = "<group>"; };
 		2A4FBDF12B00BF430060E35C /* node_starter.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = node_starter.cc; sourceTree = "<group>"; };
@@ -2051,7 +2057,9 @@
 		2AE640BC2B12921100A6B8DA /* metal */ = {
 			isa = PBXGroup;
 			children = (
-				2A27D1AD2B14DDFC008B5446 /* app_delegate_metal.h */,
+				2A41F0932B18AAED00CC5EF4 /* view_delegate_metal.h */,
+				2A41F0962B18AD3D00CC5EF4 /* view_delegate_metal.cc */,
+				2A27D1AD2B14DDFC008B5446 /* app_delegate_metal2.h */,
 				2AE640F52B1320F700A6B8DA /* application_metal.h */,
 				2AE640F22B1320F700A6B8DA /* application_metal.cc */,
 				2AE640F62B1320F700A6B8DA /* graphics_metal.h */,
@@ -2203,6 +2211,7 @@
 				2A07BC7F2B0FCF590008B3A4 /* MixDirection.h in Headers */,
 				2A27D2522B14DF54008B5446 /* MTLArgumentEncoder.hpp in Headers */,
 				2A07BC802B0FCF590008B3A4 /* SkeletonJson.h in Headers */,
+				2A41F0952B18AAED00CC5EF4 /* view_delegate_metal.h in Headers */,
 				2A27D24C2B14DF54008B5446 /* MTLDevice.hpp in Headers */,
 				2A27D28C2B14DF54008B5446 /* MTLLinkedFunctions.hpp in Headers */,
 				2A07BC812B0FCF590008B3A4 /* color.h in Headers */,
@@ -2322,7 +2331,7 @@
 				2A07BCC02B0FCF590008B3A4 /* SkeletonBinary.h in Headers */,
 				2AE641032B1320F800A6B8DA /* application_metal.h in Headers */,
 				2A07BCC12B0FCF590008B3A4 /* VertexAttachment.h in Headers */,
-				2A27D1AF2B14DDFC008B5446 /* app_delegate_metal.h in Headers */,
+				2A27D1AF2B14DDFC008B5446 /* app_delegate_metal2.h in Headers */,
 				2A27D1BB2B14DF31008B5446 /* CAPrivate.hpp in Headers */,
 				2A07BCC22B0FCF590008B3A4 /* TranslateTimeline.h in Headers */,
 				2A07BCC32B0FCF590008B3A4 /* RotateTimeline.h in Headers */,
@@ -2627,6 +2636,7 @@
 				2A27D24D2B14DF54008B5446 /* MTLDefines.hpp in Headers */,
 				2A27D2AB2B14DF54008B5446 /* MTLArgument.hpp in Headers */,
 				2A27D2452B14DF54008B5446 /* MTLSampler.hpp in Headers */,
+				2A41F0942B18AAED00CC5EF4 /* view_delegate_metal.h in Headers */,
 				2A27D1FB2B14DF3C008B5446 /* NSProcessInfo.hpp in Headers */,
 				2AA9A9B02B0781A0009AACBF /* MixBlend.h in Headers */,
 				2AA9A97B2B0781A0009AACBF /* DeformTimeline.h in Headers */,
@@ -2738,7 +2748,7 @@
 				2A27D24B2B14DF54008B5446 /* MTLDevice.hpp in Headers */,
 				2A4FBE5B2B00BF430060E35C /* application.h in Headers */,
 				2A27D1ED2B14DF3C008B5446 /* NSObject.hpp in Headers */,
-				2A27D1AE2B14DDFC008B5446 /* app_delegate_metal.h in Headers */,
+				2A27D1AE2B14DDFC008B5446 /* app_delegate_metal2.h in Headers */,
 				2AA9A98B2B0781A0009AACBF /* Vector.h in Headers */,
 				2A27D1F72B14DF3C008B5446 /* NSRange.hpp in Headers */,
 				2A4FBE4C2B00BF430060E35C /* singleton.h in Headers */,
@@ -3099,6 +3109,7 @@
 				2A07BD262B0FCF590008B3A4 /* RegionAttachment.cpp in Sources */,
 				2A07BD272B0FCF590008B3A4 /* action_wait.cc in Sources */,
 				2A07BD282B0FCF590008B3A4 /* node.cc in Sources */,
+				2A41F0982B18AD3D00CC5EF4 /* view_delegate_metal.cc in Sources */,
 				2A07BD2A2B0FCF590008B3A4 /* game_object.cc in Sources */,
 				2A07BD2B2B0FCF590008B3A4 /* SkeletonData.cpp in Sources */,
 				2A07BD2C2B0FCF590008B3A4 /* CurveTimeline.cpp in Sources */,
@@ -3246,6 +3257,7 @@
 				2AA9A8EE2B078173009AACBF /* RegionAttachment.cpp in Sources */,
 				2A4FBE422B00BF430060E35C /* action_wait.cc in Sources */,
 				2A4FBE332B00BF430060E35C /* node.cc in Sources */,
+				2A41F0972B18AD3D00CC5EF4 /* view_delegate_metal.cc in Sources */,
 				2A4FBE302B00BF430060E35C /* game_object.cc in Sources */,
 				2AA9A8E42B078173009AACBF /* SkeletonData.cpp in Sources */,
 				2AA9A8F42B078173009AACBF /* CurveTimeline.cpp in Sources */,

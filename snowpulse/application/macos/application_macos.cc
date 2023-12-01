@@ -9,7 +9,7 @@ ApplicationMacOS::ApplicationMacOS() {
 }
 
 bool ApplicationMacOS::Initialize(const Vector2Int& resolutionSize, const Vector2Int& screenSize, void* device) {
-    if (!ApplicationMetal::Initialize(resolutionSize, device)) {
+    if (!ApplicationMetal::Initialize(resolutionSize, screenSize, device)) {
         return false;
     }
     screenSize_ = screenSize;

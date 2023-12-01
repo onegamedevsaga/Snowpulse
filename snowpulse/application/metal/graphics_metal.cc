@@ -5,18 +5,10 @@
 #include <stb_image.h>
 #undef STB_IMAGE_IMPLEMENTATION
 
-#define NS_PRIVATE_IMPLEMENTATION
-#define MTL_PRIVATE_IMPLEMENTATION
-#define MTK_PRIVATE_IMPLEMENTATION
-#define CA_PRIVATE_IMPLEMENTATION
 #include <Metal/Metal.hpp>
 #include <AppKit/AppKit.hpp>
 #include <MetalKit/MetalKit.hpp>
 #include <simd/simd.h>
-#undef NS_PRIVATE_IMPLEMENTATION
-#undef MTL_PRIVATE_IMPLEMENTATION
-#undef MTK_PRIVATE_IMPLEMENTATION
-#undef CA_PRIVATE_IMPLEMENTATION
 
 #include "../application.h"
 #include "../directory.h"
@@ -27,41 +19,31 @@ namespace snowpulse {
 
 const char* kSpriteDefault = "sprites/sprite_default.png";
 
-// Vertex shader source
-const char* kVertexShaderSource = R"(
-    #version 330 core
-    layout(location = 0) in vec3 position;
-    layout(location = 1) in vec2 texCoord;
-    layout(location = 2) in vec4 color;
-    layout(location = 3) in mat4 transform;
+const char* shaderSrc = R"(
+    #include <metal_stdlib>
+    using namespace metal;
 
-    out vec2 TexCoord;
-    out vec4 Color;
+    struct v2f
+    {
+        float4 position [[position]];
+        half3 color;
+    };
 
-    uniform mat4 projection;
-    uniform mat4 view;
+    v2f vertex vertexMain( uint vertexId [[vertex_id]],
+                           device const float3* positions [[buffer(0)]],
+                           device const float3* colors [[buffer(1)]] )
+    {
+        v2f o;
+        o.position = float4( positions[ vertexId ], 1.0 );
+        o.color = half3 ( colors[ vertexId ] );
+        return o;
+    }
 
-    void main() {
-        TexCoord = texCoord;
-        Color = color;
-        gl_Position = projection * view * transform * vec4(position, 1.0f);
+    half4 fragment fragmentMain( v2f in [[stage_in]] )
+    {
+        return half4( in.color, 1.0 );
     }
 )";
-
-// Fragment shader source
-const char* kFragmentShaderSource = R"(
-    #version 330 core
-    in vec2 TexCoord;
-    in vec4 Color;
-    out vec4 FragColor;
-
-    uniform sampler2D spriteTexture;
-
-    void main() {
-        FragColor = Color * texture(spriteTexture, TexCoord);
-    }
-)";
-
 
 std::shared_ptr<GraphicsMetal> GraphicsMetal::Create() {
     auto graphics = new GraphicsMetal();
@@ -76,8 +58,11 @@ bool GraphicsMetal::Initialize(const Vector2Int& resolution, const Vector2Int& s
     renderQueue_ = RenderQueueMetal::Create();
     view_ = static_cast<MTK::View*>(view);
     device_ = view_->device();
-    int x =  0;
-    x++;
+
+    
+    BuildShaders();
+    BuildBuffers();
+    commandQueue_ = device_->newCommandQueue();
 
     // Compile and link shaders
     /*GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
@@ -129,6 +114,12 @@ void GraphicsMetal::Shutdown() {
 #ifdef SPDEBUG
     std::cout << "GraphicsMetal shutdown." << std::endl;
 #endif
+    
+    vertexPositionsBuffer_->release();
+    vertexColorsBuffer_->release();
+    renderPipelineState_->release();
+    commandQueue_->release();
+    device_->release();
 }
 
 GraphicsMetal::~GraphicsMetal() {
@@ -356,5 +347,114 @@ void GraphicsMetal::DrawSprite(Vector2 size, std::string textureFullFilename, Ma
     };
 
     DrawMesh(vertices, 4, indices, 6, textureFullFilename, sortOrder, blendMode, isPremultiplied, transformMatrix, batchGroup);
+}
+
+void GraphicsMetal::Draw() {
+    NS::AutoreleasePool* pPool = NS::AutoreleasePool::alloc()->init();
+
+    MTL::CommandBuffer* cmd = commandQueue_->commandBuffer();
+    MTL::RenderPassDescriptor* pRpd = view_->currentRenderPassDescriptor();
+    MTL::RenderCommandEncoder* pEnc = cmd->renderCommandEncoder( pRpd );
+
+    pEnc->setRenderPipelineState( renderPipelineState_ );
+    pEnc->setVertexBuffer( vertexPositionsBuffer_, 0, 0 );
+    pEnc->setVertexBuffer( vertexColorsBuffer_, 0, 1 );
+    pEnc->drawPrimitives( MTL::PrimitiveType::PrimitiveTypeTriangle, NS::UInteger(0), NS::UInteger(3) );
+
+    pEnc->endEncoding();
+    cmd->presentDrawable( view_->currentDrawable() );
+    cmd->commit();
+
+    pPool->release();
+}
+
+void GraphicsMetal::BuildShaders() {
+    using NS::StringEncoding::UTF8StringEncoding;
+
+    const char* shaderSrc = R"(
+        #include <metal_stdlib>
+        using namespace metal;
+
+        struct v2f
+        {
+            float4 position [[position]];
+            half3 color;
+        };
+
+        v2f vertex vertexMain( uint vertexId [[vertex_id]],
+                               device const float3* positions [[buffer(0)]],
+                               device const float3* colors [[buffer(1)]] )
+        {
+            v2f o;
+            o.position = float4( positions[ vertexId ], 1.0 );
+            o.color = half3 ( colors[ vertexId ] );
+            return o;
+        }
+
+        half4 fragment fragmentMain( v2f in [[stage_in]] )
+        {
+            return half4( in.color, 1.0 );
+        }
+    )";
+
+    NS::Error* pError = nullptr;
+    MTL::Library* pLibrary = device_->newLibrary( NS::String::string(shaderSrc, UTF8StringEncoding), nullptr, &pError );
+    if ( !pLibrary )
+    {
+        __builtin_printf( "%s", pError->localizedDescription()->utf8String() );
+        assert( false );
+    }
+
+    MTL::Function* pVertexFn = pLibrary->newFunction( NS::String::string("vertexMain", UTF8StringEncoding) );
+    MTL::Function* pFragFn = pLibrary->newFunction( NS::String::string("fragmentMain", UTF8StringEncoding) );
+
+    MTL::RenderPipelineDescriptor* pDesc = MTL::RenderPipelineDescriptor::alloc()->init();
+    pDesc->setVertexFunction( pVertexFn );
+    pDesc->setFragmentFunction( pFragFn );
+    pDesc->colorAttachments()->object(0)->setPixelFormat( view_->colorPixelFormat() );
+
+    renderPipelineState_ = device_->newRenderPipelineState( pDesc, &pError );
+    if ( !renderPipelineState_ )
+    {
+        __builtin_printf( "%s", pError->localizedDescription()->utf8String() );
+        assert( false );
+    }
+
+    pVertexFn->release();
+    pFragFn->release();
+    pDesc->release();
+    pLibrary->release();
+}
+
+void GraphicsMetal::BuildBuffers() {
+    const size_t numVertices = 3;
+
+    //glm::vec3/*simd::float3*/ positions[NumVertices] =
+    glm::vec4 positions[numVertices] =
+    {
+        glm::vec4( -0.8f,  0.8f, 0.0f, 0.0f ),
+        glm::vec4(  0.0f, -0.8f, 0.0f, 0.0f ),
+        glm::vec4(  0.8f,  0.8f, 0.0f, 0.0f )
+    };
+    
+
+    glm::vec4 colors[numVertices] =
+    {
+        glm::vec4(  0.0f,  0.0f, 0.0f, 0.0f ),
+        glm::vec4(  0.0f,  1.0f, 0.0f, 0.0f ),
+        glm::vec4(  1.0f,  0.0f, 0.0f, 0.0f )
+    };
+
+    const size_t positionsDataSize = numVertices * sizeof( glm::vec4 );
+    const size_t colorDataSize = numVertices * sizeof( glm::vec4);
+
+    vertexPositionsBuffer_ = device_->newBuffer( positionsDataSize, MTL::StorageModeShared );
+    vertexColorsBuffer_ = device_->newBuffer( colorDataSize, MTL::StorageModeShared );
+
+    memcpy( vertexPositionsBuffer_->contents(), positions, positionsDataSize );
+    memcpy( vertexColorsBuffer_->contents(), colors, colorDataSize );
+
+    vertexPositionsBuffer_->didModifyRange( NS::Range::Make( 0, vertexPositionsBuffer_->length() ) );
+    vertexColorsBuffer_->didModifyRange( NS::Range::Make( 0, vertexColorsBuffer_->length() ) );
 }
 }   // namespace snowpulse

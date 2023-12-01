@@ -14,8 +14,6 @@ class SNOWPULSEAPI ApplicationIOS : public ApplicationMetal, public Singleton<Ap
         void Close() override;
         void Shutdown() override;
 
-        void RunFrame();
-
     protected:
         friend class Singleton<ApplicationIOS>;
         ApplicationIOS();

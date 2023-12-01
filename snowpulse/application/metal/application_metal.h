@@ -13,11 +13,16 @@
 #include "graphics_metal.h"
 
 namespace snowpulse {
+
+class ViewDelegateMetal;
+
 class SNOWPULSEAPI ApplicationMetal : public Application {
     public:
         virtual ~ApplicationMetal();
         virtual bool Initialize(const Vector2Int& resolutionSize, const Vector2Int& screenSize, void* device);
         virtual void Shutdown() override;
+
+        virtual void RunFrame();
 
         Graphics* GetGraphics() const override { return graphics_.get(); }
 
@@ -25,6 +30,8 @@ class SNOWPULSEAPI ApplicationMetal : public Application {
         ApplicationMetal();
 
         std::shared_ptr<GraphicsMetal> graphics_;
+        std::shared_ptr<ViewDelegateMetal> viewDelegate_;
+        MTK::View* view_;
 };
 }   // namespace snowpulse
 

@@ -52,9 +52,13 @@ class SNOWPULSEAPI GraphicsMetal : public Graphics {
         void SubmitRenderBatchGroup(int batchGroup) override;
         void DrawMesh(Vertex* vertices, unsigned int vertexCount, unsigned short* indices, unsigned int indexCount, std::string textureFullFilename, int sortOrder, BlendMode blendMode, bool isPremultiplied, Matrix4x4 transformMatrix, int batchGroup) override;
         void DrawSprite(Vector2 size, std::string textureFullFilename, Matrix4x4 transformMatrix, Color color, int sortOrder, BlendMode blendMode, bool isPremultiplied, Vector2 uvLowerLeft, Vector2 uvUpperRight, int batchGroup) override;
+    
+        void Draw();
 
     private:
         GraphicsMetal();
+        void BuildShaders();
+        void BuildBuffers();
 
         /*GLuint shaderProgram_;
         glm::mat4 projectionMatrix_;
@@ -68,7 +72,7 @@ class SNOWPULSEAPI GraphicsMetal : public Graphics {
         std::vector<std::shared_ptr<RenderBatchGroupMetal>> renderBatchGroups_;
         std::map<std::string, unsigned int> textures_;
         std::map<unsigned int, Vector2> textureSizes_;
-    
+
         MTK::View* view_;
         MTL::Device* device_;
         MTL::CommandQueue* commandQueue_;

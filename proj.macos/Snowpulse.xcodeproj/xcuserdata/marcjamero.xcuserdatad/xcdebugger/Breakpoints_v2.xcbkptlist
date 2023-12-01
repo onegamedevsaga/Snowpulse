@@ -20,53 +20,5 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "84DAB561-166E-4B05-B6BB-AB4D9C6B2692"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../snowpulse/application/metal/graphics_metal.cc"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
-            landmarkName = "GraphicsMetal::Initialize(resolution, screenSize, view)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "84DAB561-166E-4B05-B6BB-AB4D9C6B2692 - 8c6177791fc3fa38"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "snowpulse::GraphicsMetal::Initialize(snowpulse::Vector2Int const&amp;, snowpulse::Vector2Int const&amp;, void*)"
-                  moduleName = "libsnowpulse_ios.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/marcjamero/Documents/OneGameDevSaga/Snowpulse/snowpulse/application/metal/graphics_metal.cc"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "79"
-                  endingLineNumber = "79"
-                  offsetFromSymbolStart = "124">
-               </Location>
-               <Location
-                  uuid = "84DAB561-166E-4B05-B6BB-AB4D9C6B2692 - 8c6177791fc3fad7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "snowpulse::GraphicsMetal::Initialize(snowpulse::Vector2Int const&amp;, snowpulse::Vector2Int const&amp;, void*)"
-                  moduleName = "libsnowpulse_ios.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/marcjamero/Documents/OneGameDevSaga/Snowpulse/snowpulse/application/metal/graphics_metal.cc"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "80"
-                  endingLineNumber = "80"
-                  offsetFromSymbolStart = "184">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
