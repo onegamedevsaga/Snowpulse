@@ -144,7 +144,7 @@ void SpineSkeletonAnimation::Draw(Graphics* graphics, Matrix4x4 worldMatrix, int
                 vertex.uv.y = regionAttachment->getUVs()[l + 1];
             }
 
-            graphics->DrawMesh(vertices, 4, indices, 6, graphics->GetTextureFullFilename(textureFilename, textureFiltering_), sortOrder, blendMode, isPremultiplied, worldMatrix, batchGroup);
+            graphics->DrawMesh(vertices, 4, indices, 6, textureFilename, sortOrder, blendMode, TextureFiltering::kBilinear, isPremultiplied, worldMatrix, batchGroup);
         }
         else if (attachment->getRTTI().isExactly(spine::MeshAttachment::rtti)) {
             // Cast to an MeshAttachment so we can get the rendererObject
@@ -185,7 +185,7 @@ void SpineSkeletonAnimation::Draw(Graphics* graphics, Matrix4x4 worldMatrix, int
                 vertex.uv.y = mesh->getUVs()[l + 1];
             }
 
-            graphics->DrawMesh(vertices, (int)numVertices, indices.buffer(), (int)indices.size(), graphics->GetTextureFullFilename(textureFilename, textureFiltering_), sortOrder, blendMode, isPremultiplied, worldMatrix, batchGroup);
+            graphics->DrawMesh(vertices, (int)numVertices, indices.buffer(), (int)indices.size(), textureFilename, sortOrder, blendMode, TextureFiltering::kBilinear, isPremultiplied, worldMatrix, batchGroup);
         }
         else {
             int xx= 0;

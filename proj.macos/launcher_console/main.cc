@@ -6,7 +6,7 @@ int main(int argc, const char* argv[]) {
     auto game = game::Game::Create();
     auto app = static_cast<snowpulse::ApplicationMacOS*>(snowpulse::Application::GetInstance());
 
-    if (app->Initialize(snowpulse::Vector2Int(1920, 1080), snowpulse::Vector2Int(1067, 600))) {
+    if (app->Initialize(snowpulse::Vector2Int(1920, 1080), snowpulse::Vector2Int(1067, 600), SPNULL)) {
         app->SetGame(game.get());
         game->Initialize(app);
 

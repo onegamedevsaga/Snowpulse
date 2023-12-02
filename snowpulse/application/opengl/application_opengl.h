@@ -17,8 +17,7 @@ namespace snowpulse {
 class SNOWPULSEAPI ApplicationOpenGL : public Application {
     public:
         virtual ~ApplicationOpenGL();
-        virtual bool Initialize(const Vector2Int& resolutionSize, const Vector2Int& screenSize) override;
-        void Run() override;
+        virtual bool Initialize(const Vector2Int& resolutionSize, const Vector2Int& screenSize);
         void Close() override;
         void Shutdown() override;
         Graphics* GetGraphics() const override { return graphics_.get(); }
@@ -29,7 +28,6 @@ class SNOWPULSEAPI ApplicationOpenGL : public Application {
         ApplicationOpenGL();
 
         GLFWwindow* window_;
-        InputOpenGL* input_;
         std::shared_ptr<GraphicsOpenGL> graphics_;
 };
 }   // namespace snowpulse

@@ -9,47 +9,15 @@ ApplicationMacOS::ApplicationMacOS() {
 }
 
 bool ApplicationMacOS::Initialize(const Vector2Int& resolutionSize, const Vector2Int& screenSize, void* device) {
-    if (!ApplicationMetal::Initialize(resolutionSize, screenSize, device)) {
+    if (!ApplicationOpenGL::Initialize(resolutionSize, screenSize)) {
         return false;
     }
     screenSize_ = screenSize;
     directory_ = static_cast<DirectoryMacOS*>(Directory::GetInstance());
+    input_ = static_cast<InputMacOS*>(Input::GetInstance());
 
 #ifdef SPDEBUG
-    std::cout << "Starting GLFW context, OpenGLOpenGL 4.1" << std::endl;
-#endif
-    if (!glfwInit()) {
-#ifdef SPDEBUG
-        std::cerr << "Failed to initialize GLFW" << std::endl;
-#endif
-       return false;
-    }
-
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-    glfwWindowHint(GLFW_DEPTH_BITS, 24);
-
-    window_ = glfwCreateWindow(screenSize.x, screenSize.y, "Snowpulse", NULL, NULL);
-    if (!window_) {
-#ifdef SPDEBUG
-        std::cerr << "Failed to create GLFW window" << std::endl;
-#endif
-        glfwTerminate();
-        return false;
-    }
-    glfwMakeContextCurrent(window_);
-
-    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-#ifdef SPDEBUG
-        std::cerr << "Failed to initialize GLAD" << std::endl;
-#endif
-        return false;
-    }
-
-#ifdef SPDEBUG
-    std::cout << "ApplicationMetal initialized." << std::endl;
+    std::cout << "ApplicationMacOS initialized." << std::endl;
 #endif    
     return true;
 }
@@ -59,7 +27,7 @@ void ApplicationMacOS::Close() {
 }
 
 void ApplicationMacOS::Shutdown() {
-    ApplicationMetal::Shutdown();
+    ApplicationOpenGL::Shutdown();
     auto elapsed = appTimer_.GetElapsedInSeconds();
 #ifdef SPDEBUG
     std::cout << "Application ran for " << elapsed << " seconds." << std::endl;
@@ -71,15 +39,9 @@ void ApplicationMacOS::Run() {
     actionManager_->Start();
 
     while (!glfwWindowShouldClose(window_)) {
-        
+
         glfwPollEvents();
-#if SNOWPULSE_PLATFORM_MACOS
-        auto input = static_cast<InputMacOS*>(Input::GetInstance());
-        input->ProcessInputs(resolutionSize_, screenSize_, window_);
-#elif SNOWPULSE_PLATFORM_IOS
-        auto input = static_cast<InputIOS*>(Input::GetInstance());
-        input->ProcessInputs();
-#endif
+        input_->ProcessInputs(resolutionSize_, screenSize_, window_);
 
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         if (graphics_->IsDepthTesting()) {
@@ -166,6 +128,30 @@ void ApplicationMacOS::Run() {
                 glUniformMatrix4fv(b->projectionMatrixShaderLocation, 1, GL_FALSE, &(b->projectionMatrix[0].x));
                 glActiveTexture(GL_TEXTURE0);
                 glBindTexture(GL_TEXTURE_2D, b->texture);
+
+                switch (b->textureFiltering) {
+                    case TextureFiltering::kPoint:
+                        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+                        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+                        break;
+                    case TextureFiltering::kBilinear:
+                        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+                        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+                        break;
+                    case TextureFiltering::kTrilinear:
+                        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+                        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+                        break;
+                    case TextureFiltering::kAnisotropic:
+                        GLfloat maxAniso = 0.0f;
+                        glGetFloatv(GL_MAX_TEXTURE_MAX_ANISOTROPY_EXT, &maxAniso);
+                        glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAX_ANISOTROPY_EXT, maxAniso);
+                        break;
+                }
+
+                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
                 glBindVertexArray(VAO);
                 glDrawElements(b->drawMode, b->indexCount, GL_UNSIGNED_SHORT, 0);
                 glBindVertexArray(0);

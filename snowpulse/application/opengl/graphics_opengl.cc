@@ -94,7 +94,7 @@ bool GraphicsOpenGL::Initialize(const Vector2Int& resolution, const Vector2Int& 
 
     renderQueue_ = RenderQueueOpenGL::Create();
 
-    LoadTexture(kSpriteDefault, TextureFiltering::kPoint, PathType::kDefaults);
+    LoadTexture(kSpriteDefault, PathType::kDefaults);
 
 #ifdef SPDEBUG
     std::cout << "GraphicsOpenGL initialized." << std::endl;
@@ -136,68 +136,45 @@ Matrix4x4 GraphicsOpenGL::InvertMatrixNatively(Matrix4x4 matrix) {
     return matrix;
 }
 
-void GraphicsOpenGL::LoadTexture(std::string filename, TextureFiltering filtering, PathType pathType) {
-    auto fullFilename = GetTextureFullFilename(filename.c_str(), filtering);
+void GraphicsOpenGL::LoadTexture(std::string filename, PathType pathType) {
+    std::string fullFilename = "";
     switch (pathType) {
         case PathType::kAssets:
-            filename = Directory::GetInstance()->GetAssetsPath(filename);
+            fullFilename = Directory::GetInstance()->GetAssetsPath(filename);
             break;
         case PathType::kDefaults:
-            filename = Directory::GetInstance()->GetDefaultsPath(filename);
+            fullFilename = Directory::GetInstance()->GetDefaultsPath(filename);
             break;
         case PathType::kApplicationSupport:
-            filename = Directory::GetInstance()->GetApplicationSupportPath(filename);
+            fullFilename = Directory::GetInstance()->GetApplicationSupportPath(filename);
             break;
         case PathType::kDocuments:
-            filename = Directory::GetInstance()->GetDocumentsPath(filename);
+            fullFilename = Directory::GetInstance()->GetDocumentsPath(filename);
             break;
         case PathType::kRaw:
+            fullFilename = filename;
         default:
             break;
     }
-    if (!textures_.count(fullFilename)) {
+    if (!textures_.count(filename)) {
         unsigned int texture;
         glGenTextures(1, &texture);
         glBindTexture(GL_TEXTURE_2D, texture);
 
-        switch (filtering) {
-            case TextureFiltering::kPoint:
-                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-                break;
-            case TextureFiltering::kBilinear:
-                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-                break;
-            case TextureFiltering::kTrilinear:
-                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-                break;
-            case TextureFiltering::kAnisotropic:
-                GLfloat maxAniso = 0.0f;
-                glGetFloatv(GL_MAX_TEXTURE_MAX_ANISOTROPY_EXT, &maxAniso);
-                glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAX_ANISOTROPY_EXT, maxAniso);
-                break;
-        }
-
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-
         int width, height, nrChannels;
-        unsigned char *data = stbi_load(filename.c_str(), &width, &height, &nrChannels, 4);
+        unsigned char *data = stbi_load(fullFilename.c_str(), &width, &height, &nrChannels, 4);
         if (data) {
             glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
             glGenerateMipmap(GL_TEXTURE_2D);
-            textures_[fullFilename] = texture;
+            textures_[filename] = texture;
             textureSizes_[texture] = Vector2(width, height);
         }
         stbi_image_free(data);
     }
 }
 
-void GraphicsOpenGL::UnloadTexture(std::string filename, TextureFiltering filtering) {
-    auto fullFilename = GetTextureFullFilename(filename.c_str(), filtering);
-    if (!textures_.count(fullFilename)) {
+void GraphicsOpenGL::UnloadTexture(std::string filename) {
+    if (!textures_.count(filename)) {
         return;
     }
     for (auto i = textures_.begin(); i != textures_.end(); i++) {
@@ -214,16 +191,15 @@ void GraphicsOpenGL::UnloadTexture(std::string filename, TextureFiltering filter
         }
     }
 #ifdef SPDEBUG
-    std::cout << "Texture (" << fullFilename.c_str() << ") unloaded." << std::endl;
+    std::cout << "Texture (" << filename.c_str() << ") unloaded." << std::endl;
 #endif
 }
 
-Vector2 GraphicsOpenGL::GetTextureSize(std::string filename, TextureFiltering filtering) {
-    auto fullFilename = GetTextureFullFilename(filename.c_str(), filtering);
-    if (!textures_.count(fullFilename)) {
+Vector2 GraphicsOpenGL::GetTextureSize(std::string filename) {
+    if (!textures_.count(filename)) {
         return Vector2(100.0f, 100.0f);
     }
-    return textureSizes_[textures_[fullFilename]];
+    return textureSizes_[textures_[filename]];
 }
 
 int GraphicsOpenGL::CreateRenderBatchGroup(int sortOrder) {
@@ -244,7 +220,7 @@ void GraphicsOpenGL::SubmitRenderBatchGroup(int batchGroup) {
     }
 }
 
-void GraphicsOpenGL::DrawMesh(Vertex* vertices, unsigned int vertexCount, unsigned short* indices, unsigned int indexCount, std::string textureFullFilename, int sortOrder, BlendMode blendMode, bool isPremultiplied, Matrix4x4 transformMatrix, int batchGroup) {
+void GraphicsOpenGL::DrawMesh(Vertex* vertices, unsigned int vertexCount, unsigned short* indices, unsigned int indexCount, std::string textureFilename, int sortOrder, BlendMode blendMode, TextureFiltering filtering, bool isPremultiplied, Matrix4x4 transformMatrix, int batchGroup) {
     glm::mat4 transform;
     for (int i = 0; i < 4; ++i) {
         for (int j = 0; j < 4; ++j) {
@@ -256,15 +232,16 @@ void GraphicsOpenGL::DrawMesh(Vertex* vertices, unsigned int vertexCount, unsign
     batch->drawMode = GL_TRIANGLES;
     batch->shaderProgram = shaderProgram_;
     batch->blendMode = blendMode;
+    batch->textureFiltering = filtering;
     batch->vertexCount = vertexCount;
     batch->indexCount = indexCount;
     batch->sortOrder = sortOrder;
     batch->isPremultiplied = isPremultiplied;
-    batch->texture = textures_[textureFullFilename];
+    batch->texture = textures_[textureFilename];
     if (!batch->texture) {
-        batch->texture = textures_[GetTextureFullFilename(kSpriteDefault, TextureFiltering::kPoint)];
+        batch->texture = textures_[kSpriteDefault];
 #ifdef SPDEBUG
-        std::cerr << "Can't find texture \"" << textureFullFilename << "\"." << std::endl;
+        std::cerr << "Can't find texture \"" << textureFilename << "\"." << std::endl;
 #endif
     }
 
@@ -315,7 +292,7 @@ void GraphicsOpenGL::DrawMesh(Vertex* vertices, unsigned int vertexCount, unsign
     }
 }
 
-void GraphicsOpenGL::DrawSprite(Vector2 size, std::string textureFullFilename, Matrix4x4 transformMatrix, Color color, int sortOrder, BlendMode blendMode, bool isPremultiplied, Vector2 uvLowerLeft, Vector2 uvUpperRight, int batchGroup) {
+void GraphicsOpenGL::DrawSprite(Vector2 size, std::string textureFilename, Matrix4x4 transformMatrix, Color color, int sortOrder, BlendMode blendMode, TextureFiltering filtering, bool isPremultiplied, Vector2 uvLowerLeft, Vector2 uvUpperRight, int batchGroup) {
     float halfWidth = size.x * 0.5f;
     float halfHeight = size.y * 0.5f;
 
@@ -338,6 +315,6 @@ void GraphicsOpenGL::DrawSprite(Vector2 size, std::string textureFullFilename, M
         2, 3, 0
     };
 
-    DrawMesh(vertices, 4, indices, 6, textureFullFilename, sortOrder, blendMode, isPremultiplied, transformMatrix, batchGroup);
+    DrawMesh(vertices, 4, indices, 6, textureFilename, sortOrder, blendMode, filtering, isPremultiplied, transformMatrix, batchGroup);
 }
 }   // namespace snowpulse

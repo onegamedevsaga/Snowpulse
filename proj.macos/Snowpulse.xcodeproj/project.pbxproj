@@ -216,7 +216,6 @@
 		2A07BD392B0FCF590008B3A4 /* action_interpolate.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBEAD2B03DE680060E35C /* action_interpolate.cc */; };
 		2A07BD3A2B0FCF590008B3A4 /* PointAttachment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8B72B078173009AACBF /* PointAttachment.cpp */; };
 		2A07BD3B2B0FCF590008B3A4 /* scene.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBE052B00BF430060E35C /* scene.cc */; };
-		2A27D1AE2B14DDFC008B5446 /* app_delegate_metal2.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1AD2B14DDFC008B5446 /* app_delegate_metal2.h */; };
 		2A27D1AF2B14DDFC008B5446 /* app_delegate_metal2.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1AD2B14DDFC008B5446 /* app_delegate_metal2.h */; };
 		2A27D1BA2B14DF31008B5446 /* CAPrivate.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1B62B14DF31008B5446 /* CAPrivate.hpp */; };
 		2A27D1BB2B14DF31008B5446 /* CAPrivate.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2A27D1B62B14DF31008B5446 /* CAPrivate.hpp */; };
@@ -442,9 +441,7 @@
 		2A3C24B62B146DC60078DBE1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AE640EC2B131F0E00A6B8DA /* Foundation.framework */; };
 		2A3C24B72B146DCE0078DBE1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A77E7272B107FAA00579051 /* Cocoa.framework */; platformFilters = (macos, ); };
 		2A41F0922B18750C00CC5EF4 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A3C23422B13B3540078DBE1 /* MetalKit.framework */; };
-		2A41F0942B18AAED00CC5EF4 /* view_delegate_metal.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A41F0932B18AAED00CC5EF4 /* view_delegate_metal.h */; };
 		2A41F0952B18AAED00CC5EF4 /* view_delegate_metal.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A41F0932B18AAED00CC5EF4 /* view_delegate_metal.h */; };
-		2A41F0972B18AD3D00CC5EF4 /* view_delegate_metal.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A41F0962B18AD3D00CC5EF4 /* view_delegate_metal.cc */; };
 		2A41F0982B18AD3D00CC5EF4 /* view_delegate_metal.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A41F0962B18AD3D00CC5EF4 /* view_delegate_metal.cc */; };
 		2A4FBE302B00BF430060E35C /* game_object.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBDEF2B00BF430060E35C /* game_object.cc */; };
 		2A4FBE312B00BF430060E35C /* component.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBDF02B00BF430060E35C /* component.cc */; };
@@ -853,6 +850,16 @@
 		2AA9A9DE2B07B0B1009AACBF /* spine_texture_loader.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9DA2B07B0B1009AACBF /* spine_texture_loader.h */; };
 		2AA9A9E02B087CE3009AACBF /* blend_mode.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9DF2B087CE3009AACBF /* blend_mode.h */; };
 		2AA9A9E22B0896C7009AACBF /* vertex.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA9A9E12B0896C7009AACBF /* vertex.h */; };
+		2AC95E082B1BCC1E00B2C916 /* graphics_opengl.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBE972B03D4490060E35C /* graphics_opengl.cc */; };
+		2AC95E092B1BCC1E00B2C916 /* application_opengl.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBE9C2B03D4490060E35C /* application_opengl.cc */; };
+		2AC95E0A2B1BCC1E00B2C916 /* render_batch_group_opengl.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AEA1C542B0E004B00AAD982 /* render_batch_group_opengl.h */; };
+		2AC95E0B2B1BCC1E00B2C916 /* render_batch_data_opengl.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBE952B03D4490060E35C /* render_batch_data_opengl.h */; };
+		2AC95E0C2B1BCC1E00B2C916 /* render_queue_opengl.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBE982B03D4490060E35C /* render_queue_opengl.cc */; };
+		2AC95E0D2B1BCC1E00B2C916 /* input_opengl.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBE962B03D4490060E35C /* input_opengl.cc */; };
+		2AC95E0E2B1BCC1E00B2C916 /* input_opengl.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBE9B2B03D4490060E35C /* input_opengl.h */; };
+		2AC95E0F2B1BCC1E00B2C916 /* graphics_opengl.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBE992B03D4490060E35C /* graphics_opengl.h */; };
+		2AC95E102B1BCC1E00B2C916 /* render_queue_opengl.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBE9A2B03D4490060E35C /* render_queue_opengl.h */; };
+		2AC95E112B1BCC1E00B2C916 /* application_opengl.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBE942B03D4490060E35C /* application_opengl.h */; };
 		2AE640B32B11CC1D00A6B8DA /* directory_macos.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AE640B22B11CC1D00A6B8DA /* directory_macos.h */; };
 		2AE640B52B11CC4700A6B8DA /* directory_macos.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2AE640B42B11CC4700A6B8DA /* directory_macos.mm */; };
 		2AE640B72B11CC5D00A6B8DA /* directory.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AE640B62B11CC5D00A6B8DA /* directory.h */; };
@@ -882,14 +889,6 @@
 		2AE641032B1320F800A6B8DA /* application_metal.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AE640F52B1320F700A6B8DA /* application_metal.h */; };
 		2AE641052B1320F800A6B8DA /* graphics_metal.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AE640F62B1320F700A6B8DA /* graphics_metal.h */; };
 		2AE641072B1320F800A6B8DA /* render_queue_metal.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AE640F72B1320F700A6B8DA /* render_queue_metal.h */; };
-		2AE641082B13416500A6B8DA /* application_metal.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AE640F52B1320F700A6B8DA /* application_metal.h */; };
-		2AE641092B13416500A6B8DA /* application_metal.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2AE640F22B1320F700A6B8DA /* application_metal.cc */; };
-		2AE6410A2B13416500A6B8DA /* render_batch_data_metal.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AE640F42B1320F700A6B8DA /* render_batch_data_metal.h */; };
-		2AE6410B2B13416500A6B8DA /* graphics_metal.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2AE640F02B1320F700A6B8DA /* graphics_metal.cc */; };
-		2AE6410C2B13416500A6B8DA /* render_batch_group_metal.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AE640F32B1320F700A6B8DA /* render_batch_group_metal.h */; };
-		2AE6410D2B13416500A6B8DA /* graphics_metal.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AE640F62B1320F700A6B8DA /* graphics_metal.h */; };
-		2AE6410E2B13416500A6B8DA /* render_queue_metal.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AE640F72B1320F700A6B8DA /* render_queue_metal.h */; };
-		2AE6410F2B13416500A6B8DA /* render_queue_metal.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2AE640F12B1320F700A6B8DA /* render_queue_metal.cc */; };
 		2AEA1C512B0DC7A700AAD982 /* render_batch.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AEA1C502B0DC7A700AAD982 /* render_batch.h */; };
 		2AEA1C532B0DF36700AAD982 /* render_batch_type.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AEA1C522B0DF36700AAD982 /* render_batch_type.h */; };
 /* End PBXBuildFile section */
@@ -2591,6 +2590,7 @@
 				2AA9A9C92B0781A0009AACBF /* PathConstraintMixTimeline.h in Headers */,
 				2AA9A9AB2B0781A0009AACBF /* Extension.h in Headers */,
 				2AA9A9812B0781A0009AACBF /* MeshAttachment.h in Headers */,
+				2AC95E102B1BCC1E00B2C916 /* render_queue_opengl.h in Headers */,
 				2A4FBEA82B03D48C0060E35C /* application_macos.h in Headers */,
 				2A27D2062B14DF48008B5446 /* MTKView.hpp in Headers */,
 				2AE640BB2B12363400A6B8DA /* path_type.h in Headers */,
@@ -2636,7 +2636,6 @@
 				2A27D24D2B14DF54008B5446 /* MTLDefines.hpp in Headers */,
 				2A27D2AB2B14DF54008B5446 /* MTLArgument.hpp in Headers */,
 				2A27D2452B14DF54008B5446 /* MTLSampler.hpp in Headers */,
-				2A41F0942B18AAED00CC5EF4 /* view_delegate_metal.h in Headers */,
 				2A27D1FB2B14DF3C008B5446 /* NSProcessInfo.hpp in Headers */,
 				2AA9A9B02B0781A0009AACBF /* MixBlend.h in Headers */,
 				2AA9A97B2B0781A0009AACBF /* DeformTimeline.h in Headers */,
@@ -2648,6 +2647,7 @@
 				2A27D24F2B14DF54008B5446 /* MTLEvent.hpp in Headers */,
 				2A27D2C12B14DF5F008B5446 /* NSRunningApplication.hpp in Headers */,
 				2A27D2432B14DF54008B5446 /* MTLFunctionHandle.hpp in Headers */,
+				2AC95E0E2B1BCC1E00B2C916 /* input_opengl.h in Headers */,
 				2AA9A99E2B0781A0009AACBF /* SkeletonJson.h in Headers */,
 				2A27D2932B14DF54008B5446 /* MTLAccelerationStructureCommandEncoder.hpp in Headers */,
 				2A4FBE4E2B00BF430060E35C /* color.h in Headers */,
@@ -2663,7 +2663,6 @@
 				2A4FBE602B00BF430060E35C /* timer.h in Headers */,
 				2A4FBE502B00BF430060E35C /* vector3.h in Headers */,
 				2A27D2C52B14DF5F008B5446 /* AppKit.hpp in Headers */,
-				2AE6410E2B13416500A6B8DA /* render_queue_metal.h in Headers */,
 				2A27D1F52B14DF3C008B5446 /* NSNotification.hpp in Headers */,
 				2AA9A9A32B0781A0009AACBF /* ContainerUtil.h in Headers */,
 				2AA9A9C42B0781A0009AACBF /* BoneData.h in Headers */,
@@ -2692,14 +2691,12 @@
 				2A27D2972B14DF54008B5446 /* MTLIndirectCommandBuffer.hpp in Headers */,
 				2AA9A9C62B0781A0009AACBF /* SkeletonClipping.h in Headers */,
 				2A4FBE492B00BF430060E35C /* defines.h in Headers */,
-				2AE641082B13416500A6B8DA /* application_metal.h in Headers */,
 				2A27D2612B14DF54008B5446 /* MTLHeap.hpp in Headers */,
 				2A27D2852B14DF54008B5446 /* MTLFunctionDescriptor.hpp in Headers */,
 				2AA9A98F2B0781A0009AACBF /* MathUtil.h in Headers */,
 				2AA9A9862B0781A0009AACBF /* RTTI.h in Headers */,
 				2A4FBE512B00BF430060E35C /* input.h in Headers */,
 				2A27D1E52B14DF3C008B5446 /* NSString.hpp in Headers */,
-				2AE6410D2B13416500A6B8DA /* graphics_metal.h in Headers */,
 				2AA9A9A92B0781A0009AACBF /* Animation.h in Headers */,
 				2A27D2592B14DF54008B5446 /* MTLIntersectionFunctionTable.hpp in Headers */,
 				2AA9A9BF2B0781A0009AACBF /* AttachmentTimeline.h in Headers */,
@@ -2714,6 +2711,7 @@
 				2A27D1E12B14DF3C008B5446 /* NSPrivate.hpp in Headers */,
 				2AA9A9792B0781A0009AACBF /* HasRendererObject.h in Headers */,
 				2A27D2652B14DF54008B5446 /* Metal.hpp in Headers */,
+				2AC95E0F2B1BCC1E00B2C916 /* graphics_opengl.h in Headers */,
 				2A4FBE882B00F4A30060E35C /* action_move.h in Headers */,
 				2AA9A9BD2B0781A0009AACBF /* TextureLoader.h in Headers */,
 				2A4FBE6A2B00BF430060E35C /* snowpulse.h in Headers */,
@@ -2721,7 +2719,6 @@
 				2AA9A9BA2B0781A0009AACBF /* ScaleTimeline.h in Headers */,
 				2A27D1F92B14DF3C008B5446 /* NSData.hpp in Headers */,
 				2AA9A9C32B0781A0009AACBF /* PositionMode.h in Headers */,
-				2AE6410C2B13416500A6B8DA /* render_batch_group_metal.h in Headers */,
 				2A27D25B2B14DF54008B5446 /* MTLRenderPass.hpp in Headers */,
 				2A27D2892B14DF54008B5446 /* MTLBuffer.hpp in Headers */,
 				2AA9A97F2B0781A0009AACBF /* Json.h in Headers */,
@@ -2743,24 +2740,24 @@
 				2A27D25F2B14DF54008B5446 /* MTLRenderCommandEncoder.hpp in Headers */,
 				2A4FBEB32B03E59A0060E35C /* json.hpp in Headers */,
 				2A27D2812B14DF54008B5446 /* MTLPipeline.hpp in Headers */,
-				2AE6410A2B13416500A6B8DA /* render_batch_data_metal.h in Headers */,
 				2A27D29D2B14DF54008B5446 /* MTLFunctionLog.hpp in Headers */,
 				2A27D24B2B14DF54008B5446 /* MTLDevice.hpp in Headers */,
 				2A4FBE5B2B00BF430060E35C /* application.h in Headers */,
 				2A27D1ED2B14DF3C008B5446 /* NSObject.hpp in Headers */,
-				2A27D1AE2B14DDFC008B5446 /* app_delegate_metal2.h in Headers */,
 				2AA9A98B2B0781A0009AACBF /* Vector.h in Headers */,
 				2A27D1F72B14DF3C008B5446 /* NSRange.hpp in Headers */,
 				2A4FBE4C2B00BF430060E35C /* singleton.h in Headers */,
 				2A4FBE8E2B00F8DA0060E35C /* math_utils.h in Headers */,
 				2A4FBE4D2B00BF430060E35C /* texture_filtering.h in Headers */,
 				2A4FBE482B00BF430060E35C /* scene.h in Headers */,
+				2AC95E0A2B1BCC1E00B2C916 /* render_batch_group_opengl.h in Headers */,
 				2A4FBE452B00BF430060E35C /* component.h in Headers */,
 				2A27D2992B14DF54008B5446 /* MTLBinaryArchive.hpp in Headers */,
 				2AE640E62B12F1BF00A6B8DA /* platform.h in Headers */,
 				2AA9A9992B0781A0009AACBF /* SequenceTimeline.h in Headers */,
 				2A27D2752B14DF54008B5446 /* MTLCommandEncoder.hpp in Headers */,
 				2AA9A98E2B0781A0009AACBF /* dll.h in Headers */,
+				2AC95E112B1BCC1E00B2C916 /* application_opengl.h in Headers */,
 				2AA9A9C52B0781A0009AACBF /* SkeletonBinary.h in Headers */,
 				2AA9A99F2B0781A0009AACBF /* VertexAttachment.h in Headers */,
 				2AA9A98A2B0781A0009AACBF /* TranslateTimeline.h in Headers */,
@@ -2800,6 +2797,7 @@
 				2AA9A97D2B0781A0009AACBF /* SlotData.h in Headers */,
 				2AA9A9982B0781A0009AACBF /* DrawOrderTimeline.h in Headers */,
 				2A4FBE3D2B00BF430060E35C /* game.h in Headers */,
+				2AC95E0B2B1BCC1E00B2C916 /* render_batch_data_opengl.h in Headers */,
 				2AA9A97C2B0781A0009AACBF /* BlendMode.h in Headers */,
 				2AA9A9902B0781A0009AACBF /* Version.h in Headers */,
 				2A4FBE362B00BF430060E35C /* game_object.h in Headers */,
@@ -3187,6 +3185,7 @@
 				2A4FBEA92B03D48C0060E35C /* application_macos.cc in Sources */,
 				2AA9A9082B078173009AACBF /* SkeletonBinary.cpp in Sources */,
 				2AA9A91D2B078173009AACBF /* ShearTimeline.cpp in Sources */,
+				2AC95E0D2B1BCC1E00B2C916 /* input_opengl.cc in Sources */,
 				2AA9A8F82B078173009AACBF /* AttachmentLoader.cpp in Sources */,
 				2AE640B92B11CF6D00A6B8DA /* directory.cc in Sources */,
 				2AA9A9132B078173009AACBF /* Extension.cpp in Sources */,
@@ -3201,6 +3200,7 @@
 				2AA9A8F62B078173009AACBF /* IkConstraint.cpp in Sources */,
 				2AA9A9172B078173009AACBF /* Event.cpp in Sources */,
 				2A4FBE392B00BF430060E35C /* sprite_renderer.cc in Sources */,
+				2AC95E0C2B1BCC1E00B2C916 /* render_queue_opengl.cc in Sources */,
 				2AA9A8FC2B078173009AACBF /* PathConstraintMixTimeline.cpp in Sources */,
 				2AE640E12B129E8400A6B8DA /* glad.c in Sources */,
 				2A4FBE5E2B00BF430060E35C /* application.cc in Sources */,
@@ -3218,11 +3218,10 @@
 				2AA9A8F22B078173009AACBF /* Slot.cpp in Sources */,
 				2A4FBE322B00BF430060E35C /* node_starter.cc in Sources */,
 				2AA9A8FD2B078173009AACBF /* RTTI.cpp in Sources */,
-				2AE641092B13416500A6B8DA /* application_metal.cc in Sources */,
 				2A4FBE3F2B00BF430060E35C /* action.cc in Sources */,
 				2AA9A8FA2B078173009AACBF /* ColorTimeline.cpp in Sources */,
-				2AE6410B2B13416500A6B8DA /* graphics_metal.cc in Sources */,
 				2AA9A90A2B078173009AACBF /* AttachmentTimeline.cpp in Sources */,
+				2AC95E092B1BCC1E00B2C916 /* application_opengl.cc in Sources */,
 				2AA9A8E52B078173009AACBF /* ClippingAttachment.cpp in Sources */,
 				2AA9A8FE2B078173009AACBF /* VertexAttachment.cpp in Sources */,
 				2AA9A9052B078173009AACBF /* AnimationState.cpp in Sources */,
@@ -3232,7 +3231,6 @@
 				2AA9A9152B078173009AACBF /* Bone.cpp in Sources */,
 				2A4FBE5C2B00BF430060E35C /* camera.cc in Sources */,
 				2AA9A8FF2B078173009AACBF /* MathUtil.cpp in Sources */,
-				2AE6410F2B13416500A6B8DA /* render_queue_metal.cc in Sources */,
 				2AA9A9162B078173009AACBF /* RotateTimeline.cpp in Sources */,
 				2AA9A9DC2B07B0B1009AACBF /* spine_skeleton_animation.cc in Sources */,
 				2AA9A8EB2B078173009AACBF /* TextureLoader.cpp in Sources */,
@@ -3257,7 +3255,7 @@
 				2AA9A8EE2B078173009AACBF /* RegionAttachment.cpp in Sources */,
 				2A4FBE422B00BF430060E35C /* action_wait.cc in Sources */,
 				2A4FBE332B00BF430060E35C /* node.cc in Sources */,
-				2A41F0972B18AD3D00CC5EF4 /* view_delegate_metal.cc in Sources */,
+				2AC95E082B1BCC1E00B2C916 /* graphics_opengl.cc in Sources */,
 				2A4FBE302B00BF430060E35C /* game_object.cc in Sources */,
 				2AA9A8E42B078173009AACBF /* SkeletonData.cpp in Sources */,
 				2AA9A8F42B078173009AACBF /* CurveTimeline.cpp in Sources */,

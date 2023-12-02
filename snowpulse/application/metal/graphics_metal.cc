@@ -136,7 +136,7 @@ bool GraphicsMetal::Initialize(const Vector2Int& resolution, const Vector2Int& s
 
 void GraphicsMetal::Shutdown() {
     for (auto const& t : textures_) {
-        //glDeleteTextures(1, &(t.second));
+        t.second->release();
     }
     textures_.clear();
     textureSizes_.clear();
@@ -249,7 +249,7 @@ void GraphicsMetal::UnloadTexture(std::string filename, TextureFiltering filteri
                     break;
                 }
             }
-            //glDeleteTextures(1, &(i->second));
+            i->second->release();
             textures_.erase(i);
             break;
         }
@@ -395,7 +395,6 @@ void GraphicsMetal::Draw() {
     pEnc->setVertexBuffer(vertexColorsBuffer_, 0, 2);
     pEnc->setVertexBuffer(transformBuffer_, 0, 3);
     pEnc->setVertexBuffer(uniformsBuffer_, 0, 4);
-    //pEnc->drawPrimitives(MTL::PrimitiveType::PrimitiveTypeTriangle, NS::UInteger(0), NS::UInteger(3));
     pEnc->drawIndexedPrimitives(MTL::PrimitiveType::PrimitiveTypeTriangle, NS::UInteger(6), MTL::IndexTypeUInt16, indexBuffer_, NS::UInteger(0), NS::UInteger(1));
 
     pEnc->endEncoding();

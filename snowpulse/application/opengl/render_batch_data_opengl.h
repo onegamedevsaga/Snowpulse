@@ -11,6 +11,7 @@
 #include <glm/glm.hpp>
 
 #include "../../common/blend_mode.h"
+#include "../../common/texture_filtering.h"
 
 namespace snowpulse {
 class SNOWPULSEAPI RenderBatchDataOpenGL : public RenderBatch {
@@ -26,6 +27,7 @@ class SNOWPULSEAPI RenderBatchDataOpenGL : public RenderBatch {
         GLenum drawMode;
         GLuint shaderProgram;
         BlendMode blendMode;
+        TextureFiltering textureFiltering;
         GLsizei vertexCount;
         GLsizei indexCount;
 

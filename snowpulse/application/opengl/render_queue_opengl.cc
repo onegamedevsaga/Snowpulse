@@ -73,6 +73,7 @@ void RenderQueueOpenGL::GroupBatches(std::vector<std::shared_ptr<RenderBatch>>& 
             auto prevBatch = (RenderBatchDataOpenGL*)batches[batches.size() - 1].get();
             if (prevBatch->drawMode == batch->drawMode &&
                 prevBatch->blendMode == batch->blendMode &&
+                prevBatch->textureFiltering == batch->textureFiltering &&
                 prevBatch->isPremultiplied == batch->isPremultiplied &&
                 prevBatch->viewMatrix == batch->viewMatrix &&
                 prevBatch->projectionMatrix == batch->projectionMatrix &&

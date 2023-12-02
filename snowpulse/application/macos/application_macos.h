@@ -2,7 +2,7 @@
 #define SNOWPULSE_APPLICATION_MACOS_APPLICATIONMACOS_H_
 
 #include "../../common/singleton.h"
-#include "../metal/application_metal.h"
+#include "../opengl/application_opengl.h"
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -11,7 +11,7 @@
 #include "input_macos.h"
 
 namespace snowpulse {
-class SNOWPULSEAPI ApplicationMacOS : public ApplicationMetal, public Singleton<ApplicationMacOS> {
+class SNOWPULSEAPI ApplicationMacOS : public ApplicationOpenGL, public Singleton<ApplicationMacOS> {
     public:
         virtual bool Initialize(const Vector2Int& resolutionSize, const Vector2Int& screenSize, void* device);
         void Close() override;
@@ -20,15 +20,14 @@ class SNOWPULSEAPI ApplicationMacOS : public ApplicationMetal, public Singleton<
         void Run();
 
         Vector2Int GetScreenSize() { return screenSize_; }
-        GLFWwindow* GetWindow() { return window_; }
 
     protected:
         friend class Singleton<ApplicationMacOS>;
         ApplicationMacOS();
 
         Vector2Int screenSize_;
-        GLFWwindow* window_;
         DirectoryMacOS* directory_;
+        InputMacOS* input_;
 };
 }   // namespace snowpulse
 

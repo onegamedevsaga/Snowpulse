@@ -22,8 +22,8 @@ SpriteRenderer::~SpriteRenderer() {
 }
 
 void SpriteRenderer::LoadGraphics(Graphics* graphics) {
-    graphics->LoadTexture(filename_, textureFiltering_);
-    SetSize(graphics->GetTextureSize(filename_, textureFiltering_));
+    graphics->LoadTexture(filename_);
+    SetSize(graphics->GetTextureSize(filename_));
 }
 
 // From Updatable
@@ -33,6 +33,6 @@ void SpriteRenderer::Update(float deltaTime) {
 
 // From Drawable
 void SpriteRenderer::Draw(Graphics* graphics, Matrix4x4 worldMatrix) {
-    graphics->DrawSprite(size_, graphics->GetTextureFullFilename(filename_, textureFiltering_), worldMatrix, color_, sortOrder_, blendMode_, isPremultiplied_);
+    graphics->DrawSprite(size_, filename_, worldMatrix, color_, sortOrder_, blendMode_, textureFiltering_, isPremultiplied_);
 }
 }   // namespace snowpulse

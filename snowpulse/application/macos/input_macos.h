@@ -11,7 +11,7 @@
 
 #include "../../common/vector2.h"
 #include "../../common/vector2int.h"
-#include "graphics_metal.h"
+#include "graphics_opengl.h"
 
 namespace snowpulse {
 class SNOWPULSEAPI InputMacOS : public Input, public Singleton<InputMacOS> {

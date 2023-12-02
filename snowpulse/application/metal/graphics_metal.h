@@ -7,6 +7,7 @@
 #include <memory>
 #include <string>
 #include <map>
+#include <Metal/Metal.hpp>
 #include <simd/simd.h>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/glm.hpp>
@@ -67,10 +68,10 @@ class SNOWPULSEAPI GraphicsMetal : public Graphics {
         GLuint transformMatrixShaderLocation_;
         GLuint projectionMatrixShaderLocation_;
         GLuint viewMatrixShaderLocation_;*/
-        std::shared_ptr<RenderQueueMetal> renderQueue_;
-        std::vector<std::shared_ptr<RenderBatchGroupMetal>> renderBatchGroups_;
-        std::map<std::string, unsigned int> textures_;
-        std::map<unsigned int, Vector2> textureSizes_;
+        
+        
+        
+        
 
         MTK::View* view_;
         MTL::Device* device_;
@@ -84,6 +85,10 @@ class SNOWPULSEAPI GraphicsMetal : public Graphics {
         MTL::Buffer* uniformsBuffer_;
 
         simd::float4x4 projectionMatrix_;
+        std::map<std::string, MTL::Texture*> textures_;
+        std::map<MTL::Texture*, Vector2> textureSizes_;
+        std::shared_ptr<RenderQueueMetal> renderQueue_;
+        std::vector<std::shared_ptr<RenderBatchGroupMetal>> renderBatchGroups_;
 };
 }   // namespace snowpulse
 #endif
