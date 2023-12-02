@@ -144,6 +144,7 @@ void GraphicsMetal::Shutdown() {
     std::cout << "GraphicsMetal shutdown." << std::endl;
 #endif
     
+    indexBuffer_->release();
     vertexPositionsBuffer_->release();
     vertexUVsBuffer_->release();
     vertexColorsBuffer_->release();
@@ -394,7 +395,8 @@ void GraphicsMetal::Draw() {
     pEnc->setVertexBuffer(vertexColorsBuffer_, 0, 2);
     pEnc->setVertexBuffer(transformBuffer_, 0, 3);
     pEnc->setVertexBuffer(uniformsBuffer_, 0, 4);
-    pEnc->drawPrimitives(MTL::PrimitiveType::PrimitiveTypeTriangle, NS::UInteger(0), NS::UInteger(3));
+    //pEnc->drawPrimitives(MTL::PrimitiveType::PrimitiveTypeTriangle, NS::UInteger(0), NS::UInteger(3));
+    pEnc->drawIndexedPrimitives(MTL::PrimitiveType::PrimitiveTypeTriangle, NS::UInteger(6), MTL::IndexTypeUInt16, indexBuffer_, NS::UInteger(0), NS::UInteger(1));
 
     pEnc->endEncoding();
     cmd->presentDrawable( view_->currentDrawable() );
@@ -456,7 +458,16 @@ void GraphicsMetal::BuildShaders() {
     MTL::RenderPipelineDescriptor* pDesc = MTL::RenderPipelineDescriptor::alloc()->init();
     pDesc->setVertexFunction( pVertexFn );
     pDesc->setFragmentFunction( pFragFn );
-    pDesc->colorAttachments()->object(0)->setPixelFormat( view_->colorPixelFormat() );
+
+    auto colorDesc = pDesc->colorAttachments()->object(0);
+    colorDesc->setPixelFormat(view_->colorPixelFormat());
+    colorDesc->setBlendingEnabled(true);
+    colorDesc->setRgbBlendOperation(MTL::BlendOperationAdd);
+    colorDesc->setAlphaBlendOperation(MTL::BlendOperationAdd);
+    colorDesc->setSourceRGBBlendFactor(MTL::BlendFactorSourceAlpha);
+    colorDesc->setSourceAlphaBlendFactor(MTL::BlendFactorSourceAlpha);
+    colorDesc->setDestinationRGBBlendFactor(MTL::BlendFactorOneMinusSourceAlpha);
+    colorDesc->setDestinationAlphaBlendFactor(MTL::BlendFactorOneMinusSourceAlpha);
 
     renderPipelineState_ = device_->newRenderPipelineState( pDesc, &pError );
     if ( !renderPipelineState_ )
@@ -477,22 +488,21 @@ struct Uniforms {
 };
 
 void GraphicsMetal::BuildBuffers() {
-    const size_t numVertices = 3;
+    const size_t numVertices = 4;
+    float halfWidth = 150.0f;
+    float halfHeight = 150.0f;
 
     simd::float3 positions[numVertices] =
     {
-        { -200.8f,  200.8f, 0.0f },
-        {  0.0f, -200.8f, 0.0f },
-        {  200.8f,  200.8f, 0.0f }
+        {  halfWidth,  halfHeight, 0.0f },
+        {  halfWidth, -halfHeight, 0.0f },
+        { -halfWidth, -halfHeight, 0.0f },
+        { -halfWidth,  halfHeight, 0.0f }
     };
-    
-    for (auto &p : positions) {
-        p.x += 400.0f;
-        p.y += 800.0f;
-    }
 
     simd::float2 uvs[numVertices] =
     {
+        { 0.0f,  0.0f },
         { 0.0f,  0.0f },
         { 0.0f,  0.0f },
         { 0.0f,  0.0f }
@@ -501,28 +511,34 @@ void GraphicsMetal::BuildBuffers() {
     simd::float4 colors[numVertices] =
     {
         { 0.0f, 1.0f, 0.0f, 1.0f },
+        { 0.0f, 1.0f, 0.0f, 0.0f },
         { 0.0f, 1.0f, 0.0f, 1.0f },
-        { 0.0f, 1.0f, 0.0f, 1.0f }
+        { 0.0f, 1.0f, 0.0f, 0.0f }
     };
     
     simd::float4x4 transform = simd::float4x4(1.0f);
     simd::float4x4 view = simd::float4x4(1.0f);
 
+    camera_->SetPosition(Vector2(-1242.0f * 0.5f, -2688.0f * 0.5f));
     Matrix4x4 cameraView = camera_->GetMatrix();
     for (int i = 0; i < 4; ++i) {
         for (int j = 0; j < 4; ++j) {
-            view.columns[i][j] = cameraView.data[j][i];
+            view.columns[i][j] = cameraView.data[i][j];
         }
     }
-
-
     
+    uint16_t indices[] = {
+        0, 1, 2,
+        2, 3, 0
+    };
 
+    const size_t indicesDataSize = 6 * sizeof(uint16_t);
     const size_t positionsDataSize = numVertices * sizeof(simd::float3);
     const size_t uvsDataSize = numVertices * sizeof(simd::float2);
     const size_t colorDataSize = numVertices * sizeof(simd::float4);
     const size_t transformDataSize = sizeof(simd::float4x4);
 
+    indexBuffer_ = device_->newBuffer(indicesDataSize, MTL::StorageModeShared);
     vertexPositionsBuffer_ = device_->newBuffer(positionsDataSize, MTL::StorageModeShared);
     vertexUVsBuffer_ = device_->newBuffer(uvsDataSize, MTL::StorageModeShared);
     vertexColorsBuffer_ = device_->newBuffer(colorDataSize, MTL::StorageModeShared);
@@ -533,12 +549,14 @@ void GraphicsMetal::BuildBuffers() {
     uniforms.view = view;
     uniformsBuffer_ = device_->newBuffer(sizeof(Uniforms), MTL::StorageModeShared);
 
+    memcpy(indexBuffer_->contents(), indices, indicesDataSize);
     memcpy(vertexPositionsBuffer_->contents(), positions, positionsDataSize);
     memcpy(vertexUVsBuffer_->contents(), uvs, uvsDataSize);
     memcpy(vertexColorsBuffer_->contents(), colors, colorDataSize);
     memcpy(transformBuffer_->contents(), &transform, transformDataSize);
     memcpy(uniformsBuffer_->contents(), &uniforms, sizeof(Uniforms));
 
+    indexBuffer_->didModifyRange(NS::Range::Make(0, indexBuffer_->length()));
     vertexPositionsBuffer_->didModifyRange(NS::Range::Make(0, vertexPositionsBuffer_->length()));
     vertexUVsBuffer_->didModifyRange(NS::Range::Make(0, vertexUVsBuffer_->length()));
     vertexColorsBuffer_->didModifyRange(NS::Range::Make(0, vertexColorsBuffer_->length()));

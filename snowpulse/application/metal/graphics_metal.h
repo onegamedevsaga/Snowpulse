@@ -76,6 +76,7 @@ class SNOWPULSEAPI GraphicsMetal : public Graphics {
         MTL::Device* device_;
         MTL::CommandQueue* commandQueue_;
         MTL::RenderPipelineState* renderPipelineState_;
+        MTL::Buffer* indexBuffer_;
         MTL::Buffer* vertexPositionsBuffer_;
         MTL::Buffer* vertexUVsBuffer_;
         MTL::Buffer* vertexColorsBuffer_;
