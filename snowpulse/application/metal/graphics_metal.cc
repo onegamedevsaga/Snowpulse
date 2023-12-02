@@ -23,28 +23,47 @@ const char* shaderSrc = R"(
     #include <metal_stdlib>
     using namespace metal;
 
-    struct v2f
+    layout(location = 0) in vec3 position;
+    layout(location = 1) in vec2 texCoord;
+    layout(location = 2) in vec4 color;
+    layout(location = 3) in mat4 transform;
+
+    out vec2 TexCoord;
+    out vec4 Color;
+
+    uniform mat4 projection;
+    uniform mat4 view;
+
+    struct Uniforms {
+        float4x4 projection;
+        float4x4 view;
+    };
+
+    struct VertexOut
     {
-        float4 position [[position]];
+        //float4 position [[position]];
+        float2 texCoord [[texCoord]];
         half3 color;
     };
 
-    v2f vertex vertexMain( uint vertexId [[vertex_id]],
-                           device const float3* positions [[buffer(0)]],
-                           device const float3* colors [[buffer(1)]] )
+    v2f vertex vertexMain(  uint vertexId [[vertex_id]],
+                            device const float3* positions [[buffer(0)]],
+                            device const float2* uv [[buffer(1)]],
+                            device const float3* colors [[buffer(2)]],
+                            device const float4x4* transform [[buffer(3)]],
+                            constant Uniforms& uniforms [[buffer(4)]] )
     {
-        v2f o;
+        VertexOut o;
         o.position = float4( positions[ vertexId ], 1.0 );
         o.color = half3 ( colors[ vertexId ] );
         return o;
     }
 
-    half4 fragment fragmentMain( v2f in [[stage_in]] )
+    half4 fragment fragmentMain( VertexOut in [[stage_in]] )
     {
         return half4( in.color, 1.0 );
     }
 )";
-
 std::shared_ptr<GraphicsMetal> GraphicsMetal::Create() {
     auto graphics = new GraphicsMetal();
     return std::shared_ptr<GraphicsMetal>(graphics);
@@ -57,12 +76,22 @@ bool GraphicsMetal::Initialize(const Vector2Int& resolution, const Vector2Int& s
     camera_ = Camera::Create();
     renderQueue_ = RenderQueueMetal::Create();
     view_ = static_cast<MTK::View*>(view);
+    view_->setColorPixelFormat(MTL::PixelFormatBGRA8Unorm_sRGB);
     device_ = view_->device();
 
     
+    auto ortho = glm::ortho(0.0f, (float)resolution.x, 0.0f, (float)resolution.y, -100.0f, 100.0f);
+    for (int i = 0; i < 4; ++i) {
+        for (int j = 0; j < 4; ++j) {
+            projectionMatrix_.columns[i][j] = ortho[i][j];
+        }
+    }
+
     BuildShaders();
     BuildBuffers();
     commandQueue_ = device_->newCommandQueue();
+
+    
 
     // Compile and link shaders
     /*GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
@@ -116,7 +145,10 @@ void GraphicsMetal::Shutdown() {
 #endif
     
     vertexPositionsBuffer_->release();
+    vertexUVsBuffer_->release();
     vertexColorsBuffer_->release();
+    transformBuffer_->release();
+    uniformsBuffer_->release();
     renderPipelineState_->release();
     commandQueue_->release();
     device_->release();
@@ -356,10 +388,13 @@ void GraphicsMetal::Draw() {
     MTL::RenderPassDescriptor* pRpd = view_->currentRenderPassDescriptor();
     MTL::RenderCommandEncoder* pEnc = cmd->renderCommandEncoder( pRpd );
 
-    pEnc->setRenderPipelineState( renderPipelineState_ );
-    pEnc->setVertexBuffer( vertexPositionsBuffer_, 0, 0 );
-    pEnc->setVertexBuffer( vertexColorsBuffer_, 0, 1 );
-    pEnc->drawPrimitives( MTL::PrimitiveType::PrimitiveTypeTriangle, NS::UInteger(0), NS::UInteger(3) );
+    pEnc->setRenderPipelineState(renderPipelineState_);
+    pEnc->setVertexBuffer(vertexPositionsBuffer_, 0, 0);
+    pEnc->setVertexBuffer(vertexUVsBuffer_, 0, 1);
+    pEnc->setVertexBuffer(vertexColorsBuffer_, 0, 2);
+    pEnc->setVertexBuffer(transformBuffer_, 0, 3);
+    pEnc->setVertexBuffer(uniformsBuffer_, 0, 4);
+    pEnc->drawPrimitives(MTL::PrimitiveType::PrimitiveTypeTriangle, NS::UInteger(0), NS::UInteger(3));
 
     pEnc->endEncoding();
     cmd->presentDrawable( view_->currentDrawable() );
@@ -375,25 +410,35 @@ void GraphicsMetal::BuildShaders() {
         #include <metal_stdlib>
         using namespace metal;
 
-        struct v2f
-        {
-            float4 position [[position]];
-            half3 color;
+        struct Uniforms {
+            float4x4 projection;
+            float4x4 view;
         };
 
-        v2f vertex vertexMain( uint vertexId [[vertex_id]],
-                               device const float3* positions [[buffer(0)]],
-                               device const float3* colors [[buffer(1)]] )
+        struct VertexOut
         {
-            v2f o;
-            o.position = float4( positions[ vertexId ], 1.0 );
-            o.color = half3 ( colors[ vertexId ] );
+            float4 position [[position]];
+            float2 texCoord;
+            half4 color;
+        };
+
+        VertexOut vertex vertexMain(    uint vertexId [[vertex_id]],
+                                        device const float3* positions [[buffer(0)]],
+                                        device const float2* uv [[buffer(1)]],
+                                        device const float4* colors [[buffer(2)]],
+                                        device const float4x4* transform [[buffer(3)]],
+                                        constant Uniforms& uniforms [[buffer(4)]] )
+        {
+            VertexOut o;
+            o.position = uniforms.projection * uniforms.view * transform[0] * float4(positions[vertexId], 1.0);
+            o.texCoord = float2(uv[vertexId]);
+            o.color = half4(colors[vertexId]);
             return o;
         }
 
-        half4 fragment fragmentMain( v2f in [[stage_in]] )
+        half4 fragment fragmentMain( VertexOut in [[stage_in]] )
         {
-            return half4( in.color, 1.0 );
+            return half4(in.color);
         }
     )";
 
@@ -426,35 +471,78 @@ void GraphicsMetal::BuildShaders() {
     pLibrary->release();
 }
 
+struct Uniforms {
+    simd::float4x4 projection;
+    simd::float4x4 view;
+};
+
 void GraphicsMetal::BuildBuffers() {
     const size_t numVertices = 3;
 
-    //glm::vec3/*simd::float3*/ positions[NumVertices] =
-    glm::vec4 positions[numVertices] =
+    simd::float3 positions[numVertices] =
     {
-        glm::vec4( -0.8f,  0.8f, 0.0f, 0.0f ),
-        glm::vec4(  0.0f, -0.8f, 0.0f, 0.0f ),
-        glm::vec4(  0.8f,  0.8f, 0.0f, 0.0f )
+        { -200.8f,  200.8f, 0.0f },
+        {  0.0f, -200.8f, 0.0f },
+        {  200.8f,  200.8f, 0.0f }
     };
     
+    for (auto &p : positions) {
+        p.x += 400.0f;
+        p.y += 800.0f;
+    }
 
-    glm::vec4 colors[numVertices] =
+    simd::float2 uvs[numVertices] =
     {
-        glm::vec4(  0.0f,  0.0f, 0.0f, 0.0f ),
-        glm::vec4(  0.0f,  1.0f, 0.0f, 0.0f ),
-        glm::vec4(  1.0f,  0.0f, 0.0f, 0.0f )
+        { 0.0f,  0.0f },
+        { 0.0f,  0.0f },
+        { 0.0f,  0.0f }
     };
 
-    const size_t positionsDataSize = numVertices * sizeof( glm::vec4 );
-    const size_t colorDataSize = numVertices * sizeof( glm::vec4);
+    simd::float4 colors[numVertices] =
+    {
+        { 0.0f, 1.0f, 0.0f, 1.0f },
+        { 0.0f, 1.0f, 0.0f, 1.0f },
+        { 0.0f, 1.0f, 0.0f, 1.0f }
+    };
+    
+    simd::float4x4 transform = simd::float4x4(1.0f);
+    simd::float4x4 view = simd::float4x4(1.0f);
 
-    vertexPositionsBuffer_ = device_->newBuffer( positionsDataSize, MTL::StorageModeShared );
-    vertexColorsBuffer_ = device_->newBuffer( colorDataSize, MTL::StorageModeShared );
+    Matrix4x4 cameraView = camera_->GetMatrix();
+    for (int i = 0; i < 4; ++i) {
+        for (int j = 0; j < 4; ++j) {
+            view.columns[i][j] = cameraView.data[j][i];
+        }
+    }
 
-    memcpy( vertexPositionsBuffer_->contents(), positions, positionsDataSize );
-    memcpy( vertexColorsBuffer_->contents(), colors, colorDataSize );
 
-    vertexPositionsBuffer_->didModifyRange( NS::Range::Make( 0, vertexPositionsBuffer_->length() ) );
-    vertexColorsBuffer_->didModifyRange( NS::Range::Make( 0, vertexColorsBuffer_->length() ) );
+    
+
+    const size_t positionsDataSize = numVertices * sizeof(simd::float3);
+    const size_t uvsDataSize = numVertices * sizeof(simd::float2);
+    const size_t colorDataSize = numVertices * sizeof(simd::float4);
+    const size_t transformDataSize = sizeof(simd::float4x4);
+
+    vertexPositionsBuffer_ = device_->newBuffer(positionsDataSize, MTL::StorageModeShared);
+    vertexUVsBuffer_ = device_->newBuffer(uvsDataSize, MTL::StorageModeShared);
+    vertexColorsBuffer_ = device_->newBuffer(colorDataSize, MTL::StorageModeShared);
+    transformBuffer_ = device_->newBuffer(transformDataSize, MTL::StorageModeShared);
+
+    Uniforms uniforms;
+    uniforms.projection = projectionMatrix_;
+    uniforms.view = view;
+    uniformsBuffer_ = device_->newBuffer(sizeof(Uniforms), MTL::StorageModeShared);
+
+    memcpy(vertexPositionsBuffer_->contents(), positions, positionsDataSize);
+    memcpy(vertexUVsBuffer_->contents(), uvs, uvsDataSize);
+    memcpy(vertexColorsBuffer_->contents(), colors, colorDataSize);
+    memcpy(transformBuffer_->contents(), &transform, transformDataSize);
+    memcpy(uniformsBuffer_->contents(), &uniforms, sizeof(Uniforms));
+
+    vertexPositionsBuffer_->didModifyRange(NS::Range::Make(0, vertexPositionsBuffer_->length()));
+    vertexUVsBuffer_->didModifyRange(NS::Range::Make(0, vertexUVsBuffer_->length()));
+    vertexColorsBuffer_->didModifyRange(NS::Range::Make(0, vertexColorsBuffer_->length()));
+    transformBuffer_->didModifyRange(NS::Range::Make(0, transformBuffer_->length()));
+    uniformsBuffer_->didModifyRange(NS::Range::Make(0, uniformsBuffer_->length()));
 }
 }   // namespace snowpulse

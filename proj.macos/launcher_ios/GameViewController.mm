@@ -38,7 +38,7 @@
     auto game = game::Game::Create();
     auto app = static_cast<snowpulse::ApplicationIOS*>(snowpulse::Application::GetInstance());
 
-    if (app->Initialize(snowpulse::Vector2Int(1920, 1080), (__bridge void*)_view)) {
+    if (app->Initialize(snowpulse::Vector2Int(1242, 2688), (__bridge void*)_view)) {
         app->SetGame(game.get());
         game->Initialize(app);
     }

@@ -7,8 +7,7 @@
 #include <memory>
 #include <string>
 #include <map>
-//#include <glad/glad.h>
-//#include <GLFW/glfw3.h>
+#include <simd/simd.h>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/glm.hpp>
 
@@ -78,7 +77,12 @@ class SNOWPULSEAPI GraphicsMetal : public Graphics {
         MTL::CommandQueue* commandQueue_;
         MTL::RenderPipelineState* renderPipelineState_;
         MTL::Buffer* vertexPositionsBuffer_;
+        MTL::Buffer* vertexUVsBuffer_;
         MTL::Buffer* vertexColorsBuffer_;
+        MTL::Buffer* transformBuffer_;
+        MTL::Buffer* uniformsBuffer_;
+
+        simd::float4x4 projectionMatrix_;
 };
 }   // namespace snowpulse
 #endif
