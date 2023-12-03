@@ -52,8 +52,6 @@ bool ApplicationMetal::Initialize(const Vector2Int& resolutionSize, const Vector
     
     viewDelegate_ = std::make_shared<ViewDelegateMetal>(this);
     view_ = static_cast<MTK::View*>(view);
-    view_->setColorPixelFormat( MTL::PixelFormat::PixelFormatBGRA8Unorm_sRGB );
-    view_->setClearColor( MTL::ClearColor::Make( 1.0, 0.0, 0.0, 1.0 ) );
     view_->setDelegate(viewDelegate_.get());
     return true;
 }

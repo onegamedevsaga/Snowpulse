@@ -7,7 +7,6 @@
 #include <memory>
 #include <string>
 #include <map>
-#include <Metal/Metal.hpp>
 #include <simd/simd.h>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/glm.hpp>
@@ -28,6 +27,7 @@ class Device;
 class CommandQueue;
 class RenderPipelineState;
 class Buffer;
+class Texture;
 }
 
 namespace snowpulse {
@@ -44,14 +44,14 @@ class SNOWPULSEAPI GraphicsMetal : public Graphics {
 
         // Graphics
         Matrix4x4 InvertMatrixNatively(Matrix4x4 matrix) override;
-        void LoadTexture(std::string filename, TextureFiltering filtering, PathType pathType) override;
-        void UnloadTexture(std::string filename, TextureFiltering filtering) override;
-        Vector2 GetTextureSize(std::string filename, TextureFiltering filtering) override;
+        void LoadTexture(std::string filename, PathType pathType) override;
+        void UnloadTexture(std::string filename) override;
+        Vector2 GetTextureSize(std::string filename) override;
         int CreateRenderBatchGroup(int sortOrder) override;
         void ClearRenderBatchGroups() override;
         void SubmitRenderBatchGroup(int batchGroup) override;
-        void DrawMesh(Vertex* vertices, unsigned int vertexCount, unsigned short* indices, unsigned int indexCount, std::string textureFullFilename, int sortOrder, BlendMode blendMode, bool isPremultiplied, Matrix4x4 transformMatrix, int batchGroup) override;
-        void DrawSprite(Vector2 size, std::string textureFullFilename, Matrix4x4 transformMatrix, Color color, int sortOrder, BlendMode blendMode, bool isPremultiplied, Vector2 uvLowerLeft, Vector2 uvUpperRight, int batchGroup) override;
+        void DrawMesh(Vertex* vertices, unsigned int vertexCount, unsigned short* indices, unsigned int indexCount, std::string filename, int sortOrder, BlendMode blendMode, TextureFiltering filtering, bool isPremultiplied, Matrix4x4 transformMatrix, int batchGroup) override;
+        void DrawSprite(Vector2 size, std::string filename, Matrix4x4 transformMatrix, Color color, int sortOrder, BlendMode blendMode, TextureFiltering filtering, bool isPremultiplied, Vector2 uvLowerLeft, Vector2 uvUpperRight, int batchGroup) override;
     
         void Draw();
 

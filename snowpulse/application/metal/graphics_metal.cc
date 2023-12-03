@@ -19,51 +19,6 @@ namespace snowpulse {
 
 const char* kSpriteDefault = "sprites/sprite_default.png";
 
-const char* shaderSrc = R"(
-    #include <metal_stdlib>
-    using namespace metal;
-
-    layout(location = 0) in vec3 position;
-    layout(location = 1) in vec2 texCoord;
-    layout(location = 2) in vec4 color;
-    layout(location = 3) in mat4 transform;
-
-    out vec2 TexCoord;
-    out vec4 Color;
-
-    uniform mat4 projection;
-    uniform mat4 view;
-
-    struct Uniforms {
-        float4x4 projection;
-        float4x4 view;
-    };
-
-    struct VertexOut
-    {
-        //float4 position [[position]];
-        float2 texCoord [[texCoord]];
-        half3 color;
-    };
-
-    v2f vertex vertexMain(  uint vertexId [[vertex_id]],
-                            device const float3* positions [[buffer(0)]],
-                            device const float2* uv [[buffer(1)]],
-                            device const float3* colors [[buffer(2)]],
-                            device const float4x4* transform [[buffer(3)]],
-                            constant Uniforms& uniforms [[buffer(4)]] )
-    {
-        VertexOut o;
-        o.position = float4( positions[ vertexId ], 1.0 );
-        o.color = half3 ( colors[ vertexId ] );
-        return o;
-    }
-
-    half4 fragment fragmentMain( VertexOut in [[stage_in]] )
-    {
-        return half4( in.color, 1.0 );
-    }
-)";
 std::shared_ptr<GraphicsMetal> GraphicsMetal::Create() {
     auto graphics = new GraphicsMetal();
     return std::shared_ptr<GraphicsMetal>(graphics);
@@ -77,6 +32,7 @@ bool GraphicsMetal::Initialize(const Vector2Int& resolution, const Vector2Int& s
     renderQueue_ = RenderQueueMetal::Create();
     view_ = static_cast<MTK::View*>(view);
     view_->setColorPixelFormat(MTL::PixelFormatBGRA8Unorm_sRGB);
+    view_->setClearColor(MTL::ClearColor::Make(0.2f, 0.3f, 0.3f, 1.0));
     device_ = view_->device();
 
     
@@ -87,6 +43,7 @@ bool GraphicsMetal::Initialize(const Vector2Int& resolution, const Vector2Int& s
         }
     }
 
+    LoadTexture("logo.png", PathType::kAssets);
     BuildShaders();
     BuildBuffers();
     commandQueue_ = device_->newCommandQueue();
@@ -177,68 +134,54 @@ Matrix4x4 GraphicsMetal::InvertMatrixNatively(Matrix4x4 matrix) {
     return matrix;
 }
 
-void GraphicsMetal::LoadTexture(std::string filename, TextureFiltering filtering, PathType pathType) {
-    /*auto fullFilename = GetTextureFullFilename(filename.c_str(), filtering);
+void GraphicsMetal::LoadTexture(std::string filename, PathType pathType) {
+    std::string fullFilename = "";
     switch (pathType) {
         case PathType::kAssets:
-            filename = Directory::GetInstance()->GetAssetsPath(filename);
+            fullFilename = Directory::GetInstance()->GetAssetsPath(filename);
             break;
         case PathType::kDefaults:
-            filename = Directory::GetInstance()->GetDefaultsPath(filename);
+            fullFilename = Directory::GetInstance()->GetDefaultsPath(filename);
             break;
         case PathType::kApplicationSupport:
-            filename = Directory::GetInstance()->GetApplicationSupportPath(filename);
+            fullFilename = Directory::GetInstance()->GetApplicationSupportPath(filename);
             break;
         case PathType::kDocuments:
-            filename = Directory::GetInstance()->GetDocumentsPath(filename);
+            fullFilename = Directory::GetInstance()->GetDocumentsPath(filename);
             break;
         case PathType::kRaw:
+            fullFilename = filename;
         default:
             break;
     }
-    if (!textures_.count(fullFilename)) {
-        unsigned int texture;
-        glGenTextures(1, &texture);
-        glBindTexture(GL_TEXTURE_2D, texture);
-
-        switch (filtering) {
-            case TextureFiltering::kPoint:
-                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-                break;
-            case TextureFiltering::kBilinear:
-                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-                break;
-            case TextureFiltering::kTrilinear:
-                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-                break;
-            case TextureFiltering::kAnisotropic:
-                GLfloat maxAniso = 0.0f;
-                glGetFloatv(GL_MAX_TEXTURE_MAX_ANISOTROPY_EXT, &maxAniso);
-                glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAX_ANISOTROPY_EXT, maxAniso);
-                break;
-        }
-
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-
+    if (!textures_.count(filename)) {
         int width, height, nrChannels;
-        unsigned char *data = stbi_load(filename.c_str(), &width, &height, &nrChannels, 4);
+        unsigned char *data = stbi_load(fullFilename.c_str(), &width, &height, &nrChannels, 4);
         if (data) {
-            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
-            glGenerateMipmap(GL_TEXTURE_2D);
-            textures_[fullFilename] = texture;
+            NS::AutoreleasePool* pPool = NS::AutoreleasePool::alloc()->init();
+            MTL::TextureDescriptor* texDesc = MTL::TextureDescriptor::alloc()->init();
+            texDesc->setWidth(width);
+            texDesc->setHeight(height);
+            texDesc->setPixelFormat(MTL::PixelFormatRGBA8Unorm_sRGB);//(MTL::PixelFormatRGBA8Unorm); // Match the format
+            texDesc->setTextureType(MTL::TextureType2D);
+            texDesc->setStorageMode(MTL::StorageModeShared);
+            texDesc->setUsage(MTL::TextureUsageShaderRead);
+
+            MTL::Texture* texture = device_->newTexture(texDesc);
+            MTL::Region region = MTL::Region(0, 0, width, height);
+            texture->replaceRegion(region, 0, data, width * 4);
+
+            textures_[filename] = texture;
             textureSizes_[texture] = Vector2(width, height);
+            texDesc->release();
+            pPool->release();
         }
         stbi_image_free(data);
-    }*/
+    }
 }
 
-void GraphicsMetal::UnloadTexture(std::string filename, TextureFiltering filtering) {
-    auto fullFilename = GetTextureFullFilename(filename.c_str(), filtering);
-    if (!textures_.count(fullFilename)) {
+void GraphicsMetal::UnloadTexture(std::string filename) {
+    if (!textures_.count(filename)) {
         return;
     }
     for (auto i = textures_.begin(); i != textures_.end(); i++) {
@@ -255,16 +198,15 @@ void GraphicsMetal::UnloadTexture(std::string filename, TextureFiltering filteri
         }
     }
 #ifdef SPDEBUG
-    std::cout << "Texture (" << fullFilename.c_str() << ") unloaded." << std::endl;
+    std::cout << "Texture (" << filename.c_str() << ") unloaded." << std::endl;
 #endif
 }
 
-Vector2 GraphicsMetal::GetTextureSize(std::string filename, TextureFiltering filtering) {
-    auto fullFilename = GetTextureFullFilename(filename.c_str(), filtering);
-    if (!textures_.count(fullFilename)) {
+Vector2 GraphicsMetal::GetTextureSize(std::string filename) {
+    if (!textures_.count(filename)) {
         return Vector2(100.0f, 100.0f);
     }
-    return textureSizes_[textures_[fullFilename]];
+    return textureSizes_[textures_[filename]];
 }
 
 int GraphicsMetal::CreateRenderBatchGroup(int sortOrder) {
@@ -285,78 +227,11 @@ void GraphicsMetal::SubmitRenderBatchGroup(int batchGroup) {
     }
 }
 
-void GraphicsMetal::DrawMesh(Vertex* vertices, unsigned int vertexCount, unsigned short* indices, unsigned int indexCount, std::string textureFullFilename, int sortOrder, BlendMode blendMode, bool isPremultiplied, Matrix4x4 transformMatrix, int batchGroup) {
-    /*glm::mat4 transform;
-    for (int i = 0; i < 4; ++i) {
-        for (int j = 0; j < 4; ++j) {
-            transform[i][j] = transformMatrix.data[i][j];
-        }
-    }
-
-    auto batch = std::make_shared<RenderBatchDataMetal>();
-    batch->drawMode = GL_TRIANGLES;
-    batch->shaderProgram = shaderProgram_;
-    batch->blendMode = blendMode;
-    batch->vertexCount = vertexCount;
-    batch->indexCount = indexCount;
-    batch->sortOrder = sortOrder;
-    batch->isPremultiplied = isPremultiplied;
-    batch->texture = textures_[textureFullFilename];
-    if (!batch->texture) {
-        batch->texture = textures_[GetTextureFullFilename(kSpriteDefault, TextureFiltering::kPoint)];
-#ifdef SPDEBUG
-        std::cerr << "Can't find texture \"" << textureFullFilename << "\"." << std::endl;
-#endif
-    }
-
-    for (int i = 0; i < batch->vertexCount; i++) {
-        batch->vertices.push_back(vertices[i].position.x);
-        batch->vertices.push_back(vertices[i].position.y);
-        batch->vertices.push_back(vertices[i].position.z);
-        batch->vertices.push_back(vertices[i].uv.x);
-        batch->vertices.push_back(vertices[i].uv.y);
-        batch->vertices.push_back(vertices[i].color.r);
-        batch->vertices.push_back(vertices[i].color.g);
-        batch->vertices.push_back(vertices[i].color.b);
-        batch->vertices.push_back(vertices[i].color.a);
-    }
-
-    for (int i = 0; i < batch->indexCount; i++) {
-        batch->indices.push_back(indices[i]);
-    }
-
-    for (int i = 0; i < batch->vertexCount; i++) {
-        batch->matrices.push_back(transform);
-    }
-
-    auto camMat = camera_->GetMatrix();
-    glm::mat4 camMatGLM;
-    for (int i = 0; i < 4; ++i) {
-        for (int j = 0; j < 4; ++j) {
-            camMatGLM[i][j] = camMat.data[i][j];
-        }
-    }
-
-    batch->viewMatrix = camMatGLM;
-    batch->projectionMatrix = projectionMatrix_;
-
-    batch->vertexShaderLocation = vertexShaderLocation_;
-    batch->uVShaderLocation = uVShaderLocation_;
-    batch->colorShaderLocation = colorShaderLocation_;
-    batch->transformMatrixShaderLocation = transformMatrixShaderLocation_;
-    batch->viewMatrixShaderLocation = viewMatrixShaderLocation_;
-    batch->projectionMatrixShaderLocation = projectionMatrixShaderLocation_;
-
-    if (batchGroup >= 0 && batchGroup < (int)renderBatchGroups_.size()) {
-        auto group = renderBatchGroups_[batchGroup];
-        group->AddBatch(batch);
-    }
-    else {
-        renderQueue_->Push(batch);
-    }*/
+void GraphicsMetal::DrawMesh(Vertex* vertices, unsigned int vertexCount, unsigned short* indices, unsigned int indexCount, std::string filename, int sortOrder, BlendMode blendMode, TextureFiltering filtering, bool isPremultiplied, Matrix4x4 transformMatrix, int batchGroup) {
+    
 }
 
-void GraphicsMetal::DrawSprite(Vector2 size, std::string textureFullFilename, Matrix4x4 transformMatrix, Color color, int sortOrder, BlendMode blendMode, bool isPremultiplied, Vector2 uvLowerLeft, Vector2 uvUpperRight, int batchGroup) {
+void GraphicsMetal::DrawSprite(Vector2 size, std::string filename, Matrix4x4 transformMatrix, Color color, int sortOrder, BlendMode blendMode, TextureFiltering filtering, bool isPremultiplied, Vector2 uvLowerLeft, Vector2 uvUpperRight, int batchGroup) {
     float halfWidth = size.x * 0.5f;
     float halfHeight = size.y * 0.5f;
 
@@ -379,11 +254,22 @@ void GraphicsMetal::DrawSprite(Vector2 size, std::string textureFullFilename, Ma
         2, 3, 0
     };
 
-    DrawMesh(vertices, 4, indices, 6, textureFullFilename, sortOrder, blendMode, isPremultiplied, transformMatrix, batchGroup);
+    DrawMesh(vertices, 4, indices, 6, filename, sortOrder, blendMode, filtering, isPremultiplied, transformMatrix, batchGroup);
 }
 
 void GraphicsMetal::Draw() {
     NS::AutoreleasePool* pPool = NS::AutoreleasePool::alloc()->init();
+    
+    MTL::SamplerDescriptor* samplerDesc = MTL::SamplerDescriptor::alloc()->init();
+    // Configure sampler descriptor...
+    samplerDesc->setMinFilter(MTL::SamplerMinMagFilterLinear);
+    samplerDesc->setMagFilter(MTL::SamplerMinMagFilterLinear);
+    samplerDesc->setSAddressMode(MTL::SamplerAddressModeClampToEdge);
+    samplerDesc->setTAddressMode(MTL::SamplerAddressModeClampToEdge);
+
+    MTL::SamplerState* samplerState = device_->newSamplerState(samplerDesc);
+    
+    
 
     MTL::CommandBuffer* cmd = commandQueue_->commandBuffer();
     MTL::RenderPassDescriptor* pRpd = view_->currentRenderPassDescriptor();
@@ -395,17 +281,23 @@ void GraphicsMetal::Draw() {
     pEnc->setVertexBuffer(vertexColorsBuffer_, 0, 2);
     pEnc->setVertexBuffer(transformBuffer_, 0, 3);
     pEnc->setVertexBuffer(uniformsBuffer_, 0, 4);
+    pEnc->setFragmentTexture(textures_["logo.png"], 0);
+    pEnc->setFragmentSamplerState(samplerState, 0);
     pEnc->drawIndexedPrimitives(MTL::PrimitiveType::PrimitiveTypeTriangle, NS::UInteger(6), MTL::IndexTypeUInt16, indexBuffer_, NS::UInteger(0), NS::UInteger(1));
 
     pEnc->endEncoding();
     cmd->presentDrawable( view_->currentDrawable() );
     cmd->commit();
 
+    samplerDesc->release();
+    samplerState->release();
     pPool->release();
 }
 
 void GraphicsMetal::BuildShaders() {
     using NS::StringEncoding::UTF8StringEncoding;
+    
+    NS::AutoreleasePool* pPool = NS::AutoreleasePool::alloc()->init();
 
     const char* shaderSrc = R"(
         #include <metal_stdlib>
@@ -437,9 +329,11 @@ void GraphicsMetal::BuildShaders() {
             return o;
         }
 
-        half4 fragment fragmentMain( VertexOut in [[stage_in]] )
+        half4 fragment fragmentMain(    texture2d<float> texture [[texture(0)]],
+                                        sampler s [[sampler(0)]],
+                                        VertexOut in [[stage_in]] )
         {
-            return half4(in.color);
+            return half4(texture.sample(s, in.texCoord)) * in.color;
         }
     )";
 
@@ -463,8 +357,8 @@ void GraphicsMetal::BuildShaders() {
     colorDesc->setBlendingEnabled(true);
     colorDesc->setRgbBlendOperation(MTL::BlendOperationAdd);
     colorDesc->setAlphaBlendOperation(MTL::BlendOperationAdd);
-    colorDesc->setSourceRGBBlendFactor(MTL::BlendFactorSourceAlpha);
-    colorDesc->setSourceAlphaBlendFactor(MTL::BlendFactorSourceAlpha);
+    colorDesc->setSourceRGBBlendFactor(MTL::BlendFactorOne);
+    colorDesc->setSourceAlphaBlendFactor(MTL::BlendFactorOne);
     colorDesc->setDestinationRGBBlendFactor(MTL::BlendFactorOneMinusSourceAlpha);
     colorDesc->setDestinationAlphaBlendFactor(MTL::BlendFactorOneMinusSourceAlpha);
 
@@ -479,6 +373,7 @@ void GraphicsMetal::BuildShaders() {
     pFragFn->release();
     pDesc->release();
     pLibrary->release();
+    pPool->release();
 }
 
 struct Uniforms {
@@ -487,9 +382,10 @@ struct Uniforms {
 };
 
 void GraphicsMetal::BuildBuffers() {
+    NS::AutoreleasePool* pPool = NS::AutoreleasePool::alloc()->init();
     const size_t numVertices = 4;
-    float halfWidth = 150.0f;
-    float halfHeight = 150.0f;
+    float halfWidth = 900.0f;
+    float halfHeight = 900.0f;
 
     simd::float3 positions[numVertices] =
     {
@@ -501,18 +397,18 @@ void GraphicsMetal::BuildBuffers() {
 
     simd::float2 uvs[numVertices] =
     {
-        { 0.0f,  0.0f },
-        { 0.0f,  0.0f },
-        { 0.0f,  0.0f },
+        { 1.0f,  0.0f },
+        { 1.0f,  1.0f },
+        { 0.0f,  1.0f },
         { 0.0f,  0.0f }
     };
 
     simd::float4 colors[numVertices] =
     {
-        { 0.0f, 1.0f, 0.0f, 1.0f },
-        { 0.0f, 1.0f, 0.0f, 0.0f },
-        { 0.0f, 1.0f, 0.0f, 1.0f },
-        { 0.0f, 1.0f, 0.0f, 0.0f }
+        { 1.0f, 1.0f, 1.0f, 1.0f },
+        { 1.0f, 1.0f, 1.0f, 1.0f },
+        { 1.0f, 1.0f, 1.0f, 1.0f },
+        { 1.0f, 1.0f, 1.0f, 1.0f }
     };
     
     simd::float4x4 transform = simd::float4x4(1.0f);
@@ -561,5 +457,6 @@ void GraphicsMetal::BuildBuffers() {
     vertexColorsBuffer_->didModifyRange(NS::Range::Make(0, vertexColorsBuffer_->length()));
     transformBuffer_->didModifyRange(NS::Range::Make(0, transformBuffer_->length()));
     uniformsBuffer_->didModifyRange(NS::Range::Make(0, uniformsBuffer_->length()));
+    pPool->release();
 }
 }   // namespace snowpulse
