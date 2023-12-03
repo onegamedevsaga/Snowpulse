@@ -17,7 +17,50 @@
 
 namespace snowpulse {
 
+struct Uniforms {
+    simd::float4x4 projection;
+    simd::float4x4 view;
+};
+
 const char* kSpriteDefault = "sprites/sprite_default.png";
+
+const char* kShaderSrc = R"(
+    #include <metal_stdlib>
+    using namespace metal;
+
+    struct Uniforms {
+        float4x4 projection;
+        float4x4 view;
+    };
+
+    struct VertexOut
+    {
+        float4 position [[position]];
+        float2 texCoord;
+        half4 color;
+    };
+
+    VertexOut vertex vertexMain(    uint vertexId [[vertex_id]],
+                                    device const float3* positions [[buffer(0)]],
+                                    device const float2* uv [[buffer(1)]],
+                                    device const float4* colors [[buffer(2)]],
+                                    device const float4x4* transform [[buffer(3)]],
+                                    constant Uniforms& uniforms [[buffer(4)]] )
+    {
+        VertexOut o;
+        o.position = uniforms.projection * uniforms.view * transform[0] * float4(positions[vertexId], 1.0);
+        o.texCoord = float2(uv[vertexId]);
+        o.color = half4(colors[vertexId]);
+        return o;
+    }
+
+    half4 fragment fragmentMain(    texture2d<float> texture [[texture(0)]],
+                                    sampler s [[sampler(0)]],
+                                    VertexOut in [[stage_in]] )
+    {
+        return half4(texture.sample(s, in.texCoord)) * in.color;
+    }
+)";
 
 std::shared_ptr<GraphicsMetal> GraphicsMetal::Create() {
     auto graphics = new GraphicsMetal();
@@ -35,7 +78,6 @@ bool GraphicsMetal::Initialize(const Vector2Int& resolution, const Vector2Int& s
     view_->setClearColor(MTL::ClearColor::Make(0.2f, 0.3f, 0.3f, 1.0));
     device_ = view_->device();
 
-    
     auto ortho = glm::ortho(0.0f, (float)resolution.x, 0.0f, (float)resolution.y, -100.0f, 100.0f);
     for (int i = 0; i < 4; ++i) {
         for (int j = 0; j < 4; ++j) {
@@ -43,51 +85,17 @@ bool GraphicsMetal::Initialize(const Vector2Int& resolution, const Vector2Int& s
         }
     }
 
-    LoadTexture("logo.png", PathType::kAssets);
-    BuildShaders();
-    BuildBuffers();
+    renderQueue_ = RenderQueueMetal::Create();
+    LoadTexture(kSpriteDefault, PathType::kDefaults);
     commandQueue_ = device_->newCommandQueue();
 
-    
-
-    // Compile and link shaders
-    /*GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
-    glShaderSource(vertexShader, 1, &kVertexShaderSource, NULL);
-    glCompileShader(vertexShader);
-
-    GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-    glShaderSource(fragmentShader, 1, &kFragmentShaderSource, NULL);
-    glCompileShader(fragmentShader);
-
-    shaderProgram_ = glCreateProgram();
-    glAttachShader(shaderProgram_, vertexShader);
-    glAttachShader(shaderProgram_, fragmentShader);
-    glLinkProgram(shaderProgram_);
-
-    glDeleteShader(vertexShader);
-    glDeleteShader(fragmentShader);
-
-    projectionMatrix_ = glm::ortho(0.0f, (float)resolution.x, 0.0f, (float)resolution.y, -100.0f, 100.0f);
-
-    vertexShaderLocation_ = glGetAttribLocation(shaderProgram_, "position");
-    uVShaderLocation_ = glGetAttribLocation(shaderProgram_, "texCoord");
-    colorShaderLocation_ = glGetAttribLocation(shaderProgram_, "color");
-    transformMatrixShaderLocation_ = glGetAttribLocation(shaderProgram_, "transform");
-    projectionMatrixShaderLocation_ = glGetUniformLocation(shaderProgram_, "projection");
-    viewMatrixShaderLocation_ = glGetUniformLocation(shaderProgram_, "view");
-
-    if (isDepthTesting_) {
-        glEnable(GL_DEPTH_TEST);
-    }
-
-    renderQueue_ = RenderQueueMetal::Create();
-
-    LoadTexture(kSpriteDefault, TextureFiltering::kPoint, PathType::kDefaults);
+    BuildShaders();
+    BuildBuffers();
 
 #ifdef SPDEBUG
     std::cout << "GraphicsMetal initialized." << std::endl;
 #endif
-*/
+
     return true;
 }
 
@@ -100,7 +108,7 @@ void GraphicsMetal::Shutdown() {
 #ifdef SPDEBUG
     std::cout << "GraphicsMetal shutdown." << std::endl;
 #endif
-    
+
     indexBuffer_->release();
     vertexPositionsBuffer_->release();
     vertexUVsBuffer_->release();
@@ -258,101 +266,57 @@ void GraphicsMetal::DrawSprite(Vector2 size, std::string filename, Matrix4x4 tra
 }
 
 void GraphicsMetal::Draw() {
-    NS::AutoreleasePool* pPool = NS::AutoreleasePool::alloc()->init();
+    NS::AutoreleasePool* pool = NS::AutoreleasePool::alloc()->init();
     
     MTL::SamplerDescriptor* samplerDesc = MTL::SamplerDescriptor::alloc()->init();
-    // Configure sampler descriptor...
     samplerDesc->setMinFilter(MTL::SamplerMinMagFilterLinear);
     samplerDesc->setMagFilter(MTL::SamplerMinMagFilterLinear);
     samplerDesc->setSAddressMode(MTL::SamplerAddressModeClampToEdge);
     samplerDesc->setTAddressMode(MTL::SamplerAddressModeClampToEdge);
 
     MTL::SamplerState* samplerState = device_->newSamplerState(samplerDesc);
-    
-    
+    MTL::CommandBuffer* commandBuffer = commandQueue_->commandBuffer();
+    MTL::RenderPassDescriptor* renderPassDesc = view_->currentRenderPassDescriptor();
+    MTL::RenderCommandEncoder* commandEncoder = commandBuffer->renderCommandEncoder(renderPassDesc);
 
-    MTL::CommandBuffer* cmd = commandQueue_->commandBuffer();
-    MTL::RenderPassDescriptor* pRpd = view_->currentRenderPassDescriptor();
-    MTL::RenderCommandEncoder* pEnc = cmd->renderCommandEncoder( pRpd );
+    commandEncoder->setRenderPipelineState(renderPipelineState_);
+    commandEncoder->setVertexBuffer(vertexPositionsBuffer_, 0, 0);
+    commandEncoder->setVertexBuffer(vertexUVsBuffer_, 0, 1);
+    commandEncoder->setVertexBuffer(vertexColorsBuffer_, 0, 2);
+    commandEncoder->setVertexBuffer(transformBuffer_, 0, 3);
+    commandEncoder->setVertexBuffer(uniformsBuffer_, 0, 4);
+    commandEncoder->setFragmentTexture(textures_["logo.png"], 0);
+    commandEncoder->setFragmentSamplerState(samplerState, 0);
+    commandEncoder->drawIndexedPrimitives(MTL::PrimitiveType::PrimitiveTypeTriangle, NS::UInteger(6), MTL::IndexTypeUInt16, indexBuffer_, NS::UInteger(0), NS::UInteger(1));
 
-    pEnc->setRenderPipelineState(renderPipelineState_);
-    pEnc->setVertexBuffer(vertexPositionsBuffer_, 0, 0);
-    pEnc->setVertexBuffer(vertexUVsBuffer_, 0, 1);
-    pEnc->setVertexBuffer(vertexColorsBuffer_, 0, 2);
-    pEnc->setVertexBuffer(transformBuffer_, 0, 3);
-    pEnc->setVertexBuffer(uniformsBuffer_, 0, 4);
-    pEnc->setFragmentTexture(textures_["logo.png"], 0);
-    pEnc->setFragmentSamplerState(samplerState, 0);
-    pEnc->drawIndexedPrimitives(MTL::PrimitiveType::PrimitiveTypeTriangle, NS::UInteger(6), MTL::IndexTypeUInt16, indexBuffer_, NS::UInteger(0), NS::UInteger(1));
-
-    pEnc->endEncoding();
-    cmd->presentDrawable( view_->currentDrawable() );
-    cmd->commit();
+    commandEncoder->endEncoding();
+    commandBuffer->presentDrawable(view_->currentDrawable());
+    commandBuffer->commit();
 
     samplerDesc->release();
     samplerState->release();
-    pPool->release();
+    pool->release();
 }
 
 void GraphicsMetal::BuildShaders() {
     using NS::StringEncoding::UTF8StringEncoding;
-    
-    NS::AutoreleasePool* pPool = NS::AutoreleasePool::alloc()->init();
+    NS::AutoreleasePool* pool = NS::AutoreleasePool::alloc()->init();
 
-    const char* shaderSrc = R"(
-        #include <metal_stdlib>
-        using namespace metal;
-
-        struct Uniforms {
-            float4x4 projection;
-            float4x4 view;
-        };
-
-        struct VertexOut
-        {
-            float4 position [[position]];
-            float2 texCoord;
-            half4 color;
-        };
-
-        VertexOut vertex vertexMain(    uint vertexId [[vertex_id]],
-                                        device const float3* positions [[buffer(0)]],
-                                        device const float2* uv [[buffer(1)]],
-                                        device const float4* colors [[buffer(2)]],
-                                        device const float4x4* transform [[buffer(3)]],
-                                        constant Uniforms& uniforms [[buffer(4)]] )
-        {
-            VertexOut o;
-            o.position = uniforms.projection * uniforms.view * transform[0] * float4(positions[vertexId], 1.0);
-            o.texCoord = float2(uv[vertexId]);
-            o.color = half4(colors[vertexId]);
-            return o;
-        }
-
-        half4 fragment fragmentMain(    texture2d<float> texture [[texture(0)]],
-                                        sampler s [[sampler(0)]],
-                                        VertexOut in [[stage_in]] )
-        {
-            return half4(texture.sample(s, in.texCoord)) * in.color;
-        }
-    )";
-
-    NS::Error* pError = nullptr;
-    MTL::Library* pLibrary = device_->newLibrary( NS::String::string(shaderSrc, UTF8StringEncoding), nullptr, &pError );
-    if ( !pLibrary )
-    {
-        __builtin_printf( "%s", pError->localizedDescription()->utf8String() );
-        assert( false );
+    NS::Error* error = SPNULL;
+    MTL::Library* library = device_->newLibrary(NS::String::string(kShaderSrc, UTF8StringEncoding), SPNULL, &error);
+    if (!library) {
+        __builtin_printf("%s", error->localizedDescription()->utf8String());
+        assert(false);
     }
 
-    MTL::Function* pVertexFn = pLibrary->newFunction( NS::String::string("vertexMain", UTF8StringEncoding) );
-    MTL::Function* pFragFn = pLibrary->newFunction( NS::String::string("fragmentMain", UTF8StringEncoding) );
+    MTL::Function* vertexFn = library->newFunction(NS::String::string("vertexMain", UTF8StringEncoding));
+    MTL::Function* fragFn = library->newFunction(NS::String::string("fragmentMain", UTF8StringEncoding));
 
-    MTL::RenderPipelineDescriptor* pDesc = MTL::RenderPipelineDescriptor::alloc()->init();
-    pDesc->setVertexFunction( pVertexFn );
-    pDesc->setFragmentFunction( pFragFn );
+    MTL::RenderPipelineDescriptor* renderPipelineDesc = MTL::RenderPipelineDescriptor::alloc()->init();
+    renderPipelineDesc->setVertexFunction(vertexFn);
+    renderPipelineDesc->setFragmentFunction(fragFn);
 
-    auto colorDesc = pDesc->colorAttachments()->object(0);
+    auto colorDesc = renderPipelineDesc->colorAttachments()->object(0);
     colorDesc->setPixelFormat(view_->colorPixelFormat());
     colorDesc->setBlendingEnabled(true);
     colorDesc->setRgbBlendOperation(MTL::BlendOperationAdd);
@@ -362,55 +326,46 @@ void GraphicsMetal::BuildShaders() {
     colorDesc->setDestinationRGBBlendFactor(MTL::BlendFactorOneMinusSourceAlpha);
     colorDesc->setDestinationAlphaBlendFactor(MTL::BlendFactorOneMinusSourceAlpha);
 
-    renderPipelineState_ = device_->newRenderPipelineState( pDesc, &pError );
-    if ( !renderPipelineState_ )
-    {
-        __builtin_printf( "%s", pError->localizedDescription()->utf8String() );
+    renderPipelineState_ = device_->newRenderPipelineState(renderPipelineDesc, &error);
+    if (!renderPipelineState_) {
+        __builtin_printf("%s", error->localizedDescription()->utf8String());
         assert( false );
     }
 
-    pVertexFn->release();
-    pFragFn->release();
-    pDesc->release();
-    pLibrary->release();
-    pPool->release();
+    vertexFn->release();
+    fragFn->release();
+    renderPipelineDesc->release();
+    library->release();
+    pool->release();
 }
 
-struct Uniforms {
-    simd::float4x4 projection;
-    simd::float4x4 view;
-};
-
 void GraphicsMetal::BuildBuffers() {
-    NS::AutoreleasePool* pPool = NS::AutoreleasePool::alloc()->init();
+    NS::AutoreleasePool* pool = NS::AutoreleasePool::alloc()->init();
     const size_t numVertices = 4;
     float halfWidth = 900.0f;
     float halfHeight = 900.0f;
 
-    simd::float3 positions[numVertices] =
-    {
+    simd::float3 positions[numVertices] = {
         {  halfWidth,  halfHeight, 0.0f },
         {  halfWidth, -halfHeight, 0.0f },
         { -halfWidth, -halfHeight, 0.0f },
         { -halfWidth,  halfHeight, 0.0f }
     };
 
-    simd::float2 uvs[numVertices] =
-    {
+    simd::float2 uvs[numVertices] = {
         { 1.0f,  0.0f },
         { 1.0f,  1.0f },
         { 0.0f,  1.0f },
         { 0.0f,  0.0f }
     };
 
-    simd::float4 colors[numVertices] =
-    {
+    simd::float4 colors[numVertices] = {
         { 1.0f, 1.0f, 1.0f, 1.0f },
         { 1.0f, 1.0f, 1.0f, 1.0f },
         { 1.0f, 1.0f, 1.0f, 1.0f },
         { 1.0f, 1.0f, 1.0f, 1.0f }
     };
-    
+
     simd::float4x4 transform = simd::float4x4(1.0f);
     simd::float4x4 view = simd::float4x4(1.0f);
 
@@ -421,7 +376,7 @@ void GraphicsMetal::BuildBuffers() {
             view.columns[i][j] = cameraView.data[i][j];
         }
     }
-    
+
     uint16_t indices[] = {
         0, 1, 2,
         2, 3, 0
@@ -457,6 +412,6 @@ void GraphicsMetal::BuildBuffers() {
     vertexColorsBuffer_->didModifyRange(NS::Range::Make(0, vertexColorsBuffer_->length()));
     transformBuffer_->didModifyRange(NS::Range::Make(0, transformBuffer_->length()));
     uniformsBuffer_->didModifyRange(NS::Range::Make(0, uniformsBuffer_->length()));
-    pPool->release();
+    pool->release();
 }
 }   // namespace snowpulse

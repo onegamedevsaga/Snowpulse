@@ -51,7 +51,7 @@ void RenderQueueMetal::SortBatches() {
 }
 
 void RenderQueueMetal::GroupBatches(std::vector<std::shared_ptr<RenderBatch>>& batches) {
-    /*auto duplicate = std::move(batches);
+    auto duplicate = std::move(batches);
     batches.clear();
     bool addNewBatch = true;
     for (const auto& b : duplicate) {
@@ -85,9 +85,8 @@ void RenderQueueMetal::GroupBatches(std::vector<std::shared_ptr<RenderBatch>>& b
                 for (const auto& i : batch->indices) {
                     prevBatch->indices.push_back(prevBatch->vertexCount + i);
                 }
-                for (const auto& m : batch->matrices) {
-                    prevBatch->matrices.push_back(m);
-                }
+
+                prevBatch->transformMatrix = batch->transformMatrix;
                 prevBatch->vertexCount += batch->vertexCount;
                 prevBatch->indexCount += batch->indexCount;
             }
@@ -95,6 +94,6 @@ void RenderQueueMetal::GroupBatches(std::vector<std::shared_ptr<RenderBatch>>& b
                 batches.push_back(b);
             }
         }
-    }*/
+    }
 }
 }   // namespace snowpulse

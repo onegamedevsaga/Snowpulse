@@ -60,19 +60,6 @@ class SNOWPULSEAPI GraphicsMetal : public Graphics {
         void BuildShaders();
         void BuildBuffers();
 
-        /*GLuint shaderProgram_;
-        glm::mat4 projectionMatrix_;
-        GLuint vertexShaderLocation_;
-        GLuint uVShaderLocation_;
-        GLuint colorShaderLocation_;
-        GLuint transformMatrixShaderLocation_;
-        GLuint projectionMatrixShaderLocation_;
-        GLuint viewMatrixShaderLocation_;*/
-        
-        
-        
-        
-
         MTK::View* view_;
         MTL::Device* device_;
         MTL::CommandQueue* commandQueue_;

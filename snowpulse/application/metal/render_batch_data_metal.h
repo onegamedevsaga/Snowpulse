@@ -6,11 +6,15 @@
 
 #include <memory>
 #include <vector>
-//#include <glad/glad.h>
-//#include <GLFW/glfw3.h>
-#include <glm/glm.hpp>
+#include <simd/simd.h>
 
 #include "../../common/blend_mode.h"
+#include "../../common/texture_filtering.h"
+
+
+namespace MTL {
+class Texture;
+}
 
 namespace snowpulse {
 class SNOWPULSEAPI RenderBatchDataMetal : public RenderBatch {
@@ -18,33 +22,29 @@ class SNOWPULSEAPI RenderBatchDataMetal : public RenderBatch {
         RenderBatchDataMetal() : RenderBatch(RenderBatchType::kData) { }
         ~RenderBatchDataMetal() { }
 
-        unsigned int vertexPlusUVPlusColorCount = 9;
-        unsigned int vertexSectionCount = 3;
-        unsigned int uVSectionCount = 2;
-        unsigned int colorSectionCount = 4;
-
-        /*GLenum drawMode;
-        GLuint shaderProgram;
+        int drawMode;
+        std::string shaderProgram;
         BlendMode blendMode;
-        GLsizei vertexCount;
-        GLsizei indexCount;
+        TextureFiltering textureFiltering;
+        unsigned int vertexCount;
+        unsigned int indexCount;
 
         std::vector<float> vertices;
-        std::vector<unsigned short> indices;
-        std::vector<glm::mat4> matrices;
+        std::vector<unsigned int> indices;
+        simd::float4x4 transformMatrix;
 
-        GLuint vertexShaderLocation;
-        GLuint uVShaderLocation;
-        GLuint transformMatrixShaderLocation;
-        GLuint colorShaderLocation;
-        GLuint viewMatrixShaderLocation;
-        GLuint projectionMatrixShaderLocation;
+        unsigned int positionBufferIndex;
+        unsigned int uVBufferIndex;
+        unsigned int colorBufferIndex;
+        unsigned int transformBufferIndex;
+        unsigned int uniformsBufferIndex;
+        unsigned int projectionMatrixShaderLocation;
 
-        glm::mat4 viewMatrix;
-        glm::mat4 projectionMatrix;
+        simd::float4x4 viewMatrix;
+        simd::float4x4 projectionMatrix;
 
         bool isPremultiplied;
-        GLuint texture;*/
+        MTL::Texture* texture;
 };
 }   // namespace snowpulse
 #endif
