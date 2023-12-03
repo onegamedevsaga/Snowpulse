@@ -14,33 +14,34 @@
 
 @implementation GameViewController
 {
-    MTKView *_view;
+    MTKView* view_;
 
-    Renderer *_renderer;
+    //Renderer *_renderer;
+    std::shared_ptr<game::Game> game_;
+    snowpulse::ApplicationIOS* app_;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
-    _view = (MTKView *)self.view;
+    view_ = (MTKView *)self.view;
+    view_.device = MTLCreateSystemDefaultDevice();
+    view_.backgroundColor = UIColor.greenColor;
 
-    _view.device = MTLCreateSystemDefaultDevice();
-    _view.backgroundColor = UIColor.greenColor;
-
-    if(!_view.device)
+    if(!view_.device)
     {
         NSLog(@"Metal is not supported on this device");
         self.view = [[UIView alloc] initWithFrame:self.view.frame];
         return;
     }
     
-    auto game = game::Game::Create();
-    auto app = static_cast<snowpulse::ApplicationIOS*>(snowpulse::Application::GetInstance());
+    game_ = game::Game::Create();
+    app_ = static_cast<snowpulse::ApplicationIOS*>(snowpulse::Application::GetInstance());
 
-    if (app->Initialize(snowpulse::Vector2Int(1242, 2688), (__bridge void*)_view)) {
-        app->SetGame(game.get());
-        game->Initialize(app);
+    if (app_->Initialize(snowpulse::Vector2Int(1242, 2688), (__bridge void*)view_)) {
+        app_->SetGame(game_.get());
+        game_->Initialize(app_);
     }
     
     
@@ -50,6 +51,11 @@
     //[_renderer mtkView:_view drawableSizeWillChange:_view.bounds.size];
 
     //_view.delegate = _renderer;
+}
+
+
+- (void)dealloc {
+    app_->Shutdown();
 }
 
 @end

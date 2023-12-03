@@ -17,11 +17,6 @@
 
 namespace snowpulse {
 
-struct Uniforms {
-    simd::float4x4 projection;
-    simd::float4x4 view;
-};
-
 const char* kSpriteDefault = "sprites/sprite_default.png";
 
 const char* kShaderSrc = R"(
@@ -87,10 +82,9 @@ bool GraphicsMetal::Initialize(const Vector2Int& resolution, const Vector2Int& s
 
     renderQueue_ = RenderQueueMetal::Create();
     LoadTexture(kSpriteDefault, PathType::kDefaults);
-    commandQueue_ = device_->newCommandQueue();
 
-    BuildShaders();
-    BuildBuffers();
+    //BuildShaders();
+    //BuildBuffers();
 
 #ifdef SPDEBUG
     std::cout << "GraphicsMetal initialized." << std::endl;
@@ -267,7 +261,7 @@ void GraphicsMetal::DrawSprite(Vector2 size, std::string filename, Matrix4x4 tra
 
 void GraphicsMetal::Draw() {
     NS::AutoreleasePool* pool = NS::AutoreleasePool::alloc()->init();
-    
+
     MTL::SamplerDescriptor* samplerDesc = MTL::SamplerDescriptor::alloc()->init();
     samplerDesc->setMinFilter(MTL::SamplerMinMagFilterLinear);
     samplerDesc->setMagFilter(MTL::SamplerMinMagFilterLinear);
@@ -394,17 +388,17 @@ void GraphicsMetal::BuildBuffers() {
     vertexColorsBuffer_ = device_->newBuffer(colorDataSize, MTL::StorageModeShared);
     transformBuffer_ = device_->newBuffer(transformDataSize, MTL::StorageModeShared);
 
-    Uniforms uniforms;
-    uniforms.projection = projectionMatrix_;
-    uniforms.view = view;
-    uniformsBuffer_ = device_->newBuffer(sizeof(Uniforms), MTL::StorageModeShared);
+    //Uniforms uniforms;
+    //uniforms.projection = projectionMatrix_;
+    //uniforms.view = view;
+    //uniformsBuffer_ = device_->newBuffer(sizeof(Uniforms), MTL::StorageModeShared);
 
     memcpy(indexBuffer_->contents(), indices, indicesDataSize);
     memcpy(vertexPositionsBuffer_->contents(), positions, positionsDataSize);
     memcpy(vertexUVsBuffer_->contents(), uvs, uvsDataSize);
     memcpy(vertexColorsBuffer_->contents(), colors, colorDataSize);
     memcpy(transformBuffer_->contents(), &transform, transformDataSize);
-    memcpy(uniformsBuffer_->contents(), &uniforms, sizeof(Uniforms));
+    //memcpy(uniformsBuffer_->contents(), &uniforms, sizeof(Uniforms));
 
     indexBuffer_->didModifyRange(NS::Range::Make(0, indexBuffer_->length()));
     vertexPositionsBuffer_->didModifyRange(NS::Range::Make(0, vertexPositionsBuffer_->length()));

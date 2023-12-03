@@ -29,8 +29,10 @@ class SNOWPULSEAPI RenderBatchDataMetal : public RenderBatch {
         unsigned int vertexCount;
         unsigned int indexCount;
 
-        std::vector<float> vertices;
-        std::vector<unsigned int> indices;
+        std::vector<simd::float3> vertices;
+        std::vector<simd::float2> uvs;
+        std::vector<simd::float4> colors;
+        std::vector<uint16_t> indices;
         simd::float4x4 transformMatrix;
 
         unsigned int positionBufferIndex;

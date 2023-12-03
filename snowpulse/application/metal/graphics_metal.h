@@ -40,6 +40,7 @@ class SNOWPULSEAPI GraphicsMetal : public Graphics {
         bool Initialize(const Vector2Int& resolution, const Vector2Int& screenSize, void* view);
         void Shutdown() override;
 
+        MTL::Device* GetDevice() const { return device_; }
         RenderQueueMetal* GetRenderQueue() const { return renderQueue_.get(); }
 
         // Graphics
