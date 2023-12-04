@@ -72,6 +72,7 @@ bool GraphicsMetal::Initialize(const Vector2Int& resolution, const Vector2Int& s
     view_->setColorPixelFormat(MTL::PixelFormatBGRA8Unorm_sRGB);
     view_->setClearColor(MTL::ClearColor::Make(0.2f, 0.3f, 0.3f, 1.0));
     device_ = view_->device();
+    commandQueue_ = device_->newCommandQueue();
 
     auto ortho = glm::ortho(0.0f, (float)resolution.x, 0.0f, (float)resolution.y, -100.0f, 100.0f);
     for (int i = 0; i < 4; ++i) {
@@ -82,9 +83,6 @@ bool GraphicsMetal::Initialize(const Vector2Int& resolution, const Vector2Int& s
 
     renderQueue_ = RenderQueueMetal::Create();
     LoadTexture(kSpriteDefault, PathType::kDefaults);
-
-    //BuildShaders();
-    //BuildBuffers();
 
 #ifdef SPDEBUG
     std::cout << "GraphicsMetal initialized." << std::endl;
@@ -103,13 +101,6 @@ void GraphicsMetal::Shutdown() {
     std::cout << "GraphicsMetal shutdown." << std::endl;
 #endif
 
-    indexBuffer_->release();
-    vertexPositionsBuffer_->release();
-    vertexUVsBuffer_->release();
-    vertexColorsBuffer_->release();
-    transformBuffer_->release();
-    uniformsBuffer_->release();
-    renderPipelineState_->release();
     commandQueue_->release();
     device_->release();
 }
@@ -229,11 +220,71 @@ void GraphicsMetal::SubmitRenderBatchGroup(int batchGroup) {
     }
 }
 
-void GraphicsMetal::DrawMesh(Vertex* vertices, unsigned int vertexCount, unsigned short* indices, unsigned int indexCount, std::string filename, int sortOrder, BlendMode blendMode, TextureFiltering filtering, bool isPremultiplied, Matrix4x4 transformMatrix, int batchGroup) {
-    
+void GraphicsMetal::DrawMesh(Vertex* vertices, unsigned int vertexCount, unsigned short* indices, unsigned int indexCount, std::string textureFilename, int sortOrder, BlendMode blendMode, TextureFiltering filtering, bool isPremultiplied, Matrix4x4 transformMatrix, int batchGroup) {
+    auto batch = std::make_shared<RenderBatchDataMetal>();
+    batch->drawMode = MTL::PrimitiveType::PrimitiveTypeTriangle;
+    batch->shaderProgram = kShaderSrc;
+    batch->blendMode = blendMode;
+    batch->textureFiltering = filtering;
+    batch->vertexCount = vertexCount;
+    batch->indexCount = indexCount;
+    batch->sortOrder = sortOrder;
+    batch->isPremultiplied = isPremultiplied;
+    batch->texture = textures_[textureFilename];
+    if (!batch->texture) {
+        batch->texture = textures_[kSpriteDefault];
+#ifdef SPDEBUG
+        std::cerr << "Can't find texture \"" << textureFilename << "\"." << std::endl;
+#endif
+    }
+
+    for (int i = 0; i < batch->vertexCount; i++) {
+        auto pos = vertices[i].position;
+        auto uv = vertices[i].uv;
+        auto color = vertices[i].color;
+        simd::float3 v = { pos.x, pos.y, pos.z };
+        simd::float2 u { uv.x, uv.y };
+        simd::float4 c { color.r, color.g, color.b, color.a };
+
+        batch->vertices.push_back(v);
+        batch->uvs.push_back(u);
+        batch->colors.push_back(c);
+    }
+
+    for (int i = 0; i < batch->indexCount; i++) {
+        batch->indices.push_back(indices[i]);
+    }
+
+    for (int i = 0; i < 4; ++i) {
+        for (int j = 0; j < 4; ++j) {
+            batch->transformMatrix.columns[i][j] = transformMatrix.data[i][j];
+        }
+    }
+
+    auto cameraView = camera_->GetMatrix();
+    for (int i = 0; i < 4; ++i) {
+        for (int j = 0; j < 4; ++j) {
+            batch->viewMatrix.columns[i][j] = cameraView.data[i][j];
+        }
+    }
+
+    batch->projectionMatrix = projectionMatrix_;
+    batch->positionBufferIndex = 0;
+    batch->uVBufferIndex = 1;
+    batch->colorBufferIndex = 2;
+    batch->transformBufferIndex = 3;
+    batch->uniformsBufferIndex = 4;
+
+    if (batchGroup >= 0 && batchGroup < (int)renderBatchGroups_.size()) {
+        auto group = renderBatchGroups_[batchGroup];
+        group->AddBatch(batch);
+    }
+    else {
+        renderQueue_->Push(batch);
+    }
 }
 
-void GraphicsMetal::DrawSprite(Vector2 size, std::string filename, Matrix4x4 transformMatrix, Color color, int sortOrder, BlendMode blendMode, TextureFiltering filtering, bool isPremultiplied, Vector2 uvLowerLeft, Vector2 uvUpperRight, int batchGroup) {
+void GraphicsMetal::DrawSprite(Vector2 size, std::string textureFilename, Matrix4x4 transformMatrix, Color color, int sortOrder, BlendMode blendMode, TextureFiltering filtering, bool isPremultiplied, Vector2 uvLowerLeft, Vector2 uvUpperRight, int batchGroup) {
     float halfWidth = size.x * 0.5f;
     float halfHeight = size.y * 0.5f;
 
@@ -256,10 +307,10 @@ void GraphicsMetal::DrawSprite(Vector2 size, std::string filename, Matrix4x4 tra
         2, 3, 0
     };
 
-    DrawMesh(vertices, 4, indices, 6, filename, sortOrder, blendMode, filtering, isPremultiplied, transformMatrix, batchGroup);
+    DrawMesh(vertices, 4, indices, 6, textureFilename, sortOrder, blendMode, filtering, isPremultiplied, transformMatrix, batchGroup);
 }
 
-void GraphicsMetal::Draw() {
+/*void GraphicsMetal::Draw() {
     NS::AutoreleasePool* pool = NS::AutoreleasePool::alloc()->init();
 
     MTL::SamplerDescriptor* samplerDesc = MTL::SamplerDescriptor::alloc()->init();
@@ -290,10 +341,10 @@ void GraphicsMetal::Draw() {
     samplerDesc->release();
     samplerState->release();
     pool->release();
-}
+}*/
 
 void GraphicsMetal::BuildShaders() {
-    using NS::StringEncoding::UTF8StringEncoding;
+    /*using NS::StringEncoding::UTF8StringEncoding;
     NS::AutoreleasePool* pool = NS::AutoreleasePool::alloc()->init();
 
     NS::Error* error = SPNULL;
@@ -330,11 +381,11 @@ void GraphicsMetal::BuildShaders() {
     fragFn->release();
     renderPipelineDesc->release();
     library->release();
-    pool->release();
+    pool->release();*/
 }
 
 void GraphicsMetal::BuildBuffers() {
-    NS::AutoreleasePool* pool = NS::AutoreleasePool::alloc()->init();
+    /*NS::AutoreleasePool* pool = NS::AutoreleasePool::alloc()->init();
     const size_t numVertices = 4;
     float halfWidth = 900.0f;
     float halfHeight = 900.0f;
@@ -406,6 +457,6 @@ void GraphicsMetal::BuildBuffers() {
     vertexColorsBuffer_->didModifyRange(NS::Range::Make(0, vertexColorsBuffer_->length()));
     transformBuffer_->didModifyRange(NS::Range::Make(0, transformBuffer_->length()));
     uniformsBuffer_->didModifyRange(NS::Range::Make(0, uniformsBuffer_->length()));
-    pool->release();
+    pool->release();*/
 }
 }   // namespace snowpulse

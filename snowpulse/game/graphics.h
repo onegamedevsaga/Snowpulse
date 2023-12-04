@@ -31,7 +31,7 @@ class SNOWPULSEAPI Graphics {
         virtual void ClearRenderBatchGroups() = 0;
         virtual void SubmitRenderBatchGroup(int batchGroup) = 0;
         virtual void DrawMesh(Vertex* vertices, unsigned int vertexCount, unsigned short* indices, unsigned int indexCount, std::string textureFilename, int sortOrder, BlendMode blendMode, TextureFiltering filtering, bool isPremultiplied, Matrix4x4 transformMatrix, int batchGroup = -1) = 0;
-        virtual void DrawSprite(Vector2 size, std::string filename, Matrix4x4 transformMatrix, Color color = Color::White(), int sortOrder = 0, BlendMode blendMode = BlendMode::kNormal, TextureFiltering filtering = TextureFiltering::kBilinear, bool isPremultiplied = false, Vector2 uvLowerLeft = Vector2(0.0f, 1.0f), Vector2 uvUpperRight = Vector2(1.0f, 0.0f), int batchGroup = -1) = 0;
+        virtual void DrawSprite(Vector2 size, std::string textureFilename, Matrix4x4 transformMatrix, Color color = Color::White(), int sortOrder = 0, BlendMode blendMode = BlendMode::kNormal, TextureFiltering filtering = TextureFiltering::kBilinear, bool isPremultiplied = false, Vector2 uvLowerLeft = Vector2(0.0f, 1.0f), Vector2 uvUpperRight = Vector2(1.0f, 0.0f), int batchGroup = -1) = 0;
 
         Camera* GetCamera() const { return camera_.get(); }
         bool IsDepthTesting() const { return isDepthTesting_; }

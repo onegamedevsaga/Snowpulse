@@ -41,6 +41,7 @@ class SNOWPULSEAPI GraphicsMetal : public Graphics {
         void Shutdown() override;
 
         MTL::Device* GetDevice() const { return device_; }
+        MTL::CommandQueue* GetCommandQueue() const { return commandQueue_; };
         RenderQueueMetal* GetRenderQueue() const { return renderQueue_.get(); }
 
         // Graphics
@@ -51,10 +52,8 @@ class SNOWPULSEAPI GraphicsMetal : public Graphics {
         int CreateRenderBatchGroup(int sortOrder) override;
         void ClearRenderBatchGroups() override;
         void SubmitRenderBatchGroup(int batchGroup) override;
-        void DrawMesh(Vertex* vertices, unsigned int vertexCount, unsigned short* indices, unsigned int indexCount, std::string filename, int sortOrder, BlendMode blendMode, TextureFiltering filtering, bool isPremultiplied, Matrix4x4 transformMatrix, int batchGroup) override;
-        void DrawSprite(Vector2 size, std::string filename, Matrix4x4 transformMatrix, Color color, int sortOrder, BlendMode blendMode, TextureFiltering filtering, bool isPremultiplied, Vector2 uvLowerLeft, Vector2 uvUpperRight, int batchGroup) override;
-    
-        void Draw();
+        void DrawMesh(Vertex* vertices, unsigned int vertexCount, unsigned short* indices, unsigned int indexCount, std::string textureFilename, int sortOrder, BlendMode blendMode, TextureFiltering filtering, bool isPremultiplied, Matrix4x4 transformMatrix, int batchGroup) override;
+        void DrawSprite(Vector2 size, std::string textureFilename, Matrix4x4 transformMatrix, Color color, int sortOrder, BlendMode blendMode, TextureFiltering filtering, bool isPremultiplied, Vector2 uvLowerLeft, Vector2 uvUpperRight, int batchGroup) override;
 
     private:
         GraphicsMetal();
@@ -64,14 +63,6 @@ class SNOWPULSEAPI GraphicsMetal : public Graphics {
         MTK::View* view_;
         MTL::Device* device_;
         MTL::CommandQueue* commandQueue_;
-        MTL::RenderPipelineState* renderPipelineState_;
-        MTL::Buffer* indexBuffer_;
-        MTL::Buffer* vertexPositionsBuffer_;
-        MTL::Buffer* vertexUVsBuffer_;
-        MTL::Buffer* vertexColorsBuffer_;
-        MTL::Buffer* transformBuffer_;
-        MTL::Buffer* uniformsBuffer_;
-
         simd::float4x4 projectionMatrix_;
         std::map<std::string, MTL::Texture*> textures_;
         std::map<MTL::Texture*, Vector2> textureSizes_;

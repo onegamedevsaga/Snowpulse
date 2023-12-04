@@ -56,7 +56,7 @@ void SceneLevel::Start() {
     
     go1_ = snowpulse::GameObject::Create("go1_");
     auto sprRenderer = snowpulse::SpriteRenderer::Create("logo.png");
-    sprRenderer->SetColor(snowpulse::Color(1.0f, 0.0f, 0.0f, 0.5f));
+    sprRenderer->SetColor(snowpulse::Color(1.0f, 1.0f, 1.0f, 1.0f));
     sprRenderer->SetSortOrder(0);
     go1_->AddComponent(sprRenderer);
     AddChild(go1_);
@@ -77,13 +77,11 @@ void SceneLevel::Start() {
     go2_->GetTransform()->SetRotation(0.0f);
 
     go3_ = snowpulse::GameObject::Create("go3_");
-    //auto spineRenderer = snowpulse::SpineRenderer::Create("spine-test/spine-test.json", "spine-test/spine-test.atlas");
     auto spineRenderer = snowpulse::SpineRenderer::Create("hero/hero-pro.json", "hero/hero-pro.atlas");
-    //auto spineRenderer = snowpulse::SpineRenderer::Create("mix-and-match/mix-and-match-pro.json", "mix-and-match/mix-and-match-pro.atlas", snowpulse::TextureFiltering::kAnisotropic);
-    spineRenderer->SetSkin("weapon/morningstar");
+    spineRenderer->SetSkin("weapon/sword");
     spineRenderer->PlayAnimation("run", true);
     spineRenderer->SetSortOrder(4);
-    spineRenderer->SetIsPremultiplied(false);
+    spineRenderer->SetIsPremultiplied(true);
     go3_->AddComponent(spineRenderer);
     AddChild(go3_);
 
@@ -100,9 +98,9 @@ void SceneLevel::Start() {
     spineRenderer->SetSkin("full-skins/boy");
     spineRenderer->PlayAnimation("idle", true);
     spineRenderer->SetSortOrder(3);
-    spineRenderer->SetIsPremultiplied(false);
+    spineRenderer->SetIsPremultiplied(true);
     tempGo->AddComponent(spineRenderer);
-    AddChild(tempGo);
+    //AddChild(tempGo);
 
     tempGo->GetTransform()->SetLocalPosition(snowpulse::Vector2(260.0f, 100.0f));
     tempGo->GetTransform()->SetLocalScale(snowpulse::Vector2(0.7f, 0.7f));

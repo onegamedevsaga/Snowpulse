@@ -82,6 +82,15 @@ void RenderQueueMetal::GroupBatches(std::vector<std::shared_ptr<RenderBatch>>& b
                 for (const auto& v : batch->vertices) {
                     prevBatch->vertices.push_back(v);
                 }
+
+                for (const auto& u : batch->uvs) {
+                    prevBatch->uvs.push_back(u);
+                }
+
+                for (const auto& c : batch->colors) {
+                    prevBatch->colors.push_back(c);
+                }
+
                 for (const auto& i : batch->indices) {
                     prevBatch->indices.push_back(prevBatch->vertexCount + i);
                 }

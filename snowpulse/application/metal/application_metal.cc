@@ -77,9 +77,9 @@ void ApplicationMetal::Shutdown() {
 
 void ApplicationMetal::RunFrame() {
     using NS::StringEncoding::UTF8StringEncoding;
-    NS::AutoreleasePool* pool = NS::AutoreleasePool::alloc()->init();
 
     auto device = graphics_->GetDevice();
+    auto commandQueue = graphics_->GetCommandQueue();
 
     //glfwPollEvents();
 #if SNOWPULSE_PLATFORM_MACOS
@@ -95,6 +95,10 @@ void ApplicationMetal::RunFrame() {
     actionManager_->Update(deltaTime);
     game_->UpdateScene(deltaTime);
     game_->DrawScene(graphics_.get());
+
+    MTL::CommandBuffer* commandBuffer = commandQueue->commandBuffer();
+    MTL::RenderPassDescriptor* renderPassDesc = view_->currentRenderPassDescriptor();
+    MTL::RenderCommandEncoder* commandEncoder = commandBuffer->renderCommandEncoder(renderPassDesc);
 
     auto batches = graphics_->GetRenderQueue()->PopAllData();
     for(auto b : batches) {
@@ -115,7 +119,7 @@ void ApplicationMetal::RunFrame() {
 
         auto colorDesc = renderPipelineDesc->colorAttachments()->object(0);
         colorDesc->setPixelFormat(view_->colorPixelFormat());
-        colorDesc->setBlendingEnabled(b->blendMode == BlendMode::kDisabled);
+        colorDesc->setBlendingEnabled(b->blendMode != BlendMode::kDisabled);
         colorDesc->setRgbBlendOperation(MTL::BlendOperationAdd);
         colorDesc->setAlphaBlendOperation(MTL::BlendOperationAdd);
 
@@ -238,12 +242,8 @@ void ApplicationMetal::RunFrame() {
                 break;
         }
 
-        auto commandQueue = device->newCommandQueue();
+        
         MTL::SamplerState* samplerState = device->newSamplerState(samplerDesc);
-        MTL::CommandBuffer* commandBuffer = commandQueue->commandBuffer();
-        MTL::RenderPassDescriptor* renderPassDesc = view_->currentRenderPassDescriptor();
-        MTL::RenderCommandEncoder* commandEncoder = commandBuffer->renderCommandEncoder(renderPassDesc);
-
         commandEncoder->setRenderPipelineState(renderPipelineState);
         commandEncoder->setVertexBuffer(vertexPositionsBuffer, 0, b->positionBufferIndex);
         commandEncoder->setVertexBuffer(vertexUVsBuffer, 0, b->uVBufferIndex);
@@ -254,9 +254,13 @@ void ApplicationMetal::RunFrame() {
         commandEncoder->setFragmentSamplerState(samplerState, 0);
         commandEncoder->drawIndexedPrimitives((MTL::PrimitiveType)b->drawMode, NS::UInteger(b->indexCount), MTL::IndexTypeUInt16, indexBuffer, NS::UInteger(0), NS::UInteger(1));
 
-        commandEncoder->endEncoding();
-        commandBuffer->presentDrawable(view_->currentDrawable());
-        commandBuffer->commit();
+
+        indexBuffer->release();
+        vertexPositionsBuffer->release();
+        vertexUVsBuffer->release();
+        vertexColorsBuffer->release();
+        transformBuffer->release();
+        uniformsBuffer->release();
 
         samplerDesc->release();
         samplerState->release();
@@ -266,9 +270,12 @@ void ApplicationMetal::RunFrame() {
         library->release();
         renderPipelineState->release();
     }
+    
+    commandEncoder->endEncoding();
+    commandBuffer->presentDrawable(view_->currentDrawable());
+    commandBuffer->commit();
 
     graphics_->ClearRenderBatchGroups();
-    pool->release();
 #ifdef SPDEBUG
      std::cout << "Rendered " << batches.size() << " batch/es." << std::endl;
 #endif

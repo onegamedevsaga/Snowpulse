@@ -40,7 +40,6 @@ class SNOWPULSEAPI RenderBatchDataMetal : public RenderBatch {
         unsigned int colorBufferIndex;
         unsigned int transformBufferIndex;
         unsigned int uniformsBufferIndex;
-        unsigned int projectionMatrixShaderLocation;
 
         simd::float4x4 viewMatrix;
         simd::float4x4 projectionMatrix;
