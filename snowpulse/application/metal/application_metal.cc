@@ -76,8 +76,6 @@ void ApplicationMetal::Shutdown() {
 }
 
 void ApplicationMetal::RunFrame() {
-    using NS::StringEncoding::UTF8StringEncoding;
-
     auto device = graphics_->GetDevice();
     auto commandQueue = graphics_->GetCommandQueue();
 
@@ -96,14 +94,14 @@ void ApplicationMetal::RunFrame() {
     game_->UpdateScene(deltaTime);
     game_->DrawScene(graphics_.get());
 
-    MTL::CommandBuffer* commandBuffer = commandQueue->commandBuffer();
-    MTL::RenderPassDescriptor* renderPassDesc = view_->currentRenderPassDescriptor();
-    MTL::RenderCommandEncoder* commandEncoder = commandBuffer->renderCommandEncoder(renderPassDesc);
+    auto commandBuffer = commandQueue->commandBuffer();
+    auto renderPassDesc = view_->currentRenderPassDescriptor();
+    auto commandEncoder = commandBuffer->renderCommandEncoder(renderPassDesc);
 
     auto batches = graphics_->GetRenderQueue()->PopAllData();
     for(auto b : batches) {
         NS::Error* error = SPNULL;
-        MTL::Library* library = device->newLibrary(NS::String::string(b->shaderProgram.c_str(), UTF8StringEncoding), SPNULL, &error);
+        auto library = device->newLibrary(NS::String::string(b->shaderProgram.c_str(), NS::StringEncoding::UTF8StringEncoding), SPNULL, &error);
         if (!library) {
 #ifdef SPDEBUG
             __builtin_printf("%s", error->localizedDescription()->utf8String());
@@ -111,9 +109,9 @@ void ApplicationMetal::RunFrame() {
 #endif
         }
 
-        MTL::Function* vertexFn = library->newFunction(NS::String::string("vertexMain", UTF8StringEncoding));
-        MTL::Function* fragFn = library->newFunction(NS::String::string("fragmentMain", UTF8StringEncoding));
-        MTL::RenderPipelineDescriptor* renderPipelineDesc = MTL::RenderPipelineDescriptor::alloc()->init();
+        auto vertexFn = library->newFunction(NS::String::string("vertexMain", NS::StringEncoding::UTF8StringEncoding));
+        auto fragFn = library->newFunction(NS::String::string("fragmentMain", NS::StringEncoding::UTF8StringEncoding));
+        auto renderPipelineDesc = MTL::RenderPipelineDescriptor::alloc()->init();
         renderPipelineDesc->setVertexFunction(vertexFn);
         renderPipelineDesc->setFragmentFunction(fragFn);
 
@@ -160,11 +158,6 @@ void ApplicationMetal::RunFrame() {
 #endif
         }
 
-        
-        
-        
-        
-        
         const size_t indicesDataSize = b->indexCount * sizeof(uint16_t);
         const size_t positionsDataSize = b->vertexCount * sizeof(simd::float3);
         const size_t uvsDataSize = b->vertexCount * sizeof(simd::float2);
@@ -216,7 +209,7 @@ void ApplicationMetal::RunFrame() {
         transformBuffer->didModifyRange(NS::Range::Make(0, transformBuffer->length()));
         uniformsBuffer->didModifyRange(NS::Range::Make(0, uniformsBuffer->length()));
 
-        MTL::SamplerDescriptor* samplerDesc = MTL::SamplerDescriptor::alloc()->init();
+        auto samplerDesc = MTL::SamplerDescriptor::alloc()->init();
         samplerDesc->setMinFilter(MTL::SamplerMinMagFilterLinear);
         samplerDesc->setMagFilter(MTL::SamplerMinMagFilterLinear);
         samplerDesc->setSAddressMode(MTL::SamplerAddressModeRepeat);
@@ -242,8 +235,7 @@ void ApplicationMetal::RunFrame() {
                 break;
         }
 
-        
-        MTL::SamplerState* samplerState = device->newSamplerState(samplerDesc);
+        auto samplerState = device->newSamplerState(samplerDesc);
         commandEncoder->setRenderPipelineState(renderPipelineState);
         commandEncoder->setVertexBuffer(vertexPositionsBuffer, 0, b->positionBufferIndex);
         commandEncoder->setVertexBuffer(vertexUVsBuffer, 0, b->uVBufferIndex);
@@ -254,14 +246,12 @@ void ApplicationMetal::RunFrame() {
         commandEncoder->setFragmentSamplerState(samplerState, 0);
         commandEncoder->drawIndexedPrimitives((MTL::PrimitiveType)b->drawMode, NS::UInteger(b->indexCount), MTL::IndexTypeUInt16, indexBuffer, NS::UInteger(0), NS::UInteger(1));
 
-
         indexBuffer->release();
         vertexPositionsBuffer->release();
         vertexUVsBuffer->release();
         vertexColorsBuffer->release();
         transformBuffer->release();
         uniformsBuffer->release();
-
         samplerDesc->release();
         samplerState->release();
         vertexFn->release();
@@ -270,7 +260,7 @@ void ApplicationMetal::RunFrame() {
         library->release();
         renderPipelineState->release();
     }
-    
+
     commandEncoder->endEncoding();
     commandBuffer->presentDrawable(view_->currentDrawable());
     commandBuffer->commit();

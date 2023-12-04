@@ -100,7 +100,7 @@ void SceneLevel::Start() {
     spineRenderer->SetSortOrder(3);
     spineRenderer->SetIsPremultiplied(true);
     tempGo->AddComponent(spineRenderer);
-    //AddChild(tempGo);
+    AddChild(tempGo);
 
     tempGo->GetTransform()->SetLocalPosition(snowpulse::Vector2(260.0f, 100.0f));
     tempGo->GetTransform()->SetLocalScale(snowpulse::Vector2(0.7f, 0.7f));

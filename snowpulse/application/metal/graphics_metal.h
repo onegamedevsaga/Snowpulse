@@ -25,9 +25,6 @@ class View;
 namespace MTL {
 class Device;
 class CommandQueue;
-class RenderPipelineState;
-class Buffer;
-class Texture;
 }
 
 namespace snowpulse {
@@ -57,8 +54,6 @@ class SNOWPULSEAPI GraphicsMetal : public Graphics {
 
     private:
         GraphicsMetal();
-        void BuildShaders();
-        void BuildBuffers();
 
         MTK::View* view_;
         MTL::Device* device_;
