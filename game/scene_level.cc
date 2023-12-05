@@ -139,8 +139,28 @@ void SceneLevel::Update(float deltaTime) {
     auto camMovement = 100.0f * deltaTime;
     //GetCamera()->SetPosition(snowpulse::Vector2(camPos.x + camMovement, camPos.y + camMovement));
      
+    auto touches = snowpulse::Input::GetInstance()->GetTouches();
+    if (touches.size() > 0) {
+        auto touch = touches[0];
+        auto pos = touch.GetPosition();
+        if (touch.GetPhase() == snowpulse::TouchPhase::kBegan) {
+#ifdef SPDEBUG
+            std::cout << "Touch Id:" << touch.GetId() << ": Began - (" << pos.x << ", " << pos.y << ")" << std::endl;
+#endif
+        }
+        else if (touch.GetPhase() == snowpulse::TouchPhase::kMoved) {
+#ifdef SPDEBUG
+            std::cout << "Touch Id:" << touch.GetId() << ": Moved - (" << pos.x << ", " << pos.y << ")" << std::endl;
+#endif
+        }
+        else if (touch.GetPhase() == snowpulse::TouchPhase::kEnded) {
+#ifdef SPDEBUG
+            std::cout << "Touch Id:" << touch.GetId() << ": Ended - (" << pos.x << ", " << pos.y << ")" << std::endl;
+#endif
+        }
+    }
     
-    auto mousePos = snowpulse::Input::GetInstance()->GetInputPosition();
+    snowpulse::Vector2 mousePos;// = snowpulse::Input::GetInstance()->GetPosition();
 #ifdef SPDEBUG
     std::cout << "Mouse Position (" << mousePos.x << ", " << mousePos.y << ")" << std::endl;
 #endif

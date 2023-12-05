@@ -20,7 +20,7 @@ ApplicationOpenGL::~ApplicationOpenGL() {
 }
 
 bool ApplicationOpenGL::Initialize(const Vector2Int& resolutionSize, const Vector2Int& screenSize) {
-    if (Application::Initialize(resolutionSize)) {
+    if (Application::Initialize(resolutionSize, screenSize)) {
 #ifdef SPDEBUG
         std::cout << "Starting GLFW context, OpenGL 4.1" << std::endl;
 #endif

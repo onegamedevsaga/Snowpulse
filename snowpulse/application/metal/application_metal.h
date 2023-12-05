@@ -17,7 +17,7 @@ class ViewDelegateMetal;
 class SNOWPULSEAPI ApplicationMetal : public Application {
     public:
         virtual ~ApplicationMetal();
-        virtual bool Initialize(const Vector2Int& resolutionSize, const Vector2Int& screenSize, void* device);
+        virtual bool Initialize(const Vector2Int& resolutionSize, const Vector2Int& screenSize, void* view);
         virtual void Shutdown() override;
 
         virtual void RunFrame();

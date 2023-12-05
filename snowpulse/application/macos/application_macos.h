@@ -19,13 +19,10 @@ class SNOWPULSEAPI ApplicationMacOS : public ApplicationOpenGL, public Singleton
 
         void Run();
 
-        Vector2Int GetScreenSize() { return screenSize_; }
-
     protected:
         friend class Singleton<ApplicationMacOS>;
         ApplicationMacOS();
 
-        Vector2Int screenSize_;
         DirectoryMacOS* directory_;
         InputMacOS* input_;
 };

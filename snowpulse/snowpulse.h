@@ -22,6 +22,8 @@
 #include "common/color.h"
 #include "common/texture_filtering.h"
 #include "common/vertex.h"
+#include "common/touch.h"
+#include "common/touch_phase.h"
 
 #include "game/graphics.h"
 #include "game/updatable.h"

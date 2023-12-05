@@ -97,10 +97,10 @@ void InputMacOS::ProcessInputs(const Vector2Int& resolutionSize, const Vector2In
 
     double x, y;
     glfwGetCursorPos(window, &x, &y);
-    inputPosition_.x = (float)x;
-    inputPosition_.y = (float)screenSize.y - (float)y;
+    mousePosition_.x = (float)x;
+    mousePosition_.y = (float)screenSize.y - (float)y;
     Vector2 scaleFactor = Vector2((float)resolutionSize.x / (float)screenSize.x, (float)resolutionSize.y / (float)screenSize.y);
-    inputPosition_ *= scaleFactor;
+    mousePosition_ *= scaleFactor;
 }
 
 bool InputMacOS::GetPressed(std::string key) {

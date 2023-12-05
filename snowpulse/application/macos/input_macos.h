@@ -21,13 +21,11 @@ class SNOWPULSEAPI InputMacOS : public Input, public Singleton<InputMacOS> {
         void ProcessInputs(const Vector2Int& resolutionSize, const Vector2Int& screenSize, GLFWwindow* window);
         bool GetPressed(std::string key) override;
         bool GetReleased(std::string key) override;
-        Vector2 GetInputPosition() override { return inputPosition_; }
 
     protected:
         friend class Singleton<InputMacOS>;
         InputMacOS();
 
-        Vector2 inputPosition_;
         std::map<unsigned int, std::string> keyMap_;
         std::map<unsigned int, std::string> mouseButtonMap_;
         std::map<std::string, bool> pressedInputs_;

@@ -12,7 +12,6 @@ bool ApplicationMacOS::Initialize(const Vector2Int& resolutionSize, const Vector
     if (!ApplicationOpenGL::Initialize(resolutionSize, screenSize)) {
         return false;
     }
-    screenSize_ = screenSize;
     directory_ = static_cast<DirectoryMacOS*>(Directory::GetInstance());
     input_ = static_cast<InputMacOS*>(Input::GetInstance());
 

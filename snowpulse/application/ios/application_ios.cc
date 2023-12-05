@@ -6,8 +6,8 @@ ApplicationIOS::ApplicationIOS() {
     platformString_ = "iOS";
 }
 
-bool ApplicationIOS::Initialize(const Vector2Int& resolutionSize, void* device) {
-    if (!ApplicationMetal::Initialize(resolutionSize, resolutionSize, device)) {
+bool ApplicationIOS::Initialize(const Vector2Int& resolutionSize, const Vector2Int& screenSize, void* view) {
+    if (!ApplicationMetal::Initialize(resolutionSize, screenSize, view)) {
         return false;
     }
 

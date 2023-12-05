@@ -45,10 +45,10 @@ ApplicationMetal::~ApplicationMetal() {
 }
 
 bool ApplicationMetal::Initialize(const Vector2Int& resolutionSize, const Vector2Int& screenSize, void* view) {
-    if (!Application::Initialize(resolutionSize)) {
+    if (!Application::Initialize(resolutionSize, screenSize)) {
         return false;
     }
-    
+
     graphics_ = GraphicsMetal::Create();
     if (!graphics_ || !graphics_->Initialize(resolutionSize, screenSize, view)) {
 #ifdef SPDEBUG
@@ -85,7 +85,6 @@ void ApplicationMetal::RunFrame() {
     input->ProcessInputs(resolutionSize_, screenSize_, window_);
 #elif SNOWPULSE_PLATFORM_IOS
     auto input = static_cast<InputIOS*>(Input::GetInstance());
-    input->ProcessInputs();
 #endif
 
     auto deltaTime = GetDeltaTime(frameTimer_);
@@ -266,6 +265,7 @@ void ApplicationMetal::RunFrame() {
     commandBuffer->commit();
 
     graphics_->ClearRenderBatchGroups();
+    input->ClearLastFrameData();
 #ifdef SPDEBUG
      std::cout << "Rendered " << batches.size() << " batch/es." << std::endl;
 #endif

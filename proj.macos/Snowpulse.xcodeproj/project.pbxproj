@@ -860,6 +860,10 @@
 		2AC95E0F2B1BCC1E00B2C916 /* graphics_opengl.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBE992B03D4490060E35C /* graphics_opengl.h */; };
 		2AC95E102B1BCC1E00B2C916 /* render_queue_opengl.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBE9A2B03D4490060E35C /* render_queue_opengl.h */; };
 		2AC95E112B1BCC1E00B2C916 /* application_opengl.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4FBE942B03D4490060E35C /* application_opengl.h */; };
+		2AC95E1D2B1DE0B200B2C916 /* touch.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AC95E1C2B1DE0B200B2C916 /* touch.h */; };
+		2AC95E1E2B1DE0B200B2C916 /* touch.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AC95E1C2B1DE0B200B2C916 /* touch.h */; };
+		2AC95E202B1DE16500B2C916 /* touch_phase.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AC95E1F2B1DE16500B2C916 /* touch_phase.h */; };
+		2AC95E212B1DE16500B2C916 /* touch_phase.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AC95E1F2B1DE16500B2C916 /* touch_phase.h */; };
 		2AE640B32B11CC1D00A6B8DA /* directory_macos.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AE640B22B11CC1D00A6B8DA /* directory_macos.h */; };
 		2AE640B52B11CC4700A6B8DA /* directory_macos.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2AE640B42B11CC4700A6B8DA /* directory_macos.mm */; };
 		2AE640B72B11CC5D00A6B8DA /* directory.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AE640B62B11CC5D00A6B8DA /* directory.h */; };
@@ -870,7 +874,7 @@
 		2AE640C42B12927100A6B8DA /* application_ios.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AE640C02B12927100A6B8DA /* application_ios.h */; };
 		2AE640C52B12927100A6B8DA /* directory_ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2AE640C12B12927100A6B8DA /* directory_ios.mm */; };
 		2AE640DC2B1294A900A6B8DA /* input_ios.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AE640DA2B1294A900A6B8DA /* input_ios.h */; };
-		2AE640DD2B1294A900A6B8DA /* input_ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2AE640DB2B1294A900A6B8DA /* input_ios.mm */; };
+		2AE640DD2B1294A900A6B8DA /* input_ios.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2AE640DB2B1294A900A6B8DA /* input_ios.cc */; };
 		2AE640E12B129E8400A6B8DA /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 2AE640E02B129E8400A6B8DA /* glad.c */; };
 		2AE640E22B129E8400A6B8DA /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 2AE640E02B129E8400A6B8DA /* glad.c */; };
 		2AE640E32B129EA800A6B8DA /* directory.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2AE640B82B11CF6D00A6B8DA /* directory.cc */; };
@@ -1370,6 +1374,8 @@
 		2AA9A9DA2B07B0B1009AACBF /* spine_texture_loader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = spine_texture_loader.h; path = plugins/spine/spine_texture_loader.h; sourceTree = "<group>"; };
 		2AA9A9DF2B087CE3009AACBF /* blend_mode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = blend_mode.h; sourceTree = "<group>"; };
 		2AA9A9E12B0896C7009AACBF /* vertex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vertex.h; sourceTree = "<group>"; };
+		2AC95E1C2B1DE0B200B2C916 /* touch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = touch.h; sourceTree = "<group>"; };
+		2AC95E1F2B1DE16500B2C916 /* touch_phase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = touch_phase.h; sourceTree = "<group>"; };
 		2AE4B78E2B0FE88200252B50 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = assets; path = ../assets; sourceTree = "<group>"; };
 		2AE4B7912B0FECD800252B50 /* defaults */ = {isa = PBXFileReference; lastKnownFileType = folder; name = defaults; path = ../defaults; sourceTree = "<group>"; };
 		2AE640B22B11CC1D00A6B8DA /* directory_macos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = directory_macos.h; sourceTree = "<group>"; };
@@ -1382,7 +1388,7 @@
 		2AE640C02B12927100A6B8DA /* application_ios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = application_ios.h; path = ios/application_ios.h; sourceTree = "<group>"; };
 		2AE640C12B12927100A6B8DA /* directory_ios.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = directory_ios.mm; path = ios/directory_ios.mm; sourceTree = "<group>"; };
 		2AE640DA2B1294A900A6B8DA /* input_ios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = input_ios.h; path = ios/input_ios.h; sourceTree = "<group>"; };
-		2AE640DB2B1294A900A6B8DA /* input_ios.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = input_ios.mm; path = ios/input_ios.mm; sourceTree = "<group>"; };
+		2AE640DB2B1294A900A6B8DA /* input_ios.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = input_ios.cc; path = ios/input_ios.cc; sourceTree = "<group>"; };
 		2AE640E02B129E8400A6B8DA /* glad.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = glad.c; path = ../thirdparty/glad/src/glad.c; sourceTree = "<group>"; };
 		2AE640E52B12F1BF00A6B8DA /* platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = platform.h; sourceTree = "<group>"; };
 		2AE640E82B131EFE00A6B8DA /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
@@ -1738,6 +1744,8 @@
 				2A4FBE0E2B00BF430060E35C /* singleton.h */,
 				2A4FBE912B0357CF0060E35C /* space.h */,
 				2A4FBE0F2B00BF430060E35C /* texture_filtering.h */,
+				2AC95E1C2B1DE0B200B2C916 /* touch.h */,
+				2AC95E1F2B1DE16500B2C916 /* touch_phase.h */,
 				2A4FBE0D2B00BF430060E35C /* vector2.h */,
 				2A4FBE112B00BF430060E35C /* vector2int.h */,
 				2A4FBE122B00BF430060E35C /* vector3.h */,
@@ -2077,7 +2085,7 @@
 				2AE640C02B12927100A6B8DA /* application_ios.h */,
 				2AE640BF2B12927100A6B8DA /* application_ios.cc */,
 				2AE640DA2B1294A900A6B8DA /* input_ios.h */,
-				2AE640DB2B1294A900A6B8DA /* input_ios.mm */,
+				2AE640DB2B1294A900A6B8DA /* input_ios.cc */,
 				2AE640BE2B12927100A6B8DA /* directory_ios.h */,
 				2AE640C12B12927100A6B8DA /* directory_ios.mm */,
 			);
@@ -2189,6 +2197,7 @@
 				2A27D2502B14DF54008B5446 /* MTLEvent.hpp in Headers */,
 				2A07BC742B0FCF590008B3A4 /* Vertices.h in Headers */,
 				2A27D2BA2B14DF5F008B5446 /* NSMenu.hpp in Headers */,
+				2AC95E212B1DE16500B2C916 /* touch_phase.h in Headers */,
 				2A07BC752B0FCF590008B3A4 /* IkConstraintTimeline.h in Headers */,
 				2A27D2542B14DF54008B5446 /* MTLDepthStencil.hpp in Headers */,
 				2A27D1BF2B14DF31008B5446 /* QuartzCore.hpp in Headers */,
@@ -2246,6 +2255,7 @@
 				2A07BC8E2B0FCF590008B3A4 /* TransformConstraint.h in Headers */,
 				2A07BC8F2B0FCF590008B3A4 /* matrix4x4.h in Headers */,
 				2A07BC902B0FCF590008B3A4 /* PointAttachment.h in Headers */,
+				2AC95E1E2B1DE0B200B2C916 /* touch.h in Headers */,
 				2A27D2C22B14DF5F008B5446 /* NSRunningApplication.hpp in Headers */,
 				2A27D26E2B14DF54008B5446 /* MTLVertexDescriptor.hpp in Headers */,
 				2A27D27E2B14DF54008B5446 /* MTLCaptureScope.hpp in Headers */,
@@ -2627,6 +2637,7 @@
 				2AA9A9832B0781A0009AACBF /* IkConstraintTimeline.h in Headers */,
 				2A4FBEAE2B03DE680060E35C /* action_interpolate.h in Headers */,
 				2A27D27F2B14DF54008B5446 /* MTLFunctionStitching.hpp in Headers */,
+				2AC95E202B1DE16500B2C916 /* touch_phase.h in Headers */,
 				2AA9A9A62B0781A0009AACBF /* ColorTimeline.h in Headers */,
 				2A27D27D2B14DF54008B5446 /* MTLCaptureScope.hpp in Headers */,
 				2A27D1DB2B14DF3C008B5446 /* NSURL.hpp in Headers */,
@@ -2684,6 +2695,7 @@
 				2A27D1FD2B14DF3C008B5446 /* NSDictionary.hpp in Headers */,
 				2AE640B32B11CC1D00A6B8DA /* directory_macos.h in Headers */,
 				2A27D2472B14DF54008B5446 /* MTLComputeCommandEncoder.hpp in Headers */,
+				2AC95E1D2B1DE0B200B2C916 /* touch.h in Headers */,
 				2AA9A9DD2B07B0B1009AACBF /* spine_skeleton_animation.h in Headers */,
 				2AA9A9882B0781A0009AACBF /* SpineString.h in Headers */,
 				2AA9A98C2B0781A0009AACBF /* Bone.h in Headers */,
@@ -3053,7 +3065,7 @@
 				2A07BCF32B0FCF590008B3A4 /* Event.cpp in Sources */,
 				2A07BCF42B0FCF590008B3A4 /* sprite_renderer.cc in Sources */,
 				2A07BCF52B0FCF590008B3A4 /* PathConstraintMixTimeline.cpp in Sources */,
-				2AE640DD2B1294A900A6B8DA /* input_ios.mm in Sources */,
+				2AE640DD2B1294A900A6B8DA /* input_ios.cc in Sources */,
 				2A07BCF62B0FCF590008B3A4 /* application.cc in Sources */,
 				2A07BCF72B0FCF590008B3A4 /* Skeleton.cpp in Sources */,
 				2A77E7312B1096A300579051 /* json_utils.cc in Sources */,

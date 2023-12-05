@@ -31,11 +31,31 @@ Input::Input() {
 Input::~Input() {
 }
 
+std::vector<Touch> Input::GetTouches() {
+    std::vector<Touch> touches;
+    for (auto pair : touches_) {
+        touches.push_back(pair.second);
+    }
+    return touches;
+}
+
+void Input::ClearLastFrameData() {
+    touches_.clear();
+}
+
 std::string Input::ToLowerCase(const std::string& str) {
     auto result = str;
     for (char& c : result) {
         c = std::tolower(static_cast<unsigned char>(c));
     }
     return result;
+}
+
+int Input::GetNextAvailableTouchId() {
+    int i = 0;
+    for (auto pair = touchIds_.begin(); pair != touchIds_.end(); pair++) {
+        i = pair->second >= i ? pair->second + 1 : i;
+    }
+    return i;
 }
 }   // namespace snowpulse
