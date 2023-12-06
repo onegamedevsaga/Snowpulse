@@ -61,9 +61,9 @@ void SceneLevel::Start() {
     go1_->AddComponent(sprRenderer);
     AddChild(go1_);
 
-    go1_->GetTransform()->SetLocalPosition(snowpulse::Vector2(1920.0f / 2.0f, 1080.0f / 2.0f));
-    go1_->GetTransform()->SetLocalRotation(45.0f);
-    //go1_->GetTransform()->SetScale(snowpulse::Vector3(0.3f, 0.3f, 1.0f));
+    go1_->GetTransform()->SetLocalPosition(snowpulse::Vector2(0.0f, 0.0f));
+    go1_->GetTransform()->SetLocalRotation(0.0f);
+    go1_->GetTransform()->SetLocalScale(0.5f);
 
     go2_ = snowpulse::GameObject::Create("go2_");
     sprRenderer = snowpulse::SpriteRenderer::Create("pixel-test.png", snowpulse::TextureFiltering::kPoint);
@@ -85,11 +85,11 @@ void SceneLevel::Start() {
     go3_->AddComponent(spineRenderer);
     AddChild(go3_);
 
-    go3_->GetTransform()->SetLocalPosition(snowpulse::Vector2(960.0f, 100.0f));
+    go3_->GetTransform()->SetPosition(snowpulse::Vector2(0.0f, (float)(GetResolutionSize().y) * -0.5f));
     go3_->GetTransform()->SetLocalScale(snowpulse::Vector2(-1.0f, 1.0f));
     
     auto sr = spineRenderer.get();
-    go3_->GetTransform()->DoMoveX(340.0f, 2.0f, snowpulse::Easing::kLinear, false, [sr]() {
+    go3_->GetTransform()->DoMoveX((float)(GetResolutionSize().x) * -0.5f + 450.0f, 2.0f, snowpulse::Easing::kLinear, false, [sr]() {
         sr->PlayAnimation("idle", true);
     });
 
@@ -102,7 +102,7 @@ void SceneLevel::Start() {
     tempGo->AddComponent(spineRenderer);
     AddChild(tempGo);
 
-    tempGo->GetTransform()->SetLocalPosition(snowpulse::Vector2(260.0f, 100.0f));
+    tempGo->GetTransform()->SetLocalPosition(snowpulse::Vector2((float)(GetResolutionSize().x) * -0.5f + 300.0f, (float)(GetResolutionSize().y) * -0.5f + 100.0f));
     tempGo->GetTransform()->SetLocalScale(snowpulse::Vector2(0.7f, 0.7f));
 
     snowpulse::ActionWait::Create(4.0f)->OnComplete([this](snowpulse::Action* a) {
@@ -160,7 +160,7 @@ void SceneLevel::Update(float deltaTime) {
         }
     }
     
-    snowpulse::Vector2 mousePos;// = snowpulse::Input::GetInstance()->GetPosition();
+    snowpulse::Vector2 mousePos = snowpulse::Input::GetInstance()->GetMousePosition();
 #ifdef SPDEBUG
     std::cout << "Mouse Position (" << mousePos.x << ", " << mousePos.y << ")" << std::endl;
 #endif
@@ -171,7 +171,7 @@ void SceneLevel::Update(float deltaTime) {
             go2_->AddChild(go3_);
         }
     }
-    
+
     if (snowpulse::Input::GetInstance()->GetPressed("x")) {
         GetApplication()->Close();
     }

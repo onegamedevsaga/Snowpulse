@@ -50,7 +50,7 @@ bool ApplicationMetal::Initialize(const Vector2Int& resolutionSize, const Vector
     }
 
     graphics_ = GraphicsMetal::Create();
-    if (!graphics_ || !graphics_->Initialize(resolutionSize, screenSize, view)) {
+    if (!graphics_ || !graphics_->Initialize(resolutionSize_, screenSize_, view)) {
 #ifdef SPDEBUG
         std::cout << "ERROR: Application wasn't able to initialize graphics on this platform." << std::endl;
 #endif
@@ -82,7 +82,6 @@ void ApplicationMetal::RunFrame() {
     //glfwPollEvents();
 #if SNOWPULSE_PLATFORM_MACOS
     auto input = static_cast<InputMacOS*>(Input::GetInstance());
-    input->ProcessInputs(resolutionSize_, screenSize_, window_);
 #elif SNOWPULSE_PLATFORM_IOS
     auto input = static_cast<InputIOS*>(Input::GetInstance());
 #endif
@@ -200,13 +199,6 @@ void ApplicationMetal::RunFrame() {
         memcpy(vertexColorsBuffer->contents(), colors, colorDataSize);
         memcpy(transformBuffer->contents(), &b->transformMatrix, transformDataSize);
         memcpy(uniformsBuffer->contents(), &uniforms, sizeof(Uniforms));
-
-        indexBuffer->didModifyRange(NS::Range::Make(0, indexBuffer->length()));
-        vertexPositionsBuffer->didModifyRange(NS::Range::Make(0, vertexPositionsBuffer->length()));
-        vertexUVsBuffer->didModifyRange(NS::Range::Make(0, vertexUVsBuffer->length()));
-        vertexColorsBuffer->didModifyRange(NS::Range::Make(0, vertexColorsBuffer->length()));
-        transformBuffer->didModifyRange(NS::Range::Make(0, transformBuffer->length()));
-        uniformsBuffer->didModifyRange(NS::Range::Make(0, uniformsBuffer->length()));
 
         auto samplerDesc = MTL::SamplerDescriptor::alloc()->init();
         samplerDesc->setMinFilter(MTL::SamplerMinMagFilterLinear);

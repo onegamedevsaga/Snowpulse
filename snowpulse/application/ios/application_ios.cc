@@ -21,7 +21,7 @@ bool ApplicationIOS::Initialize(const Vector2Int& resolutionSize, const Vector2I
 }
 
 void ApplicationIOS::Close() {
-    
+    //[NSApp terminate:self];
 }
 
 void ApplicationIOS::Shutdown() {

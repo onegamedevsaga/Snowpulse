@@ -8,7 +8,7 @@
 #include "opengl/graphics_opengl.h"
 #elif SNOWPULSE_PLATFORM_MACOS
 #include "macos/application_macos.h"
-#include "opengl/graphics_opengl.h"
+#include "metal/graphics_metal.h"
 #elif SNOWPULSE_PLATFORM_IOS
 #include "ios/application_ios.h"
 #include "metal/graphics_metal.h"
@@ -41,8 +41,9 @@ Application::~Application() {
 }
 
 bool Application::Initialize(const Vector2Int& resolution, const Vector2Int& screenSize) {
-    resolutionSize_ = resolution;
     screenSize_ = screenSize;
+    auto targetRatio = (float)screenSize_.x / (float)screenSize_.y;
+    resolutionSize_ = Vector2Int((int)((float)resolution.y * targetRatio), resolution.y);
     actionManager_ = ActionManager::Create();
     appTimer_.Start();
     frameTimer_.Start();

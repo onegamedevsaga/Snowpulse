@@ -1,14 +1,6 @@
-//
-//  AppDelegate.m
-//  launcher_macos
-//
-//  Created by Marc Jamero on 11/27/23.
-//
-
 #import "AppDelegate.h"
 
 @interface AppDelegate ()
-
 
 @end
 
@@ -18,15 +10,12 @@
     // Insert code here to initialize your application
 }
 
-
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     // Insert code here to tear down your application
 }
 
-
-- (BOOL)applicationSupportsSecureRestorableState:(NSApplication *)app {
+- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender {
     return YES;
 }
-
 
 @end

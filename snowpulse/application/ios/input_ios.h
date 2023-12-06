@@ -15,7 +15,7 @@ class SNOWPULSEAPI InputIOS : public Input, public Singleton<InputIOS> {
     public:
         virtual ~InputIOS();
 
-    void ProcessInputs(const Vector2Int& resolution, const Vector2Int& screenSize, void* touch, const TouchPhase touchPhase, const Vector2Int& position);
+        void ProcessInputs(const Vector2Int& resolution, const Vector2Int& screenSize, void* touch, const TouchPhase touchPhase, const Vector2Int& position);
         bool GetPressed(std::string key) override { return false; }
         bool GetReleased(std::string key) override { return false; }
 

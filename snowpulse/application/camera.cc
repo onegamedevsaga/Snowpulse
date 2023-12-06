@@ -4,8 +4,10 @@
 
 namespace snowpulse {
 
-std::shared_ptr<Camera> Camera::Create() {
+std::shared_ptr<Camera> Camera::Create(const Vector2Int& resolution) {
     auto camera = new Camera();
+    auto res = Vector2(resolution.x, resolution.y);
+    camera->SetPosition(res * -0.5f);
     return std::shared_ptr<Camera>(camera);
 }
 

@@ -50,6 +50,7 @@ class SNOWPULSEAPI Transform : public Component {
         void SetLocalRotation(float rotation);
 
         void SetLocalScale(Vector2 scale) { localScale_ = scale; }
+        void SetLocalScale(float scale) { localScale_.x = scale; localScale_.y = scale; }
 
         // Actions
         void DoMove(Vector2 to, float duration, Easing easing=Easing::kLinear, bool snapping=false, std::function<void()> onComplete=SPNULL);

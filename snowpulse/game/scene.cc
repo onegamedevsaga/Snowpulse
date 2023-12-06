@@ -98,6 +98,10 @@ void Scene::Draw(Graphics* graphics, Matrix4x4 worldMatrix) {
 #endif
 }
 
+Vector2Int Scene::GetResolutionSize() const {
+    return application_->GetResolutionSize();
+}
+
 void Scene::SetGame(Game* game) {
     game_ = game;
 }

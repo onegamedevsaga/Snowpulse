@@ -10,6 +10,7 @@
 #include "updatable.h"
 #include "drawable.h"
 #include "game_object.h"
+#include "../common/vector2int.h"
 
 namespace snowpulse {
 
@@ -36,7 +37,8 @@ class SNOWPULSEAPI Scene : public Node, public Updatable, public Drawable {
 
         Game* GetGame() const { return game_; }
         Camera* GetCamera() const { return camera_; }
-        Application* GetApplication() { return application_; }
+        Application* GetApplication() const { return application_; }
+        Vector2Int GetResolutionSize() const;
 
         void SetGame(Game* game);
 

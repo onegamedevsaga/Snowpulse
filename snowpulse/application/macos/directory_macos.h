@@ -24,5 +24,4 @@ class SNOWPULSEAPI DirectoryMacOS : public Directory, public Singleton<Directory
         std::string GetWritablePath(std::string filename, std::string directory);
 };
 }   // namespace snowpulse
-
 #endif

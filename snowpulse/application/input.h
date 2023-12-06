@@ -8,6 +8,7 @@
 
 #include "../common/vector2.h"
 #include "../common/touch.h"
+#include "../application/camera.h"
 
 namespace snowpulse {
 class SNOWPULSEAPI Input {
@@ -28,9 +29,17 @@ class SNOWPULSEAPI Input {
         std::string ToLowerCase(const std::string& str);
         int GetNextAvailableTouchId();
 
-        Vector2 mousePosition_;
+        Camera* camera_;
+
         std::map<int, Touch> touches_;
         std::map<void*, int> touchIds_;
+
+        Vector2 mousePosition_;
+        std::map<unsigned int, std::string> mouseButtonMap_;
+        std::map<unsigned int, std::string> keyMap_;
+        std::map<std::string, bool> pressedKeys_;
+        std::map<std::string, bool> releasedKeys_;
+        std::map<std::string, bool> heldKeys_;
 
 };
 }   // namespace snowpulse

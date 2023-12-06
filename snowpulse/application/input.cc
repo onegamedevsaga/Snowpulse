@@ -1,6 +1,6 @@
 #include "input.h"
 
-#include <cctype>
+#include "application.h"
 
 #ifdef SNOWPULSE_PLATFORM_WINDOWS
 #include "opengl/input_opengl.h"
@@ -26,6 +26,7 @@ Input* Input::GetInstance() {
 }
 
 Input::Input() {
+    camera_ = Application::GetInstance()->GetGraphics()->GetCamera();
 }
 
 Input::~Input() {
@@ -41,6 +42,8 @@ std::vector<Touch> Input::GetTouches() {
 
 void Input::ClearLastFrameData() {
     touches_.clear();
+    pressedKeys_.clear();
+    releasedKeys_.clear();
 }
 
 std::string Input::ToLowerCase(const std::string& str) {

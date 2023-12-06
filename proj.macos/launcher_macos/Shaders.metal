@@ -1,8 +1,8 @@
 //
 //  Shaders.metal
-//  launcher_ios
+//  launcher_macos
 //
-//  Created by Marc Jamero on 11/28/23.
+//  Created by Marc Jamero on 12/6/23.
 //
 
 // File for Metal kernel and shader functions

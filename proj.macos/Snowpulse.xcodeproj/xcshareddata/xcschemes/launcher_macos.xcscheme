@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2A27D2CE2B14E48E008B5446"
+               BlueprintIdentifier = "2AA1AA612B2075C5002F2A49"
                BuildableName = "launcher_macos.app"
                BlueprintName = "launcher_macos"
                ReferencedContainer = "container:Snowpulse.xcodeproj">
@@ -43,7 +43,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2A27D2CE2B14E48E008B5446"
+            BlueprintIdentifier = "2AA1AA612B2075C5002F2A49"
             BuildableName = "launcher_macos.app"
             BlueprintName = "launcher_macos"
             ReferencedContainer = "container:Snowpulse.xcodeproj">
@@ -60,7 +60,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2A27D2CE2B14E48E008B5446"
+            BlueprintIdentifier = "2AA1AA612B2075C5002F2A49"
             BuildableName = "launcher_macos.app"
             BlueprintName = "launcher_macos"
             ReferencedContainer = "container:Snowpulse.xcodeproj">

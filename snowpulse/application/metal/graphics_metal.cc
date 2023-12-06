@@ -66,7 +66,7 @@ GraphicsMetal::GraphicsMetal() {
 }
 
 bool GraphicsMetal::Initialize(const Vector2Int& resolution, const Vector2Int& screenSize, void* view) {
-    camera_ = Camera::Create();
+    camera_ = Camera::Create(resolution);
     renderQueue_ = RenderQueueMetal::Create();
     view_ = static_cast<MTK::View*>(view);
     view_->setColorPixelFormat(MTL::PixelFormatBGRA8Unorm_sRGB);

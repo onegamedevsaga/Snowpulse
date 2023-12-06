@@ -1,10 +1,3 @@
-//
-//  AppDelegate.m
-//  launcher_ios
-//
-//  Created by Marc Jamero on 11/28/23.
-//
-
 #import "AppDelegate.h"
 
 @interface AppDelegate ()

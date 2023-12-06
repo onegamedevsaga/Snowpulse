@@ -3,7 +3,7 @@
 namespace snowpulse {
 
 InputMacOS::InputMacOS() : Input() {
-    keyMap_[GLFW_KEY_SPACE] = "space";
+    /*keyMap_[GLFW_KEY_SPACE] = "space";
     keyMap_[GLFW_KEY_ESCAPE] = "escape";
     keyMap_[GLFW_KEY_ENTER] = "enter";
     keyMap_[GLFW_KEY_KP_ENTER] = "enter";
@@ -55,59 +55,44 @@ InputMacOS::InputMacOS() : Input() {
 
     for (const auto& pair : mouseButtonMap_) {
         canBePressedInputs_[pair.second];
-    }
+    }*/
 }
 
 InputMacOS::~InputMacOS() {
 }
 
-void InputMacOS::ProcessInputs(const Vector2Int& resolutionSize, const Vector2Int& screenSize, GLFWwindow* window) {
-    pressedInputs_.clear();
-    releasedInputs_.clear();
-
-    for (const auto& pair : keyMap_) {
-        if (glfwGetKey(window, pair.first) == GLFW_PRESS) {
-            if (canBePressedInputs_.count(pair.second)) {
-                pressedInputs_[pair.second];
-                canBePressedInputs_.erase(pair.second);
-            }
-        }
-        else if (glfwGetKey(window, pair.first) == GLFW_RELEASE) {
-            if (!canBePressedInputs_.count(pair.second)) {
-                releasedInputs_[pair.second];
-                canBePressedInputs_[pair.second];
-            }
-        }
-    }
-
-    for (const auto& pair : mouseButtonMap_) {
-        if (glfwGetMouseButton(window, pair.first) == GLFW_PRESS) {
-            if (canBePressedInputs_.count(pair.second)) {
-                pressedInputs_[pair.second];
-                canBePressedInputs_.erase(pair.second);
-            }
-        }
-        else if (glfwGetMouseButton(window, pair.first) == GLFW_RELEASE) {
-            if (!canBePressedInputs_.count(pair.second)) {
-                releasedInputs_[pair.second];
-                canBePressedInputs_[pair.second];
-            }
-        }
-    }
-
-    double x, y;
-    glfwGetCursorPos(window, &x, &y);
-    mousePosition_.x = (float)x;
-    mousePosition_.y = (float)screenSize.y - (float)y;
+void InputMacOS::ProcessInputs(const Vector2Int& resolutionSize, const Vector2Int& screenSize, Vector2 mousePosition) {
+    auto camPos = camera_->GetPosition();
+    mousePosition_ = mousePosition + Vector2(camPos.x, camPos.y);
     Vector2 scaleFactor = Vector2((float)resolutionSize.x / (float)screenSize.x, (float)resolutionSize.y / (float)screenSize.y);
     mousePosition_ *= scaleFactor;
 }
+void InputMacOS::ProcessInputs(const Vector2Int& resolutionSize, const Vector2Int& screenSize, Vector2 mousePosition, int mouseButton, bool isMouseDown) {
+    
+}
+void InputMacOS::ProcessInputs(std::string key, bool isKeyDown) {
+    key = ToLowerCase(key);
+    if (!heldKeys_.count(key) && isKeyDown) {
+        pressedKeys_[key] = true;
+        heldKeys_[key] = true;
+    }
+    else if (heldKeys_.count(key) && !isKeyDown) {
+        releasedKeys_[key] = true;
+        heldKeys_.erase(key);
+    }
+}
+
+/*void InputMacOS::ProcessInputs(const Vector2Int& resolutionSize, const Vector2Int& screenSize) {
+    
+
+    
+}*/
 
 bool InputMacOS::GetPressed(std::string key) {
-    return pressedInputs_.count(ToLowerCase(key));
+    return pressedKeys_.count(ToLowerCase(key));
 }
 
 bool InputMacOS::GetReleased(std::string key) {
-    return releasedInputs_.count(ToLowerCase(key));
+    return releasedKeys_.count(ToLowerCase(key));
 }
 }   // namespace snowpulse
