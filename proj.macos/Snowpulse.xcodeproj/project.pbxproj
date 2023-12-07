@@ -662,7 +662,7 @@
 		2AC95E1C2B1DE0B200B2C916 /* touch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = touch.h; sourceTree = "<group>"; };
 		2AC95E1F2B1DE16500B2C916 /* touch_phase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = touch_phase.h; sourceTree = "<group>"; };
 		2AD667612B22246C00E0E83A /* libgame_slots_ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libgame_slots_ios.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		2AD667772B22247F00E0E83A /* launcher_slots_ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = launcher_slots_ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2AD667772B22247F00E0E83A /* Slot Machine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Slot Machine.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AD6677E2B2225B000E0E83A /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = assets; path = ../game_slots/assets; sourceTree = "<group>"; };
 		2AD6679C2B222C5A00E0E83A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../game_slots/launcher_ios/Assets.xcassets; sourceTree = "<group>"; };
 		2AD6679D2B222C5A00E0E83A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ../../game_slots/launcher_ios/AppDelegate.m; sourceTree = "<group>"; };
@@ -1444,7 +1444,7 @@
 				2AA1AA8B2B209542002F2A49 /* libsnowpulse_macos.a */,
 				2AA1AAA02B2095BB002F2A49 /* libgame_macos.a */,
 				2AD667612B22246C00E0E83A /* libgame_slots_ios.a */,
-				2AD667772B22247F00E0E83A /* launcher_slots_ios.app */,
+				2AD667772B22247F00E0E83A /* Slot Machine.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1626,7 +1626,7 @@
 			);
 			name = launcher_slots_ios;
 			productName = launcher_ios;
-			productReference = 2AD667772B22247F00E0E83A /* launcher_slots_ios.app */;
+			productReference = 2AD667772B22247F00E0E83A /* Slot Machine.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -2490,21 +2490,22 @@
 					../thirdparty/metal/,
 				);
 				INFOPLIST_FILE = ../game_slots/launcher_ios/launcher_slots_ios.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Slot Machine";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.casino-games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = metal;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationLandscapeLeft;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "io.snowblink.Snowpulse.launcher-ios";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = 0.0.01;
+				PRODUCT_BUNDLE_IDENTIFIER = io.snowblink.SlotMachine;
+				PRODUCT_NAME = "Slot Machine";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2531,21 +2532,22 @@
 					../thirdparty/metal/,
 				);
 				INFOPLIST_FILE = ../game_slots/launcher_ios/launcher_slots_ios.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Slot Machine";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.casino-games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = metal;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationLandscapeLeft;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "io.snowblink.Snowpulse.launcher-ios";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = 0.0.01;
+				PRODUCT_BUNDLE_IDENTIFIER = io.snowblink.SlotMachine;
+				PRODUCT_NAME = "Slot Machine";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
