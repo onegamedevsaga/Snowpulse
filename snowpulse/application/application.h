@@ -25,6 +25,7 @@ class SNOWPULSEAPI Application {
         virtual Graphics* GetGraphics() const = 0;
 
         void SetGame(Game* game);
+        void SetAssetFolderPath(std::string path) { assetFolderPath_ = path; }
 
         Vector2Int GetResolutionSize() { return resolutionSize_; }
         Vector2Int GetScreenSize() { return screenSize_; }
@@ -33,6 +34,7 @@ class SNOWPULSEAPI Application {
         std::string GetPlatformString() const { return platformString_; }
         Game* GetGame() const { return game_; }
         ActionManager* GetActionManager() const { return actionManager_.get(); }
+        std::string GetAssetFolderPath() const { return assetFolderPath_; }
 
     protected:
         Application();
@@ -46,6 +48,7 @@ class SNOWPULSEAPI Application {
         Game* game_;
         std::string platformString_;
         std::shared_ptr<ActionManager> actionManager_;
+        std::string assetFolderPath_;
 
         float GetDeltaTime(Timer& timer);
 

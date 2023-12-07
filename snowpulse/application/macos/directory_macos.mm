@@ -4,6 +4,8 @@
 
 #import <Foundation/Foundation.h>
 
+#include "../application.h"
+
 namespace snowpulse {
 DirectoryMacOS::DirectoryMacOS() {
 }
@@ -28,7 +30,8 @@ bool DirectoryMacOS::CreateDirectory(std::string path) {
 }
 
 std::string DirectoryMacOS::GetAssetsPath(std::string filename) {
-    return GetResourcesPath("assets/" + filename);
+    std::string path = Application::GetInstance()->GetAssetFolderPath();
+    return GetResourcesPath(path + filename);
 }
 
 std::string DirectoryMacOS::GetDefaultsPath(std::string filename) {

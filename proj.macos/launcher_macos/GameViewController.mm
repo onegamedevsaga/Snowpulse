@@ -45,6 +45,7 @@
     game_ = game::Game::Create();
     app_ = static_cast<snowpulse::ApplicationMacOS*>(snowpulse::Application::GetInstance());
     if (app_->Initialize(snowpulse::Vector2Int(1920, 1080), snowpulse::Vector2Int((int)screenSize.width, (int)screenSize.height), (__bridge void*)view_)) {
+        app_->SetAssetFolderPath("assets/");
         app_->SetGame(game_.get());
         game_->Initialize(app_);
         input_ = static_cast<snowpulse::InputMacOS*>(snowpulse::Input::GetInstance());

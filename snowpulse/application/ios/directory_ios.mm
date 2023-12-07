@@ -4,6 +4,8 @@
 
 #import <Foundation/Foundation.h>
 
+#include "../application.h"
+
 namespace snowpulse {
 DirectoryIOS::DirectoryIOS() {
 }
@@ -28,7 +30,8 @@ bool DirectoryIOS::CreateDirectory(std::string path) {
 }
 
 std::string DirectoryIOS::GetAssetsPath(std::string filename) {
-    return GetResourcesPath("assets/" + filename);
+    std::string path = Application::GetInstance()->GetAssetFolderPath();
+    return GetResourcesPath(path + filename);
 }
 
 std::string DirectoryIOS::GetDefaultsPath(std::string filename) {

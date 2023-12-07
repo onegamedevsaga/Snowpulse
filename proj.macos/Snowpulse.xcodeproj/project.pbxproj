@@ -233,6 +233,20 @@
 		2AA1AB082B2096CB002F2A49 /* action_rotate.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBE832B00F4A30060E35C /* action_rotate.cc */; };
 		2AA1AB0B2B20D6F3002F2A49 /* GameView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2AA1AB0A2B20D6F3002F2A49 /* GameView.mm */; };
 		2AA1AB0C2B20D891002F2A49 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A27D2C82B14E06B008B5446 /* MetalKit.framework */; };
+		2AD6675C2B22246C00E0E83A /* libsnowpulse_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A5266BB2B20514C008B7268 /* libsnowpulse_ios.a */; };
+		2AD6676C2B22247F00E0E83A /* libsnowpulse_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A5266BB2B20514C008B7268 /* libsnowpulse_ios.a */; };
+		2AD6676D2B22247F00E0E83A /* libgame_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A52672A2B206305008B7268 /* libgame_ios.a */; };
+		2AD667702B22247F00E0E83A /* defaults in Resources */ = {isa = PBXBuildFile; fileRef = 2AE4B7912B0FECD800252B50 /* defaults */; };
+		2AD6677F2B2225B000E0E83A /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 2AD6677E2B2225B000E0E83A /* assets */; };
+		2AD667A82B222C5A00E0E83A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AD6679C2B222C5A00E0E83A /* Assets.xcassets */; };
+		2AD667A92B222C5A00E0E83A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AD6679D2B222C5A00E0E83A /* AppDelegate.m */; };
+		2AD667AA2B222C5A00E0E83A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AD6679F2B222C5A00E0E83A /* LaunchScreen.storyboard */; };
+		2AD667AB2B222C5A00E0E83A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AD667A12B222C5A00E0E83A /* Main.storyboard */; };
+		2AD667AC2B222C5A00E0E83A /* GameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2AD667A42B222C5A00E0E83A /* GameViewController.mm */; };
+		2AD667AD2B222C5A00E0E83A /* launcher_slots_ios.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2AD667A52B222C5A00E0E83A /* launcher_slots_ios.plist */; };
+		2AD667AE2B222C5A00E0E83A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AD667A72B222C5A00E0E83A /* main.m */; };
+		2AD667B42B222C6B00E0E83A /* scene_level.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2AD667B02B222C6B00E0E83A /* scene_level.cc */; };
+		2AD667B52B222C6B00E0E83A /* game.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2AD667B22B222C6B00E0E83A /* game.cc */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -244,6 +258,20 @@
 			remoteInfo = game_ios;
 		};
 		2A52674E2B206536008B7268 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2AF938AE2ABDC14D00CC8BA2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2A5266BA2B20514C008B7268;
+			remoteInfo = snowpulse_ios;
+		};
+		2AD667642B22247F00E0E83A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2AF938AE2ABDC14D00CC8BA2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2A5267292B206305008B7268;
+			remoteInfo = game_ios;
+		};
+		2AD667662B22247F00E0E83A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2AF938AE2ABDC14D00CC8BA2 /* Project object */;
 			proxyType = 1;
@@ -263,6 +291,15 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		2A5267282B206305008B7268 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2AD6675D2B22246C00E0E83A /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "include/$(PRODUCT_NAME)";
@@ -624,6 +661,23 @@
 		2AA9A9E12B0896C7009AACBF /* vertex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vertex.h; sourceTree = "<group>"; };
 		2AC95E1C2B1DE0B200B2C916 /* touch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = touch.h; sourceTree = "<group>"; };
 		2AC95E1F2B1DE16500B2C916 /* touch_phase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = touch_phase.h; sourceTree = "<group>"; };
+		2AD667612B22246C00E0E83A /* libgame_slots_ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libgame_slots_ios.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2AD667772B22247F00E0E83A /* launcher_slots_ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = launcher_slots_ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2AD6677E2B2225B000E0E83A /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = assets; path = ../game_slots/assets; sourceTree = "<group>"; };
+		2AD6679C2B222C5A00E0E83A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../game_slots/launcher_ios/Assets.xcassets; sourceTree = "<group>"; };
+		2AD6679D2B222C5A00E0E83A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ../../game_slots/launcher_ios/AppDelegate.m; sourceTree = "<group>"; };
+		2AD667A02B222C5A00E0E83A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2AD667A22B222C5A00E0E83A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
+		2AD667A32B222C5A00E0E83A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../../game_slots/launcher_ios/AppDelegate.h; sourceTree = "<group>"; };
+		2AD667A42B222C5A00E0E83A /* GameViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = GameViewController.mm; path = ../../game_slots/launcher_ios/GameViewController.mm; sourceTree = "<group>"; };
+		2AD667A52B222C5A00E0E83A /* launcher_slots_ios.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = launcher_slots_ios.plist; path = ../../game_slots/launcher_ios/launcher_slots_ios.plist; sourceTree = "<group>"; };
+		2AD667A62B222C5A00E0E83A /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameViewController.h; path = ../../game_slots/launcher_ios/GameViewController.h; sourceTree = "<group>"; };
+		2AD667A72B222C5A00E0E83A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ../../game_slots/launcher_ios/main.m; sourceTree = "<group>"; };
+		2AD667AF2B222C6B00E0E83A /* defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = defines.h; path = ../game_slots/src/defines.h; sourceTree = "<group>"; };
+		2AD667B02B222C6B00E0E83A /* scene_level.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = scene_level.cc; path = ../game_slots/src/scene_level.cc; sourceTree = "<group>"; };
+		2AD667B12B222C6B00E0E83A /* scene_level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = scene_level.h; path = ../game_slots/src/scene_level.h; sourceTree = "<group>"; };
+		2AD667B22B222C6B00E0E83A /* game.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = game.cc; path = ../game_slots/src/game.cc; sourceTree = "<group>"; };
+		2AD667B32B222C6B00E0E83A /* game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = game.h; path = ../game_slots/src/game.h; sourceTree = "<group>"; };
 		2AE4B78E2B0FE88200252B50 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = assets; path = ../assets; sourceTree = "<group>"; };
 		2AE4B7912B0FECD800252B50 /* defaults */ = {isa = PBXFileReference; lastKnownFileType = folder; name = defaults; path = ../defaults; sourceTree = "<group>"; };
 		2AE640B22B11CC1D00A6B8DA /* directory_macos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = directory_macos.h; sourceTree = "<group>"; };
@@ -715,6 +769,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				2AA1AAA12B2095DA002F2A49 /* libsnowpulse_macos.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2AD6675B2B22246C00E0E83A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2AD6675C2B22246C00E0E83A /* libsnowpulse_ios.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2AD6676B2B22247F00E0E83A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2AD6676C2B22247F00E0E83A /* libsnowpulse_ios.a in Frameworks */,
+				2AD6676D2B22247F00E0E83A /* libgame_ios.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1271,6 +1342,44 @@
 			name = spine;
 			sourceTree = "<group>";
 		};
+		2AD6677B2B22259200E0E83A /* game_slots */ = {
+			isa = PBXGroup;
+			children = (
+				2AD667AF2B222C6B00E0E83A /* defines.h */,
+				2AD667B22B222C6B00E0E83A /* game.cc */,
+				2AD667B32B222C6B00E0E83A /* game.h */,
+				2AD667B02B222C6B00E0E83A /* scene_level.cc */,
+				2AD667B12B222C6B00E0E83A /* scene_level.h */,
+				2AD6677E2B2225B000E0E83A /* assets */,
+			);
+			name = game_slots;
+			sourceTree = "<group>";
+		};
+		2AD667812B22289D00E0E83A /* launcher_slots_ios */ = {
+			isa = PBXGroup;
+			children = (
+				2AD667A32B222C5A00E0E83A /* AppDelegate.h */,
+				2AD6679D2B222C5A00E0E83A /* AppDelegate.m */,
+				2AD6679C2B222C5A00E0E83A /* Assets.xcassets */,
+				2AD6679E2B222C5A00E0E83A /* Base.lproj */,
+				2AD667A62B222C5A00E0E83A /* GameViewController.h */,
+				2AD667A42B222C5A00E0E83A /* GameViewController.mm */,
+				2AD667A52B222C5A00E0E83A /* launcher_slots_ios.plist */,
+				2AD667A72B222C5A00E0E83A /* main.m */,
+			);
+			path = launcher_slots_ios;
+			sourceTree = "<group>";
+		};
+		2AD6679E2B222C5A00E0E83A /* Base.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				2AD6679F2B222C5A00E0E83A /* LaunchScreen.storyboard */,
+				2AD667A12B222C5A00E0E83A /* Main.storyboard */,
+			);
+			name = Base.lproj;
+			path = ../../game_slots/launcher_ios/Base.lproj;
+			sourceTree = "<group>";
+		};
 		2AE640BC2B12921100A6B8DA /* metal */ = {
 			isa = PBXGroup;
 			children = (
@@ -1312,6 +1421,8 @@
 		2AF938AD2ABDC14D00CC8BA2 = {
 			isa = PBXGroup;
 			children = (
+				2AD667812B22289D00E0E83A /* launcher_slots_ios */,
+				2AD6677B2B22259200E0E83A /* game_slots */,
 				2AE4B7912B0FECD800252B50 /* defaults */,
 				2AE4B78E2B0FE88200252B50 /* assets */,
 				2A4FBDED2B00BF430060E35C /* snowpulse */,
@@ -1332,6 +1443,8 @@
 				2AA1AA622B2075C5002F2A49 /* launcher_macos.app */,
 				2AA1AA8B2B209542002F2A49 /* libsnowpulse_macos.a */,
 				2AA1AAA02B2095BB002F2A49 /* libgame_macos.a */,
+				2AD667612B22246C00E0E83A /* libgame_slots_ios.a */,
+				2AD667772B22247F00E0E83A /* launcher_slots_ios.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1480,6 +1593,42 @@
 			productReference = 2AA1AAA02B2095BB002F2A49 /* libgame_macos.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		2AD667572B22246C00E0E83A /* game_slots_ios */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2AD6675E2B22246C00E0E83A /* Build configuration list for PBXNativeTarget "game_slots_ios" */;
+			buildPhases = (
+				2AD667582B22246C00E0E83A /* Sources */,
+				2AD6675B2B22246C00E0E83A /* Frameworks */,
+				2AD6675D2B22246C00E0E83A /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = game_slots_ios;
+			productName = game_ios;
+			productReference = 2AD667612B22246C00E0E83A /* libgame_slots_ios.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		2AD667622B22247F00E0E83A /* launcher_slots_ios */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2AD667742B22247F00E0E83A /* Build configuration list for PBXNativeTarget "launcher_slots_ios" */;
+			buildPhases = (
+				2AD667672B22247F00E0E83A /* Sources */,
+				2AD6676B2B22247F00E0E83A /* Frameworks */,
+				2AD6676E2B22247F00E0E83A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2AD667632B22247F00E0E83A /* PBXTargetDependency */,
+				2AD667652B22247F00E0E83A /* PBXTargetDependency */,
+			);
+			name = launcher_slots_ios;
+			productName = launcher_ios;
+			productReference = 2AD667772B22247F00E0E83A /* launcher_slots_ios.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1525,6 +1674,8 @@
 				2A5267292B206305008B7268 /* game_ios */,
 				2AA1AA8A2B209542002F2A49 /* snowpulse_macos */,
 				2AA1AA962B2095BB002F2A49 /* game_macos */,
+				2AD667622B22247F00E0E83A /* launcher_slots_ios */,
+				2AD667572B22246C00E0E83A /* game_slots_ios */,
 			);
 		};
 /* End PBXProject section */
@@ -1550,6 +1701,19 @@
 				2AA1AA7C2B2076A8002F2A49 /* assets in Resources */,
 				2AA1AA742B2075C5002F2A49 /* Main.storyboard in Resources */,
 				2AA1AA7B2B2076A5002F2A49 /* defaults in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2AD6676E2B22247F00E0E83A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2AD6677F2B2225B000E0E83A /* assets in Resources */,
+				2AD667AB2B222C5A00E0E83A /* Main.storyboard in Resources */,
+				2AD667AD2B222C5A00E0E83A /* launcher_slots_ios.plist in Resources */,
+				2AD667AA2B222C5A00E0E83A /* LaunchScreen.storyboard in Resources */,
+				2AD667A82B222C5A00E0E83A /* Assets.xcassets in Resources */,
+				2AD667702B22247F00E0E83A /* defaults in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1794,6 +1958,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2AD667582B22246C00E0E83A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2AD667672B22247F00E0E83A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2AD667AC2B222C5A00E0E83A /* GameViewController.mm in Sources */,
+				2AD667B52B222C6B00E0E83A /* game.cc in Sources */,
+				2AD667AE2B222C5A00E0E83A /* main.m in Sources */,
+				2AD667A92B222C5A00E0E83A /* AppDelegate.m in Sources */,
+				2AD667B42B222C6B00E0E83A /* scene_level.cc in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1806,6 +1989,16 @@
 			isa = PBXTargetDependency;
 			target = 2A5266BA2B20514C008B7268 /* snowpulse_ios */;
 			targetProxy = 2A52674E2B206536008B7268 /* PBXContainerItemProxy */;
+		};
+		2AD667632B22247F00E0E83A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2A5267292B206305008B7268 /* game_ios */;
+			targetProxy = 2AD667642B22247F00E0E83A /* PBXContainerItemProxy */;
+		};
+		2AD667652B22247F00E0E83A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2A5266BA2B20514C008B7268 /* snowpulse_ios */;
+			targetProxy = 2AD667662B22247F00E0E83A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1830,6 +2023,22 @@
 			isa = PBXVariantGroup;
 			children = (
 				2AA1AA732B2075C5002F2A49 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2AD6679F2B222C5A00E0E83A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2AD667A02B222C5A00E0E83A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		2AD667A12B222C5A00E0E83A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2AD667A22B222C5A00E0E83A /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -2204,6 +2413,146 @@
 			};
 			name = Release;
 		};
+		2AD6675F2B22246C00E0E83A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					GAMEAPI_EXPORT,
+					SNOWPULSE_PLATFORM_IOS,
+				);
+				HEADER_SEARCH_PATHS = (
+					../snowpulse/,
+					../thirdparty/glm/,
+					../thirdparty/stb/,
+					"../thirdparty/nlohmann-json/",
+					"../thirdparty/spine-cpp/**",
+					../thirdparty/metal/,
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2AD667602B22246C00E0E83A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					GAMEAPI_EXPORT,
+					SNOWPULSE_PLATFORM_IOS,
+				);
+				HEADER_SEARCH_PATHS = (
+					../snowpulse/,
+					../thirdparty/glm/,
+					../thirdparty/stb/,
+					"../thirdparty/nlohmann-json/",
+					"../thirdparty/spine-cpp/**",
+					../thirdparty/metal/,
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2AD667752B22247F00E0E83A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 23J8NZZ8E9;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					SNOWPULSE_PLATFORM_IOS,
+				);
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					../snowpulse/,
+					../game/,
+					../thirdparty/glm/,
+					../thirdparty/stb/,
+					"../thirdparty/nlohmann-json/",
+					"../thirdparty/spine-cpp/**",
+					../thirdparty/metal/,
+				);
+				INFOPLIST_FILE = ../game_slots/launcher_ios/launcher_slots_ios.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = metal;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationLandscapeLeft;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.snowblink.Snowpulse.launcher-ios";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2AD667762B22247F00E0E83A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 23J8NZZ8E9;
+				GCC_PREPROCESSOR_DEFINITIONS = SNOWPULSE_PLATFORM_IOS;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					../snowpulse/,
+					../game/,
+					../thirdparty/glm/,
+					../thirdparty/stb/,
+					"../thirdparty/nlohmann-json/",
+					"../thirdparty/spine-cpp/**",
+					../thirdparty/metal/,
+				);
+				INFOPLIST_FILE = ../game_slots/launcher_ios/launcher_slots_ios.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = metal;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationLandscapeLeft;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.snowblink.Snowpulse.launcher-ios";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		2AF938BF2ABDC14D00CC8BA2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2368,6 +2717,24 @@
 			buildConfigurations = (
 				2AA1AA9E2B2095BB002F2A49 /* Debug */,
 				2AA1AA9F2B2095BB002F2A49 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2AD6675E2B22246C00E0E83A /* Build configuration list for PBXNativeTarget "game_slots_ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2AD6675F2B22246C00E0E83A /* Debug */,
+				2AD667602B22246C00E0E83A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2AD667742B22247F00E0E83A /* Build configuration list for PBXNativeTarget "launcher_slots_ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2AD667752B22247F00E0E83A /* Debug */,
+				2AD667762B22247F00E0E83A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
