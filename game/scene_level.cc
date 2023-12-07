@@ -160,9 +160,14 @@ void SceneLevel::Update(float deltaTime) {
         }
     }
     
-    snowpulse::Vector2 mousePos = snowpulse::Input::GetInstance()->GetMousePosition();
+    snowpulse::Vector2 mousePos = snowpulse::Input::GetInstance()->GetMousePositionOnScreen();
 #ifdef SPDEBUG
-    std::cout << "Mouse Position (" << mousePos.x << ", " << mousePos.y << ")" << std::endl;
+    std::cout << "Mouse Position SCREEN (" << mousePos.x << ", " << mousePos.y << ")" << std::endl;
+#endif
+    
+    mousePos = snowpulse::Input::GetInstance()->GetMousePositionOnWorld();
+#ifdef SPDEBUG
+    std::cout << "Mouse Position WORLD (" << mousePos.x << ", " << mousePos.y << ")" << std::endl;
 #endif
     
     if (snowpulse::Input::GetInstance()->GetPressed("mouse_middle")) {

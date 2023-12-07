@@ -21,7 +21,8 @@ class SNOWPULSEAPI Input {
         virtual bool GetPressed(std::string key) = 0;
         virtual bool GetReleased(std::string key) = 0;
 
-        Vector2 GetMousePosition() { return mousePosition_; }
+        Vector2 GetMousePositionOnScreen() { return mousePositionOnScreen_; }
+        Vector2 GetMousePositionOnWorld() { return mousePositionOnWorld_; }
         std::vector<Touch> GetTouches();
 
     protected:
@@ -34,7 +35,8 @@ class SNOWPULSEAPI Input {
         std::map<int, Touch> touches_;
         std::map<void*, int> touchIds_;
 
-        Vector2 mousePosition_;
+        Vector2 mousePositionOnScreen_;
+        Vector2 mousePositionOnWorld_;
         std::map<unsigned int, std::string> mouseButtonMap_;
         std::map<unsigned int, std::string> keyMap_;
         std::map<std::string, bool> pressedKeys_;

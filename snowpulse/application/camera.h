@@ -6,7 +6,7 @@
 #include <memory>
 
 #include "../common/vector2.h"
-#include "../common/vector2Int.h"
+#include "../common/vector2int.h"
 #include "../common/vector3.h"
 #include "../common/matrix4x4.h"
 
@@ -18,6 +18,7 @@ class SNOWPULSEAPI Camera {
         virtual ~Camera();
 
         Matrix4x4 GetMatrix() const;
+        Vector3 GetRawPosition() const { return position_ + offset_; }
         Vector3 GetPosition() const { return position_; }
         void SetPosition(Vector2 position);
 
@@ -25,6 +26,7 @@ class SNOWPULSEAPI Camera {
         Camera();
 
         Vector3 position_;
+        Vector3 offset_;
 };
 }   // namespace snowpulse
 #endif

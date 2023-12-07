@@ -62,10 +62,12 @@ InputMacOS::~InputMacOS() {
 }
 
 void InputMacOS::ProcessInputs(const Vector2Int& resolutionSize, const Vector2Int& screenSize, Vector2 mousePosition) {
-    auto camPos = camera_->GetPosition();
-    mousePosition_ = mousePosition + Vector2(camPos.x, camPos.y);
     Vector2 scaleFactor = Vector2((float)resolutionSize.x / (float)screenSize.x, (float)resolutionSize.y / (float)screenSize.y);
-    mousePosition_ *= scaleFactor;
+    mousePositionOnScreen_ = mousePosition;
+    mousePositionOnScreen_ *= scaleFactor;
+
+    auto camPos = camera_->GetPosition();
+    mousePositionOnWorld_ = mousePositionOnScreen_ + Vector2(camPos.x, camPos.y) + Vector2(resolutionSize.x * -0.5f, resolutionSize.y * -0.5f);
 }
 void InputMacOS::ProcessInputs(const Vector2Int& resolutionSize, const Vector2Int& screenSize, Vector2 mousePosition, int mouseButton, bool isMouseDown) {
     
