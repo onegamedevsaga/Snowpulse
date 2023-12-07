@@ -70,7 +70,33 @@ void InputMacOS::ProcessInputs(const Vector2Int& resolutionSize, const Vector2In
     mousePositionOnWorld_ = mousePositionOnScreen_ + Vector2(camPos.x, camPos.y) + Vector2(resolutionSize.x * -0.5f, resolutionSize.y * -0.5f);
 }
 void InputMacOS::ProcessInputs(const Vector2Int& resolutionSize, const Vector2Int& screenSize, Vector2 mousePosition, int mouseButton, bool isMouseDown) {
+    Vector2 scaleFactor = Vector2((float)resolutionSize.x / (float)screenSize.x, (float)resolutionSize.y / (float)screenSize.y);
+    auto mousePositionOnScreen = mousePosition;
+    mousePositionOnScreen *= scaleFactor;
+
+    auto camPos = camera_->GetPosition();
+    auto mousePositionOnWorld = mousePositionOnScreen + Vector2(camPos.x, camPos.y) + Vector2(resolutionSize.x * -0.5f, resolutionSize.y * -0.5f);
     
+    std::string key = "";
+    switch (mouseButton) {
+        case 0:
+            key = "mouse_left";
+            break;
+        case 1:
+            key = "mouse_right";
+            break;
+        case 2:
+            key = "mouse_middle";
+            break;
+    }
+    if (!heldKeys_.count(key) && isMouseDown) {
+        pressedKeys_[key] = true;
+        heldKeys_[key] = true;
+    }
+    else if (heldKeys_.count(key) && !isMouseDown) {
+        releasedKeys_[key] = true;
+        heldKeys_.erase(key);
+    }
 }
 void InputMacOS::ProcessInputs(std::string key, bool isKeyDown) {
     key = ToLowerCase(key);

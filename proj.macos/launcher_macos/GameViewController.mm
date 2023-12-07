@@ -66,21 +66,23 @@
     input_->ProcessInputs(key, false);
 }
 
-
-
 - (void)mouseDown:(NSEvent *)event {
     NSPoint locationInView = [self.view convertPoint:[event locationInWindow] fromView:nil];
     NSInteger mouseButton = [event buttonNumber];
-    if (mouseButton == 0) {
-        
-    } else if (mouseButton == 1) {
-        
-    } else if (mouseButton == 2) {
-        
-    }
-    
-    //input_->ProcessInputs(app_->GetResolutionSize(), app_->GetScreenSize(), );
+    input_->ProcessInputs(app_->GetResolutionSize(), app_->GetScreenSize(), snowpulse::Vector2(locationInView.x, locationInView.y), 0, true);
 }
+
+- (void)rightMouseDown:(NSEvent *)event {
+    NSPoint locationInView = [self.view convertPoint:[event locationInWindow] fromView:nil];
+    NSInteger mouseButton = [event buttonNumber];
+    input_->ProcessInputs(app_->GetResolutionSize(), app_->GetScreenSize(), snowpulse::Vector2(locationInView.x, locationInView.y), 1, true);
+}
+
+- (void)otherMouseDown:(NSEvent *)event {
+    NSPoint locationInView = [self.view convertPoint:[event locationInWindow] fromView:nil];
+    input_->ProcessInputs(app_->GetResolutionSize(), app_->GetScreenSize(), snowpulse::Vector2(locationInView.x, locationInView.y), event.buttonNumber , true);
+}
+
 
 - (void)mouseUp:(NSEvent *)event {
     // Handle mouse up event
