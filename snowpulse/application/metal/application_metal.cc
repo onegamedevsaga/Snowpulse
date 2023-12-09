@@ -16,6 +16,9 @@
 #undef MTK_PRIVATE_IMPLEMENTATION
 #undef CA_PRIVATE_IMPLEMENTATION
 
+#include <imgui.h>
+#include <imgui_impl_metal.h>
+
 #include "../timer.h"
 #include "../input.h"
 #include "view_delegate_metal.h"
@@ -60,10 +63,35 @@ bool ApplicationMetal::Initialize(const Vector2Int& resolutionSize, const Vector
     viewDelegate_ = std::make_shared<ViewDelegateMetal>(this);
     view_ = static_cast<MTK::View*>(view);
     view_->setDelegate(viewDelegate_.get());
+
+    IMGUI_CHECKVERSION();
+    ImGui::CreateContext();
+    ImGuiIO& io = ImGui::GetIO();
+    io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
+    //io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
+
+    io.DeltaTime = 1.0f / 60.0f;
+    io.DisplaySize = ImVec2(screenSize_.x, screenSize_.y);
+    ImGui_ImplMetal_Init(graphics_->GetDevice());
     return true;
 }
 
+void ApplicationMetal::SetScreenSize(const Vector2Int& screenSize) {
+    Application::SetScreenSize(screenSize);
+    if (graphics_) {
+        graphics_->UpdateProjectionMatrix(resolutionSize_);
+    }
+    if (ImGui::GetCurrentContext()) {
+        ImGuiIO& io = ImGui::GetIO();
+        io.DisplaySize = ImVec2(screenSize_.x, screenSize_.y);
+    }
+}
+
 void ApplicationMetal::Shutdown() {
+    ImGui_ImplMetal_Shutdown();
+    //ImGui_ImplGlfw_Shutdown();
+    ImGui::DestroyContext();
+
     if (game_) {
         game_->Shutdown();
     }
@@ -95,6 +123,10 @@ void ApplicationMetal::RunFrame() {
     auto commandBuffer = commandQueue->commandBuffer();
     auto renderPassDesc = view_->currentRenderPassDescriptor();
     auto commandEncoder = commandBuffer->renderCommandEncoder(renderPassDesc);
+    
+    ImGui_ImplMetal_NewFrame(renderPassDesc);
+    ImGui::NewFrame();
+    ImGui::ShowDemoWindow();
 
     auto batches = graphics_->GetRenderQueue()->PopAllData();
     for(auto b : batches) {
@@ -251,6 +283,9 @@ void ApplicationMetal::RunFrame() {
         library->release();
         renderPipelineState->release();
     }
+
+    ImGui::Render();
+    ImGui_ImplMetal_RenderDrawData(ImGui::GetDrawData(), commandBuffer, commandEncoder);
 
     commandEncoder->endEncoding();
     commandBuffer->presentDrawable(view_->currentDrawable());

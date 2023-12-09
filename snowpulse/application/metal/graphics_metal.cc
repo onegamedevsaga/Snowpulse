@@ -73,15 +73,9 @@ bool GraphicsMetal::Initialize(const Vector2Int& resolution, const Vector2Int& s
     view_->setClearColor(MTL::ClearColor::Make(0.2f, 0.3f, 0.3f, 1.0));
     device_ = view_->device();
     commandQueue_ = device_->newCommandQueue();
-
-    auto ortho = glm::ortho(0.0f, (float)resolution.x, 0.0f, (float)resolution.y, -100.0f, 100.0f);
-    for (int i = 0; i < 4; ++i) {
-        for (int j = 0; j < 4; ++j) {
-            projectionMatrix_.columns[i][j] = ortho[i][j];
-        }
-    }
-
     renderQueue_ = RenderQueueMetal::Create();
+
+    UpdateProjectionMatrix(resolution);
     LoadTexture(kSpriteDefault, PathType::kDefaults);
 
 #ifdef SPDEBUG
@@ -89,6 +83,15 @@ bool GraphicsMetal::Initialize(const Vector2Int& resolution, const Vector2Int& s
 #endif
 
     return true;
+}
+
+void GraphicsMetal::UpdateProjectionMatrix(const Vector2Int& resolution) {
+    auto ortho = glm::ortho(0.0f, (float)resolution.x, 0.0f, (float)resolution.y, -100.0f, 100.0f);
+    for (int i = 0; i < 4; ++i) {
+        for (int j = 0; j < 4; ++j) {
+            projectionMatrix_.columns[i][j] = ortho[i][j];
+        }
+    }
 }
 
 void GraphicsMetal::Shutdown() {

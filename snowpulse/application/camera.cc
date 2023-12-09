@@ -2,12 +2,13 @@
 
 #include <iostream>
 
+#include "../application/application.h"
+
 namespace snowpulse {
 
 std::shared_ptr<Camera> Camera::Create(const Vector2Int& resolution) {
     auto camera = new Camera();
-    auto res = Vector3(resolution.x, resolution.y, 0.0f);
-    camera->offset_ = res * -0.5f;
+    camera->application_ = Application::GetInstance();
     camera->SetPosition(Vector2(0.0f, 0.0f));
     return std::shared_ptr<Camera>(camera);
 }
@@ -19,8 +20,14 @@ Camera::~Camera() {
 }
 
 Matrix4x4 Camera::GetMatrix() const {
-    auto pos = position_ + offset_;
+    auto pos = GetRawPosition();
     return Matrix4x4::LookAtRH(pos, Vector3(pos.x, pos.y, 0.0f), Vector3(0.0f, 1.0f, 0.0f));
+}
+
+Vector3 Camera::GetRawPosition() const {
+    auto res = application_->GetResolutionSize();
+    auto offset = Vector3((float)res.x * -0.5f, (float)res.y * -0.5f);
+    return position_ + offset;
 }
 
 void Camera::SetPosition(Vector2 position) {

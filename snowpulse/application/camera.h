@@ -11,6 +11,10 @@
 #include "../common/matrix4x4.h"
 
 namespace snowpulse {
+
+// Forward declaration
+class Application;
+
 class SNOWPULSEAPI Camera {
     public:
         static std::shared_ptr<Camera> Create(const Vector2Int& resolution);
@@ -18,15 +22,15 @@ class SNOWPULSEAPI Camera {
         virtual ~Camera();
 
         Matrix4x4 GetMatrix() const;
-        Vector3 GetRawPosition() const { return position_ + offset_; }
+        Vector3 GetRawPosition() const;
         Vector3 GetPosition() const { return position_; }
         void SetPosition(Vector2 position);
 
     private:
         Camera();
 
+        Application* application_;
         Vector3 position_;
-        Vector3 offset_;
 };
 }   // namespace snowpulse
 #endif

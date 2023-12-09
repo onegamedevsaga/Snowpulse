@@ -20,6 +20,7 @@ class SNOWPULSEAPI Application {
 
         virtual ~Application();
         virtual bool Initialize(const Vector2Int& resolution, const Vector2Int& screenSize);
+        virtual void SetScreenSize(const Vector2Int& screenSize);
         virtual void Close() = 0;
         virtual void Shutdown() = 0;
         virtual Graphics* GetGraphics() const = 0;
@@ -41,6 +42,7 @@ class SNOWPULSEAPI Application {
 
         Platform platform_;
         Vector2Int resolutionSize_;
+        Vector2Int targetResolutionSize_;
         Vector2Int screenSize_;
         NodeStarter nodeStarter_;
         Timer appTimer_;

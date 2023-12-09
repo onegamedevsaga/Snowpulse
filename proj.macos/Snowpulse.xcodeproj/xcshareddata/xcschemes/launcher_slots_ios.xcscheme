@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2AD667622B22247F00E0E83A"
-               BuildableName = "launcher_slots_ios.app"
+               BuildableName = "Slot Machine.app"
                BlueprintName = "launcher_slots_ios"
                ReferencedContainer = "container:Snowpulse.xcodeproj">
             </BuildableReference>
@@ -44,7 +44,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2AD667622B22247F00E0E83A"
-            BuildableName = "launcher_slots_ios.app"
+            BuildableName = "Slot Machine.app"
             BlueprintName = "launcher_slots_ios"
             ReferencedContainer = "container:Snowpulse.xcodeproj">
          </BuildableReference>
@@ -61,7 +61,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2AD667622B22247F00E0E83A"
-            BuildableName = "launcher_slots_ios.app"
+            BuildableName = "Slot Machine.app"
             BlueprintName = "launcher_slots_ios"
             ReferencedContainer = "container:Snowpulse.xcodeproj">
          </BuildableReference>

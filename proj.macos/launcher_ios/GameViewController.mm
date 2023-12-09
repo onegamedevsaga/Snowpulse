@@ -5,16 +5,14 @@
 #include <snowpulse.h>
 #include <game.h>
 
-@implementation GameViewController
-{
+@implementation GameViewController {
     MTKView* view_;
     std::shared_ptr<game::Game> game_;
     snowpulse::ApplicationIOS* app_;
     snowpulse::InputIOS* input_;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
     view_ = (MTKView *)self.view;
@@ -34,6 +32,15 @@
         game_->Initialize(app_);
         input_ = static_cast<snowpulse::InputIOS*>(snowpulse::Input::GetInstance());
     }
+}
+
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+    }
+    completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+        self->app_->SetScreenSize(snowpulse::Vector2Int((int)size.width, (int)size.height));
+    }];
 }
 
 - (void)dealloc {
