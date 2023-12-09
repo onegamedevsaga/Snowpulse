@@ -23,6 +23,7 @@ class SNOWPULSEAPI Application {
         virtual void SetScreenSize(const Vector2Int& screenSize);
         virtual void Close() = 0;
         virtual void Shutdown() = 0;
+        virtual void SetScreenScaleFactor(float scaleFactor) { scaleFactor_ = scaleFactor; }
         virtual Graphics* GetGraphics() const = 0;
 
         void SetGame(Game* game);
@@ -41,6 +42,7 @@ class SNOWPULSEAPI Application {
         Application();
 
         Platform platform_;
+        float scaleFactor_;
         Vector2Int resolutionSize_;
         Vector2Int targetResolutionSize_;
         Vector2Int screenSize_;

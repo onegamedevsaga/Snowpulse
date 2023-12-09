@@ -20,9 +20,11 @@ class SNOWPULSEAPI ApplicationMetal : public Application {
         virtual bool Initialize(const Vector2Int& resolutionSize, const Vector2Int& screenSize, void* view);
         virtual void SetScreenSize(const Vector2Int& screenSize) override;
         virtual void Shutdown() override;
+        virtual void SetScreenScaleFactor(float scaleFactor) override;
 
         virtual void RunFrame();
 
+        
         Graphics* GetGraphics() const override { return graphics_.get(); }
 
     protected:

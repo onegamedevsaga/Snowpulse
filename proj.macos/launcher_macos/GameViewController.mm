@@ -54,6 +54,9 @@
         app_->SetGame(game_.get());
         game_->Initialize(app_);
         input_ = static_cast<snowpulse::InputMacOS*>(snowpulse::Input::GetInstance());
+
+        auto scaleFactor = window.screen.backingScaleFactor;
+        app_->SetScreenScaleFactor(scaleFactor);
     }
     hasInitializedApplication = true;
 }

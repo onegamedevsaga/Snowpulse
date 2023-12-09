@@ -103,6 +103,16 @@ void ApplicationMetal::Shutdown() {
 #endif
 }
 
+void ApplicationMetal::SetScreenScaleFactor(float scaleFactor) {
+    Application::SetScreenScaleFactor(scaleFactor);
+    ImGuiIO& io = ImGui::GetIO();
+    io.Fonts->Clear();
+    io.Fonts->AddFontDefault();
+    io.FontGlobalScale = scaleFactor_;
+    ImGuiStyle& style = ImGui::GetStyle();
+    style.ScaleAllSizes(scaleFactor_);
+}
+
 void ApplicationMetal::RunFrame() {
     auto device = graphics_->GetDevice();
     auto commandQueue = graphics_->GetCommandQueue();

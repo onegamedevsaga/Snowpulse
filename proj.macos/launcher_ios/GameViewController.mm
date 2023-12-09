@@ -31,6 +31,9 @@
         app_->SetGame(game_.get());
         game_->Initialize(app_);
         input_ = static_cast<snowpulse::InputIOS*>(snowpulse::Input::GetInstance());
+
+        auto scaleFactor = [UIScreen mainScreen].scale;
+        app_->SetScreenScaleFactor(scaleFactor);
     }
 }
 
