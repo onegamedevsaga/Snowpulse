@@ -255,6 +255,9 @@
 		2AC67DDA2B24B6C40009F46C /* imgui_draw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AE11C3D2B2443A70023DB82 /* imgui_draw.cpp */; };
 		2AC67DDB2B24B6C40009F46C /* imgui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AE11C412B2443A70023DB82 /* imgui.cpp */; };
 		2AC67DDC2B24B6C40009F46C /* imgui_widgets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AE11C442B2443A70023DB82 /* imgui_widgets.cpp */; };
+		2AC67DE02B262C840009F46C /* imgui_test.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AC67DDE2B262C840009F46C /* imgui_test.h */; };
+		2AC67DE12B262C840009F46C /* imgui_test.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2AC67DDF2B262C840009F46C /* imgui_test.cc */; };
+		2AC67DE22B262C840009F46C /* imgui_test.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2AC67DDF2B262C840009F46C /* imgui_test.cc */; };
 		2AD6675C2B22246C00E0E83A /* libsnowpulse_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A5266BB2B20514C008B7268 /* libsnowpulse_ios.a */; };
 		2AD6676C2B22247F00E0E83A /* libsnowpulse_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A5266BB2B20514C008B7268 /* libsnowpulse_ios.a */; };
 		2AD6676D2B22247F00E0E83A /* libgame_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A52672A2B206305008B7268 /* libgame_ios.a */; };
@@ -689,6 +692,8 @@
 		2AC67DAF2B2461B30009F46C /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.a; path = "../thirdparty/glfw-3.3.8/lib-universal/libglfw3.a"; sourceTree = "<group>"; };
 		2AC67DB62B24B33C0009F46C /* imgui_impl_metal.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = imgui_impl_metal.mm; path = ../thirdparty/imgui/backends/imgui_impl_metal.mm; sourceTree = "<group>"; };
 		2AC67DB92B24B33C0009F46C /* imgui_impl_metal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui_impl_metal.h; path = ../thirdparty/imgui/backends/imgui_impl_metal.h; sourceTree = "<group>"; };
+		2AC67DDE2B262C840009F46C /* imgui_test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui_test.h; path = components/imgui_test.h; sourceTree = "<group>"; };
+		2AC67DDF2B262C840009F46C /* imgui_test.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_test.cc; path = components/imgui_test.cc; sourceTree = "<group>"; };
 		2AC95E1C2B1DE0B200B2C916 /* touch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = touch.h; sourceTree = "<group>"; };
 		2AC95E1F2B1DE16500B2C916 /* touch_phase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = touch_phase.h; sourceTree = "<group>"; };
 		2AD667612B22246C00E0E83A /* libgame_slots_ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libgame_slots_ios.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1125,6 +1130,7 @@
 		2A4FBE762B00BF890060E35C /* game */ = {
 			isa = PBXGroup;
 			children = (
+				2AC67DDD2B262C6F0009F46C /* components */,
 				2A4FBE772B00BF890060E35C /* defines.h */,
 				2A4FBE792B00BF890060E35C /* game.cc */,
 				2A4FBE782B00BF890060E35C /* game.h */,
@@ -1388,6 +1394,15 @@
 			name = backends;
 			sourceTree = "<group>";
 		};
+		2AC67DDD2B262C6F0009F46C /* components */ = {
+			isa = PBXGroup;
+			children = (
+				2AC67DDF2B262C840009F46C /* imgui_test.cc */,
+				2AC67DDE2B262C840009F46C /* imgui_test.h */,
+			);
+			name = components;
+			sourceTree = "<group>";
+		};
 		2AD6677B2B22259200E0E83A /* game_slots */ = {
 			isa = PBXGroup;
 			children = (
@@ -1560,6 +1575,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2AC67DE02B262C840009F46C /* imgui_test.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1925,6 +1941,7 @@
 				2A5267332B20631E008B7268 /* game.cc in Sources */,
 				2AC67DD82B24B6C40009F46C /* imgui_impl_metal.mm in Sources */,
 				2AC67DD72B24B6C40009F46C /* imgui_tables.cpp in Sources */,
+				2AC67DE12B262C840009F46C /* imgui_test.cc in Sources */,
 				2AC67DDC2B24B6C40009F46C /* imgui_widgets.cpp in Sources */,
 				2AC67DDA2B24B6C40009F46C /* imgui_draw.cpp in Sources */,
 				2AC67DD92B24B6C40009F46C /* imgui_demo.cpp in Sources */,
@@ -2054,6 +2071,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2AC67DE22B262C840009F46C /* imgui_test.cc in Sources */,
 				2AA1AAAC2B209661002F2A49 /* game.cc in Sources */,
 				2AA1AAAB2B209661002F2A49 /* scene_level.cc in Sources */,
 			);

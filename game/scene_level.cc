@@ -2,6 +2,8 @@
 
 #include <iostream>
 
+#include "components/imgui_test.h"
+
 namespace game {
 std::shared_ptr<SceneLevel> SceneLevel::Create(snowpulse::Application* application) {
     auto scene = std::shared_ptr<SceneLevel>(new SceneLevel());
@@ -59,6 +61,8 @@ void SceneLevel::Start() {
     sprRenderer->SetColor(snowpulse::Color(1.0f, 1.0f, 1.0f, 1.0f));
     sprRenderer->SetSortOrder(0);
     go1_->AddComponent(sprRenderer);
+    auto imguiTest = ImGUITest::Create();
+    go1_->AddComponent(imguiTest);
     AddChild(go1_);
 
     go1_->GetTransform()->SetLocalPosition(snowpulse::Vector2(0.0f, 0.0f));
@@ -123,6 +127,8 @@ void SceneLevel::Start() {
 
 void SceneLevel::Update(float deltaTime) {
     Scene::Update(deltaTime);
+
+    
     auto inc = snowpulse::Vector3(100.2f * deltaTime, 100.2f * deltaTime, 0.0f);
     //go1_->GetTransform()->SetPosition(go1_->GetTransform()->GetPosition() + inc);
 

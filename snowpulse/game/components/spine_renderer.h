@@ -15,9 +15,9 @@ class SNOWPULSEAPI SpineRenderer : public SpriteRenderer {
 
         virtual ~SpineRenderer();
         // From Updatable
-        void Update(float deltaTime);
+        void Update(float deltaTime) override;
         // From Drawable
-        void Draw(Graphics* graphics, Matrix4x4 worldMatrix);
+        void Draw(Graphics* graphics, Matrix4x4 worldMatrix) override;
 
         void SetSkin(std::string name);
         void PlayAnimation(std::string name, bool looping = false);

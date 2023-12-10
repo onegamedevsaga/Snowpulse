@@ -123,7 +123,6 @@ void ApplicationMetal::RunFrame() {
     nodeStarter_.StartNodes();
     actionManager_->Update(deltaTime);
     game_->UpdateScene(deltaTime);
-    game_->DrawScene(graphics_.get());
 
     auto commandBuffer = commandQueue->commandBuffer();
     auto renderPassDesc = view_->currentRenderPassDescriptor();
@@ -131,7 +130,8 @@ void ApplicationMetal::RunFrame() {
 
     ImGui_ImplMetal_NewFrame(renderPassDesc);
     ImGui::NewFrame();
-    ImGui::ShowDemoWindow();
+
+    game_->DrawScene(graphics_.get());
 
     auto batches = graphics_->GetRenderQueue()->PopAllData();
     for(auto b : batches) {

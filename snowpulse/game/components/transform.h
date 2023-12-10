@@ -24,7 +24,7 @@ class SNOWPULSEAPI Transform : public Component {
 
         virtual ~Transform();
         // From Updatable
-        void Update(float deltaTime);
+        void Update(float deltaTime) override;
 
         Vector2 GetPosition() { return position_; }
         Vector3 GetPositionVector3() { return Vector3(position_.x, position_.y, 0.0f); }

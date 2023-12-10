@@ -20,9 +20,9 @@ class SNOWPULSEAPI SpriteRenderer : public Component, public Drawable {
 
         virtual ~SpriteRenderer();
         // From Updatable
-        void Update(float deltaTime);
+        void Update(float deltaTime) override;
         // From Drawable
-        void Draw(Graphics* graphics, Matrix4x4 worldMatrix);
+        void Draw(Graphics* graphics, Matrix4x4 worldMatrix) override;
 
         int GetSortOrder() const { return sortOrder_; }
         Vector2 GetSize() const { return size_; }
