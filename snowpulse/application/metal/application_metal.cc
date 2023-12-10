@@ -52,6 +52,10 @@ bool ApplicationMetal::Initialize(const Vector2Int& resolutionSize, const Vector
         return false;
     }
 
+    viewDelegate_ = std::make_shared<ViewDelegateMetal>(this);
+    view_ = static_cast<MTK::View*>(view);
+    view_->setDelegate(viewDelegate_.get());
+
     graphics_ = GraphicsMetal::Create();
     if (!graphics_ || !graphics_->Initialize(resolutionSize_, screenSize_, view)) {
 #ifdef SPDEBUG
@@ -59,10 +63,6 @@ bool ApplicationMetal::Initialize(const Vector2Int& resolutionSize, const Vector
 #endif
         return false;
     }
-    
-    viewDelegate_ = std::make_shared<ViewDelegateMetal>(this);
-    view_ = static_cast<MTK::View*>(view);
-    view_->setDelegate(viewDelegate_.get());
 
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();

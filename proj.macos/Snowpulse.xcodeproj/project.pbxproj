@@ -233,7 +233,6 @@
 		2AA1AB082B2096CB002F2A49 /* action_rotate.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBE832B00F4A30060E35C /* action_rotate.cc */; };
 		2AA1AB0B2B20D6F3002F2A49 /* GameView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2AA1AB0A2B20D6F3002F2A49 /* GameView.mm */; };
 		2AA1AB0C2B20D891002F2A49 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A27D2C82B14E06B008B5446 /* MetalKit.framework */; };
-		2AC67DB02B2461D50009F46C /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AC67DAF2B2461B30009F46C /* libglfw3.a */; };
 		2AC67DBE2B24B33C0009F46C /* imgui_impl_metal.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2AC67DB62B24B33C0009F46C /* imgui_impl_metal.mm */; };
 		2AC67DC32B24B33C0009F46C /* imgui_impl_metal.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AC67DB92B24B33C0009F46C /* imgui_impl_metal.h */; };
 		2AC67DC42B24B5BE0009F46C /* glfw3.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AE11C8F2B244FD40023DB82 /* glfw3.h */; };
@@ -258,6 +257,11 @@
 		2AC67DE02B262C840009F46C /* imgui_test.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AC67DDE2B262C840009F46C /* imgui_test.h */; };
 		2AC67DE12B262C840009F46C /* imgui_test.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2AC67DDF2B262C840009F46C /* imgui_test.cc */; };
 		2AC67DE22B262C840009F46C /* imgui_test.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2AC67DDF2B262C840009F46C /* imgui_test.cc */; };
+		2AC67DE72B263BE30009F46C /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AC67DE32B263BAB0009F46C /* Metal.framework */; };
+		2AC67DE82B263BEF0009F46C /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AC67DE52B263BAF0009F46C /* MetalKit.framework */; };
+		2AC67DE92B263BF70009F46C /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AE640E82B131EFE00A6B8DA /* Metal.framework */; };
+		2AC67DEA2B263C170009F46C /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AC67DE32B263BAB0009F46C /* Metal.framework */; };
+		2AC67DEB2B263C170009F46C /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AC67DE52B263BAF0009F46C /* MetalKit.framework */; };
 		2AD6675C2B22246C00E0E83A /* libsnowpulse_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A5266BB2B20514C008B7268 /* libsnowpulse_ios.a */; };
 		2AD6676C2B22247F00E0E83A /* libsnowpulse_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A5266BB2B20514C008B7268 /* libsnowpulse_ios.a */; };
 		2AD6676D2B22247F00E0E83A /* libgame_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A52672A2B206305008B7268 /* libgame_ios.a */; };
@@ -278,7 +282,6 @@
 		2AE11C602B2443A70023DB82 /* imgui_widgets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AE11C442B2443A70023DB82 /* imgui_widgets.cpp */; };
 		2AE11C652B2443A70023DB82 /* imgui_tables.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AE11C452B2443A70023DB82 /* imgui_tables.cpp */; };
 		2AE11C922B244FD40023DB82 /* glfw3native.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AE11C902B244FD40023DB82 /* glfw3native.h */; };
-		2AE11C942B24517C0023DB82 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AA2CAB22ADD516200927E1B /* OpenGL.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -694,6 +697,8 @@
 		2AC67DB92B24B33C0009F46C /* imgui_impl_metal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui_impl_metal.h; path = ../thirdparty/imgui/backends/imgui_impl_metal.h; sourceTree = "<group>"; };
 		2AC67DDE2B262C840009F46C /* imgui_test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui_test.h; path = components/imgui_test.h; sourceTree = "<group>"; };
 		2AC67DDF2B262C840009F46C /* imgui_test.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_test.cc; path = components/imgui_test.cc; sourceTree = "<group>"; };
+		2AC67DE32B263BAB0009F46C /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS16.4.sdk/System/Library/Frameworks/Metal.framework; sourceTree = DEVELOPER_DIR; };
+		2AC67DE52B263BAF0009F46C /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS16.4.sdk/System/Library/Frameworks/MetalKit.framework; sourceTree = DEVELOPER_DIR; };
 		2AC95E1C2B1DE0B200B2C916 /* touch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = touch.h; sourceTree = "<group>"; };
 		2AC95E1F2B1DE16500B2C916 /* touch_phase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = touch_phase.h; sourceTree = "<group>"; };
 		2AD667612B22246C00E0E83A /* libgame_slots_ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libgame_slots_ios.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -762,6 +767,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A52674D2B206536008B7268 /* libsnowpulse_ios.a in Frameworks */,
+				2AC67DE82B263BEF0009F46C /* MetalKit.framework in Frameworks */,
+				2AC67DE72B263BE30009F46C /* Metal.framework in Frameworks */,
 				2A52674A2B206536008B7268 /* libgame_ios.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -793,10 +800,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2AA1AB0C2B20D891002F2A49 /* MetalKit.framework in Frameworks */,
-				2AC67DB02B2461D50009F46C /* libglfw3.a in Frameworks */,
 				2AA1AAA92B209646002F2A49 /* libgame_macos.a in Frameworks */,
 				2AA1AAAA2B209646002F2A49 /* libsnowpulse_macos.a in Frameworks */,
-				2AE11C942B24517C0023DB82 /* OpenGL.framework in Frameworks */,
+				2AC67DE92B263BF70009F46C /* Metal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -835,6 +841,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2AD6676C2B22247F00E0E83A /* libsnowpulse_ios.a in Frameworks */,
+				2AC67DEB2B263C170009F46C /* MetalKit.framework in Frameworks */,
+				2AC67DEA2B263C170009F46C /* Metal.framework in Frameworks */,
 				2AD6676D2B22247F00E0E83A /* libgame_ios.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1541,6 +1549,8 @@
 		2AF938E62ABDDB5F00CC8BA2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2AC67DE52B263BAF0009F46C /* MetalKit.framework */,
+				2AC67DE32B263BAB0009F46C /* Metal.framework */,
 				2AC67DAF2B2461B30009F46C /* libglfw3.a */,
 				2A27D2F52B14EB5A008B5446 /* Accelerate.framework */,
 				2A27D2C82B14E06B008B5446 /* MetalKit.framework */,
@@ -2172,6 +2182,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 23J8NZZ8E9;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -2217,6 +2228,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 23J8NZZ8E9;
 				GCC_PREPROCESSOR_DEFINITIONS = SNOWPULSE_PLATFORM_IOS;
 				GENERATE_INFOPLIST_FILE = YES;
 				HEADER_SEARCH_PATHS = (
