@@ -89,7 +89,6 @@ void ApplicationMetal::SetScreenSize(const Vector2Int& screenSize) {
 
 void ApplicationMetal::Shutdown() {
     ImGui_ImplMetal_Shutdown();
-    //ImGui_ImplGlfw_Shutdown();
     ImGui::DestroyContext();
 
     if (game_) {
@@ -106,11 +105,7 @@ void ApplicationMetal::Shutdown() {
 void ApplicationMetal::SetScreenScaleFactor(float scaleFactor) {
     Application::SetScreenScaleFactor(scaleFactor);
     ImGuiIO& io = ImGui::GetIO();
-    io.Fonts->Clear();
-    io.Fonts->AddFontDefault();
-    io.FontGlobalScale = scaleFactor_;
-    ImGuiStyle& style = ImGui::GetStyle();
-    style.ScaleAllSizes(scaleFactor_);
+    io.DisplayFramebufferScale = ImVec2(scaleFactor, scaleFactor);
 }
 
 void ApplicationMetal::RunFrame() {
@@ -133,7 +128,7 @@ void ApplicationMetal::RunFrame() {
     auto commandBuffer = commandQueue->commandBuffer();
     auto renderPassDesc = view_->currentRenderPassDescriptor();
     auto commandEncoder = commandBuffer->renderCommandEncoder(renderPassDesc);
-    
+
     ImGui_ImplMetal_NewFrame(renderPassDesc);
     ImGui::NewFrame();
     ImGui::ShowDemoWindow();

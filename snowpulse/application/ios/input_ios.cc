@@ -1,5 +1,7 @@
 #include "input_ios.h"
 
+#include <imgui.h>
+
 namespace snowpulse {
 
 InputIOS::InputIOS() : Input() {
@@ -50,5 +52,9 @@ void InputIOS::ProcessInputs(const Vector2Int& resolution, const Vector2Int& scr
             touchIds_.erase(touch);
         }
     }
+
+    ImGuiIO& io = ImGui::GetIO();
+    io.MouseDown[0] = touchPhase == TouchPhase::kBegan || touchPhase == TouchPhase::kMoved;
+    io.MousePos = ImVec2(position.x, position.y);
 }
 }   // namespace snowpulse

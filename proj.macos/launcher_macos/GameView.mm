@@ -47,4 +47,31 @@
     NSPoint locationInView = [self convertPoint:[event locationInWindow] fromView:nil];
     input_->ProcessInputs(app_->GetResolutionSize(), app_->GetScreenSize(), snowpulse::Vector2(locationInView.x, locationInView.y));
 }
+
+- (void)mouseDragged:(NSEvent *)event {
+    [super mouseDragged:event];
+    NSPoint locationInView = [self convertPoint:event.locationInWindow fromView:nil];
+    input_->ProcessInputs(app_->GetResolutionSize(), app_->GetScreenSize(), snowpulse::Vector2(locationInView.x, locationInView.y));
+}
+
+- (void)righMouseDragged:(NSEvent *)event {
+    [super rightMouseDragged:event];
+    NSPoint locationInView = [self convertPoint:event.locationInWindow fromView:nil];
+    input_->ProcessInputs(app_->GetResolutionSize(), app_->GetScreenSize(), snowpulse::Vector2(locationInView.x, locationInView.y));
+}
+
+- (void)otherMouseDragged:(NSEvent *)event {
+    [super otherMouseDragged:event];
+    NSPoint locationInView = [self convertPoint:event.locationInWindow fromView:nil];
+    input_->ProcessInputs(app_->GetResolutionSize(), app_->GetScreenSize(), snowpulse::Vector2(locationInView.x, locationInView.y));
+}
+
+- (void)scrollWheel:(NSEvent *)event {
+    [super scrollWheel:event];
+
+    // Get the scrolling delta
+    CGFloat deltaX = [event scrollingDeltaX];
+    CGFloat deltaY = [event scrollingDeltaY];
+    input_->ProcessInputs(snowpulse::Vector2(deltaX, deltaY));
+}
 @end

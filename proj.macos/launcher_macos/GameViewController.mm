@@ -1,5 +1,7 @@
 #import "GameViewController.h"
 
+#include <Carbon/Carbon.h>
+
 #include <iostream>
 #include <map>
 #include <snowpulse.h>
@@ -80,33 +82,54 @@
 }
 
 - (void)keyDown:(NSEvent *)event {
-    std::string key = [[event characters] UTF8String];
-    input_->ProcessInputs(key, true);
+    [super keyDown:event];
+    unsigned int keyCode = [event keyCode];
+    std::string characters = [[event characters] UTF8String];
+    input_->ProcessInputs(keyCode, true);
+    input_->ProcessInputs(characters);
 }
 
 - (void)keyUp:(NSEvent *)event {
-    std::string key = [[event characters] UTF8String];
-    input_->ProcessInputs(key, false);
+    [super keyUp:event];
+    unsigned int keyCode = [event keyCode];
+    input_->ProcessInputs(keyCode, false);
+}
+
+- (void)flagsChanged:(NSEvent *)event {
+    [super flagsChanged:event];
+    input_->ProcessInputs(kVK_Command, ([event modifierFlags] & NSEventModifierFlagCommand) != 0);
+    input_->ProcessInputs(kVK_Option, ([event modifierFlags] & NSEventModifierFlagOption) != 0);
+    input_->ProcessInputs(kVK_Control, ([event modifierFlags] & NSEventModifierFlagControl) != 0);
+    input_->ProcessInputs(kVK_Shift, ([event modifierFlags] & NSEventModifierFlagShift) != 0);
 }
 
 - (void)mouseDown:(NSEvent *)event {
     NSPoint locationInView = [self.view convertPoint:[event locationInWindow] fromView:nil];
-    NSInteger mouseButton = [event buttonNumber];
     input_->ProcessInputs(app_->GetResolutionSize(), app_->GetScreenSize(), snowpulse::Vector2(locationInView.x, locationInView.y), 0, true);
 }
 
 - (void)rightMouseDown:(NSEvent *)event {
     NSPoint locationInView = [self.view convertPoint:[event locationInWindow] fromView:nil];
-    NSInteger mouseButton = [event buttonNumber];
     input_->ProcessInputs(app_->GetResolutionSize(), app_->GetScreenSize(), snowpulse::Vector2(locationInView.x, locationInView.y), 1, true);
 }
 
 - (void)otherMouseDown:(NSEvent *)event {
     NSPoint locationInView = [self.view convertPoint:[event locationInWindow] fromView:nil];
-    input_->ProcessInputs(app_->GetResolutionSize(), app_->GetScreenSize(), snowpulse::Vector2(locationInView.x, locationInView.y), event.buttonNumber , true);
+    input_->ProcessInputs(app_->GetResolutionSize(), app_->GetScreenSize(), snowpulse::Vector2(locationInView.x, locationInView.y), (int)event.buttonNumber , true);
 }
 
 - (void)mouseUp:(NSEvent *)event {
-    // Handle mouse up event
+    NSPoint locationInView = [self.view convertPoint:[event locationInWindow] fromView:nil];
+    input_->ProcessInputs(app_->GetResolutionSize(), app_->GetScreenSize(), snowpulse::Vector2(locationInView.x, locationInView.y), 0, false);
+}
+
+- (void)rightMouseUp:(NSEvent *)event {
+    NSPoint locationInView = [self.view convertPoint:[event locationInWindow] fromView:nil];
+    input_->ProcessInputs(app_->GetResolutionSize(), app_->GetScreenSize(), snowpulse::Vector2(locationInView.x, locationInView.y), 1, false);
+}
+
+- (void)otherMouseUp:(NSEvent *)event {
+    NSPoint locationInView = [self.view convertPoint:[event locationInWindow] fromView:nil];
+    input_->ProcessInputs(app_->GetResolutionSize(), app_->GetScreenSize(), snowpulse::Vector2(locationInView.x, locationInView.y), (int)event.buttonNumber , false);
 }
 @end

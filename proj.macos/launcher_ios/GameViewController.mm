@@ -39,9 +39,12 @@
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
     [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+    app_->SetScreenScaleFactor(1.0f);
     [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
     }
     completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+        auto scaleFactor = [UIScreen mainScreen].scale;
+        self->app_->SetScreenScaleFactor(scaleFactor);
         self->app_->SetScreenSize(snowpulse::Vector2Int((int)size.width, (int)size.height));
     }];
 }

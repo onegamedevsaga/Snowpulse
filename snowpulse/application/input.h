@@ -11,6 +11,10 @@
 #include "../application/camera.h"
 
 namespace snowpulse {
+
+// Forward declaration
+class Application;
+
 class SNOWPULSEAPI Input {
     public:
         static Input* GetInstance();
@@ -19,6 +23,7 @@ class SNOWPULSEAPI Input {
 
         virtual void ClearLastFrameData();
         virtual bool GetPressed(std::string key) = 0;
+        virtual bool GetDown(std::string key) = 0;
         virtual bool GetReleased(std::string key) = 0;
 
         Vector2 GetMousePositionOnScreen() { return mousePositionOnScreen_; }
@@ -30,6 +35,7 @@ class SNOWPULSEAPI Input {
         std::string ToLowerCase(const std::string& str);
         int GetNextAvailableTouchId();
 
+        Application* application_;
         Camera* camera_;
 
         std::map<int, Touch> touches_;
@@ -37,7 +43,7 @@ class SNOWPULSEAPI Input {
 
         Vector2 mousePositionOnScreen_;
         Vector2 mousePositionOnWorld_;
-        std::map<unsigned int, std::string> mouseButtonMap_;
+        Vector2 scrollDelta_;
         std::map<unsigned int, std::string> keyMap_;
         std::map<std::string, bool> pressedKeys_;
         std::map<std::string, bool> releasedKeys_;

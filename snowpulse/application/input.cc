@@ -26,7 +26,8 @@ Input* Input::GetInstance() {
 }
 
 Input::Input() {
-    camera_ = Application::GetInstance()->GetGraphics()->GetCamera();
+    application_ = Application::GetInstance();
+    camera_ = application_->GetGraphics()->GetCamera();
 }
 
 Input::~Input() {
@@ -44,6 +45,8 @@ void Input::ClearLastFrameData() {
     touches_.clear();
     pressedKeys_.clear();
     releasedKeys_.clear();
+    scrollDelta_.x = 0.0f;
+    scrollDelta_.y = 0.0f;
 }
 
 std::string Input::ToLowerCase(const std::string& str) {

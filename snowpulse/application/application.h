@@ -29,8 +29,9 @@ class SNOWPULSEAPI Application {
         void SetGame(Game* game);
         void SetAssetFolderPath(std::string path) { assetFolderPath_ = path; }
 
-        Vector2Int GetResolutionSize() { return resolutionSize_; }
-        Vector2Int GetScreenSize() { return screenSize_; }
+        float GetScaleFactor() const { return scaleFactor_; }
+        Vector2Int GetResolutionSize() const { return resolutionSize_; }
+        Vector2Int GetScreenSize() const { return screenSize_; }
         NodeStarter& GetNodeStarter() { return nodeStarter_; }
         Platform GetPlatform() const { return platform_; }
         std::string GetPlatformString() const { return platformString_; }
