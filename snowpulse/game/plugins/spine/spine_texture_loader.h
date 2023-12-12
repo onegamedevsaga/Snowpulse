@@ -7,7 +7,7 @@
 #include <memory>
 #include <string>
 
-#include "../../graphics.h"
+#include "../../../application/graphics.h"
 #include "../../../common/texture_filtering.h"
 
 namespace snowpulse {

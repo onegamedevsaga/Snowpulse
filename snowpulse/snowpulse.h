@@ -25,7 +25,6 @@
 #include "common/touch.h"
 #include "common/touch_phase.h"
 
-#include "game/graphics.h"
 #include "game/updatable.h"
 #include "game/drawable.h"
 #include "game/node.h"
@@ -44,6 +43,8 @@
 #include "game/actions/action_move.h"
 #include "game/actions/action_rotate.h"
 
+#include "application/graphics.h"
+#include "application/atlas.h"
 #include "application/timer.h"
 #include "application/camera.h"
 #include "application/input.h"

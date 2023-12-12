@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A0656342B28065E00E2B2B9 /* atlas.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A0656322B28065E00E2B2B9 /* atlas.cc */; };
+		2A0656352B28065E00E2B2B9 /* atlas.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A0656322B28065E00E2B2B9 /* atlas.cc */; };
+		2A0656362B28065E00E2B2B9 /* atlas.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A0656332B28065E00E2B2B9 /* atlas.h */; };
 		2A27D3192B1522F3008B5446 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A27D3182B1522F3008B5446 /* AppDelegate.m */; };
 		2A27D31F2B1522F3008B5446 /* GameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A27D31E2B1522F3008B5446 /* GameViewController.mm */; };
 		2A27D3252B1522F3008B5446 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A27D3232B1522F3008B5446 /* Main.storyboard */; };
@@ -346,6 +349,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2A0656322B28065E00E2B2B9 /* atlas.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = atlas.cc; sourceTree = "<group>"; };
+		2A0656332B28065E00E2B2B9 /* atlas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = atlas.h; sourceTree = "<group>"; };
+		2A0656372B2807AC00E2B2B9 /* graphics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = graphics.h; sourceTree = "<group>"; };
 		2A27D1B62B14DF31008B5446 /* CAPrivate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CAPrivate.hpp; path = ../thirdparty/metal/QuartzCore/CAPrivate.hpp; sourceTree = "<group>"; };
 		2A27D1B72B14DF31008B5446 /* CADefines.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CADefines.hpp; path = ../thirdparty/metal/QuartzCore/CADefines.hpp; sourceTree = "<group>"; };
 		2A27D1B82B14DF31008B5446 /* QuartzCore.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = QuartzCore.hpp; path = ../thirdparty/metal/QuartzCore/QuartzCore.hpp; sourceTree = "<group>"; };
@@ -478,7 +484,6 @@
 		2A4FBE042B00BF430060E35C /* action_manager.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = action_manager.cc; sourceTree = "<group>"; };
 		2A4FBE052B00BF430060E35C /* scene.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = scene.cc; sourceTree = "<group>"; };
 		2A4FBE062B00BF430060E35C /* component.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = component.h; sourceTree = "<group>"; };
-		2A4FBE072B00BF430060E35C /* graphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = graphics.h; sourceTree = "<group>"; };
 		2A4FBE082B00BF430060E35C /* action_manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = action_manager.h; sourceTree = "<group>"; };
 		2A4FBE092B00BF430060E35C /* scene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scene.h; sourceTree = "<group>"; };
 		2A4FBE0A2B00BF430060E35C /* defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = defines.h; sourceTree = "<group>"; };
@@ -1024,7 +1029,6 @@
 				2AA9A9CD2B078541009AACBF /* plugins */,
 				2A4FBDF82B00BF430060E35C /* components */,
 				2A4FBE012B00BF430060E35C /* actions */,
-				2A4FBE072B00BF430060E35C /* graphics.h */,
 				2A4FBE042B00BF430060E35C /* action_manager.cc */,
 				2A4FBE082B00BF430060E35C /* action_manager.h */,
 				2A4FBDFF2B00BF430060E35C /* action.cc */,
@@ -1108,6 +1112,9 @@
 				2AE640BD2B12921F00A6B8DA /* ios */,
 				2A4FBE222B00BF430060E35C /* application.cc */,
 				2A4FBE1F2B00BF430060E35C /* application.h */,
+				2A0656372B2807AC00E2B2B9 /* graphics.h */,
+				2A0656322B28065E00E2B2B9 /* atlas.cc */,
+				2A0656332B28065E00E2B2B9 /* atlas.h */,
 				2A4FBE202B00BF430060E35C /* camera.cc */,
 				2A4FBE212B00BF430060E35C /* camera.h */,
 				2A4FBE232B00BF430060E35C /* input.cc */,
@@ -1577,6 +1584,7 @@
 			files = (
 				2AC67DC42B24B5BE0009F46C /* glfw3.h in Headers */,
 				2AC67DC32B24B33C0009F46C /* imgui_impl_metal.h in Headers */,
+				2A0656362B28065E00E2B2B9 /* atlas.h in Headers */,
 				2AE11C922B244FD40023DB82 /* glfw3native.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1901,6 +1909,7 @@
 				2A5267222B2062CE008B7268 /* node.cc in Sources */,
 				2A5266CC2B206244008B7268 /* TranslateTimeline.cpp in Sources */,
 				2A5267162B206294008B7268 /* spine_skeleton_animation.cc in Sources */,
+				2A0656342B28065E00E2B2B9 /* atlas.cc in Sources */,
 				2A52671F2B2062CE008B7268 /* node_starter.cc in Sources */,
 				2A5266DC2B206244008B7268 /* SlotData.cpp in Sources */,
 				2A5267132B206285008B7268 /* input.cc in Sources */,
@@ -2034,6 +2043,7 @@
 				2AA1AAFA2B2096CB002F2A49 /* action_move.cc in Sources */,
 				2AA1AAE02B209674002F2A49 /* Slot.cpp in Sources */,
 				2AA1AAD22B209674002F2A49 /* DrawOrderTimeline.cpp in Sources */,
+				2A0656352B28065E00E2B2B9 /* atlas.cc in Sources */,
 				2AA1AAF72B2096AF002F2A49 /* camera.cc in Sources */,
 				2AA1AAF32B2096AF002F2A49 /* input.cc in Sources */,
 				2AA1AAFC2B2096CB002F2A49 /* node_starter.cc in Sources */,

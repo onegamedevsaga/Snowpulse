@@ -6,9 +6,9 @@
 
 #include "timer.h"
 #include "platform.h"
+#include "graphics.h"
 #include "../defines.h"
 #include "../common/vector2int.h"
-#include "../game/graphics.h"
 #include "../game/game.h"
 #include "../game/node_starter.h"
 #include "../game/action_manager.h"

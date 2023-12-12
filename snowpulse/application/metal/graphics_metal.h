@@ -2,7 +2,7 @@
 #define SNOWPULSE_APPLICATION_METAL_GRAPHICSMETAL_H_
 
 #include "../../defines.h"
-#include "../../game/graphics.h"
+#include "../graphics.h"
 
 #include <memory>
 #include <string>

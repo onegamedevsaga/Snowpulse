@@ -1,12 +1,12 @@
-#ifndef SNOWPULSE_GAME_GRAPHICS_H_
-#define SNOWPULSE_GAME_GRAPHICS_H_
+#ifndef SNOWPULSE_APPLICATION_GRAPHICS_H_
+#define SNOWPULSE_APPLICATION_GRAPHICS_H_
 
 #include "../defines.h"
 
 #include <memory>
 #include <string>
 
-#include "../application/camera.h"
+#include "camera.h"
 #include "../common/vertex.h"
 #include "../common/vector2.h"
 #include "../common/blend_mode.h"
@@ -14,8 +14,6 @@
 #include "../common/matrix4x4.h"
 #include "../common/texture_filtering.h"
 #include "../common/path_type.h"
-#include "../application/camera.h"
-#include "components/transform.h"
 
 namespace snowpulse {
 
