@@ -7,7 +7,6 @@
 #include "timer.h"
 #include "platform.h"
 #include "graphics.h"
-#include "atlas.h"
 #include "../defines.h"
 #include "../common/vector2int.h"
 #include "../game/game.h"
@@ -15,6 +14,10 @@
 #include "../game/action_manager.h"
 
 namespace snowpulse {
+
+// Forward declaration
+class Atlas;
+
 class SNOWPULSEAPI Application {
     public:
         static Application* GetInstance();

@@ -10,6 +10,7 @@
 #undef STB_IMAGE_WRITE_IMPLEMENTATION
 
 #include "directory.h"
+#include "../common/json_utils.h"
 
 namespace snowpulse {
 static const int kSpacing = 4;
@@ -39,12 +40,15 @@ void Atlas::Create(Vector2Int size, std::string outputFilename, std::vector<std:
         return;
     }
 
+    jsonFile_ = JsonUtils::Create();
+    atlasOutputFilename_ = outputFilename + ".snowatlas";
+    atlasOutputPathType_ = outputPathType;
     onProgressFunc_ = onProgressFunc;
     lastReportedProgress_ = 0;
     if (onProgressFunc_) {
         onProgressFunc_(progress_);
     }
-    workerThread_ = std::thread(&Atlas::LoadAndPackTextures, this, size, outputFilename, textureFilenames, texturesPathType, outputPathType);
+    workerThread_ = std::thread(&Atlas::LoadAndPackTextures, this, size, outputFilename, textureFilenames, texturesPathType, outputPathType, jsonFile_.get());
     isWorking_ = true;
 }
 
@@ -53,6 +57,11 @@ void Atlas::CheckWorkerThread() {
         std::lock_guard<std::mutex> lock(progressMutex_);
         if (progress_ == 100 && workerThread_.joinable()) {
             workerThread_.join();
+
+            JsonUtils::SaveFile(jsonFile_.get(), atlasOutputFilename_, atlasOutputPathType_);
+#ifdef SPDEBUG
+            std::cout << "Atlas: Output:" << std::endl << jsonFile_->dump(4) << std::endl;
+#endif
             isWorking_ = false;
         }
         if (onProgressFunc_ && lastReportedProgress_ != progress_) {
@@ -62,13 +71,14 @@ void Atlas::CheckWorkerThread() {
     }
 }
 
-void Atlas::LoadAndPackTextures(Vector2Int size, std::string outputFilename, std::vector<std::string> textureFilenames, PathType texturesPathType, PathType outputPathType) {
+void Atlas::LoadAndPackTextures(Vector2Int size, std::string outputFilename, std::vector<std::string> textureFilenames, PathType texturesPathType, PathType outputPathType, Json* jsonFile) {
     {
         std::lock_guard<std::mutex> lock(progressMutex_);
         progress_ = 0;
     }
 
     // Load images
+    std::vector<std::string> filenames;
     std::vector<unsigned char*> images;
     std::vector<stbrp_rect> allRects;
     int progressPortion = 50 / (int)textureFilenames.size();
@@ -76,6 +86,7 @@ void Atlas::LoadAndPackTextures(Vector2Int size, std::string outputFilename, std
         int width, height, nrChannels;
         unsigned char* data = stbi_load(GetFullFilename(textureFilenames[i], texturesPathType).c_str(), &width, &height, &nrChannels, 4);
         if (data) {
+            filenames.push_back(Directory::GetInstance()->GetFilenameFromPath(textureFilenames[i]));
             images.push_back(data);
             allRects.push_back({static_cast<stbrp_coord>(i), static_cast<stbrp_coord>(width), static_cast<stbrp_coord>(height), 0, 0, 0});
             if (width + kSpacing * 2 >= size.x || height + kSpacing * 2 >= size.y) {
@@ -106,7 +117,7 @@ void Atlas::LoadAndPackTextures(Vector2Int size, std::string outputFilename, std
         std::lock_guard<std::mutex> lock(progressMutex_);
         progress_ = 50;
     }
-    
+
     std::vector<stbrp_rect> rectsToPack(allRects);
     allRects.clear();
     for (const auto& rect : rectsToPack) {
@@ -145,7 +156,7 @@ void Atlas::LoadAndPackTextures(Vector2Int size, std::string outputFilename, std
             }
         }
         // Save the packed atlas
-        PackAndSaveAtlas(packedRects, images, size, atlasIndex, outputFilename, outputPathType);
+        PackAndSaveAtlas(packedRects, filenames, images, size, atlasIndex, outputFilename, outputPathType, jsonFile);
         allRects = unpackedRects;
         {
             std::lock_guard<std::mutex> lock(progressMutex_);
@@ -173,13 +184,22 @@ void Atlas::CleanImages(std::vector<unsigned char*>& images) {
     images.clear();
 }
 
-void Atlas::PackAndSaveAtlas(const std::vector<stbrp_rect>& rects, const std::vector<unsigned char*>& images, Vector2Int atlasSize, int atlasIndex, std::string outputFilename, PathType pathType) {
+void Atlas::PackAndSaveAtlas(const std::vector<stbrp_rect>& rects, const std::vector<std::string>& filenames, const std::vector<unsigned char*>& images, Vector2Int atlasSize, int atlasIndex, std::string outputFilename, PathType pathType, Json* jsonFile) {
     // Create an image buffer (RGBA) for the atlas
     std::vector<unsigned char> buffer(atlasSize.x * atlasSize.y * 4, 0);
 
     // Draw the images into the buffer
+    Json jsonRects;
     for (auto& rect : rects) {
         if (rect.was_packed) {
+            Json json = {   { "filename", filenames[rect.id] },
+                            { "u", (float)(rect.x + kSpacing) / (float)atlasSize.x },
+                            { "v", (float)(rect.y + kSpacing) / (float)atlasSize.y },
+                            { "width", (float)(rect.w - kSpacing * 2) },
+                            { "height", (float)(rect.h - kSpacing * 2) }
+            };
+            jsonRects.push_back(json);
+
             unsigned char* img = images[rect.id];
             for (int y = 0; y < rect.h - kSpacing * 2; ++y) {
                 for (int x = 0; x < rect.w - kSpacing * 2; ++x) {
@@ -192,19 +212,20 @@ void Atlas::PackAndSaveAtlas(const std::vector<stbrp_rect>& rects, const std::ve
             }
         }
     }
-
     // Save to PNG
-    std::string filename = GetFullFilename(outputFilename + "_" + std::to_string(atlasIndex) + ".png", pathType);
-    if (!stbi_write_png(filename.c_str(), atlasSize.x, atlasSize.y, 4, buffer.data(), atlasSize.x * 4)) {
+    std::string filename = Directory::GetInstance()->GetFilenameFromPath(outputFilename) + "_" + std::to_string(atlasIndex) + ".png";
+    std::string fullFilename = GetFullFilename(outputFilename + "_" + std::to_string(atlasIndex) + ".png", pathType);
+    if (!stbi_write_png(fullFilename.c_str(), atlasSize.x, atlasSize.y, 4, buffer.data(), atlasSize.x * 4)) {
 #ifdef SPDEBUG
-        std::cerr << "Error: Atlas: Failed to write image: " << filename << std::endl;
+        std::cerr << "Error: Atlas: Failed to write image: " << fullFilename << std::endl;
 #endif
     }
     else {
 #ifdef SPDEBUG
-        std::cout << "Atlas: Image saved as " << filename << std::endl;
+        std::cout << "Atlas: Image saved as " << fullFilename << std::endl;
 #endif
     }
+    (*jsonFile)[filename] = jsonRects;
 }
 
 std::string Atlas::GetFullFilename(std::string filename, PathType pathType) {

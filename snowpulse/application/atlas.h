@@ -13,6 +13,7 @@
 
 #include "../common/path_type.h"
 #include "../common/vector2int.h"
+#include "../common/json_utils.h"
 
 namespace snowpulse {
 
@@ -31,9 +32,9 @@ class SNOWPULSEAPI Atlas {
     protected:
         Atlas();
 
-        void LoadAndPackTextures(Vector2Int size, std::string outputFilename, std::vector<std::string> textureFilenames, PathType texturesPathType, PathType outputPathType);
+        void LoadAndPackTextures(Vector2Int size, std::string outputFilename, std::vector<std::string> textureFilenames, PathType texturesPathType, PathType outputPathType, Json* jsonFile);
         void CleanImages(std::vector<unsigned char*>& images);
-        void PackAndSaveAtlas(const std::vector<stbrp_rect>& rects, const std::vector<unsigned char*>& images, Vector2Int atlasSize, int atlasIndex, std::string outputFilename, PathType pathType);
+        void PackAndSaveAtlas(const std::vector<stbrp_rect>& rects, const std::vector<std::string>& filenames, const std::vector<unsigned char*>& images, Vector2Int atlasSize, int atlasIndex, std::string outputFilename, PathType pathType, Json* jsonFile);
         std::string GetFullFilename(std::string filename, PathType pathType);
         stbrp_rect AddSpacingToRect(const stbrp_rect& rect, int spacing);
 
@@ -43,6 +44,9 @@ class SNOWPULSEAPI Atlas {
         std::mutex progressMutex_;
         std::atomic<int> progress_;
         std::function<void(int)> onProgressFunc_;
+        std::shared_ptr<Json> jsonFile_;
+        std::string atlasOutputFilename_;
+        PathType atlasOutputPathType_;
 };
 }   // namespace snowpulse
 #endif

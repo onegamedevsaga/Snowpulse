@@ -14,6 +14,7 @@
 #include "metal/graphics_metal.h"
 #endif
 
+#include "atlas.h"
 #include "../game/action_manager.h"
 
 namespace snowpulse {
