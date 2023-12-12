@@ -121,6 +121,7 @@ void ApplicationMetal::RunFrame() {
 
     auto deltaTime = GetDeltaTime(frameTimer_);
     nodeStarter_.StartNodes();
+    Application::Update(deltaTime);
     actionManager_->Update(deltaTime);
     game_->UpdateScene(deltaTime);
 

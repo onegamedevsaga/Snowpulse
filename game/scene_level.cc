@@ -176,11 +176,18 @@ void SceneLevel::Update(float deltaTime) {
     std::cout << "Mouse Position WORLD (" << mousePos.x << ", " << mousePos.y << ")" << std::endl;
 #endif
     
-    if (snowpulse::Input::GetInstance()->GetPressed("mouse_middle")) {
-        if (mousePos.x > 1920/2 && mousePos.y > 1080 / 2) {
-            //GetApplication()->Close();
-            go2_->AddChild(go3_);
-        }
+    if (snowpulse::Input::GetInstance()->GetPressed("space")) {
+        auto atlas = snowpulse::Application::GetInstance()->GetAtlas();
+        std::vector<std::string> textureFilenames;
+        textureFilenames.push_back("atlas-test/banner_01.png");
+        textureFilenames.push_back("atlas-test/banner_02.png");
+        textureFilenames.push_back("atlas-test/mobilephone.png");
+        textureFilenames.push_back("atlas-test/opacity_test.png");
+        atlas->Create(snowpulse::Vector2Int(1024, 1024), "atlasOutput", textureFilenames, snowpulse::PathType::kAssets, snowpulse::PathType::kDocuments, [](int progress) {
+#ifdef SPDEBUG
+            std::cout << "Atlas: Progress at " << progress << "%." << std::endl;
+#endif
+        });
     }
 
     if (snowpulse::Input::GetInstance()->GetPressed("x")) {

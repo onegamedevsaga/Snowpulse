@@ -7,6 +7,7 @@
 #include "timer.h"
 #include "platform.h"
 #include "graphics.h"
+#include "atlas.h"
 #include "../defines.h"
 #include "../common/vector2int.h"
 #include "../game/game.h"
@@ -26,6 +27,7 @@ class SNOWPULSEAPI Application {
         virtual void SetScreenScaleFactor(float scaleFactor) { scaleFactor_ = scaleFactor; }
         virtual Graphics* GetGraphics() const = 0;
 
+        void Update(float deltaTime);
         void SetGame(Game* game);
         void SetAssetFolderPath(std::string path) { assetFolderPath_ = path; }
 
@@ -38,6 +40,7 @@ class SNOWPULSEAPI Application {
         Game* GetGame() const { return game_; }
         ActionManager* GetActionManager() const { return actionManager_.get(); }
         std::string GetAssetFolderPath() const { return assetFolderPath_; }
+        Atlas* GetAtlas() const { return atlas_.get(); }
 
     protected:
         Application();
@@ -54,6 +57,7 @@ class SNOWPULSEAPI Application {
         std::string platformString_;
         std::shared_ptr<ActionManager> actionManager_;
         std::string assetFolderPath_;
+        std::shared_ptr<Atlas> atlas_;
 
         float GetDeltaTime(Timer& timer);
 

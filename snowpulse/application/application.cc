@@ -44,6 +44,8 @@ bool Application::Initialize(const Vector2Int& resolution, const Vector2Int& scr
     targetResolutionSize_ = resolution;
     SetScreenSize(screenSize);
     actionManager_ = ActionManager::Create();
+    atlas_ = Atlas::Create();
+
     appTimer_.Start();
     frameTimer_.Start();
     return true;
@@ -53,6 +55,12 @@ void Application::SetScreenSize(const Vector2Int& screenSize) {
     screenSize_ = screenSize;
     auto targetRatio = (float)screenSize_.x / (float)screenSize_.y;
     resolutionSize_ = Vector2Int((int)((float)targetResolutionSize_.y * targetRatio), targetResolutionSize_.y);
+}
+
+void Application::Update(float deltaTime) {
+    if (atlas_->IsWorking()) {
+        atlas_->CheckWorkerThread();
+    }
 }
 
 void Application::SetGame(Game* game) {

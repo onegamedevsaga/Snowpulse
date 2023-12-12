@@ -12,6 +12,7 @@
 
 namespace snowpulse {
 
+// Forward declaration
 class ViewDelegateMetal;
 
 class SNOWPULSEAPI ApplicationMetal : public Application {
@@ -24,7 +25,6 @@ class SNOWPULSEAPI ApplicationMetal : public Application {
 
         virtual void RunFrame();
 
-        
         Graphics* GetGraphics() const override { return graphics_.get(); }
 
     protected:

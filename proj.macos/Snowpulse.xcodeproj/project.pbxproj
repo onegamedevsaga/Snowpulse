@@ -1495,8 +1495,8 @@
 				2AE640F02B1320F700A6B8DA /* graphics_metal.cc */,
 				2AE640F42B1320F700A6B8DA /* render_batch_data_metal.h */,
 				2AE640F32B1320F700A6B8DA /* render_batch_group_metal.h */,
-				2AE640F12B1320F700A6B8DA /* render_queue_metal.cc */,
 				2AE640F72B1320F700A6B8DA /* render_queue_metal.h */,
+				2AE640F12B1320F700A6B8DA /* render_queue_metal.cc */,
 			);
 			name = metal;
 			sourceTree = "<group>";
