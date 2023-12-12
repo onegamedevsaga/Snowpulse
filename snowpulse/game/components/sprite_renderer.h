@@ -12,11 +12,13 @@
 #include "../../common/blend_mode.h"
 #include "../../common/color.h"
 #include "../../common/texture_filtering.h"
+#include "../../common/atlas_sprite.h"
 
 namespace snowpulse {
 class SNOWPULSEAPI SpriteRenderer : public Component, public Drawable {
     public:
         static std::shared_ptr<SpriteRenderer> Create(std::string filename, TextureFiltering filtering = TextureFiltering::kBilinear);
+        static std::shared_ptr<SpriteRenderer> Create(std::string filename, std::string atlasFilename, TextureFiltering filtering = TextureFiltering::kBilinear);
 
         virtual ~SpriteRenderer();
         // From Updatable
@@ -42,13 +44,18 @@ class SNOWPULSEAPI SpriteRenderer : public Component, public Drawable {
 
         virtual void LoadGraphics(Graphics* graphics);
 
+        bool isFromAtlas_;
+        AtlasSprite atlasSprite_;
         int sortOrder_;
         Vector2 size_;
+        Vector2 uvLowerLeft_;
+        Vector2 uvUpperRight_;
         Color color_;
         TextureFiltering textureFiltering_;
         BlendMode blendMode_;
         bool isPremultiplied_;
         std::string filename_;
+        std::string atlasFilename_;
 };
 }   // namespace snowpulse
 

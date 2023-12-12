@@ -17,6 +17,7 @@ class SNOWPULSEAPI Directory {
         virtual std::string GetApplicationSupportPath(std::string filename) = 0;
         virtual std::string GetDocumentsPath(std::string filename) = 0;
 
+        std::string GetPathFromFilename(std::string pathWithFilename);
         std::string GetFilenameFromPath(std::string filenamePath);
 
     protected:

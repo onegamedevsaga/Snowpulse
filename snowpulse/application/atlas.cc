@@ -30,6 +30,27 @@ Atlas::~Atlas() {
 }
 
 void Atlas::Load(std::string atlasFilename, PathType pathType) {
+    if (atlases_.count(atlasFilename)) {
+        // Atlas already loaded.
+        return;
+    }
+
+    auto atlasFile = JsonUtils::LoadFile(atlasFilename, pathType);
+    if (atlasFile) {
+        std::vector<AtlasSprite> sprites;
+        for (auto& [key, value] : atlasFile->items()) {
+            auto textureFilename = Directory::GetInstance()->GetPathFromFilename(atlasFilename) + key;
+            Application::GetInstance()->GetGraphics()->LoadTexture(textureFilename, pathType);
+            for (const auto& item : value) {
+                AtlasSprite sprite(textureFilename,
+                                   item["filename"],
+                                   Vector2((float)item["u"], (float)item["v"]),
+                                   Vector2((float)item["width"], (float)item["height"]));
+                sprites.push_back(sprite);
+            }
+        }
+        atlases_[atlasFilename] = sprites;
+    }
 }
 
 void Atlas::Create(Vector2Int size, std::string outputFilename, std::vector<std::string> textureFilenames, PathType texturesPathType, PathType outputPathType, std::function<void(int)> onProgressFunc) {
@@ -50,6 +71,23 @@ void Atlas::Create(Vector2Int size, std::string outputFilename, std::vector<std:
     }
     workerThread_ = std::thread(&Atlas::LoadAndPackTextures, this, size, outputFilename, textureFilenames, texturesPathType, outputPathType, jsonFile_.get());
     isWorking_ = true;
+}
+
+AtlasSprite Atlas::GetSprite(std::string atlasFilename, std::string spriteFilename) {
+    if (!atlases_.count(atlasFilename)) {
+#ifdef SPDEBUG
+        std::cerr << "Error: Atlas doesn't have \"" << atlasFilename << "\" atlas."  << std::endl;
+#endif
+        return AtlasSprite();
+    }
+
+    auto sprites = atlases_[atlasFilename];
+    for (const auto& sprite : sprites) {
+        if (sprite.GetFilename() == spriteFilename) {
+            return sprite;
+        }
+    }
+    return AtlasSprite();
 }
 
 void Atlas::CheckWorkerThread() {

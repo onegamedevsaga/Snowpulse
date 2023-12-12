@@ -90,12 +90,15 @@ void RenderQueueMetal::GroupBatches(std::vector<std::shared_ptr<RenderBatch>>& b
                 for (const auto& c : batch->colors) {
                     prevBatch->colors.push_back(c);
                 }
+                
+                for (const auto& t : batch->transformMatrices) {
+                    prevBatch->transformMatrices.push_back(t);
+                }
 
                 for (const auto& i : batch->indices) {
                     prevBatch->indices.push_back(prevBatch->vertexCount + i);
                 }
 
-                prevBatch->transformMatrix = batch->transformMatrix;
                 prevBatch->vertexCount += batch->vertexCount;
                 prevBatch->indexCount += batch->indexCount;
             }

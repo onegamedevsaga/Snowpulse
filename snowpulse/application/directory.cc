@@ -29,6 +29,11 @@ Directory::Directory() {
 Directory::~Directory() {
 }
 
+std::string Directory::GetPathFromFilename(std::string pathWithFilename) {
+    size_t pos = pathWithFilename.find_last_of("/\\");
+    return (pos != std::string::npos) ? pathWithFilename.substr(0, pos + 1) : "";
+}
+
 std::string Directory::GetFilenameFromPath(std::string filenamePath) {
     size_t pos = filenamePath.find_last_of("/\\");
     return (pos != std::string::npos) ? filenamePath.substr(pos + 1, filenamePath.size() - pos) : filenamePath;

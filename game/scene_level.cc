@@ -55,9 +55,9 @@ void SceneLevel::Start() {
     (*json2)["levelNo"] = 1;
     (*json2)["levelName"] = "The Cathedral";
     snowpulse::JsonUtils::SaveFile(json2.get(), "levelSample.json");
-    
+
     go1_ = snowpulse::GameObject::Create("go1_");
-    auto sprRenderer = snowpulse::SpriteRenderer::Create("logo.png");
+    auto sprRenderer = snowpulse::SpriteRenderer::Create("banner_01.png", "atlas-load-test/atlasOutput.snowatlas");
     sprRenderer->SetColor(snowpulse::Color(1.0f, 1.0f, 1.0f, 1.0f));
     sprRenderer->SetSortOrder(0);
     go1_->AddComponent(sprRenderer);
@@ -65,9 +65,22 @@ void SceneLevel::Start() {
     go1_->AddComponent(imguiTest);
     AddChild(go1_);
 
-    go1_->GetTransform()->SetLocalPosition(snowpulse::Vector2(0.0f, 0.0f));
-    go1_->GetTransform()->SetLocalRotation(0.0f);
-    go1_->GetTransform()->SetLocalScale(0.5f);
+    go1_->GetTransform()->SetLocalPosition(snowpulse::Vector2(500.0f, 0.0f));
+    
+    
+    snowpulse::ActionInterpolate::Create(0.0f, 360.0f*5.0f, 5.0f, snowpulse::Easing::kLinear)->OnUpdate([this](float value, snowpulse::ActionInterpolate* ai) {
+        go1_->GetTransform()->SetRotation(value);
+    })->OnComplete([this](snowpulse::Action* a) {
+    })->Run();
+
+    auto dup01 = snowpulse::GameObject::Create("dup01");
+    sprRenderer = snowpulse::SpriteRenderer::Create("mobilephone.png", "atlas-load-test/atlasOutput.snowatlas");
+    sprRenderer->SetColor(snowpulse::Color(1.0f, 1.0f, 1.0f, 1.0f));
+    sprRenderer->SetSortOrder(0);
+    dup01->AddComponent(sprRenderer);
+    AddChild(dup01);
+
+    dup01->GetTransform()->SetLocalPosition(snowpulse::Vector2(GetResolutionSize().x * -0.5f, GetResolutionSize().y * -0.5f));
 
     go2_ = snowpulse::GameObject::Create("go2_");
     sprRenderer = snowpulse::SpriteRenderer::Create("pixel-test.png", snowpulse::TextureFiltering::kPoint);

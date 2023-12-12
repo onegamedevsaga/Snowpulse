@@ -352,6 +352,7 @@
 		2A0656322B28065E00E2B2B9 /* atlas.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = atlas.cc; sourceTree = "<group>"; };
 		2A0656332B28065E00E2B2B9 /* atlas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = atlas.h; sourceTree = "<group>"; };
 		2A0656372B2807AC00E2B2B9 /* graphics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = graphics.h; sourceTree = "<group>"; };
+		2A06563D2B28C40D00E2B2B9 /* atlas_sprite.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = atlas_sprite.h; sourceTree = "<group>"; };
 		2A27D1B62B14DF31008B5446 /* CAPrivate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CAPrivate.hpp; path = ../thirdparty/metal/QuartzCore/CAPrivate.hpp; sourceTree = "<group>"; };
 		2A27D1B72B14DF31008B5446 /* CADefines.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CADefines.hpp; path = ../thirdparty/metal/QuartzCore/CADefines.hpp; sourceTree = "<group>"; };
 		2A27D1B82B14DF31008B5446 /* QuartzCore.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = QuartzCore.hpp; path = ../thirdparty/metal/QuartzCore/QuartzCore.hpp; sourceTree = "<group>"; };
@@ -1092,6 +1093,7 @@
 				2A4FBE8D2B00F8DA0060E35C /* math_utils.h */,
 				2A4FBE0C2B00BF430060E35C /* matrix4x4.h */,
 				2A4FBE0E2B00BF430060E35C /* singleton.h */,
+				2A06563D2B28C40D00E2B2B9 /* atlas_sprite.h */,
 				2A4FBE912B0357CF0060E35C /* space.h */,
 				2A4FBE0F2B00BF430060E35C /* texture_filtering.h */,
 				2AC95E1C2B1DE0B200B2C916 /* touch.h */,

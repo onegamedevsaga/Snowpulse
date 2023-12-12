@@ -198,7 +198,7 @@ void ApplicationMetal::RunFrame() {
         const size_t positionsDataSize = b->vertexCount * sizeof(simd::float3);
         const size_t uvsDataSize = b->vertexCount * sizeof(simd::float2);
         const size_t colorDataSize = b->vertexCount * sizeof(simd::float4);
-        const size_t transformDataSize = sizeof(simd::float4x4);
+        const size_t transformDataSize = b->vertexCount * sizeof(simd::float4x4);
 
         auto indexBuffer = device->newBuffer(indicesDataSize, MTL::StorageModeShared);
         auto vertexPositionsBuffer = device->newBuffer(positionsDataSize, MTL::StorageModeShared);
@@ -231,11 +231,16 @@ void ApplicationMetal::RunFrame() {
             colors[i] = b->colors[i];
         }
 
+        simd::float4x4 transformMatrices[b->vertexCount];
+        for (int i = 0, n = (int)b->transformMatrices.size(); i < n; i++) {
+            transformMatrices[i] = b->transformMatrices[i];
+        }
+
         memcpy(indexBuffer->contents(), indices, indicesDataSize);
         memcpy(vertexPositionsBuffer->contents(), positions, positionsDataSize);
         memcpy(vertexUVsBuffer->contents(), uvs, uvsDataSize);
         memcpy(vertexColorsBuffer->contents(), colors, colorDataSize);
-        memcpy(transformBuffer->contents(), &b->transformMatrix, transformDataSize);
+        memcpy(transformBuffer->contents(), transformMatrices, transformDataSize);
         memcpy(uniformsBuffer->contents(), &uniforms, sizeof(Uniforms));
 
         auto samplerDesc = MTL::SamplerDescriptor::alloc()->init();

@@ -4,6 +4,7 @@
 #include "../defines.h"
 
 #include <vector>
+#include <map>
 #include <string>
 #include <stb_rect_pack.h>
 #include <functional>
@@ -14,6 +15,7 @@
 #include "../common/path_type.h"
 #include "../common/vector2int.h"
 #include "../common/json_utils.h"
+#include "../common/atlas_sprite.h"
 
 namespace snowpulse {
 
@@ -22,9 +24,9 @@ class SNOWPULSEAPI Atlas {
         static std::shared_ptr<Atlas> Create();
         virtual ~Atlas();
 
-        virtual void Load(std::string atlasFilename, PathType pathType = PathType::kAssets);
-        virtual void Create(Vector2Int size, std::string outputFilename, std::vector<std::string> textureFilenames, PathType texturesPathType, PathType outputPathType, std::function<void(int)> onProgressFunc);
-
+        void Load(std::string atlasFilename, PathType pathType = PathType::kAssets);
+        void Create(Vector2Int size, std::string outputFilename, std::vector<std::string> textureFilenames, PathType texturesPathType, PathType outputPathType, std::function<void(int)> onProgressFunc);
+        AtlasSprite GetSprite(std::string atlasFilename, std::string spriteFilename);
         void CheckWorkerThread();
 
         bool IsWorking() const { return isWorking_;}
@@ -38,6 +40,7 @@ class SNOWPULSEAPI Atlas {
         std::string GetFullFilename(std::string filename, PathType pathType);
         stbrp_rect AddSpacingToRect(const stbrp_rect& rect, int spacing);
 
+        std::map<std::string, std::vector<AtlasSprite>> atlases_;
         bool isWorking_;
         int lastReportedProgress_;
         std::thread workerThread_;

@@ -1,0 +1,32 @@
+{
+    "atlasOutput_0.png": [
+        {
+            "filename": "banner_01.png",
+            "height": 128.0,
+            "u": 0.4296875,
+            "v": 0.00390625,
+            "width": 400.0
+        },
+        {
+            "filename": "banner_02.png",
+            "height": 128.0,
+            "u": 0.4296875,
+            "v": 0.13671875,
+            "width": 400.0
+        },
+        {
+            "filename": "mobilephone.png",
+            "height": 300.0,
+            "u": 0.12890625,
+            "v": 0.00390625,
+            "width": 300.0
+        },
+        {
+            "filename": "opacity_test.png",
+            "height": 360.0,
+            "u": 0.00390625,
+            "v": 0.00390625,
+            "width": 120.0
+        }
+    ]
+}

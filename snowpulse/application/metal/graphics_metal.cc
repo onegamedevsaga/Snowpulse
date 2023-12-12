@@ -43,7 +43,7 @@ const char* kShaderSrc = R"(
                                     constant Uniforms& uniforms [[buffer(4)]] )
     {
         VertexOut o;
-        o.position = uniforms.projection * uniforms.view * transform[0] * float4(positions[vertexId], 1.0);
+        o.position = uniforms.projection * uniforms.view * transform[vertexId] * float4(positions[vertexId], 1.0);
         o.texCoord = float2(uv[vertexId]);
         o.color = half4(colors[vertexId]);
         return o;
@@ -233,12 +233,21 @@ void GraphicsMetal::DrawMesh(Vertex* vertices, unsigned int vertexCount, unsigne
     batch->indexCount = indexCount;
     batch->sortOrder = sortOrder;
     batch->isPremultiplied = isPremultiplied;
-    batch->texture = textures_[textureFilename];
-    if (!batch->texture) {
+    if (textures_.count(textureFilename)) {
+        batch->texture = textures_[textureFilename];
+    }
+    else {
         batch->texture = textures_[kSpriteDefault];
 #ifdef SPDEBUG
         std::cerr << "Can't find texture \"" << textureFilename << "\"." << std::endl;
 #endif
+    }
+
+    simd::float4x4 transMat;
+    for (int i = 0; i < 4; ++i) {
+        for (int j = 0; j < 4; ++j) {
+            transMat.columns[i][j] = transformMatrix.data[i][j];
+        }
     }
 
     for (int i = 0; i < batch->vertexCount; i++) {
@@ -252,16 +261,11 @@ void GraphicsMetal::DrawMesh(Vertex* vertices, unsigned int vertexCount, unsigne
         batch->vertices.push_back(v);
         batch->uvs.push_back(u);
         batch->colors.push_back(c);
+        batch->transformMatrices.push_back(transMat);
     }
 
     for (int i = 0; i < batch->indexCount; i++) {
         batch->indices.push_back(indices[i]);
-    }
-
-    for (int i = 0; i < 4; ++i) {
-        for (int j = 0; j < 4; ++j) {
-            batch->transformMatrix.columns[i][j] = transformMatrix.data[i][j];
-        }
     }
 
     auto cameraView = camera_->GetMatrix();

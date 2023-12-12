@@ -14,6 +14,7 @@
 #include "common/easing.h"
 #include "common/json_utils.h"
 #include "common/math_utils.h"
+#include "common/atlas_sprite.h"
 #include "common/singleton.h"
 #include "common/vector2.h"
 #include "common/vector2int.h"
