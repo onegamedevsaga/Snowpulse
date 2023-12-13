@@ -122,6 +122,9 @@
 		2A52674A2B206536008B7268 /* libgame_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A52672A2B206305008B7268 /* libgame_ios.a */; };
 		2A52674D2B206536008B7268 /* libsnowpulse_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A5266BB2B20514C008B7268 /* libsnowpulse_ios.a */; };
 		2A5267502B206561008B7268 /* timer.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBE252B00BF430060E35C /* timer.cc */; };
+		2A624C8C2B29FB2E00710C50 /* font_manager.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A624C8A2B29FB2E00710C50 /* font_manager.h */; };
+		2A624C8D2B29FB2E00710C50 /* font_manager.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A624C8B2B29FB2E00710C50 /* font_manager.cc */; };
+		2A624C8E2B29FB2E00710C50 /* font_manager.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A624C8B2B29FB2E00710C50 /* font_manager.cc */; };
 		2AA1AA662B2075C5002F2A49 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AA1AA652B2075C5002F2A49 /* AppDelegate.m */; };
 		2AA1AA6C2B2075C5002F2A49 /* GameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2AA1AA6B2B2075C5002F2A49 /* GameViewController.mm */; };
 		2AA1AA6E2B2075C5002F2A49 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 2AA1AA6D2B2075C5002F2A49 /* Shaders.metal */; };
@@ -524,6 +527,8 @@
 		2A4FBEB52B03E81D0060E35C /* json_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json_utils.h; sourceTree = "<group>"; };
 		2A5266BB2B20514C008B7268 /* libsnowpulse_ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libsnowpulse_ios.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A52672A2B206305008B7268 /* libgame_ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libgame_ios.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A624C8A2B29FB2E00710C50 /* font_manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = font_manager.h; sourceTree = "<group>"; };
+		2A624C8B2B29FB2E00710C50 /* font_manager.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = font_manager.cc; sourceTree = "<group>"; };
 		2A77E7252B107FA300579051 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		2A77E7272B107FAA00579051 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		2A77E72A2B107FBE00579051 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
@@ -1115,12 +1120,14 @@
 				2A4FBE222B00BF430060E35C /* application.cc */,
 				2A4FBE1F2B00BF430060E35C /* application.h */,
 				2A0656372B2807AC00E2B2B9 /* graphics.h */,
-				2A0656322B28065E00E2B2B9 /* atlas_manager.cc */,
 				2A0656332B28065E00E2B2B9 /* atlas_manager.h */,
+				2A0656322B28065E00E2B2B9 /* atlas_manager.cc */,
 				2A4FBE202B00BF430060E35C /* camera.cc */,
 				2A4FBE212B00BF430060E35C /* camera.h */,
 				2A4FBE232B00BF430060E35C /* input.cc */,
 				2A4FBE142B00BF430060E35C /* input.h */,
+				2A624C8A2B29FB2E00710C50 /* font_manager.h */,
+				2A624C8B2B29FB2E00710C50 /* font_manager.cc */,
 				2AE640B62B11CC5D00A6B8DA /* directory.h */,
 				2AE640B82B11CF6D00A6B8DA /* directory.cc */,
 				2AEA1C522B0DF36700AAD982 /* render_batch_type.h */,
@@ -1586,6 +1593,7 @@
 			files = (
 				2AC67DC42B24B5BE0009F46C /* glfw3.h in Headers */,
 				2AC67DC32B24B33C0009F46C /* imgui_impl_metal.h in Headers */,
+				2A624C8C2B29FB2E00710C50 /* font_manager.h in Headers */,
 				2A0656362B28065E00E2B2B9 /* atlas_manager.h in Headers */,
 				2AE11C922B244FD40023DB82 /* glfw3native.h in Headers */,
 			);
@@ -1945,6 +1953,7 @@
 				2A5266ED2B206244008B7268 /* Skeleton.cpp in Sources */,
 				2A5266E22B206244008B7268 /* MathUtil.cpp in Sources */,
 				2A52671C2B2062A7008B7268 /* action_rotate.cc in Sources */,
+				2A624C8D2B29FB2E00710C50 /* font_manager.cc in Sources */,
 				2A5266DF2B206244008B7268 /* PathConstraintPositionTimeline.cpp in Sources */,
 				2AE11C572B2443A70023DB82 /* imgui.cpp in Sources */,
 				2A52670C2B206276008B7268 /* application_metal.cc in Sources */,
@@ -2079,6 +2088,7 @@
 				2AA1AAB22B209674002F2A49 /* SequenceTimeline.cpp in Sources */,
 				2AC67DD62B24B69F0009F46C /* imgui.cpp in Sources */,
 				2AA1AAED2B209697002F2A49 /* view_delegate_metal.cc in Sources */,
+				2A624C8E2B29FB2E00710C50 /* font_manager.cc in Sources */,
 				2AA1AAB72B209674002F2A49 /* TransformConstraintData.cpp in Sources */,
 				2AA1AB032B2096CB002F2A49 /* sprite_renderer.cc in Sources */,
 				2AA1AABC2B209674002F2A49 /* PathConstraintSpacingTimeline.cpp in Sources */,

@@ -74,6 +74,64 @@ void AtlasManager::Create(Vector2Int size, std::string outputFilename, std::vect
     isWorking_ = true;
 }
 
+void AtlasManager::CreateInMemory(Vector2Int size, std::string atlasFilename, std::map<std::string, unsigned char*> bitmaps, std::map<std::string, Vector2Int> sizes) {
+    std::vector<std::string> filenames;
+    std::vector<unsigned char*> images;
+    std::vector<stbrp_rect> allRects;
+    int i = 0;
+    for (const auto& pair : bitmaps) {
+        auto width = sizes[pair.first].x;
+        auto height = sizes[pair.first].y;
+        auto filename = atlasFilename + "_" + pair.first;
+        filenames.push_back(filename);
+        images.push_back(pair.second);
+        allRects.push_back({static_cast<stbrp_coord>(i), static_cast<stbrp_coord>(width), static_cast<stbrp_coord>(height), 0, 0, 0});
+        if (width + kSpacing * 2 >= size.x || height + kSpacing * 2 >= size.y) {
+#ifdef SPDEBUG
+            std::cerr << "Error: Atlas Manager: Bitmap \"" << filename << "\" is bigger than the atlas size (" << size.x << ", " << size.y << ")."  << std::endl;
+#endif
+            return;
+        }
+        i++;
+    }
+
+    std::vector<stbrp_rect> rectsToPack(allRects);
+    allRects.clear();
+    for (const auto& rect : rectsToPack) {
+        allRects.push_back(AddSpacingToRect(rect, kSpacing));
+    }
+
+    int atlasIndex = 0;
+    while (!allRects.empty()) {
+        // Create a pack context
+        stbrp_context context;
+        std::vector<stbrp_node> nodes(size.x);
+        stbrp_init_target(&context, size.x, size.y, &nodes[0], (int)nodes.size());
+
+        // Pack rectangles
+        if (!stbrp_pack_rects(&context, &allRects[0], (int)allRects.size())) {
+#ifdef SPDEBUG
+            std::cout << "Atlas Manager: Creating additional atlas..." << std::endl;
+#endif
+        }
+
+        // Separate packed and unpacked rectangles
+        std::vector<stbrp_rect> packedRects, unpackedRects;
+        for (const auto& rect : allRects) {
+            if (rect.was_packed) {
+                packedRects.push_back(rect);
+            } else {
+                unpackedRects.push_back(rect);
+            }
+        }
+        // Save the packed atlas
+        Vector2Int atlasSize(2048, 2048);
+        PackAndSaveAtlasInMemory(packedRects, filenames, images, atlasSize, atlasIndex, atlasFilename);
+        allRects = unpackedRects;
+        atlasIndex ++;
+    }
+}
+
 AtlasSprite AtlasManager::GetSprite(std::string spriteFilename) {
     for (const auto& pair : atlases_) {
         auto spr = GetSprite(pair.first, spriteFilename);
@@ -109,7 +167,7 @@ void AtlasManager::CheckWorkerThread() {
 
             JsonUtils::SaveFile(jsonFile_.get(), atlasOutputFilename_, atlasOutputPathType_);
 #ifdef SPDEBUG
-            std::cout << "Atlas: Output:" << std::endl << jsonFile_->dump(4) << std::endl;
+            std::cout << "Atlas Manager: Output:" << std::endl << jsonFile_->dump(4) << std::endl;
 #endif
             isWorking_ = false;
         }
@@ -133,14 +191,14 @@ void AtlasManager::LoadAndPackTextures(Vector2Int size, std::string outputFilena
     int progressPortion = 50 / (int)textureFilenames.size();
     for (int i = 0, n = (int)textureFilenames.size(); i < n; i++) {
         int width, height, nrChannels;
-        unsigned char* data = stbi_load(GetFullFilename(textureFilenames[i], texturesPathType).c_str(), &width, &height, &nrChannels, 4);
+        unsigned char* data = stbi_load(Directory::GetInstance()->GetFullFilename(textureFilenames[i], texturesPathType).c_str(), &width, &height, &nrChannels, 4);
         if (data) {
             filenames.push_back(Directory::GetInstance()->GetFilenameFromPath(textureFilenames[i]));
             images.push_back(data);
             allRects.push_back({static_cast<stbrp_coord>(i), static_cast<stbrp_coord>(width), static_cast<stbrp_coord>(height), 0, 0, 0});
             if (width + kSpacing * 2 >= size.x || height + kSpacing * 2 >= size.y) {
 #ifdef SPDEBUG
-                std::cerr << "Error: Atlas: Image \"" << textureFilenames[i] << "\" is bigger than the atlas size (" << size.x << ", " << size.y << ")."  << std::endl;
+                std::cerr << "Error: Atlas Manager: Image \"" << textureFilenames[i] << "\" is bigger than the atlas size (" << size.x << ", " << size.y << ")."  << std::endl;
 #endif
                 CleanImages(images);
                 {
@@ -152,7 +210,7 @@ void AtlasManager::LoadAndPackTextures(Vector2Int size, std::string outputFilena
         }
         else {
 #ifdef SPDEBUG
-            std::cerr << "Error: Atlas: Failed to load image: " << textureFilenames[i] << std::endl;
+            std::cerr << "Error: Atlas Manager: Failed to load image: " << textureFilenames[i] << std::endl;
 #endif
         }
 
@@ -183,7 +241,7 @@ void AtlasManager::LoadAndPackTextures(Vector2Int size, std::string outputFilena
         // Pack rectangles
         if (!stbrp_pack_rects(&context, &allRects[0], (int)allRects.size())) {
 #ifdef SPDEBUG
-            std::cout << "Atlas: Creating additional atlas..." << std::endl;
+            std::cout << "Atlas Manager: Creating additional atlas..." << std::endl;
 #endif
         }
 
@@ -263,41 +321,49 @@ void AtlasManager::PackAndSaveAtlas(const std::vector<stbrp_rect>& rects, const 
     }
     // Save to PNG
     std::string filename = Directory::GetInstance()->GetFilenameFromPath(outputFilename) + "_" + std::to_string(atlasIndex) + ".png";
-    std::string fullFilename = GetFullFilename(outputFilename + "_" + std::to_string(atlasIndex) + ".png", pathType);
+    std::string fullFilename = Directory::GetInstance()->GetFullFilename(outputFilename + "_" + std::to_string(atlasIndex) + ".png", pathType);
     if (!stbi_write_png(fullFilename.c_str(), atlasSize.x, atlasSize.y, 4, buffer.data(), atlasSize.x * 4)) {
 #ifdef SPDEBUG
-        std::cerr << "Error: Atlas: Failed to write image: " << fullFilename << std::endl;
+        std::cerr << "Error: Atlas Manager: Failed to write image: " << fullFilename << std::endl;
 #endif
     }
     else {
 #ifdef SPDEBUG
-        std::cout << "Atlas: Image saved as " << fullFilename << std::endl;
+        std::cout << "Atlas Manager: Image saved as " << fullFilename << std::endl;
 #endif
     }
     (*jsonFile)[filename] = jsonRects;
 }
 
-std::string AtlasManager::GetFullFilename(std::string filename, PathType pathType) {
-    std::string fullFilename = "";
-    switch (pathType) {
-        case PathType::kAssets:
-            fullFilename = Directory::GetInstance()->GetAssetsPath(filename);
-            break;
-        case PathType::kDefaults:
-            fullFilename = Directory::GetInstance()->GetDefaultsPath(filename);
-            break;
-        case PathType::kApplicationSupport:
-            fullFilename = Directory::GetInstance()->GetApplicationSupportPath(filename);
-            break;
-        case PathType::kDocuments:
-            fullFilename = Directory::GetInstance()->GetDocumentsPath(filename);
-            break;
-        case PathType::kRaw:
-            fullFilename = filename;
-        default:
-            break;
+void AtlasManager::PackAndSaveAtlasInMemory(const std::vector<stbrp_rect>& rects, const std::vector<std::string>& filenames, const std::vector<unsigned char*>& bitmaps, Vector2Int atlasSize, int atlasIndex, std::string atlasFilename) {
+    std::vector<unsigned char> buffer(atlasSize.x * atlasSize.y * 4, 0);
+    auto textureFilename = atlasFilename + "_" + std::to_string(atlasIndex);
+    for (auto& rect : rects) {
+        if (rect.was_packed) {
+            unsigned char* bitmap = bitmaps[rect.id];
+            for (int y = 0; y < rect.h - kSpacing * 2; ++y) {
+                for (int x = 0; x < rect.w - kSpacing * 2; ++x) {
+                    int buffer_index = ((rect.y + y + kSpacing) * atlasSize.x + (rect.x + x + kSpacing)) * 4;
+                    int image_index = (y * (rect.w - kSpacing * 2) + x) * 4;
+                    for (int c = 0; c < 4; ++c) {
+                        buffer[buffer_index + c] = bitmap[image_index + c];
+                    }
+                }
+            }
+
+            auto atlasSprite = AtlasSprite( atlasFilename,
+                                            textureFilename,
+                                            filenames[rect.id],
+                                            Vector2((float)(rect.x + kSpacing) / (float)atlasSize.x,
+                                                  (float)(rect.y + kSpacing) / (float)atlasSize.y),
+                                            Vector2((float)(rect.w - kSpacing * 2),
+                                                  (float)(rect.h - kSpacing * 2)));
+            atlases_[atlasFilename].push_back(atlasSprite);
+        }
     }
-    return fullFilename;
+
+    auto graphics = Application::GetInstance()->GetGraphics();
+    graphics->LoadTexture(textureFilename, buffer.data(), atlasSize);
 }
 
 stbrp_rect AtlasManager::AddSpacingToRect(const stbrp_rect& rect, int spacing) {

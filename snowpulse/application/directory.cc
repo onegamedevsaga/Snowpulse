@@ -8,6 +8,8 @@
 #include "ios/directory_ios.h"
 #endif
 
+#include "../common/path_type.h"
+
 namespace snowpulse {
 Directory* Directory::GetInstance() {
 #ifdef SNOWPULSE_PLATFORM_WINDOWS
@@ -27,6 +29,29 @@ Directory::Directory() {
 }
 
 Directory::~Directory() {
+}
+
+std::string Directory::GetFullFilename(std::string filename, PathType pathType) {
+    std::string fullFilename = "";
+    switch (pathType) {
+        case PathType::kAssets:
+            fullFilename = GetAssetsPath(filename);
+            break;
+        case PathType::kDefaults:
+            fullFilename = GetDefaultsPath(filename);
+            break;
+        case PathType::kApplicationSupport:
+            fullFilename = GetApplicationSupportPath(filename);
+            break;
+        case PathType::kDocuments:
+            fullFilename = GetDocumentsPath(filename);
+            break;
+        case PathType::kRaw:
+            fullFilename = filename;
+        default:
+            break;
+    }
+    return fullFilename;
 }
 
 std::string Directory::GetPathFromFilename(std::string pathWithFilename) {

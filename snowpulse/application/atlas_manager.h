@@ -3,6 +3,7 @@
 
 #include "../defines.h"
 
+#include <memory>
 #include <vector>
 #include <map>
 #include <string>
@@ -26,19 +27,20 @@ class SNOWPULSEAPI AtlasManager {
 
         void Load(std::string atlasFilename, PathType pathType = PathType::kAssets);
         void Create(Vector2Int size, std::string outputFilename, std::vector<std::string> textureFilenames, PathType texturesPathType, PathType outputPathType, std::function<void(int)> onProgressFunc);
+        void CreateInMemory(Vector2Int size, std::string atlasFilename, std::map<std::string, unsigned char*> bitmaps, std::map<std::string, Vector2Int> sizes);
         AtlasSprite GetSprite(std::string spriteFilename);
         AtlasSprite GetSprite(std::string atlasFilename, std::string spriteFilename);
         void CheckWorkerThread();
 
-        bool IsWorking() const { return isWorking_;}
+        bool IsWorking() const { return isWorking_; }
 
-    protected:
+    private:
         AtlasManager();
 
         void LoadAndPackTextures(Vector2Int size, std::string outputFilename, std::vector<std::string> textureFilenames, PathType texturesPathType, PathType outputPathType, Json* jsonFile);
         void CleanImages(std::vector<unsigned char*>& images);
         void PackAndSaveAtlas(const std::vector<stbrp_rect>& rects, const std::vector<std::string>& filenames, const std::vector<unsigned char*>& images, Vector2Int atlasSize, int atlasIndex, std::string outputFilename, PathType pathType, Json* jsonFile);
-        std::string GetFullFilename(std::string filename, PathType pathType);
+        void PackAndSaveAtlasInMemory(const std::vector<stbrp_rect>& rects, const std::vector<std::string>& filenames, const std::vector<unsigned char*>& bitmaps, Vector2Int atlasSize, int atlasIndex, std::string atlasFilename);
         stbrp_rect AddSpacingToRect(const stbrp_rect& rect, int spacing);
 
         std::map<std::string, std::vector<AtlasSprite>> atlases_;

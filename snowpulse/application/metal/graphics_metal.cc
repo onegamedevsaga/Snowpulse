@@ -131,49 +131,37 @@ Matrix4x4 GraphicsMetal::InvertMatrixNatively(Matrix4x4 matrix) {
 }
 
 void GraphicsMetal::LoadTexture(std::string filename, PathType pathType) {
-    std::string fullFilename = "";
-    switch (pathType) {
-        case PathType::kAssets:
-            fullFilename = Directory::GetInstance()->GetAssetsPath(filename);
-            break;
-        case PathType::kDefaults:
-            fullFilename = Directory::GetInstance()->GetDefaultsPath(filename);
-            break;
-        case PathType::kApplicationSupport:
-            fullFilename = Directory::GetInstance()->GetApplicationSupportPath(filename);
-            break;
-        case PathType::kDocuments:
-            fullFilename = Directory::GetInstance()->GetDocumentsPath(filename);
-            break;
-        case PathType::kRaw:
-            fullFilename = filename;
-        default:
-            break;
-    }
+    std::string fullFilename = Directory::GetInstance()->GetFullFilename(filename, pathType);
     if (!textures_.count(filename)) {
         int width, height, nrChannels;
         unsigned char *data = stbi_load(fullFilename.c_str(), &width, &height, &nrChannels, 4);
         if (data) {
-            NS::AutoreleasePool* pPool = NS::AutoreleasePool::alloc()->init();
-            MTL::TextureDescriptor* texDesc = MTL::TextureDescriptor::alloc()->init();
-            texDesc->setWidth(width);
-            texDesc->setHeight(height);
-            texDesc->setPixelFormat(MTL::PixelFormatRGBA8Unorm_sRGB);//(MTL::PixelFormatRGBA8Unorm); // Match the format
-            texDesc->setTextureType(MTL::TextureType2D);
-            texDesc->setStorageMode(MTL::StorageModeShared);
-            texDesc->setUsage(MTL::TextureUsageShaderRead);
-
-            MTL::Texture* texture = device_->newTexture(texDesc);
-            MTL::Region region = MTL::Region(0, 0, width, height);
-            texture->replaceRegion(region, 0, data, width * 4);
-
-            textures_[filename] = texture;
-            textureSizes_[texture] = Vector2(width, height);
-            texDesc->release();
-            pPool->release();
+            LoadTexture(filename, data, Vector2Int(width, height));
         }
         stbi_image_free(data);
     }
+}
+
+void GraphicsMetal::LoadTexture(std::string name, unsigned char* bitmap, Vector2Int size) {
+    auto width = size.x;
+    auto height = size.y;
+    NS::AutoreleasePool* pPool = NS::AutoreleasePool::alloc()->init();
+    MTL::TextureDescriptor* texDesc = MTL::TextureDescriptor::alloc()->init();
+    texDesc->setWidth(width);
+    texDesc->setHeight(height);
+    texDesc->setPixelFormat(MTL::PixelFormatRGBA8Unorm_sRGB);
+    texDesc->setTextureType(MTL::TextureType2D);
+    texDesc->setStorageMode(MTL::StorageModeShared);
+    texDesc->setUsage(MTL::TextureUsageShaderRead);
+
+    MTL::Texture* texture = device_->newTexture(texDesc);
+    MTL::Region region = MTL::Region(0, 0, width, height);
+    texture->replaceRegion(region, 0, bitmap, width * 4);
+
+    textures_[name] = texture;
+    textureSizes_[texture] = Vector2(width, height);
+    texDesc->release();
+    pPool->release();
 }
 
 void GraphicsMetal::UnloadTexture(std::string filename) {

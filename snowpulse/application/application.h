@@ -17,6 +17,7 @@ namespace snowpulse {
 
 // Forward declaration
 class AtlasManager;
+class FontManager;
 
 class SNOWPULSEAPI Application {
     public:
@@ -61,6 +62,7 @@ class SNOWPULSEAPI Application {
         std::shared_ptr<ActionManager> actionManager_;
         std::string assetFolderPath_;
         std::shared_ptr<AtlasManager> atlasManager_;
+        std::shared_ptr<FontManager> fontManager_;
 
         float GetDeltaTime(Timer& timer);
 

@@ -9,6 +9,7 @@
 #include "camera.h"
 #include "../common/vertex.h"
 #include "../common/vector2.h"
+#include "../common/vector2int.h"
 #include "../common/blend_mode.h"
 #include "../common/color.h"
 #include "../common/matrix4x4.h"
@@ -23,6 +24,7 @@ class SNOWPULSEAPI Graphics {
         virtual void Shutdown() = 0;
         virtual Matrix4x4 InvertMatrixNatively(Matrix4x4 matrix) = 0;
         virtual void LoadTexture(std::string filename, PathType pathType = PathType::kAssets) = 0;
+        virtual void LoadTexture(std::string name, unsigned char* bitmap, Vector2Int size) = 0;
         virtual void UnloadTexture(std::string filename) = 0;
         virtual Vector2 GetTextureSize(std::string filename) = 0;
         virtual int CreateRenderBatchGroup(int sortOrder) = 0;

@@ -5,6 +5,8 @@
 
 #include <string>
 
+#include "../common/path_type.h"
+
 namespace snowpulse {
 class SNOWPULSEAPI Directory {
     public:
@@ -17,6 +19,7 @@ class SNOWPULSEAPI Directory {
         virtual std::string GetApplicationSupportPath(std::string filename) = 0;
         virtual std::string GetDocumentsPath(std::string filename) = 0;
 
+        std::string GetFullFilename(std::string filename, PathType pathType);
         std::string GetPathFromFilename(std::string pathWithFilename);
         std::string GetFilenameFromPath(std::string filenamePath);
 

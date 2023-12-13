@@ -200,7 +200,7 @@ void SceneLevel::Update(float deltaTime) {
         textureFilenames.push_back("atlas-test/opacity_test.png");
         atlasManager->Create(snowpulse::Vector2Int(1024, 1024), "atlasOutput", textureFilenames, snowpulse::PathType::kAssets, snowpulse::PathType::kDocuments, [](int progress) {
 #ifdef SPDEBUG
-            std::cout << "Atlas: Progress at " << progress << "%." << std::endl;
+            std::cout << "Atlas Manager: Progress at " << progress << "%." << std::endl;
 #endif
         });
     }

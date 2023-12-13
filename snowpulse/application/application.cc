@@ -15,6 +15,7 @@
 #endif
 
 #include "atlas_manager.h"
+#include "font_manager.h"
 #include "../game/action_manager.h"
 
 namespace snowpulse {
@@ -46,6 +47,7 @@ bool Application::Initialize(const Vector2Int& resolution, const Vector2Int& scr
     SetScreenSize(screenSize);
     actionManager_ = ActionManager::Create();
     atlasManager_ = AtlasManager::Create();
+    fontManager_ = FontManager::Create();
 
     appTimer_.Start();
     frameTimer_.Start();
