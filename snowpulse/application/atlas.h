@@ -26,6 +26,7 @@ class SNOWPULSEAPI Atlas {
 
         void Load(std::string atlasFilename, PathType pathType = PathType::kAssets);
         void Create(Vector2Int size, std::string outputFilename, std::vector<std::string> textureFilenames, PathType texturesPathType, PathType outputPathType, std::function<void(int)> onProgressFunc);
+        AtlasSprite GetSprite(std::string spriteFilename);
         AtlasSprite GetSprite(std::string atlasFilename, std::string spriteFilename);
         void CheckWorkerThread();
 

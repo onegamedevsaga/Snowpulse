@@ -42,7 +42,8 @@ void Atlas::Load(std::string atlasFilename, PathType pathType) {
             auto textureFilename = Directory::GetInstance()->GetPathFromFilename(atlasFilename) + key;
             Application::GetInstance()->GetGraphics()->LoadTexture(textureFilename, pathType);
             for (const auto& item : value) {
-                AtlasSprite sprite(textureFilename,
+                AtlasSprite sprite(atlasFilename,
+                                   textureFilename,
                                    item["filename"],
                                    Vector2((float)item["u"], (float)item["v"]),
                                    Vector2((float)item["width"], (float)item["height"]));
@@ -71,6 +72,16 @@ void Atlas::Create(Vector2Int size, std::string outputFilename, std::vector<std:
     }
     workerThread_ = std::thread(&Atlas::LoadAndPackTextures, this, size, outputFilename, textureFilenames, texturesPathType, outputPathType, jsonFile_.get());
     isWorking_ = true;
+}
+
+AtlasSprite Atlas::GetSprite(std::string spriteFilename) {
+    for (const auto& pair : atlases_) {
+        auto spr = GetSprite(pair.first, spriteFilename);
+        if (spr.IsValid()) {
+            return spr;
+        }
+    }
+    return AtlasSprite();
 }
 
 AtlasSprite Atlas::GetSprite(std::string atlasFilename, std::string spriteFilename) {

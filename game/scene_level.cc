@@ -39,7 +39,6 @@ void SceneLevel::Shutdown() {
 }
 
 void SceneLevel::Start() {
-    snowpulse::Application::GetInstance()->GetPlatform();
     auto json = snowpulse::JsonUtils::LoadFile("settings.json", snowpulse::PathType::kAssets);
     if (json) {
 #ifdef SPDEBUG
@@ -55,9 +54,12 @@ void SceneLevel::Start() {
     (*json2)["levelNo"] = 1;
     (*json2)["levelName"] = "The Cathedral";
     snowpulse::JsonUtils::SaveFile(json2.get(), "levelSample.json");
+    
+    auto atlas = snowpulse::Application::GetInstance()->GetAtlas();
+    atlas->Load("atlas-load-test/atlasOutput.snowatlas");
 
     go1_ = snowpulse::GameObject::Create("go1_");
-    auto sprRenderer = snowpulse::SpriteRenderer::Create("banner_01.png", "atlas-load-test/atlasOutput.snowatlas");
+    auto sprRenderer = snowpulse::SpriteRenderer::Create("atlas-test/banner_01.png");
     sprRenderer->SetColor(snowpulse::Color(1.0f, 1.0f, 1.0f, 1.0f));
     sprRenderer->SetSortOrder(0);
     go1_->AddComponent(sprRenderer);
@@ -74,7 +76,7 @@ void SceneLevel::Start() {
     })->Run();
 
     auto dup01 = snowpulse::GameObject::Create("dup01");
-    sprRenderer = snowpulse::SpriteRenderer::Create("mobilephone.png", "atlas-load-test/atlasOutput.snowatlas");
+    sprRenderer = snowpulse::SpriteRenderer::Create("atlas-test/mobilephone.png");
     sprRenderer->SetColor(snowpulse::Color(1.0f, 1.0f, 1.0f, 1.0f));
     sprRenderer->SetSortOrder(0);
     dup01->AddComponent(sprRenderer);

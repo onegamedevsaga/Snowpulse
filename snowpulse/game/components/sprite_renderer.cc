@@ -3,9 +3,17 @@
 #include "../../common/singleton.h"
 #include "../../application/application.h"
 #include "../../application/atlas.h"
+#include "../../application/directory.h"
 
 namespace snowpulse {
 std::shared_ptr<SpriteRenderer> SpriteRenderer::Create(std::string filename, TextureFiltering filtering) {
+    auto filenameOnly = Directory::GetInstance()->GetFilenameFromPath(filename);
+    auto atlas = Application::GetInstance()->GetAtlas();
+    auto spr = atlas->GetSprite(filenameOnly);
+    if (spr.IsValid()) {
+        return Create(filenameOnly, spr.GetAtlasFilename(), filtering);
+    }
+
     auto spriteRenderer = std::shared_ptr<SpriteRenderer>(new SpriteRenderer());
     spriteRenderer->isFromAtlas_ = false;
     spriteRenderer->filename_ = filename;
@@ -38,7 +46,7 @@ void SpriteRenderer::LoadGraphics(Graphics* graphics) {
         auto atlas = Application::GetInstance()->GetAtlas();
         atlas->Load(atlasFilename_);
         atlasSprite_ = atlas->GetSprite(atlasFilename_, filename_);
-        if (atlasSprite_.GetFilename() == filename_) {
+        if (atlasSprite_.IsValid()) {
             SetSize(atlasSprite_.GetSize());
             auto textureFilename = atlasSprite_.GetTextureFilename();
             auto uv = atlasSprite_.GetUV();
