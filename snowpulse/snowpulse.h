@@ -45,7 +45,7 @@
 #include "game/actions/action_rotate.h"
 
 #include "application/graphics.h"
-#include "application/atlas.h"
+#include "application/atlas_manager.h"
 #include "application/timer.h"
 #include "application/camera.h"
 #include "application/input.h"

@@ -1,4 +1,4 @@
-#include "atlas.h"
+#include "atlas_manager.h"
 
 #include <iostream>
 #include <stb_image.h>
@@ -15,21 +15,21 @@
 namespace snowpulse {
 static const int kSpacing = 4;
 
-std::shared_ptr<Atlas> Atlas::Create() {
-    auto atlas = new Atlas();
-    return std::shared_ptr<Atlas>(atlas);
+std::shared_ptr<AtlasManager> AtlasManager::Create() {
+    auto atlasMgr = new AtlasManager();
+    return std::shared_ptr<AtlasManager>(atlasMgr);
 }
 
-Atlas::Atlas() : isWorking_(false) {
+AtlasManager::AtlasManager() : isWorking_(false) {
 }
 
-Atlas::~Atlas() {
+AtlasManager::~AtlasManager() {
     if (workerThread_.joinable()) {
         workerThread_.join();
     }
 }
 
-void Atlas::Load(std::string atlasFilename, PathType pathType) {
+void AtlasManager::Load(std::string atlasFilename, PathType pathType) {
     if (atlases_.count(atlasFilename)) {
         // Atlas already loaded.
         return;
@@ -54,7 +54,7 @@ void Atlas::Load(std::string atlasFilename, PathType pathType) {
     }
 }
 
-void Atlas::Create(Vector2Int size, std::string outputFilename, std::vector<std::string> textureFilenames, PathType texturesPathType, PathType outputPathType, std::function<void(int)> onProgressFunc) {
+void AtlasManager::Create(Vector2Int size, std::string outputFilename, std::vector<std::string> textureFilenames, PathType texturesPathType, PathType outputPathType, std::function<void(int)> onProgressFunc) {
     if (isWorking_) {
 #ifdef SPDEBUG
         std::cerr << "Error: Atlas still working.."  << std::endl;
@@ -70,11 +70,11 @@ void Atlas::Create(Vector2Int size, std::string outputFilename, std::vector<std:
     if (onProgressFunc_) {
         onProgressFunc_(progress_);
     }
-    workerThread_ = std::thread(&Atlas::LoadAndPackTextures, this, size, outputFilename, textureFilenames, texturesPathType, outputPathType, jsonFile_.get());
+    workerThread_ = std::thread(&AtlasManager::LoadAndPackTextures, this, size, outputFilename, textureFilenames, texturesPathType, outputPathType, jsonFile_.get());
     isWorking_ = true;
 }
 
-AtlasSprite Atlas::GetSprite(std::string spriteFilename) {
+AtlasSprite AtlasManager::GetSprite(std::string spriteFilename) {
     for (const auto& pair : atlases_) {
         auto spr = GetSprite(pair.first, spriteFilename);
         if (spr.IsValid()) {
@@ -84,7 +84,7 @@ AtlasSprite Atlas::GetSprite(std::string spriteFilename) {
     return AtlasSprite();
 }
 
-AtlasSprite Atlas::GetSprite(std::string atlasFilename, std::string spriteFilename) {
+AtlasSprite AtlasManager::GetSprite(std::string atlasFilename, std::string spriteFilename) {
     if (!atlases_.count(atlasFilename)) {
 #ifdef SPDEBUG
         std::cerr << "Error: Atlas doesn't have \"" << atlasFilename << "\" atlas."  << std::endl;
@@ -101,7 +101,7 @@ AtlasSprite Atlas::GetSprite(std::string atlasFilename, std::string spriteFilena
     return AtlasSprite();
 }
 
-void Atlas::CheckWorkerThread() {
+void AtlasManager::CheckWorkerThread() {
     {
         std::lock_guard<std::mutex> lock(progressMutex_);
         if (progress_ == 100 && workerThread_.joinable()) {
@@ -120,7 +120,7 @@ void Atlas::CheckWorkerThread() {
     }
 }
 
-void Atlas::LoadAndPackTextures(Vector2Int size, std::string outputFilename, std::vector<std::string> textureFilenames, PathType texturesPathType, PathType outputPathType, Json* jsonFile) {
+void AtlasManager::LoadAndPackTextures(Vector2Int size, std::string outputFilename, std::vector<std::string> textureFilenames, PathType texturesPathType, PathType outputPathType, Json* jsonFile) {
     {
         std::lock_guard<std::mutex> lock(progressMutex_);
         progress_ = 0;
@@ -226,14 +226,14 @@ void Atlas::LoadAndPackTextures(Vector2Int size, std::string outputFilename, std
     }
 }
 
-void Atlas::CleanImages(std::vector<unsigned char*>& images) {
+void AtlasManager::CleanImages(std::vector<unsigned char*>& images) {
     for (auto* img : images) {
         stbi_image_free(img);
     }
     images.clear();
 }
 
-void Atlas::PackAndSaveAtlas(const std::vector<stbrp_rect>& rects, const std::vector<std::string>& filenames, const std::vector<unsigned char*>& images, Vector2Int atlasSize, int atlasIndex, std::string outputFilename, PathType pathType, Json* jsonFile) {
+void AtlasManager::PackAndSaveAtlas(const std::vector<stbrp_rect>& rects, const std::vector<std::string>& filenames, const std::vector<unsigned char*>& images, Vector2Int atlasSize, int atlasIndex, std::string outputFilename, PathType pathType, Json* jsonFile) {
     // Create an image buffer (RGBA) for the atlas
     std::vector<unsigned char> buffer(atlasSize.x * atlasSize.y * 4, 0);
 
@@ -277,7 +277,7 @@ void Atlas::PackAndSaveAtlas(const std::vector<stbrp_rect>& rects, const std::ve
     (*jsonFile)[filename] = jsonRects;
 }
 
-std::string Atlas::GetFullFilename(std::string filename, PathType pathType) {
+std::string AtlasManager::GetFullFilename(std::string filename, PathType pathType) {
     std::string fullFilename = "";
     switch (pathType) {
         case PathType::kAssets:
@@ -300,7 +300,7 @@ std::string Atlas::GetFullFilename(std::string filename, PathType pathType) {
     return fullFilename;
 }
 
-stbrp_rect Atlas::AddSpacingToRect(const stbrp_rect& rect, int spacing) {
+stbrp_rect AtlasManager::AddSpacingToRect(const stbrp_rect& rect, int spacing) {
     stbrp_rect newRect = rect;
     newRect.w += spacing * 2;
     newRect.h += spacing * 2;

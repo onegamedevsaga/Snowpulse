@@ -46,17 +46,17 @@ void SceneLevel::Start() {
         std::cout << "JSON: " << json->dump(4) << std::endl;
 #endif
     }
-    
+
     (*json)["extraValue"] = 1234.0f;
     snowpulse::JsonUtils::SaveFile(json.get(), "global/settings.json", snowpulse::PathType::kApplicationSupport);
-    
+
     auto json2 = snowpulse::JsonUtils::Create();
     (*json2)["levelNo"] = 1;
     (*json2)["levelName"] = "The Cathedral";
     snowpulse::JsonUtils::SaveFile(json2.get(), "levelSample.json");
-    
-    auto atlas = snowpulse::Application::GetInstance()->GetAtlas();
-    atlas->Load("atlas-load-test/atlasOutput.snowatlas");
+
+    auto atlasManager = snowpulse::Application::GetInstance()->GetAtlasManager();
+    atlasManager->Load("atlas-load-test/atlasOutput.snowatlas");
 
     go1_ = snowpulse::GameObject::Create("go1_");
     auto sprRenderer = snowpulse::SpriteRenderer::Create("atlas-test/banner_01.png");
@@ -192,13 +192,13 @@ void SceneLevel::Update(float deltaTime) {
 #endif
     
     if (snowpulse::Input::GetInstance()->GetPressed("space")) {
-        auto atlas = snowpulse::Application::GetInstance()->GetAtlas();
+        auto atlasManager = snowpulse::Application::GetInstance()->GetAtlasManager();
         std::vector<std::string> textureFilenames;
         textureFilenames.push_back("atlas-test/banner_01.png");
         textureFilenames.push_back("atlas-test/banner_02.png");
         textureFilenames.push_back("atlas-test/mobilephone.png");
         textureFilenames.push_back("atlas-test/opacity_test.png");
-        atlas->Create(snowpulse::Vector2Int(1024, 1024), "atlasOutput", textureFilenames, snowpulse::PathType::kAssets, snowpulse::PathType::kDocuments, [](int progress) {
+        atlasManager->Create(snowpulse::Vector2Int(1024, 1024), "atlasOutput", textureFilenames, snowpulse::PathType::kAssets, snowpulse::PathType::kDocuments, [](int progress) {
 #ifdef SPDEBUG
             std::cout << "Atlas: Progress at " << progress << "%." << std::endl;
 #endif

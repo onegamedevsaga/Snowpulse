@@ -16,7 +16,7 @@
 namespace snowpulse {
 
 // Forward declaration
-class Atlas;
+class AtlasManager;
 
 class SNOWPULSEAPI Application {
     public:
@@ -43,7 +43,7 @@ class SNOWPULSEAPI Application {
         Game* GetGame() const { return game_; }
         ActionManager* GetActionManager() const { return actionManager_.get(); }
         std::string GetAssetFolderPath() const { return assetFolderPath_; }
-        Atlas* GetAtlas() const { return atlas_.get(); }
+        AtlasManager* GetAtlasManager() const { return atlasManager_.get(); }
 
     protected:
         Application();
@@ -60,7 +60,7 @@ class SNOWPULSEAPI Application {
         std::string platformString_;
         std::shared_ptr<ActionManager> actionManager_;
         std::string assetFolderPath_;
-        std::shared_ptr<Atlas> atlas_;
+        std::shared_ptr<AtlasManager> atlasManager_;
 
         float GetDeltaTime(Timer& timer);
 

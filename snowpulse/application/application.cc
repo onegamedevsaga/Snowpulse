@@ -14,7 +14,7 @@
 #include "metal/graphics_metal.h"
 #endif
 
-#include "atlas.h"
+#include "atlas_manager.h"
 #include "../game/action_manager.h"
 
 namespace snowpulse {
@@ -45,7 +45,7 @@ bool Application::Initialize(const Vector2Int& resolution, const Vector2Int& scr
     targetResolutionSize_ = resolution;
     SetScreenSize(screenSize);
     actionManager_ = ActionManager::Create();
-    atlas_ = Atlas::Create();
+    atlasManager_ = AtlasManager::Create();
 
     appTimer_.Start();
     frameTimer_.Start();
@@ -59,8 +59,8 @@ void Application::SetScreenSize(const Vector2Int& screenSize) {
 }
 
 void Application::Update(float deltaTime) {
-    if (atlas_->IsWorking()) {
-        atlas_->CheckWorkerThread();
+    if (atlasManager_->IsWorking()) {
+        atlasManager_->CheckWorkerThread();
     }
 }
 

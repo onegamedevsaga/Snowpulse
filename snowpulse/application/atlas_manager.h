@@ -1,5 +1,5 @@
-#ifndef SNOWPULSE_APPLICATION_ATLAS_H_
-#define SNOWPULSE_APPLICATION_ATLAS_H_
+#ifndef SNOWPULSE_APPLICATION_ATLASMANAGER_H_
+#define SNOWPULSE_APPLICATION_ATLASMANAGER_H_
 
 #include "../defines.h"
 
@@ -19,10 +19,10 @@
 
 namespace snowpulse {
 
-class SNOWPULSEAPI Atlas {
+class SNOWPULSEAPI AtlasManager {
     public:
-        static std::shared_ptr<Atlas> Create();
-        virtual ~Atlas();
+        static std::shared_ptr<AtlasManager> Create();
+        virtual ~AtlasManager();
 
         void Load(std::string atlasFilename, PathType pathType = PathType::kAssets);
         void Create(Vector2Int size, std::string outputFilename, std::vector<std::string> textureFilenames, PathType texturesPathType, PathType outputPathType, std::function<void(int)> onProgressFunc);
@@ -33,7 +33,7 @@ class SNOWPULSEAPI Atlas {
         bool IsWorking() const { return isWorking_;}
 
     protected:
-        Atlas();
+        AtlasManager();
 
         void LoadAndPackTextures(Vector2Int size, std::string outputFilename, std::vector<std::string> textureFilenames, PathType texturesPathType, PathType outputPathType, Json* jsonFile);
         void CleanImages(std::vector<unsigned char*>& images);
