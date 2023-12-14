@@ -58,8 +58,11 @@ void SceneLevel::Start() {
     auto atlasManager = snowpulse::Application::GetInstance()->GetAtlasManager();
     atlasManager->Load("atlas-load-test/atlasOutput.snowatlas");
 
+    auto fontManager = snowpulse::Application::GetInstance()->GetFontManager();
+    fontManager->Load("fonts/roboto/Roboto-Regular.ttf", 200.0f, snowpulse::PathType::kDefaults);
+
     go1_ = snowpulse::GameObject::Create("go1_");
-    auto sprRenderer = snowpulse::SpriteRenderer::Create("atlas-test/banner_01.png");
+    auto sprRenderer = snowpulse::SpriteRenderer::Create("fonts/roboto/Roboto-Regular.ttf_s_200");
     sprRenderer->SetColor(snowpulse::Color(1.0f, 1.0f, 1.0f, 1.0f));
     sprRenderer->SetSortOrder(0);
     go1_->AddComponent(sprRenderer);

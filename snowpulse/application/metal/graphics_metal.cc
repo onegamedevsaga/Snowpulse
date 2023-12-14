@@ -227,7 +227,7 @@ void GraphicsMetal::DrawMesh(Vertex* vertices, unsigned int vertexCount, unsigne
     else {
         batch->texture = textures_[kSpriteDefault];
 #ifdef SPDEBUG
-        std::cerr << "Can't find texture \"" << textureFilename << "\"." << std::endl;
+        std::cerr << "Error: Graphics: Can't find texture \"" << textureFilename << "\"." << std::endl;
 #endif
     }
 

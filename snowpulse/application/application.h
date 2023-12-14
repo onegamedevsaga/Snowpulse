@@ -45,6 +45,7 @@ class SNOWPULSEAPI Application {
         ActionManager* GetActionManager() const { return actionManager_.get(); }
         std::string GetAssetFolderPath() const { return assetFolderPath_; }
         AtlasManager* GetAtlasManager() const { return atlasManager_.get(); }
+        FontManager* GetFontManager() const { return fontManager_.get(); }
 
     protected:
         Application();

@@ -1,6 +1,7 @@
 #include "font_manager.h"
 
 #include <iostream>
+#include <stb_image_write.h>
 #define STB_TRUETYPE_IMPLEMENTATION
 #include <stb_truetype.h>
 #undef STB_TRUETYPE_IMPLEMENTATION
@@ -62,11 +63,19 @@ void FontManager::Load(std::string filename, int fontSizeInPixels, PathType path
     std::string characters = "abcdefghijklmnopqrstuvwxyz0123456789.,!?@";
     for (const auto& c : characters) {
         int width, height, xOffset, yOffset;
-        unsigned char* bitmap = stbtt_GetCodepointBitmap(&fontInfo, 0, scale, c, &width, &height, &xOffset, &yOffset);
-        spriteNames_[filename][c] = filename + "_" + c + "_" + std::to_string(fontSizeInPixels);
+        unsigned char* grayscaleBitmap = stbtt_GetCodepointBitmap(&fontInfo, 0, scale, c, &width, &height, &xOffset, &yOffset);
+        spriteNames_[filename][c] = Directory::GetInstance()->GetFilenameFromPath(filename) + "_" + c + "_" + std::to_string(fontSizeInPixels);
         sizes_[filename][c] = Vector2Int(width, height);
         offsets_[filename][c] = Vector2Int(xOffset, yOffset);
-        bitmaps[c] = bitmap;
+        unsigned char* rgbaBitmap = new unsigned char[width * height * 4];
+        for (int i = 0; i < width * height; ++i) {
+            rgbaBitmap[i * 4 + 0] = grayscaleBitmap[i];
+            rgbaBitmap[i * 4 + 1] = grayscaleBitmap[i];
+            rgbaBitmap[i * 4 + 2] = grayscaleBitmap[i];
+            rgbaBitmap[i * 4 + 3] = grayscaleBitmap[i];
+        }
+        delete [] grayscaleBitmap;
+        bitmaps[c] = rgbaBitmap;
     }
 
     std::map<std::string, unsigned char*> nameAndBitmaps;

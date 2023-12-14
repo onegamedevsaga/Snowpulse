@@ -80,9 +80,9 @@ void AtlasManager::CreateInMemory(Vector2Int size, std::string atlasFilename, st
     std::vector<stbrp_rect> allRects;
     int i = 0;
     for (const auto& pair : bitmaps) {
-        auto width = sizes[pair.first].x;
-        auto height = sizes[pair.first].y;
-        auto filename = atlasFilename + "_" + pair.first;
+        auto filename = pair.first;
+        auto width = sizes[filename].x;
+        auto height = sizes[filename].y;
         filenames.push_back(filename);
         images.push_back(pair.second);
         allRects.push_back({static_cast<stbrp_coord>(i), static_cast<stbrp_coord>(width), static_cast<stbrp_coord>(height), 0, 0, 0});
@@ -367,6 +367,19 @@ void AtlasManager::PackAndSaveAtlasInMemory(const std::vector<RectSTB>& rects, c
 
     auto graphics = Application::GetInstance()->GetGraphics();
     graphics->LoadTexture(textureFilename, buffer.data(), atlasSize);
+
+    // Save to PNG
+    std::string fullFilename = Directory::GetInstance()->GetFullFilename(atlasFilename + "_" + std::to_string(atlasIndex) + ".png", PathType::kDocuments);
+    if (!stbi_write_png(fullFilename.c_str(), atlasSize.x, atlasSize.y, 4, buffer.data(), atlasSize.x * 4)) {
+#ifdef SPDEBUG
+        std::cerr << "Error: Atlas Manager: Failed to write image: " << fullFilename << std::endl;
+#endif
+    }
+    else {
+#ifdef SPDEBUG
+        std::cout << "Atlas Manager: Image saved as " << fullFilename << std::endl;
+#endif
+    }
 }
 
 RectSTB AtlasManager::AddSpacingToRect(const RectSTB& rect, int spacing) {
