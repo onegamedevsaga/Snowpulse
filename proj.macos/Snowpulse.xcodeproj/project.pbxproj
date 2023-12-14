@@ -529,6 +529,8 @@
 		2A52672A2B206305008B7268 /* libgame_ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libgame_ios.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A624C8A2B29FB2E00710C50 /* font_manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = font_manager.h; sourceTree = "<group>"; };
 		2A624C8B2B29FB2E00710C50 /* font_manager.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = font_manager.cc; sourceTree = "<group>"; };
+		2A624C8F2B2AC6AA00710C50 /* rect.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rect.h; sourceTree = "<group>"; };
+		2A624C902B2AC6AA00710C50 /* rect_stb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rect_stb.h; sourceTree = "<group>"; };
 		2A77E7252B107FA300579051 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		2A77E7272B107FAA00579051 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		2A77E72A2B107FBE00579051 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
@@ -1099,6 +1101,8 @@
 				2A4FBE0C2B00BF430060E35C /* matrix4x4.h */,
 				2A4FBE0E2B00BF430060E35C /* singleton.h */,
 				2A06563D2B28C40D00E2B2B9 /* atlas_sprite.h */,
+				2A624C8F2B2AC6AA00710C50 /* rect.h */,
+				2A624C902B2AC6AA00710C50 /* rect_stb.h */,
 				2A4FBE912B0357CF0060E35C /* space.h */,
 				2A4FBE0F2B00BF430060E35C /* texture_filtering.h */,
 				2AC95E1C2B1DE0B200B2C916 /* touch.h */,

@@ -21,6 +21,8 @@
 #include "common/vector3.h"
 #include "common/matrix4x4.h"
 #include "common/color.h"
+#include "common/rect.h"
+#include "common/rect_stb.h"
 #include "common/texture_filtering.h"
 #include "common/vertex.h"
 #include "common/touch.h"

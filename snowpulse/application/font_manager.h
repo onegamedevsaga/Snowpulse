@@ -5,8 +5,10 @@
 
 #include <memory>
 #include <string>
+#include <map>
 
 #include "../common/path_type.h"
+#include "../common/vector2int.h"
 
 namespace snowpulse {
 
@@ -24,6 +26,9 @@ class SNOWPULSEAPI FontManager {
         FontManager();
 
         AtlasManager* atlasManager_;
+        std::map<std::string, std::map<char, std::string>> spriteNames_;
+        std::map<std::string, std::map<char, Vector2Int>> sizes_;
+        std::map<std::string, std::map<char, Vector2Int>> offsets_;
 };
 }   // namespace snowpulse
 #endif

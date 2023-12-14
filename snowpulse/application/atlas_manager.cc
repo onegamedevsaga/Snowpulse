@@ -98,7 +98,8 @@ void AtlasManager::CreateInMemory(Vector2Int size, std::string atlasFilename, st
     std::vector<stbrp_rect> rectsToPack(allRects);
     allRects.clear();
     for (const auto& rect : rectsToPack) {
-        allRects.push_back(AddSpacingToRect(rect, kSpacing));
+        auto spacedRect = AddSpacingToRect(RectSTB(rect.id, rect.x, rect.y, rect.w, rect.h, rect.was_packed), kSpacing);
+        allRects.push_back({static_cast<stbrp_coord>(spacedRect.GetId()), static_cast<stbrp_coord>(spacedRect.GetWidth()), static_cast<stbrp_coord>(spacedRect.GetHeight()), static_cast<stbrp_coord>(spacedRect.GetX()), static_cast<stbrp_coord>(spacedRect.GetY()), 0});
     }
 
     int atlasIndex = 0;
@@ -116,17 +117,17 @@ void AtlasManager::CreateInMemory(Vector2Int size, std::string atlasFilename, st
         }
 
         // Separate packed and unpacked rectangles
-        std::vector<stbrp_rect> packedRects, unpackedRects;
+        std::vector<RectSTB> packedRects;
+        std::vector<stbrp_rect> unpackedRects;
         for (const auto& rect : allRects) {
             if (rect.was_packed) {
-                packedRects.push_back(rect);
+                packedRects.push_back(RectSTB(rect.id, rect.x, rect.y, rect.w, rect.h, rect.was_packed));
             } else {
                 unpackedRects.push_back(rect);
             }
         }
         // Save the packed atlas
-        Vector2Int atlasSize(2048, 2048);
-        PackAndSaveAtlasInMemory(packedRects, filenames, images, atlasSize, atlasIndex, atlasFilename);
+        PackAndSaveAtlasInMemory(packedRects, filenames, images, size, atlasIndex, atlasFilename);
         allRects = unpackedRects;
         atlasIndex ++;
     }
@@ -228,7 +229,8 @@ void AtlasManager::LoadAndPackTextures(Vector2Int size, std::string outputFilena
     std::vector<stbrp_rect> rectsToPack(allRects);
     allRects.clear();
     for (const auto& rect : rectsToPack) {
-        allRects.push_back(AddSpacingToRect(rect, kSpacing));
+        auto spacedRect = AddSpacingToRect(RectSTB(rect.id, rect.x, rect.y, rect.w, rect.h, rect.was_packed), kSpacing);
+        allRects.push_back({static_cast<stbrp_coord>(spacedRect.GetId()), static_cast<stbrp_coord>(spacedRect.GetWidth()), static_cast<stbrp_coord>(spacedRect.GetHeight()), static_cast<stbrp_coord>(spacedRect.GetX()), static_cast<stbrp_coord>(spacedRect.GetY()), 0});
     }
 
     int atlasIndex = 0;
@@ -246,10 +248,11 @@ void AtlasManager::LoadAndPackTextures(Vector2Int size, std::string outputFilena
         }
 
         // Separate packed and unpacked rectangles
-        std::vector<stbrp_rect> packedRects, unpackedRects;
+        std::vector<RectSTB> packedRects;
+        std::vector<stbrp_rect> unpackedRects;
         for (const auto& rect : allRects) {
             if (rect.was_packed) {
-                packedRects.push_back(rect);
+                packedRects.push_back(RectSTB(rect.id, rect.x, rect.y, rect.w, rect.h, rect.was_packed));
             } else {
                 unpackedRects.push_back(rect);
             }
@@ -291,27 +294,27 @@ void AtlasManager::CleanImages(std::vector<unsigned char*>& images) {
     images.clear();
 }
 
-void AtlasManager::PackAndSaveAtlas(const std::vector<stbrp_rect>& rects, const std::vector<std::string>& filenames, const std::vector<unsigned char*>& images, Vector2Int atlasSize, int atlasIndex, std::string outputFilename, PathType pathType, Json* jsonFile) {
+void AtlasManager::PackAndSaveAtlas(const std::vector<RectSTB>& rects, const std::vector<std::string>& filenames, const std::vector<unsigned char*>& images, Vector2Int atlasSize, int atlasIndex, std::string outputFilename, PathType pathType, Json* jsonFile) {
     // Create an image buffer (RGBA) for the atlas
     std::vector<unsigned char> buffer(atlasSize.x * atlasSize.y * 4, 0);
 
     // Draw the images into the buffer
     Json jsonRects;
     for (auto& rect : rects) {
-        if (rect.was_packed) {
-            Json json = {   { "filename", filenames[rect.id] },
-                            { "u", (float)(rect.x + kSpacing) / (float)atlasSize.x },
-                            { "v", (float)(rect.y + kSpacing) / (float)atlasSize.y },
-                            { "width", (float)(rect.w - kSpacing * 2) },
-                            { "height", (float)(rect.h - kSpacing * 2) }
+        if (rect.IsPacked()) {
+            Json json = {   { "filename", filenames[rect.GetId()] },
+                            { "u", (float)(rect.GetX() + kSpacing) / (float)atlasSize.x },
+                            { "v", (float)(rect.GetY() + kSpacing) / (float)atlasSize.y },
+                            { "width", (float)(rect.GetWidth() - kSpacing * 2) },
+                            { "height", (float)(rect.GetHeight() - kSpacing * 2) }
             };
             jsonRects.push_back(json);
 
-            unsigned char* img = images[rect.id];
-            for (int y = 0; y < rect.h - kSpacing * 2; ++y) {
-                for (int x = 0; x < rect.w - kSpacing * 2; ++x) {
-                    int buffer_index = ((rect.y + y + kSpacing) * atlasSize.x + (rect.x + x + kSpacing)) * 4;
-                    int image_index = (y * (rect.w - kSpacing * 2) + x) * 4;
+            unsigned char* img = images[rect.GetId()];
+            for (int y = 0; y < rect.GetHeight() - kSpacing * 2; ++y) {
+                for (int x = 0; x < rect.GetWidth() - kSpacing * 2; ++x) {
+                    int buffer_index = ((rect.GetY() + y + kSpacing) * atlasSize.x + (rect.GetX() + x + kSpacing)) * 4;
+                    int image_index = (y * (rect.GetWidth() - kSpacing * 2) + x) * 4;
                     for (int c = 0; c < 4; ++c) {
                         buffer[buffer_index + c] = img[image_index + c];
                     }
@@ -335,16 +338,16 @@ void AtlasManager::PackAndSaveAtlas(const std::vector<stbrp_rect>& rects, const 
     (*jsonFile)[filename] = jsonRects;
 }
 
-void AtlasManager::PackAndSaveAtlasInMemory(const std::vector<stbrp_rect>& rects, const std::vector<std::string>& filenames, const std::vector<unsigned char*>& bitmaps, Vector2Int atlasSize, int atlasIndex, std::string atlasFilename) {
+void AtlasManager::PackAndSaveAtlasInMemory(const std::vector<RectSTB>& rects, const std::vector<std::string>& filenames, const std::vector<unsigned char*>& bitmaps, Vector2Int atlasSize, int atlasIndex, std::string atlasFilename) {
     std::vector<unsigned char> buffer(atlasSize.x * atlasSize.y * 4, 0);
     auto textureFilename = atlasFilename + "_" + std::to_string(atlasIndex);
     for (auto& rect : rects) {
-        if (rect.was_packed) {
-            unsigned char* bitmap = bitmaps[rect.id];
-            for (int y = 0; y < rect.h - kSpacing * 2; ++y) {
-                for (int x = 0; x < rect.w - kSpacing * 2; ++x) {
-                    int buffer_index = ((rect.y + y + kSpacing) * atlasSize.x + (rect.x + x + kSpacing)) * 4;
-                    int image_index = (y * (rect.w - kSpacing * 2) + x) * 4;
+        if (rect.IsPacked()) {
+            unsigned char* bitmap = bitmaps[rect.GetId()];
+            for (int y = 0; y < rect.GetHeight() - kSpacing * 2; ++y) {
+                for (int x = 0; x < rect.GetWidth() - kSpacing * 2; ++x) {
+                    int buffer_index = ((rect.GetY() + y + kSpacing) * atlasSize.x + (rect.GetX() + x + kSpacing)) * 4;
+                    int image_index = (y * (rect.GetWidth() - kSpacing * 2) + x) * 4;
                     for (int c = 0; c < 4; ++c) {
                         buffer[buffer_index + c] = bitmap[image_index + c];
                     }
@@ -353,11 +356,11 @@ void AtlasManager::PackAndSaveAtlasInMemory(const std::vector<stbrp_rect>& rects
 
             auto atlasSprite = AtlasSprite( atlasFilename,
                                             textureFilename,
-                                            filenames[rect.id],
-                                            Vector2((float)(rect.x + kSpacing) / (float)atlasSize.x,
-                                                  (float)(rect.y + kSpacing) / (float)atlasSize.y),
-                                            Vector2((float)(rect.w - kSpacing * 2),
-                                                  (float)(rect.h - kSpacing * 2)));
+                                            filenames[rect.GetId()],
+                                            Vector2((float)(rect.GetX() + kSpacing) / (float)atlasSize.x,
+                                                    (float)(rect.GetY() + kSpacing) / (float)atlasSize.y),
+                                            Vector2((float)(rect.GetWidth() - kSpacing * 2),
+                                                    (float)(rect.GetHeight() - kSpacing * 2)));
             atlases_[atlasFilename].push_back(atlasSprite);
         }
     }
@@ -366,10 +369,7 @@ void AtlasManager::PackAndSaveAtlasInMemory(const std::vector<stbrp_rect>& rects
     graphics->LoadTexture(textureFilename, buffer.data(), atlasSize);
 }
 
-stbrp_rect AtlasManager::AddSpacingToRect(const stbrp_rect& rect, int spacing) {
-    stbrp_rect newRect = rect;
-    newRect.w += spacing * 2;
-    newRect.h += spacing * 2;
-    return newRect;
+RectSTB AtlasManager::AddSpacingToRect(const RectSTB& rect, int spacing) {
+    return RectSTB(rect.GetId(), rect.GetPosition(), Vector2(rect.GetWidth() + spacing * 2.0f, rect.GetHeight() + spacing * 2.0f), rect.IsPacked());
 }
 }   // namespace snowpulse

@@ -7,7 +7,6 @@
 #include <vector>
 #include <map>
 #include <string>
-#include <stb_rect_pack.h>
 #include <functional>
 #include <thread>
 #include <mutex>
@@ -16,9 +15,12 @@
 #include "../common/path_type.h"
 #include "../common/vector2int.h"
 #include "../common/json_utils.h"
+#include "../common/rect_stb.h"
 #include "../common/atlas_sprite.h"
 
 namespace snowpulse {
+
+//struct stbrp_rect;
 
 class SNOWPULSEAPI AtlasManager {
     public:
@@ -39,9 +41,9 @@ class SNOWPULSEAPI AtlasManager {
 
         void LoadAndPackTextures(Vector2Int size, std::string outputFilename, std::vector<std::string> textureFilenames, PathType texturesPathType, PathType outputPathType, Json* jsonFile);
         void CleanImages(std::vector<unsigned char*>& images);
-        void PackAndSaveAtlas(const std::vector<stbrp_rect>& rects, const std::vector<std::string>& filenames, const std::vector<unsigned char*>& images, Vector2Int atlasSize, int atlasIndex, std::string outputFilename, PathType pathType, Json* jsonFile);
-        void PackAndSaveAtlasInMemory(const std::vector<stbrp_rect>& rects, const std::vector<std::string>& filenames, const std::vector<unsigned char*>& bitmaps, Vector2Int atlasSize, int atlasIndex, std::string atlasFilename);
-        stbrp_rect AddSpacingToRect(const stbrp_rect& rect, int spacing);
+        void PackAndSaveAtlas(const std::vector<RectSTB>& rects, const std::vector<std::string>& filenames, const std::vector<unsigned char*>& images, Vector2Int atlasSize, int atlasIndex, std::string outputFilename, PathType pathType, Json* jsonFile);
+        void PackAndSaveAtlasInMemory(const std::vector<RectSTB>& rects, const std::vector<std::string>& filenames, const std::vector<unsigned char*>& bitmaps, Vector2Int atlasSize, int atlasIndex, std::string atlasFilename);
+        RectSTB AddSpacingToRect(const RectSTB& rect, int spacing);
 
         std::map<std::string, std::vector<AtlasSprite>> atlases_;
         bool isWorking_;
