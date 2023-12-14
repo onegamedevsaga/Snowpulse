@@ -62,24 +62,26 @@ void SceneLevel::Start() {
     fontManager->Load("fonts/roboto/Roboto-Regular.ttf", 200.0f, snowpulse::PathType::kDefaults);
 
     go1_ = snowpulse::GameObject::Create("go1_");
-    auto sprRenderer = snowpulse::SpriteRenderer::Create("fonts/roboto/Roboto-Regular.ttf_s_200");
-    sprRenderer->SetColor(snowpulse::Color(1.0f, 1.0f, 1.0f, 1.0f));
-    sprRenderer->SetSortOrder(0);
-    go1_->AddComponent(sprRenderer);
-    auto imguiTest = ImGUITest::Create();
-    go1_->AddComponent(imguiTest);
+    auto fontRenderer = snowpulse::FontRenderer::Create("fonts/roboto/Roboto-Regular.ttf", 60, snowpulse::PathType::kDefaults);
+    //fontRenderer->SetText("ONE GAMEDEV SAGA");
+    //fontRenderer->SetText("One Gamedev Saga");
+    fontRenderer->SetText("Lorem Ipsum is simply dummy text of\nthe printing and typesetting industry.\nLorem Ipsum has been the industry's\nstandard dummy text ever since the\n1500s, when an unknown printer took");
+    fontRenderer->SetColor(snowpulse::Color(0.6f, 1.0f, 0.8f, 1.0f));
+    fontRenderer->SetSortOrder(0);
+    go1_->AddComponent(fontRenderer);
+    //auto imguiTest = ImGUITest::Create();
+    //go1_->AddComponent(imguiTest);
     AddChild(go1_);
 
-    go1_->GetTransform()->SetLocalPosition(snowpulse::Vector2(500.0f, 0.0f));
-    
-    
-    snowpulse::ActionInterpolate::Create(0.0f, 360.0f*5.0f, 5.0f, snowpulse::Easing::kLinear)->OnUpdate([this](float value, snowpulse::ActionInterpolate* ai) {
+    go1_->GetTransform()->SetLocalPosition(snowpulse::Vector2(-400.0f, 0.0f));
+
+    /*snowpulse::ActionInterpolate::Create(0.0f, 360.0f*5.0f, 5.0f, snowpulse::Easing::kLinear)->OnUpdate([this](float value, snowpulse::ActionInterpolate* ai) {
         go1_->GetTransform()->SetRotation(value);
     })->OnComplete([this](snowpulse::Action* a) {
-    })->Run();
+    })->Run();*/
 
     auto dup01 = snowpulse::GameObject::Create("dup01");
-    sprRenderer = snowpulse::SpriteRenderer::Create("atlas-test/mobilephone.png");
+    auto sprRenderer = snowpulse::SpriteRenderer::Create("atlas-test/mobilephone.png");
     sprRenderer->SetColor(snowpulse::Color(1.0f, 1.0f, 1.0f, 1.0f));
     sprRenderer->SetSortOrder(0);
     dup01->AddComponent(sprRenderer);
@@ -88,11 +90,11 @@ void SceneLevel::Start() {
     dup01->GetTransform()->SetLocalPosition(snowpulse::Vector2(GetResolutionSize().x * -0.5f, GetResolutionSize().y * -0.5f));
 
     go2_ = snowpulse::GameObject::Create("go2_");
-    sprRenderer = snowpulse::SpriteRenderer::Create("pixel-test.png", snowpulse::TextureFiltering::kPoint);
+    sprRenderer = snowpulse::SpriteRenderer::Create("pixel-test.png", snowpulse::PathType::kAssets, snowpulse::TextureFiltering::kPoint);
     sprRenderer->SetSortOrder(2);
     sprRenderer->SetBlendMode(snowpulse::BlendMode::kNormal);
     go2_->AddComponent(sprRenderer);
-    go1_->AddChild(go2_);
+    //go1_->AddChild(go2_);
 
     go2_->GetTransform()->SetLocalPosition(snowpulse::Vector2(300.0f, 300.0f));
     go2_->GetTransform()->SetLocalScale(snowpulse::Vector2(20.0f, 20.0f));

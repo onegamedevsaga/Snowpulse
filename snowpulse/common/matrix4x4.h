@@ -15,7 +15,7 @@ class Matrix4x4 {
             float radiansY = eulerAngles.y * multiplier;
             float radiansX = eulerAngles.x * multiplier;
             float radiansZ = eulerAngles.z * multiplier;
-            
+
             float cosX = cosf(radiansX);
             float sinX = sinf(radiansX);
             float cosY = cosf(radiansY);
@@ -97,6 +97,14 @@ class Matrix4x4 {
             }
         }
 
+        void Copy(const Matrix4x4& other) {
+            for (int i = 0; i < 4; ++i) {
+                for (int j = 0; j < 4; ++j) {
+                    data[i][j] = other.data[i][j];
+                }
+            }
+        }
+
         Matrix4x4 operator*(const Matrix4x4& other) const {
             Matrix4x4 result;
             for (int i = 0; i < 4; ++i) {
@@ -116,6 +124,18 @@ class Matrix4x4 {
                 result[i] = data[0][i] * v.x + data[1][i] * v.y + data[2][i] * v.z + data[3][i];
             }
             return Vector3(result[0], result[1], result[2]);
+        }
+
+        void AddTranslate(const Vector3& position) {
+            data[3][0] += position.x;
+            data[3][1] += position.y;
+            data[3][2] += position.z;
+        }
+
+        void AddScale(const Vector3& scale) {
+            data[0][0] += scale.x;
+            data[1][1] += scale.y;
+            data[2][2] += scale.z;
         }
 
         float data[4][4];

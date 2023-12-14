@@ -25,7 +25,7 @@ class SNOWPULSEAPI SpineRenderer : public SpriteRenderer {
     protected:
         SpineRenderer();
 
-        void LoadGraphics(Graphics* graphics);
+        void LoadGraphics(Graphics* graphics) override;
 
         std::shared_ptr<SpineSkeletonAnimation> skeletonAnimation_;
 };

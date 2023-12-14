@@ -17,8 +17,8 @@
 namespace snowpulse {
 class SNOWPULSEAPI SpriteRenderer : public Component, public Drawable {
     public:
-        static std::shared_ptr<SpriteRenderer> Create(std::string filename, TextureFiltering filtering = TextureFiltering::kBilinear);
-        static std::shared_ptr<SpriteRenderer> Create(std::string filename, std::string atlasFilename, TextureFiltering filtering = TextureFiltering::kBilinear);
+        static std::shared_ptr<SpriteRenderer> Create(std::string filename, PathType pathType = PathType::kAssets, TextureFiltering filtering = TextureFiltering::kBilinear);
+        static std::shared_ptr<SpriteRenderer> Create(std::string filename, std::string atlasFilename, PathType pathType = PathType::kAssets, TextureFiltering filtering = TextureFiltering::kBilinear);
 
         virtual ~SpriteRenderer();
         // From Updatable
@@ -47,10 +47,12 @@ class SNOWPULSEAPI SpriteRenderer : public Component, public Drawable {
         bool isFromAtlas_;
         AtlasSprite atlasSprite_;
         int sortOrder_;
+        Graphics* graphics_;
         Vector2 size_;
         Vector2 uvLowerLeft_;
         Vector2 uvUpperRight_;
         Color color_;
+        PathType pathType_;
         TextureFiltering textureFiltering_;
         BlendMode blendMode_;
         bool isPremultiplied_;

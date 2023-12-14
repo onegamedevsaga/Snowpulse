@@ -125,6 +125,9 @@
 		2A624C8C2B29FB2E00710C50 /* font_manager.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A624C8A2B29FB2E00710C50 /* font_manager.h */; };
 		2A624C8D2B29FB2E00710C50 /* font_manager.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A624C8B2B29FB2E00710C50 /* font_manager.cc */; };
 		2A624C8E2B29FB2E00710C50 /* font_manager.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A624C8B2B29FB2E00710C50 /* font_manager.cc */; };
+		2A624C932B2B22D000710C50 /* font_renderer.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A624C912B2B22D000710C50 /* font_renderer.h */; };
+		2A624C942B2B22D000710C50 /* font_renderer.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A624C922B2B22D000710C50 /* font_renderer.cc */; };
+		2A624C952B2B22D000710C50 /* font_renderer.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A624C922B2B22D000710C50 /* font_renderer.cc */; };
 		2AA1AA662B2075C5002F2A49 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AA1AA652B2075C5002F2A49 /* AppDelegate.m */; };
 		2AA1AA6C2B2075C5002F2A49 /* GameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2AA1AA6B2B2075C5002F2A49 /* GameViewController.mm */; };
 		2AA1AA6E2B2075C5002F2A49 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 2AA1AA6D2B2075C5002F2A49 /* Shaders.metal */; };
@@ -531,6 +534,8 @@
 		2A624C8B2B29FB2E00710C50 /* font_manager.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = font_manager.cc; sourceTree = "<group>"; };
 		2A624C8F2B2AC6AA00710C50 /* rect.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rect.h; sourceTree = "<group>"; };
 		2A624C902B2AC6AA00710C50 /* rect_stb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rect_stb.h; sourceTree = "<group>"; };
+		2A624C912B2B22D000710C50 /* font_renderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = font_renderer.h; sourceTree = "<group>"; };
+		2A624C922B2B22D000710C50 /* font_renderer.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = font_renderer.cc; sourceTree = "<group>"; };
 		2A77E7252B107FA300579051 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		2A77E7272B107FAA00579051 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		2A77E72A2B107FBE00579051 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
@@ -1066,6 +1071,8 @@
 				2A4FBDFA2B00BF430060E35C /* transform.cc */,
 				2A4FBDFB2B00BF430060E35C /* sprite_renderer.h */,
 				2A4FBDF92B00BF430060E35C /* sprite_renderer.cc */,
+				2A624C912B2B22D000710C50 /* font_renderer.h */,
+				2A624C922B2B22D000710C50 /* font_renderer.cc */,
 				2AA9A9D42B078F77009AACBF /* spine_renderer.h */,
 				2AA9A9D32B078F77009AACBF /* spine_renderer.cc */,
 			);
@@ -1599,6 +1606,7 @@
 				2AC67DC32B24B33C0009F46C /* imgui_impl_metal.h in Headers */,
 				2A624C8C2B29FB2E00710C50 /* font_manager.h in Headers */,
 				2A0656362B28065E00E2B2B9 /* atlas_manager.h in Headers */,
+				2A624C932B2B22D000710C50 /* font_renderer.h in Headers */,
 				2AE11C922B244FD40023DB82 /* glfw3native.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1917,6 +1925,7 @@
 				2A5266E42B206244008B7268 /* PathAttachment.cpp in Sources */,
 				2A5267252B2062CE008B7268 /* component.cc in Sources */,
 				2A5266EE2B206244008B7268 /* TransformConstraint.cpp in Sources */,
+				2A624C942B2B22D000710C50 /* font_renderer.cc in Sources */,
 				2A5266D52B206244008B7268 /* ScaleTimeline.cpp in Sources */,
 				2A5266E72B206244008B7268 /* MeshAttachment.cpp in Sources */,
 				2A5267242B2062CE008B7268 /* action_manager.cc in Sources */,
@@ -2052,6 +2061,7 @@
 				2AA1AB062B2096CB002F2A49 /* component.cc in Sources */,
 				2AA1AB042B2096CB002F2A49 /* spine_skeleton_animation.cc in Sources */,
 				2AA1AAE52B209674002F2A49 /* Extension.cpp in Sources */,
+				2A624C952B2B22D000710C50 /* font_renderer.cc in Sources */,
 				2AA1AAD12B209674002F2A49 /* TransformConstraint.cpp in Sources */,
 				2AA1AAEA2B209674002F2A49 /* Animation.cpp in Sources */,
 				2AA1AB012B2096CB002F2A49 /* action_manager.cc in Sources */,

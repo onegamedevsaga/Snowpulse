@@ -1,6 +1,5 @@
 #include "spine_renderer.h"
 
-#include "../../common/singleton.h"
 #include "../../application/application.h"
 
 namespace snowpulse {

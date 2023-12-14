@@ -19,10 +19,10 @@ class SNOWPULSEAPI Rect {
 
         Vector2 GetPosition() const { return position_; }
         Vector2 GetSize() const { return size_; }
-        int GetX() const { return position_.x; }
-        int GetY() const { return position_.y; }
-        int GetWidth() const { return size_.x; }
-        int GetHeight() const { return size_.y; }
+        float GetX() const { return position_.x; }
+        float GetY() const { return position_.y; }
+        float GetWidth() const { return size_.x; }
+        float GetHeight() const { return size_.y; }
 
     protected:
         Vector2 position_;

@@ -8,6 +8,7 @@
 #include <map>
 
 #include "../common/path_type.h"
+#include "../common/vector2.h"
 #include "../common/vector2int.h"
 
 namespace snowpulse {
@@ -22,10 +23,14 @@ class SNOWPULSEAPI FontManager {
 
         void Load(std::string filename, int fontSizeInPixels, PathType pathType);
 
+        std::string GetCharacterSpriteName(std::string filename, int fontSizeInPixels, char character);
+        Vector2 GetCharacterOffset(std::string filename, int fontSizeInPixels, char character);
+
     private:
         FontManager();
 
         AtlasManager* atlasManager_;
+        std::map<std::string, bool> loadedFonts_;
         std::map<std::string, std::map<char, std::string>> spriteNames_;
         std::map<std::string, std::map<char, Vector2Int>> sizes_;
         std::map<std::string, std::map<char, Vector2Int>> offsets_;
