@@ -5,6 +5,7 @@
 #include <stb_image.h>
 #undef STB_IMAGE_IMPLEMENTATION
 
+#include <glm/gtc/type_ptr.hpp>
 #include <Metal/Metal.hpp>
 #include <AppKit/AppKit.hpp>
 #include <MetalKit/MetalKit.hpp>
@@ -87,11 +88,7 @@ bool GraphicsMetal::Initialize(const Vector2Int& resolution, const Vector2Int& s
 
 void GraphicsMetal::UpdateProjectionMatrix(const Vector2Int& resolution) {
     auto ortho = glm::ortho(0.0f, (float)resolution.x, 0.0f, (float)resolution.y, -100.0f, 100.0f);
-    for (int i = 0; i < 4; ++i) {
-        for (int j = 0; j < 4; ++j) {
-            projectionMatrix_.columns[i][j] = ortho[i][j];
-        }
-    }
+    memcpy(projectionMatrix_.columns, glm::value_ptr(ortho), sizeof(projectionMatrix_.columns));
 }
 
 void GraphicsMetal::Shutdown() {
@@ -116,17 +113,9 @@ GraphicsMetal::~GraphicsMetal() {
 
 Matrix4x4 GraphicsMetal::InvertMatrixNatively(Matrix4x4 matrix) {
     glm::mat4 transform;
-    for (int i = 0; i < 4; ++i) {
-        for (int j = 0; j < 4; ++j) {
-            transform[i][j] = matrix.data[i][j];
-        }
-    }
+    memcpy(glm::value_ptr(transform), matrix.data, sizeof(matrix.data));
     transform = glm::inverse(transform);
-    for (int i = 0; i < 4; ++i) {
-        for (int j = 0; j < 4; ++j) {
-            matrix.data[i][j] = transform[i][j];
-        }
-    }
+    memcpy(matrix.data, glm::value_ptr(transform), sizeof(matrix.data));
     return matrix;
 }
 
@@ -232,11 +221,13 @@ void GraphicsMetal::DrawMesh(Vertex* vertices, unsigned int vertexCount, unsigne
     }
 
     simd::float4x4 transMat;
-    for (int i = 0; i < 4; ++i) {
-        for (int j = 0; j < 4; ++j) {
-            transMat.columns[i][j] = transformMatrix.data[i][j];
-        }
-    }
+    memcpy(transMat.columns, transformMatrix.data, sizeof(transMat.columns));
+
+    batch->vertices.reserve(batch->vertexCount);
+    batch->uvs.reserve(batch->vertexCount);
+    batch->colors.reserve(batch->vertexCount);
+    batch->transformMatrices.reserve(batch->vertexCount);
+    batch->indices.reserve(batch->indexCount);
 
     for (int i = 0; i < batch->vertexCount; i++) {
         auto pos = vertices[i].position;
@@ -257,11 +248,7 @@ void GraphicsMetal::DrawMesh(Vertex* vertices, unsigned int vertexCount, unsigne
     }
 
     auto cameraView = camera_->GetMatrix();
-    for (int i = 0; i < 4; ++i) {
-        for (int j = 0; j < 4; ++j) {
-            batch->viewMatrix.columns[i][j] = cameraView.data[i][j];
-        }
-    }
+    memcpy(batch->viewMatrix.columns, cameraView.data, sizeof(batch->viewMatrix.columns));
 
     batch->projectionMatrix = projectionMatrix_;
     batch->positionBufferIndex = 0;

@@ -37,6 +37,7 @@
     }
 
     view_ = (MTKView *)self.view;
+    view_.preferredFramesPerSecond = 120;
     view_.device = MTLCreateSystemDefaultDevice();
     if(!view_.device) {
         NSLog(@"Metal is not supported on this device");

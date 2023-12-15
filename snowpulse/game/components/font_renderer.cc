@@ -42,16 +42,17 @@ void FontRenderer::Update(float deltaTime) {
 // From Drawable
 void FontRenderer::Draw(Graphics* graphics, Matrix4x4 worldMatrix) {
     Matrix4x4 originalWorldMatrix(worldMatrix);
+    Matrix4x4 matrixCopy(worldMatrix);
     auto horizontalSpacing = horizontalSpacing_ * (float)fontSizeInPixels_ * 0.001f;
     int lineCount = 1;
     for (const auto& d : characterData_) {
         if (d.isNewLine) {
-            worldMatrix.Copy(originalWorldMatrix);
+            worldMatrix.CopyTranslation(originalWorldMatrix);
             worldMatrix.AddTranslate(Vector3(0.0f, lineCount * -fontSizeInPixels_, 0.0f));
             lineCount ++;
             continue;
         }
-        Matrix4x4 matrixCopy(worldMatrix);
+        matrixCopy.CopyTranslation(worldMatrix);
         matrixCopy.AddTranslate(Vector3(d.offset.x + d.size.x * 0.5f, -d.offset.y + d.size.y * -0.5f, 0.0f));
         graphics->DrawSprite(d.size, d.textureFilename, matrixCopy, color_, sortOrder_, blendMode_, textureFiltering_, isPremultiplied_, d.uvLowerLeft, d.uvUpperRight);
         worldMatrix.AddTranslate(Vector3(d.size.x + horizontalSpacing, 0.0f, 0.0f));

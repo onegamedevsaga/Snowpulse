@@ -367,6 +367,19 @@ void AtlasManager::PackAndSaveAtlasInMemory(const std::vector<RectSTB>& rects, c
 
     auto graphics = Application::GetInstance()->GetGraphics();
     graphics->LoadTexture(textureFilename, buffer.data(), atlasSize);
+
+    // Save to PNG
+    std::string fullFilename = Directory::GetInstance()->GetFullFilename(atlasFilename + "_" + std::to_string(atlasIndex) + ".png", PathType::kDocuments);
+    if (!stbi_write_png(fullFilename.c_str(), atlasSize.x, atlasSize.y, 4, buffer.data(), atlasSize.x * 4)) {
+#ifdef SPDEBUG
+        std::cerr << "Error: Atlas Manager: Failed to write image: " << fullFilename << std::endl;
+#endif
+    }
+    else {
+#ifdef SPDEBUG
+        std::cout << "Atlas Manager: Image saved as " << fullFilename << std::endl;
+#endif
+    }
 }
 
 RectSTB AtlasManager::AddSpacingToRect(const RectSTB& rect, int spacing) {

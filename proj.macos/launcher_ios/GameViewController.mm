@@ -16,6 +16,7 @@
     [super viewDidLoad];
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
     view_ = (MTKView *)self.view;
+    view_.preferredFramesPerSecond = 120;
     view_.device = MTLCreateSystemDefaultDevice();
 
     if(!view_.device) {

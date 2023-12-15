@@ -65,7 +65,7 @@ void SceneLevel::Start() {
     auto fontRenderer = snowpulse::FontRenderer::Create("fonts/roboto/Roboto-Regular.ttf", 60, snowpulse::PathType::kDefaults);
     //fontRenderer->SetText("ONE GAMEDEV SAGA");
     //fontRenderer->SetText("One Gamedev Saga");
-    fontRenderer->SetText("Lorem Ipsum is simply dummy text of\nthe printing and typesetting industry.\nLorem Ipsum has been the industry's\nstandard dummy text ever since the\n1500s, when an unknown printer took");
+    fontRenderer->SetText("Lorem Ipsum is simply dummy text of\nthe printing and typesetting industry.\nLorem Ipsum has been the industry's\nstandard dummy text ever since the\n1500s, when an unknown printer took\nLorem Ipsum is simply dummy text of\nthe printing and typesetting industry.\nLorem Ipsum has been the industry's\nstandard dummy text ever since the\n1500s, when an unknown printer took");
     fontRenderer->SetColor(snowpulse::Color(0.6f, 1.0f, 0.8f, 1.0f));
     fontRenderer->SetSortOrder(0);
     go1_->AddComponent(fontRenderer);
@@ -94,10 +94,17 @@ void SceneLevel::Start() {
     sprRenderer->SetSortOrder(2);
     sprRenderer->SetBlendMode(snowpulse::BlendMode::kNormal);
     go2_->AddComponent(sprRenderer);
-    //go1_->AddChild(go2_);
+    fontRenderer = snowpulse::FontRenderer::Create("fonts/roboto/Roboto-Regular.ttf", 60, snowpulse::PathType::kDefaults);
+    //fontRenderer->SetText("ONE GAMEDEV SAGA");
+    //fontRenderer->SetText("One Gamedev Saga");
+    fontRenderer->SetText("Lorem Ipsum is simply dummy text of\nthe printing and typesetting industry.\nLorem Ipsum has been the industry's\nstandard dummy text ever since the\n1500s, when an unknown printer took\nLorem Ipsum is simply dummy text of\nthe printing and typesetting industry.\nLorem Ipsum has been the industry's\nstandard dummy text ever since the\n1500s, when an unknown printer took");
+    fontRenderer->SetColor(snowpulse::Color(1.0f, 0.6f, 0.8f, 1.0f));
+    fontRenderer->SetSortOrder(0);
+    go2_->AddComponent(fontRenderer);
+    go1_->AddChild(go2_);
 
-    go2_->GetTransform()->SetLocalPosition(snowpulse::Vector2(300.0f, 300.0f));
-    go2_->GetTransform()->SetLocalScale(snowpulse::Vector2(20.0f, 20.0f));
+    go2_->GetTransform()->SetLocalPosition(snowpulse::Vector2(-400.0f, 300.0f));
+    go2_->GetTransform()->SetLocalScale(snowpulse::Vector2(1.0f, 1.0f));
     go2_->GetTransform()->SetRotation(0.0f);
 
     go3_ = snowpulse::GameObject::Create("go3_");

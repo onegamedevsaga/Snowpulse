@@ -22,6 +22,7 @@ std::vector<std::shared_ptr<RenderBatchDataMetal>> RenderQueueMetal::PopAllData(
     GroupBatches(batches_);
 
     std::vector<std::shared_ptr<RenderBatchDataMetal>> batches;
+    batches.reserve(batches_.size());
     for (const auto& b : batches_) {
         auto type = b->GetType();
         if (type == RenderBatchType::kData) {
@@ -65,19 +66,24 @@ void RenderQueueMetal::GroupBatches(std::vector<std::shared_ptr<RenderBatch>>& b
             addNewBatch = true;
         }
         else if (addNewBatch) {
+            /*auto batch = (RenderBatchDataMetal*)b.get();
+            batch->vertices.reserve(2000);
+            batch->uvs.reserve(2000);
+            batch->colors.reserve(2000);
+            batch->transformMatrices.reserve(2000);
+            batch->indices.reserve(2000);*/
             batches.push_back(b);
             addNewBatch = false;
         }
         else if (batches[batches.size() - 1]->GetType() == RenderBatchType::kData) {
             auto batch = (RenderBatchDataMetal*)b.get();
             auto prevBatch = (RenderBatchDataMetal*)batches[batches.size() - 1].get();
-            if (prevBatch->drawMode == batch->drawMode &&
-                prevBatch->blendMode == batch->blendMode &&
-                prevBatch->isPremultiplied == batch->isPremultiplied &&
-                prevBatch->viewMatrix == batch->viewMatrix &&
-                prevBatch->projectionMatrix == batch->projectionMatrix &&
-                prevBatch->shaderProgram == batch->shaderProgram &&
-                prevBatch->texture == batch->texture) {
+            if (prevBatch->CanMergeWith(batch)) {
+
+                /*prevBatch->vertices.insert(prevBatch->vertices.end(), batch->vertices.begin(), batch->vertices.end());
+                prevBatch->uvs.insert(prevBatch->uvs.end(), batch->uvs.begin(), batch->uvs.end());
+                prevBatch->colors.insert(prevBatch->colors.end(), batch->colors.begin(), batch->colors.end());
+                prevBatch->transformMatrices.insert(prevBatch->transformMatrices.end(), batch->transformMatrices.begin(), batch->transformMatrices.end());*/
 
                 for (const auto& v : batch->vertices) {
                     prevBatch->vertices.push_back(v);
@@ -107,5 +113,35 @@ void RenderQueueMetal::GroupBatches(std::vector<std::shared_ptr<RenderBatch>>& b
             }
         }
     }
+
+    /*std::vector<std::shared_ptr<RenderBatch>> newBatches;
+    newBatches.reserve(batches.size()); // Reserve capacity to avoid reallocations
+
+    for (const auto& b : batches) {
+        if (b->GetType() == RenderBatchType::kGroup) {
+            auto group = std::dynamic_pointer_cast<RenderBatchGroupMetal>(b);
+            auto groupBatches = group->GetBatches();
+            GroupBatches(groupBatches);
+            newBatches.insert(newBatches.end(), groupBatches.begin(), groupBatches.end());
+        }
+        else {
+            if (newBatches.empty() || newBatches.back()->GetType() != RenderBatchType::kData) {
+                newBatches.push_back(b);
+            }
+            else {
+                auto batch = static_cast<RenderBatchDataMetal*>(b.get());
+                auto prevBatch = static_cast<RenderBatchDataMetal*>(newBatches.back().get());
+
+                if (prevBatch->CanMergeWith(*batch)) {
+                    prevBatch->MergeWith(*batch);
+                }
+                else {
+                    newBatches.push_back(b);
+                }
+            }
+        }
+    }
+
+    batches.swap(newBatches);*/
 }
 }   // namespace snowpulse

@@ -98,11 +98,11 @@ class Matrix4x4 {
         }
 
         void Copy(const Matrix4x4& other) {
-            for (int i = 0; i < 4; ++i) {
-                for (int j = 0; j < 4; ++j) {
-                    data[i][j] = other.data[i][j];
-                }
-            }
+            memcpy(data, other.data, sizeof(data));
+        }
+
+        void CopyTranslation(const Matrix4x4& other) {
+            memcpy(data[3], other.data[3], sizeof(data[3]));
         }
 
         Matrix4x4 operator*(const Matrix4x4& other) const {

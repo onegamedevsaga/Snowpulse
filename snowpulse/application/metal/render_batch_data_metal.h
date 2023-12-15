@@ -22,6 +22,33 @@ class SNOWPULSEAPI RenderBatchDataMetal : public RenderBatch {
         RenderBatchDataMetal() : RenderBatch(RenderBatchType::kData) { }
         ~RenderBatchDataMetal() { }
 
+        bool CanMergeWith(const RenderBatchDataMetal* other) const {
+            return this->drawMode == other->drawMode &&
+                   this->blendMode == other->blendMode &&
+                   this->isPremultiplied == other->isPremultiplied &&
+                   this->viewMatrix == other->viewMatrix &&
+                   this->projectionMatrix == other->projectionMatrix &&
+                   this->shaderProgram == other->shaderProgram &&
+                   this->texture == other->texture;
+        }
+
+        void MergeWith(const RenderBatchDataMetal& other) {
+            // Append vertices, UVs, colors, and transform matrices
+            this->vertices.insert(this->vertices.end(), other.vertices.begin(), other.vertices.end());
+            this->uvs.insert(this->uvs.end(), other.uvs.begin(), other.uvs.end());
+            this->colors.insert(this->colors.end(), other.colors.begin(), other.colors.end());
+            this->transformMatrices.insert(this->transformMatrices.end(), other.transformMatrices.begin(), other.transformMatrices.end());
+
+            // Adjust and append indices
+            for (const auto& index : other.indices) {
+                this->indices.push_back(this->vertexCount + index);
+            }
+
+            // Update counts
+            this->vertexCount += other.vertexCount;
+            this->indexCount += other.indexCount;
+        }
+
         int drawMode;
         std::string shaderProgram;
         BlendMode blendMode;
