@@ -66,7 +66,7 @@ void FontManager::Load(std::string filename, int fontSizeInPixels, PathType path
     std::map<char, unsigned char*> bitmaps;
     float scale = stbtt_ScaleForPixelHeight(&fontInfo, fontSizeInPixels);
 
-    std::string characters =  "abcdefghijklmnopqrstuvwxyz0123456789.,!?@ ";
+    std::string characters =  "abcdefghijklmnopqrstuvwxyz0123456789.,!?@:- ";
                 characters += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     for (const auto& c : characters) {
         int width, height, xOffset, yOffset;

@@ -105,6 +105,14 @@ class Matrix4x4 {
             memcpy(data[3], other.data[3], sizeof(data[3]));
         }
 
+        float GetScaleX() const {
+            return data[0][0];
+        }
+
+        float GetScaleY() const {
+            return data[1][1];
+        }
+
         Matrix4x4 operator*(const Matrix4x4& other) const {
             Matrix4x4 result;
             for (int i = 0; i < 4; ++i) {

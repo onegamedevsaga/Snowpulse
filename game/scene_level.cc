@@ -69,8 +69,8 @@ void SceneLevel::Start() {
     fontRenderer->SetColor(snowpulse::Color(0.6f, 1.0f, 0.8f, 1.0f));
     fontRenderer->SetSortOrder(0);
     go1_->AddComponent(fontRenderer);
-    //auto imguiTest = ImGUITest::Create();
-    //go1_->AddComponent(imguiTest);
+    auto imguiTest = ImGUITest::Create();
+    go1_->AddComponent(imguiTest);
     AddChild(go1_);
 
     go1_->GetTransform()->SetLocalPosition(snowpulse::Vector2(-400.0f, 0.0f));
@@ -134,7 +134,16 @@ void SceneLevel::Start() {
     AddChild(tempGo);
 
     tempGo->GetTransform()->SetLocalPosition(snowpulse::Vector2((float)(GetResolutionSize().x) * -0.5f + 300.0f, (float)(GetResolutionSize().y) * -0.5f + 100.0f));
-    tempGo->GetTransform()->SetLocalScale(snowpulse::Vector2(0.7f, 0.7f));
+    tempGo->GetTransform()->SetLocalScale(snowpulse::Vector2(1.0f, 1.0f));
+
+    auto fpsGo = snowpulse::GameObject::Create("fpsGo");
+    fpsRenderer_ = snowpulse::FontRenderer::Create("fonts/roboto/Roboto-Black.ttf", 50, snowpulse::PathType::kDefaults, snowpulse::TextureFiltering::kAnisotropic);
+    fpsRenderer_->SetText("FPS: ");
+    fpsRenderer_->SetColor(snowpulse::Color(0.0f, 1.0f, 0.4f, 1.0f));
+    fpsRenderer_->SetSortOrder(5);
+    fpsGo->AddComponent(fpsRenderer_);
+    fpsGo->GetTransform()->SetPosition(snowpulse::Vector2(GetResolutionSize().x * -0.5f + 20.0f, GetResolutionSize().y * 0.5f - 50.0f));
+    AddChild(fpsGo);
 
     snowpulse::ActionWait::Create(4.0f)->OnComplete([this](snowpulse::Action* a) {
         go2_->GetTransform()->DoMoveX(0.0f, 1.0f, snowpulse::Easing::kBounceOut, false, [this]() {
@@ -155,7 +164,13 @@ void SceneLevel::Start() {
 void SceneLevel::Update(float deltaTime) {
     Scene::Update(deltaTime);
 
-    
+    timeLapsed_ += deltaTime;
+    if (timeLapsed_ >= 1.0f) {
+        int fps = (int)(1.0f / deltaTime + 0.5f);
+        fpsRenderer_->SetText("FPS: " + std::to_string(fps));
+        timeLapsed_ -= 1.0f;
+    }
+
     auto inc = snowpulse::Vector3(100.2f * deltaTime, 100.2f * deltaTime, 0.0f);
     //go1_->GetTransform()->SetPosition(go1_->GetTransform()->GetPosition() + inc);
 

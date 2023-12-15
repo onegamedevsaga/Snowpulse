@@ -19,7 +19,7 @@ std::shared_ptr<FontRenderer> FontRenderer::Create(std::string fontFilename, int
     return fontRenderer;
 }
 
-FontRenderer::FontRenderer() : SpriteRenderer("font_renderer"), fontSizeInPixels_(10), text_(""), horizontalSpacing_(60.0f), lineCount_(1) {
+FontRenderer::FontRenderer() : SpriteRenderer("font_renderer"), fontSizeInPixels_(10), text_(""), horizontalSpacing_(100.0f), lineCount_(1) {
 }
 
 FontRenderer::~FontRenderer() {
@@ -43,19 +43,21 @@ void FontRenderer::Update(float deltaTime) {
 void FontRenderer::Draw(Graphics* graphics, Matrix4x4 worldMatrix) {
     Matrix4x4 originalWorldMatrix(worldMatrix);
     Matrix4x4 matrixCopy(worldMatrix);
-    auto horizontalSpacing = horizontalSpacing_ * (float)fontSizeInPixels_ * 0.001f;
+    float scaleX = worldMatrix.GetScaleX();
+    float scaleY = worldMatrix.GetScaleY();
+    auto horizontalSpacing = horizontalSpacing_ * fontSizeInPixels_ * 0.001f;
     int lineCount = 1;
     for (const auto& d : characterData_) {
         if (d.isNewLine) {
             worldMatrix.CopyTranslation(originalWorldMatrix);
-            worldMatrix.AddTranslate(Vector3(0.0f, lineCount * -fontSizeInPixels_, 0.0f));
+            worldMatrix.AddTranslate(Vector3(0.0f, (float)lineCount * (float)-fontSizeInPixels_ * scaleY, 0.0f));
             lineCount ++;
             continue;
         }
         matrixCopy.CopyTranslation(worldMatrix);
-        matrixCopy.AddTranslate(Vector3(d.offset.x + d.size.x * 0.5f, -d.offset.y + d.size.y * -0.5f, 0.0f));
+        matrixCopy.AddTranslate(Vector3((d.offset.x + d.size.x * 0.5f) * scaleX, (-d.offset.y + d.size.y * -0.5f) * scaleY, 0.0f));
         graphics->DrawSprite(d.size, d.textureFilename, matrixCopy, color_, sortOrder_, blendMode_, textureFiltering_, isPremultiplied_, d.uvLowerLeft, d.uvUpperRight);
-        worldMatrix.AddTranslate(Vector3(d.size.x + horizontalSpacing, 0.0f, 0.0f));
+        worldMatrix.AddTranslate(Vector3((d.size.x + horizontalSpacing) * scaleX, 0.0f, 0.0f));
     }
 }
 
@@ -72,7 +74,7 @@ void FontRenderer::SetText(std::string text) {
             d.isNewLine = false;
             d.textureFilename = atlasSprite.GetTextureFilename();
             d.size = atlasSprite.GetSize();
-            d.size.x = d.size.x == 0.0f ? fontSizeInPixels_ * 0.2f : d.size.x;
+            d.size.x = d.size.x == 0.0f ? fontSizeInPixels_ * 0.3f : d.size.x;
             auto atlasSize = graphics_->GetTextureSize(d.textureFilename);
             auto uv = atlasSprite.GetUV();
             float left = uv.x;

@@ -20,7 +20,9 @@ class GAMEAPI SceneLevel : public snowpulse::Scene {
     private:
         SceneLevel();
 
-    std::shared_ptr<snowpulse::GameObject> go1_, go2_, go3_;
+        float timeLapsed_;
+        std::shared_ptr<snowpulse::GameObject> go1_, go2_, go3_;
+        std::shared_ptr<snowpulse::FontRenderer> fpsRenderer_;
 };
 }
 
