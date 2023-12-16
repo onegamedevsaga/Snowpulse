@@ -5,9 +5,9 @@
 #include <memory>
 
 #include "timer.h"
-#include "platform.h"
 #include "graphics.h"
 #include "../defines.h"
+#include "../common/platform.h"
 #include "../common/vector2int.h"
 #include "../game/game.h"
 #include "../game/node_starter.h"

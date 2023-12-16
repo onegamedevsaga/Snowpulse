@@ -3,8 +3,7 @@
 
 #include "../defines.h"
 
-#include "graphics.h"
-#include "components/transform.h"
+#include "../application/graphics.h"
 
 namespace snowpulse {
 class SNOWPULSEAPI Drawable {

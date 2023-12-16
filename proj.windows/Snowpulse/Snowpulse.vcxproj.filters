@@ -26,6 +26,18 @@
     <Filter Include="Source Files\game\actions">
       <UniqueIdentifier>{ea88b508-59ff-461b-a10c-0a4daea54f76}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\game\plugins">
+      <UniqueIdentifier>{152ce899-c932-4ba6-8058-4c9dbc30cd30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\game\plugins\spine">
+      <UniqueIdentifier>{fcf419ea-c36f-4c16-9a30-a96b712b9d8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\thirdparty">
+      <UniqueIdentifier>{d3efb89a-94b6-4f8a-b4ef-e5b65f1af150}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\thirdparty\nlohmann-json">
+      <UniqueIdentifier>{30e35388-bbcf-46f9-bb99-065f84d9e332}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\snowpulse\defines.h">
@@ -34,35 +46,11 @@
     <ClInclude Include="..\..\snowpulse\snowpulse.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\snowpulse\application\application.h">
-      <Filter>Source Files\application</Filter>
+    <ClInclude Include="..\..\snowpulse\game\action.h">
+      <Filter>Source Files\game</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\snowpulse\application\camera.h">
-      <Filter>Source Files\application</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\snowpulse\application\platform.h">
-      <Filter>Source Files\application</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\snowpulse\application\timer.h">
-      <Filter>Source Files\application</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\snowpulse\common\matrix4x4.h">
-      <Filter>Source Files\common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\snowpulse\common\singleton.h">
-      <Filter>Source Files\common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\snowpulse\common\texture_filtering.h">
-      <Filter>Source Files\common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\snowpulse\common\vector2.h">
-      <Filter>Source Files\common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\snowpulse\common\vector2int.h">
-      <Filter>Source Files\common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\snowpulse\common\vector3.h">
-      <Filter>Source Files\common</Filter>
+    <ClInclude Include="..\..\snowpulse\game\action_manager.h">
+      <Filter>Source Files\game</Filter>
     </ClInclude>
     <ClInclude Include="..\..\snowpulse\game\component.h">
       <Filter>Source Files\game</Filter>
@@ -76,17 +64,23 @@
     <ClInclude Include="..\..\snowpulse\game\game_object.h">
       <Filter>Source Files\game</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\snowpulse\game\graphics.h">
+    <ClInclude Include="..\..\snowpulse\game\node.h">
+      <Filter>Source Files\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\game\node_starter.h">
       <Filter>Source Files\game</Filter>
     </ClInclude>
     <ClInclude Include="..\..\snowpulse\game\scene.h">
       <Filter>Source Files\game</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\snowpulse\game\self_aware_ptr.h">
-      <Filter>Source Files\game</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\snowpulse\game\updatable.h">
       <Filter>Source Files\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\game\components\font_renderer.h">
+      <Filter>Source Files\game\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\game\components\spine_renderer.h">
+      <Filter>Source Files\game\components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\snowpulse\game\components\sprite_renderer.h">
       <Filter>Source Files\game\components</Filter>
@@ -94,47 +88,14 @@
     <ClInclude Include="..\..\snowpulse\game\components\transform.h">
       <Filter>Source Files\game\components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\snowpulse\application\opengl\application_opengl.h">
-      <Filter>Source Files\application\opengl</Filter>
+    <ClInclude Include="..\..\snowpulse\game\plugins\spine\spine_skeleton_animation.h">
+      <Filter>Source Files\game\plugins\spine</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\snowpulse\application\opengl\graphics_opengl.h">
-      <Filter>Source Files\application\opengl</Filter>
+    <ClInclude Include="..\..\snowpulse\game\plugins\spine\spine_texture_loader.h">
+      <Filter>Source Files\game\plugins\spine</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\snowpulse\application\opengl\input_opengl.h">
-      <Filter>Source Files\application\opengl</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\snowpulse\application\opengl\render_batch_opengl.h">
-      <Filter>Source Files\application\opengl</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\snowpulse\application\opengl\render_queue_opengl.h">
-      <Filter>Source Files\application\opengl</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\snowpulse\application\input.h">
-      <Filter>Source Files\application</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\snowpulse\common\color.h">
-      <Filter>Source Files\common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\snowpulse\common\easing.h">
-      <Filter>Source Files\common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\snowpulse\common\math_utils.h">
-      <Filter>Source Files\common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\snowpulse\common\space.h">
-      <Filter>Source Files\common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\snowpulse\game\action.h">
-      <Filter>Source Files\game</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\snowpulse\game\action_manager.h">
-      <Filter>Source Files\game</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\snowpulse\game\node.h">
-      <Filter>Source Files\game</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\snowpulse\game\node_starter.h">
-      <Filter>Source Files\game</Filter>
+    <ClInclude Include="..\..\snowpulse\game\actions\action_interpolate.h">
+      <Filter>Source Files\game\actions</Filter>
     </ClInclude>
     <ClInclude Include="..\..\snowpulse\game\actions\action_move.h">
       <Filter>Source Files\game\actions</Filter>
@@ -145,19 +106,133 @@
     <ClInclude Include="..\..\snowpulse\game\actions\action_wait.h">
       <Filter>Source Files\game\actions</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\snowpulse\common\atlas_sprite.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\common\blend_mode.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\common\color.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\common\easing.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\common\json_utils.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\common\math_utils.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\common\matrix4x4.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\common\path_type.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\common\platform.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\common\rect.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\common\rect_stb.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\common\singleton.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\common\space.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\common\texture_filtering.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\common\touch.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\common\touch_phase.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\common\vector2.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\common\vector2int.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\common\vector3.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\common\vertex.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\application\application.h">
+      <Filter>Source Files\application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\application\atlas_manager.h">
+      <Filter>Source Files\application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\application\camera.h">
+      <Filter>Source Files\application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\application\directory.h">
+      <Filter>Source Files\application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\application\font_manager.h">
+      <Filter>Source Files\application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\application\graphics.h">
+      <Filter>Source Files\application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\application\input.h">
+      <Filter>Source Files\application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\application\render_batch.h">
+      <Filter>Source Files\application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\application\render_batch_type.h">
+      <Filter>Source Files\application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\application\timer.h">
+      <Filter>Source Files\application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\application\opengl\application_opengl.h">
+      <Filter>Source Files\application\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\application\opengl\graphics_opengl.h">
+      <Filter>Source Files\application\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\application\opengl\input_opengl.h">
+      <Filter>Source Files\application\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\application\opengl\render_batch_data_opengl.h">
+      <Filter>Source Files\application\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\application\opengl\render_batch_group_opengl.h">
+      <Filter>Source Files\application\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\application\opengl\render_queue_opengl.h">
+      <Filter>Source Files\application\opengl</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\snowpulse\application\windows\application_windows.h">
+      <Filter>Source Files\application\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\thirdparty\nlohmann-json\json.hpp">
+      <Filter>Source Files\thirdparty\nlohmann-json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\application\windows\directory_windows.h">
+      <Filter>Source Files\application\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\application\windows\input_windows.h">
       <Filter>Source Files\application\windows</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\snowpulse\application\application.cc">
-      <Filter>Source Files\application</Filter>
+    <ClCompile Include="..\..\snowpulse\game\action.cc">
+      <Filter>Source Files\game</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\snowpulse\application\camera.cc">
-      <Filter>Source Files\application</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\snowpulse\application\timer.cc">
-      <Filter>Source Files\application</Filter>
+    <ClCompile Include="..\..\snowpulse\game\action_manager.cc">
+      <Filter>Source Files\game</Filter>
     </ClCompile>
     <ClCompile Include="..\..\snowpulse\game\component.cc">
       <Filter>Source Files\game</Filter>
@@ -168,14 +243,68 @@
     <ClCompile Include="..\..\snowpulse\game\game_object.cc">
       <Filter>Source Files\game</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\snowpulse\game\node.cc">
+      <Filter>Source Files\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\game\node_starter.cc">
+      <Filter>Source Files\game</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\snowpulse\game\scene.cc">
       <Filter>Source Files\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\game\components\font_renderer.cc">
+      <Filter>Source Files\game\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\game\components\spine_renderer.cc">
+      <Filter>Source Files\game\components</Filter>
     </ClCompile>
     <ClCompile Include="..\..\snowpulse\game\components\sprite_renderer.cc">
       <Filter>Source Files\game\components</Filter>
     </ClCompile>
     <ClCompile Include="..\..\snowpulse\game\components\transform.cc">
       <Filter>Source Files\game\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\game\plugins\spine\spine_skeleton_animation.cc">
+      <Filter>Source Files\game\plugins\spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\game\plugins\spine\spine_texture_loader.cc">
+      <Filter>Source Files\game\plugins\spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\game\actions\action_interpolate.cc">
+      <Filter>Source Files\game\actions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\game\actions\action_move.cc">
+      <Filter>Source Files\game\actions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\game\actions\action_rotate.cc">
+      <Filter>Source Files\game\actions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\game\actions\action_wait.cc">
+      <Filter>Source Files\game\actions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\common\json_utils.cc">
+      <Filter>Source Files\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\application\application.cc">
+      <Filter>Source Files\application</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\application\atlas_manager.cc">
+      <Filter>Source Files\application</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\application\camera.cc">
+      <Filter>Source Files\application</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\application\directory.cc">
+      <Filter>Source Files\application</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\application\font_manager.cc">
+      <Filter>Source Files\application</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\application\input.cc">
+      <Filter>Source Files\application</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\application\timer.cc">
+      <Filter>Source Files\application</Filter>
     </ClCompile>
     <ClCompile Include="..\..\snowpulse\application\opengl\application_opengl.cc">
       <Filter>Source Files\application\opengl</Filter>
@@ -189,34 +318,13 @@
     <ClCompile Include="..\..\snowpulse\application\opengl\render_queue_opengl.cc">
       <Filter>Source Files\application\opengl</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\snowpulse\application\input.cc">
-      <Filter>Source Files\application</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\snowpulse\game\action.cc">
-      <Filter>Source Files\game</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\snowpulse\game\action_manager.cc">
-      <Filter>Source Files\game</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\snowpulse\game\node.cc">
-      <Filter>Source Files\game</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\snowpulse\game\node_starter.cc">
-      <Filter>Source Files\game</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\snowpulse\game\actions\action_move.cc">
-      <Filter>Source Files\game\actions</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\snowpulse\game\actions\action_rotate.cc">
-      <Filter>Source Files\game\actions</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\snowpulse\game\actions\action_wait.cc">
-      <Filter>Source Files\game\actions</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\thirdparty\glad\src\glad.c">
-      <Filter>Source Files\application\opengl</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\snowpulse\application\windows\application_windows.cc">
+      <Filter>Source Files\application\windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\application\windows\directory_windows.cc">
+      <Filter>Source Files\application\windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\application\windows\input_windows.cc">
       <Filter>Source Files\application\windows</Filter>
     </ClCompile>
   </ItemGroup>

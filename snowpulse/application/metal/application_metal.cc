@@ -23,12 +23,6 @@
 #include "../input.h"
 #include "view_delegate_metal.h"
 
-#if SNOWPULSE_PLATFORM_MACOS
-#include "../macos/application_macos.h"
-#elif SNOWPULSE_PLATFORM_IOS
-#include "../ios/application_ios.h"
-#endif
-
 namespace snowpulse {
 
 struct Uniforms {

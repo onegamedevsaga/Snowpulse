@@ -7,14 +7,14 @@
 #include <vector>
 #include <string>
 
+#include "../application/graphics.h"
 #include "../common/matrix4x4.h"
 #include "node.h"
 #include "updatable.h"
 #include "drawable.h"
-#include "graphics.h"
+#include "node_starter.h"
 #include "component.h"
 #include "components/transform.h"
-#include "node_starter.h"
 
 namespace snowpulse {
 

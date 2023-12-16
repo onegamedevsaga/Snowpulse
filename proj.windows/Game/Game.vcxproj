@@ -124,7 +124,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>..\..\thirdparty\glad\include;..\..\thirdparty\glfw-3.3.8\include;..\..\thirdparty\glm;..\..\thirdparty\stb;../../snowpulse/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\thirdparty\glad\include;..\..\thirdparty\glfw-3.3.8\include;..\..\thirdparty\glm;..\..\thirdparty\stb;../../snowpulse/;..\..\thirdparty\nlohmann-json;..\..\thirdparty\spine-cpp\include;..\..\thirdparty\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>NotSet</SubSystem>
@@ -144,7 +144,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>..\..\thirdparty\glad\include;..\..\thirdparty\glfw-3.3.8\include;..\..\thirdparty\glm;..\..\thirdparty\stb;../../snowpulse/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\thirdparty\glad\include;..\..\thirdparty\glfw-3.3.8\include;..\..\thirdparty\glm;..\..\thirdparty\stb;../../snowpulse/;..\..\thirdparty\nlohmann-json;..\..\thirdparty\spine-cpp\include;..\..\thirdparty\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>NotSet</SubSystem>
@@ -157,11 +157,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\game\components\imgui_test.h" />
     <ClInclude Include="..\..\game\defines.h" />
     <ClInclude Include="..\..\game\game.h" />
     <ClInclude Include="..\..\game\scene_level.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\game\components\imgui_test.cc" />
     <ClCompile Include="..\..\game\game.cc" />
     <ClCompile Include="..\..\game\scene_level.cc" />
   </ItemGroup>

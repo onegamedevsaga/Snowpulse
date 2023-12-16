@@ -17,7 +17,7 @@ bool ApplicationMacOS::Initialize(const Vector2Int& resolutionSize, const Vector
     input_ = static_cast<InputMacOS*>(Input::GetInstance());
 
 #ifdef SPDEBUG
-    std::cout << "ApplicationIOS initialized." << std::endl;
+    std::cout << "ApplicationMacOS initialized." << std::endl;
 #endif
     return true;
 }

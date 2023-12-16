@@ -15,7 +15,7 @@ class SNOWPULSEAPI RenderBatch {
         int sortOrder;
 
     protected:
-        RenderBatch(RenderBatchType type) : type_(type), sortOrder(0) { }
+        RenderBatch(RenderBatchType type) : sortOrder(0), type_(type) { }
 
     private:
         RenderBatchType type_;

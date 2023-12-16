@@ -2,7 +2,7 @@
 #define SNOWPULSE_APPLICATION_OPENGL_GRAPHICSOPENGL_H_
 
 #include "../../defines.h"
-#include "../../game/graphics.h"
+#include "../graphics.h"
 
 #include <memory>
 #include <string>

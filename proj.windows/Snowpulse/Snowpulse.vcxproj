@@ -124,7 +124,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>..\..\thirdparty\glad\include;..\..\thirdparty\glfw-3.3.8\include;..\..\thirdparty\glm;..\..\thirdparty\stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\thirdparty\glad\include;..\..\thirdparty\glfw-3.3.8\include;..\..\thirdparty\glm;..\..\thirdparty\stb;..\..\thirdparty\nlohmann-json;..\..\thirdparty\spine-cpp\include;..\..\thirdparty\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>NotSet</SubSystem>
@@ -145,7 +145,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>..\..\thirdparty\glad\include;..\..\thirdparty\glfw-3.3.8\include;..\..\thirdparty\glm;..\..\thirdparty\stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\thirdparty\glad\include;..\..\thirdparty\glfw-3.3.8\include;..\..\thirdparty\glm;..\..\thirdparty\stb;..\..\thirdparty\nlohmann-json;..\..\thirdparty\spine-cpp\include;..\..\thirdparty\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>NotSet</SubSystem>
@@ -160,49 +160,74 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\snowpulse\application\application.h" />
+    <ClInclude Include="..\..\snowpulse\application\atlas_manager.h" />
     <ClInclude Include="..\..\snowpulse\application\camera.h" />
+    <ClInclude Include="..\..\snowpulse\application\directory.h" />
+    <ClInclude Include="..\..\snowpulse\application\font_manager.h" />
+    <ClInclude Include="..\..\snowpulse\application\graphics.h" />
     <ClInclude Include="..\..\snowpulse\application\input.h" />
     <ClInclude Include="..\..\snowpulse\application\opengl\application_opengl.h" />
     <ClInclude Include="..\..\snowpulse\application\opengl\graphics_opengl.h" />
     <ClInclude Include="..\..\snowpulse\application\opengl\input_opengl.h" />
-    <ClInclude Include="..\..\snowpulse\application\opengl\render_batch_opengl.h" />
+    <ClInclude Include="..\..\snowpulse\application\opengl\render_batch_data_opengl.h" />
+    <ClInclude Include="..\..\snowpulse\application\opengl\render_batch_group_opengl.h" />
     <ClInclude Include="..\..\snowpulse\application\opengl\render_queue_opengl.h" />
-    <ClInclude Include="..\..\snowpulse\application\platform.h" />
+    <ClInclude Include="..\..\snowpulse\application\render_batch.h" />
+    <ClInclude Include="..\..\snowpulse\application\render_batch_type.h" />
     <ClInclude Include="..\..\snowpulse\application\timer.h" />
     <ClInclude Include="..\..\snowpulse\application\windows\application_windows.h" />
+    <ClInclude Include="..\..\snowpulse\application\windows\directory_windows.h" />
+    <ClInclude Include="..\..\snowpulse\application\windows\input_windows.h" />
+    <ClInclude Include="..\..\snowpulse\common\atlas_sprite.h" />
+    <ClInclude Include="..\..\snowpulse\common\blend_mode.h" />
     <ClInclude Include="..\..\snowpulse\common\color.h" />
     <ClInclude Include="..\..\snowpulse\common\easing.h" />
+    <ClInclude Include="..\..\snowpulse\common\json_utils.h" />
     <ClInclude Include="..\..\snowpulse\common\math_utils.h" />
     <ClInclude Include="..\..\snowpulse\common\matrix4x4.h" />
+    <ClInclude Include="..\..\snowpulse\common\path_type.h" />
+    <ClInclude Include="..\..\snowpulse\common\platform.h" />
+    <ClInclude Include="..\..\snowpulse\common\rect.h" />
+    <ClInclude Include="..\..\snowpulse\common\rect_stb.h" />
     <ClInclude Include="..\..\snowpulse\common\singleton.h" />
     <ClInclude Include="..\..\snowpulse\common\space.h" />
     <ClInclude Include="..\..\snowpulse\common\texture_filtering.h" />
+    <ClInclude Include="..\..\snowpulse\common\touch.h" />
+    <ClInclude Include="..\..\snowpulse\common\touch_phase.h" />
     <ClInclude Include="..\..\snowpulse\common\vector2.h" />
     <ClInclude Include="..\..\snowpulse\common\vector2int.h" />
     <ClInclude Include="..\..\snowpulse\common\vector3.h" />
+    <ClInclude Include="..\..\snowpulse\common\vertex.h" />
     <ClInclude Include="..\..\snowpulse\defines.h" />
     <ClInclude Include="..\..\snowpulse\game\action.h" />
+    <ClInclude Include="..\..\snowpulse\game\actions\action_interpolate.h" />
     <ClInclude Include="..\..\snowpulse\game\actions\action_move.h" />
     <ClInclude Include="..\..\snowpulse\game\actions\action_rotate.h" />
     <ClInclude Include="..\..\snowpulse\game\actions\action_wait.h" />
     <ClInclude Include="..\..\snowpulse\game\action_manager.h" />
     <ClInclude Include="..\..\snowpulse\game\component.h" />
+    <ClInclude Include="..\..\snowpulse\game\components\font_renderer.h" />
+    <ClInclude Include="..\..\snowpulse\game\components\spine_renderer.h" />
     <ClInclude Include="..\..\snowpulse\game\components\sprite_renderer.h" />
     <ClInclude Include="..\..\snowpulse\game\components\transform.h" />
     <ClInclude Include="..\..\snowpulse\game\drawable.h" />
     <ClInclude Include="..\..\snowpulse\game\game.h" />
     <ClInclude Include="..\..\snowpulse\game\game_object.h" />
-    <ClInclude Include="..\..\snowpulse\game\graphics.h" />
     <ClInclude Include="..\..\snowpulse\game\node.h" />
     <ClInclude Include="..\..\snowpulse\game\node_starter.h" />
+    <ClInclude Include="..\..\snowpulse\game\plugins\spine\spine_skeleton_animation.h" />
+    <ClInclude Include="..\..\snowpulse\game\plugins\spine\spine_texture_loader.h" />
     <ClInclude Include="..\..\snowpulse\game\scene.h" />
-    <ClInclude Include="..\..\snowpulse\game\self_aware_ptr.h" />
     <ClInclude Include="..\..\snowpulse\game\updatable.h" />
     <ClInclude Include="..\..\snowpulse\snowpulse.h" />
+    <ClInclude Include="..\..\thirdparty\nlohmann-json\json.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\snowpulse\application\application.cc" />
+    <ClCompile Include="..\..\snowpulse\application\atlas_manager.cc" />
     <ClCompile Include="..\..\snowpulse\application\camera.cc" />
+    <ClCompile Include="..\..\snowpulse\application\directory.cc" />
+    <ClCompile Include="..\..\snowpulse\application\font_manager.cc" />
     <ClCompile Include="..\..\snowpulse\application\input.cc" />
     <ClCompile Include="..\..\snowpulse\application\opengl\application_opengl.cc" />
     <ClCompile Include="..\..\snowpulse\application\opengl\graphics_opengl.cc" />
@@ -210,20 +235,27 @@
     <ClCompile Include="..\..\snowpulse\application\opengl\render_queue_opengl.cc" />
     <ClCompile Include="..\..\snowpulse\application\timer.cc" />
     <ClCompile Include="..\..\snowpulse\application\windows\application_windows.cc" />
+    <ClCompile Include="..\..\snowpulse\application\windows\directory_windows.cc" />
+    <ClCompile Include="..\..\snowpulse\application\windows\input_windows.cc" />
+    <ClCompile Include="..\..\snowpulse\common\json_utils.cc" />
     <ClCompile Include="..\..\snowpulse\game\action.cc" />
+    <ClCompile Include="..\..\snowpulse\game\actions\action_interpolate.cc" />
     <ClCompile Include="..\..\snowpulse\game\actions\action_move.cc" />
     <ClCompile Include="..\..\snowpulse\game\actions\action_rotate.cc" />
     <ClCompile Include="..\..\snowpulse\game\actions\action_wait.cc" />
     <ClCompile Include="..\..\snowpulse\game\action_manager.cc" />
     <ClCompile Include="..\..\snowpulse\game\component.cc" />
+    <ClCompile Include="..\..\snowpulse\game\components\font_renderer.cc" />
+    <ClCompile Include="..\..\snowpulse\game\components\spine_renderer.cc" />
     <ClCompile Include="..\..\snowpulse\game\components\sprite_renderer.cc" />
     <ClCompile Include="..\..\snowpulse\game\components\transform.cc" />
     <ClCompile Include="..\..\snowpulse\game\game.cc" />
     <ClCompile Include="..\..\snowpulse\game\game_object.cc" />
     <ClCompile Include="..\..\snowpulse\game\node.cc" />
     <ClCompile Include="..\..\snowpulse\game\node_starter.cc" />
+    <ClCompile Include="..\..\snowpulse\game\plugins\spine\spine_skeleton_animation.cc" />
+    <ClCompile Include="..\..\snowpulse\game\plugins\spine\spine_texture_loader.cc" />
     <ClCompile Include="..\..\snowpulse\game\scene.cc" />
-    <ClCompile Include="..\..\thirdparty\glad\src\glad.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
