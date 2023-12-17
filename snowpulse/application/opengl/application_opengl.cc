@@ -51,7 +51,19 @@ bool ApplicationOpenGL::Initialize(const Vector2Int& resolutionSize, const Vecto
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
     glfwWindowHint(GLFW_DEPTH_BITS, 24);
 
-    window_ = glfwCreateWindow(screenSize_.x, screenSize_.y, "Snowpulse", NULL, NULL);
+    
+    auto isFullscreen = false;
+    if (isFullscreen) {
+        auto primaryMonitor = glfwGetPrimaryMonitor();
+        const auto mode = glfwGetVideoMode(primaryMonitor);
+        auto fullscreenSize = Vector2Int(mode->width, mode->height);
+        Application::SetScreenSize(fullscreenSize);
+        window_ = glfwCreateWindow(mode->width, mode->height, "Snowpulse", primaryMonitor, NULL);
+    }
+    else {
+        window_ = glfwCreateWindow(screenSize_.x, screenSize_.y, "Snowpulse", NULL, NULL);
+    }
+
     if (!window_) {
 #ifdef SPDEBUG
         std::cerr << "Failed to create GLFW window" << std::endl;
@@ -99,6 +111,7 @@ bool ApplicationOpenGL::Initialize(const Vector2Int& resolutionSize, const Vecto
 void ApplicationOpenGL::SetScreenSize(const Vector2Int& screenSize) {
     Application::SetScreenSize(screenSize);
     if (graphics_) {
+        glViewport(0, 0, screenSize_.x, screenSize_.y);
         graphics_->UpdateProjectionMatrix(resolutionSize_);
     }
     if (ImGui::GetCurrentContext()) {
@@ -139,6 +152,11 @@ void kKeyCallback(GLFWwindow* window, int key, int scancode, int action, int mod
     }
 }
 
+void kTextCallback(GLFWwindow* window, unsigned int codepoint) {
+    auto input = static_cast<InputWindows*>(Input::GetInstance());
+    input->ProcessInputs(input->CodepointToString(codepoint));
+}
+
 void kMouseCallback(GLFWwindow* window, int button, int action, int mods) {
     auto input = static_cast<InputWindows*>(Input::GetInstance());
     auto application = Application::GetInstance();
@@ -171,6 +189,7 @@ void ApplicationOpenGL::Run() {
     actionManager_->Start();
 
     glfwSetKeyCallback(window_, kKeyCallback);
+    glfwSetCharCallback(window_, kTextCallback);
     glfwSetMouseButtonCallback(window_, kMouseCallback);
     glfwSetScrollCallback(window_, kMouseScrollCallback);
 
@@ -272,6 +291,30 @@ void ApplicationOpenGL::Run() {
                 glActiveTexture(GL_TEXTURE0);
                 glBindTexture(GL_TEXTURE_2D, b->texture);
                 glBindVertexArray(VAO);
+
+                switch (b->textureFiltering) {
+                    case TextureFiltering::kPoint:
+                        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+                        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+                        break;
+                    case TextureFiltering::kBilinear:
+                        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+                        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+                        break;
+                    case TextureFiltering::kTrilinear:
+                        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+                        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+                        break;
+                    case TextureFiltering::kAnisotropic:
+                        GLfloat maxAniso = 0.0f;
+                        glGetFloatv(GL_MAX_TEXTURE_MAX_ANISOTROPY_EXT, &maxAniso);
+                        glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAX_ANISOTROPY_EXT, maxAniso);
+                        break;
+                    }
+
+                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
                 glDrawElements(b->drawMode, b->indexCount, GL_UNSIGNED_SHORT, 0);
                 glBindVertexArray(0);
 

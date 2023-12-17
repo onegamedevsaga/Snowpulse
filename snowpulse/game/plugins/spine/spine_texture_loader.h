@@ -13,7 +13,7 @@
 namespace snowpulse {
 class SNOWPULSEAPI SpineTextureLoader : public spine::TextureLoader {
     public:
-        static std::shared_ptr<SpineTextureLoader> Create(TextureFiltering filtering);
+        static std::shared_ptr<SpineTextureLoader> Create();
 
         virtual ~SpineTextureLoader();
 
@@ -25,7 +25,6 @@ class SNOWPULSEAPI SpineTextureLoader : public spine::TextureLoader {
         SpineTextureLoader();
 
         Graphics* graphics_;
-        TextureFiltering textureFiltering_;
 };
 }   // namespace snowpulse
 #endif

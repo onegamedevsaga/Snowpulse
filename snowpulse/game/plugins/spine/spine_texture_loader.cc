@@ -7,9 +7,8 @@
 #include "../../../application/application.h"
 
 namespace snowpulse {
-std::shared_ptr<SpineTextureLoader> SpineTextureLoader::Create(TextureFiltering filtering) {
+std::shared_ptr<SpineTextureLoader> SpineTextureLoader::Create() {
     auto spineTextureLoader = std::shared_ptr<SpineTextureLoader>(new SpineTextureLoader());
-    spineTextureLoader->textureFiltering_ = filtering;
     return spineTextureLoader;
 }
 

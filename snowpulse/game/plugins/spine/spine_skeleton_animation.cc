@@ -26,7 +26,7 @@ namespace snowpulse {
 std::shared_ptr<SpineSkeletonAnimation> SpineSkeletonAnimation::Create(std::string jsonFilename, std::string atlasFilename, TextureFiltering filtering) {
     auto spineSkeletonAnimation = std::shared_ptr<SpineSkeletonAnimation>(new SpineSkeletonAnimation());
     spineSkeletonAnimation->textureFiltering_ = filtering;
-    spineSkeletonAnimation->textureLoader_ = SpineTextureLoader::Create(spineSkeletonAnimation->textureFiltering_);
+    spineSkeletonAnimation->textureLoader_ = SpineTextureLoader::Create();
     atlasFilename = Directory::GetInstance()->GetAssetsPath(atlasFilename);
     spineSkeletonAnimation->atlas_ = std::make_shared<spine::Atlas>(atlasFilename.c_str(), spineSkeletonAnimation->textureLoader_.get());
     if (spineSkeletonAnimation->atlas_->getPages().size() == 0) {
@@ -144,7 +144,7 @@ void SpineSkeletonAnimation::Draw(Graphics* graphics, Matrix4x4 worldMatrix, int
                 vertex.uv.y = regionAttachment->getUVs()[l + 1];
             }
 
-            graphics->DrawMesh(vertices, 4, indices, 6, textureFilename, sortOrder, blendMode, TextureFiltering::kBilinear, isPremultiplied, worldMatrix, batchGroup);
+            graphics->DrawMesh(vertices, 4, indices, 6, textureFilename, sortOrder, blendMode, textureFiltering_, isPremultiplied, worldMatrix, batchGroup);
         }
         else if (attachment->getRTTI().isExactly(spine::MeshAttachment::rtti)) {
             // Cast to an MeshAttachment so we can get the rendererObject
@@ -185,7 +185,7 @@ void SpineSkeletonAnimation::Draw(Graphics* graphics, Matrix4x4 worldMatrix, int
                 vertex.uv.y = mesh->getUVs()[l + 1];
             }
 
-            graphics->DrawMesh(vertices, (int)numVertices, indices.buffer(), (int)indices.size(), textureFilename, sortOrder, blendMode, TextureFiltering::kBilinear, isPremultiplied, worldMatrix, batchGroup);
+            graphics->DrawMesh(vertices, (int)numVertices, indices.buffer(), (int)indices.size(), textureFilename, sortOrder, blendMode, textureFiltering_, isPremultiplied, worldMatrix, batchGroup);
         }
         else {
             // TOOD: Support clipping

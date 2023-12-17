@@ -108,7 +108,7 @@ void SceneLevel::Start() {
     go2_->GetTransform()->SetRotation(0.0f);
 
     go3_ = snowpulse::GameObject::Create("go3_");
-    auto spineRenderer = snowpulse::SpineRenderer::Create("hero/hero-pro.json", "hero/hero-pro.atlas");
+    auto spineRenderer = snowpulse::SpineRenderer::Create("hero/hero-pro.json", "hero/hero-pro.atlas", snowpulse::TextureFiltering::kAnisotropic);
     spineRenderer->SetSkin("weapon/sword");
     spineRenderer->PlayAnimation("run", true);
     spineRenderer->SetSortOrder(4);
@@ -125,7 +125,7 @@ void SceneLevel::Start() {
     });
 
     auto tempGo = snowpulse::GameObject::Create("tempGo");
-    spineRenderer = snowpulse::SpineRenderer::Create("mix-and-match/mix-and-match-pro.json", "mix-and-match/mix-and-match-pro.atlas", snowpulse::TextureFiltering::kTrilinear);
+    spineRenderer = snowpulse::SpineRenderer::Create("mix-and-match/mix-and-match-pro.json", "mix-and-match/mix-and-match-pro.atlas", snowpulse::TextureFiltering::kAnisotropic);
     spineRenderer->SetSkin("full-skins/boy");
     spineRenderer->PlayAnimation("idle", true);
     spineRenderer->SetSortOrder(3);

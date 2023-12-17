@@ -23,6 +23,8 @@ class SNOWPULSEAPI InputWindows : public Input, public Singleton<InputWindows> {
         void ProcessInputs(std::string characters);
         void ProcessInputs(const Vector2& scrollDelta);
 
+        std::string CodepointToString(unsigned int codepoint);
+
         void ClearLastFrameData() override;
         bool GetPressed(std::string key) override;
         bool GetDown(std::string key) override;
