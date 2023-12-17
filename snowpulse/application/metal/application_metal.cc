@@ -107,13 +107,6 @@ void ApplicationMetal::RunFrame() {
     auto device = graphics_->GetDevice();
     auto commandQueue = graphics_->GetCommandQueue();
 
-    //glfwPollEvents();
-#if SNOWPULSE_PLATFORM_MACOS
-    auto input = static_cast<InputMacOS*>(Input::GetInstance());
-#elif SNOWPULSE_PLATFORM_IOS
-    auto input = static_cast<InputIOS*>(Input::GetInstance());
-#endif
-
     auto deltaTime = GetDeltaTime(frameTimer_);
     nodeStarter_.StartNodes();
     Application::Update(deltaTime);
@@ -298,7 +291,7 @@ void ApplicationMetal::RunFrame() {
     commandBuffer->commit();
 
     graphics_->ClearRenderBatchGroups();
-    input->ClearLastFrameData();
+    Input::GetInstance()->ClearLastFrameData();
 #ifdef SPDEBUG
      std::cout << "Rendered " << batches.size() << " batch/es." << std::endl;
 #endif
