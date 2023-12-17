@@ -17,7 +17,7 @@ class Application;
 
 class SNOWPULSEAPI Camera {
     public:
-        static std::shared_ptr<Camera> Create(const Vector2Int& resolution);
+        static std::shared_ptr<Camera> Create();
 
         virtual ~Camera();
 

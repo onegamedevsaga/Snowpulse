@@ -25,6 +25,7 @@ class SNOWPULSEAPI RenderBatchDataMetal : public RenderBatch {
         bool CanMergeWith(const RenderBatchDataMetal* other) const {
             return this->drawMode == other->drawMode &&
                    this->blendMode == other->blendMode &&
+                   this->textureFiltering == other->textureFiltering &&
                    this->isPremultiplied == other->isPremultiplied &&
                    this->viewMatrix == other->viewMatrix &&
                    this->projectionMatrix == other->projectionMatrix &&

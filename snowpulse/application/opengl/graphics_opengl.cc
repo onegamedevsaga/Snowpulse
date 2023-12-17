@@ -60,7 +60,7 @@ GraphicsOpenGL::GraphicsOpenGL() {
 }
 
 bool GraphicsOpenGL::Initialize(const Vector2Int& resolution, const Vector2Int& screenSize) {
-    camera_ = Camera::Create(resolution);
+    camera_ = Camera::Create();
     renderQueue_ = RenderQueueOpenGL::Create();
 
     // Compile and link shaders

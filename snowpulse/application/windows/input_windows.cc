@@ -120,8 +120,10 @@ InputWindows::InputWindows() : Input() {
 InputWindows::~InputWindows() {
 }
 
-void InputWindows::ProcessInputs() {
-    
+void InputWindows::ProcessInputs(const Vector2Int& resolutionSize, const Vector2Int& screenSize, GLFWwindow* window) {
+    double x, y;
+    glfwGetCursorPos(window, &x, &y);
+    ProcessInputs(resolutionSize, screenSize, Vector2((float)x, (float)screenSize.y - (float)y));
 }
 
 void InputWindows::ProcessInputs(const Vector2Int& resolutionSize, const Vector2Int& screenSize, Vector2 mousePosition) {
@@ -201,7 +203,7 @@ void InputWindows::ProcessInputs(std::string characters) {
 
 void InputWindows::ProcessInputs(const Vector2& scrollDelta) {
     scrollDelta_ = scrollDelta;
-    float scaleFactor = application_->GetScaleFactor() * 10.0f;
+    float scaleFactor = application_->GetScaleFactor() * 1.0f;
     ImGuiIO& io = ImGui::GetIO();
     io.MouseWheelH += scrollDelta_.x / scaleFactor;
     io.MouseWheel += scrollDelta_.y / scaleFactor;

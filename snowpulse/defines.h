@@ -21,7 +21,7 @@
 
 
 #if defined(DEBUG) || defined(_DEBUG)
-	//#define SPDEBUG
+	#define SPDEBUG
 #endif
 
 #define SPNULL nullptr

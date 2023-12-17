@@ -6,7 +6,7 @@
 
 namespace snowpulse {
 
-std::shared_ptr<Camera> Camera::Create(const Vector2Int& resolution) {
+std::shared_ptr<Camera> Camera::Create() {
     auto camera = new Camera();
     camera->application_ = Application::GetInstance();
     camera->SetPosition(Vector2(0.0f, 0.0f));

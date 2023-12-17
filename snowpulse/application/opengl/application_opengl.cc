@@ -1,4 +1,5 @@
 #include "application_opengl.h"
+#include "../application.h"
 
 #include <iostream>
 #include <string>
@@ -24,8 +25,12 @@ ApplicationOpenGL::~ApplicationOpenGL() {
 #endif
 }
 
+void kWindowResizeCallback(GLFWwindow* window, int width, int height) {
+    Application::GetInstance()->SetScreenSize(Vector2Int(width, height));
+}
+
 bool ApplicationOpenGL::Initialize(const Vector2Int& resolutionSize, const Vector2Int& screenSize) {
-    if (!Application::Initialize(resolutionSize, screenSize)) {
+    if (!snowpulse::Application::Initialize(resolutionSize, screenSize)) {
         return false;
     }
 
@@ -46,7 +51,7 @@ bool ApplicationOpenGL::Initialize(const Vector2Int& resolutionSize, const Vecto
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
     glfwWindowHint(GLFW_DEPTH_BITS, 24);
 
-    window_ = glfwCreateWindow(screenSize.x, screenSize.y, "Snowpulse", NULL, NULL);
+    window_ = glfwCreateWindow(screenSize_.x, screenSize_.y, "Snowpulse", NULL, NULL);
     if (!window_) {
 #ifdef SPDEBUG
         std::cerr << "Failed to create GLFW window" << std::endl;
@@ -55,6 +60,8 @@ bool ApplicationOpenGL::Initialize(const Vector2Int& resolutionSize, const Vecto
         return false;
     }
     glfwMakeContextCurrent(window_);
+    glfwSetWindowSizeCallback(window_, kWindowResizeCallback);
+
 
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
 #ifdef SPDEBUG
@@ -64,7 +71,7 @@ bool ApplicationOpenGL::Initialize(const Vector2Int& resolutionSize, const Vecto
     }
 
     graphics_ = GraphicsOpenGL::Create();
-    if (!graphics_ || !graphics_->Initialize(resolutionSize, screenSize)) {
+    if (!graphics_ || !graphics_->Initialize(resolutionSize_, screenSize_)) {
 #ifdef SPDEBUG
         std::cout << "ERROR: Application wasn't able to initialize graphics on this platform." << std::endl;
 #endif
@@ -123,12 +130,36 @@ void ApplicationOpenGL::SetScreenScaleFactor(float scaleFactor) {
 }
 
 void kKeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
+    auto input = static_cast<InputWindows*>(Input::GetInstance());
     if (action == GLFW_PRESS) {
-        if (key == GLFW_KEY_ESCAPE) {
-            Application::GetInstance()->Close();
-        }
+        input->ProcessInputs(key, true);
+    }
+    else if (action == GLFW_RELEASE) {
+        input->ProcessInputs(key, false);
     }
 }
+
+void kMouseCallback(GLFWwindow* window, int button, int action, int mods) {
+    auto input = static_cast<InputWindows*>(Input::GetInstance());
+    auto application = Application::GetInstance();
+    auto resolutionSize = application->GetResolutionSize();
+    auto screenSize = application->GetScreenSize();
+    double x, y;
+    glfwGetCursorPos(window, &x, &y);
+
+    if (action == GLFW_PRESS) {
+        input->ProcessInputs(resolutionSize, screenSize, Vector2((float)x, (float)screenSize.y - (float)y), button, true);
+    }
+    else if (action == GLFW_RELEASE) {
+        input->ProcessInputs(resolutionSize, screenSize, Vector2((float)x, (float)screenSize.y - (float)y), button, false);
+    }
+}
+
+void kMouseScrollCallback(GLFWwindow* window, double xOffset, double yOffset) {
+    auto input = static_cast<InputWindows*>(Input::GetInstance());
+    input->ProcessInputs(Vector2(xOffset, yOffset));
+}
+
 
 void ApplicationOpenGL::Run() {
     Timer timer;
@@ -141,12 +172,14 @@ void ApplicationOpenGL::Run() {
     actionManager_->Start();
 
     glfwSetKeyCallback(window_, kKeyCallback);
+    glfwSetMouseButtonCallback(window_, kMouseCallback);
+    glfwSetScrollCallback(window_, kMouseScrollCallback);
 
     while (!glfwWindowShouldClose(window_)) {
 
         glfwPollEvents();
         auto input = static_cast<InputWindows*>(Input::GetInstance());
-        input->ProcessInputs();
+        input->ProcessInputs(resolutionSize_, screenSize_, window_);
 
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         if (graphics_->IsDepthTesting()) {
@@ -260,11 +293,10 @@ void ApplicationOpenGL::Run() {
         ImGui::Render();
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
-        //ImGui_ImplOpenGL3_RenderDrawData();
         glfwSwapBuffers(window_);
 
         graphics_->ClearRenderBatchGroups();
-        input->ClearLastFrameData();
+        Input::GetInstance()->ClearLastFrameData();
 #ifdef SPDEBUG
         std::cout << "Rendered " << batches.size() << " batch/es." << std::endl;
 #endif

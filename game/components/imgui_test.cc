@@ -21,6 +21,6 @@ void ImGUITest::Update(float deltaTime) {
 }
 
 void ImGUITest::Draw(snowpulse::Graphics* graphics, snowpulse::Matrix4x4 worldMatrix) {
-    ImGui::ShowDemoWindow();
+    //ImGui::ShowDemoWindow();
 }
 }   // namespace snowpulse

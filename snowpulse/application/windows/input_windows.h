@@ -6,6 +6,7 @@
 
 #include <string>
 #include <map>
+#include <GLFW/glfw3.h>
 
 #include "../../common/vector2.h"
 #include "../../common/vector2int.h"
@@ -15,7 +16,7 @@ class SNOWPULSEAPI InputWindows : public Input, public Singleton<InputWindows> {
     public:
         virtual ~InputWindows();
 
-        void ProcessInputs();
+        void ProcessInputs(const Vector2Int& resolutionSize, const Vector2Int& screenSize, GLFWwindow* window);
         void ProcessInputs(const Vector2Int& resolutionSize, const Vector2Int& screenSize, Vector2 mousePosition);
         void ProcessInputs(const Vector2Int& resolutionSize, const Vector2Int& screenSize, Vector2 mousePosition, int mouseButton, bool isMouseDown);
         void ProcessInputs(unsigned int key, bool isKeyDown);
