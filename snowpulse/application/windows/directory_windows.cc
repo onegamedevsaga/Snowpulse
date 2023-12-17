@@ -41,9 +41,13 @@ std::string DirectoryWindows::GetDocumentsPath(std::string filename) {
 }
 
 std::string DirectoryWindows::GetResourcesPath() {
+#ifdef SPDEBUG
+    return "";
+#endif
+
     char path[MAX_PATH];
     GetModuleFileNameA(NULL, path, MAX_PATH);
-    return std::string(path);
+    return GetPathFromFilename(std::string(path));
 }
 
 std::string DirectoryWindows::GetWritablePath(std::string filename, std::string directory) {

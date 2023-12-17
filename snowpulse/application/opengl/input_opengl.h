@@ -14,7 +14,7 @@
 #include "graphics_opengl.h"
 
 namespace snowpulse {
-class SNOWPULSEAPI InputOpenGL : public Input, public Singleton<InputOpenGL> {
+class SNOWPULSEAPI InputOpenGL : public Input {
     public:
         virtual ~InputOpenGL();
 
@@ -23,7 +23,6 @@ class SNOWPULSEAPI InputOpenGL : public Input, public Singleton<InputOpenGL> {
         bool GetReleased(std::string key) override;
 
     protected:
-        friend class Singleton<InputOpenGL>;
         InputOpenGL();
 
         std::map<unsigned int, std::string> keyMap_;

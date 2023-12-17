@@ -1,7 +1,7 @@
 #ifndef GAME_COMPONENTS_IMGUITEST_H_
 #define GAME_COMPONENTS_IMGUITEST_H_
 
-#include "defines.h"
+#include "../defines.h"
 
 #include <memory>
 #include <snowpulse.h>
@@ -21,5 +21,4 @@ class GAMEAPI ImGUITest : public snowpulse::Component, public snowpulse::Drawabl
         ImGUITest();
 };
 }   // namespace snowpulse
-
 #endif

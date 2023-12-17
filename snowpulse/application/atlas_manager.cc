@@ -38,10 +38,11 @@ void AtlasManager::Load(std::string atlasFilename, PathType pathType) {
     auto atlasFile = JsonUtils::LoadFile(atlasFilename, pathType);
     if (atlasFile) {
         std::vector<AtlasSprite> sprites;
-        for (auto& [key, value] : atlasFile->items()) {
-            auto textureFilename = Directory::GetInstance()->GetPathFromFilename(atlasFilename) + key;
+        for (auto& pair : atlasFile->items()) {
+            auto textureFilename = Directory::GetInstance()->GetPathFromFilename(atlasFilename) + pair.key();
             Application::GetInstance()->GetGraphics()->LoadTexture(textureFilename, pathType);
-            for (const auto& item : value) {
+            auto items = pair.value();
+            for (const auto& item : items) {
                 AtlasSprite sprite(atlasFilename,
                                    textureFilename,
                                    item["filename"],

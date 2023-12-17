@@ -5,8 +5,8 @@
 
 #include <memory>
 #include <string>
-#include <json.hpp>
 
+#include "../../thirdparty/nlohmann-json/json.hpp"
 #include "../application/application.h"
 #include "path_type.h"
 

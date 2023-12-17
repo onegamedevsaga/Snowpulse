@@ -4,6 +4,8 @@
 
 #include <iostream>
 #include <stb_image.h>
+#include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 #include "../application.h"
 #include "../directory.h"
@@ -49,7 +51,6 @@ const char* kFragmentShaderSource = R"(
     }
 )";
 
-
 std::shared_ptr<GraphicsOpenGL> GraphicsOpenGL::Create() {
     auto graphics = new GraphicsOpenGL();
     return std::shared_ptr<GraphicsOpenGL>(graphics);
@@ -59,7 +60,7 @@ GraphicsOpenGL::GraphicsOpenGL() {
 }
 
 bool GraphicsOpenGL::Initialize(const Vector2Int& resolution, const Vector2Int& screenSize) {
-    camera_ = Camera::Create();
+    camera_ = Camera::Create(resolution);
     renderQueue_ = RenderQueueOpenGL::Create();
 
     // Compile and link shaders
@@ -92,15 +93,19 @@ bool GraphicsOpenGL::Initialize(const Vector2Int& resolution, const Vector2Int& 
         glEnable(GL_DEPTH_TEST);
     }
 
-    renderQueue_ = RenderQueueOpenGL::Create();
-
+    UpdateProjectionMatrix(resolution);
     LoadTexture(kSpriteDefault, PathType::kDefaults);
 
-#ifdef SPDEBUG
-    std::cout << "GraphicsOpenGL initialized." << std::endl;
-#endif
+    #ifdef SPDEBUG
+    std::cout << "GraphicsMetal initialized." << std::endl;
+    #endif
 
     return true;
+}
+
+void GraphicsOpenGL::UpdateProjectionMatrix(const Vector2Int& resolution) {
+    auto ortho = glm::ortho(0.0f, (float)resolution.x, 0.0f, (float)resolution.y, -100.0f, 100.0f);
+    memcpy(glm::value_ptr(projectionMatrix_), glm::value_ptr(ortho), sizeof(projectionMatrix_));
 }
 
 void GraphicsOpenGL::Shutdown() {
@@ -122,55 +127,34 @@ GraphicsOpenGL::~GraphicsOpenGL() {
 
 Matrix4x4 GraphicsOpenGL::InvertMatrixNatively(Matrix4x4 matrix) {
     glm::mat4 transform;
-    for (int i = 0; i < 4; ++i) {
-        for (int j = 0; j < 4; ++j) {
-            transform[i][j] = matrix.data[i][j];
-        }
-    }
+    memcpy(glm::value_ptr(transform), matrix.data, sizeof(matrix.data));
     transform = glm::inverse(transform);
-    for (int i = 0; i < 4; ++i) {
-        for (int j = 0; j < 4; ++j) {
-            matrix.data[i][j] = transform[i][j];
-        }
-    }
+    memcpy(matrix.data, glm::value_ptr(transform), sizeof(matrix.data));
     return matrix;
 }
 
 void GraphicsOpenGL::LoadTexture(std::string filename, PathType pathType) {
-    std::string fullFilename = "";
-    switch (pathType) {
-        case PathType::kAssets:
-            fullFilename = Directory::GetInstance()->GetAssetsPath(filename);
-            break;
-        case PathType::kDefaults:
-            fullFilename = Directory::GetInstance()->GetDefaultsPath(filename);
-            break;
-        case PathType::kApplicationSupport:
-            fullFilename = Directory::GetInstance()->GetApplicationSupportPath(filename);
-            break;
-        case PathType::kDocuments:
-            fullFilename = Directory::GetInstance()->GetDocumentsPath(filename);
-            break;
-        case PathType::kRaw:
-            fullFilename = filename;
-        default:
-            break;
-    }
+    std::string fullFilename = Directory::GetInstance()->GetFullFilename(filename, pathType);
     if (!textures_.count(filename)) {
-        unsigned int texture;
-        glGenTextures(1, &texture);
-        glBindTexture(GL_TEXTURE_2D, texture);
-
         int width, height, nrChannels;
         unsigned char *data = stbi_load(fullFilename.c_str(), &width, &height, &nrChannels, 4);
         if (data) {
-            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
-            glGenerateMipmap(GL_TEXTURE_2D);
-            textures_[filename] = texture;
-            textureSizes_[texture] = Vector2(width, height);
+            LoadTexture(filename, data, Vector2Int(width, height));
         }
         stbi_image_free(data);
     }
+}
+
+void GraphicsOpenGL::LoadTexture(std::string name, unsigned char* bitmap, Vector2Int size) {
+    auto width = size.x;
+    auto height = size.y;
+    unsigned int texture;
+    glGenTextures(1, &texture);
+    glBindTexture(GL_TEXTURE_2D, texture);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, bitmap);
+    glGenerateMipmap(GL_TEXTURE_2D);
+    textures_[name] = texture;
+    textureSizes_[texture] = Vector2(width, height);
 }
 
 void GraphicsOpenGL::UnloadTexture(std::string filename) {
@@ -221,13 +205,6 @@ void GraphicsOpenGL::SubmitRenderBatchGroup(int batchGroup) {
 }
 
 void GraphicsOpenGL::DrawMesh(Vertex* vertices, unsigned int vertexCount, unsigned short* indices, unsigned int indexCount, std::string textureFilename, int sortOrder, BlendMode blendMode, TextureFiltering filtering, bool isPremultiplied, Matrix4x4 transformMatrix, int batchGroup) {
-    glm::mat4 transform;
-    for (int i = 0; i < 4; ++i) {
-        for (int j = 0; j < 4; ++j) {
-            transform[i][j] = transformMatrix.data[i][j];
-        }
-    }
-
     auto batch = std::make_shared<RenderBatchDataOpenGL>();
     batch->drawMode = GL_TRIANGLES;
     batch->shaderProgram = shaderProgram_;
@@ -237,13 +214,24 @@ void GraphicsOpenGL::DrawMesh(Vertex* vertices, unsigned int vertexCount, unsign
     batch->indexCount = indexCount;
     batch->sortOrder = sortOrder;
     batch->isPremultiplied = isPremultiplied;
-    batch->texture = textures_[textureFilename];
-    if (!batch->texture) {
+    if (textures_.count(textureFilename)) {
+        batch->texture = textures_[textureFilename];
+    }
+    else {
         batch->texture = textures_[kSpriteDefault];
 #ifdef SPDEBUG
-        std::cerr << "Can't find texture \"" << textureFilename << "\"." << std::endl;
+        std::cerr << "Error: Graphics: Can't find texture \"" << textureFilename << "\"." << std::endl;
 #endif
     }
+
+    glm::mat4 transMat;
+    int size = sizeof(transMat);
+    int size2 = sizeof(transformMatrix.data);
+    memcpy(glm::value_ptr(transMat), transformMatrix.data, sizeof(transMat));
+
+    batch->vertices.reserve(batch->vertexCount * 9);
+    batch->indices.reserve(batch->indexCount);
+    batch->matrices.reserve(batch->vertexCount);
 
     for (int i = 0; i < batch->vertexCount; i++) {
         batch->vertices.push_back(vertices[i].position.x);
@@ -262,20 +250,13 @@ void GraphicsOpenGL::DrawMesh(Vertex* vertices, unsigned int vertexCount, unsign
     }
 
     for (int i = 0; i < batch->vertexCount; i++) {
-        batch->matrices.push_back(transform);
+        batch->matrices.push_back(transMat);
     }
 
-    auto camMat = camera_->GetMatrix();
-    glm::mat4 camMatGLM;
-    for (int i = 0; i < 4; ++i) {
-        for (int j = 0; j < 4; ++j) {
-            camMatGLM[i][j] = camMat.data[i][j];
-        }
-    }
+    auto cameraView = camera_->GetMatrix();
+    memcpy(glm::value_ptr(batch->viewMatrix), cameraView.data, sizeof(batch->viewMatrix));
 
-    batch->viewMatrix = camMatGLM;
     batch->projectionMatrix = projectionMatrix_;
-
     batch->vertexShaderLocation = vertexShaderLocation_;
     batch->uVShaderLocation = uVShaderLocation_;
     batch->colorShaderLocation = colorShaderLocation_;

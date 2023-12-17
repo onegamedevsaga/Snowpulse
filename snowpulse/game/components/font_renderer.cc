@@ -19,7 +19,7 @@ std::shared_ptr<FontRenderer> FontRenderer::Create(std::string fontFilename, int
     return fontRenderer;
 }
 
-FontRenderer::FontRenderer() : SpriteRenderer("font_renderer"), fontSizeInPixels_(10), text_(""), horizontalSpacing_(100.0f), lineCount_(1) {
+FontRenderer::FontRenderer() : SpriteRenderer("font_renderer"), fontSizeInPixels_(10), horizontalSpacing_(100.0f), text_(""), lineCount_(1) {
 }
 
 FontRenderer::~FontRenderer() {

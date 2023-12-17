@@ -3,9 +3,9 @@
 
 #define GLM_FORCE_PURE
 
-#include <json.hpp>
-
 #include "defines.h"
+
+#include "../thirdparty/nlohmann-json/json.hpp"
 
 #include "common/platform.h"
 #include "common/space.h"

@@ -74,7 +74,6 @@ bool GraphicsMetal::Initialize(const Vector2Int& resolution, const Vector2Int& s
     view_->setClearColor(MTL::ClearColor::Make(0.2f, 0.3f, 0.3f, 1.0));
     device_ = view_->device();
     commandQueue_ = device_->newCommandQueue();
-    renderQueue_ = RenderQueueMetal::Create();
 
     UpdateProjectionMatrix(resolution);
     LoadTexture(kSpriteDefault, PathType::kDefaults);

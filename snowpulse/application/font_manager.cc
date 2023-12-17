@@ -13,8 +13,6 @@
 #include "../common/vector2int.h"
 
 namespace snowpulse {
-static const int kSpacing = 4;
-
 std::shared_ptr<FontManager> FontManager::Create() {
     auto fontMgr = new FontManager();
     return std::shared_ptr<FontManager>(fontMgr);
@@ -40,7 +38,8 @@ void FontManager::Load(std::string filename, int fontSizeInPixels, PathType path
 
     unsigned char* buffer = SPNULL;
     size_t bufferSize;
-    FILE* fontFile = fopen(fullFilename.c_str(), "rb");
+    FILE* fontFile = SPNULL;
+    fopen_s(&fontFile, fullFilename.c_str(), "rb");
     if (fontFile) {
         fseek(fontFile, 0, SEEK_END);
         bufferSize = ftell(fontFile);

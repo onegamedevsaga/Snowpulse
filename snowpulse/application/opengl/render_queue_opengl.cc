@@ -1,6 +1,7 @@
 #include "render_queue_opengl.h"
 
 #include <iostream>
+#include <algorithm>
 
 #include "render_batch_group_opengl.h"
 

@@ -9,6 +9,7 @@
 
 #include "../timer.h"
 #include "../input.h"
+#include "../windows/input_windows.h"
 
 namespace snowpulse {
 ApplicationOpenGL::ApplicationOpenGL() : Application() {
@@ -132,7 +133,7 @@ void ApplicationOpenGL::Run() {
 
         glfwPollEvents();
         auto input = static_cast<InputWindows*>(Input::GetInstance());
-        input->ProcessInputs(resolutionSize_, screenSize_, window_);
+        input->ProcessInputs();
 
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         if (graphics_->IsDepthTesting()) {
@@ -260,8 +261,8 @@ void ApplicationOpenGL::Run() {
 #endif
 }
 
-/*void ApplicationMetal::RunFrame() {
-    auto device = graphics_->GetDevice();
+void ApplicationOpenGL::RunFrame() {
+/*    auto device = graphics_->GetDevice();
     auto commandQueue = graphics_->GetCommandQueue();
 
     //glfwPollEvents();
@@ -458,6 +459,6 @@ void ApplicationOpenGL::Run() {
     input->ClearLastFrameData();
 #ifdef SPDEBUG
     std::cout << "Rendered " << batches.size() << " batch/es." << std::endl;
-#endif
-}*/
+#endif*/
+}
 }   // namespace snowpulse

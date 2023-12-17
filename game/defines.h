@@ -3,7 +3,7 @@
 
 #ifdef GAMEAPI_EXPORT
 #ifdef SNOWPULSE_PLATFORM_WINDOWS
-#define GAMEAPI __declspec(dllexport)
+#define GAMEAPI/* __declspec(dllexport)*/
 #define GAMEAPI_HIDDEN
 #else
 #define GAMEAPI __attribute__((visibility("default")))
@@ -11,8 +11,8 @@
 #endif
 #else
 #ifdef SNOWPULSE_PLATFORM_WINDOWS
-#define GAMEAPI __declspec(dllimport)
-#define GAMEAPI_HIDDEN __declspec(dllimport)
+#define GAMEAPI/* __declspec(dllimport)*/
+#define GAMEAPI_HIDDEN/* __declspec(dllimport)*/
 #else
 #define GAMEAPI
 #define GAMEAPI_HIDDEN

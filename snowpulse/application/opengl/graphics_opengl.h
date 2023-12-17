@@ -26,14 +26,16 @@ class SNOWPULSEAPI GraphicsOpenGL : public Graphics {
         static std::shared_ptr<GraphicsOpenGL> Create();
 
         ~GraphicsOpenGL();
-        bool Initialize(const Vector2Int& resolution, const Vector2Int& screenSize = Vector2Int());
-        void Shutdown() override;
+        bool Initialize(const Vector2Int& resolution, const Vector2Int& screenSize);
+        void UpdateProjectionMatrix(const Vector2Int& resolution);
 
         RenderQueueOpenGL* GetRenderQueue() const { return renderQueue_.get(); }
 
         // Graphics
+        void Shutdown() override;
         Matrix4x4 InvertMatrixNatively(Matrix4x4 matrix) override;
         void LoadTexture(std::string filename, PathType pathType) override;
+        void LoadTexture(std::string name, unsigned char* bitmap, Vector2Int size) override;
         void UnloadTexture(std::string filename) override;
         Vector2 GetTextureSize(std::string filename) override;
         int CreateRenderBatchGroup(int sortOrder) override;

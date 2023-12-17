@@ -154,7 +154,7 @@ void SceneLevel::Start() {
 #ifdef SPDEBUG
                 std::cout << "Tick: " << value << std::endl;
 #endif
-            })->OnComplete([this](snowpulse::Action* a) {
+            })->OnComplete([](snowpulse::Action* a) {
                 //GetApplication()->Close();
             })->Run();
         });

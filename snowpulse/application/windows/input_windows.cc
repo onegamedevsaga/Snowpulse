@@ -65,20 +65,20 @@ InputWindows::InputWindows() : Input() {
 
     ImGuiIO& io = ImGui::GetIO();
     io.KeyMap[ImGuiKey_Tab] = GLFW_KEY_TAB;
-    io.KeyMap[ImGuiKey_LeftArrow] = kVK_LeftArrow;
-    io.KeyMap[ImGuiKey_RightArrow] = kVK_RightArrow;
-    io.KeyMap[ImGuiKey_UpArrow] = kVK_UpArrow;
-    io.KeyMap[ImGuiKey_DownArrow] = kVK_DownArrow;
-    io.KeyMap[ImGuiKey_PageUp] = kVK_PageUp;
-    io.KeyMap[ImGuiKey_PageDown] = kVK_PageDown;
-    io.KeyMap[ImGuiKey_Home] = kVK_Home;
-    io.KeyMap[ImGuiKey_End] = kVK_End;
-    io.KeyMap[ImGuiKey_Delete] = kVK_Delete;
-    io.KeyMap[ImGuiKey_Backspace] = kVK_Delete;
-    io.KeyMap[ImGuiKey_Space] = kVK_Space;
-    io.KeyMap[ImGuiKey_Enter] = kVK_Return;
-    io.KeyMap[ImGuiKey_Escape] = kVK_Escape;
-    io.KeyMap[ImGuiKey_KeyPadEnter] = kVK_ANSI_KeypadEnter;
+    io.KeyMap[ImGuiKey_LeftArrow] = GLFW_KEY_LEFT;
+    io.KeyMap[ImGuiKey_RightArrow] = GLFW_KEY_RIGHT;
+    io.KeyMap[ImGuiKey_UpArrow] = GLFW_KEY_UP;
+    io.KeyMap[ImGuiKey_DownArrow] = GLFW_KEY_DOWN;
+    io.KeyMap[ImGuiKey_PageUp] = GLFW_KEY_PAGE_UP;
+    io.KeyMap[ImGuiKey_PageDown] = GLFW_KEY_PAGE_DOWN;
+    io.KeyMap[ImGuiKey_Home] = GLFW_KEY_HOME;
+    io.KeyMap[ImGuiKey_End] = GLFW_KEY_END;
+    io.KeyMap[ImGuiKey_Delete] = GLFW_KEY_DELETE;
+    io.KeyMap[ImGuiKey_Backspace] = GLFW_KEY_BACKSPACE;
+    io.KeyMap[ImGuiKey_Space] = GLFW_KEY_SPACE;
+    io.KeyMap[ImGuiKey_Enter] = GLFW_KEY_ENTER;
+    io.KeyMap[ImGuiKey_Escape] = GLFW_KEY_ESCAPE;
+    io.KeyMap[ImGuiKey_KeyPadEnter] = GLFW_KEY_KP_ENTER;
     io.KeyMap[ImGuiKey_A] = GLFW_KEY_A;
     io.KeyMap[ImGuiKey_B] = GLFW_KEY_B;
     io.KeyMap[ImGuiKey_C] = GLFW_KEY_C;
@@ -117,10 +117,13 @@ InputWindows::InputWindows() : Input() {
     io.KeyMap[ImGuiKey_9] = GLFW_KEY_9;
 }
 
-InputMacOS::~InputMacOS() {
+InputWindows::~InputWindows() {
 }
 
-void InputMacOS::ProcessInputs(const Vector2Int& resolutionSize, const Vector2Int& screenSize, Vector2 mousePosition) {
+void InputWindows::ProcessInputs() {
+}
+
+void InputWindows::ProcessInputs(const Vector2Int& resolutionSize, const Vector2Int& screenSize, Vector2 mousePosition) {
     Vector2 scaleFactor = Vector2((float)resolutionSize.x / (float)screenSize.x, (float)resolutionSize.y / (float)screenSize.y);
     mousePositionOnScreen_ = mousePosition;
     mousePositionOnScreen_ *= scaleFactor;
@@ -132,7 +135,7 @@ void InputMacOS::ProcessInputs(const Vector2Int& resolutionSize, const Vector2In
     io.MouseDrawCursor = true;
     io.MousePos = ImVec2(mousePosition.x, screenSize.y - mousePosition.y);
 }
-void InputMacOS::ProcessInputs(const Vector2Int& resolutionSize, const Vector2Int& screenSize, Vector2 mousePosition, int mouseButton, bool isMouseDown) {
+void InputWindows::ProcessInputs(const Vector2Int& resolutionSize, const Vector2Int& screenSize, Vector2 mousePosition, int mouseButton, bool isMouseDown) {
     Vector2 scaleFactor = Vector2((float)resolutionSize.x / (float)screenSize.x, (float)resolutionSize.y / (float)screenSize.y);
     auto mousePositionOnScreen = mousePosition;
     mousePositionOnScreen *= scaleFactor;
@@ -166,7 +169,7 @@ void InputMacOS::ProcessInputs(const Vector2Int& resolutionSize, const Vector2In
     io.MousePos = ImVec2(mousePosition.x, screenSize.y - mousePosition.y);
 }
 
-void InputMacOS::ProcessInputs(unsigned int keyCode, bool isKeyDown) {
+void InputWindows::ProcessInputs(unsigned int keyCode, bool isKeyDown) {
     auto key = keyMap_[keyCode];
     if (!heldKeys_.count(key) && isKeyDown) {
         pressedKeys_[key] = true;
@@ -185,7 +188,7 @@ void InputMacOS::ProcessInputs(unsigned int keyCode, bool isKeyDown) {
     io.KeyShift = heldKeys_.count("shift") == 1;
 }
 
-void InputMacOS::ProcessInputs(std::string characters) {
+void InputWindows::ProcessInputs(std::string characters) {
     ImGuiIO& io = ImGui::GetIO();
     for (int i = 0; i < (int)characters.size(); i++) {
         auto c = characters[i];
@@ -195,7 +198,7 @@ void InputMacOS::ProcessInputs(std::string characters) {
     }
 }
 
-void InputMacOS::ProcessInputs(const Vector2& scrollDelta) {
+void InputWindows::ProcessInputs(const Vector2& scrollDelta) {
     scrollDelta_ = scrollDelta;
     float scaleFactor = application_->GetScaleFactor() * 10.0f;
     ImGuiIO& io = ImGui::GetIO();
@@ -203,7 +206,7 @@ void InputMacOS::ProcessInputs(const Vector2& scrollDelta) {
     io.MouseWheel += scrollDelta_.y / scaleFactor;
 }
 
-void InputMacOS::ClearLastFrameData() {
+void InputWindows::ClearLastFrameData() {
     Input::ClearLastFrameData();
     ImGuiIO& io = ImGui::GetIO();
     for (int i = 0; i < IM_ARRAYSIZE(io.KeysDown); i++) {
@@ -211,15 +214,15 @@ void InputMacOS::ClearLastFrameData() {
     }
 }
 
-bool InputMacOS::GetPressed(std::string key) {
+bool InputWindows::GetPressed(std::string key) {
     return pressedKeys_.count(ToLowerCase(key));
 }
 
-bool InputMacOS::GetDown(std::string key) {
+bool InputWindows::GetDown(std::string key) {
     return heldKeys_.count(ToLowerCase(key));
 }
 
-bool InputMacOS::GetReleased(std::string key) {
+bool InputWindows::GetReleased(std::string key) {
     return releasedKeys_.count(ToLowerCase(key));
 }
 }   // namespace snowpulse

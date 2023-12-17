@@ -3,7 +3,7 @@
 #include "application.h"
 
 #ifdef SNOWPULSE_PLATFORM_WINDOWS
-#include "opengl/input_opengl.h"
+#include "windows/input_windows.h"
 #elif SNOWPULSE_PLATFORM_MACOS
 #include "macos/input_macos.h"
 #elif SNOWPULSE_PLATFORM_IOS
@@ -13,7 +13,7 @@
 namespace snowpulse {
 Input* Input::GetInstance() {
 #ifdef SNOWPULSE_PLATFORM_WINDOWS
-    return InputOpenGL::GetSingletonInstance();
+    return InputWindows::GetSingletonInstance();
 #elif SNOWPULSE_PLATFORM_MACOS
     return InputMacOS::GetSingletonInstance();
 #elif SNOWPULSE_PLATFORM_ANDROID

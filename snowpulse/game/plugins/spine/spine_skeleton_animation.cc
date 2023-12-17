@@ -188,8 +188,7 @@ void SpineSkeletonAnimation::Draw(Graphics* graphics, Matrix4x4 worldMatrix, int
             graphics->DrawMesh(vertices, (int)numVertices, indices.buffer(), (int)indices.size(), textureFilename, sortOrder, blendMode, TextureFiltering::kBilinear, isPremultiplied, worldMatrix, batchGroup);
         }
         else {
-            int xx= 0;
-            xx++;
+            // TOOD: Support clipping
         }
     }
 

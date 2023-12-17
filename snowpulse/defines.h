@@ -3,7 +3,7 @@
 
 #ifdef SNOWPULSEAPI_EXPORT
 	#ifdef SNOWPULSE_PLATFORM_WINDOWS
-		#define SNOWPULSEAPI __declspec(dllexport)
+		#define SNOWPULSEAPI/* __declspec(dllexport)*/
 		#define SNOWPULSEAPI_HIDDEN
 	#else
 		#define SNOWPULSEAPI __attribute__((visibility("default")))
@@ -11,8 +11,8 @@
 	#endif
 #else
 	#ifdef SNOWPULSE_PLATFORM_WINDOWS
-		#define SNOWPULSEAPI __declspec(dllimport)
-		#define SNOWPULSEAPI_HIDDEN __declspec(dllimport)
+		#define SNOWPULSEAPI/* __declspec(dllimport)*/
+		#define SNOWPULSEAPI_HIDDEN/* __declspec(dllimport)*/
 	#else
 		#define SNOWPULSEAPI
 		#define SNOWPULSEAPI_HIDDEN
