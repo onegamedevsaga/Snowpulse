@@ -225,8 +225,6 @@ void GraphicsOpenGL::DrawMesh(Vertex* vertices, unsigned int vertexCount, unsign
     }
 
     glm::mat4 transMat;
-    int size = sizeof(transMat);
-    int size2 = sizeof(transformMatrix.data);
     memcpy(glm::value_ptr(transMat), transformMatrix.data, sizeof(transMat));
 
     batch->vertices.reserve(batch->vertexCount * 9);

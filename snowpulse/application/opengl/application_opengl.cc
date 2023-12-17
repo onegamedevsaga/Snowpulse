@@ -6,6 +6,7 @@
 #include <GLFW/glfw3.h>
 #include <imgui.h>
 #include <backends/imgui_impl_opengl3.h>
+#include <backends/imgui_impl_glfw.h>
 
 #include "../timer.h"
 #include "../input.h"
@@ -79,8 +80,8 @@ bool ApplicationOpenGL::Initialize(const Vector2Int& resolutionSize, const Vecto
 
     io.DeltaTime = 1.0f / 60.0f;
     io.DisplaySize = ImVec2(screenSize_.x, screenSize_.y);
-    // TODO: Implement OpenGL IMGUI
-    //ImGui_ImplMetal_Init(graphics_->GetDevice());
+    ImGui_ImplOpenGL3_Init("#version 130");
+    //ImGui_ImplGlfw_InitForOpenGL(window_, true);
 
 #ifdef SPDEBUG
     std::cout << "ApplicationOpenGL initialized." << std::endl;
@@ -101,7 +102,9 @@ void ApplicationOpenGL::SetScreenSize(const Vector2Int& screenSize) {
 
 void ApplicationOpenGL::Shutdown() {
     ImGui_ImplOpenGL3_Shutdown();
+    //ImGui_ImplGlfw_Shutdown();
     ImGui::DestroyContext();
+
     if (game_) {
         game_->Shutdown();
     }
@@ -119,6 +122,14 @@ void ApplicationOpenGL::SetScreenScaleFactor(float scaleFactor) {
     io.DisplayFramebufferScale = ImVec2(scaleFactor, scaleFactor);
 }
 
+void kKeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
+    if (action == GLFW_PRESS) {
+        if (key == GLFW_KEY_ESCAPE) {
+            Application::GetInstance()->Close();
+        }
+    }
+}
+
 void ApplicationOpenGL::Run() {
     Timer timer;
     timer.Start();
@@ -128,6 +139,8 @@ void ApplicationOpenGL::Run() {
 
     game_->Start();
     actionManager_->Start();
+
+    glfwSetKeyCallback(window_, kKeyCallback);
 
     while (!glfwWindowShouldClose(window_)) {
 
@@ -147,11 +160,13 @@ void ApplicationOpenGL::Run() {
         nodeStarter_.StartNodes();
         Application::Update(deltaTime);
         actionManager_->Update(deltaTime);
+        game_->UpdateScene(deltaTime);
 
         ImGui_ImplOpenGL3_NewFrame();
+        //ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
 
-        game_->UpdateScene(deltaTime);
+        game_->DrawScene(graphics_.get());
 
         auto batches = graphics_->GetRenderQueue()->PopAllData();
         for (int i = 0; i < 1; i++) {
@@ -243,6 +258,8 @@ void ApplicationOpenGL::Run() {
         }
 
         ImGui::Render();
+        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
         //ImGui_ImplOpenGL3_RenderDrawData();
         glfwSwapBuffers(window_);
 

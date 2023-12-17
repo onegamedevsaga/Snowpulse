@@ -11,7 +11,7 @@ std::shared_ptr<SceneLevel> SceneLevel::Create(snowpulse::Application* applicati
     return scene;
 }
 
-SceneLevel::SceneLevel() : snowpulse::Scene() {
+SceneLevel::SceneLevel() : snowpulse::Scene(), timeLapsed_(0.0f) {
 }
 
 SceneLevel::~SceneLevel() {

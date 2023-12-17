@@ -21,11 +21,11 @@ bool DirectoryWindows::CreateDirectory(std::string path) {
 
 std::string DirectoryWindows::GetAssetsPath(std::string filename) {
     std::string path = Application::GetInstance()->GetAssetFolderPath();
-    return GetResourcesPath() + path + filename;
+    return path + filename;
 }
 
 std::string DirectoryWindows::GetDefaultsPath(std::string filename) {
-    return GetResourcesPath() + "\\defaults\\" + filename;
+    return "defaults\\" + filename;
 }
 
 std::string DirectoryWindows::GetApplicationSupportPath(std::string filename) {
@@ -41,13 +41,14 @@ std::string DirectoryWindows::GetDocumentsPath(std::string filename) {
 }
 
 std::string DirectoryWindows::GetResourcesPath() {
-#ifdef SPDEBUG
-    return "";
-#endif
+    /*if (IsDebuggerPresent()) {
+        return "";
+    }
 
     char path[MAX_PATH];
     GetModuleFileNameA(NULL, path, MAX_PATH);
-    return GetPathFromFilename(std::string(path));
+    return GetPathFromFilename(std::string(path));*/
+    return "";
 }
 
 std::string DirectoryWindows::GetWritablePath(std::string filename, std::string directory) {

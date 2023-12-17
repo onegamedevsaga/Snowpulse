@@ -19,6 +19,17 @@ class SNOWPULSEAPI RenderBatchDataOpenGL : public RenderBatch {
         RenderBatchDataOpenGL() : RenderBatch(RenderBatchType::kData) { }
         ~RenderBatchDataOpenGL() { }
 
+        bool CanMergeWith(const RenderBatchDataOpenGL* other) const {
+            return  drawMode == other->drawMode &&
+                    blendMode == other->blendMode &&
+                    textureFiltering == other->textureFiltering &&
+                    isPremultiplied == other->isPremultiplied &&
+                    viewMatrix == other->viewMatrix &&
+                    projectionMatrix == other->projectionMatrix &&
+                    shaderProgram == other->shaderProgram &&
+                    texture == other->texture;
+        }
+
         unsigned int vertexPlusUVPlusColorCount = 9;
         unsigned int vertexSectionCount = 3;
         unsigned int uVSectionCount = 2;

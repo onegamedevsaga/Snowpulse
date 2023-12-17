@@ -121,6 +121,7 @@ InputWindows::~InputWindows() {
 }
 
 void InputWindows::ProcessInputs() {
+    
 }
 
 void InputWindows::ProcessInputs(const Vector2Int& resolutionSize, const Vector2Int& screenSize, Vector2 mousePosition) {
