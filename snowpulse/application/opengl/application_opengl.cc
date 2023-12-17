@@ -160,7 +160,6 @@ void kMouseScrollCallback(GLFWwindow* window, double xOffset, double yOffset) {
     input->ProcessInputs(Vector2(xOffset, yOffset));
 }
 
-
 void ApplicationOpenGL::Run() {
     Timer timer;
     timer.Start();
