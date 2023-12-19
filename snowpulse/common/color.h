@@ -3,6 +3,8 @@
 
 #include "../defines.h"
 
+#include <string>
+
 namespace snowpulse {
 class SNOWPULSEAPI Color {
     public:
@@ -14,6 +16,7 @@ class SNOWPULSEAPI Color {
         static Color Transparent()  { return Color(1.0f, 1.0f, 1.0f, 0.0f); }
 
         Color(float r = 1.0f, float g = 1.0f, float b = 1.0f, float a = 1.0f) : r(r), g(g), b(b), a(a) {}
+        Color(std::string hex);
 
         float r;
         float g;

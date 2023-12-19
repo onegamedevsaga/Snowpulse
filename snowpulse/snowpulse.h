@@ -41,6 +41,7 @@
 #include "game/components/sprite_renderer.h"
 #include "game/components/spine_renderer.h"
 #include "game/components/font_renderer.h"
+#include "game/components/tiled_renderer.h"
 
 #include "game/actions/action_interpolate.h"
 #include "game/actions/action_wait.h"

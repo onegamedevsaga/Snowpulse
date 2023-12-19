@@ -18,24 +18,22 @@
 #include <spine/AnimationStateData.h>
 
 #include "spine_texture_loader.h"
-#include "../../drawable.h"
 #include "../../../common/texture_filtering.h"
 
-    namespace snowpulse {
-    class SNOWPULSEAPI SpineSkeletonAnimation : public Updatable {
+namespace snowpulse {
+class SNOWPULSEAPI SpineSkeletonAnimation : public Updatable {
     public:
         static std::shared_ptr<SpineSkeletonAnimation> Create(std::string jsonFilename, std::string atlasFilename, TextureFiltering filtering);
 
         virtual ~SpineSkeletonAnimation();
         // From Updatable
         void Update(float deltaTime);
-        // From Drawable
-        void Draw(Graphics* graphics, Matrix4x4 worldMatrix, int sortOrder, bool isPremultiplied);
 
+        void Draw(Graphics* graphics, Matrix4x4 worldMatrix, int sortOrder, bool isPremultiplied);
         void SetSkin(std::string name);
         void PlayAnimation(std::string name, bool looping = false);
 
-    protected:
+    private:
         SpineSkeletonAnimation();
         std::vector<spine::Slot*> GetSlotParents(spine::Slot* slot);
         std::vector<spine::Slot*> GetSlotsWithBoneDatas(spine::Vector<spine::BoneData*> bones);

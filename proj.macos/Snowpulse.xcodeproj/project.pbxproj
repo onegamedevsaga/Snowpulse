@@ -128,6 +128,12 @@
 		2A624C932B2B22D000710C50 /* font_renderer.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A624C912B2B22D000710C50 /* font_renderer.h */; };
 		2A624C942B2B22D000710C50 /* font_renderer.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A624C922B2B22D000710C50 /* font_renderer.cc */; };
 		2A624C952B2B22D000710C50 /* font_renderer.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A624C922B2B22D000710C50 /* font_renderer.cc */; };
+		2A8F06362B31A79600A8AA2A /* tiled_map.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A8F06342B31A79600A8AA2A /* tiled_map.cc */; };
+		2A8F06382B31B49E00A8AA2A /* color.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A8F06372B31B49E00A8AA2A /* color.cc */; };
+		2A8F06412B31EBAE00A8AA2A /* tiled_renderer.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A8F063F2B31EBAE00A8AA2A /* tiled_renderer.cc */; };
+		2A8F06422B31F6C000A8AA2A /* tiled_renderer.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A8F063F2B31EBAE00A8AA2A /* tiled_renderer.cc */; };
+		2A8F06432B31F79700A8AA2A /* tiled_map.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A8F06342B31A79600A8AA2A /* tiled_map.cc */; };
+		2A8F06442B31F7C500A8AA2A /* color.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A8F06372B31B49E00A8AA2A /* color.cc */; };
 		2AA1AA662B2075C5002F2A49 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AA1AA652B2075C5002F2A49 /* AppDelegate.m */; };
 		2AA1AA6C2B2075C5002F2A49 /* GameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2AA1AA6B2B2075C5002F2A49 /* GameViewController.mm */; };
 		2AA1AA6E2B2075C5002F2A49 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 2AA1AA6D2B2075C5002F2A49 /* Shaders.metal */; };
@@ -540,6 +546,16 @@
 		2A77E7272B107FAA00579051 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		2A77E72A2B107FBE00579051 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		2A77E72F2B1096A300579051 /* json_utils.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = json_utils.cc; sourceTree = "<group>"; };
+		2A8F06342B31A79600A8AA2A /* tiled_map.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = tiled_map.cc; path = plugins/tiled/tiled_map.cc; sourceTree = "<group>"; };
+		2A8F06352B31A79600A8AA2A /* tiled_map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tiled_map.h; path = plugins/tiled/tiled_map.h; sourceTree = "<group>"; };
+		2A8F06372B31B49E00A8AA2A /* color.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = color.cc; sourceTree = "<group>"; };
+		2A8F06392B31E4A100A8AA2A /* tiled_data_tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tiled_data_tile.h; path = plugins/tiled/tiled_data_tile.h; sourceTree = "<group>"; };
+		2A8F063A2B31E4A100A8AA2A /* tiled_data_grid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tiled_data_grid.h; path = plugins/tiled/tiled_data_grid.h; sourceTree = "<group>"; };
+		2A8F063B2B31E4A100A8AA2A /* tiled_data_map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tiled_data_map.h; path = plugins/tiled/tiled_data_map.h; sourceTree = "<group>"; };
+		2A8F063C2B31E4A100A8AA2A /* tiled_data_tileset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tiled_data_tileset.h; path = plugins/tiled/tiled_data_tileset.h; sourceTree = "<group>"; };
+		2A8F063E2B31E4A100A8AA2A /* tiled_data_layer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tiled_data_layer.h; path = plugins/tiled/tiled_data_layer.h; sourceTree = "<group>"; };
+		2A8F063F2B31EBAE00A8AA2A /* tiled_renderer.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tiled_renderer.cc; sourceTree = "<group>"; };
+		2A8F06402B31EBAE00A8AA2A /* tiled_renderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tiled_renderer.h; sourceTree = "<group>"; };
 		2AA1AA622B2075C5002F2A49 /* launcher_macos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = launcher_macos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AA1AA642B2075C5002F2A49 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2AA1AA652B2075C5002F2A49 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -1071,6 +1087,8 @@
 				2A4FBDFA2B00BF430060E35C /* transform.cc */,
 				2A4FBDFB2B00BF430060E35C /* sprite_renderer.h */,
 				2A4FBDF92B00BF430060E35C /* sprite_renderer.cc */,
+				2A8F06402B31EBAE00A8AA2A /* tiled_renderer.h */,
+				2A8F063F2B31EBAE00A8AA2A /* tiled_renderer.cc */,
 				2A624C912B2B22D000710C50 /* font_renderer.h */,
 				2A624C922B2B22D000710C50 /* font_renderer.cc */,
 				2AA9A9D42B078F77009AACBF /* spine_renderer.h */,
@@ -1101,6 +1119,7 @@
 				2AE640BA2B12363400A6B8DA /* path_type.h */,
 				2AA9A9DF2B087CE3009AACBF /* blend_mode.h */,
 				2A4FBE102B00BF430060E35C /* color.h */,
+				2A8F06372B31B49E00A8AA2A /* color.cc */,
 				2A4FBE8F2B0108380060E35C /* easing.h */,
 				2A4FBEB52B03E81D0060E35C /* json_utils.h */,
 				2A77E72F2B1096A300579051 /* json_utils.cc */,
@@ -1195,6 +1214,20 @@
 				2A4FBEB22B03E59A0060E35C /* json.hpp */,
 			);
 			name = "nlohmann-json";
+			sourceTree = "<group>";
+		};
+		2A8F06332B31A73A00A8AA2A /* tiled */ = {
+			isa = PBXGroup;
+			children = (
+				2A8F063A2B31E4A100A8AA2A /* tiled_data_grid.h */,
+				2A8F063E2B31E4A100A8AA2A /* tiled_data_layer.h */,
+				2A8F063B2B31E4A100A8AA2A /* tiled_data_map.h */,
+				2A8F06392B31E4A100A8AA2A /* tiled_data_tile.h */,
+				2A8F063C2B31E4A100A8AA2A /* tiled_data_tileset.h */,
+				2A8F06352B31A79600A8AA2A /* tiled_map.h */,
+				2A8F06342B31A79600A8AA2A /* tiled_map.cc */,
+			);
+			name = tiled;
 			sourceTree = "<group>";
 		};
 		2AA1AA632B2075C5002F2A49 /* launcher_macos */ = {
@@ -1404,6 +1437,7 @@
 		2AA9A9CD2B078541009AACBF /* plugins */ = {
 			isa = PBXGroup;
 			children = (
+				2A8F06332B31A73A00A8AA2A /* tiled */,
 				2AA9A9CE2B0785B7009AACBF /* spine */,
 			);
 			name = plugins;
@@ -1918,6 +1952,7 @@
 				2A5266F42B206244008B7268 /* Log.cpp in Sources */,
 				2A5266DB2B206244008B7268 /* SpineObject.cpp in Sources */,
 				2A5266D62B206244008B7268 /* ShearTimeline.cpp in Sources */,
+				2A8F06412B31EBAE00A8AA2A /* tiled_renderer.cc in Sources */,
 				2A5267172B20629C008B7268 /* sprite_renderer.cc in Sources */,
 				2A5267042B206244008B7268 /* Extension.cpp in Sources */,
 				2A5267202B2062CE008B7268 /* game.cc in Sources */,
@@ -1930,6 +1965,7 @@
 				2A5266E72B206244008B7268 /* MeshAttachment.cpp in Sources */,
 				2A5267242B2062CE008B7268 /* action_manager.cc in Sources */,
 				2A5267222B2062CE008B7268 /* node.cc in Sources */,
+				2A8F06382B31B49E00A8AA2A /* color.cc in Sources */,
 				2A5266CC2B206244008B7268 /* TranslateTimeline.cpp in Sources */,
 				2A5267162B206294008B7268 /* spine_skeleton_animation.cc in Sources */,
 				2A0656342B28065E00E2B2B9 /* atlas_manager.cc in Sources */,
@@ -1946,6 +1982,7 @@
 				2AE11C652B2443A70023DB82 /* imgui_tables.cpp in Sources */,
 				2A5267232B2062CE008B7268 /* scene.cc in Sources */,
 				2A5267142B206285008B7268 /* application.cc in Sources */,
+				2A8F06362B31A79600A8AA2A /* tiled_map.cc in Sources */,
 				2A5266DE2B206244008B7268 /* SkeletonJson.cpp in Sources */,
 				2A5266D32B206244008B7268 /* RotateTimeline.cpp in Sources */,
 				2A5267192B20629C008B7268 /* spine_renderer.cc in Sources */,
@@ -2029,6 +2066,7 @@
 				2AA1AABF2B209674002F2A49 /* MeshAttachment.cpp in Sources */,
 				2AA1AAAF2B209674002F2A49 /* AnimationState.cpp in Sources */,
 				2AA1AB022B2096CB002F2A49 /* transform.cc in Sources */,
+				2A8F06432B31F79700A8AA2A /* tiled_map.cc in Sources */,
 				2AA1AAB42B209674002F2A49 /* Updatable.cpp in Sources */,
 				2AA1AB002B2096CB002F2A49 /* node.cc in Sources */,
 				2AA1AAC22B209674002F2A49 /* Log.cpp in Sources */,
@@ -2068,6 +2106,7 @@
 				2AA1AAFA2B2096CB002F2A49 /* action_move.cc in Sources */,
 				2AA1AAE02B209674002F2A49 /* Slot.cpp in Sources */,
 				2AA1AAD22B209674002F2A49 /* DrawOrderTimeline.cpp in Sources */,
+				2A8F06422B31F6C000A8AA2A /* tiled_renderer.cc in Sources */,
 				2A0656352B28065E00E2B2B9 /* atlas_manager.cc in Sources */,
 				2AA1AAF72B2096AF002F2A49 /* camera.cc in Sources */,
 				2AA1AAF32B2096AF002F2A49 /* input.cc in Sources */,
@@ -2082,6 +2121,7 @@
 				2AA1AAF52B2096AF002F2A49 /* application.cc in Sources */,
 				2AA1AAFB2B2096CB002F2A49 /* spine_renderer.cc in Sources */,
 				2AA1AAC92B209674002F2A49 /* SkeletonClipping.cpp in Sources */,
+				2A8F06442B31F7C500A8AA2A /* color.cc in Sources */,
 				2AA1AAC12B209674002F2A49 /* Event.cpp in Sources */,
 				2AA1AB052B2096CB002F2A49 /* action_wait.cc in Sources */,
 				2AA1AAB52B209674002F2A49 /* PathConstraintData.cpp in Sources */,

@@ -18,7 +18,7 @@
 #include "../../../application/application.h"
 #include "../../../application/directory.h"
 
-spine::SpineExtension *spine::getDefaultExtension() {
+spine::SpineExtension* spine::getDefaultExtension() {
     return new spine::DefaultSpineExtension();
 }
 
@@ -70,7 +70,6 @@ void SpineSkeletonAnimation::Update(float deltaTime) {
     skeleton_->updateWorldTransform();
 }
 
-// From Drawable
 void SpineSkeletonAnimation::Draw(Graphics* graphics, Matrix4x4 worldMatrix, int sortOrder, bool isPremultiplied) {
     auto batchGroup = graphics->CreateRenderBatchGroup(sortOrder);
     for (int i = 0, n = (int)skeleton_->getSlots().size(); i < n; i++) {
@@ -235,8 +234,6 @@ void SpineSkeletonAnimation::SetSkin(std::string name) {
             slotsToDraw_[slot] = true;
         }
     }
-
-    
 
     auto activeSkin = skeleton_->getSkin();
     if (activeSkin != defaultSkin) {

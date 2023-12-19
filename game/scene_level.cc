@@ -61,6 +61,12 @@ void SceneLevel::Start() {
     auto fontManager = snowpulse::Application::GetInstance()->GetFontManager();
     fontManager->Load("fonts/roboto/Roboto-Regular.ttf", 200.0f, snowpulse::PathType::kDefaults);
 
+    auto goMap = snowpulse::GameObject::Create("goMap");
+    auto tiledRenderer = snowpulse::TiledRenderer::Create("tiled-test/blank.tmj", snowpulse::PathType::kAssets, snowpulse::TextureFiltering::kBilinear);
+    tiledRenderer->SetSortOrder(0);
+    goMap->AddComponent(tiledRenderer);
+    AddChild(goMap);
+
     go1_ = snowpulse::GameObject::Create("go1_");
     auto fontRenderer = snowpulse::FontRenderer::Create("fonts/roboto/Roboto-Regular.ttf", 60, snowpulse::PathType::kDefaults);
     //fontRenderer->SetText("ONE GAMEDEV SAGA");

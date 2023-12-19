@@ -20,5 +20,53 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "727F7DB3-A9B6-4CCD-BCFF-6D9374F43E85"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../snowpulse/game/plugins/tiled/tiled_map.cc"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
+            landmarkName = "TiledMap::LoadJson()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "727F7DB3-A9B6-4CCD-BCFF-6D9374F43E85 - b2453bb4de027b45"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "snowpulse::TiledMap::LoadJson()"
+                  moduleName = "launcher_macos"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marcjamero/Documents/OneGameDevSaga/Snowpulse/snowpulse/game/plugins/tiled/tiled_map.cc"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "144"
+                  endingLineNumber = "144"
+                  offsetFromSymbolStart = "3728">
+               </Location>
+               <Location
+                  uuid = "727F7DB3-A9B6-4CCD-BCFF-6D9374F43E85 - b2453bb4de027b45"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "snowpulse::TiledMap::LoadJson()"
+                  moduleName = "launcher_macos"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marcjamero/Documents/OneGameDevSaga/Snowpulse/snowpulse/game/plugins/tiled/tiled_map.cc"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "144"
+                  endingLineNumber = "144"
+                  offsetFromSymbolStart = "3732">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
