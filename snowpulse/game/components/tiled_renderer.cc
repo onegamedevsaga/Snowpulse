@@ -30,6 +30,6 @@ void TiledRenderer::Update(float deltaTime) {
 
 // From Drawable
 void TiledRenderer::Draw(Graphics* graphics, Matrix4x4 worldMatrix) {
-    
+    tiledMap_->Draw(graphics, worldMatrix, sortOrder_, isPremultiplied_);
 }
 }   // namespace snowpulse

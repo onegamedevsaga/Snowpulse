@@ -4,6 +4,7 @@
 #include <map>
 
 #include "../../../common/color.h"
+#include "../../../application/atlas_manager.h"
 
 namespace snowpulse {
 std::shared_ptr<TiledMap> TiledMap::Create(std::string jsonFilename, PathType pathType, TextureFiltering filtering) {
@@ -33,7 +34,6 @@ void TiledMap::AddTileset(std::string jsonFilename) {
 }
 
 void TiledMap::Draw(Graphics* graphics, Matrix4x4 worldMatrix, int sortOrder, bool isPremultiplied) {
-    
 }
 
 TiledDataTile TiledMap::GetTile(int tileId) {
@@ -142,5 +142,8 @@ void TiledMap::LoadJson() {
             mapData_.layers.push_back(layer);
         }
     }
+
+    auto atlasManager = Application::GetInstance()->GetAtlasManager();
+    atlasManager->LoadTiles("sample.png", Vector2Int(3500 / 2, 2000), 20, 0);
 }
 }   // namespace snowpulse

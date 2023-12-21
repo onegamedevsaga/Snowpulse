@@ -21,7 +21,7 @@ class SNOWPULSEAPI Directory {
 
         std::string GetFullFilename(std::string filename, PathType pathType);
         std::string GetPathFromFilename(std::string pathWithFilename);
-        std::string GetFilenameFromPath(std::string filenamePath);
+        std::string GetFilenameFromPath(std::string filenamePath, bool removeExtension=false);
 
     protected:
         Directory();

@@ -87,13 +87,14 @@ void SceneLevel::Start() {
     })->Run();*/
 
     auto dup01 = snowpulse::GameObject::Create("dup01");
-    auto sprRenderer = snowpulse::SpriteRenderer::Create("atlas-test/mobilephone.png");
+    auto sprRenderer = snowpulse::SpriteRenderer::Create("sample.png_tile_0", "sample.atlas");
     sprRenderer->SetColor(snowpulse::Color(1.0f, 1.0f, 1.0f, 1.0f));
-    sprRenderer->SetSortOrder(0);
+    sprRenderer->SetSortOrder(10);
     dup01->AddComponent(sprRenderer);
     AddChild(dup01);
 
-    dup01->GetTransform()->SetLocalPosition(snowpulse::Vector2(GetResolutionSize().x * -0.5f, GetResolutionSize().y * -0.5f));
+    //dup01->GetTransform()->SetLocalPosition(snowpulse::Vector2(GetResolutionSize().x * -0.5f + 300, GetResolutionSize().y * -0.5f + 300));
+    dup01->GetTransform()->SetLocalScale(0.4f);
 
     go2_ = snowpulse::GameObject::Create("go2_");
     sprRenderer = snowpulse::SpriteRenderer::Create("pixel-test.png", snowpulse::PathType::kAssets, snowpulse::TextureFiltering::kPoint);

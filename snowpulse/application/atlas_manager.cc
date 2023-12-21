@@ -55,6 +55,31 @@ void AtlasManager::Load(std::string atlasFilename, PathType pathType) {
     }
 }
 
+void AtlasManager::LoadTiles(std::string imageFilename, Vector2Int tileSize, unsigned int tileCount, int spacing, PathType pathType) {
+    if (atlases_.count(imageFilename)) {
+        // Atlas already loaded.
+        return;
+    }
+    auto atlasFilename = Directory::GetInstance()->GetFilenameFromPath(imageFilename, true) + ".atlas";
+    Application::GetInstance()->GetGraphics()->LoadTexture(imageFilename, pathType);
+    auto imageSize = Application::GetInstance()->GetGraphics()->GetTextureSize(imageFilename);
+    int colCount = ((int)imageSize.x / (tileSize.x + spacing));
+    int rowCount = ((int)imageSize.y / (tileSize.y + spacing));
+    std::vector<AtlasSprite> tiles;
+    for (int i = 0; i < tileCount; i++) {
+        std::string name = imageFilename + "_tile_" + std::to_string(i);
+        int x = i % colCount;
+        int y = i / colCount;
+        if (y + 1 > rowCount) {
+            break;
+        }
+        Vector2 uv((float)(x * (tileSize.x + spacing)) / imageSize.x, (float)(y * (tileSize.y + spacing)) / imageSize.y);
+        AtlasSprite as(atlasFilename, imageFilename, name, uv, Vector2(tileSize.x, tileSize.y));
+        tiles.push_back(as);
+    }
+    atlases_[atlasFilename] = tiles;
+}
+
 void AtlasManager::Create(Vector2Int size, std::string outputFilename, std::vector<std::string> textureFilenames, PathType texturesPathType, PathType outputPathType, std::function<void(int)> onProgressFunc) {
     if (isWorking_) {
 #ifdef SPDEBUG

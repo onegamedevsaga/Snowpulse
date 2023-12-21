@@ -28,6 +28,7 @@ class SNOWPULSEAPI AtlasManager {
         virtual ~AtlasManager();
 
         void Load(std::string atlasFilename, PathType pathType = PathType::kAssets);
+        void LoadTiles(std::string imageFilename, Vector2Int tileSize, unsigned int tileCount, int spacing, PathType pathType = PathType::kAssets);
         void Create(Vector2Int size, std::string outputFilename, std::vector<std::string> textureFilenames, PathType texturesPathType, PathType outputPathType, std::function<void(int)> onProgressFunc);
         void CreateInMemory(Vector2Int size, std::string atlasFilename, std::map<std::string, unsigned char*> bitmaps, std::map<std::string, Vector2Int> sizes);
         AtlasSprite GetSprite(std::string spriteFilename);
