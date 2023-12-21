@@ -128,6 +128,22 @@
 		2A624C932B2B22D000710C50 /* font_renderer.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A624C912B2B22D000710C50 /* font_renderer.h */; };
 		2A624C942B2B22D000710C50 /* font_renderer.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A624C922B2B22D000710C50 /* font_renderer.cc */; };
 		2A624C952B2B22D000710C50 /* font_renderer.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A624C922B2B22D000710C50 /* font_renderer.cc */; };
+		2A8D3CE02B348F8C001D77CF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A8D3CD42B348F8C001D77CF /* AppDelegate.m */; };
+		2A8D3CE22B348F8C001D77CF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A8D3CD72B348F8C001D77CF /* main.m */; };
+		2A8D3CE32B348F8C001D77CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A8D3CD92B348F8C001D77CF /* LaunchScreen.storyboard */; };
+		2A8D3CE42B348F8C001D77CF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A8D3CDB2B348F8C001D77CF /* Main.storyboard */; };
+		2A8D3CE52B348F8C001D77CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A8D3CDE2B348F8C001D77CF /* Assets.xcassets */; };
+		2A8D3CEF2B348FA6001D77CF /* imgui_test.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A8D3CE92B348FA6001D77CF /* imgui_test.cc */; };
+		2A8D3CF02B348FA6001D77CF /* game.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A8D3CEB2B348FA6001D77CF /* game.cc */; };
+		2A8D3CF12B348FA6001D77CF /* scene_level.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A8D3CED2B348FA6001D77CF /* scene_level.cc */; };
+		2A8D3CF22B349035001D77CF /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AC67DE32B263BAB0009F46C /* Metal.framework */; };
+		2A8D3CF32B349035001D77CF /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AC67DE52B263BAF0009F46C /* MetalKit.framework */; };
+		2A8D3CF42B349046001D77CF /* libsnowpulse_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A5266BB2B20514C008B7268 /* libsnowpulse_ios.a */; };
+		2A8D3CF72B349052001D77CF /* libgame_spookyseas_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A8D3CCA2B348F32001D77CF /* libgame_spookyseas_ios.a */; };
+		2A8D3CFA2B34916D001D77CF /* libsnowpulse_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A5266BB2B20514C008B7268 /* libsnowpulse_ios.a */; };
+		2A8D3CFB2B349525001D77CF /* defaults in Resources */ = {isa = PBXBuildFile; fileRef = 2AE4B7912B0FECD800252B50 /* defaults */; };
+		2A8D3CFC2B349525001D77CF /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 2AE4B78E2B0FE88200252B50 /* assets */; };
+		2A8D3CFF2B34976E001D77CF /* GameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A8D3CDF2B348F8C001D77CF /* GameViewController.mm */; };
 		2A8F06362B31A79600A8AA2A /* tiled_map.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A8F06342B31A79600A8AA2A /* tiled_map.cc */; };
 		2A8F06382B31B49E00A8AA2A /* color.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A8F06372B31B49E00A8AA2A /* color.cc */; };
 		2A8F06412B31EBAE00A8AA2A /* tiled_renderer.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A8F063F2B31EBAE00A8AA2A /* tiled_renderer.cc */; };
@@ -275,22 +291,6 @@
 		2AC67DE72B263BE30009F46C /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AC67DE32B263BAB0009F46C /* Metal.framework */; };
 		2AC67DE82B263BEF0009F46C /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AC67DE52B263BAF0009F46C /* MetalKit.framework */; };
 		2AC67DE92B263BF70009F46C /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AE640E82B131EFE00A6B8DA /* Metal.framework */; };
-		2AC67DEA2B263C170009F46C /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AC67DE32B263BAB0009F46C /* Metal.framework */; };
-		2AC67DEB2B263C170009F46C /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AC67DE52B263BAF0009F46C /* MetalKit.framework */; };
-		2AD6675C2B22246C00E0E83A /* libsnowpulse_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A5266BB2B20514C008B7268 /* libsnowpulse_ios.a */; };
-		2AD6676C2B22247F00E0E83A /* libsnowpulse_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A5266BB2B20514C008B7268 /* libsnowpulse_ios.a */; };
-		2AD6676D2B22247F00E0E83A /* libgame_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A52672A2B206305008B7268 /* libgame_ios.a */; };
-		2AD667702B22247F00E0E83A /* defaults in Resources */ = {isa = PBXBuildFile; fileRef = 2AE4B7912B0FECD800252B50 /* defaults */; };
-		2AD6677F2B2225B000E0E83A /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 2AD6677E2B2225B000E0E83A /* assets */; };
-		2AD667B42B222C6B00E0E83A /* scene_level.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2AD667B02B222C6B00E0E83A /* scene_level.cc */; };
-		2AD667B52B222C6B00E0E83A /* game.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2AD667B22B222C6B00E0E83A /* game.cc */; };
-		2AE11C342B243B330023DB82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AE11C282B243B330023DB82 /* Assets.xcassets */; };
-		2AE11C352B243B330023DB82 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE11C292B243B330023DB82 /* AppDelegate.m */; };
-		2AE11C362B243B330023DB82 /* GameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2AE11C2A2B243B330023DB82 /* GameViewController.mm */; };
-		2AE11C372B243B330023DB82 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AE11C2D2B243B330023DB82 /* LaunchScreen.storyboard */; };
-		2AE11C382B243B330023DB82 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AE11C2F2B243B330023DB82 /* Main.storyboard */; };
-		2AE11C392B243B330023DB82 /* launcher_slots_ios.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2AE11C322B243B330023DB82 /* launcher_slots_ios.plist */; };
-		2AE11C3A2B243B330023DB82 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE11C332B243B330023DB82 /* main.m */; };
 		2AE11C492B2443A70023DB82 /* imgui_draw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AE11C3D2B2443A70023DB82 /* imgui_draw.cpp */; };
 		2AE11C4E2B2443A70023DB82 /* imgui_demo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AE11C3E2B2443A70023DB82 /* imgui_demo.cpp */; };
 		2AE11C572B2443A70023DB82 /* imgui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AE11C412B2443A70023DB82 /* imgui.cpp */; };
@@ -314,19 +314,19 @@
 			remoteGlobalIDString = 2A5266BA2B20514C008B7268;
 			remoteInfo = snowpulse_ios;
 		};
-		2AD667642B22247F00E0E83A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2AF938AE2ABDC14D00CC8BA2 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2A5267292B206305008B7268;
-			remoteInfo = game_ios;
-		};
-		2AD667662B22247F00E0E83A /* PBXContainerItemProxy */ = {
+		2A8D3CF52B349046001D77CF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2AF938AE2ABDC14D00CC8BA2 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2A5266BA2B20514C008B7268;
 			remoteInfo = snowpulse_ios;
+		};
+		2A8D3CF82B349052001D77CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2AF938AE2ABDC14D00CC8BA2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2A8D3CC92B348F32001D77CF;
+			remoteInfo = game_spookyseas_ios;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -349,7 +349,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2AD6675D2B22246C00E0E83A /* CopyFiles */ = {
+		2A8D3CC82B348F32001D77CF /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "include/$(PRODUCT_NAME)";
@@ -546,6 +546,24 @@
 		2A77E7272B107FAA00579051 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		2A77E72A2B107FBE00579051 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		2A77E72F2B1096A300579051 /* json_utils.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = json_utils.cc; sourceTree = "<group>"; };
+		2A8D3C922B348E34001D77CF /* Spooky Seas: Pirate Adventure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Spooky Seas: Pirate Adventure.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A8D3CCA2B348F32001D77CF /* libgame_spookyseas_ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libgame_spookyseas_ios.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A8D3CD42B348F8C001D77CF /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ../custom_games/spooky_seas/launcher_ios/AppDelegate.m; sourceTree = "<group>"; };
+		2A8D3CD52B348F8C001D77CF /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../custom_games/spooky_seas/launcher_ios/AppDelegate.h; sourceTree = "<group>"; };
+		2A8D3CD62B348F8C001D77CF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../custom_games/spooky_seas/launcher_ios/Info.plist; sourceTree = "<group>"; };
+		2A8D3CD72B348F8C001D77CF /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ../custom_games/spooky_seas/launcher_ios/main.m; sourceTree = "<group>"; };
+		2A8D3CDA2B348F8C001D77CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2A8D3CDC2B348F8C001D77CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
+		2A8D3CDD2B348F8C001D77CF /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameViewController.h; path = ../custom_games/spooky_seas/launcher_ios/GameViewController.h; sourceTree = "<group>"; };
+		2A8D3CDE2B348F8C001D77CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../custom_games/spooky_seas/launcher_ios/Assets.xcassets; sourceTree = "<group>"; };
+		2A8D3CDF2B348F8C001D77CF /* GameViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = GameViewController.mm; path = ../custom_games/spooky_seas/launcher_ios/GameViewController.mm; sourceTree = "<group>"; };
+		2A8D3CE72B348FA6001D77CF /* game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = game.h; path = ../custom_games/spooky_seas/game/game.h; sourceTree = "<group>"; };
+		2A8D3CE92B348FA6001D77CF /* imgui_test.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = imgui_test.cc; sourceTree = "<group>"; };
+		2A8D3CEA2B348FA6001D77CF /* imgui_test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imgui_test.h; sourceTree = "<group>"; };
+		2A8D3CEB2B348FA6001D77CF /* game.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = game.cc; path = ../custom_games/spooky_seas/game/game.cc; sourceTree = "<group>"; };
+		2A8D3CEC2B348FA6001D77CF /* defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = defines.h; path = ../custom_games/spooky_seas/game/defines.h; sourceTree = "<group>"; };
+		2A8D3CED2B348FA6001D77CF /* scene_level.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = scene_level.cc; path = ../custom_games/spooky_seas/game/scene_level.cc; sourceTree = "<group>"; };
+		2A8D3CEE2B348FA6001D77CF /* scene_level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = scene_level.h; path = ../custom_games/spooky_seas/game/scene_level.h; sourceTree = "<group>"; };
 		2A8F06342B31A79600A8AA2A /* tiled_map.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = tiled_map.cc; path = plugins/tiled/tiled_map.cc; sourceTree = "<group>"; };
 		2A8F06352B31A79600A8AA2A /* tiled_map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tiled_map.h; path = plugins/tiled/tiled_map.h; sourceTree = "<group>"; };
 		2A8F06372B31B49E00A8AA2A /* color.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = color.cc; sourceTree = "<group>"; };
@@ -735,23 +753,6 @@
 		2AC67DE52B263BAF0009F46C /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS16.4.sdk/System/Library/Frameworks/MetalKit.framework; sourceTree = DEVELOPER_DIR; };
 		2AC95E1C2B1DE0B200B2C916 /* touch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = touch.h; sourceTree = "<group>"; };
 		2AC95E1F2B1DE16500B2C916 /* touch_phase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = touch_phase.h; sourceTree = "<group>"; };
-		2AD667612B22246C00E0E83A /* libgame_slots_ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libgame_slots_ios.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		2AD667772B22247F00E0E83A /* Slot Machine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Slot Machine.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2AD6677E2B2225B000E0E83A /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = assets; path = ../game_slots/assets; sourceTree = "<group>"; };
-		2AD667AF2B222C6B00E0E83A /* defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = defines.h; path = ../game_slots/src/defines.h; sourceTree = "<group>"; };
-		2AD667B02B222C6B00E0E83A /* scene_level.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = scene_level.cc; path = ../game_slots/src/scene_level.cc; sourceTree = "<group>"; };
-		2AD667B12B222C6B00E0E83A /* scene_level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = scene_level.h; path = ../game_slots/src/scene_level.h; sourceTree = "<group>"; };
-		2AD667B22B222C6B00E0E83A /* game.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = game.cc; path = ../game_slots/src/game.cc; sourceTree = "<group>"; };
-		2AD667B32B222C6B00E0E83A /* game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = game.h; path = ../game_slots/src/game.h; sourceTree = "<group>"; };
-		2AE11C282B243B330023DB82 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../game_slots/launcher_ios/Assets.xcassets; sourceTree = "<group>"; };
-		2AE11C292B243B330023DB82 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ../game_slots/launcher_ios/AppDelegate.m; sourceTree = "<group>"; };
-		2AE11C2A2B243B330023DB82 /* GameViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = GameViewController.mm; path = ../game_slots/launcher_ios/GameViewController.mm; sourceTree = "<group>"; };
-		2AE11C2B2B243B330023DB82 /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameViewController.h; path = ../game_slots/launcher_ios/GameViewController.h; sourceTree = "<group>"; };
-		2AE11C2E2B243B330023DB82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		2AE11C302B243B330023DB82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
-		2AE11C312B243B330023DB82 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../game_slots/launcher_ios/AppDelegate.h; sourceTree = "<group>"; };
-		2AE11C322B243B330023DB82 /* launcher_slots_ios.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = launcher_slots_ios.plist; path = ../game_slots/launcher_ios/launcher_slots_ios.plist; sourceTree = "<group>"; };
-		2AE11C332B243B330023DB82 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ../game_slots/launcher_ios/main.m; sourceTree = "<group>"; };
 		2AE11C3C2B2443A70023DB82 /* imstb_truetype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imstb_truetype.h; path = ../thirdparty/imgui/imstb_truetype.h; sourceTree = "<group>"; };
 		2AE11C3D2B2443A70023DB82 /* imgui_draw.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_draw.cpp; path = ../thirdparty/imgui/imgui_draw.cpp; sourceTree = "<group>"; };
 		2AE11C3E2B2443A70023DB82 /* imgui_demo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_demo.cpp; path = ../thirdparty/imgui/imgui_demo.cpp; sourceTree = "<group>"; };
@@ -829,6 +830,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2A8D3C8F2B348E34001D77CF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A8D3CF22B349035001D77CF /* Metal.framework in Frameworks */,
+				2A8D3CF32B349035001D77CF /* MetalKit.framework in Frameworks */,
+				2A8D3CF72B349052001D77CF /* libgame_spookyseas_ios.a in Frameworks */,
+				2A8D3CF42B349046001D77CF /* libsnowpulse_ios.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A8D3CC72B348F32001D77CF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A8D3CFA2B34916D001D77CF /* libsnowpulse_ios.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2AA1AA5F2B2075C5002F2A49 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -859,25 +879,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2AA1AAA12B2095DA002F2A49 /* libsnowpulse_macos.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2AD6675B2B22246C00E0E83A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2AD6675C2B22246C00E0E83A /* libsnowpulse_ios.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2AD6676B2B22247F00E0E83A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2AD6676C2B22247F00E0E83A /* libsnowpulse_ios.a in Frameworks */,
-				2AC67DEB2B263C170009F46C /* MetalKit.framework in Frameworks */,
-				2AC67DEA2B263C170009F46C /* Metal.framework in Frameworks */,
-				2AD6676D2B22247F00E0E83A /* libgame_ios.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1216,6 +1217,54 @@
 			name = "nlohmann-json";
 			sourceTree = "<group>";
 		};
+		2A8D3C752B348D5C001D77CF /* launcher_spookyseas_ios */ = {
+			isa = PBXGroup;
+			children = (
+				2A8D3CD52B348F8C001D77CF /* AppDelegate.h */,
+				2A8D3CD42B348F8C001D77CF /* AppDelegate.m */,
+				2A8D3CDE2B348F8C001D77CF /* Assets.xcassets */,
+				2A8D3CD82B348F8C001D77CF /* Base.lproj */,
+				2A8D3CDD2B348F8C001D77CF /* GameViewController.h */,
+				2A8D3CDF2B348F8C001D77CF /* GameViewController.mm */,
+				2A8D3CD62B348F8C001D77CF /* Info.plist */,
+				2A8D3CD72B348F8C001D77CF /* main.m */,
+			);
+			name = launcher_spookyseas_ios;
+			sourceTree = "<group>";
+		};
+		2A8D3CD32B348F4C001D77CF /* game_spookyseas_ios */ = {
+			isa = PBXGroup;
+			children = (
+				2A8D3CE82B348FA6001D77CF /* components */,
+				2A8D3CEC2B348FA6001D77CF /* defines.h */,
+				2A8D3CEB2B348FA6001D77CF /* game.cc */,
+				2A8D3CE72B348FA6001D77CF /* game.h */,
+				2A8D3CED2B348FA6001D77CF /* scene_level.cc */,
+				2A8D3CEE2B348FA6001D77CF /* scene_level.h */,
+			);
+			name = game_spookyseas_ios;
+			sourceTree = "<group>";
+		};
+		2A8D3CD82B348F8C001D77CF /* Base.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				2A8D3CD92B348F8C001D77CF /* LaunchScreen.storyboard */,
+				2A8D3CDB2B348F8C001D77CF /* Main.storyboard */,
+			);
+			name = Base.lproj;
+			path = ../custom_games/spooky_seas/launcher_ios/Base.lproj;
+			sourceTree = "<group>";
+		};
+		2A8D3CE82B348FA6001D77CF /* components */ = {
+			isa = PBXGroup;
+			children = (
+				2A8D3CE92B348FA6001D77CF /* imgui_test.cc */,
+				2A8D3CEA2B348FA6001D77CF /* imgui_test.h */,
+			);
+			name = components;
+			path = ../custom_games/spooky_seas/game/components;
+			sourceTree = "<group>";
+		};
 		2A8F06332B31A73A00A8AA2A /* tiled */ = {
 			isa = PBXGroup;
 			children = (
@@ -1472,44 +1521,6 @@
 			name = components;
 			sourceTree = "<group>";
 		};
-		2AD6677B2B22259200E0E83A /* game_slots */ = {
-			isa = PBXGroup;
-			children = (
-				2AD667AF2B222C6B00E0E83A /* defines.h */,
-				2AD667B22B222C6B00E0E83A /* game.cc */,
-				2AD667B32B222C6B00E0E83A /* game.h */,
-				2AD667B02B222C6B00E0E83A /* scene_level.cc */,
-				2AD667B12B222C6B00E0E83A /* scene_level.h */,
-				2AD6677E2B2225B000E0E83A /* assets */,
-			);
-			name = game_slots;
-			sourceTree = "<group>";
-		};
-		2AE11C272B243B0F0023DB82 /* launcher_slots_ios */ = {
-			isa = PBXGroup;
-			children = (
-				2AE11C312B243B330023DB82 /* AppDelegate.h */,
-				2AE11C292B243B330023DB82 /* AppDelegate.m */,
-				2AE11C282B243B330023DB82 /* Assets.xcassets */,
-				2AE11C2C2B243B330023DB82 /* Base.lproj */,
-				2AE11C2B2B243B330023DB82 /* GameViewController.h */,
-				2AE11C2A2B243B330023DB82 /* GameViewController.mm */,
-				2AE11C322B243B330023DB82 /* launcher_slots_ios.plist */,
-				2AE11C332B243B330023DB82 /* main.m */,
-			);
-			name = launcher_slots_ios;
-			sourceTree = "<group>";
-		};
-		2AE11C2C2B243B330023DB82 /* Base.lproj */ = {
-			isa = PBXGroup;
-			children = (
-				2AE11C2D2B243B330023DB82 /* LaunchScreen.storyboard */,
-				2AE11C2F2B243B330023DB82 /* Main.storyboard */,
-			);
-			name = Base.lproj;
-			path = ../game_slots/launcher_ios/Base.lproj;
-			sourceTree = "<group>";
-		};
 		2AE11C3B2B243BB10023DB82 /* imgui */ = {
 			isa = PBXGroup;
 			children = (
@@ -1579,13 +1590,13 @@
 		2AF938AD2ABDC14D00CC8BA2 = {
 			isa = PBXGroup;
 			children = (
-				2AE11C272B243B0F0023DB82 /* launcher_slots_ios */,
-				2AD6677B2B22259200E0E83A /* game_slots */,
 				2AE4B7912B0FECD800252B50 /* defaults */,
 				2AE4B78E2B0FE88200252B50 /* assets */,
 				2A4FBDED2B00BF430060E35C /* snowpulse */,
 				2A4FBE762B00BF890060E35C /* game */,
+				2A8D3CD32B348F4C001D77CF /* game_spookyseas_ios */,
 				2A27D3162B1522F3008B5446 /* launcher_ios */,
+				2A8D3C752B348D5C001D77CF /* launcher_spookyseas_ios */,
 				2AA1AA632B2075C5002F2A49 /* launcher_macos */,
 				2AF938E62ABDDB5F00CC8BA2 /* Frameworks */,
 				2AF938B72ABDC14D00CC8BA2 /* Products */,
@@ -1601,8 +1612,8 @@
 				2AA1AA622B2075C5002F2A49 /* launcher_macos.app */,
 				2AA1AA8B2B209542002F2A49 /* libsnowpulse_macos.a */,
 				2AA1AAA02B2095BB002F2A49 /* libgame_macos.a */,
-				2AD667612B22246C00E0E83A /* libgame_slots_ios.a */,
-				2AD667772B22247F00E0E83A /* Slot Machine.app */,
+				2A8D3C922B348E34001D77CF /* Spooky Seas: Pirate Adventure.app */,
+				2A8D3CCA2B348F32001D77CF /* libgame_spookyseas_ios.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1709,6 +1720,42 @@
 			productReference = 2A52672A2B206305008B7268 /* libgame_ios.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		2A8D3C912B348E34001D77CF /* launcher_spookyseas_ios */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2A8D3CAA2B348E35001D77CF /* Build configuration list for PBXNativeTarget "launcher_spookyseas_ios" */;
+			buildPhases = (
+				2A8D3C8E2B348E34001D77CF /* Sources */,
+				2A8D3C8F2B348E34001D77CF /* Frameworks */,
+				2A8D3C902B348E34001D77CF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2A8D3CF62B349046001D77CF /* PBXTargetDependency */,
+				2A8D3CF92B349052001D77CF /* PBXTargetDependency */,
+			);
+			name = launcher_spookyseas_ios;
+			productName = launcher_spookyseas_ios;
+			productReference = 2A8D3C922B348E34001D77CF /* Spooky Seas: Pirate Adventure.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2A8D3CC92B348F32001D77CF /* game_spookyseas_ios */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2A8D3CD02B348F32001D77CF /* Build configuration list for PBXNativeTarget "game_spookyseas_ios" */;
+			buildPhases = (
+				2A8D3CC62B348F32001D77CF /* Sources */,
+				2A8D3CC72B348F32001D77CF /* Frameworks */,
+				2A8D3CC82B348F32001D77CF /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = game_spookyseas_ios;
+			productName = game_spookyseas_ios;
+			productReference = 2A8D3CCA2B348F32001D77CF /* libgame_spookyseas_ios.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		2AA1AA612B2075C5002F2A49 /* launcher_macos */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2AA1AA782B2075C5002F2A49 /* Build configuration list for PBXNativeTarget "launcher_macos" */;
@@ -1760,42 +1807,6 @@
 			productReference = 2AA1AAA02B2095BB002F2A49 /* libgame_macos.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		2AD667572B22246C00E0E83A /* game_slots_ios */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2AD6675E2B22246C00E0E83A /* Build configuration list for PBXNativeTarget "game_slots_ios" */;
-			buildPhases = (
-				2AD667582B22246C00E0E83A /* Sources */,
-				2AD6675B2B22246C00E0E83A /* Frameworks */,
-				2AD6675D2B22246C00E0E83A /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = game_slots_ios;
-			productName = game_ios;
-			productReference = 2AD667612B22246C00E0E83A /* libgame_slots_ios.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		2AD667622B22247F00E0E83A /* launcher_slots_ios */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2AD667742B22247F00E0E83A /* Build configuration list for PBXNativeTarget "launcher_slots_ios" */;
-			buildPhases = (
-				2AD667672B22247F00E0E83A /* Sources */,
-				2AD6676B2B22247F00E0E83A /* Frameworks */,
-				2AD6676E2B22247F00E0E83A /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				2AD667632B22247F00E0E83A /* PBXTargetDependency */,
-				2AD667652B22247F00E0E83A /* PBXTargetDependency */,
-			);
-			name = launcher_slots_ios;
-			productName = launcher_ios;
-			productReference = 2AD667772B22247F00E0E83A /* Slot Machine.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1812,6 +1823,12 @@
 						CreatedOnToolsVersion = 14.3.1;
 					};
 					2A5267292B206305008B7268 = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+					2A8D3C912B348E34001D77CF = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+					2A8D3CC92B348F32001D77CF = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
 					2AA1AA612B2075C5002F2A49 = {
@@ -1841,8 +1858,8 @@
 				2A5267292B206305008B7268 /* game_ios */,
 				2AA1AA8A2B209542002F2A49 /* snowpulse_macos */,
 				2AA1AA962B2095BB002F2A49 /* game_macos */,
-				2AD667622B22247F00E0E83A /* launcher_slots_ios */,
-				2AD667572B22246C00E0E83A /* game_slots_ios */,
+				2A8D3C912B348E34001D77CF /* launcher_spookyseas_ios */,
+				2A8D3CC92B348F32001D77CF /* game_spookyseas_ios */,
 			);
 		};
 /* End PBXProject section */
@@ -1860,6 +1877,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2A8D3C902B348E34001D77CF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A8D3CFB2B349525001D77CF /* defaults in Resources */,
+				2A8D3CFC2B349525001D77CF /* assets in Resources */,
+				2A8D3CE42B348F8C001D77CF /* Main.storyboard in Resources */,
+				2A8D3CE52B348F8C001D77CF /* Assets.xcassets in Resources */,
+				2A8D3CE32B348F8C001D77CF /* LaunchScreen.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2AA1AA602B2075C5002F2A49 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1868,19 +1897,6 @@
 				2AA1AA7C2B2076A8002F2A49 /* assets in Resources */,
 				2AA1AA742B2075C5002F2A49 /* Main.storyboard in Resources */,
 				2AA1AA7B2B2076A5002F2A49 /* defaults in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2AD6676E2B22247F00E0E83A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2AD6677F2B2225B000E0E83A /* assets in Resources */,
-				2AE11C382B243B330023DB82 /* Main.storyboard in Resources */,
-				2AE11C392B243B330023DB82 /* launcher_slots_ios.plist in Resources */,
-				2AE11C372B243B330023DB82 /* LaunchScreen.storyboard in Resources */,
-				2AE11C342B243B330023DB82 /* Assets.xcassets in Resources */,
-				2AD667702B22247F00E0E83A /* defaults in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2030,6 +2046,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2A8D3C8E2B348E34001D77CF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A8D3CFF2B34976E001D77CF /* GameViewController.mm in Sources */,
+				2A8D3CE22B348F8C001D77CF /* main.m in Sources */,
+				2A8D3CE02B348F8C001D77CF /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A8D3CC62B348F32001D77CF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A8D3CEF2B348FA6001D77CF /* imgui_test.cc in Sources */,
+				2A8D3CF12B348FA6001D77CF /* scene_level.cc in Sources */,
+				2A8D3CF02B348FA6001D77CF /* game.cc in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2AA1AA5E2B2075C5002F2A49 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2163,25 +2199,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2AD667582B22246C00E0E83A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2AD667672B22247F00E0E83A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2AE11C3A2B243B330023DB82 /* main.m in Sources */,
-				2AD667B52B222C6B00E0E83A /* game.cc in Sources */,
-				2AD667B42B222C6B00E0E83A /* scene_level.cc in Sources */,
-				2AE11C362B243B330023DB82 /* GameViewController.mm in Sources */,
-				2AE11C352B243B330023DB82 /* AppDelegate.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -2195,15 +2212,15 @@
 			target = 2A5266BA2B20514C008B7268 /* snowpulse_ios */;
 			targetProxy = 2A52674E2B206536008B7268 /* PBXContainerItemProxy */;
 		};
-		2AD667632B22247F00E0E83A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2A5267292B206305008B7268 /* game_ios */;
-			targetProxy = 2AD667642B22247F00E0E83A /* PBXContainerItemProxy */;
-		};
-		2AD667652B22247F00E0E83A /* PBXTargetDependency */ = {
+		2A8D3CF62B349046001D77CF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2A5266BA2B20514C008B7268 /* snowpulse_ios */;
-			targetProxy = 2AD667662B22247F00E0E83A /* PBXContainerItemProxy */;
+			targetProxy = 2A8D3CF52B349046001D77CF /* PBXContainerItemProxy */;
+		};
+		2A8D3CF92B349052001D77CF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2A8D3CC92B348F32001D77CF /* game_spookyseas_ios */;
+			targetProxy = 2A8D3CF82B349052001D77CF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2224,26 +2241,26 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		2AA1AA722B2075C5002F2A49 /* Main.storyboard */ = {
+		2A8D3CD92B348F8C001D77CF /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				2AA1AA732B2075C5002F2A49 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		2AE11C2D2B243B330023DB82 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2AE11C2E2B243B330023DB82 /* Base */,
+				2A8D3CDA2B348F8C001D77CF /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		2AE11C2F2B243B330023DB82 /* Main.storyboard */ = {
+		2A8D3CDB2B348F8C001D77CF /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				2AE11C302B243B330023DB82 /* Base */,
+				2A8D3CDC2B348F8C001D77CF /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2AA1AA722B2075C5002F2A49 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2AA1AA732B2075C5002F2A49 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -2460,6 +2477,156 @@
 			};
 			name = Release;
 		};
+		2A8D3CAB2B348E35001D77CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 23J8NZZ8E9;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					SNOWPULSE_PLATFORM_IOS,
+				);
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					../snowpulse/,
+					../custom_games/spooky_seas/game,
+					../thirdparty/glm/,
+					../thirdparty/stb/,
+					"../thirdparty/nlohmann-json/",
+					"../thirdparty/spine-cpp/**",
+					../thirdparty/metal/,
+					../thirdparty/imgui/,
+					../thirdparty/imgui/backends/,
+				);
+				INFOPLIST_FILE = ../custom_games/spooky_seas/launcher_ios/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Spooky Seas: Pirate Adventure";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = metal;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = io.snowblink.SpookySeas;
+				PRODUCT_NAME = "Spooky Seas: Pirate Adventure";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2A8D3CAC2B348E35001D77CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 23J8NZZ8E9;
+				GCC_PREPROCESSOR_DEFINITIONS = SNOWPULSE_PLATFORM_IOS;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					../snowpulse/,
+					../custom_games/spooky_seas/game,
+					../thirdparty/glm/,
+					../thirdparty/stb/,
+					"../thirdparty/nlohmann-json/",
+					"../thirdparty/spine-cpp/**",
+					../thirdparty/metal/,
+					../thirdparty/imgui/,
+					../thirdparty/imgui/backends/,
+				);
+				INFOPLIST_FILE = ../custom_games/spooky_seas/launcher_ios/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Spooky Seas: Pirate Adventure";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = metal;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = io.snowblink.SpookySeas;
+				PRODUCT_NAME = "Spooky Seas: Pirate Adventure";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2A8D3CD12B348F32001D77CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					GAMEAPI_EXPORT,
+					SNOWPULSE_PLATFORM_IOS,
+				);
+				HEADER_SEARCH_PATHS = (
+					../snowpulse/,
+					../thirdparty/glm/,
+					../thirdparty/stb/,
+					"../thirdparty/nlohmann-json/",
+					"../thirdparty/spine-cpp/**",
+					../thirdparty/metal/,
+					../thirdparty/imgui/,
+					../thirdparty/imgui/backends/,
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2A8D3CD22B348F32001D77CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					GAMEAPI_EXPORT,
+					SNOWPULSE_PLATFORM_IOS,
+				);
+				HEADER_SEARCH_PATHS = (
+					../snowpulse/,
+					../thirdparty/glm/,
+					../thirdparty/stb/,
+					"../thirdparty/nlohmann-json/",
+					"../thirdparty/spine-cpp/**",
+					../thirdparty/metal/,
+					../thirdparty/imgui/,
+					../thirdparty/imgui/backends/,
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		2AA1AA792B2075C5002F2A49 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2644,156 +2811,6 @@
 			};
 			name = Release;
 		};
-		2AD6675F2B22246C00E0E83A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-					GAMEAPI_EXPORT,
-					SNOWPULSE_PLATFORM_IOS,
-				);
-				HEADER_SEARCH_PATHS = (
-					../snowpulse/,
-					../thirdparty/glm/,
-					../thirdparty/stb/,
-					"../thirdparty/nlohmann-json/",
-					"../thirdparty/spine-cpp/**",
-					../thirdparty/metal/,
-					../thirdparty/imgui/,
-					../thirdparty/imgui/backends/,
-				);
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		2AD667602B22246C00E0E83A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					GAMEAPI_EXPORT,
-					SNOWPULSE_PLATFORM_IOS,
-				);
-				HEADER_SEARCH_PATHS = (
-					../snowpulse/,
-					../thirdparty/glm/,
-					../thirdparty/stb/,
-					"../thirdparty/nlohmann-json/",
-					"../thirdparty/spine-cpp/**",
-					../thirdparty/metal/,
-					../thirdparty/imgui/,
-					../thirdparty/imgui/backends/,
-				);
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		2AD667752B22247F00E0E83A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 23J8NZZ8E9;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-					SNOWPULSE_PLATFORM_IOS,
-				);
-				GENERATE_INFOPLIST_FILE = YES;
-				HEADER_SEARCH_PATHS = (
-					../snowpulse/,
-					../game/,
-					../thirdparty/glm/,
-					../thirdparty/stb/,
-					"../thirdparty/nlohmann-json/",
-					"../thirdparty/spine-cpp/**",
-					../thirdparty/metal/,
-					../thirdparty/imgui/,
-					../thirdparty/imgui/backends/,
-				);
-				INFOPLIST_FILE = ../game_slots/launcher_ios/launcher_slots_ios.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Slot Machine";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.casino-games";
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UIRequiredDeviceCapabilities = metal;
-				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 0.0.01;
-				PRODUCT_BUNDLE_IDENTIFIER = io.snowblink.SlotMachine;
-				PRODUCT_NAME = "Slot Machine";
-				SDKROOT = iphoneos;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		2AD667762B22247F00E0E83A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 23J8NZZ8E9;
-				GCC_PREPROCESSOR_DEFINITIONS = SNOWPULSE_PLATFORM_IOS;
-				GENERATE_INFOPLIST_FILE = YES;
-				HEADER_SEARCH_PATHS = (
-					../snowpulse/,
-					../game/,
-					../thirdparty/glm/,
-					../thirdparty/stb/,
-					"../thirdparty/nlohmann-json/",
-					"../thirdparty/spine-cpp/**",
-					../thirdparty/metal/,
-					../thirdparty/imgui/,
-					../thirdparty/imgui/backends/,
-				);
-				INFOPLIST_FILE = ../game_slots/launcher_ios/launcher_slots_ios.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Slot Machine";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.casino-games";
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UIRequiredDeviceCapabilities = metal;
-				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 0.0.01;
-				PRODUCT_BUNDLE_IDENTIFIER = io.snowblink.SlotMachine;
-				PRODUCT_NAME = "Slot Machine";
-				SDKROOT = iphoneos;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
 		2AF938BF2ABDC14D00CC8BA2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2935,6 +2952,24 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		2A8D3CAA2B348E35001D77CF /* Build configuration list for PBXNativeTarget "launcher_spookyseas_ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A8D3CAB2B348E35001D77CF /* Debug */,
+				2A8D3CAC2B348E35001D77CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2A8D3CD02B348F32001D77CF /* Build configuration list for PBXNativeTarget "game_spookyseas_ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A8D3CD12B348F32001D77CF /* Debug */,
+				2A8D3CD22B348F32001D77CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2AA1AA782B2075C5002F2A49 /* Build configuration list for PBXNativeTarget "launcher_macos" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -2958,24 +2993,6 @@
 			buildConfigurations = (
 				2AA1AA9E2B2095BB002F2A49 /* Debug */,
 				2AA1AA9F2B2095BB002F2A49 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2AD6675E2B22246C00E0E83A /* Build configuration list for PBXNativeTarget "game_slots_ios" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2AD6675F2B22246C00E0E83A /* Debug */,
-				2AD667602B22246C00E0E83A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2AD667742B22247F00E0E83A /* Build configuration list for PBXNativeTarget "launcher_slots_ios" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2AD667752B22247F00E0E83A /* Debug */,
-				2AD667762B22247F00E0E83A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

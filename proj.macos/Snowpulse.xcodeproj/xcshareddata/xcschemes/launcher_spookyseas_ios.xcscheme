@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2AD667572B22246C00E0E83A"
-               BuildableName = "libgame_slots_ios.a"
-               BlueprintName = "game_slots_ios"
+               BlueprintIdentifier = "2A8D3C912B348E34001D77CF"
+               BuildableName = "launcher_spookyseas_ios.app"
+               BlueprintName = "launcher_spookyseas_ios"
                ReferencedContainer = "container:Snowpulse.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -39,6 +39,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "2A8D3C912B348E34001D77CF"
+            BuildableName = "launcher_spookyseas_ios.app"
+            BlueprintName = "launcher_spookyseas_ios"
+            ReferencedContainer = "container:Snowpulse.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -46,15 +56,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2AD667572B22246C00E0E83A"
-            BuildableName = "libgame_slots_ios.a"
-            BlueprintName = "game_slots_ios"
+            BlueprintIdentifier = "2A8D3C912B348E34001D77CF"
+            BuildableName = "launcher_spookyseas_ios.app"
+            BlueprintName = "launcher_spookyseas_ios"
             ReferencedContainer = "container:Snowpulse.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

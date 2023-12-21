@@ -1,10 +1,3 @@
-//
-//  main.m
-//  launcher_ios
-//
-//  Created by Marc Jamero on 11/28/23.
-//
-
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 
