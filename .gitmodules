@@ -1,6 +1,3 @@
-[submodule "game_slots"]
-	path = game_slots
-	url = git@github.com-onegamedevsaga:onegamedevsaga/slots.git
 [submodule "custom_games/spooky_seas"]
 	path = custom_games/spooky_seas
 	url = git@github.com-onegamedevsaga:onegamedevsaga/SpookySeas.git
