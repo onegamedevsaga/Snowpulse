@@ -93,8 +93,8 @@ void SceneLevel::Start() {
     dup01->AddComponent(sprRenderer);
     AddChild(dup01);
 
-    //dup01->GetTransform()->SetLocalPosition(snowpulse::Vector2(GetResolutionSize().x * -0.5f + 300, GetResolutionSize().y * -0.5f + 300));
-    dup01->GetTransform()->SetLocalScale(0.4f);
+    dup01->GetTransform()->SetLocalPosition(snowpulse::Vector2(GetResolutionSize().x * 0.5f - 100, GetResolutionSize().y * 0.5f - 100));
+    dup01->GetTransform()->SetLocalScale(0.05f);
 
     go2_ = snowpulse::GameObject::Create("go2_");
     sprRenderer = snowpulse::SpriteRenderer::Create("pixel-test.png", snowpulse::PathType::kAssets, snowpulse::TextureFiltering::kPoint);
@@ -142,6 +142,18 @@ void SceneLevel::Start() {
 
     tempGo->GetTransform()->SetLocalPosition(snowpulse::Vector2((float)(GetResolutionSize().x) * -0.5f + 300.0f, (float)(GetResolutionSize().y) * -0.5f + 100.0f));
     tempGo->GetTransform()->SetLocalScale(snowpulse::Vector2(1.0f, 1.0f));
+
+    snowpulse::ParticleSystemSettings effectsSettings;
+    effectsSettings.textureFilename = "logo.png";
+    effectsSettings.startScale = 0.1f;
+    effectsSettings.emissionRate = 20.0f;
+
+    auto effectsGo = snowpulse::GameObject::Create("effectsGo");
+    effectRenderer_ = snowpulse::ParticleEffectsRenderer::Create(effectsSettings);
+    effectRenderer_->SetSortOrder(5);
+    effectsGo->AddComponent(effectRenderer_);
+    effectsGo->GetTransform()->SetPosition(snowpulse::Vector2(0.0f, 0.0f));
+    AddChild(effectsGo);
 
     auto fpsGo = snowpulse::GameObject::Create("fpsGo");
     fpsRenderer_ = snowpulse::FontRenderer::Create("fonts/roboto/Roboto-Black.ttf", 50, snowpulse::PathType::kDefaults, snowpulse::TextureFiltering::kAnisotropic);

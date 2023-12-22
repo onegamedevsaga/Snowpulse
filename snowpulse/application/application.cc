@@ -49,6 +49,8 @@ bool Application::Initialize(const Vector2Int& resolution, const Vector2Int& scr
     atlasManager_ = AtlasManager::Create();
     fontManager_ = FontManager::Create();
 
+    srand((unsigned) time(SPNULL));
+
     appTimer_.Start();
     frameTimer_.Start();
     return true;

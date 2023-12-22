@@ -13,7 +13,7 @@
 namespace snowpulse {
 class SNOWPULSEAPI ParticleEffectsRenderer : public SpriteRenderer {
     public:
-        static std::shared_ptr<ParticleEffectsRenderer> Create(ParticleSystemSettings settings);
+        static std::shared_ptr<ParticleEffectsRenderer> Create(const ParticleSystemSettings& settings);
 
         virtual ~ParticleEffectsRenderer();
         // From Updatable
@@ -24,7 +24,7 @@ class SNOWPULSEAPI ParticleEffectsRenderer : public SpriteRenderer {
     protected:
         ParticleEffectsRenderer();
 
-        void LoadGraphics(Graphics* graphics, ParticleSystemSettings settings);
+        void LoadGraphics(Graphics* graphics, const ParticleSystemSettings& settings);
 
         std::shared_ptr<ParticleSystem> particleSystem_;
 };

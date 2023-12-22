@@ -3,7 +3,7 @@
 #include "../../application/application.h"
 
 namespace snowpulse {
-std::shared_ptr<ParticleEffectsRenderer> ParticleEffectsRenderer::Create(ParticleSystemSettings settings) {
+std::shared_ptr<ParticleEffectsRenderer> ParticleEffectsRenderer::Create(const ParticleSystemSettings& settings) {
     auto particleEffectsRenderer = std::shared_ptr<ParticleEffectsRenderer>(new ParticleEffectsRenderer());
     particleEffectsRenderer->LoadGraphics(Application::GetInstance()->GetGraphics(), settings);
     return particleEffectsRenderer;
@@ -15,14 +15,16 @@ ParticleEffectsRenderer::ParticleEffectsRenderer() : SpriteRenderer("particle_ef
 ParticleEffectsRenderer::~ParticleEffectsRenderer() {
 }
 
-void ParticleEffectsRenderer::LoadGraphics(Graphics* graphics, ParticleSystemSettings settings) {
+void ParticleEffectsRenderer::LoadGraphics(Graphics* graphics, const ParticleSystemSettings& settings) {
     graphics_ = graphics;
+    graphics_->LoadTexture(settings.textureFilename);
     particleSystem_ = ParticleSystem::Create(settings);
 }
 
 // From Updatable
 void ParticleEffectsRenderer::Update(float deltaTime) {
     Component::Update(deltaTime);
+    particleSystem_->Update(deltaTime);
 }
 
 // From Drawable

@@ -14,11 +14,13 @@ namespace snowpulse {
 class SNOWPULSEAPI ParticleData {
     public:
 
-        float lifespan;
+        float lifespan = 1.0f;
+        float currentLife = 1.0f;
         Vector2 position;
-        float rotation;
-        float scale;
-        Color color;
+        float rotation = 0.0f;
+        float scale = 1.0f;
+        Color color = Color::White();
+        Vector2 size = Vector2(100.0f, 100.0f);
 
         Vector2 direction;
         float speed;
