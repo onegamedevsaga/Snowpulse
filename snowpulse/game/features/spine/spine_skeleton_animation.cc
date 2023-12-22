@@ -63,7 +63,6 @@ SpineSkeletonAnimation::SpineSkeletonAnimation() {
 SpineSkeletonAnimation::~SpineSkeletonAnimation() {
 }
 
-// From Updatable
 void SpineSkeletonAnimation::Update(float deltaTime) {
     animationState_->update(deltaTime);
     animationState_->apply(*skeleton_);

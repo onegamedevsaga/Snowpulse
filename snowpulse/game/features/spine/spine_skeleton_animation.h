@@ -2,7 +2,6 @@
 #define SNOWPULSE_GAME_FEATURES_SPINE_SPINESKELETONANIMATION_H_
 
 #include "../../../defines.h"
-#include "../../updatable.h"
 
 #include <memory>
 #include <string>
@@ -21,14 +20,12 @@
 #include "../../../common/texture_filtering.h"
 
 namespace snowpulse {
-class SNOWPULSEAPI SpineSkeletonAnimation : public Updatable {
+class SNOWPULSEAPI SpineSkeletonAnimation {
     public:
         static std::shared_ptr<SpineSkeletonAnimation> Create(std::string jsonFilename, std::string atlasFilename, TextureFiltering filtering);
 
         virtual ~SpineSkeletonAnimation();
-        // From Updatable
         void Update(float deltaTime);
-
         void Draw(Graphics* graphics, Matrix4x4 worldMatrix, int sortOrder, bool isPremultiplied);
         void SetSkin(std::string name);
         void PlayAnimation(std::string name, bool looping = false);

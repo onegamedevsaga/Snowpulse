@@ -305,6 +305,14 @@
 		2AE15E682B35EF2B00AF049E /* tiled_data_tile.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AE15E602B35EF2B00AF049E /* tiled_data_tile.h */; };
 		2AE15E692B35EF2B00AF049E /* tiled_map.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AE15E612B35EF2B00AF049E /* tiled_map.h */; };
 		2AE15E6A2B35EF2B00AF049E /* tiled_data_layer.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AE15E622B35EF2B00AF049E /* tiled_data_layer.h */; };
+		2AE15E6E2B35F02600AF049E /* particle_system.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AE15E6C2B35F02600AF049E /* particle_system.h */; };
+		2AE15E6F2B35F02600AF049E /* particle_system.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2AE15E6D2B35F02600AF049E /* particle_system.cc */; };
+		2AE15E702B35F02600AF049E /* particle_system.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2AE15E6D2B35F02600AF049E /* particle_system.cc */; };
+		2AE15E722B35F1D500AF049E /* particle_system_settings.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AE15E712B35F1D500AF049E /* particle_system_settings.h */; };
+		2AE15E742B35F59700AF049E /* particle_data.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AE15E732B35F59700AF049E /* particle_data.h */; };
+		2AE15E772B35F68600AF049E /* particle_effects_renderer.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2AE15E752B35F68600AF049E /* particle_effects_renderer.cc */; };
+		2AE15E782B35F68600AF049E /* particle_effects_renderer.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2AE15E752B35F68600AF049E /* particle_effects_renderer.cc */; };
+		2AE15E792B35F68600AF049E /* particle_effects_renderer.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AE15E762B35F68600AF049E /* particle_effects_renderer.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -774,6 +782,12 @@
 		2AE15E602B35EF2B00AF049E /* tiled_data_tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tiled_data_tile.h; path = features/tiled/tiled_data_tile.h; sourceTree = "<group>"; };
 		2AE15E612B35EF2B00AF049E /* tiled_map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tiled_map.h; path = features/tiled/tiled_map.h; sourceTree = "<group>"; };
 		2AE15E622B35EF2B00AF049E /* tiled_data_layer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tiled_data_layer.h; path = features/tiled/tiled_data_layer.h; sourceTree = "<group>"; };
+		2AE15E6C2B35F02600AF049E /* particle_system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = particle_system.h; path = features/particle_system/particle_system.h; sourceTree = "<group>"; };
+		2AE15E6D2B35F02600AF049E /* particle_system.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = particle_system.cc; path = features/particle_system/particle_system.cc; sourceTree = "<group>"; };
+		2AE15E712B35F1D500AF049E /* particle_system_settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = particle_system_settings.h; path = features/particle_system/particle_system_settings.h; sourceTree = "<group>"; };
+		2AE15E732B35F59700AF049E /* particle_data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = particle_data.h; path = features/particle_system/particle_data.h; sourceTree = "<group>"; };
+		2AE15E752B35F68600AF049E /* particle_effects_renderer.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = particle_effects_renderer.cc; sourceTree = "<group>"; };
+		2AE15E762B35F68600AF049E /* particle_effects_renderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = particle_effects_renderer.h; sourceTree = "<group>"; };
 		2AE4B78E2B0FE88200252B50 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = assets; path = ../assets; sourceTree = "<group>"; };
 		2AE4B7912B0FECD800252B50 /* defaults */ = {isa = PBXFileReference; lastKnownFileType = folder; name = defaults; path = ../defaults; sourceTree = "<group>"; };
 		2AE640B22B11CC1D00A6B8DA /* directory_macos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = directory_macos.h; sourceTree = "<group>"; };
@@ -1098,6 +1112,8 @@
 				2A4FBDF92B00BF430060E35C /* sprite_renderer.cc */,
 				2A8F06402B31EBAE00A8AA2A /* tiled_renderer.h */,
 				2A8F063F2B31EBAE00A8AA2A /* tiled_renderer.cc */,
+				2AE15E762B35F68600AF049E /* particle_effects_renderer.h */,
+				2AE15E752B35F68600AF049E /* particle_effects_renderer.cc */,
 				2A624C912B2B22D000710C50 /* font_renderer.h */,
 				2A624C922B2B22D000710C50 /* font_renderer.cc */,
 				2AA9A9D42B078F77009AACBF /* spine_renderer.h */,
@@ -1494,6 +1510,7 @@
 		2AA9A9CD2B078541009AACBF /* features */ = {
 			isa = PBXGroup;
 			children = (
+				2AE15E6B2B35EFC600AF049E /* particle_system */,
 				2A8F06332B31A73A00A8AA2A /* tiled */,
 				2AA9A9CE2B0785B7009AACBF /* spine */,
 			);
@@ -1555,6 +1572,17 @@
 				2AE11C902B244FD40023DB82 /* glfw3native.h */,
 			);
 			name = glfw;
+			sourceTree = "<group>";
+		};
+		2AE15E6B2B35EFC600AF049E /* particle_system */ = {
+			isa = PBXGroup;
+			children = (
+				2AE15E732B35F59700AF049E /* particle_data.h */,
+				2AE15E712B35F1D500AF049E /* particle_system_settings.h */,
+				2AE15E6C2B35F02600AF049E /* particle_system.h */,
+				2AE15E6D2B35F02600AF049E /* particle_system.cc */,
+			);
+			name = particle_system;
 			sourceTree = "<group>";
 		};
 		2AE640BC2B12921100A6B8DA /* metal */ = {
@@ -1659,7 +1687,9 @@
 				2AE15E692B35EF2B00AF049E /* tiled_map.h in Headers */,
 				2AE15E5B2B35EF1F00AF049E /* spine_texture_loader.h in Headers */,
 				2AE15E642B35EF2B00AF049E /* tiled_data_map.h in Headers */,
+				2AE15E792B35F68600AF049E /* particle_effects_renderer.h in Headers */,
 				2AE15E652B35EF2B00AF049E /* tiled_data_grid.h in Headers */,
+				2AE15E742B35F59700AF049E /* particle_data.h in Headers */,
 				2AE15E6A2B35EF2B00AF049E /* tiled_data_layer.h in Headers */,
 				2AC67DC32B24B33C0009F46C /* imgui_impl_metal.h in Headers */,
 				2A624C8C2B29FB2E00710C50 /* font_manager.h in Headers */,
@@ -1668,6 +1698,8 @@
 				2A0656362B28065E00E2B2B9 /* atlas_manager.h in Headers */,
 				2AE15E632B35EF2B00AF049E /* tiled_data_tileset.h in Headers */,
 				2A624C932B2B22D000710C50 /* font_renderer.h in Headers */,
+				2AE15E722B35F1D500AF049E /* particle_system_settings.h in Headers */,
+				2AE15E6E2B35F02600AF049E /* particle_system.h in Headers */,
 				2AE11C922B244FD40023DB82 /* glfw3native.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1999,6 +2031,7 @@
 				2A5266E72B206244008B7268 /* MeshAttachment.cpp in Sources */,
 				2A5267242B2062CE008B7268 /* action_manager.cc in Sources */,
 				2A5267222B2062CE008B7268 /* node.cc in Sources */,
+				2AE15E6F2B35F02600AF049E /* particle_system.cc in Sources */,
 				2A8F06382B31B49E00A8AA2A /* color.cc in Sources */,
 				2A5266CC2B206244008B7268 /* TranslateTimeline.cpp in Sources */,
 				2A0656342B28065E00E2B2B9 /* atlas_manager.cc in Sources */,
@@ -2021,6 +2054,7 @@
 				2A5267122B206285008B7268 /* directory.cc in Sources */,
 				2A52671A2B2062A7008B7268 /* action_interpolate.cc in Sources */,
 				2A5266D72B206244008B7268 /* VertexAttachment.cpp in Sources */,
+				2AE15E772B35F68600AF049E /* particle_effects_renderer.cc in Sources */,
 				2A5266FA2B206244008B7268 /* PathConstraintMixTimeline.cpp in Sources */,
 				2A5266FE2B206244008B7268 /* Triangulator.cpp in Sources */,
 				2A5267032B206244008B7268 /* AttachmentLoader.cpp in Sources */,
@@ -2158,6 +2192,7 @@
 				2AA1AAFA2B2096CB002F2A49 /* action_move.cc in Sources */,
 				2AA1AAE02B209674002F2A49 /* Slot.cpp in Sources */,
 				2AA1AAD22B209674002F2A49 /* DrawOrderTimeline.cpp in Sources */,
+				2AE15E702B35F02600AF049E /* particle_system.cc in Sources */,
 				2A8F06422B31F6C000A8AA2A /* tiled_renderer.cc in Sources */,
 				2A0656352B28065E00E2B2B9 /* atlas_manager.cc in Sources */,
 				2AA1AAF72B2096AF002F2A49 /* camera.cc in Sources */,
@@ -2180,6 +2215,7 @@
 				2AA1AAB02B209674002F2A49 /* BoundingBoxAttachment.cpp in Sources */,
 				2AA1AAD82B209674002F2A49 /* Sequence.cpp in Sources */,
 				2AA1AAAD2B209674002F2A49 /* AttachmentLoader.cpp in Sources */,
+				2AE15E782B35F68600AF049E /* particle_effects_renderer.cc in Sources */,
 				2AA1AAEE2B209697002F2A49 /* application_metal.cc in Sources */,
 				2AC67DCF2B24B69F0009F46C /* imgui_impl_metal.mm in Sources */,
 				2AA1AAC32B209674002F2A49 /* PointAttachment.cpp in Sources */,

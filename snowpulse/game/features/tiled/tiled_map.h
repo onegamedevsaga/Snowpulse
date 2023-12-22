@@ -2,7 +2,6 @@
 #define SNOWPULSE_GAME_FEATURES_TILED_TILEDMAP_H_
 
 #include "../../../defines.h"
-#include "../../updatable.h"
 
 #include <memory>
 #include <string>
@@ -18,16 +17,14 @@
 #include "../../../application/graphics.h"
 
 namespace snowpulse {
-class SNOWPULSEAPI TiledMap : public Updatable {
+class SNOWPULSEAPI TiledMap {
     public:
         static std::shared_ptr<TiledMap> Create(std::string jsonFilename, PathType pathType, TextureFiltering filtering);
 
         virtual ~TiledMap();
-        // From Updatable
         void Update(float deltaTime);
-
-        void AddTileset(std::string jsonFilename);
         void Draw(Graphics* graphics, Matrix4x4 worldMatrix, int sortOrder, bool isPremultiplied);
+        void AddTileset(std::string jsonFilename);
 
         TiledDataTile GetTile(int tileId);
         TiledDataTile GetTile(int x, int y, int layerId);

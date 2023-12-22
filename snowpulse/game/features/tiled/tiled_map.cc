@@ -24,7 +24,6 @@ TiledMap::~TiledMap() {
     
 }
 
-// From Updatable
 void TiledMap::Update(float deltaTime) {
     
 }
