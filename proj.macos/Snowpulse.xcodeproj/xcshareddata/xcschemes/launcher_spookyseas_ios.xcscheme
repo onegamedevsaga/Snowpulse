@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2A8D3C912B348E34001D77CF"
-               BuildableName = "launcher_spookyseas_ios.app"
+               BuildableName = "Spooky Seas: Pirate Adventure.app"
                BlueprintName = "launcher_spookyseas_ios"
                ReferencedContainer = "container:Snowpulse.xcodeproj">
             </BuildableReference>
@@ -44,7 +44,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2A8D3C912B348E34001D77CF"
-            BuildableName = "launcher_spookyseas_ios.app"
+            BuildableName = "Spooky Seas: Pirate Adventure.app"
             BlueprintName = "launcher_spookyseas_ios"
             ReferencedContainer = "container:Snowpulse.xcodeproj">
          </BuildableReference>
@@ -61,7 +61,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2A8D3C912B348E34001D77CF"
-            BuildableName = "launcher_spookyseas_ios.app"
+            BuildableName = "Spooky Seas: Pirate Adventure.app"
             BlueprintName = "launcher_spookyseas_ios"
             ReferencedContainer = "container:Snowpulse.xcodeproj">
          </BuildableReference>

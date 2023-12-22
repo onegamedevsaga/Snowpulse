@@ -8,7 +8,7 @@
 #include <vector>
 
 #include "../../common/path_type.h"
-#include "../plugins/tiled/tiled_map.h"
+#include "../features/tiled/tiled_map.h"
 
 namespace snowpulse {
 class SNOWPULSEAPI TiledRenderer : public SpriteRenderer {

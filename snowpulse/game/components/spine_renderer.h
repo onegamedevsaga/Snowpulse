@@ -6,7 +6,7 @@
 #include <memory>
 #include <string>
 
-#include "../plugins/spine/spine_skeleton_animation.h"
+#include "../features/spine/spine_skeleton_animation.h"
 
 namespace snowpulse {
 class SNOWPULSEAPI SpineRenderer : public SpriteRenderer {
