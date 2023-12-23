@@ -22,8 +22,7 @@ class SNOWPULSEAPI ParticleData {
         Color color = Color::White();
         Vector2 size = Vector2(100.0f, 100.0f);
 
-        Vector2 direction;
-        float speed;
+        Vector2 velocity;
 };
 }   // namespace snowpulse
 #endif

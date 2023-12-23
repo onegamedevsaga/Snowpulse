@@ -35,7 +35,13 @@ void ParticleSystem::Update(float deltaTime) {
         if (p.currentLife <= 0.0f) {
             continue;
         }
-        p.position += p.direction * p.speed * deltaTime;
+        p.position += p.velocity * deltaTime;
+        p.velocity += settings_.acceleration * deltaTime;
+
+        float percentage = 1.0f - p.currentLife / p.lifespan;
+        p.color = settings_.startColor + ((settings_.endColor - settings_.startColor) * percentage);
+        p.scale = settings_.startScale + ((settings_.endScale - settings_.startScale) * percentage);
+
         stillAliveParticles.push_back(p);
     }
     particles_.swap(stillAliveParticles);
@@ -92,8 +98,42 @@ bool ParticleSystem::SpawnParticle() {
         data.lifespan = a + (float)(rand() % (int)(range * 100.0f)) * 0.01f;
     }
 
+    float speed = 0.0f;
+    Vector2 direction;
+
+    if (settings_.speedValueMode == ParticleSystemSettings::ValueMode::kSingle) {
+        speed = settings_.speedA;
+    }
+    else if (settings_.speedValueMode == ParticleSystemSettings::ValueMode::kRandomBetween) {
+        speed = rand() % 2 == 0 ? settings_.speedA : settings_.speedB;
+    }
+    else if (settings_.speedValueMode == ParticleSystemSettings::ValueMode::kRandomWithin) {
+        float a = settings_.speedA < settings_.speedB ? settings_.speedA : settings_.speedB;
+        float b = settings_.speedA < settings_.speedB ? settings_.speedB : settings_.speedA;
+        float range = abs(b - a);
+        speed = a + (float)(rand() % (int)(range * 100.0f)) * 0.01f;
+    }
+
+    if (settings_.emissionAngleValueMode == ParticleSystemSettings::ValueMode::kSingle) {
+        direction.x = cos(SPDEGTORAD(settings_.emissionAngleA));
+        direction.y = sin(SPDEGTORAD(settings_.emissionAngleA));
+    }
+    else if (settings_.emissionAngleValueMode == ParticleSystemSettings::ValueMode::kRandomBetween) {
+        auto angle = rand() % 2 == 0 ? settings_.emissionAngleA : settings_.emissionAngleB;
+        direction.x = cos(SPDEGTORAD(angle));
+        direction.y = sin(SPDEGTORAD(angle));
+    }
+    else if (settings_.emissionAngleValueMode == ParticleSystemSettings::ValueMode::kRandomWithin) {
+        float a = settings_.emissionAngleA < settings_.emissionAngleB ? settings_.emissionAngleA : settings_.emissionAngleB;
+        float b = settings_.emissionAngleA < settings_.emissionAngleB ? settings_.emissionAngleB : settings_.emissionAngleA;
+        float range = abs(b - a);
+        auto angle = a + (float)(rand() % (int)(range * 100.0f)) * 0.01f;
+        direction.x = cos(SPDEGTORAD(angle));
+        direction.y = sin(SPDEGTORAD(angle));
+    }
+
     data.currentLife = data.lifespan;
-    data.speed = settings_.speedA;
+    data.velocity = direction * speed;
     data.rotation = settings_.startAngle;
     data.scale = settings_.startScale;
     data.size = Application::GetInstance()->GetGraphics()->GetTextureSize(settings_.textureFilename);

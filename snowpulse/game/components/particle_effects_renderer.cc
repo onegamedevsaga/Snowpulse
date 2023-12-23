@@ -17,7 +17,7 @@ ParticleEffectsRenderer::~ParticleEffectsRenderer() {
 
 void ParticleEffectsRenderer::LoadGraphics(Graphics* graphics, const ParticleSystemSettings& settings) {
     graphics_ = graphics;
-    graphics_->LoadTexture(settings.textureFilename);
+    graphics_->LoadTexture(settings.textureFilename, settings.texturePathType);
     particleSystem_ = ParticleSystem::Create(settings);
 }
 

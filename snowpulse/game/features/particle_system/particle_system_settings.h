@@ -7,6 +7,7 @@
 
 #include "../../../common/vector2.h"
 #include "../../../common/color.h"
+#include "../../../common/path_type.h"
 #include "../../../common/blend_mode.h"
 #include "../../../common/texture_filtering.h"
 
@@ -27,6 +28,7 @@ class SNOWPULSEAPI ParticleSystemSettings {
 
         BlendMode blendMode = BlendMode::kAdditive;
         TextureFiltering textureFiltering = TextureFiltering::kBilinear;
+        PathType texturePathType = PathType::kAssets;
         std::string textureFilename;
 
         ValueMode speedValueMode = ValueMode::kSingle;
@@ -40,7 +42,7 @@ class SNOWPULSEAPI ParticleSystemSettings {
         float lifespanB = 1.0f;
 
         float startScale = 1.0f;
-        float scaleVelocity = 0.0f;
+        float endScale = 1.0f;
 
         float startAngle = 0.0f;
         float angleVelocity = 0.0f;

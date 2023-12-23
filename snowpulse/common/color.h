@@ -18,6 +18,18 @@ class SNOWPULSEAPI Color {
         Color(float r = 1.0f, float g = 1.0f, float b = 1.0f, float a = 1.0f) : r(r), g(g), b(b), a(a) {}
         Color(std::string hex);
 
+        Color operator+(const Color& other) const {
+            return Color(r + other.r, g + other.g, b + other.b, a + other.a);
+        }
+
+        Color operator-(const Color& other) const {
+            return Color(r - other.r, g - other.g, b - other.b, a - other.a);
+        }
+
+        Color operator*(float scalar) const {
+            return Color(r * scalar, g * scalar, b * scalar, a * scalar);
+        }
+
         float r;
         float g;
         float b;

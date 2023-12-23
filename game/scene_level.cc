@@ -144,21 +144,34 @@ void SceneLevel::Start() {
     tempGo->GetTransform()->SetLocalScale(snowpulse::Vector2(1.0f, 1.0f));
 
     snowpulse::ParticleSystemSettings effectsSettings;
-    effectsSettings.textureFilename = "logo.png";
-    effectsSettings.startScale = 0.05f;
+    effectsSettings.texturePathType = snowpulse::PathType::kDefaults;
+    effectsSettings.textureFilename = "sprites/particle_default.png";
+    effectsSettings.blendMode = snowpulse::BlendMode::kAdditive;
+    effectsSettings.startScale = 1.5f;
+    effectsSettings.endScale = 0.2f;
     effectsSettings.lifespanValueMode = snowpulse::ParticleSystemSettings::ValueMode::kRandomWithin;
-    effectsSettings.lifespanA = 3.0f;
-    effectsSettings.lifespanB = 10.0f;
+    effectsSettings.lifespanA = 0.8f;
+    effectsSettings.lifespanB = 1.0f;
     effectsSettings.maxParticleCount = 10000;
-    effectsSettings.emissionShape = snowpulse::ParticleSystemSettings::EmissionShape::kRect;
+    effectsSettings.emissionShape = snowpulse::ParticleSystemSettings::EmissionShape::kCircle;
     effectsSettings.emissionRectSize = snowpulse::Vector2(100.0f, 40.0f);
-    effectsSettings.emissionRate = 2.0f;
+    effectsSettings.emissionRadius = 50.0f;
+    effectsSettings.emissionRate = 40.0f;
+    effectsSettings.emissionAngleValueMode = snowpulse::ParticleSystemSettings::ValueMode::kRandomWithin;
+    effectsSettings.emissionAngleA = 80.0f;
+    effectsSettings.emissionAngleB = 100.0f;
+    effectsSettings.speedValueMode = snowpulse::ParticleSystemSettings::ValueMode::kRandomWithin;
+    effectsSettings.speedA = 270.0f;
+    effectsSettings.speedB = 350.0f;
+    effectsSettings.acceleration = snowpulse::Vector2(0.0f, -1.0f) * 200.0f;
+    effectsSettings.startColor = snowpulse::Color::Red();
+    effectsSettings.endColor = snowpulse::Color(1.0f, 0.6f, 0.0f, 0.0f);
 
     auto effectsGo = snowpulse::GameObject::Create("effectsGo");
     effectRenderer_ = snowpulse::ParticleEffectsRenderer::Create(effectsSettings);
     effectRenderer_->SetSortOrder(5);
     effectsGo->AddComponent(effectRenderer_);
-    effectsGo->GetTransform()->SetPosition(snowpulse::Vector2(0.0f, 0.0f));
+    effectsGo->GetTransform()->SetPosition(snowpulse::Vector2(-200.0f, 200.0f));
     AddChild(effectsGo);
 
     auto fpsGo = snowpulse::GameObject::Create("fpsGo");
