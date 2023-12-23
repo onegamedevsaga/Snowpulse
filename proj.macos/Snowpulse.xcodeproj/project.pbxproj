@@ -10,6 +10,19 @@
 		2A0656342B28065E00E2B2B9 /* atlas_manager.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A0656322B28065E00E2B2B9 /* atlas_manager.cc */; };
 		2A0656352B28065E00E2B2B9 /* atlas_manager.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A0656322B28065E00E2B2B9 /* atlas_manager.cc */; };
 		2A0656362B28065E00E2B2B9 /* atlas_manager.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A0656332B28065E00E2B2B9 /* atlas_manager.h */; };
+		2A1A210E2B375B1E00F368E9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A1A210D2B375B1E00F368E9 /* AppDelegate.m */; };
+		2A1A21142B375B1E00F368E9 /* GameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A1A21132B375B1E00F368E9 /* GameViewController.mm */; };
+		2A1A21162B375B1E00F368E9 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 2A1A21152B375B1E00F368E9 /* Shaders.metal */; };
+		2A1A21192B375B1F00F368E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A1A21182B375B1F00F368E9 /* Assets.xcassets */; };
+		2A1A211C2B375B1F00F368E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A1A211A2B375B1F00F368E9 /* Main.storyboard */; };
+		2A1A211E2B375B1F00F368E9 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A1A211D2B375B1F00F368E9 /* main.mm */; };
+		2A1A21242B375B3300F368E9 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AE640E82B131EFE00A6B8DA /* Metal.framework */; };
+		2A1A21252B375B3300F368E9 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A27D2C82B14E06B008B5446 /* MetalKit.framework */; };
+		2A1A21262B375B4500F368E9 /* libgame_macos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AA1AAA02B2095BB002F2A49 /* libgame_macos.a */; };
+		2A1A21292B375B4500F368E9 /* libsnowpulse_macos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AA1AA8B2B209542002F2A49 /* libsnowpulse_macos.a */; };
+		2A1A212E2B375B8B00F368E9 /* defaults in Resources */ = {isa = PBXBuildFile; fileRef = 2AE4B7912B0FECD800252B50 /* defaults */; };
+		2A1A212F2B375B8B00F368E9 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 2AE4B78E2B0FE88200252B50 /* assets */; };
+		2A1A21322B375BFD00F368E9 /* GameView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A1A21302B375BFD00F368E9 /* GameView.mm */; };
 		2A27D3192B1522F3008B5446 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A27D3182B1522F3008B5446 /* AppDelegate.m */; };
 		2A27D31F2B1522F3008B5446 /* GameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A27D31E2B1522F3008B5446 /* GameViewController.mm */; };
 		2A27D3252B1522F3008B5446 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A27D3232B1522F3008B5446 /* Main.storyboard */; };
@@ -316,6 +329,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		2A1A21272B375B4500F368E9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2AF938AE2ABDC14D00CC8BA2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2AA1AA962B2095BB002F2A49;
+			remoteInfo = game_macos;
+		};
+		2A1A212A2B375B4500F368E9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2AF938AE2ABDC14D00CC8BA2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2AA1AA8A2B209542002F2A49;
+			remoteInfo = snowpulse_macos;
+		};
 		2A52674B2B206536008B7268 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2AF938AE2ABDC14D00CC8BA2 /* Project object */;
@@ -381,6 +408,20 @@
 		2A0656332B28065E00E2B2B9 /* atlas_manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = atlas_manager.h; sourceTree = "<group>"; };
 		2A0656372B2807AC00E2B2B9 /* graphics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = graphics.h; sourceTree = "<group>"; };
 		2A06563D2B28C40D00E2B2B9 /* atlas_sprite.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = atlas_sprite.h; sourceTree = "<group>"; };
+		2A1A210A2B375B1E00F368E9 /* Particle Effects Editor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Particle Effects Editor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A1A210C2B375B1E00F368E9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		2A1A210D2B375B1E00F368E9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		2A1A21122B375B1E00F368E9 /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		2A1A21132B375B1E00F368E9 /* GameViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = GameViewController.mm; sourceTree = "<group>"; };
+		2A1A21152B375B1E00F368E9 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
+		2A1A21172B375B1E00F368E9 /* ShaderTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShaderTypes.h; sourceTree = "<group>"; };
+		2A1A21182B375B1F00F368E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2A1A211B2B375B1F00F368E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2A1A211D2B375B1F00F368E9 /* main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
+		2A1A211F2B375B1F00F368E9 /* particle_effects_editor_macos.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = particle_effects_editor_macos.entitlements; sourceTree = "<group>"; };
+		2A1A212C2B375B8100F368E9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2A1A21302B375BFD00F368E9 /* GameView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameView.mm; sourceTree = "<group>"; };
+		2A1A21312B375BFD00F368E9 /* GameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameView.h; sourceTree = "<group>"; };
 		2A27D1B62B14DF31008B5446 /* CAPrivate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CAPrivate.hpp; path = ../thirdparty/metal/QuartzCore/CAPrivate.hpp; sourceTree = "<group>"; };
 		2A27D1B72B14DF31008B5446 /* CADefines.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CADefines.hpp; path = ../thirdparty/metal/QuartzCore/CADefines.hpp; sourceTree = "<group>"; };
 		2A27D1B82B14DF31008B5446 /* QuartzCore.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = QuartzCore.hpp; path = ../thirdparty/metal/QuartzCore/QuartzCore.hpp; sourceTree = "<group>"; };
@@ -819,6 +860,17 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2A1A21072B375B1E00F368E9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A1A21292B375B4500F368E9 /* libsnowpulse_macos.a in Frameworks */,
+				2A1A21242B375B3300F368E9 /* Metal.framework in Frameworks */,
+				2A1A21252B375B3300F368E9 /* MetalKit.framework in Frameworks */,
+				2A1A21262B375B4500F368E9 /* libgame_macos.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2A27D3122B1522F2008B5446 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -907,6 +959,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A1A210B2B375B1E00F368E9 /* particle_effects_editor_macos */ = {
+			isa = PBXGroup;
+			children = (
+				2A1A212C2B375B8100F368E9 /* Info.plist */,
+				2A1A210C2B375B1E00F368E9 /* AppDelegate.h */,
+				2A1A210D2B375B1E00F368E9 /* AppDelegate.m */,
+				2A1A21122B375B1E00F368E9 /* GameViewController.h */,
+				2A1A21132B375B1E00F368E9 /* GameViewController.mm */,
+				2A1A21312B375BFD00F368E9 /* GameView.h */,
+				2A1A21302B375BFD00F368E9 /* GameView.mm */,
+				2A1A21152B375B1E00F368E9 /* Shaders.metal */,
+				2A1A21172B375B1E00F368E9 /* ShaderTypes.h */,
+				2A1A21182B375B1F00F368E9 /* Assets.xcassets */,
+				2A1A211A2B375B1F00F368E9 /* Main.storyboard */,
+				2A1A211D2B375B1F00F368E9 /* main.mm */,
+				2A1A211F2B375B1F00F368E9 /* particle_effects_editor_macos.entitlements */,
+			);
+			path = particle_effects_editor_macos;
+			sourceTree = "<group>";
+		};
 		2A27D1B02B14DE86008B5446 /* metal */ = {
 			isa = PBXGroup;
 			children = (
@@ -1634,6 +1706,7 @@
 				2A27D3162B1522F3008B5446 /* launcher_ios */,
 				2A8D3C752B348D5C001D77CF /* launcher_spookyseas_ios */,
 				2AA1AA632B2075C5002F2A49 /* launcher_macos */,
+				2A1A210B2B375B1E00F368E9 /* particle_effects_editor_macos */,
 				2AF938E62ABDDB5F00CC8BA2 /* Frameworks */,
 				2AF938B72ABDC14D00CC8BA2 /* Products */,
 			);
@@ -1650,6 +1723,7 @@
 				2AA1AAA02B2095BB002F2A49 /* libgame_macos.a */,
 				2A8D3C922B348E34001D77CF /* Spooky Seas: Pirate Adventure.app */,
 				2A8D3CCA2B348F32001D77CF /* libgame_spookyseas_ios.a */,
+				2A1A210A2B375B1E00F368E9 /* Particle Effects Editor.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1715,6 +1789,25 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		2A1A21092B375B1E00F368E9 /* particle_effects_editor_macos */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2A1A21202B375B1F00F368E9 /* Build configuration list for PBXNativeTarget "particle_effects_editor_macos" */;
+			buildPhases = (
+				2A1A21062B375B1E00F368E9 /* Sources */,
+				2A1A21072B375B1E00F368E9 /* Frameworks */,
+				2A1A21082B375B1E00F368E9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2A1A21282B375B4500F368E9 /* PBXTargetDependency */,
+				2A1A212B2B375B4500F368E9 /* PBXTargetDependency */,
+			);
+			name = particle_effects_editor_macos;
+			productName = particle_effects_editor_macos;
+			productReference = 2A1A210A2B375B1E00F368E9 /* Particle Effects Editor.app */;
+			productType = "com.apple.product-type.application";
+		};
 		2A27D3142B1522F2008B5446 /* launcher_ios */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2A27D32D2B1522F4008B5446 /* Build configuration list for PBXNativeTarget "launcher_ios" */;
@@ -1864,6 +1957,9 @@
 				BuildIndependentTargetsInParallel = 1;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					2A1A21092B375B1E00F368E9 = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
 					2A27D3142B1522F2008B5446 = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
@@ -1908,11 +2004,23 @@
 				2AA1AA962B2095BB002F2A49 /* game_macos */,
 				2A8D3C912B348E34001D77CF /* launcher_spookyseas_ios */,
 				2A8D3CC92B348F32001D77CF /* game_spookyseas_ios */,
+				2A1A21092B375B1E00F368E9 /* particle_effects_editor_macos */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2A1A21082B375B1E00F368E9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A1A212E2B375B8B00F368E9 /* defaults in Resources */,
+				2A1A212F2B375B8B00F368E9 /* assets in Resources */,
+				2A1A21192B375B1F00F368E9 /* Assets.xcassets in Resources */,
+				2A1A211C2B375B1F00F368E9 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2A27D3132B1522F2008B5446 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1951,6 +2059,18 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2A1A21062B375B1E00F368E9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A1A211E2B375B1F00F368E9 /* main.mm in Sources */,
+				2A1A21162B375B1E00F368E9 /* Shaders.metal in Sources */,
+				2A1A21142B375B1E00F368E9 /* GameViewController.mm in Sources */,
+				2A1A21322B375BFD00F368E9 /* GameView.mm in Sources */,
+				2A1A210E2B375B1E00F368E9 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2A27D3112B1522F2008B5446 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2254,6 +2374,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		2A1A21282B375B4500F368E9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2AA1AA962B2095BB002F2A49 /* game_macos */;
+			targetProxy = 2A1A21272B375B4500F368E9 /* PBXContainerItemProxy */;
+		};
+		2A1A212B2B375B4500F368E9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2AA1AA8A2B209542002F2A49 /* snowpulse_macos */;
+			targetProxy = 2A1A212A2B375B4500F368E9 /* PBXContainerItemProxy */;
+		};
 		2A52674C2B206536008B7268 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2A5267292B206305008B7268 /* game_ios */;
@@ -2277,6 +2407,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		2A1A211A2B375B1F00F368E9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2A1A211B2B375B1F00F368E9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		2A27D3232B1522F3008B5446 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -2320,6 +2458,86 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2A1A21212B375B1F00F368E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = particle_effects_editor_macos/particle_effects_editor_macos.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					SNOWPULSE_PLATFORM_MACOS,
+				);
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					../snowpulse/,
+					../game/,
+					../thirdparty/glm/,
+					../thirdparty/stb/,
+					"../thirdparty/nlohmann-json/",
+					"../thirdparty/spine-cpp/**",
+					../thirdparty/metal/,
+					../thirdparty/imgui/,
+					../thirdparty/imgui/backends/,
+				);
+				INFOPLIST_FILE = particle_effects_editor_macos/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ParticleEffectsEditor;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 0.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.snowblink.Snowpulse.ParticleEffectsEditor.particle-effects-editor-macos";
+				PRODUCT_NAME = "Particle Effects Editor";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Debug;
+		};
+		2A1A21222B375B1F00F368E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = particle_effects_editor_macos/particle_effects_editor_macos.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GCC_PREPROCESSOR_DEFINITIONS = SNOWPULSE_PLATFORM_MACOS;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					../snowpulse/,
+					../game/,
+					../thirdparty/glm/,
+					../thirdparty/stb/,
+					"../thirdparty/nlohmann-json/",
+					"../thirdparty/spine-cpp/**",
+					../thirdparty/metal/,
+					../thirdparty/imgui/,
+					../thirdparty/imgui/backends/,
+				);
+				INFOPLIST_FILE = particle_effects_editor_macos/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ParticleEffectsEditor;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 0.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.snowblink.Snowpulse.ParticleEffectsEditor.particle-effects-editor-macos";
+				PRODUCT_NAME = "Particle Effects Editor";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Release;
+		};
 		2A27D32E2B1522F4008B5446 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2977,6 +3195,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2A1A21202B375B1F00F368E9 /* Build configuration list for PBXNativeTarget "particle_effects_editor_macos" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A1A21212B375B1F00F368E9 /* Debug */,
+				2A1A21222B375B1F00F368E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2A27D32D2B1522F4008B5446 /* Build configuration list for PBXNativeTarget "launcher_ios" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
