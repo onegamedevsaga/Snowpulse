@@ -74,7 +74,7 @@ class SNOWPULSEAPI MathUtils {
         }
 
         static float SineInOutEasing(float percentage) {
-            return 0.5 * (1 - cos(3.14159265358979323846f * percentage));
+            return 0.5 * (1 - cos(SPPI * percentage));
         }
 
         static float QuarticInEasing(float percentage) {
@@ -101,7 +101,7 @@ class SNOWPULSEAPI MathUtils {
             float p = 0.3;
             float s = p / 4;
             float postFix = pow(2, 10 * (percentage -= 1));
-            return -(postFix * sin((percentage - s) * (2 * 3.14159265358979323846f) / p));
+            return -(postFix * sin((percentage - s) * (2 * SPPI) / p));
         }
 
         static float ElasticOutEasing(float percentage) {
@@ -109,7 +109,7 @@ class SNOWPULSEAPI MathUtils {
             if (percentage == 1) return 1;
             float p = 0.3;
             float s = p / 4;
-            return pow(2, -10 * percentage) * sin((percentage - s) * (2 * 3.14159265358979323846f) / p) + 1;
+            return pow(2, -10 * percentage) * sin((percentage - s) * (2 * SPPI) / p) + 1;
         }
 
         static float ElasticInOutEasing(float percentage) {
@@ -119,10 +119,10 @@ class SNOWPULSEAPI MathUtils {
             float s = p / 4;
             if (percentage < 1) {
                 float postFix = pow(2, 10 * (percentage -= 1));
-                return -0.5 * (postFix * sin((percentage - s) * (2 * 3.14159265358979323846f) / p));
+                return -0.5 * (postFix * sin((percentage - s) * (2 * SPPI) / p));
             }
             float postFix = pow(2, -10 * (percentage -= 1));
-            return postFix * sin((percentage - s) * (2 * 3.14159265358979323846f) / p) * 0.5 + 1;
+            return postFix * sin((percentage - s) * (2 * SPPI) / p) * 0.5 + 1;
         }
 
         static float BounceInEasing(float percentage) {

@@ -11,7 +11,7 @@ class Matrix4x4 {
 
         static Matrix4x4 Rotate(const Vector3& eulerAngles) {
             Matrix4x4 result;
-            float multiplier = 3.14159265358979323846f / 180.0f;
+            float multiplier = SPPI / 180.0f;
             float radiansY = eulerAngles.y * multiplier;
             float radiansX = eulerAngles.x * multiplier;
             float radiansZ = eulerAngles.z * multiplier;

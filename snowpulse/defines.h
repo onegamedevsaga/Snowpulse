@@ -28,4 +28,7 @@
 
 #define SPSAFE_DELETE(ptr) if(ptr != 0) { delete ptr; ptr=0; }
 
+#define SPPI (3.14159265358979323846f)
+#define SPDEGTORAD(degrees) (degrees * 0.017453292519943f)
+
 #endif

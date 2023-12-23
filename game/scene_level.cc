@@ -145,8 +145,14 @@ void SceneLevel::Start() {
 
     snowpulse::ParticleSystemSettings effectsSettings;
     effectsSettings.textureFilename = "logo.png";
-    effectsSettings.startScale = 0.1f;
-    effectsSettings.emissionRate = 20.0f;
+    effectsSettings.startScale = 0.05f;
+    effectsSettings.lifespanValueMode = snowpulse::ParticleSystemSettings::ValueMode::kRandomWithin;
+    effectsSettings.lifespanA = 3.0f;
+    effectsSettings.lifespanB = 10.0f;
+    effectsSettings.maxParticleCount = 10000;
+    effectsSettings.emissionShape = snowpulse::ParticleSystemSettings::EmissionShape::kRect;
+    effectsSettings.emissionRectSize = snowpulse::Vector2(100.0f, 40.0f);
+    effectsSettings.emissionRate = 2.0f;
 
     auto effectsGo = snowpulse::GameObject::Create("effectsGo");
     effectRenderer_ = snowpulse::ParticleEffectsRenderer::Create(effectsSettings);

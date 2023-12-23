@@ -19,13 +19,15 @@ class SNOWPULSEAPI ParticleSystemSettings {
             kRandomWithin,
         };
 
+        enum class EmissionShape {
+            kPoint = 0,
+            kRect,
+            kCircle,
+        };
+
         BlendMode blendMode = BlendMode::kAdditive;
         TextureFiltering textureFiltering = TextureFiltering::kBilinear;
         std::string textureFilename;
-
-        ValueMode directionValueMode = ValueMode::kSingle;
-        Vector2 directionA = Vector2(0.7f, 0.7f);
-        Vector2 directionB = Vector2(0.7f, 0.7f);
 
         ValueMode speedValueMode = ValueMode::kSingle;
         float speedA = 100.0f;
@@ -46,8 +48,14 @@ class SNOWPULSEAPI ParticleSystemSettings {
         Color startColor = Color::White();
         Color endColor = Color::White();
 
+        EmissionShape emissionShape = EmissionShape::kPoint;
+        Vector2 emissionRectSize = Vector2(50.0f, 50.0f);
+        float emissionRadius = 50.0f;
         float emissionRate = 5.0f;
         int maxParticleCount = 20.0f;
+        ValueMode emissionAngleValueMode = ValueMode::kSingle;
+        float emissionAngleA = 0.0f;
+        float emissionAngleB = 0.0f;
 };
 }   // namespace snowpulse
 #endif

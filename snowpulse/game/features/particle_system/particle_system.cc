@@ -61,12 +61,38 @@ bool ParticleSystem::SpawnParticle() {
     }
 
     ParticleData data;
-    data.lifespan = settings_.lifespanA;
+    if (settings_.emissionShape == ParticleSystemSettings::EmissionShape::kPoint) {
+        data.position = Vector2();
+    }
+    else if (settings_.emissionShape == ParticleSystemSettings::EmissionShape::kRect) {
+        float x = (float)(rand() % (int)(settings_.emissionRectSize.x * 100.0f)) * 0.01f;
+        float y = (float)(rand() % (int)(settings_.emissionRectSize.y * 100.0f)) * 0.01f;
+        x -= settings_.emissionRectSize.x * 0.5f;
+        y -= settings_.emissionRectSize.y * 0.5f;
+        data.position = Vector2(x, y);
+    }
+    else if (settings_.emissionShape == ParticleSystemSettings::EmissionShape::kCircle) {
+        float magnitude = (float)(rand() % (int)(settings_.emissionRadius * 100.0f)) * 0.01f;
+        float angle = (float)(rand() % 36000) * 0.01f;
+        float x = cos(SPDEGTORAD(angle)) * magnitude;
+        float y = sin(SPDEGTORAD(angle)) * magnitude;
+        data.position = Vector2(x, y);
+    }
+
+    if (settings_.lifespanValueMode == ParticleSystemSettings::ValueMode::kSingle) {
+        data.lifespan = settings_.lifespanA;
+    }
+    else if (settings_.lifespanValueMode == ParticleSystemSettings::ValueMode::kRandomBetween) {
+        data.lifespan = rand() % 2 == 0 ? settings_.lifespanA : settings_.lifespanB;
+    }
+    else if (settings_.lifespanValueMode == ParticleSystemSettings::ValueMode::kRandomWithin) {
+        float a = settings_.lifespanA < settings_.lifespanB ? settings_.lifespanA : settings_.lifespanB;
+        float b = settings_.lifespanA < settings_.lifespanB ? settings_.lifespanB : settings_.lifespanA;
+        float range = abs(b - a);
+        data.lifespan = a + (float)(rand() % (int)(range * 100.0f)) * 0.01f;
+    }
+
     data.currentLife = data.lifespan;
-    float angle = (float)(rand() % 3600) * 0.1f;
-    angle = angle * (3.1416f / 180.0f);
-    Vector2 dir(cos(angle), sin(angle));
-    data.direction = dir;
     data.speed = settings_.speedA;
     data.rotation = settings_.startAngle;
     data.scale = settings_.startScale;
