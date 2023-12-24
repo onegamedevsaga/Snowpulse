@@ -18,11 +18,19 @@
 		2A1A211E2B375B1F00F368E9 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A1A211D2B375B1F00F368E9 /* main.mm */; };
 		2A1A21242B375B3300F368E9 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AE640E82B131EFE00A6B8DA /* Metal.framework */; };
 		2A1A21252B375B3300F368E9 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A27D2C82B14E06B008B5446 /* MetalKit.framework */; };
-		2A1A21262B375B4500F368E9 /* libgame_macos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AA1AAA02B2095BB002F2A49 /* libgame_macos.a */; };
 		2A1A21292B375B4500F368E9 /* libsnowpulse_macos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AA1AA8B2B209542002F2A49 /* libsnowpulse_macos.a */; };
 		2A1A212E2B375B8B00F368E9 /* defaults in Resources */ = {isa = PBXBuildFile; fileRef = 2AE4B7912B0FECD800252B50 /* defaults */; };
 		2A1A212F2B375B8B00F368E9 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 2AE4B78E2B0FE88200252B50 /* assets */; };
 		2A1A21322B375BFD00F368E9 /* GameView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A1A21302B375BFD00F368E9 /* GameView.mm */; };
+		2A1A21422B375E8500F368E9 /* libsnowpulse_macos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AA1AA8B2B209542002F2A49 /* libsnowpulse_macos.a */; };
+		2A1A21432B375E9A00F368E9 /* libgame_particle_effects_editor_macos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A1A21372B375E4600F368E9 /* libgame_particle_effects_editor_macos.a */; };
+		2A1A214F2B375F2A00F368E9 /* scene_main.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A1A21472B375F2A00F368E9 /* scene_main.h */; };
+		2A1A21502B375F2A00F368E9 /* game.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A1A21482B375F2A00F368E9 /* game.h */; };
+		2A1A21512B375F2A00F368E9 /* defines.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A1A21492B375F2A00F368E9 /* defines.h */; };
+		2A1A21522B375F2A00F368E9 /* inspector_panel.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A1A214B2B375F2A00F368E9 /* inspector_panel.cc */; };
+		2A1A21532B375F2A00F368E9 /* inspector_panel.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A1A214C2B375F2A00F368E9 /* inspector_panel.h */; };
+		2A1A21542B375F2A00F368E9 /* scene_main.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A1A214D2B375F2A00F368E9 /* scene_main.cc */; };
+		2A1A21552B375F2A00F368E9 /* game.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A1A214E2B375F2A00F368E9 /* game.cc */; };
 		2A27D3192B1522F3008B5446 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A27D3182B1522F3008B5446 /* AppDelegate.m */; };
 		2A27D31F2B1522F3008B5446 /* GameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A27D31E2B1522F3008B5446 /* GameViewController.mm */; };
 		2A27D3252B1522F3008B5446 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A27D3232B1522F3008B5446 /* Main.storyboard */; };
@@ -329,19 +337,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		2A1A21272B375B4500F368E9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2AF938AE2ABDC14D00CC8BA2 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2AA1AA962B2095BB002F2A49;
-			remoteInfo = game_macos;
-		};
 		2A1A212A2B375B4500F368E9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2AF938AE2ABDC14D00CC8BA2 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2AA1AA8A2B209542002F2A49;
 			remoteInfo = snowpulse_macos;
+		};
+		2A1A21442B375E9A00F368E9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2AF938AE2ABDC14D00CC8BA2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2A1A21362B375E4600F368E9;
+			remoteInfo = game_particle_effects_editor_macos;
 		};
 		2A52674B2B206536008B7268 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -422,6 +430,14 @@
 		2A1A212C2B375B8100F368E9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A1A21302B375BFD00F368E9 /* GameView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameView.mm; sourceTree = "<group>"; };
 		2A1A21312B375BFD00F368E9 /* GameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameView.h; sourceTree = "<group>"; };
+		2A1A21372B375E4600F368E9 /* libgame_particle_effects_editor_macos.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libgame_particle_effects_editor_macos.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A1A21472B375F2A00F368E9 /* scene_main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = scene_main.h; path = ../tools/game_particle_effects_editor_macos/scene_main.h; sourceTree = "<group>"; };
+		2A1A21482B375F2A00F368E9 /* game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = game.h; path = ../tools/game_particle_effects_editor_macos/game.h; sourceTree = "<group>"; };
+		2A1A21492B375F2A00F368E9 /* defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = defines.h; path = ../tools/game_particle_effects_editor_macos/defines.h; sourceTree = "<group>"; };
+		2A1A214B2B375F2A00F368E9 /* inspector_panel.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = inspector_panel.cc; sourceTree = "<group>"; };
+		2A1A214C2B375F2A00F368E9 /* inspector_panel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = inspector_panel.h; sourceTree = "<group>"; };
+		2A1A214D2B375F2A00F368E9 /* scene_main.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = scene_main.cc; path = ../tools/game_particle_effects_editor_macos/scene_main.cc; sourceTree = "<group>"; };
+		2A1A214E2B375F2A00F368E9 /* game.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = game.cc; path = ../tools/game_particle_effects_editor_macos/game.cc; sourceTree = "<group>"; };
 		2A27D1B62B14DF31008B5446 /* CAPrivate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CAPrivate.hpp; path = ../thirdparty/metal/QuartzCore/CAPrivate.hpp; sourceTree = "<group>"; };
 		2A27D1B72B14DF31008B5446 /* CADefines.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CADefines.hpp; path = ../thirdparty/metal/QuartzCore/CADefines.hpp; sourceTree = "<group>"; };
 		2A27D1B82B14DF31008B5446 /* QuartzCore.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = QuartzCore.hpp; path = ../thirdparty/metal/QuartzCore/QuartzCore.hpp; sourceTree = "<group>"; };
@@ -865,9 +881,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A1A21292B375B4500F368E9 /* libsnowpulse_macos.a in Frameworks */,
+				2A1A21432B375E9A00F368E9 /* libgame_particle_effects_editor_macos.a in Frameworks */,
 				2A1A21242B375B3300F368E9 /* Metal.framework in Frameworks */,
 				2A1A21252B375B3300F368E9 /* MetalKit.framework in Frameworks */,
-				2A1A21262B375B4500F368E9 /* libgame_macos.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A1A21352B375E4600F368E9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A1A21422B375E8500F368E9 /* libsnowpulse_macos.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -977,6 +1001,29 @@
 				2A1A211F2B375B1F00F368E9 /* particle_effects_editor_macos.entitlements */,
 			);
 			path = particle_effects_editor_macos;
+			sourceTree = "<group>";
+		};
+		2A1A21462B375EC100F368E9 /* game_particle_effects_editor_macos */ = {
+			isa = PBXGroup;
+			children = (
+				2A1A214A2B375F2A00F368E9 /* components */,
+				2A1A21492B375F2A00F368E9 /* defines.h */,
+				2A1A214E2B375F2A00F368E9 /* game.cc */,
+				2A1A21482B375F2A00F368E9 /* game.h */,
+				2A1A214D2B375F2A00F368E9 /* scene_main.cc */,
+				2A1A21472B375F2A00F368E9 /* scene_main.h */,
+			);
+			name = game_particle_effects_editor_macos;
+			sourceTree = "<group>";
+		};
+		2A1A214A2B375F2A00F368E9 /* components */ = {
+			isa = PBXGroup;
+			children = (
+				2A1A214B2B375F2A00F368E9 /* inspector_panel.cc */,
+				2A1A214C2B375F2A00F368E9 /* inspector_panel.h */,
+			);
+			name = components;
+			path = ../tools/game_particle_effects_editor_macos/components;
 			sourceTree = "<group>";
 		};
 		2A27D1B02B14DE86008B5446 /* metal */ = {
@@ -1707,6 +1754,7 @@
 				2A8D3C752B348D5C001D77CF /* launcher_spookyseas_ios */,
 				2AA1AA632B2075C5002F2A49 /* launcher_macos */,
 				2A1A210B2B375B1E00F368E9 /* particle_effects_editor_macos */,
+				2A1A21462B375EC100F368E9 /* game_particle_effects_editor_macos */,
 				2AF938E62ABDDB5F00CC8BA2 /* Frameworks */,
 				2AF938B72ABDC14D00CC8BA2 /* Products */,
 			);
@@ -1724,6 +1772,7 @@
 				2A8D3C922B348E34001D77CF /* Spooky Seas: Pirate Adventure.app */,
 				2A8D3CCA2B348F32001D77CF /* libgame_spookyseas_ios.a */,
 				2A1A210A2B375B1E00F368E9 /* Particle Effects Editor.app */,
+				2A1A21372B375E4600F368E9 /* libgame_particle_effects_editor_macos.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1753,6 +1802,17 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		2A1A21332B375E4600F368E9 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A1A21532B375F2A00F368E9 /* inspector_panel.h in Headers */,
+				2A1A21502B375F2A00F368E9 /* game.h in Headers */,
+				2A1A21512B375F2A00F368E9 /* defines.h in Headers */,
+				2A1A214F2B375F2A00F368E9 /* scene_main.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2AA1AA872B209542002F2A49 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -1800,13 +1860,30 @@
 			buildRules = (
 			);
 			dependencies = (
-				2A1A21282B375B4500F368E9 /* PBXTargetDependency */,
 				2A1A212B2B375B4500F368E9 /* PBXTargetDependency */,
+				2A1A21452B375E9A00F368E9 /* PBXTargetDependency */,
 			);
 			name = particle_effects_editor_macos;
 			productName = particle_effects_editor_macos;
 			productReference = 2A1A210A2B375B1E00F368E9 /* Particle Effects Editor.app */;
 			productType = "com.apple.product-type.application";
+		};
+		2A1A21362B375E4600F368E9 /* game_particle_effects_editor_macos */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2A1A213F2B375E4600F368E9 /* Build configuration list for PBXNativeTarget "game_particle_effects_editor_macos" */;
+			buildPhases = (
+				2A1A21332B375E4600F368E9 /* Headers */,
+				2A1A21342B375E4600F368E9 /* Sources */,
+				2A1A21352B375E4600F368E9 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = game_particle_effects_editor_macos;
+			productName = game_particle_effects_editor_macos;
+			productReference = 2A1A21372B375E4600F368E9 /* libgame_particle_effects_editor_macos.a */;
+			productType = "com.apple.product-type.library.static";
 		};
 		2A27D3142B1522F2008B5446 /* launcher_ios */ = {
 			isa = PBXNativeTarget;
@@ -1960,6 +2037,9 @@
 					2A1A21092B375B1E00F368E9 = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
+					2A1A21362B375E4600F368E9 = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
 					2A27D3142B1522F2008B5446 = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
@@ -2005,6 +2085,7 @@
 				2A8D3C912B348E34001D77CF /* launcher_spookyseas_ios */,
 				2A8D3CC92B348F32001D77CF /* game_spookyseas_ios */,
 				2A1A21092B375B1E00F368E9 /* particle_effects_editor_macos */,
+				2A1A21362B375E4600F368E9 /* game_particle_effects_editor_macos */,
 			);
 		};
 /* End PBXProject section */
@@ -2068,6 +2149,16 @@
 				2A1A21142B375B1E00F368E9 /* GameViewController.mm in Sources */,
 				2A1A21322B375BFD00F368E9 /* GameView.mm in Sources */,
 				2A1A210E2B375B1E00F368E9 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A1A21342B375E4600F368E9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A1A21552B375F2A00F368E9 /* game.cc in Sources */,
+				2A1A21522B375F2A00F368E9 /* inspector_panel.cc in Sources */,
+				2A1A21542B375F2A00F368E9 /* scene_main.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2374,15 +2465,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		2A1A21282B375B4500F368E9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2AA1AA962B2095BB002F2A49 /* game_macos */;
-			targetProxy = 2A1A21272B375B4500F368E9 /* PBXContainerItemProxy */;
-		};
 		2A1A212B2B375B4500F368E9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2AA1AA8A2B209542002F2A49 /* snowpulse_macos */;
 			targetProxy = 2A1A212A2B375B4500F368E9 /* PBXContainerItemProxy */;
+		};
+		2A1A21452B375E9A00F368E9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2A1A21362B375E4600F368E9 /* game_particle_effects_editor_macos */;
+			targetProxy = 2A1A21442B375E9A00F368E9 /* PBXContainerItemProxy */;
 		};
 		2A52674C2B206536008B7268 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2535,6 +2626,60 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "io.snowblink.Snowpulse.ParticleEffectsEditor.particle-effects-editor-macos";
 				PRODUCT_NAME = "Particle Effects Editor";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Release;
+		};
+		2A1A21402B375E4600F368E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				EXECUTABLE_PREFIX = lib;
+				GCC_ENABLE_CPP_EXCEPTIONS = YES;
+				GCC_ENABLE_CPP_RTTI = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					GAMEAPI_EXPORT,
+					SNOWPULSE_PLATFORM_MACOS,
+				);
+				HEADER_SEARCH_PATHS = (
+					../snowpulse/,
+					../thirdparty/glm/,
+					../thirdparty/stb/,
+					"../thirdparty/nlohmann-json/",
+					"../thirdparty/spine-cpp/**",
+					../thirdparty/metal/,
+					../thirdparty/imgui/,
+					../thirdparty/imgui/backends/,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		2A1A21412B375E4600F368E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				EXECUTABLE_PREFIX = lib;
+				GCC_ENABLE_CPP_EXCEPTIONS = YES;
+				GCC_ENABLE_CPP_RTTI = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					GAMEAPI_EXPORT,
+					SNOWPULSE_PLATFORM_MACOS,
+				);
+				HEADER_SEARCH_PATHS = (
+					../snowpulse/,
+					../thirdparty/glm/,
+					../thirdparty/stb/,
+					"../thirdparty/nlohmann-json/",
+					"../thirdparty/spine-cpp/**",
+					../thirdparty/metal/,
+					../thirdparty/imgui/,
+					../thirdparty/imgui/backends/,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -3200,6 +3345,15 @@
 			buildConfigurations = (
 				2A1A21212B375B1F00F368E9 /* Debug */,
 				2A1A21222B375B1F00F368E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2A1A213F2B375E4600F368E9 /* Build configuration list for PBXNativeTarget "game_particle_effects_editor_macos" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A1A21402B375E4600F368E9 /* Debug */,
+				2A1A21412B375E4600F368E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

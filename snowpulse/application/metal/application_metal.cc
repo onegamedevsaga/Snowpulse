@@ -21,6 +21,7 @@
 
 #include "../timer.h"
 #include "../input.h"
+#include "../directory.h"
 #include "view_delegate_metal.h"
 
 namespace snowpulse {
@@ -67,6 +68,14 @@ bool ApplicationMetal::Initialize(const Vector2Int& resolutionSize, const Vector
 
     io.DeltaTime = 1.0f / 60.0f;
     io.DisplaySize = ImVec2(screenSize_.x, screenSize_.y);
+    
+    auto fontFilename = Directory::GetInstance()->GetDefaultsPath("fonts/roboto/Roboto-Regular.ttf");
+    ImFont* myFont = io.Fonts->AddFontFromFileTTF(fontFilename.c_str(), 16.0f);
+    if (!myFont) {
+        io.FontDefault = myFont;
+        io.Fonts->Build();
+    }
+
     ImGui_ImplMetal_Init(graphics_->GetDevice());
     return true;
 }
@@ -79,6 +88,18 @@ void ApplicationMetal::SetScreenSize(const Vector2Int& screenSize) {
     if (ImGui::GetCurrentContext()) {
         ImGuiIO& io = ImGui::GetIO();
         io.DisplaySize = ImVec2(screenSize_.x, screenSize_.y);
+
+        ImGuiStyle& style = ImGui::GetStyle();
+        style.WindowRounding = 10.0f;
+        style.FrameRounding = 2.0f;
+        style.ChildRounding = 2.0f;
+        style.PopupRounding = 2.0f;
+
+        //#353D40
+        ImVec4 titleBarColor = ImVec4(0.208f, 0.239f, 0.251f, 1.00f); // Example color (R, G, B, A)
+        style.Colors[ImGuiCol_TitleBg] = titleBarColor;            // Title bar background when inactive
+        style.Colors[ImGuiCol_TitleBgActive] = titleBarColor;      // Title bar background when active
+        style.Colors[ImGuiCol_TitleBgCollapsed] = titleBarColor;
     }
 }
 

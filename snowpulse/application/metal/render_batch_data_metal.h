@@ -30,7 +30,8 @@ class SNOWPULSEAPI RenderBatchDataMetal : public RenderBatch {
                    this->viewMatrix == other->viewMatrix &&
                    this->projectionMatrix == other->projectionMatrix &&
                    this->shaderProgram == other->shaderProgram &&
-                   this->texture == other->texture;
+                   this->hasTexture == other->hasTexture &&
+                   (!this->hasTexture || this->texture == other->texture);
         }
 
         void MergeWith(const RenderBatchDataMetal& other) {
@@ -73,6 +74,7 @@ class SNOWPULSEAPI RenderBatchDataMetal : public RenderBatch {
         simd::float4x4 projectionMatrix;
 
         bool isPremultiplied;
+        bool hasTexture;
         MTL::Texture* texture;
 };
 }   // namespace snowpulse

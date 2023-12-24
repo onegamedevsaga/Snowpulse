@@ -129,7 +129,7 @@ void InputMacOS::ProcessInputs(const Vector2Int& resolutionSize, const Vector2In
     mousePositionOnWorld_ = mousePositionOnScreen_ + Vector2(camPos.x, camPos.y) + Vector2(resolutionSize.x * -0.5f, resolutionSize.y * -0.5f);
 
     ImGuiIO& io = ImGui::GetIO();
-    io.MouseDrawCursor = true;
+    io.MouseDrawCursor = false;
     io.MousePos = ImVec2(mousePosition.x, screenSize.y - mousePosition.y);
 }
 void InputMacOS::ProcessInputs(const Vector2Int& resolutionSize, const Vector2Int& screenSize, Vector2 mousePosition, int mouseButton, bool isMouseDown) {
