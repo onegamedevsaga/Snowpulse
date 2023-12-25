@@ -9,6 +9,17 @@ std::shared_ptr<InspectorPanel> InspectorPanel::Create() {
 }
 
 InspectorPanel::InspectorPanel() : Component("inspector_panel") {
+    blendModes_.reserve(5);
+    blendModes_.push_back(GetBlendModeString(snowpulse::BlendMode::kDisabled));
+    blendModes_.push_back(GetBlendModeString(snowpulse::BlendMode::kNormal));
+    blendModes_.push_back(GetBlendModeString(snowpulse::BlendMode::kAdditive));
+    blendModes_.push_back(GetBlendModeString(snowpulse::BlendMode::kMultiply));
+    blendModes_.push_back(GetBlendModeString(snowpulse::BlendMode::kScreen));
+    textureFilters_.reserve(4);
+    textureFilters_.push_back(GetTextureFilteringString(snowpulse::TextureFiltering::kPoint));
+    textureFilters_.push_back(GetTextureFilteringString(snowpulse::TextureFiltering::kBilinear));
+    textureFilters_.push_back(GetTextureFilteringString(snowpulse::TextureFiltering::kTrilinear));
+    textureFilters_.push_back(GetTextureFilteringString(snowpulse::TextureFiltering::kAnisotropic));
     valueModes_.reserve(3);
     valueModes_.push_back(GetValueModeString(snowpulse::ParticleSystemSettings::ValueMode::kSingle));
     valueModes_.push_back(GetValueModeString(snowpulse::ParticleSystemSettings::ValueMode::kRandomBetween));
@@ -17,6 +28,31 @@ InspectorPanel::InspectorPanel() : Component("inspector_panel") {
     emissionShapes_.push_back(GetEmissionShapeString(snowpulse::ParticleSystemSettings::EmissionShape::kPoint));
     emissionShapes_.push_back(GetEmissionShapeString(snowpulse::ParticleSystemSettings::EmissionShape::kRect));
     emissionShapes_.push_back(GetEmissionShapeString(snowpulse::ParticleSystemSettings::EmissionShape::kCircle));
+
+    blendMode_ = 1;
+    textureFiltering_ = 1;
+
+    ImGuiIO& io = ImGui::GetIO();
+    auto fontFilename = snowpulse::Directory::GetInstance()->GetDefaultsPath("fonts/roboto/Roboto-Light.ttf");
+    imguiFontNormal_ = io.Fonts->AddFontFromFileTTF(fontFilename.c_str(), 16.0f);
+    if (!imguiFontNormal_) {
+        io.Fonts->Build();
+    }
+    fontFilename = snowpulse::Directory::GetInstance()->GetDefaultsPath("fonts/roboto/Roboto-Bold.ttf");
+    imguiFontH1_ = io.Fonts->AddFontFromFileTTF(fontFilename.c_str(), 18.0f);
+    if (!imguiFontH1_) {
+        io.Fonts->Build();
+    }
+    fontFilename = snowpulse::Directory::GetInstance()->GetDefaultsPath("fonts/roboto/Roboto-Bold.ttf");
+    imguiFontH2_ = io.Fonts->AddFontFromFileTTF(fontFilename.c_str(), 16.0f);
+    if (!imguiFontH2_) {
+        io.Fonts->Build();
+    }
+    fontFilename = snowpulse::Directory::GetInstance()->GetDefaultsPath("fonts/roboto/Roboto-Regular.ttf");
+    imguiFontH3_ = io.Fonts->AddFontFromFileTTF(fontFilename.c_str(), 16.0f);
+    if (!imguiFontH3_) {
+        io.Fonts->Build();
+    }
 }
 
 InspectorPanel::~InspectorPanel() {
@@ -26,23 +62,25 @@ InspectorPanel::~InspectorPanel() {
 void InspectorPanel::Update(float deltaTime) {
     settings_.emissionShape = (snowpulse::ParticleSystemSettings::EmissionShape)emissionShape_;
     settings_.lifespanValueMode = (snowpulse::ParticleSystemSettings::ValueMode)lifespanValueMode_;
+    settings_.blendMode = (snowpulse::BlendMode)blendMode_;
+    settings_.textureFiltering = (snowpulse::TextureFiltering)textureFiltering_;
 }
 
 void InspectorPanel::Draw(snowpulse::Graphics* graphics, snowpulse::Matrix4x4 worldMatrix) {
     auto windowHeight = snowpulse::Application::GetInstance()->GetScreenSize().y;
-    ImGui::SetNextWindowPos(ImVec2(0, 0)); // Position at the top-left corner
-    ImGui::SetNextWindowSize(ImVec2(300, windowHeight)); // Width of 300 and height matching the application window
+    ImGui::SetNextWindowPos(ImVec2(0, 0));
+    ImGui::SetNextWindowSize(ImVec2(350, windowHeight));
+    ImGui::PushFont(imguiFontNormal_);
     ImGui::Begin("Inspector", SPNULL, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse);
 
     DrawCombo("Emission Shape", &emissionShape_, emissionShapes_);
     if (settings_.emissionShape == snowpulse::ParticleSystemSettings::EmissionShape::kPoint) {
     }
     else if (settings_.emissionShape == snowpulse::ParticleSystemSettings::EmissionShape::kRect) {
-        DrawInputSize("Rect Size", &settings_.emissionRectSize.x, &settings_.emissionRectSize.y);
+        DrawInputSize("Emission Rect Size", &settings_.emissionRectSize.x, &settings_.emissionRectSize.y);
     }
     else if (settings_.emissionShape == snowpulse::ParticleSystemSettings::EmissionShape::kCircle) {
-        DrawInputFloat("SpeedFrom", &settings_.speedA);
-        DrawInputFloat("SpeedTo", &settings_.speedB);
+        DrawInputFloat("Emission Radius", &settings_.emissionRadius);
     }
 
     DrawCombo("Lifespan Value Mode", &lifespanValueMode_, valueModes_);
@@ -71,7 +109,41 @@ void InspectorPanel::Draw(snowpulse::Graphics* graphics, snowpulse::Matrix4x4 wo
         DrawInputFloat("SpeedTo", &settings_.speedB);
     }
 
+    DrawCombo("Blend Mode", &blendMode_, blendModes_);
+    DrawCombo("Texture Filtering", &textureFiltering_, textureFilters_);
+
     ImGui::End();
+    ImGui::PopFont();
+}
+
+std::string InspectorPanel::GetBlendModeString(snowpulse::BlendMode blendMode) {
+    switch (blendMode) {
+        case snowpulse::BlendMode::kNormal:
+            return "Normal";
+        case snowpulse::BlendMode::kAdditive:
+            return "Additive";
+        case snowpulse::BlendMode::kMultiply:
+            return "Multiply";
+        case snowpulse::BlendMode::kScreen:
+            return "Screen";
+        case snowpulse::BlendMode::kDisabled:
+            return "Disabled";
+    }
+    return "#Invalid";
+}
+
+std::string InspectorPanel::GetTextureFilteringString(snowpulse::TextureFiltering textureFiltering) {
+    switch (textureFiltering) {
+        case snowpulse::TextureFiltering::kPoint:
+            return "Point";
+        case snowpulse::TextureFiltering::kBilinear:
+            return "Bilinear";
+        case snowpulse::TextureFiltering::kTrilinear:
+            return "Trilinear";
+        case snowpulse::TextureFiltering::kAnisotropic:
+            return "Anisotropic";
+    }
+    return "#Invalid";
 }
 
 std::string InspectorPanel::GetValueModeString(snowpulse::ParticleSystemSettings::ValueMode valueMode) {
@@ -99,7 +171,9 @@ std::string InspectorPanel::GetEmissionShapeString(snowpulse::ParticleSystemSett
 }
 
 void InspectorPanel::DrawCombo(std::string label, int* value, std::vector<std::string> items) {
+    ImGui::PushFont(imguiFontH3_);
     ImGui::Text("%s", label.c_str());
+    ImGui::PopFont();
     ImGui::SameLine();
     ImGui::SetNextItemWidth(ImGui::GetContentRegionAvail().x);
     const char* values[items.size()];
@@ -107,18 +181,22 @@ void InspectorPanel::DrawCombo(std::string label, int* value, std::vector<std::s
     for (const auto& item : items) {
         values[i++] = item.c_str();
     }
-    ImGui::Combo((std::string("##") + label).c_str(), value, values, items.size());
+    ImGui::Combo((std::string("##") + label).c_str(), value, values, (int)items.size());
 }
 
 void InspectorPanel::DrawInputFloat(std::string label, float* value, float increment, float fastIncrement) {
+    ImGui::PushFont(imguiFontH3_);
     ImGui::Text("%s", label.c_str());
+    ImGui::PopFont();
     ImGui::SameLine();
     ImGui::SetNextItemWidth(ImGui::GetContentRegionAvail().x);
     ImGui::InputFloat((std::string("##") + label).c_str(), value, increment, fastIncrement, "%.2f");
 }
 
 void InspectorPanel::DrawInputSize(std::string label, float* width, float* height, float increment, float fastIncrement) {
+    ImGui::PushFont(imguiFontH3_);
     ImGui::Text("%s", label.c_str());
+    ImGui::PopFont();
     ImGui::SameLine();
     ImGui::SetNextItemWidth(ImGui::GetContentRegionAvail().x / 2);
     ImGui::InputFloat((std::string("##") + label + "_width").c_str(), width, increment, fastIncrement, "%.2f");

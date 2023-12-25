@@ -68,7 +68,7 @@ bool ApplicationMetal::Initialize(const Vector2Int& resolutionSize, const Vector
 
     io.DeltaTime = 1.0f / 60.0f;
     io.DisplaySize = ImVec2(screenSize_.x, screenSize_.y);
-    
+
     auto fontFilename = Directory::GetInstance()->GetDefaultsPath("fonts/roboto/Roboto-Regular.ttf");
     ImFont* myFont = io.Fonts->AddFontFromFileTTF(fontFilename.c_str(), 16.0f);
     if (!myFont) {
@@ -96,10 +96,18 @@ void ApplicationMetal::SetScreenSize(const Vector2Int& screenSize) {
         style.PopupRounding = 2.0f;
 
         //#353D40
-        ImVec4 titleBarColor = ImVec4(0.208f, 0.239f, 0.251f, 1.00f); // Example color (R, G, B, A)
-        style.Colors[ImGuiCol_TitleBg] = titleBarColor;            // Title bar background when inactive
-        style.Colors[ImGuiCol_TitleBgActive] = titleBarColor;      // Title bar background when active
+        ImVec4 titleBarColor = ImVec4(0.208f, 0.239f, 0.251f, 1.00f);
+        style.Colors[ImGuiCol_TitleBg] = titleBarColor;
+        style.Colors[ImGuiCol_TitleBgActive] = titleBarColor;
         style.Colors[ImGuiCol_TitleBgCollapsed] = titleBarColor;
+        ImVec4 controlsColor = ImVec4(0.208f, 0.239f, 0.251f, 1.00f);
+        style.Colors[ImGuiCol_Button] = controlsColor;
+        style.Colors[ImGuiCol_ButtonHovered] = controlsColor;
+        style.Colors[ImGuiCol_ButtonActive] = controlsColor;
+        ImVec4 fieldsColor = ImVec4(0.208f, 0.239f, 0.251f, 1.00f);
+        style.Colors[ImGuiCol_FrameBg] = fieldsColor;
+        style.Colors[ImGuiCol_FrameBgHovered] = fieldsColor;
+        style.Colors[ImGuiCol_FrameBgActive] = fieldsColor;
     }
 }
 

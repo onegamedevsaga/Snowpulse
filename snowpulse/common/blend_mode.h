@@ -5,8 +5,8 @@
 
 namespace snowpulse {
 enum class BlendMode {
-    kDisabled = -1,
-    kNormal = 0,
+    kDisabled = 0,
+    kNormal,
     kAdditive,
     kMultiply,
     kScreen,
