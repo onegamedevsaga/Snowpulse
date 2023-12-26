@@ -18,7 +18,7 @@ std::shared_ptr<Camera> Camera::Create() {
     return std::shared_ptr<Camera>(camera);
 }
 
-Camera::Camera() : position_(0.0f, 0.0f, -10.0f) {
+Camera::Camera() : position_(0.0f, 0.0f, -10.0f), size_(1.0f) {
 }
 
 Camera::~Camera() {
@@ -31,7 +31,7 @@ Matrix4x4 Camera::GetMatrix() const {
 
 Vector3 Camera::GetRawPosition() const {
     auto res = application_->GetResolutionSize();
-    auto offset = Vector3((float)res.x * -0.5f, (float)res.y * -0.5f);
+    auto offset = Vector3((float)res.x * size_ * -0.5f, (float)res.y * size_ * -0.5f);
     return position_ + offset;
 }
 
@@ -53,6 +53,13 @@ void Camera::SetRawPosition(Vector2 position) {
 #ifdef SPDEBUG
         std::cout << "Camera Position at (" << position_.x << ", " << position_.y << ")" << std::endl;
 #endif
+}
+
+void Camera::SetSize(float size) {
+    size_ = size;
+
+    auto app = Application::GetInstance();
+    app->GetGraphics()->UpdateProjectionMatrix(app->GetResolutionSize());
 }
 
 Vector2 Camera::ConvertScreenToWorld(Vector2 screenPos) {

@@ -24,8 +24,10 @@ class SNOWPULSEAPI Camera {
         Matrix4x4 GetMatrix() const;
         Vector3 GetRawPosition() const;
         Vector3 GetPosition() const { return position_; }
+        float GetSize() const { return size_; }
         void SetPosition(Vector2 position);
         void SetRawPosition(Vector2 position);
+        void SetSize(float size);
 
         Vector2 ConvertScreenToWorld(Vector2 screenPos);
         Vector2 ConvertWorldToScreen(Vector2 worldPos);
@@ -37,6 +39,7 @@ class SNOWPULSEAPI Camera {
         Vector2 screenSize_;
         Vector2 resolutionSize_;
         Vector3 position_;
+        float size_;
 };
 }   // namespace snowpulse
 #endif

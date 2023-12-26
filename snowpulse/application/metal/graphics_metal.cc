@@ -86,7 +86,8 @@ bool GraphicsMetal::Initialize(const Vector2Int& resolution, const Vector2Int& s
 }
 
 void GraphicsMetal::UpdateProjectionMatrix(const Vector2Int& resolution) {
-    auto ortho = glm::ortho(0.0f, (float)resolution.x, 0.0f, (float)resolution.y, -100.0f, 100.0f);
+    auto cameraSize = camera_->GetSize();
+    auto ortho = glm::ortho(0.0f, (float)resolution.x * cameraSize, 0.0f, (float)resolution.y * cameraSize, -100.0f, 100.0f);
     memcpy(projectionMatrix_.columns, glm::value_ptr(ortho), sizeof(projectionMatrix_.columns));
 }
 

@@ -13,6 +13,8 @@ InputMacOS::InputMacOS() : Input() {
     keyMap_[kVK_Control] = "control";
     keyMap_[kVK_Shift] = "shift";
     keyMap_[kVK_Tab] = "tab";
+    keyMap_[kVK_ANSI_LeftBracket] = "left_bracket";
+    keyMap_[kVK_ANSI_RightBracket] = "right_bracket";
     keyMap_[kVK_LeftArrow] = "left_arrow";
     keyMap_[kVK_RightArrow] = "right_arrow";
     keyMap_[kVK_UpArrow] = "up_arrow";
@@ -65,6 +67,8 @@ InputMacOS::InputMacOS() : Input() {
 
     ImGuiIO& io = ImGui::GetIO();
     io.KeyMap[ImGuiKey_Tab] = kVK_Tab;
+    io.KeyMap[ImGuiKey_LeftBracket] = kVK_ANSI_LeftBracket;
+    io.KeyMap[ImGuiKey_RightBracket] = kVK_ANSI_RightBracket;
     io.KeyMap[ImGuiKey_LeftArrow] = kVK_LeftArrow;
     io.KeyMap[ImGuiKey_RightArrow] = kVK_RightArrow;
     io.KeyMap[ImGuiKey_UpArrow] = kVK_UpArrow;

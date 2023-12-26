@@ -21,6 +21,7 @@ namespace snowpulse {
 class SNOWPULSEAPI Graphics {
     public:
         virtual ~Graphics() = default;
+        virtual void UpdateProjectionMatrix(const Vector2Int& resolution) = 0;
         virtual void Shutdown() = 0;
         virtual Matrix4x4 InvertMatrixNatively(Matrix4x4 matrix) = 0;
         virtual void LoadTexture(std::string filename, PathType pathType = PathType::kAssets) = 0;

@@ -104,7 +104,8 @@ bool GraphicsOpenGL::Initialize(const Vector2Int& resolution, const Vector2Int& 
 }
 
 void GraphicsOpenGL::UpdateProjectionMatrix(const Vector2Int& resolution) {
-    projectionMatrix_ = glm::ortho(0.0f, (float)resolution.x, 0.0f, (float)resolution.y, -100.0f, 100.0f);
+    auto cameraSize = camera_->GetSize();
+    projectionMatrix_ = glm::ortho(0.0f, (float)resolution.x * cameraSize, 0.0f, (float)resolution.y * cameraSize, -100.0f, 100.0f);
 }
 
 void GraphicsOpenGL::Shutdown() {

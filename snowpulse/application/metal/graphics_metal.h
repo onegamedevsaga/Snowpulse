@@ -35,7 +35,6 @@ class SNOWPULSEAPI GraphicsMetal : public Graphics {
 
         ~GraphicsMetal();
         bool Initialize(const Vector2Int& resolution, const Vector2Int& screenSize, void* view);
-        void UpdateProjectionMatrix(const Vector2Int& resolution);
 
         MTK::View* GetView() const { return view_; }
         MTL::Device* GetDevice() const { return device_; }
@@ -43,6 +42,7 @@ class SNOWPULSEAPI GraphicsMetal : public Graphics {
         RenderQueueMetal* GetRenderQueue() const { return renderQueue_.get(); }
 
         // Graphics
+        void UpdateProjectionMatrix(const Vector2Int& resolution) override;
         void Shutdown() override;
         Matrix4x4 InvertMatrixNatively(Matrix4x4 matrix) override;
         void LoadTexture(std::string filename, PathType pathType) override;

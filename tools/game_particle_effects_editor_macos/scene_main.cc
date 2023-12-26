@@ -89,23 +89,23 @@ void SceneMain::Start() {
     auto effectsGo = snowpulse::GameObject::Create("effectsGo");
     effectRenderer_ = snowpulse::ParticleEffectsRenderer::Create(effectsSettings);
     effectsGo->AddComponent(effectRenderer_);
-    //effectsGo->GetTransform()->SetPosition(snowpulse::Vector2(-200.0f, 200.0f));
     AddChild(effectsGo);
 }
 
 void SceneMain::Update(float deltaTime) {
     Scene::Update(deltaTime);
     auto resolutionSize = GetApplication()->GetResolutionSize();
-    auto camPos = GetCamera()->GetPosition();
-    background_->SetSize(snowpulse::Vector2(resolutionSize.x, resolutionSize.y));
-    background_->GetTransform()->SetPosition(snowpulse::Vector2(camPos.x, camPos.y));
+    auto camera = GetCamera();
+    auto cameraPos = camera->GetPosition();
+    auto cameraSize = camera->GetSize();
+    background_->SetSize(snowpulse::Vector2(resolutionSize.x * cameraSize, resolutionSize.y * cameraSize));
+    background_->GetTransform()->SetPosition(snowpulse::Vector2(cameraPos.x, cameraPos.y));
 
     if (snowpulse::Input::GetInstance()->GetPressed("x")) {
         GetApplication()->Close();
     }
 
 #ifdef SPDEBUG
-    std::cout << "RESOLUTION: (" << resolutionSize.x << ", " << resolutionSize.y << std::endl;
     std::cout << "SceneMain updating.. (deltaTime: " << deltaTime << ")" << std::endl;
 #endif
 }
