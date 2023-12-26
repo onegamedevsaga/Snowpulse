@@ -59,9 +59,11 @@
 
 #ifdef SNOWPULSE_PLATFORM_WINDOWS
 #include "application/windows/application_windows.h"
+#include "thirdparty/tinyfiledialogs/tinyfiledialogs.h"
 #elif SNOWPULSE_PLATFORM_MACOS
 #include <imgui_impl_metal.h>
 #include "application/macos/application_macos.h"
+#include "../thirdparty/tinyfiledialogs/tinyfiledialogs.h"
 #elif SNOWPULSE_PLATFORM_ANDROID
 #include "application/android/application_android.h"
 #elif SNOWPULSE_PLATFORM_IOS

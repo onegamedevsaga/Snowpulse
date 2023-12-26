@@ -147,8 +147,7 @@ void SceneLevel::Start() {
     effectsSettings.texturePathType = snowpulse::PathType::kDefaults;
     effectsSettings.textureFilename = "sprites/particle_default.png";
     effectsSettings.blendMode = snowpulse::BlendMode::kAdditive;
-    effectsSettings.startScale = 1.5f;
-    effectsSettings.endScale = 0.2f;
+    effectsSettings.scaleStartEnd = snowpulse::Vector2(1.5f, 0.2f);
     effectsSettings.lifespanValueMode = snowpulse::ParticleSystemSettings::ValueMode::kRandomWithin;
     effectsSettings.lifespanA = 0.8f;
     effectsSettings.lifespanB = 1.0f;

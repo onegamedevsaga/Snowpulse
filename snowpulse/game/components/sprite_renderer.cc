@@ -37,7 +37,7 @@ std::shared_ptr<SpriteRenderer> SpriteRenderer::Create(std::string filename, std
 SpriteRenderer::SpriteRenderer() : Component("sprite_renderer"), sortOrder_(0), blendMode_(BlendMode::kNormal), isPremultiplied_(false) {
 }
 
-SpriteRenderer::SpriteRenderer(std::string componentName) : Component(componentName), sortOrder_(0)  {
+SpriteRenderer::SpriteRenderer(std::string componentName) : Component(componentName), sortOrder_(0), blendMode_(BlendMode::kNormal), isPremultiplied_(false)  {
 }
 
 SpriteRenderer::~SpriteRenderer() {

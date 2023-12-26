@@ -21,15 +21,6 @@
     [self addTrackingArea:trackingArea];
 }
 
-// Implement mouseEntered: and mouseExited: as needed
-- (void)mouseEntered:(NSEvent *)event {
-    // Your code for mouse entered
-}
-
-- (void)mouseExited:(NSEvent *)event {
-    // Your code for mouse exited
-}
-
 - (void)mouseMoved:(NSEvent *)event {
     if (!app_) {
         app_ = static_cast<snowpulse::ApplicationMacOS*>(snowpulse::Application::GetInstance());

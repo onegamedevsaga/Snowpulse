@@ -83,7 +83,6 @@
 }
 
 - (void)keyDown:(NSEvent *)event {
-    [super keyDown:event];
     unsigned int keyCode = [event keyCode];
     std::string characters = [[event characters] UTF8String];
     input_->ProcessInputs(keyCode, true);
@@ -91,7 +90,6 @@
 }
 
 - (void)keyUp:(NSEvent *)event {
-    [super keyUp:event];
     unsigned int keyCode = [event keyCode];
     input_->ProcessInputs(keyCode, false);
 }

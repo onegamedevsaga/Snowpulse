@@ -2,6 +2,7 @@
 
 #include <iostream>
 
+#include "components/action_panel.h"
 #include "components/inspector_panel.h"
 
 namespace game {
@@ -22,7 +23,6 @@ SceneMain::~SceneMain() {
 
 void SceneMain::Initialize(snowpulse::Application* application) {
     Scene::Initialize(application);
-    //application->SetName("Blah blah");
 #ifdef SPDEBUG
     std::cout << "SceneLevel initialized." << std::endl;
 #endif
@@ -46,6 +46,11 @@ void SceneMain::Start() {
     background_->SetSortOrder(-10);
     backgroundGo->AddComponent(background_);
     AddChild(backgroundGo);
+
+    auto actionGo = snowpulse::GameObject::Create("actionGo");
+    auto actionPanel = ActionPanel::Create();
+    actionGo->AddComponent(actionPanel);
+    AddChild(actionGo);
 
     auto inspectorGo = snowpulse::GameObject::Create("inspectorGo");
     auto inspectorPanel = InspectorPanel::Create();

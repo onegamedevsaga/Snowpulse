@@ -39,8 +39,8 @@ void ParticleSystem::Update(float deltaTime) {
         p.velocity += settings_.acceleration * deltaTime;
 
         float percentage = 1.0f - p.currentLife / p.lifespan;
-        p.color = settings_.startColor + ((settings_.endColor - settings_.startColor) * percentage);
-        p.scale = settings_.startScale + ((settings_.endScale - settings_.startScale) * percentage);
+        p.color = settings_.colorStart + ((settings_.colorEnd - settings_.colorStart) * percentage);
+        p.scale = settings_.scaleStartEnd.x + ((settings_.scaleStartEnd.y - settings_.scaleStartEnd.x) * percentage);
 
         stillAliveParticles.push_back(p);
     }
@@ -134,8 +134,8 @@ bool ParticleSystem::SpawnParticle() {
 
     data.currentLife = data.lifespan;
     data.velocity = direction * speed;
-    data.rotation = settings_.startAngle;
-    data.scale = settings_.startScale;
+    data.rotation = settings_.angleStart;
+    data.scale = settings_.scaleStartEnd.x;
     data.size = Application::GetInstance()->GetGraphics()->GetTextureSize(settings_.textureFilename);
     particles_.push_back(data);
     return true;

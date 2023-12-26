@@ -41,20 +41,19 @@ class SNOWPULSEAPI ParticleSystemSettings {
         float lifespanA = 1.0f;
         float lifespanB = 1.0f;
 
-        float startScale = 1.0f;
-        float endScale = 1.0f;
+        Vector2 scaleStartEnd = Vector2(1.0f, 1.0f);
 
-        float startAngle = 0.0f;
+        float angleStart = 0.0f;
         float angleVelocity = 0.0f;
 
-        Color startColor = Color::White();
-        Color endColor = Color::White();
+        Color colorStart = Color::White();
+        Color colorEnd = Color::White();
 
         EmissionShape emissionShape = EmissionShape::kPoint;
         Vector2 emissionRectSize = Vector2(50.0f, 50.0f);
         float emissionRadius = 50.0f;
         float emissionRate = 5.0f;
-        int maxParticleCount = 20.0f;
+        int maxParticleCount = 20;
         ValueMode emissionAngleValueMode = ValueMode::kSingle;
         float emissionAngleA = 0.0f;
         float emissionAngleB = 0.0f;
