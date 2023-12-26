@@ -17,7 +17,7 @@ class GAMEAPI ActionPanel : public snowpulse::Component, public snowpulse::Drawa
         // From Drawable
         void Draw(snowpulse::Graphics* graphics, snowpulse::Matrix4x4 worldMatrix) override;
 
-    protected:
+    private:
         ActionPanel();
 };
 }   // namespace snowpulse

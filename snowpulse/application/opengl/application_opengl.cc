@@ -117,6 +117,25 @@ void ApplicationOpenGL::SetScreenSize(const Vector2Int& screenSize) {
     if (ImGui::GetCurrentContext()) {
         ImGuiIO& io = ImGui::GetIO();
         io.DisplaySize = ImVec2(screenSize_.x, screenSize_.y);
+
+        ImGuiStyle& style = ImGui::GetStyle();
+        style.WindowRounding = 10.0f;
+        style.FrameRounding = 2.0f;
+        style.ChildRounding = 2.0f;
+        style.PopupRounding = 2.0f;
+
+        ImVec4 titleBarColor = ImVec4(0.208f, 0.239f, 0.251f, 1.00f);
+        style.Colors[ImGuiCol_TitleBg] = titleBarColor;
+        style.Colors[ImGuiCol_TitleBgActive] = titleBarColor;
+        style.Colors[ImGuiCol_TitleBgCollapsed] = titleBarColor;
+        ImVec4 controlsColor = ImVec4(0.208f, 0.239f, 0.251f, 1.00f);
+        style.Colors[ImGuiCol_Button] = controlsColor;
+        style.Colors[ImGuiCol_ButtonHovered] = controlsColor;
+        style.Colors[ImGuiCol_ButtonActive] = controlsColor;
+        ImVec4 fieldsColor = ImVec4(0.208f, 0.239f, 0.251f, 1.00f);
+        style.Colors[ImGuiCol_FrameBg] = fieldsColor;
+        style.Colors[ImGuiCol_FrameBgHovered] = fieldsColor;
+        style.Colors[ImGuiCol_FrameBgActive] = fieldsColor;
     }
 }
 

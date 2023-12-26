@@ -25,11 +25,17 @@ class SNOWPULSEAPI Camera {
         Vector3 GetRawPosition() const;
         Vector3 GetPosition() const { return position_; }
         void SetPosition(Vector2 position);
+        void SetRawPosition(Vector2 position);
+
+        Vector2 ConvertScreenToWorld(Vector2 screenPos);
+        Vector2 ConvertWorldToScreen(Vector2 worldPos);
 
     private:
         Camera();
 
         Application* application_;
+        Vector2 screenSize_;
+        Vector2 resolutionSize_;
         Vector3 position_;
 };
 }   // namespace snowpulse

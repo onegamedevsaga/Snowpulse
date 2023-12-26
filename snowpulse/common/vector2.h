@@ -26,6 +26,10 @@ class SNOWPULSEAPI Vector2 {
             return Vector2(x * other.x, y * other.y);
         }
 
+        Vector2 operator/(const Vector2& other) const {
+            return Vector2(other.x == 0.0f ? 0.0f : x / other.x, other.y == 0.0f ? 0.0f : y / other.y);
+        }
+
         Vector2& operator=(const Vector2& other) {
             if (this == &other) return *this;
             x = other.x;
@@ -52,8 +56,18 @@ class SNOWPULSEAPI Vector2 {
         }
 
         Vector2& operator/=(const Vector2& other) {
-            x /= other.x;
-            y /= other.y;
+            if (other.x != 0.0f) {
+                x /= other.x;
+            }
+            else {
+                x = 0.0f;
+            }
+            if (other.y != 0.0f) {
+                y /= other.y;
+            }
+            else {
+                y = 0.0f;
+            }
             return *this;
         }
 

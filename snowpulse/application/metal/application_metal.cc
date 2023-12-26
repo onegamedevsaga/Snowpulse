@@ -95,7 +95,6 @@ void ApplicationMetal::SetScreenSize(const Vector2Int& screenSize) {
         style.ChildRounding = 2.0f;
         style.PopupRounding = 2.0f;
 
-        //#353D40
         ImVec4 titleBarColor = ImVec4(0.208f, 0.239f, 0.251f, 1.00f);
         style.Colors[ImGuiCol_TitleBg] = titleBarColor;
         style.Colors[ImGuiCol_TitleBgActive] = titleBarColor;

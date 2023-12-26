@@ -151,6 +151,8 @@
 		2A7FBE9E2B3A780600F313B8 /* tinyfiledialogs.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A7FBE9C2B3A780600F313B8 /* tinyfiledialogs.h */; };
 		2A7FBEA12B3AB01E00F313B8 /* action_panel.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A7FBE9F2B3AB01E00F313B8 /* action_panel.h */; };
 		2A7FBEA22B3AB01E00F313B8 /* action_panel.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A7FBEA02B3AB01E00F313B8 /* action_panel.cc */; };
+		2A7FBEA52B3ACECF00F313B8 /* plane.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A7FBEA32B3ACECF00F313B8 /* plane.h */; };
+		2A7FBEA62B3ACECF00F313B8 /* plane.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A7FBEA42B3ACECF00F313B8 /* plane.cc */; };
 		2A8D3CE02B348F8C001D77CF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A8D3CD42B348F8C001D77CF /* AppDelegate.m */; };
 		2A8D3CE22B348F8C001D77CF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A8D3CD72B348F8C001D77CF /* main.m */; };
 		2A8D3CE32B348F8C001D77CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A8D3CD92B348F8C001D77CF /* LaunchScreen.storyboard */; };
@@ -626,6 +628,8 @@
 		2A7FBE9C2B3A780600F313B8 /* tinyfiledialogs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tinyfiledialogs.h; path = ../thirdparty/tinyfiledialogs/tinyfiledialogs.h; sourceTree = "<group>"; };
 		2A7FBE9F2B3AB01E00F313B8 /* action_panel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = action_panel.h; sourceTree = "<group>"; };
 		2A7FBEA02B3AB01E00F313B8 /* action_panel.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = action_panel.cc; sourceTree = "<group>"; };
+		2A7FBEA32B3ACECF00F313B8 /* plane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = plane.h; sourceTree = "<group>"; };
+		2A7FBEA42B3ACECF00F313B8 /* plane.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = plane.cc; sourceTree = "<group>"; };
 		2A8D3C922B348E34001D77CF /* Spooky Seas: Pirate Adventure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Spooky Seas: Pirate Adventure.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A8D3CCA2B348F32001D77CF /* libgame_spookyseas_ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libgame_spookyseas_ios.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A8D3CD42B348F8C001D77CF /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ../custom_games/spooky_seas/launcher_ios/AppDelegate.m; sourceTree = "<group>"; };
@@ -1027,6 +1031,8 @@
 		2A1A214A2B375F2A00F368E9 /* components */ = {
 			isa = PBXGroup;
 			children = (
+				2A7FBEA32B3ACECF00F313B8 /* plane.h */,
+				2A7FBEA42B3ACECF00F313B8 /* plane.cc */,
 				2A7FBE9F2B3AB01E00F313B8 /* action_panel.h */,
 				2A7FBEA02B3AB01E00F313B8 /* action_panel.cc */,
 				2A1A214B2B375F2A00F368E9 /* inspector_panel.cc */,
@@ -1829,6 +1835,7 @@
 				2A1A21532B375F2A00F368E9 /* inspector_panel.h in Headers */,
 				2A1A21502B375F2A00F368E9 /* game.h in Headers */,
 				2A1A21512B375F2A00F368E9 /* defines.h in Headers */,
+				2A7FBEA52B3ACECF00F313B8 /* plane.h in Headers */,
 				2A7FBEA12B3AB01E00F313B8 /* action_panel.h in Headers */,
 				2A1A214F2B375F2A00F368E9 /* scene_main.h in Headers */,
 			);
@@ -2179,6 +2186,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A7FBEA22B3AB01E00F313B8 /* action_panel.cc in Sources */,
+				2A7FBEA62B3ACECF00F313B8 /* plane.cc in Sources */,
 				2A1A21552B375F2A00F368E9 /* game.cc in Sources */,
 				2A1A21522B375F2A00F368E9 /* inspector_panel.cc in Sources */,
 				2A1A21542B375F2A00F368E9 /* scene_main.cc in Sources */,

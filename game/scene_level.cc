@@ -163,8 +163,8 @@ void SceneLevel::Start() {
     effectsSettings.speedA = 270.0f;
     effectsSettings.speedB = 350.0f;
     effectsSettings.acceleration = snowpulse::Vector2(0.0f, -1.0f) * 200.0f;
-    effectsSettings.startColor = snowpulse::Color::Red();
-    effectsSettings.endColor = snowpulse::Color(1.0f, 0.6f, 0.0f, 0.0f);
+    effectsSettings.colorStart = snowpulse::Color::Red();
+    effectsSettings.colorEnd = snowpulse::Color(1.0f, 0.6f, 0.0f, 0.0f);
 
     auto effectsGo = snowpulse::GameObject::Create("effectsGo");
     effectRenderer_ = snowpulse::ParticleEffectsRenderer::Create(effectsSettings);

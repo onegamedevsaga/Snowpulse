@@ -315,7 +315,7 @@ bool InspectorPanel::DrawInputVec2(std::string label, float* x, float* y, float 
     ImGui::Text("%s", label.c_str());
     ImGui::PopFont();
     ImGui::SameLine();
-    ImGui::SetNextItemWidth(ImGui::GetContentRegionAvail().x / 2);
+    ImGui::SetNextItemWidth(ImGui::GetContentRegionAvail().x * 0.5f);
     bool modified = ImGui::InputFloat((std::string("##") + label + "_x").c_str(), x, increment, fastIncrement, "%.2f");
     ImGui::SameLine();
     ImGui::SetNextItemWidth(ImGui::GetContentRegionAvail().x);
@@ -375,7 +375,7 @@ bool InspectorPanel::DrawInputColor2(std::string label, float* valueA, float* va
     ImGui::Text("%s", label.c_str());
     ImGui::PopFont();
     ImGui::SameLine();
-    ImGui::SetNextItemWidth(ImGui::GetContentRegionAvail().x / 2);
+    ImGui::SetNextItemWidth(ImGui::GetContentRegionAvail().x * 0.5f);
     bool modified = ImGui::ColorEdit4((std::string("##") + label + "_a").c_str(), valueA, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_InputRGB | ImGuiColorEditFlags_AlphaBar);
     ImGui::SameLine();
     ImGui::SetNextItemWidth(ImGui::GetContentRegionAvail().x);

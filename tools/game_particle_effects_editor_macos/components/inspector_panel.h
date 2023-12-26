@@ -17,7 +17,7 @@ class GAMEAPI InspectorPanel : public snowpulse::Component, public snowpulse::Dr
         // From Drawable
         void Draw(snowpulse::Graphics* graphics, snowpulse::Matrix4x4 worldMatrix) override;
 
-    protected:
+    private:
         InspectorPanel();
         std::string GetBlendModeString(snowpulse::BlendMode blendMode);
         std::string GetTextureFilteringString(snowpulse::TextureFiltering textureFiltering);

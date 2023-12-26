@@ -123,10 +123,9 @@ InputMacOS::~InputMacOS() {
 void InputMacOS::ProcessInputs(const Vector2Int& resolutionSize, const Vector2Int& screenSize, Vector2 mousePosition) {
     Vector2 scaleFactor = Vector2((float)resolutionSize.x / (float)screenSize.x, (float)resolutionSize.y / (float)screenSize.y);
     mousePositionOnScreen_ = mousePosition;
-    mousePositionOnScreen_ *= scaleFactor;
 
     auto camPos = camera_->GetPosition();
-    mousePositionOnWorld_ = mousePositionOnScreen_ + Vector2(camPos.x, camPos.y) + Vector2(resolutionSize.x * -0.5f, resolutionSize.y * -0.5f);
+    mousePositionOnWorld_ = (mousePositionOnScreen_ * scaleFactor) + Vector2(camPos.x, camPos.y) + Vector2(resolutionSize.x * -0.5f, resolutionSize.y * -0.5f);
 
     ImGuiIO& io = ImGui::GetIO();
     io.MouseDrawCursor = false;
@@ -135,10 +134,9 @@ void InputMacOS::ProcessInputs(const Vector2Int& resolutionSize, const Vector2In
 void InputMacOS::ProcessInputs(const Vector2Int& resolutionSize, const Vector2Int& screenSize, Vector2 mousePosition, int mouseButton, bool isMouseDown) {
     Vector2 scaleFactor = Vector2((float)resolutionSize.x / (float)screenSize.x, (float)resolutionSize.y / (float)screenSize.y);
     auto mousePositionOnScreen = mousePosition;
-    mousePositionOnScreen *= scaleFactor;
 
     auto camPos = camera_->GetPosition();
-    mousePositionOnWorld_ = mousePositionOnScreen + Vector2(camPos.x, camPos.y) + Vector2(resolutionSize.x * -0.5f, resolutionSize.y * -0.5f);
+    mousePositionOnWorld_ = (mousePositionOnScreen * scaleFactor) + Vector2(camPos.x, camPos.y) + Vector2(resolutionSize.x * -0.5f, resolutionSize.y * -0.5f);
 
     std::string key = "";
     switch (mouseButton) {

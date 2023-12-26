@@ -26,6 +26,9 @@ class SNOWPULSEAPI Component : public Node, public Updatable {
         // From Updatable
         virtual void Update(float deltaTime);
 
+        GameObject* GetGameObject() const { return gameObject_; }
+        Transform* GetTransform() const { return transform_; }
+
     protected:
         friend class GameObject;
 
