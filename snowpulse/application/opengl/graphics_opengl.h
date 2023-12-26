@@ -34,7 +34,7 @@ class SNOWPULSEAPI GraphicsOpenGL : public Graphics {
         void UpdateProjectionMatrix(const Vector2Int& resolution) override;
         void Shutdown() override;
         Matrix4x4 InvertMatrixNatively(Matrix4x4 matrix) override;
-        void LoadTexture(std::string filename, PathType pathType) override;
+        bool LoadTexture(std::string filename, PathType pathType) override;
         void LoadTexture(std::string name, unsigned char* bitmap, Vector2Int size) override;
         void UnloadTexture(std::string filename) override;
         Vector2 GetTextureSize(std::string filename) override;

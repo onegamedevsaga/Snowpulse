@@ -8,11 +8,12 @@
 namespace snowpulse {
 std::shared_ptr<ParticleSystem> ParticleSystem::Create(const ParticleSystemSettings& settings) {
     auto particleSystem = std::shared_ptr<ParticleSystem>(new ParticleSystem());
+    particleSystem->graphics_ = Application::GetInstance()->GetGraphics();
     particleSystem->settings_ = ParticleSystemSettings(settings);
     return particleSystem;
 }
 
-ParticleSystem::ParticleSystem() : isPlaying_(false) {
+ParticleSystem::ParticleSystem() : isPlaying_(false), drawnParticleCount_(0) {
     particles_.reserve(settings_.maxParticleCount);
 }
 
@@ -24,6 +25,9 @@ void ParticleSystem::Update(float deltaTime) {
     emissionTime_ -= deltaTime;
     if (emissionTime_ <= 0.0f) {
         if (SpawnParticle()) {
+            if (settings_.emissionRate == 0.0f) {
+                settings_.emissionRate = 0.001f;
+            }
             emissionTime_ = 1.0f / settings_.emissionRate;
         }
     }
@@ -41,6 +45,7 @@ void ParticleSystem::Update(float deltaTime) {
         float percentage = 1.0f - p.currentLife / p.lifespan;
         p.color = settings_.colorStart + ((settings_.colorEnd - settings_.colorStart) * percentage);
         p.scale = settings_.scaleStartEnd.x + ((settings_.scaleStartEnd.y - settings_.scaleStartEnd.x) * percentage);
+        p.rotation += settings_.angleVelocity * deltaTime;
 
         stillAliveParticles.push_back(p);
     }
@@ -55,13 +60,28 @@ void ParticleSystem::Draw(Graphics* graphics, Matrix4x4 worldMatrix, int sortOrd
                                     worldMatrix;
         graphics->DrawSprite(p.size, settings_.textureFilename, particleMatrix, p.color, sortOrder, settings_.blendMode, settings_.textureFiltering, isPremultiplied);
     }
+    drawnParticleCount_ = (int)particles_.size();
+}
+
+void ParticleSystem::SetSettings(const ParticleSystemSettings& settings) {
+    settings_ = settings;
+    emissionTime_ = 0.0f;
+    if (!graphics_->LoadTexture(settings_.textureFilename, settings_.texturePathType)) {
+        settings_.textureFilename = "sprites/particle_default.png";
+        settings_.texturePathType = PathType::kDefaults;
+        graphics_->LoadTexture(settings_.textureFilename, settings_.texturePathType);
+    }
 }
 
 void ParticleSystem::Play() {
-    
+    isPlaying_ = true;
 }
 
 bool ParticleSystem::SpawnParticle() {
+    if (!isPlaying_) {
+        return false;
+    }
+
     if ((int)particles_.size() >= settings_.maxParticleCount) {
         return false;
     }
@@ -95,6 +115,9 @@ bool ParticleSystem::SpawnParticle() {
         float a = settings_.lifespanA < settings_.lifespanB ? settings_.lifespanA : settings_.lifespanB;
         float b = settings_.lifespanA < settings_.lifespanB ? settings_.lifespanB : settings_.lifespanA;
         float range = abs(b - a);
+        if (range == 0) {
+            range = 1;
+        }
         data.lifespan = a + (float)(rand() % (int)(range * 100.0f)) * 0.01f;
     }
 
@@ -111,6 +134,9 @@ bool ParticleSystem::SpawnParticle() {
         float a = settings_.speedA < settings_.speedB ? settings_.speedA : settings_.speedB;
         float b = settings_.speedA < settings_.speedB ? settings_.speedB : settings_.speedA;
         float range = abs(b - a);
+        if (range == 0) {
+            range = 1;
+        }
         speed = a + (float)(rand() % (int)(range * 100.0f)) * 0.01f;
     }
 
@@ -127,6 +153,9 @@ bool ParticleSystem::SpawnParticle() {
         float a = settings_.emissionAngleA < settings_.emissionAngleB ? settings_.emissionAngleA : settings_.emissionAngleB;
         float b = settings_.emissionAngleA < settings_.emissionAngleB ? settings_.emissionAngleB : settings_.emissionAngleA;
         float range = abs(b - a);
+        if (range == 0) {
+            range = 1;
+        }
         auto angle = a + (float)(rand() % (int)(range * 100.0f)) * 0.01f;
         direction.x = cos(SPDEGTORAD(angle));
         direction.y = sin(SPDEGTORAD(angle));
@@ -136,7 +165,7 @@ bool ParticleSystem::SpawnParticle() {
     data.velocity = direction * speed;
     data.rotation = settings_.angleStart;
     data.scale = settings_.scaleStartEnd.x;
-    data.size = Application::GetInstance()->GetGraphics()->GetTextureSize(settings_.textureFilename);
+    data.size = graphics_->GetTextureSize(settings_.textureFilename);
     particles_.push_back(data);
     return true;
 }

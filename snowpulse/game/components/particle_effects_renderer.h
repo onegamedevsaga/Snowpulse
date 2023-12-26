@@ -21,6 +21,11 @@ class SNOWPULSEAPI ParticleEffectsRenderer : public Renderer {
         // From Drawable
         void Draw(Graphics* graphics, Matrix4x4 worldMatrix) override;
 
+        void SetSettings(const ParticleSystemSettings& settings);
+        void Play();
+
+        int GetDrawnParticleCount() const;
+
     protected:
         ParticleEffectsRenderer();
 

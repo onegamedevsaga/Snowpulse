@@ -35,14 +35,44 @@ InspectorPanel::InspectorPanel() : Component("inspector_panel") {
     emissionShapes_.push_back(GetEmissionShapeString(snowpulse::ParticleSystemSettings::EmissionShape::kRect));
     emissionShapes_.push_back(GetEmissionShapeString(snowpulse::ParticleSystemSettings::EmissionShape::kCircle));
 
+    onInvalidate_ = SPNULL;
     blendMode_ = 1;
     textureFiltering_ = 1;
     pathType_ = 0;
 
-    for (int i = 0; i < 4; i++) {
-        colorStart_[i] = 1.0f;
-        colorEnd_[i] = 1.0f;
-    }
+    settings_.blendMode = snowpulse::BlendMode::kNormal;
+    settings_.scaleStartEnd = snowpulse::Vector2(2.0f, 0.2f);
+    settings_.lifespanValueMode = snowpulse::ParticleSystemSettings::ValueMode::kRandomWithin;
+    settings_.lifespanA = 0.8f;
+    settings_.lifespanB = 1.0f;
+    settings_.maxParticleCount = 300;
+    settings_.emissionShape = snowpulse::ParticleSystemSettings::EmissionShape::kCircle;
+    settings_.emissionRectSize = snowpulse::Vector2(100.0f, 40.0f);
+    settings_.emissionRadius = 20.0f;
+    settings_.emissionRate = 40.0f;
+    settings_.emissionAngleValueMode = snowpulse::ParticleSystemSettings::ValueMode::kRandomWithin;
+    settings_.emissionAngleA = 80.0f;
+    settings_.emissionAngleB = 100.0f;
+    settings_.speedValueMode = snowpulse::ParticleSystemSettings::ValueMode::kRandomWithin;
+    settings_.speedA = 270.0f;
+    settings_.speedB = 350.0f;
+    settings_.acceleration = snowpulse::Vector2(0.0f, -1.0f) * 200.0f;
+    settings_.colorStart = snowpulse::Color::Red();
+    settings_.colorEnd = snowpulse::Color(1.0f, 0.6f, 0.0f, 0.0f);
+
+    emissionShape_= 2;
+    emissionAngleValueMode_ = 2;
+    lifespanValueMode_ = 2;
+    speedValueMode_ = 2;
+
+    colorStart_[0] = settings_.colorStart.r;
+    colorStart_[1] = settings_.colorStart.g;
+    colorStart_[2] = settings_.colorStart.b;
+    colorStart_[3] = settings_.colorStart.a;
+    colorEnd_[0] = settings_.colorEnd.r;
+    colorEnd_[1] = settings_.colorEnd.g;
+    colorEnd_[2] = settings_.colorEnd.b;
+    colorEnd_[3] = settings_.colorEnd.a;
 
     ImGuiIO& io = ImGui::GetIO();
     auto fontFilename = snowpulse::Directory::GetInstance()->GetDefaultsPath("fonts/roboto/Roboto-Light.ttf");
@@ -85,82 +115,116 @@ void InspectorPanel::Draw(snowpulse::Graphics* graphics, snowpulse::Matrix4x4 wo
 
     if (DrawInputInt("Max Particle Count", &settings_.maxParticleCount)) {
         settings_.maxParticleCount = settings_.maxParticleCount < 0 ? 0 : settings_.maxParticleCount;
+        Invalidate();
     }
 
     if (DrawCombo("Emission Shape", &emissionShape_, emissionShapes_)) {
         settings_.emissionShape = (snowpulse::ParticleSystemSettings::EmissionShape)emissionShape_;
+        Invalidate();
     }
     if (settings_.emissionShape == snowpulse::ParticleSystemSettings::EmissionShape::kPoint) {
     }
     else if (settings_.emissionShape == snowpulse::ParticleSystemSettings::EmissionShape::kRect) {
-        DrawInputVec2("Emission Rect Size", &settings_.emissionRectSize.x, &settings_.emissionRectSize.y);
+        if (DrawInputVec2("Emission Rect Size", &settings_.emissionRectSize.x, &settings_.emissionRectSize.y)) {
+            Invalidate();
+        }
     }
     else if (settings_.emissionShape == snowpulse::ParticleSystemSettings::EmissionShape::kCircle) {
-        DrawInputFloat("Emission Radius", &settings_.emissionRadius);
+        if (DrawInputFloat("Emission Radius", &settings_.emissionRadius)) {
+            Invalidate();
+        }
+    }
+
+    if (DrawInputFloat("Emission Rate", &settings_.emissionRate)) {
+        settings_.emissionRate = settings_.emissionRate < 0.0f ? 0.0f : settings_.emissionRate;
+        Invalidate();
     }
 
     if (DrawCombo("Emission Angle Value Mode", &emissionAngleValueMode_, valueModes_)) {
         settings_.emissionAngleValueMode = (snowpulse::ParticleSystemSettings::ValueMode)emissionAngleValueMode_;
+        Invalidate();
     }
     if (settings_.emissionAngleValueMode == snowpulse::ParticleSystemSettings::ValueMode::kSingle) {
-        DrawInputFloat("Emission Angle", &settings_.emissionAngleA);
+        if (DrawInputFloat("Emission Angle", &settings_.emissionAngleA)) {
+            Invalidate();
+        }
     }
     else if (settings_.emissionAngleValueMode == snowpulse::ParticleSystemSettings::ValueMode::kRandomBetween) {
-        DrawInputFloat("Emission Angle A", &settings_.emissionAngleA);
-        DrawInputFloat("Emission Angle B", &settings_.emissionAngleB);
+        if (DrawInputFloat("Emission Angle A", &settings_.emissionAngleA)) {
+            Invalidate();
+        }
+        if (DrawInputFloat("Emission Angle B", &settings_.emissionAngleB)) {
+            Invalidate();
+        }
     }
     else if (settings_.emissionAngleValueMode == snowpulse::ParticleSystemSettings::ValueMode::kRandomWithin) {
-        DrawInputFloat("Emission Angle From", &settings_.emissionAngleA);
-        DrawInputFloat("Emission Angle To", &settings_.emissionAngleB);
+        if (DrawInputFloat("Emission Angle From", &settings_.emissionAngleA)) {
+            Invalidate();
+        }
+        if (DrawInputFloat("Emission Angle To", &settings_.emissionAngleB)) {
+            Invalidate();
+        }
     }
 
     if (DrawCombo("Lifespan Value Mode", &lifespanValueMode_, valueModes_)) {
         settings_.lifespanValueMode = (snowpulse::ParticleSystemSettings::ValueMode)lifespanValueMode_;
+        Invalidate();
     }
     if (settings_.lifespanValueMode == snowpulse::ParticleSystemSettings::ValueMode::kSingle) {
         if (DrawInputFloat("Lifespan", &settings_.lifespanA)) {
             settings_.lifespanA = settings_.lifespanA < 0.0f ? 0.0f : settings_.lifespanA;
+            Invalidate();
         }
     }
     else if (settings_.lifespanValueMode == snowpulse::ParticleSystemSettings::ValueMode::kRandomBetween) {
         if (DrawInputFloat("Lifespan A", &settings_.lifespanA)) {
             settings_.lifespanA = settings_.lifespanA < 0.0f ? 0.0f : settings_.lifespanA;
+            Invalidate();
         }
         if (DrawInputFloat("Lifespan B", &settings_.lifespanB)) {
             settings_.lifespanB = settings_.lifespanB < 0.0f ? 0.0f : settings_.lifespanB;
+            Invalidate();
         }
     }
     else if (settings_.lifespanValueMode == snowpulse::ParticleSystemSettings::ValueMode::kRandomWithin) {
         if (DrawInputFloat("Lifespan From", &settings_.lifespanA)) {
             settings_.lifespanA = settings_.lifespanA < 0.0f ? 0.0f : settings_.lifespanA;
+            Invalidate();
         }
         if (DrawInputFloat("Lifespan To", &settings_.lifespanB)) {
             settings_.lifespanB = settings_.lifespanB < 0.0f ? 0.0f : settings_.lifespanB;
+            Invalidate();
         }
     }
 
     if (DrawCombo("Speed Value Mode", &speedValueMode_, valueModes_)) {
         settings_.speedValueMode = (snowpulse::ParticleSystemSettings::ValueMode)speedValueMode_;
+        Invalidate();
     }
     if (settings_.speedValueMode == snowpulse::ParticleSystemSettings::ValueMode::kSingle) {
         if (DrawInputFloat("Speed", &settings_.speedA)) {
             settings_.speedA = settings_.speedA < 0.0f ? 0.0f : settings_.speedA;
+            Invalidate();
         }
     }
     else if (settings_.speedValueMode == snowpulse::ParticleSystemSettings::ValueMode::kRandomBetween) {
         if (DrawInputFloat("Speed A", &settings_.speedA)) {
             settings_.speedA = settings_.speedA < 0.0f ? 0.0f : settings_.speedA;
+            Invalidate();
         }
         if (DrawInputFloat("Speed B", &settings_.speedB)) {
             settings_.speedB = settings_.speedB < 0.0f ? 0.0f : settings_.speedB;
+            Invalidate();
         }
     }
     else if (settings_.speedValueMode == snowpulse::ParticleSystemSettings::ValueMode::kRandomWithin) {
         if (DrawInputFloat("Speed From", &settings_.speedA)) {
             settings_.speedA = settings_.speedA < 0.0f ? 0.0f : settings_.speedA;
+            Invalidate();
         }
         if (DrawInputFloat("Speed To", &settings_.speedB)) {
             settings_.speedB = settings_.speedB < 0.0f ? 0.0f : settings_.speedB;
+            Invalidate();
         }
     }
 
@@ -169,27 +233,38 @@ void InspectorPanel::Draw(snowpulse::Graphics* graphics, snowpulse::Matrix4x4 wo
         settings_.colorStart.g = colorStart_[1];
         settings_.colorStart.b = colorStart_[2];
         settings_.colorStart.a = colorStart_[3];
-        settings_.colorEnd.r = colorStart_[0];
-        settings_.colorEnd.g = colorStart_[1];
-        settings_.colorEnd.b = colorStart_[2];
-        settings_.colorEnd.a = colorStart_[3];
+        settings_.colorEnd.r = colorEnd_[0];
+        settings_.colorEnd.g = colorEnd_[1];
+        settings_.colorEnd.b = colorEnd_[2];
+        settings_.colorEnd.a = colorEnd_[3];
+        Invalidate();
     }
 
-    DrawInputVec2("Acceleration", &settings_.acceleration.x, &settings_.acceleration.y);
-    DrawInputVec2("Scale Start/End", &settings_.scaleStartEnd.x, &settings_.scaleStartEnd.y);
-    DrawInputFloat("Angle(Deg) Start", &settings_.angleStart);
-    DrawInputFloat("Angle(Deg) Velocity", &settings_.angleVelocity);
+    if (DrawInputVec2("Acceleration", &settings_.acceleration.x, &settings_.acceleration.y)) {
+        Invalidate();
+    }
+    if (DrawInputVec2("Scale Start/End", &settings_.scaleStartEnd.x, &settings_.scaleStartEnd.y)) {
+        Invalidate();
+    }
+    if (DrawInputFloat("Angle(Deg) Start", &settings_.angleStart)) {
+        Invalidate();
+    }
+    if (DrawInputFloat("Angle(Deg) Velocity", &settings_.angleVelocity)) {
+        Invalidate();
+    }
 
     DrawHeader("Texture");
     if (DrawInputBrowseFile("Texture Filename", textureFilename_)) {
-        // TODO: Update preview's particle
         settings_.textureFilename = std::string(textureFilename_);
+        Invalidate();
     }
     if (DrawCombo("Blend Mode", &blendMode_, blendModes_)) {
         settings_.blendMode = (snowpulse::BlendMode)blendMode_;
+        Invalidate();
     }
     if (DrawCombo("Texture Filtering", &textureFiltering_, textureFilters_)) {
         settings_.textureFiltering = (snowpulse::TextureFiltering)textureFiltering_;
+        Invalidate();
     }
 
     DrawHeader("Runtime Loading");
@@ -199,6 +274,12 @@ void InspectorPanel::Draw(snowpulse::Graphics* graphics, snowpulse::Matrix4x4 wo
 
     ImGui::End();
     ImGui::PopFont();
+}
+
+void InspectorPanel::Invalidate() {
+    if (onInvalidate_) {
+        onInvalidate_(settings_);
+    }
 }
 
 std::string InspectorPanel::GetBlendModeString(snowpulse::BlendMode blendMode) {
@@ -357,7 +438,6 @@ bool InspectorPanel::DrawInputBrowseFile(std::string label, char* value) {
         }
         modified = true;
     }
-    
     return modified;
 }
 

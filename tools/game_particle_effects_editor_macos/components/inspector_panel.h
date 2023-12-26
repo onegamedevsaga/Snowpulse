@@ -4,6 +4,7 @@
 #include "../defines.h"
 
 #include <memory>
+#include <functional>
 #include <snowpulse.h>
 
 namespace game {
@@ -17,8 +18,12 @@ class GAMEAPI InspectorPanel : public snowpulse::Component, public snowpulse::Dr
         // From Drawable
         void Draw(snowpulse::Graphics* graphics, snowpulse::Matrix4x4 worldMatrix) override;
 
+        void SetListener(std::function<void(snowpulse::ParticleSystemSettings)> onInvalidate) { onInvalidate_ = onInvalidate; }
+        void Invalidate();
+
     private:
         InspectorPanel();
+
         std::string GetBlendModeString(snowpulse::BlendMode blendMode);
         std::string GetTextureFilteringString(snowpulse::TextureFiltering textureFiltering);
         std::string GetPathTypeString(snowpulse::PathType pathType);
@@ -34,6 +39,7 @@ class GAMEAPI InspectorPanel : public snowpulse::Component, public snowpulse::Dr
         bool DrawInputColor(std::string label, float* value);
         bool DrawInputColor2(std::string label, float* valueA, float* valueB);
 
+        std::function<void(snowpulse::ParticleSystemSettings)> onInvalidate_;
         ImFont* imguiFontH1_;
         ImFont* imguiFontH2_;
         ImFont* imguiFontH3_;

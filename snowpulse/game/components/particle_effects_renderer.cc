@@ -17,8 +17,8 @@ ParticleEffectsRenderer::~ParticleEffectsRenderer() {
 
 void ParticleEffectsRenderer::LoadGraphics(Graphics* graphics, const ParticleSystemSettings& settings) {
     Renderer::LoadGraphics(graphics);
-    graphics_->LoadTexture(settings.textureFilename, settings.texturePathType);
     particleSystem_ = ParticleSystem::Create(settings);
+    SetSettings(settings);
 }
 
 // From Updatable
@@ -30,5 +30,17 @@ void ParticleEffectsRenderer::Update(float deltaTime) {
 // From Drawable
 void ParticleEffectsRenderer::Draw(Graphics* graphics, Matrix4x4 worldMatrix) {
     particleSystem_->Draw(graphics, worldMatrix, sortOrder_, isPremultiplied_);
+}
+
+void ParticleEffectsRenderer::SetSettings(const ParticleSystemSettings& settings) {
+    particleSystem_->SetSettings(settings);
+}
+
+void ParticleEffectsRenderer::Play() {
+    particleSystem_->Play();
+}
+
+int ParticleEffectsRenderer::GetDrawnParticleCount() const {
+    return particleSystem_->GetDrawnParticleCount();
 }
 }   // namespace snowpulse

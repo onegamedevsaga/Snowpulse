@@ -1,6 +1,7 @@
 #include "scene_main.h"
 
 #include <iostream>
+#include <functional>
 
 #include "components/plane_renderer.h"
 #include "components/action_panel.h"
@@ -38,6 +39,8 @@ void SceneMain::Shutdown() {
 }
 
 void SceneMain::Start() {
+    timeLapsed_ = 0.0f;
+
     auto resolutionSize = GetApplication()->GetResolutionSize();
     auto backgroundGo = snowpulse::GameObject::Create("backgroundGo");
     background_ = snowpulse::SpriteRenderer::Create("");
@@ -53,6 +56,19 @@ void SceneMain::Start() {
     planeGo->AddComponent(planeRenderer);
     AddChild(planeGo);
 
+    auto statsGo = snowpulse::GameObject::Create("statsGo");
+    statsRenderer_ = snowpulse::FontRenderer::Create("fonts/roboto/Roboto-Bold.ttf", 30.0f, snowpulse::PathType::kDefaults, snowpulse::TextureFiltering::kAnisotropic);
+    statsRenderer_->SetColor(snowpulse::Color(0.1f, 0.1f, 0.1f, 0.7f));
+    statsRenderer_->SetSortOrder(10);
+    statsGo->AddComponent(statsRenderer_);
+    AddChild(statsGo);
+
+    auto effectsGo = snowpulse::GameObject::Create("effectsGo");
+    effectRenderer_ = snowpulse::ParticleEffectsRenderer::Create(snowpulse::ParticleSystemSettings());
+    effectRenderer_->Play();
+    effectsGo->AddComponent(effectRenderer_);
+    AddChild(effectsGo);
+
     auto actionGo = snowpulse::GameObject::Create("actionGo");
     auto actionPanel = ActionPanel::Create();
     actionGo->AddComponent(actionPanel);
@@ -60,36 +76,10 @@ void SceneMain::Start() {
 
     auto inspectorGo = snowpulse::GameObject::Create("inspectorGo");
     auto inspectorPanel = InspectorPanel::Create();
+    inspectorPanel->SetListener(std::bind(&SceneMain::OnInspectorInvalidate, this, std::placeholders::_1));
+    inspectorPanel->Invalidate();
     inspectorGo->AddComponent(inspectorPanel);
     AddChild(inspectorGo);
-
-    snowpulse::ParticleSystemSettings effectsSettings;
-    effectsSettings.texturePathType = snowpulse::PathType::kDefaults;
-    effectsSettings.textureFilename = "sprites/particle_default.png";
-    effectsSettings.blendMode = snowpulse::BlendMode::kNormal;
-    effectsSettings.scaleStartEnd = snowpulse::Vector2(1.5f, 0.2f);
-    effectsSettings.lifespanValueMode = snowpulse::ParticleSystemSettings::ValueMode::kRandomWithin;
-    effectsSettings.lifespanA = 0.8f;
-    effectsSettings.lifespanB = 1.0f;
-    effectsSettings.maxParticleCount = 10000;
-    effectsSettings.emissionShape = snowpulse::ParticleSystemSettings::EmissionShape::kCircle;
-    effectsSettings.emissionRectSize = snowpulse::Vector2(100.0f, 40.0f);
-    effectsSettings.emissionRadius = 50.0f;
-    effectsSettings.emissionRate = 40.0f;
-    effectsSettings.emissionAngleValueMode = snowpulse::ParticleSystemSettings::ValueMode::kRandomWithin;
-    effectsSettings.emissionAngleA = 80.0f;
-    effectsSettings.emissionAngleB = 100.0f;
-    effectsSettings.speedValueMode = snowpulse::ParticleSystemSettings::ValueMode::kRandomWithin;
-    effectsSettings.speedA = 270.0f;
-    effectsSettings.speedB = 350.0f;
-    effectsSettings.acceleration = snowpulse::Vector2(0.0f, -1.0f) * 200.0f;
-    effectsSettings.colorStart = snowpulse::Color::Red();
-    effectsSettings.colorEnd = snowpulse::Color(1.0f, 0.6f, 0.0f, 0.0f);
-
-    auto effectsGo = snowpulse::GameObject::Create("effectsGo");
-    effectRenderer_ = snowpulse::ParticleEffectsRenderer::Create(effectsSettings);
-    effectsGo->AddComponent(effectRenderer_);
-    AddChild(effectsGo);
 }
 
 void SceneMain::Update(float deltaTime) {
@@ -101,6 +91,16 @@ void SceneMain::Update(float deltaTime) {
     background_->SetSize(snowpulse::Vector2(resolutionSize.x * cameraSize, resolutionSize.y * cameraSize));
     background_->GetTransform()->SetPosition(snowpulse::Vector2(cameraPos.x, cameraPos.y));
 
+    statsRenderer_->GetTransform()->SetPosition(snowpulse::Vector2(resolutionSize.x * -0.5f * cameraSize + cameraPos.x + (20.0f * cameraSize), resolutionSize.y * 0.5f * cameraSize + cameraPos.y - (120.0f * cameraSize)));
+    statsRenderer_->GetTransform()->SetLocalScale(cameraSize);
+    timeLapsed_ += deltaTime;
+    if (timeLapsed_ >= 1.0f) {
+        int fps = (int)(1.0f / deltaTime + 0.5f);
+        int particleCount = effectRenderer_->GetDrawnParticleCount();
+        statsRenderer_->SetText("FPS: " + std::to_string(fps) + "\nParticles Rendering: " + std::to_string(particleCount));
+        timeLapsed_ -= 1.0f;
+    }
+
     if (snowpulse::Input::GetInstance()->GetPressed("x")) {
         GetApplication()->Close();
     }
@@ -108,5 +108,10 @@ void SceneMain::Update(float deltaTime) {
 #ifdef SPDEBUG
     std::cout << "SceneMain updating.. (deltaTime: " << deltaTime << ")" << std::endl;
 #endif
+}
+
+void SceneMain::OnInspectorInvalidate(snowpulse::ParticleSystemSettings settings) {
+    settings.texturePathType = snowpulse::PathType::kRaw;
+    effectRenderer_->SetSettings(settings);
 }
 }

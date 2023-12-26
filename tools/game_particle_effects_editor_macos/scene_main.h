@@ -20,8 +20,13 @@ class GAMEAPI SceneMain : public snowpulse::Scene {
     private:
         SceneMain();
 
+        void OnInspectorInvalidate(snowpulse::ParticleSystemSettings settings);
+
+        float timeLapsed_;
         std::shared_ptr<snowpulse::SpriteRenderer> background_;
+        std::shared_ptr<snowpulse::FontRenderer> statsRenderer_;
         std::shared_ptr<snowpulse::ParticleEffectsRenderer> effectRenderer_;
+    
 };
 }
 

@@ -133,16 +133,19 @@ Matrix4x4 GraphicsOpenGL::InvertMatrixNatively(Matrix4x4 matrix) {
     return matrix;
 }
 
-void GraphicsOpenGL::LoadTexture(std::string filename, PathType pathType) {
+bool GraphicsOpenGL::LoadTexture(std::string filename, PathType pathType) {
+    bool valid = false;
     std::string fullFilename = Directory::GetInstance()->GetFullFilename(filename, pathType);
     if (!textures_.count(filename)) {
         int width, height, nrChannels;
         unsigned char *data = stbi_load(fullFilename.c_str(), &width, &height, &nrChannels, 4);
         if (data) {
             LoadTexture(filename, data, Vector2Int(width, height));
+            valid = true;
         }
         stbi_image_free(data);
     }
+    return valid;
 }
 
 void GraphicsOpenGL::LoadTexture(std::string name, unsigned char* bitmap, Vector2Int size) {

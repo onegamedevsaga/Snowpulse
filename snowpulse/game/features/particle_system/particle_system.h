@@ -23,16 +23,21 @@ class SNOWPULSEAPI ParticleSystem {
         virtual ~ParticleSystem();
         void Update(float deltaTime);
         void Draw(Graphics* graphics, Matrix4x4 worldMatrix, int sortOrder, bool isPremultiplied);
+        void SetSettings(const ParticleSystemSettings& settings);
         void Play();
+
+        int GetDrawnParticleCount() const { return drawnParticleCount_; }
 
     protected:
         ParticleSystem();
         bool SpawnParticle();
 
         bool isPlaying_;
+        Graphics* graphics_;
         ParticleSystemSettings settings_;
         std::vector<ParticleData> particles_;
         float emissionTime_;
+        int drawnParticleCount_;
 };
 }   // namespace snowpulse
 #endif

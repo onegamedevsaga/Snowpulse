@@ -119,16 +119,20 @@ Matrix4x4 GraphicsMetal::InvertMatrixNatively(Matrix4x4 matrix) {
     return matrix;
 }
 
-void GraphicsMetal::LoadTexture(std::string filename, PathType pathType) {
+bool GraphicsMetal::LoadTexture(std::string filename, PathType pathType) {
+    bool valid = true;
     std::string fullFilename = Directory::GetInstance()->GetFullFilename(filename, pathType);
     if (!textures_.count(filename)) {
+        valid = false;
         int width, height, nrChannels;
         unsigned char *data = stbi_load(fullFilename.c_str(), &width, &height, &nrChannels, 4);
         if (data) {
             LoadTexture(filename, data, Vector2Int(width, height));
+            valid = true;
         }
         stbi_image_free(data);
     }
+    return valid;
 }
 
 void GraphicsMetal::LoadTexture(std::string name, unsigned char* bitmap, Vector2Int size) {
