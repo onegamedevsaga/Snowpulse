@@ -81,8 +81,27 @@ void PlaneRenderer::Draw(snowpulse::Graphics* graphics, snowpulse::Matrix4x4 wor
     auto yLineMatrix = snowpulse::Matrix4x4(worldMatrix);
     xLineMatrix.AddTranslate(snowpulse::Vector3(0.0f, cameraPos.y, 0.0f));
     yLineMatrix.AddTranslate(snowpulse::Vector3(cameraPos.x, 0.0f, 0.0f));
-    graphics->DrawSprite(xLine, "", xLineMatrix, color_, sortOrder_, blendMode_, snowpulse::TextureFiltering::kBilinear, isPremultiplied_);
-    graphics->DrawSprite(yLine, "", yLineMatrix, color_, sortOrder_, blendMode_, snowpulse::TextureFiltering::kBilinear, isPremultiplied_);
+
+    int gridSpacing = 100;
+    int xCount = (resolutionSize.x * cameraSize) / gridSpacing;
+    int yCount = (resolutionSize.y * cameraSize) / gridSpacing;
+    auto xGridLineMatrix = snowpulse::Matrix4x4(xLineMatrix);
+    auto yGridLineMatrix = snowpulse::Matrix4x4(yLineMatrix);
+    xGridLineMatrix.AddTranslate(snowpulse::Vector3(gridSpacing * -xCount, 0.0f, 0.0f));
+    yGridLineMatrix.AddTranslate(snowpulse::Vector3(0.0f, gridSpacing * -yCount, 0.0f));
+    auto gridColor = color_;
+    gridColor.a = 0.2f;
+    for (int x = 0; x < xCount * 2; x++) {
+        xGridLineMatrix.AddTranslate(snowpulse::Vector3(gridSpacing, 0.0f, 0.0f));
+        graphics->DrawSprite(xLine, "", xGridLineMatrix, gridColor, sortOrder_, blendMode_, snowpulse::TextureFiltering::kBilinear, isPremultiplied_);
+    }
+    for (int y = 0; y < yCount * 2; y++) {
+        yGridLineMatrix.AddTranslate(snowpulse::Vector3(0.0f, gridSpacing, 0.0f));
+        graphics->DrawSprite(yLine, "", yGridLineMatrix, gridColor, sortOrder_, blendMode_, snowpulse::TextureFiltering::kBilinear, isPremultiplied_);
+    }
+
+    graphics->DrawSprite(xLine, "", xLineMatrix, snowpulse::Color::Green(), sortOrder_, blendMode_, snowpulse::TextureFiltering::kBilinear, isPremultiplied_);
+    graphics->DrawSprite(yLine, "", yLineMatrix, snowpulse::Color::Red(), sortOrder_, blendMode_, snowpulse::TextureFiltering::kBilinear, isPremultiplied_);
 }
 
 snowpulse::Vector2 PlaneRenderer::GetScreenToResolutionFactor() {
