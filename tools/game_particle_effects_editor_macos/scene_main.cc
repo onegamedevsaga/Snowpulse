@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-#include "components/plane.h"
+#include "components/plane_renderer.h"
 #include "components/action_panel.h"
 #include "components/inspector_panel.h"
 
@@ -38,20 +38,19 @@ void SceneMain::Shutdown() {
 }
 
 void SceneMain::Start() {
-    resolutionSize_ = GetApplication()->GetResolutionSize();
-
+    auto resolutionSize = GetApplication()->GetResolutionSize();
     auto backgroundGo = snowpulse::GameObject::Create("backgroundGo");
     background_ = snowpulse::SpriteRenderer::Create("");
-    background_->SetSize(snowpulse::Vector2(resolutionSize_.x, resolutionSize_.y));
+    background_->SetSize(snowpulse::Vector2(resolutionSize.x, resolutionSize.y));
     background_->SetColor(snowpulse::Color(0.3f, 0.3f, 0.3f));
     background_->SetSortOrder(-10);
     backgroundGo->AddComponent(background_);
     AddChild(backgroundGo);
 
     auto planeGo = snowpulse::GameObject::Create("planeGo");
-    auto plane = Plane::Create();
-    //plane->SetSortOrder(-9);
-    planeGo->AddComponent(plane);
+    auto planeRenderer = PlaneRenderer::Create();
+    planeRenderer->SetSortOrder(-9);
+    planeGo->AddComponent(planeRenderer);
     AddChild(planeGo);
 
     auto actionGo = snowpulse::GameObject::Create("actionGo");
@@ -96,8 +95,9 @@ void SceneMain::Start() {
 
 void SceneMain::Update(float deltaTime) {
     Scene::Update(deltaTime);
+    auto resolutionSize = GetApplication()->GetResolutionSize();
     auto camPos = GetCamera()->GetPosition();
-    background_->SetSize(snowpulse::Vector2(resolutionSize_.x, resolutionSize_.y));
+    background_->SetSize(snowpulse::Vector2(resolutionSize.x, resolutionSize.y));
     background_->GetTransform()->SetPosition(snowpulse::Vector2(camPos.x, camPos.y));
 
     if (snowpulse::Input::GetInstance()->GetPressed("x")) {
@@ -105,6 +105,7 @@ void SceneMain::Update(float deltaTime) {
     }
 
 #ifdef SPDEBUG
+    std::cout << "RESOLUTION: (" << resolutionSize.x << ", " << resolutionSize.y << std::endl;
     std::cout << "SceneMain updating.. (deltaTime: " << deltaTime << ")" << std::endl;
 #endif
 }

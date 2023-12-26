@@ -1,7 +1,7 @@
 #ifndef SNOWPULSE_GAME_COMPONENTS_PARTICLEEFFECTSRENDERER_H_
 #define SNOWPULSE_GAME_COMPONENTS_PARTICLEEFFECTSRENDERER_H_
 
-#include "sprite_renderer.h"
+#include "renderer.h"
 
 #include <memory>
 #include <string>
@@ -11,7 +11,7 @@
 #include "../features/particle_system/particle_system_settings.h"
 
 namespace snowpulse {
-class SNOWPULSEAPI ParticleEffectsRenderer : public SpriteRenderer {
+class SNOWPULSEAPI ParticleEffectsRenderer : public Renderer {
     public:
         static std::shared_ptr<ParticleEffectsRenderer> Create(const ParticleSystemSettings& settings);
 

@@ -1,5 +1,5 @@
-#ifndef GAME_COMPONENTS_PLANE_H_
-#define GAME_COMPONENTS_PLANE_H_
+#ifndef GAME_COMPONENTS_PLANERENDERER_H_
+#define GAME_COMPONENTS_PLANERENDERER_H_
 
 #include "../defines.h"
 
@@ -7,25 +7,24 @@
 #include <snowpulse.h>
 
 namespace game {
-class GAMEAPI Plane : public snowpulse::Component, public snowpulse::Drawable {
+class GAMEAPI PlaneRenderer : public snowpulse::Renderer {
     public:
-        static std::shared_ptr<Plane> Create();
+        static std::shared_ptr<PlaneRenderer> Create();
 
-        virtual ~Plane();
+        virtual ~PlaneRenderer();
         // From Updatable
         void Update(float deltaTime) override;
         // From Drawable
         void Draw(snowpulse::Graphics* graphics, snowpulse::Matrix4x4 worldMatrix) override;
 
     private:
-        Plane();
+        PlaneRenderer();
+
+        snowpulse::Vector2 GetScreenToResolutionFactor();
 
         snowpulse::Camera* camera_;
         snowpulse::Input* input_;
         bool isMouseDragging_;
-        snowpulse::Vector2Int resolutionSize_;
-        snowpulse::Vector2 screenToResolutionFactor_;
-        snowpulse::Vector2 defaultCameraPosition_;
         snowpulse::Vector2 mouseDownPosition_;
         snowpulse::Vector2 cameraPositionOnMouseDown_;
 };

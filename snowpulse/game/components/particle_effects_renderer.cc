@@ -9,14 +9,14 @@ std::shared_ptr<ParticleEffectsRenderer> ParticleEffectsRenderer::Create(const P
     return particleEffectsRenderer;
 }
 
-ParticleEffectsRenderer::ParticleEffectsRenderer() : SpriteRenderer("particle_effects_renderer") {
+ParticleEffectsRenderer::ParticleEffectsRenderer() : Renderer("particle_effects_renderer") {
 }
 
 ParticleEffectsRenderer::~ParticleEffectsRenderer() {
 }
 
 void ParticleEffectsRenderer::LoadGraphics(Graphics* graphics, const ParticleSystemSettings& settings) {
-    graphics_ = graphics;
+    Renderer::LoadGraphics(graphics);
     graphics_->LoadTexture(settings.textureFilename, settings.texturePathType);
     particleSystem_ = ParticleSystem::Create(settings);
 }

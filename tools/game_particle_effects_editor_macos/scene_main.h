@@ -20,7 +20,6 @@ class GAMEAPI SceneMain : public snowpulse::Scene {
     private:
         SceneMain();
 
-        snowpulse::Vector2Int resolutionSize_;
         std::shared_ptr<snowpulse::SpriteRenderer> background_;
         std::shared_ptr<snowpulse::ParticleEffectsRenderer> effectRenderer_;
 };

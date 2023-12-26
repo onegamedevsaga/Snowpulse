@@ -14,7 +14,7 @@ std::shared_ptr<SpriteRenderer> SpriteRenderer::Create(std::string filename, Pat
         return Create(filenameOnly, spr.GetAtlasFilename(), pathType, filtering);
     }
 
-    auto spriteRenderer = std::shared_ptr<SpriteRenderer>(new SpriteRenderer());
+    auto spriteRenderer = std::shared_ptr<SpriteRenderer>(new SpriteRenderer("sprite_renderer"));
     spriteRenderer->isFromAtlas_ = false;
     spriteRenderer->filename_ = filename;
     spriteRenderer->pathType_ = pathType;
@@ -24,7 +24,7 @@ std::shared_ptr<SpriteRenderer> SpriteRenderer::Create(std::string filename, Pat
 }
 
 std::shared_ptr<SpriteRenderer> SpriteRenderer::Create(std::string filename, std::string atlasFilename, PathType pathType, TextureFiltering filtering) {
-    auto spriteRenderer = std::shared_ptr<SpriteRenderer>(new SpriteRenderer());
+    auto spriteRenderer = std::shared_ptr<SpriteRenderer>(new SpriteRenderer("sprite_renderer"));
     spriteRenderer->isFromAtlas_ = true;
     spriteRenderer->filename_ = filename;
     spriteRenderer->atlasFilename_ = atlasFilename;
@@ -34,17 +34,14 @@ std::shared_ptr<SpriteRenderer> SpriteRenderer::Create(std::string filename, std
     return spriteRenderer;
 }
 
-SpriteRenderer::SpriteRenderer() : Component("sprite_renderer"), sortOrder_(0), blendMode_(BlendMode::kNormal), isPremultiplied_(false) {
-}
-
-SpriteRenderer::SpriteRenderer(std::string componentName) : Component(componentName), sortOrder_(0), blendMode_(BlendMode::kNormal), isPremultiplied_(false)  {
+SpriteRenderer::SpriteRenderer(std::string componentName) : Renderer(componentName) {
 }
 
 SpriteRenderer::~SpriteRenderer() {
 }
 
 void SpriteRenderer::LoadGraphics(Graphics* graphics) {
-    graphics_ = graphics;
+    Renderer::LoadGraphics(graphics);
 
     if (isFromAtlas_) {
         auto atlasManager = Application::GetInstance()->GetAtlasManager();
@@ -61,9 +58,6 @@ void SpriteRenderer::LoadGraphics(Graphics* graphics) {
             float bottom = uv.y + size_.y / atlasSize.y;
             uvLowerLeft_ = Vector2(left, bottom);
             uvUpperRight_ = Vector2(right, top);
-        }
-        else {
-            size_ = Vector2(100, 100);
         }
     }
     else {
