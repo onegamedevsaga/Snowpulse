@@ -6,6 +6,9 @@
 
 #include <memory>
 
+#include "action_panel.h"
+#include "inspector_panel.h"
+
 namespace game {
 class GAMEAPI SceneMain : public snowpulse::Scene {
     public:
@@ -21,12 +24,17 @@ class GAMEAPI SceneMain : public snowpulse::Scene {
         SceneMain();
 
         void OnInspectorInvalidate(snowpulse::ParticleSystemSettings settings);
+        void OnActionLoadFile(EffectData& effectData);
 
         float timeLapsed_;
         std::shared_ptr<snowpulse::SpriteRenderer> background_;
         std::shared_ptr<snowpulse::FontRenderer> statsRenderer_;
         std::shared_ptr<snowpulse::ParticleEffectsRenderer> effectRenderer_;
-    
+        std::shared_ptr<ActionPanel> actionPanel_;
+        std::shared_ptr<InspectorPanel> inspectorPanel_;
+
+        snowpulse::Json currentData_;
+
 };
 }
 

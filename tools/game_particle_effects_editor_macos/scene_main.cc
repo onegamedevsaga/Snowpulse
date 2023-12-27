@@ -70,16 +70,19 @@ void SceneMain::Start() {
     AddChild(effectsGo);
 
     auto actionGo = snowpulse::GameObject::Create("actionGo");
-    auto actionPanel = ActionPanel::Create();
-    actionGo->AddComponent(actionPanel);
+    actionPanel_ = ActionPanel::Create();
+    actionPanel_->SetOnLoadListener(std::bind(&SceneMain::OnActionLoadFile, this, std::placeholders::_1));
+    actionGo->AddComponent(actionPanel_);
     AddChild(actionGo);
 
     auto inspectorGo = snowpulse::GameObject::Create("inspectorGo");
-    auto inspectorPanel = InspectorPanel::Create();
-    inspectorPanel->SetListener(std::bind(&SceneMain::OnInspectorInvalidate, this, std::placeholders::_1));
-    inspectorPanel->Invalidate();
-    inspectorGo->AddComponent(inspectorPanel);
+    inspectorPanel_ = InspectorPanel::Create();
+    inspectorPanel_->SetListener(std::bind(&SceneMain::OnInspectorInvalidate, this, std::placeholders::_1));
+    inspectorPanel_->Invalidate();
+    inspectorGo->AddComponent(inspectorPanel_);
     AddChild(inspectorGo);
+
+    actionPanel_->CreateNewEffect();
 }
 
 void SceneMain::Update(float deltaTime) {
@@ -91,7 +94,7 @@ void SceneMain::Update(float deltaTime) {
     background_->SetSize(snowpulse::Vector2(resolutionSize.x * cameraSize, resolutionSize.y * cameraSize));
     background_->GetTransform()->SetPosition(snowpulse::Vector2(cameraPos.x, cameraPos.y));
 
-    statsRenderer_->GetTransform()->SetPosition(snowpulse::Vector2(resolutionSize.x * -0.5f * cameraSize + cameraPos.x + (20.0f * cameraSize), resolutionSize.y * 0.5f * cameraSize + cameraPos.y - (120.0f * cameraSize)));
+    statsRenderer_->GetTransform()->SetPosition(snowpulse::Vector2(resolutionSize.x * -0.5f * cameraSize + cameraPos.x + (20.0f * cameraSize), resolutionSize.y * 0.5f * cameraSize + cameraPos.y - (160.0f * cameraSize)));
     statsRenderer_->GetTransform()->SetLocalScale(cameraSize);
     timeLapsed_ += deltaTime;
     if (timeLapsed_ >= 1.0f) {
@@ -111,6 +114,14 @@ void SceneMain::Update(float deltaTime) {
 }
 
 void SceneMain::OnInspectorInvalidate(snowpulse::ParticleSystemSettings settings) {
+    actionPanel_->GetEffectData().CopySettings(settings);
+    settings.texturePathType = snowpulse::PathType::kRaw;
+    effectRenderer_->SetSettings(settings);
+}
+
+void SceneMain::OnActionLoadFile(EffectData& effectData) {
+    auto settings = effectData.GetSettings();
+    inspectorPanel_->SetSettings(settings);
     settings.texturePathType = snowpulse::PathType::kRaw;
     effectRenderer_->SetSettings(settings);
 }

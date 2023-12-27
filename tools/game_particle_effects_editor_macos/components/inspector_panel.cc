@@ -36,7 +36,7 @@ InspectorPanel::InspectorPanel() : Component("inspector_panel") {
     emissionShapes_.push_back(GetEmissionShapeString(snowpulse::ParticleSystemSettings::EmissionShape::kCircle));
 
     onInvalidate_ = SPNULL;
-    blendMode_ = 1;
+    /*blendMode_ = 1;
     textureFiltering_ = 1;
     pathType_ = 0;
 
@@ -58,9 +58,9 @@ InspectorPanel::InspectorPanel() : Component("inspector_panel") {
     settings_.speedB = 350.0f;
     settings_.acceleration = snowpulse::Vector2(0.0f, -1.0f) * 200.0f;
     settings_.colorStart = snowpulse::Color::Red();
-    settings_.colorEnd = snowpulse::Color(1.0f, 0.6f, 0.0f, 0.0f);
+    settings_.colorEnd = snowpulse::Color(1.0f, 0.6f, 0.0f, 0.0f);*/
 
-    emissionShape_= 2;
+    /*emissionShape_= 2;
     emissionAngleValueMode_ = 2;
     lifespanValueMode_ = 2;
     speedValueMode_ = 2;
@@ -72,7 +72,7 @@ InspectorPanel::InspectorPanel() : Component("inspector_panel") {
     colorEnd_[0] = settings_.colorEnd.r;
     colorEnd_[1] = settings_.colorEnd.g;
     colorEnd_[2] = settings_.colorEnd.b;
-    colorEnd_[3] = settings_.colorEnd.a;
+    colorEnd_[3] = settings_.colorEnd.a;*/
 
     ImGuiIO& io = ImGui::GetIO();
     auto fontFilename = snowpulse::Directory::GetInstance()->GetDefaultsPath("fonts/roboto/Roboto-Light.ttf");
@@ -98,7 +98,6 @@ InspectorPanel::InspectorPanel() : Component("inspector_panel") {
 }
 
 InspectorPanel::~InspectorPanel() {
-    
 }
 
 void InspectorPanel::Update(float deltaTime) {
@@ -106,7 +105,8 @@ void InspectorPanel::Update(float deltaTime) {
 
 void InspectorPanel::Draw(snowpulse::Graphics* graphics, snowpulse::Matrix4x4 worldMatrix) {
     auto windowSize = snowpulse::Application::GetInstance()->GetScreenSize();
-    auto actionPanelHeight = 40.0f;
+    float menuBarHeight = ImGui::GetFontSize() + ImGui::GetStyle().FramePadding.y * 2;
+    auto actionPanelHeight = menuBarHeight + 40.0f;
     auto panelWidth = 375.0f;
     ImGui::SetNextWindowPos(ImVec2(windowSize.x - panelWidth, actionPanelHeight));
     ImGui::SetNextWindowSize(ImVec2(panelWidth, windowSize.y - actionPanelHeight));
@@ -276,6 +276,28 @@ void InspectorPanel::Draw(snowpulse::Graphics* graphics, snowpulse::Matrix4x4 wo
     ImGui::PopFont();
 }
 
+void InspectorPanel::SetSettings(snowpulse::ParticleSystemSettings settings) {
+    settings_ = settings;
+    blendMode_ = (int)settings_.blendMode;
+    textureFiltering_ = (int)settings_.textureFiltering;
+    pathType_ = (int)settings_.texturePathType;
+    std::strcpy(textureFilename_, settings_.textureFilename.c_str());
+    lifespanValueMode_ = (int)settings_.lifespanValueMode;
+    speedValueMode_ = (int)settings_.speedValueMode;
+    colorStart_[0] = settings_.colorStart.r;
+    colorStart_[1] = settings_.colorStart.g;
+    colorStart_[2] = settings_.colorStart.b;
+    colorStart_[3] = settings_.colorStart.a;
+    colorEnd_[0] = settings_.colorEnd.r;
+    colorEnd_[1] = settings_.colorEnd.g;
+    colorEnd_[2] = settings_.colorEnd.b;
+    colorEnd_[3] = settings_.colorEnd.a;
+    emissionShape_ = (int)settings_.emissionShape;
+    emissionAngleValueMode_ = (int)settings_.emissionAngleValueMode;
+
+    Invalidate();
+}
+
 void InspectorPanel::Invalidate() {
     if (onInvalidate_) {
         onInvalidate_(settings_);
@@ -423,7 +445,7 @@ bool InspectorPanel::DrawInputBrowseFile(std::string label, char* value) {
     ImGui::SameLine();
     ImGui::SetNextItemWidth(ImGui::GetContentRegionAvail().x);
     if (ImGui::Button("Browse", ImVec2(ImGui::GetContentRegionAvail().x, 0))) {
-        char const* filterPatterns[4] = { "*.jpg", "*.png", "*.bmp" };
+        char const* filterPatterns[3] = { "*.jpg", "*.png", "*.bmp" };
         const char* selectedPath = tinyfd_openFileDialog(
             "Select File",    // Dialog title
             "",               // Default path

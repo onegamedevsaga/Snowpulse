@@ -1,9 +1,6 @@
 #include "plane_renderer.h"
 
 namespace game {
-static const float kActionPanelHeight = 40.0f;
-static const float kInspectorPanelWidth = 375.0f;
-
 std::shared_ptr<PlaneRenderer> PlaneRenderer::Create() {
     auto plane = std::shared_ptr<PlaneRenderer>(new PlaneRenderer());
     return plane;
@@ -11,12 +8,8 @@ std::shared_ptr<PlaneRenderer> PlaneRenderer::Create() {
 
 PlaneRenderer::PlaneRenderer() : Renderer("plane_renderer") {
     isMouseDragging_ = false;
-    auto screenToResolutionFactor = GetScreenToResolutionFactor();
-
     input_ = snowpulse::Input::GetInstance();
     camera_ = snowpulse::Application::GetInstance()->GetGraphics()->GetCamera();
-    auto defaultCameraPosition = snowpulse::Vector2(kInspectorPanelWidth, kActionPanelHeight) * screenToResolutionFactor * 0.5f;
-    camera_->SetPosition(defaultCameraPosition);
 }
 
 PlaneRenderer::~PlaneRenderer() {
@@ -44,27 +37,36 @@ void PlaneRenderer::Update(float deltaTime) {
 
     if (input_->GetPressed("right_bracket")) {
         isMouseDragging_ = false;
+        float menuBarHeight = ImGui::GetFontSize() + ImGui::GetStyle().FramePadding.y * 2;
+        auto actionPanelHeight = menuBarHeight + 40.0f;
+        auto inspectorPanelWidth = 375.0f;
         auto cameraSize = camera_->GetSize();
         auto newCameraSize = cameraSize * 0.8f;
         auto sizeDelta = cameraSize - newCameraSize;
         auto cameraPos = camera_->GetPosition();
         camera_->SetSize(newCameraSize);
-        camera_->SetPosition(snowpulse::Vector2(cameraPos.x - kInspectorPanelWidth * sizeDelta, cameraPos.y - kActionPanelHeight * sizeDelta));
+        camera_->SetPosition(snowpulse::Vector2(cameraPos.x - inspectorPanelWidth * sizeDelta, cameraPos.y - actionPanelHeight * sizeDelta));
     }
     else if (input_->GetPressed("left_bracket")) {
         isMouseDragging_ = false;
+        float menuBarHeight = ImGui::GetFontSize() + ImGui::GetStyle().FramePadding.y * 2;
+        auto actionPanelHeight = menuBarHeight + 40.0f;
+        auto inspectorPanelWidth = 375.0f;
         auto cameraSize = camera_->GetSize();
         auto newCameraSize = cameraSize * 1.2f;
         auto sizeDelta = cameraSize - newCameraSize;
         auto cameraPos = camera_->GetPosition();
         camera_->SetSize(newCameraSize);
-        camera_->SetPosition(snowpulse::Vector2(cameraPos.x - kInspectorPanelWidth * sizeDelta, cameraPos.y - kActionPanelHeight * sizeDelta));
+        camera_->SetPosition(snowpulse::Vector2(cameraPos.x - inspectorPanelWidth * sizeDelta, cameraPos.y - actionPanelHeight * sizeDelta));
     }
 
     if (input_->GetPressed("r")) {
         isMouseDragging_ = false;
+        float menuBarHeight = ImGui::GetFontSize() + ImGui::GetStyle().FramePadding.y * 2;
+        auto actionPanelHeight = menuBarHeight + 40.0f;
+        auto inspectorPanelWidth = 375.0f;
         auto screenToResolutionFactor = GetScreenToResolutionFactor();
-        auto defaultCameraPosition = snowpulse::Vector2(kInspectorPanelWidth, kActionPanelHeight) * screenToResolutionFactor * 0.5f;
+        auto defaultCameraPosition = snowpulse::Vector2(inspectorPanelWidth, actionPanelHeight) * screenToResolutionFactor * 0.5f;
         camera_->SetSize(1.0f);
         camera_->SetPosition(defaultCameraPosition);
     }

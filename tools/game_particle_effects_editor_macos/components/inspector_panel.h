@@ -18,6 +18,7 @@ class GAMEAPI InspectorPanel : public snowpulse::Component, public snowpulse::Dr
         // From Drawable
         void Draw(snowpulse::Graphics* graphics, snowpulse::Matrix4x4 worldMatrix) override;
 
+        void SetSettings(snowpulse::ParticleSystemSettings settings);
         void SetListener(std::function<void(snowpulse::ParticleSystemSettings)> onInvalidate) { onInvalidate_ = onInvalidate; }
         void Invalidate();
 

@@ -68,4 +68,10 @@ std::string Directory::GetFilenameFromPath(std::string filenamePath, bool remove
     }
     return filename;
 }
+
+std::string Directory::GetExtension(std::string filename) {
+    size_t pos = filename.find_last_of(".");
+    auto ext = (pos != std::string::npos) ? filename.substr(pos + 1, filename.size() - pos) : "";
+    return ext;
+}
 }   // namespace snowpulse

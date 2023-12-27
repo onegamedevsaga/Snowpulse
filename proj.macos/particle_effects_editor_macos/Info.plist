@@ -4,5 +4,7 @@
 <dict>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
+	<key>NSDesktopFolderUsageDescription</key>
+	<string>&quot;For saving file on desktop&quot;</string>
 </dict>
 </plist>
