@@ -18,7 +18,7 @@
 
 namespace snowpulse {
 
-class SNOWPULSEAPI GameObject : public Node, public Updatable, public Drawable {
+class SNOWPULSEAPI GameObject : public Node, public Drawable {
     public:
         static std::shared_ptr<GameObject> Create(std::string name);
 
@@ -29,14 +29,12 @@ class SNOWPULSEAPI GameObject : public Node, public Updatable, public Drawable {
         bool AddChild(std::shared_ptr<Node> node);
         bool RemoveChild(std::shared_ptr<Node> node);
 
-        // From Updatable
-        void Update(float deltaTime);
-
         // From Drawable
         void Draw(Graphics* graphics, Matrix4x4 worldMatrix);
 
         void AddComponent(std::shared_ptr<Component> component);
         void RemoveComponent(std::shared_ptr<Component> component);
+        void GetAllComponentsRecursively(std::vector<Component*>& list);
 
         Transform* GetTransform() { return transform_; }
 
@@ -48,7 +46,6 @@ class SNOWPULSEAPI GameObject : public Node, public Updatable, public Drawable {
 
         Transform* transform_;
         std::vector<std::shared_ptr<Component>> components_;
-        std::vector<Updatable*> updatableChildren_;
         std::vector<Drawable*> drawableChildren_;
         std::vector<Drawable*> drawableComponents_;
 };

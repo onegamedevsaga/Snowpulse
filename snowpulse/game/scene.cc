@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "../application/application.h"
+#include "component.h"
 
 namespace snowpulse {
 Scene::Scene() : Node("scene") {
@@ -36,12 +37,9 @@ bool Scene::AddChild(std::shared_ptr<Node> node) {
     auto gameObject = dynamic_cast<GameObject*>(node.get());
     if (gameObject) {
         if (Node::AddChild(node)) {
-            auto updatable = dynamic_cast<Updatable*>(node.get());
-            auto drawable = dynamic_cast<Drawable*>(node.get());
+            gameObjects_.push_back(gameObject);
 
-            if (updatable) {
-                updatableChildren_.push_back(updatable);
-            }
+            auto drawable = dynamic_cast<Drawable*>(node.get());
             if (drawable) {
                 drawableChildren_.push_back(drawable);
             }
@@ -53,11 +51,11 @@ bool Scene::AddChild(std::shared_ptr<Node> node) {
 
 bool Scene::RemoveChild(std::shared_ptr<Node> node) {
     if (Node::RemoveChild(node)) {
-        auto updatable = dynamic_cast<Updatable*>(node.get());
-        if (updatable) {
-            for (int i = 0; i < updatableChildren_.size(); i++) {
-                if (updatableChildren_[i] == updatable) {
-                    updatableChildren_.erase(updatableChildren_.begin() + i);
+        auto gameObject = dynamic_cast<GameObject*>(node.get());
+        if (gameObject) {
+            for (int i = 0; i < gameObjects_.size(); i++) {
+                if (gameObjects_[i] == gameObject) {
+                    gameObjects_.erase(gameObjects_.begin() + i);
                     break;
                 }
             }
@@ -80,8 +78,18 @@ bool Scene::RemoveChild(std::shared_ptr<Node> node) {
 
 // From Updatable
 void Scene::Update(float deltaTime) {
-    for (auto u : updatableChildren_) {
-        u->Update(deltaTime);
+    std::vector<Component*> components;
+    components.reserve(512);
+    for (auto g : gameObjects_) {
+        g->GetAllComponentsRecursively(components);
+    }
+
+    std::sort(components.begin(), components.end(), [](auto a, auto b) {
+        return a->GetUpdateOrder() > b->GetUpdateOrder();
+    });
+
+    for (auto c : components) {
+        c->Update(deltaTime);
     }
 #ifdef SPDEBUG
     std::cout << "Scene updating.." << std::endl;

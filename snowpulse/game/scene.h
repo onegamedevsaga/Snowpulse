@@ -49,7 +49,7 @@ class SNOWPULSEAPI Scene : public Node, public Updatable, public Drawable {
         Game* game_;
         snowpulse::Application* application_;
         snowpulse::Camera* camera_;
-        std::vector<Updatable*> updatableChildren_;
+        std::vector<GameObject*> gameObjects_;
         std::vector<Drawable*> drawableChildren_;
     
 };

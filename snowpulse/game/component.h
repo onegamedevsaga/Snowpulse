@@ -26,6 +26,9 @@ class SNOWPULSEAPI Component : public Node, public Updatable {
         // From Updatable
         virtual void Update(float deltaTime);
 
+        void SetUpdateOrder(int updateOrder) { updateOrder_ = updateOrder; }
+
+        int GetUpdateOrder() const { return updateOrder_; }
         GameObject* GetGameObject() const { return gameObject_; }
         Transform* GetTransform() const { return transform_; }
 
@@ -34,6 +37,7 @@ class SNOWPULSEAPI Component : public Node, public Updatable {
 
         Component(std::string name);
 
+        int updateOrder_;
         GameObject* gameObject_;
         Transform* transform_;
     

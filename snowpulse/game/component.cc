@@ -3,7 +3,7 @@
 #include <iostream>
 
 namespace snowpulse {
-Component::Component(std::string name) : Node(name) {
+Component::Component(std::string name) : Node(name), updateOrder_(0) {
 }
 
 Component::~Component() {
@@ -15,14 +15,14 @@ void Component::Start() {
 
 bool Component::AddChild(std::shared_ptr<Node> node) {
 #ifdef SPDEBUG
-    std::cout << "Error: Components can't have children." << std::endl;
+    std::cerr << "Error: Component: Can't have children." << std::endl;
 #endif
     return false;
 }
 
 bool Component::RemoveChild(std::shared_ptr<Node> node) {
 #ifdef SPDEBUG
-    std::cout << "Error: Components can't have children." << std::endl;
+    std::cerr << "Error: Component: Can't have children." << std::endl;
 #endif
     return false;
 }

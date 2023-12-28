@@ -5,6 +5,7 @@
 namespace game {
 std::shared_ptr<ImGUITest> ImGUITest::Create() {
     auto imguiTest = std::shared_ptr<ImGUITest>(new ImGUITest());
+    imguiTest->SetUpdateOrder(1);
     return imguiTest;
 }
 
