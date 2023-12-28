@@ -22,6 +22,7 @@ class SNOWPULSEAPI Input {
         virtual ~Input();
 
         virtual void ClearLastFrameData();
+        virtual void ConsumeInputs();
         virtual bool GetPressed(std::string key) = 0;
         virtual bool GetDown(std::string key) = 0;
         virtual bool GetReleased(std::string key) = 0;
@@ -41,8 +42,11 @@ class SNOWPULSEAPI Input {
         std::map<int, Touch> touches_;
         std::map<void*, int> touchIds_;
 
+        float floatMaxValue_;
         Vector2 mousePositionOnScreen_;
         Vector2 mousePositionOnWorld_;
+        Vector2 prevMousePositionOnScreen_;
+        Vector2 prevMousePositionOnWorld_;
         Vector2 scrollDelta_;
         std::map<unsigned int, std::string> keyMap_;
         std::map<std::string, bool> pressedKeys_;

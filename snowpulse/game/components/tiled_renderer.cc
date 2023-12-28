@@ -4,7 +4,7 @@
 
 namespace snowpulse {
 std::shared_ptr<TiledRenderer> TiledRenderer::Create(std::string tiledFilename, PathType pathType, TextureFiltering filtering) {
-    auto tiledRenderer = std::shared_ptr<TiledRenderer>(new TiledRenderer());
+    auto tiledRenderer = std::shared_ptr<TiledRenderer>(new TiledRenderer("tiled_renderer"));
     tiledRenderer->filename_ = tiledFilename;
     tiledRenderer->pathType_ = pathType;
     tiledRenderer->textureFiltering_ = filtering;
@@ -12,7 +12,7 @@ std::shared_ptr<TiledRenderer> TiledRenderer::Create(std::string tiledFilename, 
     return tiledRenderer;
 }
 
-TiledRenderer::TiledRenderer() : SpriteRenderer("tiled_renderer") {
+TiledRenderer::TiledRenderer(std::string componentName) : SpriteRenderer(componentName) {
 }
 
 TiledRenderer::~TiledRenderer() {

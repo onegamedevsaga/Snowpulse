@@ -29,7 +29,7 @@ class SNOWPULSEAPI Node {
         virtual void QueueForStartPreChildren(NodeStarter& nodeStarter, std::shared_ptr<Node> nodeSmartPtr) { }
 
         Node(std::string name);
-        bool IsConnectedToGame(Game* game);
+        bool IsConnectedToGame(Node* node, Game* game);
 
         Node* parent_;
         std::vector<std::shared_ptr<Node>> children_;

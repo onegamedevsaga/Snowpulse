@@ -22,7 +22,7 @@ class SNOWPULSEAPI TiledRenderer : public SpriteRenderer {
         void Draw(Graphics* graphics, Matrix4x4 worldMatrix) override;
 
     protected:
-        TiledRenderer();
+        TiledRenderer(std::string componentName);
 
         void LoadGraphics(Graphics* graphics) override;
 

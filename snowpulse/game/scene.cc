@@ -1,6 +1,7 @@
 #include "scene.h"
 
 #include <iostream>
+#include <algorithm>
 
 #include "../application/application.h"
 #include "component.h"
@@ -84,6 +85,7 @@ void Scene::Update(float deltaTime) {
         g->GetAllComponentsRecursively(components);
     }
 
+    std::reverse(components.begin(), components.end());
     std::sort(components.begin(), components.end(), [](auto a, auto b) {
         return a->GetUpdateOrder() > b->GetUpdateOrder();
     });
@@ -112,5 +114,6 @@ Vector2Int Scene::GetResolutionSize() const {
 
 void Scene::SetGame(Game* game) {
     game_ = game;
+    parent_ = game;
 }
 }   // namespace snowpulse

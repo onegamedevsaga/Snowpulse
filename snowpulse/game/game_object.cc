@@ -106,7 +106,7 @@ void GameObject::RemoveComponent(std::shared_ptr<Component> component) {
 }
 
 void GameObject::GetAllComponentsRecursively(std::vector<Component*>& list) {
-    for (auto& c : components_) {
+    for (const auto& c : components_) {
         list.push_back(c.get());
     }
 
@@ -116,6 +116,15 @@ void GameObject::GetAllComponentsRecursively(std::vector<Component*>& list) {
             gameObject->GetAllComponentsRecursively(list);
         }
     }
+}
+
+Component* GameObject::GetComponent(std::string name) const {
+    for (const auto& c : components_) {
+        if (c->GetName() == name) {
+            return c.get();
+        }
+    }
+    return SPNULL;
 }
 
 void GameObject::QueueForStartPreChildren(NodeStarter& nodeStarter, std::shared_ptr<Node> nodeSmartPtr) {

@@ -37,6 +37,7 @@ class SNOWPULSEAPI GameObject : public Node, public Drawable {
         void GetAllComponentsRecursively(std::vector<Component*>& list);
 
         Transform* GetTransform() { return transform_; }
+        Component* GetComponent(std::string name) const;
 
     protected:
         GameObject(std::string name);

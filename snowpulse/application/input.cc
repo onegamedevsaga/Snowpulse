@@ -1,5 +1,7 @@
 #include "input.h"
 
+#include <limits>
+
 #include "application.h"
 
 #ifdef SNOWPULSE_PLATFORM_WINDOWS
@@ -26,8 +28,14 @@ Input* Input::GetInstance() {
 }
 
 Input::Input() {
+    floatMaxValue_ = std::numeric_limits<float>::max();
     application_ = Application::GetInstance();
     camera_ = application_->GetGraphics()->GetCamera();
+
+    mousePositionOnWorld_ = Vector2(floatMaxValue_, floatMaxValue_);
+    mousePositionOnScreen_ = Vector2(floatMaxValue_, floatMaxValue_);
+    prevMousePositionOnWorld_ = mousePositionOnWorld_;
+    prevMousePositionOnScreen_ = mousePositionOnScreen_;
 }
 
 Input::~Input() {
@@ -47,6 +55,21 @@ void Input::ClearLastFrameData() {
     releasedKeys_.clear();
     scrollDelta_.x = 0.0f;
     scrollDelta_.y = 0.0f;
+    mousePositionOnWorld_ = prevMousePositionOnWorld_;
+    mousePositionOnScreen_ = prevMousePositionOnScreen_;
+}
+
+void Input::ConsumeInputs() {
+    touches_.clear();
+    pressedKeys_.clear();
+    releasedKeys_.clear();
+    scrollDelta_.x = 0.0f;
+    scrollDelta_.y = 0.0f;
+
+    prevMousePositionOnWorld_ = mousePositionOnWorld_;
+    prevMousePositionOnScreen_ = mousePositionOnScreen_;
+    mousePositionOnWorld_ = Vector2(floatMaxValue_, floatMaxValue_);
+    mousePositionOnScreen_ = Vector2(floatMaxValue_, floatMaxValue_);
 }
 
 std::string Input::ToLowerCase(const std::string& str) {

@@ -31,6 +31,8 @@ class SNOWPULSEAPI Component : public Node, public Updatable {
         int GetUpdateOrder() const { return updateOrder_; }
         GameObject* GetGameObject() const { return gameObject_; }
         Transform* GetTransform() const { return transform_; }
+        Component* GetComponent(std::string name) const;
+
 
     protected:
         friend class GameObject;

@@ -2,6 +2,8 @@
 
 #include <iostream>
 
+#include "game_object.h"
+
 namespace snowpulse {
 Component::Component(std::string name) : Node(name), updateOrder_(0) {
 }
@@ -29,5 +31,9 @@ bool Component::RemoveChild(std::shared_ptr<Node> node) {
 
 // From Updatable
 void Component::Update(float deltaTime) {
+}
+
+Component* Component::GetComponent(std::string name) const {
+    return gameObject_->GetComponent(name);
 }
 }   // namespace snowpulse

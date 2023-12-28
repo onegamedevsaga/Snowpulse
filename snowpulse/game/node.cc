@@ -29,13 +29,15 @@ bool Node::AddChild(std::shared_ptr<Node> node) {
             return false;
         }
     }
-    auto game = Application::GetInstance()->GetGame();
-    if (IsConnectedToGame(game)) {
-        node->QueueForStart(Application::GetInstance()->GetNodeStarter(), node);
-    }
 
     node->parent_ = this;
     children_.push_back(node);
+
+    auto game = Application::GetInstance()->GetGame();
+    if (IsConnectedToGame(node.get(), game)) {
+        node->QueueForStart(Application::GetInstance()->GetNodeStarter(), node);
+    }
+
     return true;
 }
 
@@ -49,8 +51,8 @@ bool Node::RemoveChild(std::shared_ptr<Node> node) {
     return false;
 }
 
-bool Node::IsConnectedToGame(Game* game) {
-    auto parent = parent_;
+bool Node::IsConnectedToGame(Node* node, Game* game) {
+    auto parent = node;
     while (parent != SPNULL) {
         if (parent == game) {
             return true;

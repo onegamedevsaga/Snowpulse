@@ -46,6 +46,9 @@
 #include "game/components/font_renderer.h"
 #include "game/components/tiled_renderer.h"
 #include "game/components/particle_effects_renderer.h"
+#include "game/components/button.h"
+
+#include "game/prefabs/prefab_button.h"
 
 #include "game/actions/action_interpolate.h"
 #include "game/actions/action_wait.h"
