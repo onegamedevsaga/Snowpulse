@@ -17,14 +17,16 @@
 namespace snowpulse {
 class SNOWPULSEAPI SpriteRenderer : public Renderer {
     public:
-        static std::shared_ptr<SpriteRenderer> Create(std::string filename, PathType pathType = PathType::kAssets, TextureFiltering filtering = TextureFiltering::kBilinear);
-        static std::shared_ptr<SpriteRenderer> Create(std::string filename, std::string atlasFilename, PathType pathType = PathType::kAssets, TextureFiltering filtering = TextureFiltering::kBilinear);
+        static std::shared_ptr<SpriteRenderer> Create(std::string filename, PathType pathType=PathType::kAssets, TextureFiltering filtering=TextureFiltering::kBilinear);
+        static std::shared_ptr<SpriteRenderer> Create(std::string filename, std::string atlasFilename, PathType pathType=PathType::kAssets, TextureFiltering filtering=TextureFiltering::kBilinear);
 
         virtual ~SpriteRenderer();
         // From Updatable
         void Update(float deltaTime) override;
         // From Drawable
         void Draw(Graphics* graphics, Matrix4x4 worldMatrix) override;
+
+        void SetTextureFilename(std::string filename, PathType pathType=PathType::kAssets);
 
     protected:
         SpriteRenderer(std::string componentName);

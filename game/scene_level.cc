@@ -171,15 +171,22 @@ void SceneLevel::Start() {
     AddChild(rectGo);
 
     auto buttonGo = snowpulse::PrefabButton::InstantiateColorBased("buttonGo", [this]{
-        GetApplication()->Close();
+        //GetApplication()->Close();
     });
     AddChild(buttonGo);
 
-    auto buttonGo2 = snowpulse::PrefabButton::InstantiateColorBased("buttonGo2", [this]{
-        //GetApplication()->Close();
-    });
+    auto buttonGo2 = snowpulse::PrefabButton::InstantiateSpriteBased("buttonGo2", [this]{
+        GetApplication()->Close();
+    },
+        snowpulse::Vector2(220.0f, 100.0f),
+        "sprites/btn_default_idle.png",
+        "sprites/btn_default_down.png",
+        "sprites/btn_default_hover.png",
+        "",
+        snowpulse::PathType::kDefaults);
+
     AddChild(buttonGo2);
-    buttonGo2->GetTransform()->SetPosition(snowpulse::Vector2(-50.0f, 20.0f));
+    buttonGo2->GetTransform()->SetPosition(snowpulse::Vector2(-140.0f, 50.0f));
 
     snowpulse::ActionWait::Create(4.0f)->OnComplete([this](snowpulse::Action* a) {
         go2_->GetTransform()->DoMoveX(0.0f, 1.0f, snowpulse::Easing::kBounceOut, false, [this]() {

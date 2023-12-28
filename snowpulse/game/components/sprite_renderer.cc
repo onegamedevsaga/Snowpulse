@@ -80,4 +80,20 @@ void SpriteRenderer::Draw(Graphics* graphics, Matrix4x4 worldMatrix) {
         graphics->DrawSprite(size_, filename_, worldMatrix, color_, sortOrder_, blendMode_, textureFiltering_, isPremultiplied_);
     }
 }
+
+void SpriteRenderer::SetTextureFilename(std::string filename, PathType pathType) {
+    isFromAtlas_ = false;
+    filename_ = filename;
+    pathType_ = pathType;
+
+    auto filenameOnly = Directory::GetInstance()->GetFilenameFromPath(filename);
+    auto atlasManager = Application::GetInstance()->GetAtlasManager();
+    auto spr = atlasManager->GetSprite(filenameOnly);
+    if (spr.IsValid()) {
+        isFromAtlas_ = true;
+        atlasFilename_ = spr.GetAtlasFilename();
+    }
+
+    LoadGraphics(Application::GetInstance()->GetGraphics());
+}
 }   // namespace snowpulse

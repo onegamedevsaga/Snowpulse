@@ -10,7 +10,7 @@
 namespace snowpulse {
 class SNOWPULSEAPI PrefabButton {
     public:
-        static std::shared_ptr<GameObject> InstantiateSpriteBased(std::string name, Vector2 size=Vector2(150.0f, 50.0f), std::string idleTextureFilename="", std::string downTextureFilename="", std::string hoverTextureFilename="", std::string disabledTextureFilename="");
+        static std::shared_ptr<GameObject> InstantiateSpriteBased(std::string name, std::function<void()> onClick=SPNULL, Vector2 size=Vector2(150.0f, 50.0f), std::string idleTextureFilename="", std::string downTextureFilename="", std::string hoverTextureFilename="", std::string disabledTextureFilename="", PathType pathType=PathType::kAssets, bool isDebug=false);
         static std::shared_ptr<GameObject> InstantiateColorBased(std::string name, std::function<void()> onClick=SPNULL, Vector2 size=Vector2(150.0f, 50.0f), Color idleColor=Color::White(), Color downColor=Color::Green(), Color hoverColor=Color::Blue(), Color disableColor=Color::Red());
 };
 }   // namespace snowpulse
