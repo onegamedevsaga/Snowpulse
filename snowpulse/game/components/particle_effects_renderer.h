@@ -13,6 +13,7 @@
 namespace snowpulse {
 class SNOWPULSEAPI ParticleEffectsRenderer : public Renderer {
     public:
+        static std::shared_ptr<ParticleEffectsRenderer> Create(std::string filename, PathType pathType);
         static std::shared_ptr<ParticleEffectsRenderer> Create(const ParticleSystemSettings& settings);
 
         virtual ~ParticleEffectsRenderer();

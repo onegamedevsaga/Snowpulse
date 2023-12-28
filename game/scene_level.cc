@@ -145,7 +145,7 @@ void SceneLevel::Start() {
 
     snowpulse::ParticleSystemSettings effectsSettings;
     effectsSettings.texturePathType = snowpulse::PathType::kDefaults;
-    effectsSettings.textureFilename = "sprites/particle_default.png";
+    effectsSettings.textureFilename = "effects/particle_default.png";
     effectsSettings.blendMode = snowpulse::BlendMode::kAdditive;
     effectsSettings.scaleStartEnd = snowpulse::Vector2(1.5f, 0.2f);
     effectsSettings.lifespanValueMode = snowpulse::ParticleSystemSettings::ValueMode::kRandomWithin;
@@ -167,10 +167,13 @@ void SceneLevel::Start() {
     effectsSettings.colorEnd = snowpulse::Color(1.0f, 0.6f, 0.0f, 0.0f);
 
     auto effectsGo = snowpulse::GameObject::Create("effectsGo");
-    effectRenderer_ = snowpulse::ParticleEffectsRenderer::Create(effectsSettings);
+    //effectRenderer_ = snowpulse::ParticleEffectsRenderer::Create(effectsSettings);
+    effectRenderer_ = snowpulse::ParticleEffectsRenderer::Create("effects/particle_effect_hero.sppe", snowpulse::PathType::kDefaults);
     effectRenderer_->SetSortOrder(5);
+    effectRenderer_->Play();
     effectsGo->AddComponent(effectRenderer_);
     effectsGo->GetTransform()->SetPosition(snowpulse::Vector2(-200.0f, 200.0f));
+    effectsGo->GetTransform()->SetLocalScale(10.0f);
     AddChild(effectsGo);
 
     auto fpsGo = snowpulse::GameObject::Create("fpsGo");

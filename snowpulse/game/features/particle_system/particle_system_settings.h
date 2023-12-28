@@ -26,7 +26,7 @@ class SNOWPULSEAPI ParticleSystemSettings {
             kCircle,
         };
 
-        bool LoadFromSPPEFile(std::string filename);
+        bool LoadFromSPPEFile(std::string filename, PathType pathType = PathType::kRaw);
         bool SaveToSPPEFile(std::string filename);
 
         BlendMode blendMode = BlendMode::kNormal;

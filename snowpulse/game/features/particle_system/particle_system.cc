@@ -67,7 +67,10 @@ void ParticleSystem::SetSettings(const ParticleSystemSettings& settings) {
     settings_ = settings;
     emissionTime_ = 0.0f;
     if (!graphics_->LoadTexture(settings_.textureFilename, settings_.texturePathType)) {
-        settings_.textureFilename = "sprites/particle_default.png";
+#ifdef SPDEBUG
+        std::cerr << "Error: Particle System: Can't load " << settings.textureFilename << " at " << (int)settings.texturePathType << " pathType." << std::endl;
+#endif
+        settings_.textureFilename = "effects/particle_default.png";
         settings_.texturePathType = PathType::kDefaults;
         graphics_->LoadTexture(settings_.textureFilename, settings_.texturePathType);
     }

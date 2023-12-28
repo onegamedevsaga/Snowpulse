@@ -1,18 +1,26 @@
 #include "particle_system_settings.h"
 
+#include <iostream>
 #include <cctype>
 
 #include "../../../common/json_utils.h"
 #include "../../../common/string_utils.h"
+#include "../../../common/path_type.h"
 #include "../../../application/directory.h"
 
 namespace snowpulse {
-bool ParticleSystemSettings::LoadFromSPPEFile(std::string filename) {
+bool ParticleSystemSettings::LoadFromSPPEFile(std::string filename, PathType pathType) {
     if (StringUtils::ToLower(Directory::GetInstance()->GetExtension(filename)) != "sppe") {
+#ifdef SPDEBUG
+        std::cerr << "Error: Particle System: Loading a non-SPPE file." << std::endl;
+#endif
         return false;
     }
-    auto json = snowpulse::JsonUtils::LoadFile(filename, snowpulse::PathType::kRaw);
+    auto json = snowpulse::JsonUtils::LoadFile(filename, pathType);
     if (!json) {
+#ifdef SPDEBUG
+        std::cerr << "Error: Particle System: Can't load " << filename << " at " << (int)pathType << " pathType." << std::endl;
+#endif
         return false;
     }
 

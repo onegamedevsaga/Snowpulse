@@ -270,6 +270,7 @@ void InspectorPanel::Draw(snowpulse::Graphics* graphics, snowpulse::Matrix4x4 wo
     DrawHeader("Runtime Loading");
     if (DrawCombo("Path Type", &pathType_, pathTypes_)) {
         settings_.texturePathType = (snowpulse::PathType)pathType_;
+        Invalidate();
     }
 
     ImGui::End();
