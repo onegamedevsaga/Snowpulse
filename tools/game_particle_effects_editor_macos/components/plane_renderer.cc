@@ -59,17 +59,6 @@ void PlaneRenderer::Update(float deltaTime) {
         camera_->SetSize(newCameraSize);
         camera_->SetPosition(snowpulse::Vector2(cameraPos.x - inspectorPanelWidth * sizeDelta, cameraPos.y - actionPanelHeight * sizeDelta));
     }
-
-    if (input_->GetPressed("r")) {
-        isMouseDragging_ = false;
-        float menuBarHeight = ImGui::GetFontSize() + ImGui::GetStyle().FramePadding.y * 2;
-        auto actionPanelHeight = menuBarHeight + 40.0f;
-        auto inspectorPanelWidth = 375.0f;
-        auto screenToResolutionFactor = GetScreenToResolutionFactor();
-        auto defaultCameraPosition = snowpulse::Vector2(inspectorPanelWidth, actionPanelHeight) * screenToResolutionFactor * 0.5f;
-        camera_->SetSize(1.0f);
-        camera_->SetPosition(defaultCameraPosition);
-    }
 }
 
 void PlaneRenderer::Draw(snowpulse::Graphics* graphics, snowpulse::Matrix4x4 worldMatrix) {

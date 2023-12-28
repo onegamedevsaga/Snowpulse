@@ -20,10 +20,9 @@ class GAMEAPI ActionPanel : public snowpulse::Component, public snowpulse::Drawa
         // From Drawable
         void Draw(snowpulse::Graphics* graphics, snowpulse::Matrix4x4 worldMatrix) override;
 
-        void SetOnLoadListener(std::function<void(EffectData&)> onLoadFile);
+        void SetOnLoadListener(std::function<void(snowpulse::ParticleSystemSettings&)> onLoadFile);
         void CreateNewEffect();
-
-        EffectData& GetEffectData() { return effectData_; }
+        void CopySettings(snowpulse::ParticleSystemSettings& settings) { settings_ = settings; }
 
     private:
         ActionPanel();
@@ -37,8 +36,9 @@ class GAMEAPI ActionPanel : public snowpulse::Component, public snowpulse::Drawa
 
         void DrawMenu();
 
-        EffectData effectData_;
-        std::function<void(EffectData&)> onLoadFile_;
+        std::function<void(snowpulse::ParticleSystemSettings&)> onLoadFile_;
+        snowpulse::ParticleSystemSettings settings_;
+        std::string previousFilename_;
         bool isFirstTimeDrawingMenu_;
         bool openLoadingInvalidFilePopup_;
 };

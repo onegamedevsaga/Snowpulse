@@ -104,23 +104,18 @@ void SceneMain::Update(float deltaTime) {
         timeLapsed_ -= 1.0f;
     }
 
-    if (snowpulse::Input::GetInstance()->GetPressed("x")) {
-        GetApplication()->Close();
-    }
-
 #ifdef SPDEBUG
     std::cout << "SceneMain updating.. (deltaTime: " << deltaTime << ")" << std::endl;
 #endif
 }
 
 void SceneMain::OnInspectorInvalidate(snowpulse::ParticleSystemSettings settings) {
-    actionPanel_->GetEffectData().CopySettings(settings);
+    actionPanel_->CopySettings(settings);
     settings.texturePathType = snowpulse::PathType::kRaw;
     effectRenderer_->SetSettings(settings);
 }
 
-void SceneMain::OnActionLoadFile(EffectData& effectData) {
-    auto settings = effectData.GetSettings();
+void SceneMain::OnActionLoadFile(snowpulse::ParticleSystemSettings& settings) {
     inspectorPanel_->SetSettings(settings);
     settings.texturePathType = snowpulse::PathType::kRaw;
     effectRenderer_->SetSettings(settings);

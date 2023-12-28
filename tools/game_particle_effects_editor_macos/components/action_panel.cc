@@ -15,6 +15,55 @@ ActionPanel::~ActionPanel() {
 }
 
 void ActionPanel::Update(float deltaTime) {
+    auto input = snowpulse::Input::GetInstance();
+
+#ifdef SNOWPULSE_PLATFORM_MACOS
+    if (input->GetDown("super") && input->GetPressed("n")) {
+#elif SNOWPULSE_PLATFORM_WINDOWS
+    if (input->GetDown("control") && input->GetPressed("n")) {
+#endif
+        CreateNewEffect();
+    }
+
+#ifdef SNOWPULSE_PLATFORM_MACOS
+    if (input->GetDown("super") && input->GetPressed("o")) {
+#elif SNOWPULSE_PLATFORM_WINDOWS
+    if (input->GetDown("control") && input->GetPressed("o")) {
+#endif
+        LoadEffect();
+    }
+
+#ifdef SNOWPULSE_PLATFORM_MACOS
+    if (input->GetDown("super") && input->GetPressed("s")) {
+#elif SNOWPULSE_PLATFORM_WINDOWS
+    if (input->GetDown("control") && input->GetPressed("s")) {
+#endif
+        SaveEffect();
+    }
+
+#ifdef SNOWPULSE_PLATFORM_MACOS
+    if (input->GetDown("super") && input->GetDown("shift") && input->GetPressed("s")) {
+#elif SNOWPULSE_PLATFORM_WINDOWS
+    if (input->GetDown("control") && input->GetDown("shift") && input->GetPressed("s")) {
+#endif
+        SaveAsEffect();
+    }
+
+#ifdef SNOWPULSE_PLATFORM_MACOS
+    if (input->GetDown("super") && input->GetPressed("r")) {
+#elif SNOWPULSE_PLATFORM_WINDOWS
+    if (input->GetDown("control") && input->GetPressed("r")) {
+#endif
+        ResetView();
+    }
+
+#ifdef SNOWPULSE_PLATFORM_MACOS
+    if (input->GetDown("super") && input->GetPressed("x")) {
+#elif SNOWPULSE_PLATFORM_WINDOWS
+    if (input->GetDown("control") && input->GetPressed("x")) {
+#endif
+        snowpulse::Application::GetInstance()->Close();
+    }
 }
 
 void ActionPanel::Draw(snowpulse::Graphics* graphics, snowpulse::Matrix4x4 worldMatrix) {
@@ -61,13 +110,14 @@ void ActionPanel::Draw(snowpulse::Graphics* graphics, snowpulse::Matrix4x4 world
     }
 }
 
-void ActionPanel::SetOnLoadListener(std::function<void(EffectData&)> onLoadFile) {
+void ActionPanel::SetOnLoadListener(std::function<void(snowpulse::ParticleSystemSettings&)> onLoadFile) {
     onLoadFile_ = onLoadFile;
 }
 
 void ActionPanel::CreateNewEffect() {
-    effectData_.Reset();
-    onLoadFile_(effectData_);
+    previousFilename_ = "";
+    settings_ = snowpulse::ParticleSystemSettings();
+    onLoadFile_(settings_);
     ResetView();
 }
 
@@ -89,8 +139,10 @@ void ActionPanel::LoadEffect() {
     if (loadPath) {
         auto extension = snowpulse::Directory::GetInstance()->GetExtension(loadPath);
         if (extension == "sppe") {
-            if (effectData_.LoadFromFile(loadPath) && onLoadFile_) {
-                onLoadFile_(effectData_);
+            if (settings_.LoadFromSPPEFile(loadPath) && onLoadFile_) {
+                onLoadFile_(settings_);
+                previousFilename_ = loadPath;
+                ResetView();
             }
         }
         else {
@@ -100,7 +152,7 @@ void ActionPanel::LoadEffect() {
 }
 
 void ActionPanel::SaveEffect() {
-    if (!effectData_.Save()) {
+    if (previousFilename_ == "" || !settings_.SaveToSPPEFile(previousFilename_)) {
         SaveAsEffect();
     }
 }
@@ -116,7 +168,8 @@ void ActionPanel::SaveAsEffect() {
     );
 
     if (savePath) {
-        effectData_.SaveToFile(savePath);
+        settings_.SaveToSPPEFile(savePath);
+        previousFilename_ = savePath;
     }
 }
 
@@ -162,25 +215,25 @@ void ActionPanel::ZoomOut() {
 void ActionPanel::DrawMenu() {
     if (ImGui::BeginMainMenuBar()) {
         if (ImGui::BeginMenu("File")) {
-            if (ImGui::MenuItem("Create New")) {
+            if (ImGui::MenuItem("Create New", "Command/Ctrl + N")) {
                 CreateNewEffect();
             }
-            if (ImGui::MenuItem("Open")) {
+            if (ImGui::MenuItem("Open", "Command/Ctrl + O")) {
                 LoadEffect();
             }
-            if (ImGui::MenuItem("Save")) {
+            if (ImGui::MenuItem("Save", "Command/Ctrl + S")) {
                 SaveEffect();
             }
-            if (ImGui::MenuItem("Save As")) {
+            if (ImGui::MenuItem("Save As", "Command/Ctrl + Shift + S")) {
                 SaveAsEffect();
             }
-            if (ImGui::MenuItem("Exit", "x")) {
+            if (ImGui::MenuItem("Exit", "Command/Ctrl + X")) {
                 snowpulse::Application::GetInstance()->Close();
             }
             ImGui::EndMenu();
         }
         if (ImGui::BeginMenu("View")) {
-            if (ImGui::MenuItem("Reset", "R")) {
+            if (ImGui::MenuItem("Reset", "Command/Ctrl + R")) {
                 ResetView();
             }
             if (ImGui::MenuItem("Zoom In", "[")) {

@@ -177,6 +177,12 @@ void InputMacOS::ProcessInputs(unsigned int keyCode, bool isKeyDown) {
     else if (heldKeys_.count(key) && !isKeyDown) {
         releasedKeys_[key] = true;
         heldKeys_.erase(key);
+        if (key == "super" || key == "option" || key == "control") {
+            for (const auto& pair : heldKeys_) {
+                releasedKeys_[pair.first] = true;
+            }
+            heldKeys_.clear();
+        }
     }
 
     ImGuiIO& io = ImGui::GetIO();

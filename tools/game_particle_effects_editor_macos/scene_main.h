@@ -24,7 +24,7 @@ class GAMEAPI SceneMain : public snowpulse::Scene {
         SceneMain();
 
         void OnInspectorInvalidate(snowpulse::ParticleSystemSettings settings);
-        void OnActionLoadFile(EffectData& effectData);
+        void OnActionLoadFile(snowpulse::ParticleSystemSettings& settings);
 
         float timeLapsed_;
         std::shared_ptr<snowpulse::SpriteRenderer> background_;

@@ -26,37 +26,40 @@ class SNOWPULSEAPI ParticleSystemSettings {
             kCircle,
         };
 
-        BlendMode blendMode = BlendMode::kAdditive;
+        bool LoadFromSPPEFile(std::string filename);
+        bool SaveToSPPEFile(std::string filename);
+
+        BlendMode blendMode = BlendMode::kNormal;
         TextureFiltering textureFiltering = TextureFiltering::kBilinear;
         PathType texturePathType = PathType::kAssets;
         std::string textureFilename;
 
-        ValueMode speedValueMode = ValueMode::kSingle;
-        float speedA = 100.0f;
-        float speedB = 100.0f;
+        ValueMode speedValueMode = ValueMode::kRandomWithin;
+        float speedA = 270.0f;
+        float speedB = 350.0f;
 
-        Vector2 acceleration;
+        Vector2 acceleration = Vector2(0.0f, -200.0f);
 
-        ValueMode lifespanValueMode = ValueMode::kSingle;
-        float lifespanA = 1.0f;
+        ValueMode lifespanValueMode = ValueMode::kRandomWithin;
+        float lifespanA = 0.8f;
         float lifespanB = 1.0f;
 
-        Vector2 scaleStartEnd = Vector2(1.0f, 1.0f);
+        Vector2 scaleStartEnd = Vector2(2.0f, 0.2f);
 
         float angleStart = 0.0f;
         float angleVelocity = 0.0f;
 
-        Color colorStart = Color::White();
-        Color colorEnd = Color::White();
+        Color colorStart = Color::Red();
+        Color colorEnd = Color(1.0f, 0.6f, 0.0f, 0.0f);
 
-        EmissionShape emissionShape = EmissionShape::kPoint;
+        EmissionShape emissionShape = EmissionShape::kCircle;
         Vector2 emissionRectSize = Vector2(50.0f, 50.0f);
-        float emissionRadius = 50.0f;
-        float emissionRate = 5.0f;
-        int maxParticleCount = 20;
-        ValueMode emissionAngleValueMode = ValueMode::kSingle;
-        float emissionAngleA = 0.0f;
-        float emissionAngleB = 0.0f;
+        float emissionRadius = 20.0f;
+        float emissionRate = 40.0f;
+        int maxParticleCount = 300;
+        ValueMode emissionAngleValueMode = ValueMode::kRandomWithin;
+        float emissionAngleA = 80.0f;
+        float emissionAngleB = 100.0f;
 };
 }   // namespace snowpulse
 #endif

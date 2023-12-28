@@ -290,6 +290,11 @@
 		2AA1AB0C2B20D891002F2A49 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A27D2C82B14E06B008B5446 /* MetalKit.framework */; };
 		2AC3E18D2B3C93DF00318EB3 /* effect_data.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2AC3E18B2B3C93DF00318EB3 /* effect_data.cc */; };
 		2AC3E18E2B3C93DF00318EB3 /* effect_data.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AC3E18C2B3C93DF00318EB3 /* effect_data.h */; };
+		2AC3E1902B3D303C00318EB3 /* particle_system_settings.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2AC3E18F2B3D303C00318EB3 /* particle_system_settings.cc */; };
+		2AC3E1912B3D303C00318EB3 /* particle_system_settings.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2AC3E18F2B3D303C00318EB3 /* particle_system_settings.cc */; };
+		2AC3E1942B3D364F00318EB3 /* string_utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AC3E1922B3D364F00318EB3 /* string_utils.h */; };
+		2AC3E1952B3D364F00318EB3 /* string_utils.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2AC3E1932B3D364F00318EB3 /* string_utils.cc */; };
+		2AC3E1962B3D364F00318EB3 /* string_utils.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2AC3E1932B3D364F00318EB3 /* string_utils.cc */; };
 		2AC67DBE2B24B33C0009F46C /* imgui_impl_metal.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2AC67DB62B24B33C0009F46C /* imgui_impl_metal.mm */; };
 		2AC67DC32B24B33C0009F46C /* imgui_impl_metal.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AC67DB92B24B33C0009F46C /* imgui_impl_metal.h */; };
 		2AC67DC42B24B5BE0009F46C /* glfw3.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AE11C8F2B244FD40023DB82 /* glfw3.h */; };
@@ -826,6 +831,9 @@
 		2AA9A9E12B0896C7009AACBF /* vertex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vertex.h; sourceTree = "<group>"; };
 		2AC3E18B2B3C93DF00318EB3 /* effect_data.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = effect_data.cc; path = ../tools/game_particle_effects_editor_macos/models/effect_data.cc; sourceTree = "<group>"; };
 		2AC3E18C2B3C93DF00318EB3 /* effect_data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = effect_data.h; path = ../tools/game_particle_effects_editor_macos/models/effect_data.h; sourceTree = "<group>"; };
+		2AC3E18F2B3D303C00318EB3 /* particle_system_settings.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = particle_system_settings.cc; path = features/particle_system/particle_system_settings.cc; sourceTree = "<group>"; };
+		2AC3E1922B3D364F00318EB3 /* string_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = string_utils.h; sourceTree = "<group>"; };
+		2AC3E1932B3D364F00318EB3 /* string_utils.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = string_utils.cc; sourceTree = "<group>"; };
 		2AC67DAF2B2461B30009F46C /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.a; path = "../thirdparty/glfw-3.3.8/lib-universal/libglfw3.a"; sourceTree = "<group>"; };
 		2AC67DB62B24B33C0009F46C /* imgui_impl_metal.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = imgui_impl_metal.mm; path = ../thirdparty/imgui/backends/imgui_impl_metal.mm; sourceTree = "<group>"; };
 		2AC67DB92B24B33C0009F46C /* imgui_impl_metal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui_impl_metal.h; path = ../thirdparty/imgui/backends/imgui_impl_metal.h; sourceTree = "<group>"; };
@@ -1295,6 +1303,8 @@
 				2A4FBE8F2B0108380060E35C /* easing.h */,
 				2A4FBEB52B03E81D0060E35C /* json_utils.h */,
 				2A77E72F2B1096A300579051 /* json_utils.cc */,
+				2AC3E1922B3D364F00318EB3 /* string_utils.h */,
+				2AC3E1932B3D364F00318EB3 /* string_utils.cc */,
 				2A4FBE8D2B00F8DA0060E35C /* math_utils.h */,
 				2A4FBE0C2B00BF430060E35C /* matrix4x4.h */,
 				2A4FBE0E2B00BF430060E35C /* singleton.h */,
@@ -1745,6 +1755,7 @@
 			children = (
 				2AE15E732B35F59700AF049E /* particle_data.h */,
 				2AE15E712B35F1D500AF049E /* particle_system_settings.h */,
+				2AC3E18F2B3D303C00318EB3 /* particle_system_settings.cc */,
 				2AE15E6C2B35F02600AF049E /* particle_system.h */,
 				2AE15E6D2B35F02600AF049E /* particle_system.cc */,
 			);
@@ -1876,6 +1887,7 @@
 				2AE15E742B35F59700AF049E /* particle_data.h in Headers */,
 				2AE15E6A2B35EF2B00AF049E /* tiled_data_layer.h in Headers */,
 				2AC67DC32B24B33C0009F46C /* imgui_impl_metal.h in Headers */,
+				2AC3E1942B3D364F00318EB3 /* string_utils.h in Headers */,
 				2A624C8C2B29FB2E00710C50 /* font_manager.h in Headers */,
 				2AE15E562B35EF1F00AF049E /* spine_skeleton_animation.h in Headers */,
 				2AE15E682B35EF2B00AF049E /* tiled_data_tile.h in Headers */,
@@ -2248,6 +2260,7 @@
 				2A52670B2B206276008B7268 /* view_delegate_metal.cc in Sources */,
 				2A5266D12B206244008B7268 /* SkeletonClipping.cpp in Sources */,
 				2A5267022B206244008B7268 /* AttachmentTimeline.cpp in Sources */,
+				2AC3E1902B3D303C00318EB3 /* particle_system_settings.cc in Sources */,
 				2A5266D42B206244008B7268 /* DeformTimeline.cpp in Sources */,
 				2A5267102B206285008B7268 /* directory_ios.mm in Sources */,
 				2A5266F12B206244008B7268 /* ConstraintData.cpp in Sources */,
@@ -2307,6 +2320,7 @@
 				2A5267132B206285008B7268 /* input.cc in Sources */,
 				2A5267072B206244008B7268 /* Sequence.cpp in Sources */,
 				2A5266CD2B206244008B7268 /* RegionAttachment.cpp in Sources */,
+				2AC3E1952B3D364F00318EB3 /* string_utils.cc in Sources */,
 				2A5266EB2B206244008B7268 /* Event.cpp in Sources */,
 				2A52670F2B206285008B7268 /* application_ios.cc in Sources */,
 				2A5266EA2B206244008B7268 /* SequenceTimeline.cpp in Sources */,
@@ -2478,11 +2492,13 @@
 				2A8F06442B31F7C500A8AA2A /* color.cc in Sources */,
 				2AA1AAC12B209674002F2A49 /* Event.cpp in Sources */,
 				2AA1AB052B2096CB002F2A49 /* action_wait.cc in Sources */,
+				2AC3E1962B3D364F00318EB3 /* string_utils.cc in Sources */,
 				2AA1AAB52B209674002F2A49 /* PathConstraintData.cpp in Sources */,
 				2AA1AAB02B209674002F2A49 /* BoundingBoxAttachment.cpp in Sources */,
 				2AA1AAD82B209674002F2A49 /* Sequence.cpp in Sources */,
 				2AA1AAAD2B209674002F2A49 /* AttachmentLoader.cpp in Sources */,
 				2AE15E782B35F68600AF049E /* particle_effects_renderer.cc in Sources */,
+				2AC3E1912B3D303C00318EB3 /* particle_system_settings.cc in Sources */,
 				2AA1AAEE2B209697002F2A49 /* application_metal.cc in Sources */,
 				2AC67DCF2B24B69F0009F46C /* imgui_impl_metal.mm in Sources */,
 				2A7FBEAA2B3AFC8600F313B8 /* renderer.cc in Sources */,

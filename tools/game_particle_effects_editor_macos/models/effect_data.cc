@@ -102,26 +102,6 @@ bool EffectData::Save() {
 
 void EffectData::Reset() {
     settings_ = snowpulse::ParticleSystemSettings();
-    settings_.blendMode = snowpulse::BlendMode::kNormal;
-    settings_.scaleStartEnd = snowpulse::Vector2(2.0f, 0.2f);
-    settings_.lifespanValueMode = snowpulse::ParticleSystemSettings::ValueMode::kRandomWithin;
-    settings_.lifespanA = 0.8f;
-    settings_.lifespanB = 1.0f;
-    settings_.maxParticleCount = 300;
-    settings_.emissionShape = snowpulse::ParticleSystemSettings::EmissionShape::kCircle;
-    settings_.emissionRectSize = snowpulse::Vector2(100.0f, 40.0f);
-    settings_.emissionRadius = 20.0f;
-    settings_.emissionRate = 40.0f;
-    settings_.emissionAngleValueMode = snowpulse::ParticleSystemSettings::ValueMode::kRandomWithin;
-    settings_.emissionAngleA = 80.0f;
-    settings_.emissionAngleB = 100.0f;
-    settings_.speedValueMode = snowpulse::ParticleSystemSettings::ValueMode::kRandomWithin;
-    settings_.speedA = 270.0f;
-    settings_.speedB = 350.0f;
-    settings_.acceleration = snowpulse::Vector2(0.0f, -1.0f) * 200.0f;
-    settings_.colorStart = snowpulse::Color::Red();
-    settings_.colorEnd = snowpulse::Color(1.0f, 0.6f, 0.0f, 0.0f);
-
     previousFilename_ = "";
 }
 }
