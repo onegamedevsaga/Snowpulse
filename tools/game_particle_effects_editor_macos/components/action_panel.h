@@ -7,8 +7,6 @@
 #include <functional>
 #include <snowpulse.h>
 
-#include "../models/effect_data.h"
-
 namespace game {
 class GAMEAPI ActionPanel : public snowpulse::Component, public snowpulse::Drawable {
     public:

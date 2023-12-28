@@ -27,14 +27,13 @@ class GAMEAPI SceneMain : public snowpulse::Scene {
         void OnActionLoadFile(snowpulse::ParticleSystemSettings& settings);
 
         float timeLapsed_;
-        std::shared_ptr<snowpulse::SpriteRenderer> background_;
+        std::shared_ptr<snowpulse::RectRenderer> background_;
         std::shared_ptr<snowpulse::FontRenderer> statsRenderer_;
         std::shared_ptr<snowpulse::ParticleEffectsRenderer> effectRenderer_;
         std::shared_ptr<ActionPanel> actionPanel_;
         std::shared_ptr<InspectorPanel> inspectorPanel_;
 
         snowpulse::Json currentData_;
-
 };
 }
 

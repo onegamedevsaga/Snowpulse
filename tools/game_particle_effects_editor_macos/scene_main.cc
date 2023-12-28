@@ -43,8 +43,7 @@ void SceneMain::Start() {
 
     auto resolutionSize = GetApplication()->GetResolutionSize();
     auto backgroundGo = snowpulse::GameObject::Create("backgroundGo");
-    background_ = snowpulse::SpriteRenderer::Create("");
-    background_->SetSize(snowpulse::Vector2(resolutionSize.x, resolutionSize.y));
+    background_ = snowpulse::RectRenderer::Create(snowpulse::Vector2(resolutionSize.x, resolutionSize.y));
     background_->SetColor(snowpulse::Color(0.3f, 0.3f, 0.3f));
     background_->SetSortOrder(-10);
     backgroundGo->AddComponent(background_);

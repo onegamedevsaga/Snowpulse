@@ -40,6 +40,7 @@
 
 #include "game/components/transform.h"
 #include "game/components/renderer.h"
+#include "game/components/rect_renderer.h"
 #include "game/components/sprite_renderer.h"
 #include "game/components/spine_renderer.h"
 #include "game/components/font_renderer.h"
