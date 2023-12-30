@@ -187,6 +187,11 @@ void SceneLevel::Start() {
 
     AddChild(buttonGo2);
     buttonGo2->GetTransform()->SetPosition(snowpulse::Vector2(-140.0f, 50.0f));
+    auto buttonTextRenderer2 = snowpulse::FontRenderer::Create("fonts/roboto/Roboto-Black.ttf", 50, snowpulse::PathType::kDefaults, snowpulse::TextureFiltering::kAnisotropic);
+    buttonTextRenderer2->SetText("Close\nWindowski!");
+    buttonTextRenderer2->SetAlignment(snowpulse::TextAlignment::kCenter);
+    buttonTextRenderer2->SetSortOrder(10);
+    buttonGo2->AddComponent(buttonTextRenderer2);
 
     snowpulse::ActionWait::Create(4.0f)->OnComplete([this](snowpulse::Action* a) {
         go2_->GetTransform()->DoMoveX(0.0f, 1.0f, snowpulse::Easing::kBounceOut, false, [this]() {

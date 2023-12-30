@@ -25,6 +25,7 @@
 #include "common/rect.h"
 #include "common/rect_stb.h"
 #include "common/texture_filtering.h"
+#include "common/text_alignment.h"
 #include "common/vertex.h"
 #include "common/touch.h"
 #include "common/touch_phase.h"

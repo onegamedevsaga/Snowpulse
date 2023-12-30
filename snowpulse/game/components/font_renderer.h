@@ -8,6 +8,7 @@
 #include <vector>
 
 #include "../../common/path_type.h"
+#include "../../common/text_alignment.h"
 #include "../../application/font_manager.h"
 
 namespace snowpulse {
@@ -22,6 +23,7 @@ class SNOWPULSEAPI FontRenderer : public SpriteRenderer {
         void Draw(Graphics* graphics, Matrix4x4 worldMatrix) override;
 
         void SetText(std::string text);
+        void SetAlignment(TextAlignment alignment);
         void SetHorizontalSpacing(float spacing) { horizontalSpacing_ = spacing; }
 
     protected:
@@ -45,6 +47,9 @@ class SNOWPULSEAPI FontRenderer : public SpriteRenderer {
         std::string text_;
         std::vector<CharacterData> characterData_;
         int lineCount_;
+        bool hasAligned_;
+        TextAlignment alignment_;
+        std::vector<float> positionOffsets_;
 };
 }   // namespace snowpulse
 

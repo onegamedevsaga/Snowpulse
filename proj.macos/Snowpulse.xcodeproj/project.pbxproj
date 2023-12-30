@@ -302,6 +302,7 @@
 		2AC3E1A42B3DD73000318EB3 /* prefab_button.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AC3E1A22B3DD73000318EB3 /* prefab_button.h */; };
 		2AC3E1A52B3DD73000318EB3 /* prefab_button.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2AC3E1A32B3DD73000318EB3 /* prefab_button.cc */; };
 		2AC3E1A62B3DD73000318EB3 /* prefab_button.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2AC3E1A32B3DD73000318EB3 /* prefab_button.cc */; };
+		2AC3E1A82B3EB85600318EB3 /* text_alignment.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AC3E1A72B3EB85600318EB3 /* text_alignment.h */; };
 		2AC67DBE2B24B33C0009F46C /* imgui_impl_metal.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2AC67DB62B24B33C0009F46C /* imgui_impl_metal.mm */; };
 		2AC67DC32B24B33C0009F46C /* imgui_impl_metal.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AC67DB92B24B33C0009F46C /* imgui_impl_metal.h */; };
 		2AC67DC42B24B5BE0009F46C /* glfw3.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AE11C8F2B244FD40023DB82 /* glfw3.h */; };
@@ -845,6 +846,7 @@
 		2AC3E19D2B3DB6DF00318EB3 /* button.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = button.cc; sourceTree = "<group>"; };
 		2AC3E1A22B3DD73000318EB3 /* prefab_button.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = prefab_button.h; path = prefabs/prefab_button.h; sourceTree = "<group>"; };
 		2AC3E1A32B3DD73000318EB3 /* prefab_button.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = prefab_button.cc; path = prefabs/prefab_button.cc; sourceTree = "<group>"; };
+		2AC3E1A72B3EB85600318EB3 /* text_alignment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = text_alignment.h; sourceTree = "<group>"; };
 		2AC67DAF2B2461B30009F46C /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.a; path = "../thirdparty/glfw-3.3.8/lib-universal/libglfw3.a"; sourceTree = "<group>"; };
 		2AC67DB62B24B33C0009F46C /* imgui_impl_metal.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = imgui_impl_metal.mm; path = ../thirdparty/imgui/backends/imgui_impl_metal.mm; sourceTree = "<group>"; };
 		2AC67DB92B24B33C0009F46C /* imgui_impl_metal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui_impl_metal.h; path = ../thirdparty/imgui/backends/imgui_impl_metal.h; sourceTree = "<group>"; };
@@ -1327,6 +1329,7 @@
 				2A624C8F2B2AC6AA00710C50 /* rect.h */,
 				2A624C902B2AC6AA00710C50 /* rect_stb.h */,
 				2A4FBE912B0357CF0060E35C /* space.h */,
+				2AC3E1A72B3EB85600318EB3 /* text_alignment.h */,
 				2A4FBE0F2B00BF430060E35C /* texture_filtering.h */,
 				2AC95E1C2B1DE0B200B2C916 /* touch.h */,
 				2AC95E1F2B1DE16500B2C916 /* touch_phase.h */,
@@ -1913,6 +1916,7 @@
 				2AE15E722B35F1D500AF049E /* particle_system_settings.h in Headers */,
 				2AE15E6E2B35F02600AF049E /* particle_system.h in Headers */,
 				2A7FBE9E2B3A780600F313B8 /* tinyfiledialogs.h in Headers */,
+				2AC3E1A82B3EB85600318EB3 /* text_alignment.h in Headers */,
 				2AE11C922B244FD40023DB82 /* glfw3native.h in Headers */,
 				2A7FBEAB2B3AFC8600F313B8 /* renderer.h in Headers */,
 				2AC3E1992B3D9B1F00318EB3 /* rect_renderer.h in Headers */,

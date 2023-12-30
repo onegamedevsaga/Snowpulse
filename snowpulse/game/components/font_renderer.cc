@@ -19,7 +19,7 @@ std::shared_ptr<FontRenderer> FontRenderer::Create(std::string fontFilename, int
     return fontRenderer;
 }
 
-FontRenderer::FontRenderer() : SpriteRenderer("font_renderer"), fontSizeInPixels_(10), horizontalSpacing_(100.0f), text_(""), lineCount_(1) {
+FontRenderer::FontRenderer() : SpriteRenderer("font_renderer"), fontSizeInPixels_(10), horizontalSpacing_(100.0f), text_(""), lineCount_(1), alignment_(TextAlignment::kLeft) {
 }
 
 FontRenderer::~FontRenderer() {
@@ -41,16 +41,48 @@ void FontRenderer::Update(float deltaTime) {
 
 // From Drawable
 void FontRenderer::Draw(Graphics* graphics, Matrix4x4 worldMatrix) {
+
+    if (!hasAligned_) {
+        if (alignment_ != TextAlignment::kLeft) {
+            
+            float scaleX = transform_->GetLocalScale().x;
+            float scaleY = transform_->GetLocalScale().y;
+            auto horizontalSpacing = horizontalSpacing_ * fontSizeInPixels_ * 0.001f;
+            int lineCount = 1;
+            float paragraphHeight = 0.0f;
+            float lineWidth = 0.0f;
+            float characterHeight = 0.0f;
+            for (const auto& d : characterData_) {
+                if (characterHeight < d.size.y) {
+                    characterHeight = d.size.y;
+                }
+                if (d.isNewLine) {
+                    positionOffsets_.push_back(lineWidth * (alignment_ == TextAlignment::kCenter ? 0.5f : 1.0f));
+                    lineCount ++;
+                    lineWidth = 0.0f;
+                    continue;
+                }
+                lineWidth += (d.size.x + horizontalSpacing) * scaleX;
+            }
+            positionOffsets_.push_back(lineWidth * (alignment_ == TextAlignment::kCenter ? 0.5f : 1.0f));
+            paragraphHeight = (float)lineCount * characterHeight;
+        }
+        hasAligned_ = true;
+    }
+    
+    
+    
     Matrix4x4 originalWorldMatrix(worldMatrix);
     Matrix4x4 matrixCopy(worldMatrix);
     float scaleX = worldMatrix.GetScaleX();
     float scaleY = worldMatrix.GetScaleY();
     auto horizontalSpacing = horizontalSpacing_ * fontSizeInPixels_ * 0.001f;
     int lineCount = 1;
+    worldMatrix.AddTranslate(Vector3(alignment_ == TextAlignment::kLeft ? 0.0f : -positionOffsets_[0], 0.0f, 0.0f));
     for (const auto& d : characterData_) {
         if (d.isNewLine) {
             worldMatrix.CopyTranslation(originalWorldMatrix);
-            worldMatrix.AddTranslate(Vector3(0.0f, (float)lineCount * (float)-fontSizeInPixels_ * scaleY, 0.0f));
+            worldMatrix.AddTranslate(Vector3(alignment_ == TextAlignment::kLeft ? 0.0f : -positionOffsets_[lineCount], (float)lineCount * (float)-fontSizeInPixels_ * scaleY, 0.0f));
             lineCount ++;
             continue;
         }
@@ -96,5 +128,37 @@ void FontRenderer::SetText(std::string text) {
             characterData_.push_back(d);
         }
     }
+
+    SetAlignment(alignment_);
+}
+
+void FontRenderer::SetAlignment(TextAlignment alignment) {
+    positionOffsets_.clear();
+    alignment_ = alignment;
+    hasAligned_ = false;
+    /*if (alignment == TextAlignment::kLeft) {
+        return;
+    }
+
+    float scaleX = transform_->GetLocalScale().x;
+    float scaleY = transform_->GetLocalScale().y;
+    auto horizontalSpacing = horizontalSpacing_ * fontSizeInPixels_ * 0.001f;
+    int lineCount = 1;
+    float paragraphHeight = 0.0f;
+    float lineWidth = 0.0f;
+    float characterHeight = 0.0f;
+    for (const auto& d : characterData_) {
+        if (characterHeight < d.size.y) {
+            characterHeight = d.size.y;
+        }
+        if (d.isNewLine) {
+            positionOffsets_.push_back(lineWidth);
+            lineCount ++;
+            lineWidth = 0.0f;
+            continue;
+        }
+        lineWidth += (d.size.x + horizontalSpacing) * scaleX;
+    }
+    paragraphHeight = (float)lineCount * characterHeight;*/
 }
 }   // namespace snowpulse
