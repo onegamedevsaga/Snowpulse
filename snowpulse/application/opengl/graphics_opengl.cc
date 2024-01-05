@@ -217,14 +217,17 @@ void GraphicsOpenGL::DrawMesh(Vertex* vertices, unsigned int vertexCount, unsign
     batch->indexCount = indexCount;
     batch->sortOrder = sortOrder;
     batch->isPremultiplied = isPremultiplied;
-    if (textures_.count(textureFilename)) {
+    batch->hasTexture = textureFilename != "";
+    if (batch->hasTexture && textures_.count(textureFilename)) {
         batch->texture = textures_[textureFilename];
     }
     else {
         batch->texture = textures_[kSpriteDefault];
+        if (batch->hasTexture) {
 #ifdef SPDEBUG
-        std::cerr << "Error: Graphics: Can't find texture \"" << textureFilename << "\"." << std::endl;
+            std::cerr << "Error: Graphics: Can't find texture \"" << textureFilename << "\"." << std::endl;
 #endif
+        }
     }
 
     glm::mat4 transMat;

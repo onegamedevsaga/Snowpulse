@@ -1,5 +1,7 @@
 #include "plane_renderer.h"
 
+#include <imgui.h>
+
 namespace game {
 std::shared_ptr<PlaneRenderer> PlaneRenderer::Create() {
     auto plane = std::shared_ptr<PlaneRenderer>(new PlaneRenderer());

@@ -1,7 +1,5 @@
 #include "inspector_panel.h"
 
-#include <imgui.h>
-
 namespace game {
 std::shared_ptr<InspectorPanel> InspectorPanel::Create() {
     auto panel = std::shared_ptr<InspectorPanel>(new InspectorPanel());

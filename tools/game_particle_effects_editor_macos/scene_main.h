@@ -6,8 +6,8 @@
 
 #include <memory>
 
-#include "action_panel.h"
-#include "inspector_panel.h"
+#include "components/action_panel.h"
+#include "components/inspector_panel.h"
 
 namespace game {
 class GAMEAPI SceneMain : public snowpulse::Scene {

@@ -6,6 +6,7 @@
 #include <memory>
 #include <functional>
 #include <snowpulse.h>
+#include <imgui.h>
 
 namespace game {
 class GAMEAPI InspectorPanel : public snowpulse::Component, public snowpulse::Drawable {

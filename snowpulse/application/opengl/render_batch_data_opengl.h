@@ -27,7 +27,8 @@ class SNOWPULSEAPI RenderBatchDataOpenGL : public RenderBatch {
                     viewMatrix == other->viewMatrix &&
                     projectionMatrix == other->projectionMatrix &&
                     shaderProgram == other->shaderProgram &&
-                    texture == other->texture;
+                    hasTexture == other->hasTexture &&
+                    (!hasTexture || texture == other->texture);
         }
 
         unsigned int vertexPlusUVPlusColorCount = 9;
@@ -57,6 +58,7 @@ class SNOWPULSEAPI RenderBatchDataOpenGL : public RenderBatch {
         glm::mat4 projectionMatrix;
 
         bool isPremultiplied;
+        bool hasTexture;
         GLuint texture;
 };
 }   // namespace snowpulse
