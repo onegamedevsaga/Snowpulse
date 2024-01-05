@@ -6,7 +6,7 @@
 #include "../../application/directory.h"
 
 namespace snowpulse {
-Renderer::Renderer(std::string componentName) : Component(componentName), sortOrder_(0), size_(100.0f, 100.0f), blendMode_(BlendMode::kNormal), isPremultiplied_(false)  {
+Renderer::Renderer(std::string componentName) : Component(componentName), size_(100.0f, 100.0f), sortOrder_(0), blendMode_(BlendMode::kNormal), isPremultiplied_(false)  {
 }
 
 Renderer::~Renderer() {

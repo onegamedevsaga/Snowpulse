@@ -1,5 +1,7 @@
 #include "color.h"
 
+#include <stdexcept>
+
 namespace snowpulse {
 Color::Color(std::string hex) {
     if (hex.length() != 9 || hex[0] != '#') {

@@ -1,6 +1,7 @@
 #include "string_utils.h"
 
 #include <cctype>
+#include <algorithm>
 
 namespace snowpulse {
 std::string StringUtils::ToLower(std::string str) {

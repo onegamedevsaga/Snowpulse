@@ -205,7 +205,9 @@
     <ClInclude Include="..\..\snowpulse\common\rect_stb.h" />
     <ClInclude Include="..\..\snowpulse\common\singleton.h" />
     <ClInclude Include="..\..\snowpulse\common\space.h" />
+    <ClInclude Include="..\..\snowpulse\common\string_utils.h" />
     <ClInclude Include="..\..\snowpulse\common\texture_filtering.h" />
+    <ClInclude Include="..\..\snowpulse\common\text_alignment.h" />
     <ClInclude Include="..\..\snowpulse\common\touch.h" />
     <ClInclude Include="..\..\snowpulse\common\touch_phase.h" />
     <ClInclude Include="..\..\snowpulse\common\vector2.h" />
@@ -220,17 +222,32 @@
     <ClInclude Include="..\..\snowpulse\game\actions\action_wait.h" />
     <ClInclude Include="..\..\snowpulse\game\action_manager.h" />
     <ClInclude Include="..\..\snowpulse\game\component.h" />
+    <ClInclude Include="..\..\snowpulse\game\components\button.h" />
     <ClInclude Include="..\..\snowpulse\game\components\font_renderer.h" />
+    <ClInclude Include="..\..\snowpulse\game\components\particle_effects_renderer.h" />
+    <ClInclude Include="..\..\snowpulse\game\components\rect_renderer.h" />
+    <ClInclude Include="..\..\snowpulse\game\components\renderer.h" />
     <ClInclude Include="..\..\snowpulse\game\components\spine_renderer.h" />
     <ClInclude Include="..\..\snowpulse\game\components\sprite_renderer.h" />
+    <ClInclude Include="..\..\snowpulse\game\components\tiled_renderer.h" />
     <ClInclude Include="..\..\snowpulse\game\components\transform.h" />
     <ClInclude Include="..\..\snowpulse\game\drawable.h" />
+    <ClInclude Include="..\..\snowpulse\game\features\particle_system\particle_data.h" />
+    <ClInclude Include="..\..\snowpulse\game\features\particle_system\particle_system.h" />
+    <ClInclude Include="..\..\snowpulse\game\features\particle_system\particle_system_settings.h" />
+    <ClInclude Include="..\..\snowpulse\game\features\spine\spine_skeleton_animation.h" />
+    <ClInclude Include="..\..\snowpulse\game\features\spine\spine_texture_loader.h" />
+    <ClInclude Include="..\..\snowpulse\game\features\tiled\tiled_data_grid.h" />
+    <ClInclude Include="..\..\snowpulse\game\features\tiled\tiled_data_layer.h" />
+    <ClInclude Include="..\..\snowpulse\game\features\tiled\tiled_data_map.h" />
+    <ClInclude Include="..\..\snowpulse\game\features\tiled\tiled_data_tile.h" />
+    <ClInclude Include="..\..\snowpulse\game\features\tiled\tiled_data_tileset.h" />
+    <ClInclude Include="..\..\snowpulse\game\features\tiled\tiled_map.h" />
     <ClInclude Include="..\..\snowpulse\game\game.h" />
     <ClInclude Include="..\..\snowpulse\game\game_object.h" />
     <ClInclude Include="..\..\snowpulse\game\node.h" />
     <ClInclude Include="..\..\snowpulse\game\node_starter.h" />
-    <ClInclude Include="..\..\snowpulse\game\plugins\spine\spine_skeleton_animation.h" />
-    <ClInclude Include="..\..\snowpulse\game\plugins\spine\spine_texture_loader.h" />
+    <ClInclude Include="..\..\snowpulse\game\prefabs\prefab_button.h" />
     <ClInclude Include="..\..\snowpulse\game\scene.h" />
     <ClInclude Include="..\..\snowpulse\game\updatable.h" />
     <ClInclude Include="..\..\snowpulse\snowpulse.h" />
@@ -328,6 +345,7 @@
     <ClInclude Include="..\..\thirdparty\spine-cpp\include\spine\Version.h" />
     <ClInclude Include="..\..\thirdparty\spine-cpp\include\spine\VertexAttachment.h" />
     <ClInclude Include="..\..\thirdparty\spine-cpp\include\spine\Vertices.h" />
+    <ClInclude Include="..\..\thirdparty\tinyfiledialogs\tinyfiledialogs.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\snowpulse\application\application.cc" />
@@ -344,7 +362,9 @@
     <ClCompile Include="..\..\snowpulse\application\windows\application_windows.cc" />
     <ClCompile Include="..\..\snowpulse\application\windows\directory_windows.cc" />
     <ClCompile Include="..\..\snowpulse\application\windows\input_windows.cc" />
+    <ClCompile Include="..\..\snowpulse\common\color.cc" />
     <ClCompile Include="..\..\snowpulse\common\json_utils.cc" />
+    <ClCompile Include="..\..\snowpulse\common\string_utils.cc" />
     <ClCompile Include="..\..\snowpulse\game\action.cc" />
     <ClCompile Include="..\..\snowpulse\game\actions\action_interpolate.cc" />
     <ClCompile Include="..\..\snowpulse\game\actions\action_move.cc" />
@@ -352,16 +372,25 @@
     <ClCompile Include="..\..\snowpulse\game\actions\action_wait.cc" />
     <ClCompile Include="..\..\snowpulse\game\action_manager.cc" />
     <ClCompile Include="..\..\snowpulse\game\component.cc" />
+    <ClCompile Include="..\..\snowpulse\game\components\button.cc" />
     <ClCompile Include="..\..\snowpulse\game\components\font_renderer.cc" />
+    <ClCompile Include="..\..\snowpulse\game\components\particle_effects_renderer.cc" />
+    <ClCompile Include="..\..\snowpulse\game\components\rect_renderer.cc" />
+    <ClCompile Include="..\..\snowpulse\game\components\renderer.cc" />
     <ClCompile Include="..\..\snowpulse\game\components\spine_renderer.cc" />
     <ClCompile Include="..\..\snowpulse\game\components\sprite_renderer.cc" />
+    <ClCompile Include="..\..\snowpulse\game\components\tiled_renderer.cc" />
     <ClCompile Include="..\..\snowpulse\game\components\transform.cc" />
+    <ClCompile Include="..\..\snowpulse\game\features\particle_system\particle_system.cc" />
+    <ClCompile Include="..\..\snowpulse\game\features\particle_system\particle_system_settings.cc" />
+    <ClCompile Include="..\..\snowpulse\game\features\spine\spine_skeleton_animation.cc" />
+    <ClCompile Include="..\..\snowpulse\game\features\spine\spine_texture_loader.cc" />
+    <ClCompile Include="..\..\snowpulse\game\features\tiled\tiled_map.cc" />
     <ClCompile Include="..\..\snowpulse\game\game.cc" />
     <ClCompile Include="..\..\snowpulse\game\game_object.cc" />
     <ClCompile Include="..\..\snowpulse\game\node.cc" />
     <ClCompile Include="..\..\snowpulse\game\node_starter.cc" />
-    <ClCompile Include="..\..\snowpulse\game\plugins\spine\spine_skeleton_animation.cc" />
-    <ClCompile Include="..\..\snowpulse\game\plugins\spine\spine_texture_loader.cc" />
+    <ClCompile Include="..\..\snowpulse\game\prefabs\prefab_button.cc" />
     <ClCompile Include="..\..\snowpulse\game\scene.cc" />
     <ClCompile Include="..\..\thirdparty\glad\src\glad.c" />
     <ClCompile Include="..\..\thirdparty\imgui\backends\imgui_impl_glfw.cpp" />
@@ -433,6 +462,7 @@
     <ClCompile Include="..\..\thirdparty\spine-cpp\src\spine\Triangulator.cpp" />
     <ClCompile Include="..\..\thirdparty\spine-cpp\src\spine\Updatable.cpp" />
     <ClCompile Include="..\..\thirdparty\spine-cpp\src\spine\VertexAttachment.cpp" />
+    <ClCompile Include="..\..\thirdparty\tinyfiledialogs\tinyfiledialogs.c" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\..\thirdparty\imgui\LICENSE.txt" />

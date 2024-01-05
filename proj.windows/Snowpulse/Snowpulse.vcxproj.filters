@@ -26,12 +26,6 @@
     <Filter Include="Source Files\game\actions">
       <UniqueIdentifier>{ea88b508-59ff-461b-a10c-0a4daea54f76}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\game\plugins">
-      <UniqueIdentifier>{152ce899-c932-4ba6-8058-4c9dbc30cd30}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\game\plugins\spine">
-      <UniqueIdentifier>{fcf419ea-c36f-4c16-9a30-a96b712b9d8f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\thirdparty">
       <UniqueIdentifier>{d3efb89a-94b6-4f8a-b4ef-e5b65f1af150}</UniqueIdentifier>
     </Filter>
@@ -58,6 +52,24 @@
     </Filter>
     <Filter Include="Source Files\thirdparty\spine-cpp\include\spine">
       <UniqueIdentifier>{af4dac45-7383-42dc-93b5-6b18e17db77d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\game\features">
+      <UniqueIdentifier>{152ce899-c932-4ba6-8058-4c9dbc30cd30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\game\features\spine">
+      <UniqueIdentifier>{fcf419ea-c36f-4c16-9a30-a96b712b9d8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\game\features\particle_system">
+      <UniqueIdentifier>{5b3bf56b-3523-4c33-9a9c-39c8e57d2795}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\game\features\tiled">
+      <UniqueIdentifier>{1410468f-b0ae-4ae7-b6f5-1ff46b4aeaff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\game\prefabs">
+      <UniqueIdentifier>{2c2a32f5-02e3-4dee-bf11-757114f7d199}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\thirdparty\tinyfiledialogs">
+      <UniqueIdentifier>{ccf39eae-754c-474d-83c8-3b899f41fb9e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -108,12 +120,6 @@
     </ClInclude>
     <ClInclude Include="..\..\snowpulse\game\components\transform.h">
       <Filter>Source Files\game\components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\snowpulse\game\plugins\spine\spine_skeleton_animation.h">
-      <Filter>Source Files\game\plugins\spine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\snowpulse\game\plugins\spine\spine_texture_loader.h">
-      <Filter>Source Files\game\plugins\spine</Filter>
     </ClInclude>
     <ClInclude Include="..\..\snowpulse\game\actions\action_interpolate.h">
       <Filter>Source Files\game\actions</Filter>
@@ -526,6 +532,66 @@
     <ClInclude Include="..\..\thirdparty\spine-cpp\include\spine\Vertices.h">
       <Filter>Source Files\thirdparty\spine-cpp\include\spine</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\snowpulse\common\string_utils.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\common\text_alignment.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\game\components\button.h">
+      <Filter>Source Files\game\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\game\components\particle_effects_renderer.h">
+      <Filter>Source Files\game\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\game\components\rect_renderer.h">
+      <Filter>Source Files\game\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\game\components\renderer.h">
+      <Filter>Source Files\game\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\game\components\tiled_renderer.h">
+      <Filter>Source Files\game\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\game\features\particle_system\particle_data.h">
+      <Filter>Source Files\game\features\particle_system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\game\features\particle_system\particle_system.h">
+      <Filter>Source Files\game\features\particle_system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\game\features\particle_system\particle_system_settings.h">
+      <Filter>Source Files\game\features\particle_system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\game\features\tiled\tiled_data_grid.h">
+      <Filter>Source Files\game\features\tiled</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\game\features\tiled\tiled_data_layer.h">
+      <Filter>Source Files\game\features\tiled</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\game\features\tiled\tiled_data_map.h">
+      <Filter>Source Files\game\features\tiled</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\game\features\tiled\tiled_data_tile.h">
+      <Filter>Source Files\game\features\tiled</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\game\features\tiled\tiled_data_tileset.h">
+      <Filter>Source Files\game\features\tiled</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\game\features\tiled\tiled_map.h">
+      <Filter>Source Files\game\features\tiled</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\game\prefabs\prefab_button.h">
+      <Filter>Source Files\game\prefabs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\thirdparty\tinyfiledialogs\tinyfiledialogs.h">
+      <Filter>Source Files\thirdparty\tinyfiledialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\game\features\spine\spine_skeleton_animation.h">
+      <Filter>Source Files\game\features\spine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\snowpulse\game\features\spine\spine_texture_loader.h">
+      <Filter>Source Files\game\features\spine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\snowpulse\game\action.cc">
@@ -563,12 +629,6 @@
     </ClCompile>
     <ClCompile Include="..\..\snowpulse\game\components\transform.cc">
       <Filter>Source Files\game\components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\snowpulse\game\plugins\spine\spine_skeleton_animation.cc">
-      <Filter>Source Files\game\plugins\spine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\snowpulse\game\plugins\spine\spine_texture_loader.cc">
-      <Filter>Source Files\game\plugins\spine</Filter>
     </ClCompile>
     <ClCompile Include="..\..\snowpulse\game\actions\action_interpolate.cc">
       <Filter>Source Files\game\actions</Filter>
@@ -836,6 +896,48 @@
     </ClCompile>
     <ClCompile Include="..\..\thirdparty\spine-cpp\src\spine\VertexAttachment.cpp">
       <Filter>Source Files\thirdparty\spine-cpp\src\spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\common\color.cc">
+      <Filter>Source Files\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\common\string_utils.cc">
+      <Filter>Source Files\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\game\components\button.cc">
+      <Filter>Source Files\game\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\game\components\particle_effects_renderer.cc">
+      <Filter>Source Files\game\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\game\components\rect_renderer.cc">
+      <Filter>Source Files\game\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\game\components\renderer.cc">
+      <Filter>Source Files\game\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\game\components\tiled_renderer.cc">
+      <Filter>Source Files\game\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\game\features\particle_system\particle_system.cc">
+      <Filter>Source Files\game\features\particle_system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\game\features\particle_system\particle_system_settings.cc">
+      <Filter>Source Files\game\features\particle_system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\game\features\tiled\tiled_map.cc">
+      <Filter>Source Files\game\features\tiled</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\game\prefabs\prefab_button.cc">
+      <Filter>Source Files\game\prefabs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\thirdparty\tinyfiledialogs\tinyfiledialogs.c">
+      <Filter>Source Files\thirdparty\tinyfiledialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\game\features\spine\spine_skeleton_animation.cc">
+      <Filter>Source Files\game\features\spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\snowpulse\game\features\spine\spine_texture_loader.cc">
+      <Filter>Source Files\game\features\spine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
