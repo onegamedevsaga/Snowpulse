@@ -12,6 +12,8 @@ InputWindows::InputWindows() : Input() {
     keyMap_[GLFW_KEY_LEFT_CONTROL] = "control";
     keyMap_[GLFW_KEY_LEFT_SHIFT] = "shift";
     keyMap_[GLFW_KEY_TAB] = "tab";
+    keyMap_[GLFW_KEY_LEFT_BRACKET] = "left_bracket";
+    keyMap_[GLFW_KEY_RIGHT_BRACKET] = "right_bracket";
     keyMap_[GLFW_KEY_LEFT] = "left_arrow";
     keyMap_[GLFW_KEY_RIGHT] = "right_arrow";
     keyMap_[GLFW_KEY_UP] = "up_arrow";
@@ -65,6 +67,8 @@ InputWindows::InputWindows() : Input() {
 
     ImGuiIO& io = ImGui::GetIO();
     io.KeyMap[ImGuiKey_Tab] = GLFW_KEY_TAB;
+    io.KeyMap[ImGuiKey_LeftBracket] = GLFW_KEY_LEFT_BRACKET;
+    io.KeyMap[ImGuiKey_RightBracket] = GLFW_KEY_RIGHT_BRACKET;
     io.KeyMap[ImGuiKey_LeftArrow] = GLFW_KEY_LEFT;
     io.KeyMap[ImGuiKey_RightArrow] = GLFW_KEY_RIGHT;
     io.KeyMap[ImGuiKey_UpArrow] = GLFW_KEY_UP;

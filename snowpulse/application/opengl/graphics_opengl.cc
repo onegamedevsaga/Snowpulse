@@ -134,9 +134,10 @@ Matrix4x4 GraphicsOpenGL::InvertMatrixNatively(Matrix4x4 matrix) {
 }
 
 bool GraphicsOpenGL::LoadTexture(std::string filename, PathType pathType) {
-    bool valid = false;
+    bool valid = true;
     std::string fullFilename = Directory::GetInstance()->GetFullFilename(filename, pathType);
     if (!textures_.count(filename)) {
+        valid = false;
         int width, height, nrChannels;
         unsigned char *data = stbi_load(fullFilename.c_str(), &width, &height, &nrChannels, 4);
         if (data) {

@@ -27,7 +27,12 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GameParticleEffectsEditor",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SpookySeas", "..\custom_games\spooky_seas\launcher_windows\SpookySeas.vcxproj", "{F2BAF337-3F9B-4556-860C-2DC3A552BE99}"
 	ProjectSection(ProjectDependencies) = postProject
-		{D7F2E842-532A-4CD1-AF5E-FAB92512A675} = {D7F2E842-532A-4CD1-AF5E-FAB92512A675}
+		{CE1D4E75-31C8-4426-9941-009BB3E18E23} = {CE1D4E75-31C8-4426-9941-009BB3E18E23}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GameSpookySeas", "..\custom_games\spooky_seas\game_windows\GameSpookySeas.vcxproj", "{CE1D4E75-31C8-4426-9941-009BB3E18E23}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DEE2A6F8-FA67-4438-BF58-8186DC5F4078} = {DEE2A6F8-FA67-4438-BF58-8186DC5F4078}
 	EndProjectSection
 EndProject
 Global
@@ -86,6 +91,14 @@ Global
 		{F2BAF337-3F9B-4556-860C-2DC3A552BE99}.Release|x64.Build.0 = Release|x64
 		{F2BAF337-3F9B-4556-860C-2DC3A552BE99}.Release|x86.ActiveCfg = Release|Win32
 		{F2BAF337-3F9B-4556-860C-2DC3A552BE99}.Release|x86.Build.0 = Release|Win32
+		{CE1D4E75-31C8-4426-9941-009BB3E18E23}.Debug|x64.ActiveCfg = Debug|x64
+		{CE1D4E75-31C8-4426-9941-009BB3E18E23}.Debug|x64.Build.0 = Debug|x64
+		{CE1D4E75-31C8-4426-9941-009BB3E18E23}.Debug|x86.ActiveCfg = Debug|Win32
+		{CE1D4E75-31C8-4426-9941-009BB3E18E23}.Debug|x86.Build.0 = Debug|Win32
+		{CE1D4E75-31C8-4426-9941-009BB3E18E23}.Release|x64.ActiveCfg = Release|x64
+		{CE1D4E75-31C8-4426-9941-009BB3E18E23}.Release|x64.Build.0 = Release|x64
+		{CE1D4E75-31C8-4426-9941-009BB3E18E23}.Release|x86.ActiveCfg = Release|Win32
+		{CE1D4E75-31C8-4426-9941-009BB3E18E23}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

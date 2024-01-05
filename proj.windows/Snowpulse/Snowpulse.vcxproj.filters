@@ -229,9 +229,6 @@
     <ClInclude Include="..\..\snowpulse\application\opengl\graphics_opengl.h">
       <Filter>Source Files\application\opengl</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\snowpulse\application\opengl\input_opengl.h">
-      <Filter>Source Files\application\opengl</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\snowpulse\application\opengl\render_batch_data_opengl.h">
       <Filter>Source Files\application\opengl</Filter>
     </ClInclude>
@@ -670,9 +667,6 @@
       <Filter>Source Files\application\opengl</Filter>
     </ClCompile>
     <ClCompile Include="..\..\snowpulse\application\opengl\graphics_opengl.cc">
-      <Filter>Source Files\application\opengl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\snowpulse\application\opengl\input_opengl.cc">
       <Filter>Source Files\application\opengl</Filter>
     </ClCompile>
     <ClCompile Include="..\..\snowpulse\application\opengl\render_queue_opengl.cc">

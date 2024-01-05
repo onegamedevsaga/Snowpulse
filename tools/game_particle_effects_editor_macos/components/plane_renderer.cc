@@ -18,14 +18,14 @@ PlaneRenderer::~PlaneRenderer() {
 }
 
 void PlaneRenderer::Update(float deltaTime) {
-    if (input_->GetPressed("mouse_left")) {
+    if (input_->GetPressed("mouse_right")) {
         mouseDownPosition_ = input_->GetMousePositionOnScreen();
         auto camPos = camera_->GetPosition();
         cameraPositionOnMouseDown_.x = camPos.x;
         cameraPositionOnMouseDown_.y = camPos.y;
         isMouseDragging_ = true;
     }
-    else if (isMouseDragging_ && input_->GetReleased("mouse_left")) {
+    else if (isMouseDragging_ && input_->GetReleased("mouse_right")) {
         isMouseDragging_ = false;
     }
     else if (isMouseDragging_) {

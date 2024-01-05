@@ -182,7 +182,6 @@
     <ClInclude Include="..\..\snowpulse\application\input.h" />
     <ClInclude Include="..\..\snowpulse\application\opengl\application_opengl.h" />
     <ClInclude Include="..\..\snowpulse\application\opengl\graphics_opengl.h" />
-    <ClInclude Include="..\..\snowpulse\application\opengl\input_opengl.h" />
     <ClInclude Include="..\..\snowpulse\application\opengl\render_batch_data_opengl.h" />
     <ClInclude Include="..\..\snowpulse\application\opengl\render_batch_group_opengl.h" />
     <ClInclude Include="..\..\snowpulse\application\opengl\render_queue_opengl.h" />
@@ -356,7 +355,6 @@
     <ClCompile Include="..\..\snowpulse\application\input.cc" />
     <ClCompile Include="..\..\snowpulse\application\opengl\application_opengl.cc" />
     <ClCompile Include="..\..\snowpulse\application\opengl\graphics_opengl.cc" />
-    <ClCompile Include="..\..\snowpulse\application\opengl\input_opengl.cc" />
     <ClCompile Include="..\..\snowpulse\application\opengl\render_queue_opengl.cc" />
     <ClCompile Include="..\..\snowpulse\application\timer.cc" />
     <ClCompile Include="..\..\snowpulse\application\windows\application_windows.cc" />
