@@ -188,7 +188,6 @@
 		2A8D3CF42B349046001D77CF /* libsnowpulse_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A5266BB2B20514C008B7268 /* libsnowpulse_ios.a */; };
 		2A8D3CF72B349052001D77CF /* libgame_spookyseas_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A8D3CCA2B348F32001D77CF /* libgame_spookyseas_ios.a */; };
 		2A8D3CFB2B349525001D77CF /* defaults in Resources */ = {isa = PBXBuildFile; fileRef = 2AE4B7912B0FECD800252B50 /* defaults */; };
-		2A8D3CFC2B349525001D77CF /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 2AE4B78E2B0FE88200252B50 /* assets */; };
 		2A8D3CFF2B34976E001D77CF /* GameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A8D3CDF2B348F8C001D77CF /* GameViewController.mm */; };
 		2A8F06382B31B49E00A8AA2A /* color.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A8F06372B31B49E00A8AA2A /* color.cc */; };
 		2A8F06412B31EBAE00A8AA2A /* tiled_renderer.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A8F063F2B31EBAE00A8AA2A /* tiled_renderer.cc */; };
@@ -2366,7 +2365,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A8D3CFB2B349525001D77CF /* defaults in Resources */,
-				2A8D3CFC2B349525001D77CF /* assets in Resources */,
 				2A8D3CE42B348F8C001D77CF /* Main.storyboard in Resources */,
 				2A393A772B4B09DB00F9CBC0 /* assets in Resources */,
 				2A8D3CE52B348F8C001D77CF /* Assets.xcassets in Resources */,
