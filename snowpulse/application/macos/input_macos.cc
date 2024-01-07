@@ -137,6 +137,7 @@ void InputMacOS::ProcessInputs(const Vector2Int& resolutionSize, const Vector2In
     io.MouseDrawCursor = false;
     io.MousePos = ImVec2(mousePosition.x, screenSize.y - mousePosition.y);
 }
+
 void InputMacOS::ProcessInputs(const Vector2Int& resolutionSize, const Vector2Int& screenSize, Vector2 mousePosition, int mouseButton, bool isMouseDown) {
     Vector2 scaleFactor = Vector2((float)resolutionSize.x / (float)screenSize.x, (float)resolutionSize.y / (float)screenSize.y);
     mousePositionOnScreen_ = mousePosition;

@@ -170,12 +170,12 @@ void SceneLevel::Start() {
     rectGo->GetTransform()->SetPosition(snowpulse::Vector2(0.0f, GetResolutionSize().y * 0.5f - 50.0f));
     AddChild(rectGo);
 
-    auto buttonGo = snowpulse::PrefabButton::InstantiateColorBased("buttonGo", [this]{
+    auto buttonGo = snowpulse::PrefabButton::InstantiateColorBased("buttonGo", [this] {
         //GetApplication()->Close();
     });
     AddChild(buttonGo);
 
-    auto buttonGo2 = snowpulse::PrefabButton::InstantiateSpriteBased("buttonGo2", [this]{
+    auto buttonGo2 = snowpulse::PrefabButton::InstantiateSpriteBased("buttonGo2", [this] {
         GetApplication()->Close();
     },
         snowpulse::Vector2(220.0f, 100.0f),
@@ -238,7 +238,7 @@ void SceneLevel::Update(float deltaTime) {
     auto touches = snowpulse::Input::GetInstance()->GetTouches();
     if (touches.size() > 0) {
         auto touch = touches[0];
-        auto pos = touch.GetPosition();
+        auto pos = touch.GetWorldLocation();
         if (touch.GetPhase() == snowpulse::TouchPhase::kBegan) {
 #ifdef SPDEBUG
             std::cout << "Touch Id:" << touch.GetId() << ": Began - (" << pos.x << ", " << pos.y << ")" << std::endl;

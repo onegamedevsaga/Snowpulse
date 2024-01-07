@@ -30,7 +30,7 @@ void Button::Update(float deltaTime) {
     Component::Update(deltaTime);
 
     auto isHit = IsHit();
-    if (input_->GetPressed("mouse_left") && isHit && (state_ == State::kIdle || state_ == State::kHover)) {
+    if (input_->GetPressed("mouse_left") && IsHit() && (state_ == State::kIdle || state_ == State::kHover)) {
         state_ = State::kDown;
         isPressedDown_ = true;
         if (onStateChanged_) {
@@ -39,7 +39,11 @@ void Button::Update(float deltaTime) {
     }
     else if (isPressedDown_ && input_->GetReleased("mouse_left")) {
         auto prevState = state_;
+#ifdef SNOWPULSE_PLATFORM_IOS || SNOWPULSE_PLATFORM_ANDROID
+        state_ = State::kIdle;
+#else
         state_ = isHit ? State::kHover : State::kIdle;
+#endif
         isPressedDown_ = false;
         if (state_ != prevState) {
             if (onStateChanged_) {
@@ -49,7 +53,11 @@ void Button::Update(float deltaTime) {
     }
     else {
         auto prevState = state_;
+#ifdef SNOWPULSE_PLATFORM_IOS || SNOWPULSE_PLATFORM_ANDROID
+        state_ = (!isPressedDown_ || !isHit) ? State::kIdle : State::kDown;
+#else
         state_ = isHit ? (isPressedDown_ ? State::kDown : State::kHover) : State::kIdle;
+#endif
         if (state_ != prevState) {
             if (onStateChanged_) {
                 onStateChanged_(state_, false);

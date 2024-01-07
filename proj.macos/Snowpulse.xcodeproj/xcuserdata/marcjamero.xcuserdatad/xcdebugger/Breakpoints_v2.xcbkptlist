@@ -20,5 +20,53 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FF1F879F-8772-4AC8-ABD1-EA93A8E9E05D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../snowpulse/application/ios/input_ios.cc"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "InputIOS::ProcessInputs(resolutionSize, screenSize, touch, touchPhase, position)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "FF1F879F-8772-4AC8-ABD1-EA93A8E9E05D - 3f6fa19b36639df5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "snowpulse::InputIOS::ProcessInputs(snowpulse::Vector2Int const&amp;, snowpulse::Vector2Int const&amp;, void*, snowpulse::TouchPhase, snowpulse::Vector2Int const&amp;)"
+                  moduleName = "launcher_ios"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marcjamero/Documents/OneGameDevSaga/Snowpulse/snowpulse/application/ios/input_ios.cc"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "50"
+                  endingLineNumber = "50"
+                  offsetFromSymbolStart = "920">
+               </Location>
+               <Location
+                  uuid = "FF1F879F-8772-4AC8-ABD1-EA93A8E9E05D - 3f6fa19b36639df5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "snowpulse::InputIOS::ProcessInputs(snowpulse::Vector2Int const&amp;, snowpulse::Vector2Int const&amp;, void*, snowpulse::TouchPhase, snowpulse::Vector2Int const&amp;)"
+                  moduleName = "launcher_ios"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marcjamero/Documents/OneGameDevSaga/Snowpulse/snowpulse/application/ios/input_ios.cc"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "50"
+                  endingLineNumber = "50"
+                  offsetFromSymbolStart = "1084">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

@@ -10,16 +10,18 @@ namespace snowpulse {
 class SNOWPULSEAPI Touch {
     public:
         Touch() { }
-        Touch(int touchId, TouchPhase phase, Vector2 position) : id_(touchId), phase_(phase), position_(position) { }
+        Touch(int touchId, TouchPhase phase, Vector2 screenLocation, Vector2 worldLocation) : id_(touchId), phase_(phase), screenLocation_(screenLocation), worldLocation_(worldLocation) { }
 
         int GetId() const { return id_; }
         TouchPhase GetPhase() const { return phase_; }
-        Vector2 GetPosition() const { return position_; }
+        Vector2 GetScreenLocation() const { return screenLocation_; }
+        Vector2 GetWorldLocation() const { return worldLocation_; }
 
     private:
         int id_;
         TouchPhase phase_;
-        Vector2 position_;
+        Vector2 screenLocation_;
+        Vector2 worldLocation_;
 };
 }   // namespace snowpulse
 #endif
