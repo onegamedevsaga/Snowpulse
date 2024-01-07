@@ -50,13 +50,14 @@
 		2A393A512B4ADFD900F9CBC0 /* GameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A393A4A2B4ADFD900F9CBC0 /* GameViewController.mm */; };
 		2A393A572B4AE92000F9CBC0 /* GameView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A393A562B4AE92000F9CBC0 /* GameView.mm */; };
 		2A393A582B4AE99900F9CBC0 /* defaults in Resources */ = {isa = PBXBuildFile; fileRef = 2AE4B7912B0FECD800252B50 /* defaults */; };
-		2A393A592B4AE99900F9CBC0 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 2AE4B78E2B0FE88200252B50 /* assets */; };
 		2A393A5E2B4AEEBE00F9CBC0 /* libsnowpulse_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A5266BB2B20514C008B7268 /* libsnowpulse_ios.a */; };
 		2A393A6E2B4AEFAF00F9CBC0 /* libsnowpulse_macos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AA1AA8B2B209542002F2A49 /* libsnowpulse_macos.a */; };
 		2A393A702B4AF09000F9CBC0 /* scene_level.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A8D3CED2B348FA6001D77CF /* scene_level.cc */; };
 		2A393A712B4AF09000F9CBC0 /* game.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A8D3CEB2B348FA6001D77CF /* game.cc */; };
 		2A393A722B4AF09600F9CBC0 /* imgui_test.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A8D3CE92B348FA6001D77CF /* imgui_test.cc */; };
 		2A393A732B4AF0C600F9CBC0 /* libgame_spookyseas_macos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A393A632B4AEF8900F9CBC0 /* libgame_spookyseas_macos.a */; };
+		2A393A772B4B09DB00F9CBC0 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 2A393A762B4B09DB00F9CBC0 /* assets */; };
+		2A393A782B4B09DB00F9CBC0 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 2A393A762B4B09DB00F9CBC0 /* assets */; };
 		2A5266CB2B206244008B7268 /* ColorTimeline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8BC2B078173009AACBF /* ColorTimeline.cpp */; };
 		2A5266CC2B206244008B7268 /* TranslateTimeline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8DC2B078173009AACBF /* TranslateTimeline.cpp */; };
 		2A5266CD2B206244008B7268 /* RegionAttachment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8B02B078173009AACBF /* RegionAttachment.cpp */; };
@@ -610,6 +611,7 @@
 		2A393A552B4AE92000F9CBC0 /* GameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameView.h; path = ../custom_games/spooky_seas/launcher_macos/GameView.h; sourceTree = "<group>"; };
 		2A393A562B4AE92000F9CBC0 /* GameView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = GameView.mm; path = ../custom_games/spooky_seas/launcher_macos/GameView.mm; sourceTree = "<group>"; };
 		2A393A632B4AEF8900F9CBC0 /* libgame_spookyseas_macos.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libgame_spookyseas_macos.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A393A762B4B09DB00F9CBC0 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = assets; path = ../custom_games/spooky_seas/assets; sourceTree = "<group>"; };
 		2A3C232C2B1342500078DBE1 /* input_macos.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = input_macos.cc; sourceTree = "<group>"; };
 		2A3C232D2B1342500078DBE1 /* input_macos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = input_macos.h; sourceTree = "<group>"; };
 		2A3C23422B13B3540078DBE1 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/iOSSupport/System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
@@ -1538,6 +1540,7 @@
 		2A8D3CD32B348F4C001D77CF /* game_spookyseas */ = {
 			isa = PBXGroup;
 			children = (
+				2A393A762B4B09DB00F9CBC0 /* assets */,
 				2A8D3CE82B348FA6001D77CF /* components */,
 				2A8D3CEC2B348FA6001D77CF /* defines.h */,
 				2A8D3CEB2B348FA6001D77CF /* game.cc */,
@@ -2351,8 +2354,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A393A782B4B09DB00F9CBC0 /* assets in Resources */,
 				2A393A582B4AE99900F9CBC0 /* defaults in Resources */,
-				2A393A592B4AE99900F9CBC0 /* assets in Resources */,
 				2A393A4E2B4ADFD900F9CBC0 /* Assets.xcassets in Resources */,
 				2A393A502B4ADFD900F9CBC0 /* Main.storyboard in Resources */,
 			);
@@ -2365,6 +2368,7 @@
 				2A8D3CFB2B349525001D77CF /* defaults in Resources */,
 				2A8D3CFC2B349525001D77CF /* assets in Resources */,
 				2A8D3CE42B348F8C001D77CF /* Main.storyboard in Resources */,
+				2A393A772B4B09DB00F9CBC0 /* assets in Resources */,
 				2A8D3CE52B348F8C001D77CF /* Assets.xcassets in Resources */,
 				2A8D3CE32B348F8C001D77CF /* LaunchScreen.storyboard in Resources */,
 			);
