@@ -2,8 +2,7 @@
 
 #include <snowpulse.h>
 
-@implementation GameView
-{
+@implementation GameView {
     snowpulse::ApplicationMacOS* app_;
     snowpulse::InputMacOS* input_;
 }
