@@ -52,7 +52,6 @@
 		2A393A582B4AE99900F9CBC0 /* defaults in Resources */ = {isa = PBXBuildFile; fileRef = 2AE4B7912B0FECD800252B50 /* defaults */; };
 		2A393A5E2B4AEEBE00F9CBC0 /* libsnowpulse_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A5266BB2B20514C008B7268 /* libsnowpulse_ios.a */; };
 		2A393A6E2B4AEFAF00F9CBC0 /* libsnowpulse_macos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AA1AA8B2B209542002F2A49 /* libsnowpulse_macos.a */; };
-		2A393A702B4AF09000F9CBC0 /* scene_level.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A8D3CED2B348FA6001D77CF /* scene_level.cc */; };
 		2A393A712B4AF09000F9CBC0 /* game.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A8D3CEB2B348FA6001D77CF /* game.cc */; };
 		2A393A722B4AF09600F9CBC0 /* imgui_test.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A8D3CE92B348FA6001D77CF /* imgui_test.cc */; };
 		2A393A732B4AF0C600F9CBC0 /* libgame_spookyseas_macos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A393A632B4AEF8900F9CBC0 /* libgame_spookyseas_macos.a */; };
@@ -166,6 +165,12 @@
 		2A624C932B2B22D000710C50 /* font_renderer.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A624C912B2B22D000710C50 /* font_renderer.h */; };
 		2A624C942B2B22D000710C50 /* font_renderer.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A624C922B2B22D000710C50 /* font_renderer.cc */; };
 		2A624C952B2B22D000710C50 /* font_renderer.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A624C922B2B22D000710C50 /* font_renderer.cc */; };
+		2A7F30EC2B4FAE5B00030ED4 /* scene_level.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A7F30EA2B4FAE5B00030ED4 /* scene_level.h */; };
+		2A7F30ED2B4FAE5B00030ED4 /* scene_level.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A7F30EB2B4FAE5B00030ED4 /* scene_level.cc */; };
+		2A7F30F02B4FB7A200030ED4 /* game_manager.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A7F30EE2B4FB7A100030ED4 /* game_manager.h */; };
+		2A7F30F12B4FB7A200030ED4 /* game_manager.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A7F30EF2B4FB7A100030ED4 /* game_manager.cc */; };
+		2A7F30F22B4FB7A200030ED4 /* game_manager.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A7F30EF2B4FB7A100030ED4 /* game_manager.cc */; };
+		2A7F30F32B4FB7B800030ED4 /* scene_level.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A7F30EB2B4FAE5B00030ED4 /* scene_level.cc */; };
 		2A7FBE9D2B3A780600F313B8 /* tinyfiledialogs.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A7FBE9B2B3A780600F313B8 /* tinyfiledialogs.c */; };
 		2A7FBE9E2B3A780600F313B8 /* tinyfiledialogs.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A7FBE9C2B3A780600F313B8 /* tinyfiledialogs.h */; };
 		2A7FBEA12B3AB01E00F313B8 /* action_panel.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A7FBE9F2B3AB01E00F313B8 /* action_panel.h */; };
@@ -182,7 +187,6 @@
 		2A8D3CE52B348F8C001D77CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A8D3CDE2B348F8C001D77CF /* Assets.xcassets */; };
 		2A8D3CEF2B348FA6001D77CF /* imgui_test.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A8D3CE92B348FA6001D77CF /* imgui_test.cc */; };
 		2A8D3CF02B348FA6001D77CF /* game.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A8D3CEB2B348FA6001D77CF /* game.cc */; };
-		2A8D3CF12B348FA6001D77CF /* scene_level.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A8D3CED2B348FA6001D77CF /* scene_level.cc */; };
 		2A8D3CF22B349035001D77CF /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AC67DE32B263BAB0009F46C /* Metal.framework */; };
 		2A8D3CF32B349035001D77CF /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AC67DE52B263BAF0009F46C /* MetalKit.framework */; };
 		2A8D3CF42B349046001D77CF /* libsnowpulse_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A5266BB2B20514C008B7268 /* libsnowpulse_ios.a */; };
@@ -689,6 +693,10 @@
 		2A77E7272B107FAA00579051 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		2A77E72A2B107FBE00579051 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		2A77E72F2B1096A300579051 /* json_utils.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = json_utils.cc; sourceTree = "<group>"; };
+		2A7F30EA2B4FAE5B00030ED4 /* scene_level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = scene_level.h; path = ../custom_games/spooky_seas/game/scenes/scene_level.h; sourceTree = "<group>"; };
+		2A7F30EB2B4FAE5B00030ED4 /* scene_level.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = scene_level.cc; path = ../custom_games/spooky_seas/game/scenes/scene_level.cc; sourceTree = "<group>"; };
+		2A7F30EE2B4FB7A100030ED4 /* game_manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = game_manager.h; path = common/game_manager.h; sourceTree = "<group>"; };
+		2A7F30EF2B4FB7A100030ED4 /* game_manager.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = game_manager.cc; path = common/game_manager.cc; sourceTree = "<group>"; };
 		2A7FBE9B2B3A780600F313B8 /* tinyfiledialogs.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = tinyfiledialogs.c; path = ../thirdparty/tinyfiledialogs/tinyfiledialogs.c; sourceTree = "<group>"; };
 		2A7FBE9C2B3A780600F313B8 /* tinyfiledialogs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tinyfiledialogs.h; path = ../thirdparty/tinyfiledialogs/tinyfiledialogs.h; sourceTree = "<group>"; };
 		2A7FBE9F2B3AB01E00F313B8 /* action_panel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = action_panel.h; sourceTree = "<group>"; };
@@ -713,8 +721,6 @@
 		2A8D3CEA2B348FA6001D77CF /* imgui_test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imgui_test.h; sourceTree = "<group>"; };
 		2A8D3CEB2B348FA6001D77CF /* game.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = game.cc; path = ../custom_games/spooky_seas/game/game.cc; sourceTree = "<group>"; };
 		2A8D3CEC2B348FA6001D77CF /* defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = defines.h; path = ../custom_games/spooky_seas/game/defines.h; sourceTree = "<group>"; };
-		2A8D3CED2B348FA6001D77CF /* scene_level.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = scene_level.cc; path = ../custom_games/spooky_seas/game/scene_level.cc; sourceTree = "<group>"; };
-		2A8D3CEE2B348FA6001D77CF /* scene_level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = scene_level.h; path = ../custom_games/spooky_seas/game/scene_level.h; sourceTree = "<group>"; };
 		2A8F06372B31B49E00A8AA2A /* color.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = color.cc; sourceTree = "<group>"; };
 		2A8F063F2B31EBAE00A8AA2A /* tiled_renderer.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tiled_renderer.cc; sourceTree = "<group>"; };
 		2A8F06402B31EBAE00A8AA2A /* tiled_renderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tiled_renderer.h; sourceTree = "<group>"; };
@@ -1512,6 +1518,38 @@
 			name = "nlohmann-json";
 			sourceTree = "<group>";
 		};
+		2A7F30E62B4FAD7300030ED4 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				2A7F30EF2B4FB7A100030ED4 /* game_manager.cc */,
+				2A7F30EE2B4FB7A100030ED4 /* game_manager.h */,
+			);
+			name = common;
+			sourceTree = "<group>";
+		};
+		2A7F30E72B4FADBF00030ED4 /* battleground */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = battleground;
+			sourceTree = "<group>";
+		};
+		2A7F30E82B4FAE0B00030ED4 /* prefabs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = prefabs;
+			sourceTree = "<group>";
+		};
+		2A7F30E92B4FAE2300030ED4 /* scenes */ = {
+			isa = PBXGroup;
+			children = (
+				2A7F30EB2B4FAE5B00030ED4 /* scene_level.cc */,
+				2A7F30EA2B4FAE5B00030ED4 /* scene_level.h */,
+			);
+			name = scenes;
+			sourceTree = "<group>";
+		};
 		2A7FBE9A2B3A77DC00F313B8 /* tinyfiledialogs */ = {
 			isa = PBXGroup;
 			children = (
@@ -1540,12 +1578,12 @@
 			isa = PBXGroup;
 			children = (
 				2A393A762B4B09DB00F9CBC0 /* assets */,
+				2A7F30E92B4FAE2300030ED4 /* scenes */,
 				2A8D3CE82B348FA6001D77CF /* components */,
+				2A7F30E82B4FAE0B00030ED4 /* prefabs */,
 				2A8D3CEC2B348FA6001D77CF /* defines.h */,
 				2A8D3CEB2B348FA6001D77CF /* game.cc */,
 				2A8D3CE72B348FA6001D77CF /* game.h */,
-				2A8D3CED2B348FA6001D77CF /* scene_level.cc */,
-				2A8D3CEE2B348FA6001D77CF /* scene_level.h */,
 			);
 			name = game_spookyseas;
 			sourceTree = "<group>";
@@ -1563,6 +1601,8 @@
 		2A8D3CE82B348FA6001D77CF /* components */ = {
 			isa = PBXGroup;
 			children = (
+				2A7F30E62B4FAD7300030ED4 /* common */,
+				2A7F30E72B4FADBF00030ED4 /* battleground */,
 				2A8D3CE92B348FA6001D77CF /* imgui_test.cc */,
 				2A8D3CEA2B348FA6001D77CF /* imgui_test.h */,
 			);
@@ -1994,6 +2034,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A7F30F02B4FB7A200030ED4 /* game_manager.h in Headers */,
+				2A7F30EC2B4FAE5B00030ED4 /* scene_level.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2443,8 +2485,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A393A722B4AF09600F9CBC0 /* imgui_test.cc in Sources */,
-				2A393A702B4AF09000F9CBC0 /* scene_level.cc in Sources */,
+				2A7F30ED2B4FAE5B00030ED4 /* scene_level.cc in Sources */,
 				2A393A712B4AF09000F9CBC0 /* game.cc in Sources */,
+				2A7F30F22B4FB7A200030ED4 /* game_manager.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2597,9 +2640,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A7F30F12B4FB7A200030ED4 /* game_manager.cc in Sources */,
 				2A8D3CEF2B348FA6001D77CF /* imgui_test.cc in Sources */,
-				2A8D3CF12B348FA6001D77CF /* scene_level.cc in Sources */,
 				2A8D3CF02B348FA6001D77CF /* game.cc in Sources */,
+				2A7F30F32B4FB7B800030ED4 /* scene_level.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3102,6 +3146,9 @@
 					../thirdparty/imgui/backends/,
 				);
 				INFOPLIST_FILE = ../custom_games/spooky_seas/launcher_macos/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Spooky Seas: Pirate Adventure";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.arcade-games";
+				INFOPLIST_KEY_NSDesktopFolderUsageDescription = "\"For saving file on desktop\"";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -3109,8 +3156,8 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "io.snowblink.Snowpulse.ParticleEffectsEditorGame.launcher-spookyseas-macos";
+				MARKETING_VERSION = 0.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = io.snowblink.SpookySeas;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 			};
@@ -3139,6 +3186,9 @@
 					../thirdparty/imgui/backends/,
 				);
 				INFOPLIST_FILE = ../custom_games/spooky_seas/launcher_macos/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Spooky Seas: Pirate Adventure";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.arcade-games";
+				INFOPLIST_KEY_NSDesktopFolderUsageDescription = "\"For saving file on desktop\"";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -3146,8 +3196,8 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "io.snowblink.Snowpulse.ParticleEffectsEditorGame.launcher-spookyseas-macos";
+				MARKETING_VERSION = 0.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = io.snowblink.SpookySeas;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 			};
