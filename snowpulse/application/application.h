@@ -6,6 +6,7 @@
 
 #include "timer.h"
 #include "graphics.h"
+#include "audio.h"
 #include "../defines.h"
 #include "../common/platform.h"
 #include "../common/vector2int.h"
@@ -30,6 +31,7 @@ class SNOWPULSEAPI Application {
         virtual void Shutdown() = 0;
         virtual void SetScreenScaleFactor(float scaleFactor) { scaleFactor_ = scaleFactor; }
         virtual Graphics* GetGraphics() const = 0;
+        virtual Audio* GetAudio() const = 0;
 
         void Update(float deltaTime);
         void SetGame(Game* game);

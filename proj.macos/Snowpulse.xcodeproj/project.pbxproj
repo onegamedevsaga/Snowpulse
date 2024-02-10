@@ -54,7 +54,6 @@
 		2A393A6E2B4AEFAF00F9CBC0 /* libsnowpulse_macos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AA1AA8B2B209542002F2A49 /* libsnowpulse_macos.a */; };
 		2A393A712B4AF09000F9CBC0 /* game.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A8D3CEB2B348FA6001D77CF /* game.cc */; };
 		2A393A722B4AF09600F9CBC0 /* imgui_test.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A8D3CE92B348FA6001D77CF /* imgui_test.cc */; };
-		2A393A732B4AF0C600F9CBC0 /* libgame_spookyseas_macos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A393A632B4AEF8900F9CBC0 /* libgame_spookyseas_macos.a */; };
 		2A393A772B4B09DB00F9CBC0 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 2A393A762B4B09DB00F9CBC0 /* assets */; };
 		2A393A782B4B09DB00F9CBC0 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 2A393A762B4B09DB00F9CBC0 /* assets */; };
 		2A5266CB2B206244008B7268 /* ColorTimeline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA9A8BC2B078173009AACBF /* ColorTimeline.cpp */; };
@@ -159,12 +158,22 @@
 		2A52674A2B206536008B7268 /* libgame_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A52672A2B206305008B7268 /* libgame_ios.a */; };
 		2A52674D2B206536008B7268 /* libsnowpulse_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A5266BB2B20514C008B7268 /* libsnowpulse_ios.a */; };
 		2A5267502B206561008B7268 /* timer.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FBE252B00BF430060E35C /* timer.cc */; };
+		2A57CCED2B77AE3300D98D8B /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A3871FE2B778BD300920A28 /* OpenAL.framework */; };
+		2A57CCEE2B77AE8000D98D8B /* libgame_spookyseas_macos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A393A632B4AEF8900F9CBC0 /* libgame_spookyseas_macos.a */; };
+		2A57CCF22B77AE9100D98D8B /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A57CCF12B77AE9000D98D8B /* OpenAL.framework */; };
+		2A57CCF32B77AEAB00D98D8B /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A57CCF12B77AE9000D98D8B /* OpenAL.framework */; };
+		2A57CCF42B77AEB100D98D8B /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A3871FE2B778BD300920A28 /* OpenAL.framework */; };
+		2A57CCF52B77AEB800D98D8B /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A3871FE2B778BD300920A28 /* OpenAL.framework */; };
 		2A624C8C2B29FB2E00710C50 /* font_manager.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A624C8A2B29FB2E00710C50 /* font_manager.h */; };
 		2A624C8D2B29FB2E00710C50 /* font_manager.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A624C8B2B29FB2E00710C50 /* font_manager.cc */; };
 		2A624C8E2B29FB2E00710C50 /* font_manager.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A624C8B2B29FB2E00710C50 /* font_manager.cc */; };
 		2A624C932B2B22D000710C50 /* font_renderer.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A624C912B2B22D000710C50 /* font_renderer.h */; };
 		2A624C942B2B22D000710C50 /* font_renderer.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A624C922B2B22D000710C50 /* font_renderer.cc */; };
 		2A624C952B2B22D000710C50 /* font_renderer.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A624C922B2B22D000710C50 /* font_renderer.cc */; };
+		2A6430812B77659700307609 /* audio_openal.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A64307F2B77659700307609 /* audio_openal.h */; };
+		2A6430822B77659700307609 /* audio_openal.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A6430802B77659700307609 /* audio_openal.cc */; };
+		2A6430832B77659700307609 /* audio_openal.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A6430802B77659700307609 /* audio_openal.cc */; };
+		2A6430872B77710000307609 /* audio_source_openal.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A6430862B77710000307609 /* audio_source_openal.h */; };
 		2A7F30EC2B4FAE5B00030ED4 /* scene_level.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A7F30EA2B4FAE5B00030ED4 /* scene_level.h */; };
 		2A7F30ED2B4FAE5B00030ED4 /* scene_level.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2A7F30EB2B4FAE5B00030ED4 /* scene_level.cc */; };
 		2A7F30F02B4FB7A200030ED4 /* game_manager.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A7F30EE2B4FB7A100030ED4 /* game_manager.h */; };
@@ -424,6 +433,13 @@
 			remoteGlobalIDString = 2A5266BA2B20514C008B7268;
 			remoteInfo = snowpulse_ios;
 		};
+		2A57CCEF2B77AE8000D98D8B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2AF938AE2ABDC14D00CC8BA2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2A393A622B4AEF8900F9CBC0;
+			remoteInfo = game_spookyseas_macos;
+		};
 		2A8D3CF52B349046001D77CF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2AF938AE2ABDC14D00CC8BA2 /* Project object */;
@@ -599,6 +615,7 @@
 		2A27D3262B1522F4008B5446 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2A27D3292B1522F4008B5446 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2A27D32B2B1522F4008B5446 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2A3871FE2B778BD300920A28 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		2A393A1C2B4ADB6300F9CBC0 /* launcher_spookyseas_macos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = launcher_spookyseas_macos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A393A3E2B4ADFD900F9CBC0 /* launcher_spookyseas_macos.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = launcher_spookyseas_macos.entitlements; path = ../custom_games/spooky_seas/launcher_macos/launcher_spookyseas_macos.entitlements; sourceTree = "<group>"; };
 		2A393A3F2B4ADFD900F9CBC0 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../custom_games/spooky_seas/launcher_macos/AppDelegate.h; sourceTree = "<group>"; };
@@ -683,12 +700,18 @@
 		2A4FBEB52B03E81D0060E35C /* json_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json_utils.h; sourceTree = "<group>"; };
 		2A5266BB2B20514C008B7268 /* libsnowpulse_ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libsnowpulse_ios.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A52672A2B206305008B7268 /* libgame_ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libgame_ios.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A57CCF12B77AE9000D98D8B /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS16.4.sdk/System/Library/Frameworks/OpenAL.framework; sourceTree = DEVELOPER_DIR; };
 		2A624C8A2B29FB2E00710C50 /* font_manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = font_manager.h; sourceTree = "<group>"; };
 		2A624C8B2B29FB2E00710C50 /* font_manager.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = font_manager.cc; sourceTree = "<group>"; };
 		2A624C8F2B2AC6AA00710C50 /* rect.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rect.h; sourceTree = "<group>"; };
 		2A624C902B2AC6AA00710C50 /* rect_stb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rect_stb.h; sourceTree = "<group>"; };
 		2A624C912B2B22D000710C50 /* font_renderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = font_renderer.h; sourceTree = "<group>"; };
 		2A624C922B2B22D000710C50 /* font_renderer.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = font_renderer.cc; sourceTree = "<group>"; };
+		2A64307F2B77659700307609 /* audio_openal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = audio_openal.h; path = openal/audio_openal.h; sourceTree = "<group>"; };
+		2A6430802B77659700307609 /* audio_openal.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = audio_openal.cc; path = openal/audio_openal.cc; sourceTree = "<group>"; };
+		2A6430842B77678900307609 /* audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audio.h; sourceTree = "<group>"; };
+		2A6430862B77710000307609 /* audio_source_openal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = audio_source_openal.h; path = openal/audio_source_openal.h; sourceTree = "<group>"; };
+		2A6AFE672B7789F600ECED29 /* libopenal.1.23.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopenal.1.23.1.dylib; path = ../thirdparty/openal/libopenal.1.23.1.dylib; sourceTree = "<group>"; };
 		2A77E7252B107FA300579051 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		2A77E7272B107FAA00579051 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		2A77E72A2B107FBE00579051 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
@@ -978,6 +1001,7 @@
 				2A1A21292B375B4500F368E9 /* libsnowpulse_macos.a in Frameworks */,
 				2A1A21432B375E9A00F368E9 /* libgame_particle_effects_editor_macos.a in Frameworks */,
 				2A1A21242B375B3300F368E9 /* Metal.framework in Frameworks */,
+				2A57CCF52B77AEB800D98D8B /* OpenAL.framework in Frameworks */,
 				2A1A21252B375B3300F368E9 /* MetalKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -997,6 +1021,7 @@
 				2A52674D2B206536008B7268 /* libsnowpulse_ios.a in Frameworks */,
 				2AC67DE82B263BEF0009F46C /* MetalKit.framework in Frameworks */,
 				2AC67DE72B263BE30009F46C /* Metal.framework in Frameworks */,
+				2A57CCF32B77AEAB00D98D8B /* OpenAL.framework in Frameworks */,
 				2A52674A2B206536008B7268 /* libgame_ios.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1005,9 +1030,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2A393A732B4AF0C600F9CBC0 /* libgame_spookyseas_macos.a in Frameworks */,
 				2A393A382B4ADE0B00F9CBC0 /* libsnowpulse_macos.a in Frameworks */,
 				2A393A3C2B4ADE1400F9CBC0 /* MetalKit.framework in Frameworks */,
+				2A57CCEE2B77AE8000D98D8B /* libgame_spookyseas_macos.a in Frameworks */,
+				2A57CCED2B77AE3300D98D8B /* OpenAL.framework in Frameworks */,
 				2A393A3B2B4ADE1400F9CBC0 /* Metal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1049,6 +1075,7 @@
 				2A8D3CF22B349035001D77CF /* Metal.framework in Frameworks */,
 				2A8D3CF32B349035001D77CF /* MetalKit.framework in Frameworks */,
 				2A8D3CF72B349052001D77CF /* libgame_spookyseas_ios.a in Frameworks */,
+				2A57CCF22B77AE9100D98D8B /* OpenAL.framework in Frameworks */,
 				2A8D3CF42B349046001D77CF /* libsnowpulse_ios.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1068,6 +1095,7 @@
 				2AA1AB0C2B20D891002F2A49 /* MetalKit.framework in Frameworks */,
 				2AA1AAA92B209646002F2A49 /* libgame_macos.a in Frameworks */,
 				2AA1AAAA2B209646002F2A49 /* libsnowpulse_macos.a in Frameworks */,
+				2A57CCF42B77AEB100D98D8B /* OpenAL.framework in Frameworks */,
 				2AC67DE92B263BF70009F46C /* Metal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1445,12 +1473,14 @@
 		2A4FBE132B00BF430060E35C /* application */ = {
 			isa = PBXGroup;
 			children = (
+				2A64307E2B77651200307609 /* openal */,
 				2AE640BC2B12921100A6B8DA /* metal */,
 				2A4FBE152B00BF430060E35C /* macos */,
 				2AE640BD2B12921F00A6B8DA /* ios */,
 				2A4FBE222B00BF430060E35C /* application.cc */,
 				2A4FBE1F2B00BF430060E35C /* application.h */,
 				2A0656372B2807AC00E2B2B9 /* graphics.h */,
+				2A6430842B77678900307609 /* audio.h */,
 				2A0656332B28065E00E2B2B9 /* atlas_manager.h */,
 				2A0656322B28065E00E2B2B9 /* atlas_manager.cc */,
 				2A4FBE202B00BF430060E35C /* camera.cc */,
@@ -1516,6 +1546,16 @@
 				2A4FBEB22B03E59A0060E35C /* json.hpp */,
 			);
 			name = "nlohmann-json";
+			sourceTree = "<group>";
+		};
+		2A64307E2B77651200307609 /* openal */ = {
+			isa = PBXGroup;
+			children = (
+				2A6430862B77710000307609 /* audio_source_openal.h */,
+				2A6430802B77659700307609 /* audio_openal.cc */,
+				2A64307F2B77659700307609 /* audio_openal.h */,
+			);
+			name = openal;
 			sourceTree = "<group>";
 		};
 		2A7F30E62B4FAD7300030ED4 /* common */ = {
@@ -1995,6 +2035,9 @@
 		2AF938E62ABDDB5F00CC8BA2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2A3871FE2B778BD300920A28 /* OpenAL.framework */,
+				2A57CCF12B77AE9000D98D8B /* OpenAL.framework */,
+				2A6AFE672B7789F600ECED29 /* libopenal.1.23.1.dylib */,
 				2AC67DE52B263BAF0009F46C /* MetalKit.framework */,
 				2AC67DE32B263BAB0009F46C /* Metal.framework */,
 				2AC67DAF2B2461B30009F46C /* libglfw3.a */,
@@ -2059,12 +2102,14 @@
 				2AE15E562B35EF1F00AF049E /* spine_skeleton_animation.h in Headers */,
 				2AE15E682B35EF2B00AF049E /* tiled_data_tile.h in Headers */,
 				2A0656362B28065E00E2B2B9 /* atlas_manager.h in Headers */,
+				2A6430812B77659700307609 /* audio_openal.h in Headers */,
 				2AE15E632B35EF2B00AF049E /* tiled_data_tileset.h in Headers */,
 				2A624C932B2B22D000710C50 /* font_renderer.h in Headers */,
 				2AE15E722B35F1D500AF049E /* particle_system_settings.h in Headers */,
 				2AE15E6E2B35F02600AF049E /* particle_system.h in Headers */,
 				2A7FBE9E2B3A780600F313B8 /* tinyfiledialogs.h in Headers */,
 				2AC3E1A82B3EB85600318EB3 /* text_alignment.h in Headers */,
+				2A6430872B77710000307609 /* audio_source_openal.h in Headers */,
 				2AE11C922B244FD40023DB82 /* glfw3native.h in Headers */,
 				2A7FBEAB2B3AFC8600F313B8 /* renderer.h in Headers */,
 				2AC3E1992B3D9B1F00318EB3 /* rect_renderer.h in Headers */,
@@ -2150,6 +2195,7 @@
 			dependencies = (
 				2A393A3A2B4ADE0B00F9CBC0 /* PBXTargetDependency */,
 				2A393A752B4AF0C600F9CBC0 /* PBXTargetDependency */,
+				2A57CCF02B77AE8000D98D8B /* PBXTargetDependency */,
 			);
 			name = launcher_spookyseas_macos;
 			productName = launcher_spookyseas_macos;
@@ -2519,6 +2565,7 @@
 				2AE11C602B2443A70023DB82 /* imgui_widgets.cpp in Sources */,
 				2A7FBEA92B3AFC8600F313B8 /* renderer.cc in Sources */,
 				2A5266F32B206244008B7268 /* ClippingAttachment.cpp in Sources */,
+				2A6430822B77659700307609 /* audio_openal.cc in Sources */,
 				2A5267082B206244008B7268 /* SkeletonBounds.cpp in Sources */,
 				2AC67DBE2B24B33C0009F46C /* imgui_impl_metal.mm in Sources */,
 				2A5267002B206244008B7268 /* AnimationStateData.cpp in Sources */,
@@ -2710,6 +2757,7 @@
 				2AA1AAAE2B209674002F2A49 /* Skin.cpp in Sources */,
 				2AA1AACF2B209674002F2A49 /* ConstraintData.cpp in Sources */,
 				2AA1AAE22B209674002F2A49 /* Triangulator.cpp in Sources */,
+				2A6430832B77659700307609 /* audio_openal.cc in Sources */,
 				2AA1AAC82B209674002F2A49 /* AtlasAttachmentLoader.cpp in Sources */,
 				2AA1AAF92B2096CB002F2A49 /* game.cc in Sources */,
 				2AE15E672B35EF2B00AF049E /* tiled_map.cc in Sources */,
@@ -2821,6 +2869,11 @@
 			isa = PBXTargetDependency;
 			target = 2A5266BA2B20514C008B7268 /* snowpulse_ios */;
 			targetProxy = 2A52674E2B206536008B7268 /* PBXContainerItemProxy */;
+		};
+		2A57CCF02B77AE8000D98D8B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2A393A622B4AEF8900F9CBC0 /* game_spookyseas_macos */;
+			targetProxy = 2A57CCEF2B77AE8000D98D8B /* PBXContainerItemProxy */;
 		};
 		2A8D3CF62B349046001D77CF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3156,6 +3209,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = "";
 				MARKETING_VERSION = 0.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = io.snowblink.SpookySeas;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3196,6 +3250,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = "";
 				MARKETING_VERSION = 0.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = io.snowblink.SpookySeas;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3271,6 +3326,7 @@
 					../thirdparty/imgui/backends/,
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LIBRARY_SEARCH_PATHS = ../thirdparty/openal;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -3301,6 +3357,7 @@
 					../thirdparty/imgui/backends/,
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LIBRARY_SEARCH_PATHS = ../thirdparty/openal;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -3401,7 +3458,7 @@
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = metal;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3445,7 +3502,7 @@
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = metal;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3617,6 +3674,7 @@
 					../thirdparty/imgui/,
 					../thirdparty/imgui/backends/,
 				);
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -3642,6 +3700,7 @@
 					../thirdparty/imgui/,
 					../thirdparty/imgui/backends/,
 				);
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};

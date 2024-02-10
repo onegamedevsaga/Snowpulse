@@ -9,6 +9,7 @@
 #include "../../defines.h"
 #include "render_queue_metal.h"
 #include "graphics_metal.h"
+#include "../openal/audio_openal.h"
 
 namespace snowpulse {
 
@@ -26,11 +27,13 @@ class SNOWPULSEAPI ApplicationMetal : public Application {
         virtual void RunFrame();
 
         Graphics* GetGraphics() const override { return graphics_.get(); }
+        Audio* GetAudio() const override { return audio_.get(); }
 
     protected:
         ApplicationMetal();
 
         std::shared_ptr<GraphicsMetal> graphics_;
+        std::shared_ptr<AudioOpenAL> audio_;
         std::shared_ptr<ViewDelegateMetal> viewDelegate_;
         MTK::View* view_;
 };

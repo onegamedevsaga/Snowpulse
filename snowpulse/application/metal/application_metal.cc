@@ -54,7 +54,15 @@ bool ApplicationMetal::Initialize(const Vector2Int& resolutionSize, const Vector
     graphics_ = GraphicsMetal::Create();
     if (!graphics_ || !graphics_->Initialize(resolutionSize_, screenSize_, view)) {
 #ifdef SPDEBUG
-        std::cout << "ERROR: Application wasn't able to initialize graphics on this platform." << std::endl;
+        std::cout << "ERROR: Application wasn't able to initialize graphics (Metal) on this platform." << std::endl;
+#endif
+        return false;
+    }
+    
+    audio_ = AudioOpenAL::Create();
+    if (!audio_ || !audio_->Initialize()) {
+#ifdef SPDEBUG
+        std::cout << "ERROR: Application wasn't able to initialize audio (OpenAL) on this platform." << std::endl;
 #endif
         return false;
     }
